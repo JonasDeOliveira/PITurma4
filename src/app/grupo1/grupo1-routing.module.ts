@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { TesteComponent } from './teste/teste.component';
+import { CadastroClienteComponent } from './pages/cadastro-cliente/cadastro-cliente.component';
+import { DadosClienteComponent } from './pages/dados-cliente/dados-cliente.component';
 
 export const Grupo1RoutingModule: Routes = [
 
-    {
-        path:'teste', component: TesteComponent
-    }
+    {path:'cadastro-cliente', component: CadastroClienteComponent},
+    {path:'dados-cliente', component: DadosClienteComponent}
   
 ];
