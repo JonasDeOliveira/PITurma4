@@ -7,10 +7,12 @@ import { LoginClienteComponent } from './pages/login-cliente/login-cliente.compo
 import { ListaLembretesComponent } from './pages/lista-lembretes/lista-lembretes.component';
 import { CadastroClienteComponent } from './pages/cadastro-cliente/cadastro-cliente.component';
 import { DadosClienteComponent } from './pages/dados-cliente/dados-cliente.component';
+import { LembreteItemListaComponent } from './components/lembrete-item-lista/lembrete-item-lista.component';
+import { LembreteListaComponent } from './components/lembrete-lista/lembrete-lista.component';
 
 
 @NgModule({
-  declarations: [PagesComponent, ComponentsComponent, LoginClienteComponent, ListaLembretesComponent, CadastroClienteComponent, DadosClienteComponent],
+  declarations: [PagesComponent, ComponentsComponent, LoginClienteComponent, ListaLembretesComponent, CadastroClienteComponent, DadosClienteComponent, LembreteItemListaComponent, LembreteListaComponent],
   imports: [
     CommonModule
   ]
