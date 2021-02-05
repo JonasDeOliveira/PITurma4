@@ -1,6 +1,32 @@
+.titulo_lembrete{
+    color:#319A75;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding-top:20px ;
+}
+
+p.excluir {
+    width: 100%;
+    display: flex;
+   justify-content: space-between;  
+} 
+
+p {
+    font-size: 0.8rem; 
+}
+
+a:hover{
+    text-decoration:none;
+ }
+
 .item-lista{
     padding:0  10px 0 10px;
+    font-size: 0.9rem;
+    list-style: none;
+    line-height: 20%;
+    border-bottom: 1px solid #ccc;
 }
+
 
 .item-passado {
     opacity: 0.6;

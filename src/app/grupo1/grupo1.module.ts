@@ -24,7 +24,7 @@ import { LembreteItemListaComponent } from './components/lembrete-item-lista/lem
     CadastroClienteComponent, 
     DadosClienteComponent, 
     AreaClienteComponent, 
-    LembreteItemListaComponent,
+    LembreteItemListaComponent, 
     PlanosComponent, 
     PortalComponent,
     FooterComponent,
