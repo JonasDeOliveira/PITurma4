@@ -1,0 +1,142 @@
+    <!-- trilha 4 -->
+    <div class="rowtrilha d-flex flex-wrap justify-content-center">
+        <div class="cada-item d-flex flex-column">
+            <div class="bola-linha d-flex">
+                <div class="bolinha bolinha-cheia">1</div>
+                <div class="linha linha-ativa"></div>
+            </div>
+            <div class="texto-trilha d-flex flex-column">
+                <a routerLink='/agendamento-consultas'>
+                    <div class="trilha">Consulta</div>
+                    <div class="opcao">Presencial</div>
+                </a>
+            </div>
+        </div>
+        <div class="cada-item d-flex flex-column">
+            <div class="bola-linha d-flex">
+                <div class="bolinha bolinha-cheia">2</div>
+                <div class="linha linha-ativa"></div>
+            </div>
+            <div class="texto-trilha d-flex flex-column">
+                <a routerLink='/agendamento-consultas'>
+                    <div class="trilha ">Especialidade</div>
+                    <div class="opcao ">Endocrinologia</div>
+                </a>
+            </div>
+        </div>
+        <div class="cada-item d-flex flex-column">
+            <div class="bola-linha d-flex">
+                <div class="bolinha bolinha-cheia">3</div>
+                <div class="linha linha-ativa"></div>
+            </div>
+            <div class="texto-trilha d-flex flex-column">
+                <a routerLink='/calendario-agendamento'>
+                    <div class="trilha ">Data</div>
+                    <div class="opcao">23/10/2017</div>
+                </a>
+            </div>
+        </div>
+        <div class="cada-item d-flex flex-column">
+            <div class="bola-linha d-flex">
+                <div class="bolinha bolinha-cheia">4</div>
+                <div class="linha linha-ativa"></div>
+            </div>
+            <div class="texto-trilha d-flex flex-column">
+                <a routerLink='/escolha-especialista'>
+                    <div class="trilha">Especialista</div>
+                    <div class="opcao">Dra Brinquedos</div>
+                </a>
+            </div>
+        </div>
+        <div class="cada-item d-flex flex-column">
+            <div class="bola-linha d-flex">
+                <div class="bolinha bolinha-cheia">5</div>
+                <div class="linha linha-ativa"></div>
+            </div>
+            <div class="texto-trilha d-flex flex-column">
+                <a routerLink='/escolha-especialista'>
+                    <div class="trilha">Horário</div>
+                    <div class="opcao">14:00</div>
+                </a>
+            </div>
+        </div>
+        <div class="cada-item d-flex flex-column">
+            <div class="bola-linha d-flex">
+                <div class="bolinha bolinhaVazia">6</div>
+                <div class="linha linha-futura"></div>
+            </div>
+            <div class="texto-trilha d-flex flex-column">
+                <div class="trilha">Pagamento</div>
+                <div class="opcao-vazia">vazio</div>
+            </div>
+        </div>
+        <div class="cada-item d-flex flex-column">
+            <div class="bola-linha d-flex">
+                <div class="bolinha bolinhaVazia" id="bolinha7">7</div>
+            </div>
+            <div class="texto-trilha d-flex flex-column">
+                <div class="trilha">Confirmação</div>
+                <div class="opcao-vazia">vazio</div>
+            </div>
+        </div>
+    </div>
+    <!--fim trilha 4 -->
+
+    <section class="container center">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="containerForma">
+                    <div class="forma text-center text-secundary">
+                        <h3>Forma de Pagamento</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--- botoes Particular e Planos -->
+        <div class="row">
+            <div class="container text-center col-12 mt-3 mb-3">
+                <button class="btn-active clicado">Plano</button>
+                <a routerLink='/pagamento-particular'><button class="btn-active clicavel">Particular</button></a>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 lg-6 mt-3">
+                    <div class="card">
+                        <div>
+                            <h4 class="text-center">Meu Plano Atual</h4>
+                        </div>
+                        <div class="card-horizontal">
+                            <div class="img-square-wrapper">
+                                <img src="http://via.placeholder.com/150" alt="Card imagem plano">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Tipo do Plano</h4>
+                                <p class="card-text">Especificações do plano</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        Especialidade - Tipo Escolhido
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p>Solicitação de consulta</p>
+                            <p>10/12/2020</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container groupBtn col-12 mt-3 mb-3">
+            <a routerLink='/confirmacao-consulta'><button class="btn-active clicavel">CONFIRMAR</button></a>
+        </div>
+
+    </section>
+    <app-footer></app-footer>
