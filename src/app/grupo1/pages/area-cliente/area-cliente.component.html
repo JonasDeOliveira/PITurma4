@@ -1,44 +1,4 @@
 
-<body>
-
-    <div class="container-fluid">
-<header>
-    <!-- NAVBAR COM CONTAINER -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a routerLink="portal"><img src="/assets/grupo1/img/logo-menu.png"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse item-menu" id="navbarSupportedContent">
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-4 ">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" routerLink="planos">Planos</a></li>
-                        <li class="nav-item"><a class="nav-link" routerLink="Sustentabilidade">Sustentabilidade</a></li>
-                        <li class="nav-item"><a class="nav-link" routerLink="portal">Serviços</a></li>
-                    </ul>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4" id="img-login">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div>
-                            <p id="txt-login">Olá Laura</p>
-                        </div>
-                        <div class="botao-sair">
-                            <a routerLink="portal"><button class="btn btn-sm">Sair</button></a>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <img src="/assets/grupo1/img/icon_login.png">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-</header>
-
-   
    <section>
         <div class="container">
             <h4 class="text-center titulo">Acompanhe aqui as informações do seu perfil.</h4>
@@ -76,7 +36,7 @@
                             <p class="text-card">Consulte ou atualize <br> os seus dados</p>
                         </div>
                         <div class="card-image-overlay m-auto p-3">
-                            <a class="ad-btn" routerLink="dados-cliente">Meus Dados</a>
+                            <a class="ad-btn" routerLink="/dados-cliente">Meus Dados</a>
                         </div>
                     </div>
                 </div>
@@ -106,13 +66,11 @@
                             <div class="card rounded ">
                                 <div class="card-image-overlay  ">
                                         <div class="text-btn ">
-                            <!-- <textarea class="form-control todo-form__input " id="todoInput" rows="2"
-                                                    placeholder="Insira um novo lembrete..."></textarea> -->
 
                                             <!-- BOTAO NOVO LEMBRETE -->
                                             <button type="button" value="" class="todo-form__btn btn" id="todoSubmit"
-                                                data-toggle="modal" data-target=".bd-lembrete-modal-lg">Novo lembrete<img
-                                                   src="/assets/grupo1/img/add.png" class=" fa-plus pr-2"/></button>
+                                                data-toggle="modal" data-target=".bd-lembrete-modal-lg">Novo lembrete<i
+                                                    class=" fa-plus pr-2"></i></button>
                                         </div>
                                     <div class="todo__tarefas" id="todoTarefas">
                                         <ul class="todo__tarefas-lista" id="todoLista">
@@ -234,49 +192,3 @@
     
     </section>
     
-
-   
-        <!-- FOOTER COM CONTAINER -->
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6"><img src="assets/grupo1/img/logo-footer.png"></div>
-                    <div class="col-md-2">
-                        <h4>MAPA DO SITE</h4>
-                        <ul class="nav flex-column rodape">
-                            <li class="nav-item"><a class="nav-link" routerLink="planos">Planos</a></li>
-                            <li class="nav-item"><a class="nav-link" routerLink="sustentabilidade">Sustentabilidade</a></li>
-                            <li class="nav-item"><a class="nav-link" routerLink="../portal/portal.html#servicos">Serviços</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-3">
-                        <h4>SOCIAL MIDIA</h4>
-                        <ul class="nav flex-column rodape">
-                            <li class="nav-item"><img src="assets/grupo1/img/logo-facebook.png"><a class="nav-link"
-                                    href="#">Facebook</a>
-                            </li>
-                            <li class="nav-item"><img src="assets/grupo1/img/logo-linkedin.png"><a class="nav-link"
-                                    href="#">Linkedin</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-    </div>
-
-
-    <script type="text/javascript" src="./js/area-cliente.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-</body>
