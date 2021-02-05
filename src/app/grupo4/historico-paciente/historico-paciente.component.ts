@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-historico-paciente',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoricoPacienteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _location: Location) { }
 
   ngOnInit(): void {
+  }
+
+  voltar() {
+    this._location.back();
   }
 
 }
