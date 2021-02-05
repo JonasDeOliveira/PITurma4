@@ -82,8 +82,7 @@ body {
     border: 1px solid #2a764a; 
     width: 34px;
     height: 34px;
-    background-image: url'assets/img-grupo4/add.png';
-    /* background-image: url('assets/img-grupo4/add.png'); */
+    background-image: url('/assets/img-grupo4/add.png');
     margin-top: 37px;
     margin-left: 30px;
 }
@@ -110,7 +109,7 @@ body {
     border: 1px solid rgb(108, 108, 100); 
     width: 34px;
     height: 34px;
-    /* background-image: url(assets/img-grupo4/delete.png); */
+    background-image: url('/assets/img-grupo4/delete.png');
 }
 
 .btn-delete:hover {
