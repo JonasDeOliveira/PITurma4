@@ -67,7 +67,7 @@ h6 {
 }
 
 .banner {
-    background-image: url(/src/assets/img-grupo3/alimentacao.jpeg);
+    background-image: url("/assets/img-grupo3/alimentacao-editada.png");
 
     background-size: cover;
     width: 100%;
