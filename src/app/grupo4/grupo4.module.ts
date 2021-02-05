@@ -8,9 +8,11 @@ import { HistoricoPacienteComponent } from './historico-paciente/historico-pacie
 import { AgendaMedicoComponent } from './agenda-medico/agenda-medico.component';
 import { LoginMedicoComponent } from './login-medico/login-medico.component';
 import { SolicitacaoExamesComponent } from './solicitacao-exames/solicitacao-exames.component';
+import { AtendimentoEspecialistaComponent } from './atendimento-especialista/atendimento-especialista.component';
+import { PrescreverMedicacaoComponent } from './prescrever-medicacao/prescrever-medicacao.component';
 
 @NgModule({
-  declarations: [PerfilMedicoComponent,DashboardMedicoComponent,CadastroMedicoComponent, HistoricoPacienteComponent, AgendaMedicoComponent, LoginMedicoComponent, SolicitacaoExamesComponent],
+  declarations: [PerfilMedicoComponent, PrescreverMedicacaoComponent, AtendimentoEspecialistaComponent, DashboardMedicoComponent,CadastroMedicoComponent, HistoricoPacienteComponent, AgendaMedicoComponent, LoginMedicoComponent, SolicitacaoExamesComponent],
 
   imports: [
     CommonModule,
