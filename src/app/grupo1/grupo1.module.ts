@@ -7,12 +7,28 @@ import { LoginClienteComponent } from './pages/login-cliente/login-cliente.compo
 import { ListaLembretesComponent } from './pages/lista-lembretes/lista-lembretes.component';
 import { CadastroClienteComponent } from './pages/cadastro-cliente/cadastro-cliente.component';
 import { DadosClienteComponent } from './pages/dados-cliente/dados-cliente.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent} from './components/header/header.component';
 
 
 @NgModule({
-  declarations: [PagesComponent, ComponentsComponent, LoginClienteComponent, ListaLembretesComponent, CadastroClienteComponent, DadosClienteComponent],
+  declarations: [
+    PagesComponent, 
+    ComponentsComponent, 
+    LoginClienteComponent, 
+    ListaLembretesComponent, 
+    CadastroClienteComponent, 
+    DadosClienteComponent,
+    FooterComponent,
+    HeaderComponent
+      
+  ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    FooterComponent,
+    HeaderComponent
   ]
 })
 export class Grupo1Module { }
