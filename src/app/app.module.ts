@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { Grupo1Module } from './grupo1/grupo1.module';
@@ -20,7 +21,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     Grupo2Module,
     Grupo3Module,
     Grupo4Module,
-    FontAwesomeModule
+    FontAwesomeModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
