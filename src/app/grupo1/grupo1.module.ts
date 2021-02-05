@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TesteComponent } from './teste/teste.component';
 import { PagesComponent } from './pages/pages.component';
 import { ComponentsComponent } from './components/components.component';
-
+import { PlanosComponent } from './pages/planos/planos.component';
+import { PortalComponent } from './pages/portal/portal.component';
 
 @NgModule({
-  declarations: [TesteComponent, PagesComponent, ComponentsComponent],
+  declarations: [PagesComponent, ComponentsComponent, PlanosComponent, PortalComponent],
   imports: [
     CommonModule
   ]
