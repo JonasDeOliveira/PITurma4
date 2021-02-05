@@ -13,7 +13,6 @@ import { DadosClienteComponent } from './pages/dados-cliente/dados-cliente.compo
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent} from './components/header/header.component';
 import { LembreteItemListaComponent } from './components/lembrete-item-lista/lembrete-item-lista.component';
-import { LembreteListaComponent } from './components/lembrete-lista/lembrete-lista.component';
 
 
 @NgModule({
@@ -25,8 +24,7 @@ import { LembreteListaComponent } from './components/lembrete-lista/lembrete-lis
     CadastroClienteComponent, 
     DadosClienteComponent, 
     AreaClienteComponent, 
-    LembreteItemListaComponent, 
-    LembreteListaComponent,
+    LembreteItemListaComponent,
     PlanosComponent, 
     PortalComponent,
     FooterComponent,

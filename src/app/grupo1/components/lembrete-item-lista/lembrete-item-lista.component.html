@@ -1,8 +1,8 @@
-<li class="item-lista">
-    <p class="titulo_lembrete">{{tituloLembrete}}</p>
-    <p class="excluir ">Descrição: {{descricaoLembrete}}<span class="todo__btn-excluir">X</span></p>
-    <p class="excluir font-weight-bold">Data: {{dataLembrete}} -
-        Hora:{{horaLembrerte}}
+<li class="item-lista" [class.item-passado]="lembrete.vencido">
+    <p class="titulo_lembrete">{{lembrete.tituloLembrete}}</p>
+    <p class="excluir ">Descrição: {{lembrete.descricaoLembrete}}<span class="todo__btn-excluir">X</span></p>
+    <p class="excluir font-weight-bold">Data: {{lembrete.dataLembrete}} -
+        Hora:{{lembrete.horaLembrete}}
     </p>
-    <p>Intervalo: A cada {{nrRepeticao}} {{intervaloLembrete}}.</p>
+    <p>Intervalo: A cada {{lembrete.nrRepeticao}} {{lembrete.intervaloLembrete}}.</p>
 </li>

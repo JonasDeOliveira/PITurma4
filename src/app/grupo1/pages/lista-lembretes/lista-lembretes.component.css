@@ -5,7 +5,6 @@
     font-size: 0.8rem;
 }
 
-/*TODO: não encontra o caminho da imagem*/
 .perfil::after{
     content:url("src/assets/grupo1/img/profile.png");
     max-width:100%;
@@ -35,6 +34,8 @@ section .btn:hover {
     display: flex;
     justify-content: center;
 }
+
+
 
 
 /* Titulo */
@@ -97,14 +98,6 @@ section .btn:hover {
     padding: 10px 0 10px 0 ;
 }
 
-.todo__tarefas-lista li {
-    font-size: 0.9rem;
-    list-style: none;
-    line-height: 20%;
-    border-bottom: 1px solid #ccc ;
-} 
-
-
 .todo-form__input{
     resize: none;
     max-width: 300px;
@@ -119,10 +112,6 @@ section .btn:hover {
 .form-control{
     width: 75%;
     top:20px;
-}
-
-.todo__tarefas-lista span{
-    text-align: center;
 }
 
 .fas{
@@ -166,18 +155,23 @@ p.excluir {
  a:hover{
     text-decoration:none;
  }
-.item-lista{
-    padding:0  10px 0 10px;
-}
+
 ul#todoLista.todo__tarefas-lista{
     padding-bottom: 0;
     margin-bottom: 0;
 }
 
-.item-passado {
-    opacity: 0.6;
-    background-color: #dddddd;
+.todo__tarefas-lista li {
+    font-size: 0.9rem;
+    list-style: none;
+    line-height: 20%;
+    border-bottom: 1px solid #ccc ;
+} 
+
+.todo__tarefas-lista span{
+    text-align: center;
 }
+
 
 /* Fim da lista de lembretes  */
 

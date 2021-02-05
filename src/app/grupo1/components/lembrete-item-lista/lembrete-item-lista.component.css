@@ -1,0 +1,8 @@
+.item-lista{
+    padding:0  10px 0 10px;
+}
+
+.item-passado {
+    opacity: 0.6;
+    background-color: #dddddd;
+}
