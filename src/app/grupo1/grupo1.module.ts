@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { PagesComponent } from './pages/pages.component';
 import { ComponentsComponent } from './components/components.component';
@@ -31,11 +32,13 @@ import { LembreteItemListaComponent } from './components/lembrete-item-lista/lem
     HeaderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    RouterModule
   ]
 })
 export class Grupo1Module { }
