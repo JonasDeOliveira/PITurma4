@@ -1,0 +1,308 @@
+<!-- Início Header -->
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <img src="assets/img-grupo4/banner-2.jpg" class="banner" alt="">
+            <img src="assets/img-grupo4/logo-branco.png" class="logo" alt="">
+        </div>
+    </div>
+</header>
+<!-- Fim Header -->
+
+<!-- Início Conteúdo Principal -->
+<div class="container">
+    <a href="#" class="img-sair">
+        <img src="assets/img-grupo4/baseline_exit_to_app_black_18dp.png" class="btn-sair" alt="">
+    </a>
+
+    <div class="row justify-content-center">
+
+        <!-- Início Calendário -->
+        <div class="col-12 col-md-6">
+            <div>
+                <h1 class="text-center title-calendario">Calendário</h1>
+                <div class="calendario">
+
+                </div>
+            </div>
+            <div class="buttons-calendario">
+                <button type="button" class="btn btn-abrir-agenda" data-toggle="modal" data-target="#modalAbrirAgenda">
+                    Abrir Agenda
+                </button>
+                <button type="button" class="btn btn-consultar-agenda" data-toggle="modal"
+                    data-target="#modalConsultarAgenda">
+                    Consultar Agenda
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal Abrir Agenda -->
+        <div class="modal fade" id="modalAbrirAgenda" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLongTitle">Selecione o(s) horário(s):</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body modal-horarios">
+                        <div class="manha">
+                            <h3>Manhã: </h3>
+                            <button type="button" class="btn btn-outline-success button-hora">09:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">10:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">11:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">12:00</button>
+                        </div>
+                        <div class="tarde">
+                            <h3>Tarde: </h3>
+                            <button type="button" class="btn btn-outline-success button-hora">14:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">15:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">16:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">17:00</button>
+                        </div>
+                        <div class="noite">
+                            <h3>Noite: </h3>
+                            <button type="button" class="btn btn-outline-success button-hora">18:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">19:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">20:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">21:00</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline button-limpar">Limpar seleção</button>
+                        <button type="button" class="btn button-salvar">Salvar</button>
+                        <button type="button" class="btn btn-secondary button-fechar"
+                            data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim Modal Abrir Agenda -->
+
+        <!-- Fim Calendário -->
+
+        <!-- Início Agenda do Dia -->
+        <div class="col-12 col-md-6">
+            <h1 class="text-center title-agenda">Agenda 18/12</h1>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>9h</td>
+                        <td>Elaine Moura</td>
+                        <td>
+                            Online
+                        </td>
+                        <td class="confirmado">
+                            Confirmado
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar" data-toggle="modal"
+                                data-target="#modal-cancelar"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10h</td>
+                        <td>Maria Santos </td>
+                        <td>
+                            Online
+                        </td>
+                        <td class="confirmado">
+                            Confirmado
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar" data-toggle="modal"
+                                data-target="#modal-cancelar">
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>11h</td>
+                        <td>Renato Oliveira</td>
+                        <td>
+                            Presencial
+                        </td>
+                        <td class="pendente">
+                            Pendente
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar" data-toggle="modal"
+                                data-target="#modal-cancelar"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>12h</td>
+                        <td>Beatriz Lima</td>
+                        <td>
+                            Online
+                        </td>
+                        <td class="confirmado">
+                            Confirmado
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar" data-toggle="modal"
+                                data-target="#modal-cancelar"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>14h</td>
+                        <td>Marcelo Sousa</td>
+                        <td>
+                            Online
+                        </td>
+                        <td class="pendente">
+                            Pendente
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar" data-toggle="modal"
+                                data-target="#modal-cancelar"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>15h</td>
+                        <td>Tiago Cardoso</td>
+                        <td>
+                            Presencial
+                        </td>
+                        <td class="confirmado">
+                            Confirmado
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar" data-toggle="modal"
+                                data-target="#modal-cancelar"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>16h</td>
+                        <td>Paula Silva</td>
+                        <td>
+                            Online
+                        </td>
+                        <td class="confirmado">
+                            Confirmado
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar" data-toggle="modal"
+                                data-target="#modal-cancelar"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>17h</td>
+                        <td>Luisa Pereira</td>
+                        <td>
+                            Online
+                        </td>
+                        <td class="confirmado">
+                            Confirmado
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar" data-toggle="modal"
+                                data-target="#modal-cancelar"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>18h</td>
+                        <td>Dimas Silva</td>
+                        <td>
+                            Presencial
+                        </td>
+                        <td class="confirmado">
+                            Confirmado
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar" data-toggle="modal"
+                                data-target="#modal-cancelar"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>19h</td>
+                        <td>Antônio Nunes</td>
+                        <td>
+                            Online
+                        </td>
+                        <td class="pendente">
+                            Pendente
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar" data-toggle="modal"
+                                data-target="#modal-cancelar"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>20h</td>
+                        <td>Ana Teixeira</td>
+                        <td>
+                            Online
+                        </td>
+                        <td class="confirmado">
+                            Confirmado
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar" data-toggle="modal"
+                                data-target="#modal-cancelar"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>21h</td>
+                        <td>Laura Monteiro</td>
+                        <td>
+                            Online
+                        </td>
+                        <td class="pendente">
+                            Pendente
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar" data-toggle="modal"
+                                data-target="#modal-cancelar"></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Início Modal Cancelar Consulta-->
+        <div class="modal fade" id="modal-cancelar" tabindex="-1" role="dialog" aria-labelledby="modal-addTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-addTitle">Atenção</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body modal-cancelar-msg">
+                        Tem certeza que deseja cancelar a consulta?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-verde" data-dismiss="modal">Sim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fim Modal Cancelar Consulta-->
+
+        <!-- Fim Agenda do Dia -->
+    </div>
+</div>
+<!-- Fim Conteúdo Principal -->
+
+<!-- Início Footer -->
+<footer class="mt-4">
+    <div class="row">
+        <div class="col-md-6"><img src="assets/img-grupo4/logo-footer.png"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <h4>SOCIAL MIDIA</h4>
+            <ul class="nav flex-column rodape">
+                <li class="nav-item"><img src="assets/img-grupo4/logo-facebook.png"><a class="nav-link"
+                        href="#">Facebook</a></li>
+                <li class="nav-item"><img src="assets/img-grupo4/logo-linkedin.png"><a class="nav-link"
+                        href="#">Linkedin</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<!-- Fim Footer -->
