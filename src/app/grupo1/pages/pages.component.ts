@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+//TODO: Não está pegando o grupo1.component.css
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
