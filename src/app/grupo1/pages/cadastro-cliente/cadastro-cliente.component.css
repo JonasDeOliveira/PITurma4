@@ -123,10 +123,12 @@ footer {
 .botoes-cadastro{
     float: right;
     text-decoration: none;
+    display: flex;
 }
 
 .botoes-cadastro a{
     text-decoration: none;
+    margin-right: 20px;
 }
 
 .btn{
