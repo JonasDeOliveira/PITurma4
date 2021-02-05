@@ -1,4 +1,4 @@
-import { RouterModule } from '@angular/router';
+
 import { Routes } from '@angular/router';
 import { PlanosComponent } from './pages/planos/planos.component';
 import { PortalComponent } from './pages/portal/portal.component';

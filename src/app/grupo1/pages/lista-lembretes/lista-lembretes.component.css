@@ -5,6 +5,7 @@
     font-size: 0.8rem;
 }
 
+
 .perfil::after{
     content:url("src/assets/grupo1/img/profile.png");
     max-width:100%;
@@ -30,13 +31,12 @@ section .btn:hover {
 
 /* FIM Foto perfil */
 
+
+
 .lembretes-plano {
     display: flex;
     justify-content: center;
 }
-
-
-
 
 /* Titulo */
 .titulo{
@@ -98,6 +98,14 @@ section .btn:hover {
     padding: 10px 0 10px 0 ;
 }
 
+.todo__tarefas-lista li {
+    font-size: 0.9rem;
+    list-style: none;
+    line-height: 20%;
+    border-bottom: 1px solid #ccc ;
+} 
+
+
 .todo-form__input{
     resize: none;
     max-width: 300px;
@@ -114,6 +122,10 @@ section .btn:hover {
     top:20px;
 }
 
+.todo__tarefas-lista span{
+    text-align: center;
+}
+
 .fas{
     color:white;
     text-decoration: none;
@@ -122,56 +134,25 @@ section .btn:hover {
 }
 
 /* Ul dos lembretes */
-.titulo_lembrete{
-    color:#319A75;
-    font-weight: bold;
-    font-size: 0.8rem;
-    padding-top:20px ;
-}
-.todo__tarefas-lista p {
-    font-size: 0.8rem; 
-}
-p.excluir {
-    width: 100%;
-    display: flex;
-   justify-content: space-between;
-   
-   
-} 
+
  .mais_lembretes{
      color:#7a7a79;
      font-weight: bold;
    max-width:100% ;
    margin: 0 auto;
    font-size: 1rem;
-   
-   
  }
+
  p.mais_lembretes{
      height: 40px;
      padding-top:10px;
  
  }
- a:hover{
-    text-decoration:none;
- }
 
-ul#todoLista.todo__tarefas-lista{
+ ul#todoLista.todo__tarefas-lista{
     padding-bottom: 0;
     margin-bottom: 0;
 }
-
-.todo__tarefas-lista li {
-    font-size: 0.9rem;
-    list-style: none;
-    line-height: 20%;
-    border-bottom: 1px solid #ccc ;
-} 
-
-.todo__tarefas-lista span{
-    text-align: center;
-}
-
 
 /* Fim da lista de lembretes  */
 
@@ -183,9 +164,10 @@ ul#todoLista.todo__tarefas-lista{
     padding: 20px;
     min-height: 400px;
 } 
+
 .btn_salvar:hover{
-text-decoration: none;
-border: none;
+    text-decoration: none;
+    border: none;
 }
 
 #txt-login{
@@ -214,13 +196,10 @@ div.btn{
     clear: both;
 }
 
-
 .btn-sm:hover{
     text-decoration: none;
     background-color: #1f5e48;
 }
-
-
 
 section{
     width: 100%;
