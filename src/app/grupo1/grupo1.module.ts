@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+
 import { PagesComponent } from './pages/pages.component';
 import { ComponentsComponent } from './components/components.component';
 import { PlanosComponent } from './pages/planos/planos.component';
