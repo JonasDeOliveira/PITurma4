@@ -269,59 +269,6 @@ li {
 
 
 
-/* FOOTER */
-
-footer{
-    padding: 30px;
-    background-color: #929288;
-    width: 100%;
-    color: #ffffff;
-}
-
-footer h4{
-    font-size: 1.2rem;
-}
-
-footer a.nav-link {
-    font-size: 0.9rem;
-}
-
-footer li img {
-    margin-right: 8px;
-}
-
-.rodape .nav-item .nav-link {
-    color: #ffffff;
-    display: inline;
-}
-
-.rodape li a.nav-link {
-    list-style: none;
-    padding: 0;
-}
-
-footer {
-    margin: 0;
-    width: 100%;
-}
 
 
-@media(max-width: 425px){ 
-    footer .row .col-md-3 {
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
-
-    footer .container {
-        text-align: center;
-        margin: auto;
-        display: flex;
-        justify-content:center;
-        align-items:center;
-    }
-
-    footer li {
-        text-align: inherit;
-    }
-}
 
