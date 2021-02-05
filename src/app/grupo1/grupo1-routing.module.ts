@@ -1,10 +1,9 @@
 import { Routes } from '@angular/router';
-import { TesteComponent } from './teste/teste.component';
+import { AreaClienteComponent } from './pages/area-cliente/area-cliente.component';
+
 
 export const Grupo1RoutingModule: Routes = [
 
-    {
-        path:'teste', component: TesteComponent
-    }
+    {path:'area-cliente', component: AreaClienteComponent}
   
 ];
