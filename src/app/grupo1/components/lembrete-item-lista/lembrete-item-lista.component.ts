@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Lembrete } from './lembrete.module';
 
 @Component({
   selector: 'app-lembrete-item-lista',
@@ -7,16 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LembreteItemListaComponent implements OnInit {
 
-  lembretes = [
-    {
-      tituloLembrete: "Medicamento Controlado",
-      descricaoLembrete: "Tomar comprimido de novalgina",
-      dataLembrete: "22/12/2020",
-      horaLembrete: "08:00",
-      nrRepeticao: 2,
-      intervaloLembrete: "horas"
-    }
-  ]
+  @Input() lembrete: Lembrete;
 
   constructor() { }
 

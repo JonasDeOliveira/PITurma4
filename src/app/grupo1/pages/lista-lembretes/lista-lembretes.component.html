@@ -2,43 +2,6 @@
 
     <div class="container-fluid">
 
-        <header>
-            <!-- NAVBAR COM CONTAINER -->
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container">
-                    <a href="../portal/portal.html"><img src="assets/grupo1/img/logo-menu.png"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse item-menu" id="navbarSupportedContent">
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-4 ">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item"><a class="nav-link" href="../planos/planos.html">Planos</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">Sustentabilidade</a></li>
-                                <li class="nav-item"><a class="nav-link" href="../portal/portal.html#servicos">Serviços</a></li>
-                                <li class="nav-item"><a class="nav-link" href="../area-cliente/area-cliente.html">Minha Área</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4" id="img-login">
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div>
-                                    <p id="txt-login">Olá Laura</p>
-                                </div>
-                                <div class="botao-sair">
-                                    <a href="../portal/portal.html"><button class="btn btn-sm">Sair</button></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <img src="assets/grupo1/img/icon_login.png">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
         <section class="container">
 
             <!-- Navegação Lembretes -->
@@ -67,7 +30,9 @@
                         <h1 class="todo__title text-center p-2">Lembretes </h1>
                         <div class="card rounded ">
                             <div class="todo__tarefas" id="todoTarefas">
-                                <app-lembrete-lista></app-lembrete-lista>
+                                <ul class="todo__tarefas-lista" id="todoLista">
+                                    <app-lembrete-item-lista *ngFor="let lembrete of lembretes" [lembrete]="lembrete"></app-lembrete-item-lista>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -136,36 +101,6 @@
 
             </div>
         </section>
-
-        <!-- FOOTER COM CONTAINER -->
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6"><img src="assets/grupo1/img/logo-footer.png"></div>
-                    <div class="col-md-2">
-                        <h4>MAPA DO SITE</h4>
-                        <ul class="nav flex-column rodape">
-                            <li class="nav-item"><a class="nav-link" href="../planos/planos.html">Planos</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Sustentabilidade</a></li>
-                            <li class="nav-item"><a class="nav-link" href="../portal/portal.html#servicos">Serviços</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-3">
-                        <h4>SOCIAL MIDIA</h4>
-                        <ul class="nav flex-column rodape">
-                            <li class="nav-item"><img src="assets/grupo1/img/logo-facebook.png"><a class="nav-link"
-                                    href="#">Facebook</a>
-                            </li>
-                            <li class="nav-item"><img src="assets/grupo1/img/logo-linkedin.png"><a class="nav-link"
-                                    href="#">Linkedin</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
     </div>
 
