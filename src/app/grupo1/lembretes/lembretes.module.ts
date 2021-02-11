@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { LembreteItemListaComponent} from './lembrete-item-lista/lembrete-item-lista.component'
 import { ModalLembreteComponent } from './modal-lembrete/modal-lembrete.component';
@@ -15,7 +16,8 @@ import { LembreteListaComponent } from './lembrete-lista/lembrete-lista.componen
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    [ModalModule.forRoot()]
   ],
   exports: [
     LembreteItemListaComponent, 

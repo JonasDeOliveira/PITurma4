@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Lembrete } from "../../lembretes/shared/lembrete.model"
-//import { LembreteItemListaComponent } from '../../lembretes/lembrete-item-lista/lembrete-item-lista.component';
-//import { ModalLembreteComponent } from '../../lembretes/modal-lembrete/modal-lembrete.component'
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalLembreteComponent } from '../../lembretes/modal-lembrete/modal-lembrete.component';
 import "src/assets/grupo1/css/grupo1.component.css";
 
 
@@ -12,9 +11,16 @@ import "src/assets/grupo1/css/grupo1.component.css";
 })
 export class ListaLembretesComponent implements OnInit {
 
-  constructor() { }
+  modalRef: BsModalRef;
+
+
+  constructor(private modalService: BsModalService) { };
 
   ngOnInit(): void {
+  }
+
+  openModal() {
+    this.modalRef = this.modalService.show(ModalLembreteComponent);
   }
 
 }

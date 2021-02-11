@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Lembrete, LembreteIntervalo } from '../shared/lembrete.model';
-
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-modal-lembrete',
@@ -8,6 +8,8 @@ import { Lembrete, LembreteIntervalo } from '../shared/lembrete.model';
   styleUrls: ['./modal-lembrete.component.css']
 })
 export class ModalLembreteComponent implements OnInit {
+
+  public modalRef: BsModalRef;
 
   lembreteIntervalos : LembreteIntervalo[] = [
     {
@@ -36,9 +38,11 @@ export class ModalLembreteComponent implements OnInit {
       vencido: false
     };
 
-  constructor() { }
+  constructor() { };
 
   ngOnInit(): void {
   }
+
+
 
 }

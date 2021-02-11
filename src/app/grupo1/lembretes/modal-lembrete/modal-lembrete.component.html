@@ -16,8 +16,8 @@
                         <div class="col-12">
                             <label for="nmTitulo">Título</label>
                             <input type="text" class="form-control" id="nmTitulo" name="nmTitulo"
-                            [(ngModel)]="lembrete.nmTitulo" #nmTitulo="ngModel" minlength="5" required
-                                placeholder="Título do Lembrete" >
+                                [(ngModel)]="lembrete.nmTitulo" #nmTitulo="ngModel" minlength="5" required
+                                placeholder="Título do Lembrete">
                         </div>
                     </div>
 
@@ -25,8 +25,8 @@
                         <div class="col-12">
                             <label for="dsLembrete">Descrição</label>
                             <input type="text" class="form-control" id="dsLembrete" name="dsLembrete"
-                            [(ngModel)]="lembrete.dsLembrete" #dsLembrete="ngModel" minlength="5" required
-                                placeholder="Descrição do Lembrete" >
+                                [(ngModel)]="lembrete.dsLembrete" #dsLembrete="ngModel" minlength="5" required
+                                placeholder="Descrição do Lembrete">
                         </div>
                     </div>
 
@@ -34,26 +34,29 @@
                         <div class="col-12 col-lg-3">
                             <label>Data:</label>
                             <input type="date" class="form-control" id="dtLembrete" name="dtLembrete"
-                            [(ngModel)]="lembrete.dtLembrete" #dtLembrete="ngModel" required>
+                                [(ngModel)]="lembrete.dtLembrete" #dtLembrete="ngModel" required>
                         </div>
                         <div class="col-12 col-lg-3">
                             <label>Hora:</label>
                             <input type="time" class="form-control" id="hrHora" name="hrHora"
-                            [(ngModel)]="lembrete.hrHora" #hrHora="ngModel" required>
+                                [(ngModel)]="lembrete.hrHora" #hrHora="ngModel" required>
                         </div>
                         <div class="col-12 col-lg-3">
                             <label>Repete a cada:</label>
-                            <input type="number" class="form-control" placeholder="1" min="0" id="nrRepeticao" name="nrRepeticao"
-                            [(ngModel)]="lembrete.nrRepeticao" #nrRepeticao="ngModel" required>
+                            <input type="number" class="form-control" placeholder="1" min="0" id="nrRepeticao"
+                                name="nrRepeticao" [(ngModel)]="lembrete.nrRepeticao" #nrRepeticao="ngModel" required>
                         </div>
                         <div class="col-12 col-lg-3">
                             <label>Intervalo:</label>
                             <select class="form-control">
-                                <option *ngFor = "let lembreteIntervalo of lembreteIntervalos">{{lembreteIntervalo.dsLembreteIntervalo}}</option>
+                                <option *ngFor="let lembreteIntervalo of lembreteIntervalos">
+                                    {{lembreteIntervalo.dsLembreteIntervalo}}</option>
                             </select>
                         </div>
                     </div>
                 </div>
+
+
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary btn_salvar">Criar Lembrete</button>
