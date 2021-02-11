@@ -58,14 +58,6 @@
     margin-bottom: 80px;
 }
 
-.senha {
-    color: blue;
-    font-size: 16px;
-    margin-left: 40px;
-    text-decoration: underline;
-    margin-top: 150px;
-}
-
 label {
     color: #908f8f;
     font-size: 14px;
@@ -110,6 +102,16 @@ input {
     border-width: 1px;
     width: 50%;
     height: 40px;
+}
+
+.btn-modal {
+    width: 150px;
+    font-size: 16px;
+    font-weight: 700!important;
+    cursor: pointer;
+    color: #2a764a;
+    border: 1px solid #2a764a!important;
+    margin-left: 20px;
 }
 
 .bt-voltar {
