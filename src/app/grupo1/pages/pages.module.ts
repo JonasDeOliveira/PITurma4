@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { PlanosComponent } from './planos/planos.component';
 import { PortalComponent } from './portal/portal.component';
@@ -18,7 +19,8 @@ import { CardPlanosComponent } from './planos/card-planos/card-planos.component'
   imports: [
     CommonModule,
     LembretesModule,
-    RouterModule
+    RouterModule,
+    [ModalModule.forRoot()]
   ],
   exports: [PlanosComponent, 
     PortalComponent, 
@@ -27,6 +29,7 @@ import { CardPlanosComponent } from './planos/card-planos/card-planos.component'
     ListaLembretesComponent, 
     CadastroClienteComponent, 
     DadosClienteComponent],
+
 
 })
 export class PagesModule { }

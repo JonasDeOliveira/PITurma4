@@ -9,7 +9,7 @@
                 <div class="col-12 col-md-4 p-3 btn-lembrete">
                     <!-- BOTAO NOVO LEMBRETE -->
                     <button type="button" value="" class="btn" id="todoSubmit" data-toggle="modal"
-                        data-target=".bd-lembrete-modal-lg">Novo lembrete<i class="fas fa-plus pr-2"></i></button>
+                        data-target=".bd-lembrete-modal-lg" (click)="openModal()">Novo lembrete<i class="fas fa-plus pr-2"></i></button>
                 </div>
 
                 <div class="col-12 col-md-8 controlar-lembretes">
@@ -25,18 +25,7 @@
             </div>
             <!-- Categoria Lembretes -->
             <div>
-                <div class="row lembretes-plano">
-                    <div class="col-12 p-3">
-                        <h1 class="todo__title text-center p-2">Lembretes </h1>
-                        <div class="card rounded ">
-                            <div class="todo__tarefas" id="todoTarefas">
-                                <ul class="todo__tarefas-lista" id="todoLista">
-                                    <app-lembrete-item-lista *ngFor="let lembrete of lembretes" [lembrete]="lembrete"></app-lembrete-item-lista>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <app-lembrete-lista></app-lembrete-lista>
 
                 <app-modal-lembrete></app-modal-lembrete>
 

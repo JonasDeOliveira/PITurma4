@@ -1,0 +1,12 @@
+<div class="row lembretes-plano">
+    <div class="col-12 p-3">
+        <h1 class="todo__title text-center p-2">Lembretes </h1>
+        <div class="card rounded ">
+            <div class="todo__tarefas" id="todoTarefas">
+                <ul class="todo__tarefas-lista" id="todoLista">
+                    <app-lembrete-item-lista *ngFor="let lembrete of lembretes" [lembrete]="lembrete"></app-lembrete-item-lista>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

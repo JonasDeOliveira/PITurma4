@@ -1,0 +1,87 @@
+.lembretes-plano {
+    display: flex;
+    justify-content: center;
+}
+
+/* Titulo */
+.titulo{
+    color: #319A75;
+}
+
+/* Inicio da lista de lembretes */
+.text-btn{
+    padding: 20px 20px 10px 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.todo__title{
+    color:white;
+    background-color: #319A75;
+    font-size:1.2rem;
+    height: 40px;
+    position: relative;
+    top:10px;
+}
+
+.todo__tarefas ul{
+    padding: 10px 0 10px 0 ;
+}
+
+.todo__tarefas-lista li {
+    font-size: 0.9rem;
+    list-style: none;
+    line-height: 20%;
+    border-bottom: 1px solid #ccc ;
+} 
+
+
+.todo-form__input{
+    resize: none;
+    max-width: 300px;
+    padding-top:0 ;
+    margin-left:0;
+}
+
+.todo__container{
+    max-width: 80%;
+
+}
+.form-control{
+    width: 75%;
+    top:20px;
+}
+
+.todo__tarefas-lista span{
+    text-align: center;
+}
+
+.fas{
+    color:white;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    margin-left: 5px;
+}
+
+/* Ul dos lembretes */
+
+ .mais_lembretes{
+     color:#7a7a79;
+     font-weight: bold;
+   max-width:100% ;
+   margin: 0 auto;
+   font-size: 1rem;
+ }
+
+ p.mais_lembretes{
+     height: 40px;
+     padding-top:10px;
+ 
+ }
+
+ ul#todoLista.todo__tarefas-lista{
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+/* Fim da lista de lembretes  */

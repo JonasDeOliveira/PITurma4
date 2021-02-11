@@ -1,11 +1,12 @@
 export interface Lembrete {
-    tituloLembrete: string,
-    descricaoLembrete: string,
-    dataLembrete: string,
-    horaLembrete: string,
-    dataCriacao: string,
+    idPaciente: number,
+    nmTitulo: string,
+    dsLembrete: string,
+    dtLembrete: string,
+    dtCriacao: string,
+    hrHora: string,
     nrRepeticao: 2,
-    intervaloLembrete: string,
+    lembreteIntervalo: LembreteIntervalo,
     vencido: boolean
 }
 
@@ -19,3 +20,19 @@ export interface ResponseLembretes {
     lembretes : Lembrete[]
 }
 
+//----------------------------------------------------
+
+export interface LembreteIntervalo {
+    idLembreteIntervalo: number,
+    dsLembreteIntervalo: string
+}
+
+//GET IntervaloLembrete
+export interface ResponseLembreteIntervalo {
+    intervaloLembrete: LembreteIntervalo
+}
+
+//GET IntervalosLembrete
+export interface ResponseLembretesIntervalo {
+    intervalosLembrete : LembreteIntervalo[]
+}
