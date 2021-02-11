@@ -54,17 +54,19 @@ section .btn:hover {
     padding:30px 0 10px 0;
 }
 
-#ads .card:hover {
+.card:hover {
     box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
     border-radius: 5px;
     transition: all 0.3s ease;
 }
 
-#ads .card-image-overlay {
+.card-image-overlay {
         font-size: 20px;
 }
 
-#ads .ad-btn {
+#ads
+
+.ad-btn {
         width: 150px;
         height: 40px;
         border-radius: 2px;
@@ -82,12 +84,11 @@ section .btn:hover {
 
 
 
-#ads .ad-btn:hover {
-    background-color: rgb(000, 080, 052);
+ .ad-btn:hover {
         transition: all 0.3s ease;
 }
 
-#ads .ad-title h5 {
+ .ad-title h5 {
     font-size: 18px;
 }
 
@@ -99,16 +100,16 @@ section .btn:hover {
 
 }
 
-#ads .ad-btn{
+ .ad-btn{
     font-size:0.7rem;
     padding: 0;
 }
-.ad-btn li{
+ li{
     font-size: 0.7rem;
     padding: 0 -40px;
 
 }
-.ad-btn ul{
+ul{
     font-size: 0.7rem;
 
 }
@@ -159,10 +160,10 @@ section {
 
 }
 
-.todo__tarefas ul{
+ ul{
     padding: 10px 0 10px 0 ;
 }
- .todo__tarefas-lista li {
+ .item-lista {
 
     font-size: 0.9rem;
     list-style: none;
@@ -195,7 +196,7 @@ section {
     text-align: center;
 
 }
-button#todoSubmit{
+.todo-form__btn{
     border-radius:0%;
     width: 60%; 
     display: flex;
@@ -218,10 +219,10 @@ button#todoSubmit{
     font-size: 0.8rem;
     padding-top:20px ;
 }
-.todo__tarefas-lista p {
+ p {
     font-size: 0.8rem; 
 }
-p.excluir {
+.excluir {
     width: 100%;
     display: flex;
    justify-content: space-between;
@@ -235,7 +236,7 @@ p.excluir {
    font-size: 1rem;
 }
 
-p.mais_lembretes{
+.mais_lembretes{
      height: 40px;
      padding-top:10px;
 }
@@ -320,7 +321,7 @@ max-width: 400px;
             transition: all 0.3s ease;
 }
 
-.btn-plano a{
+.btn-plano {
     text-decoration: none;
     color:white;
 }
