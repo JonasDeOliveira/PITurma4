@@ -7,10 +7,11 @@ import { LembreteItemListaComponent} from './lembrete-item-lista/lembrete-item-l
 import { ModalLembreteComponent } from './modal-lembrete/modal-lembrete.component';
 import { ResponseLembretes, Lembrete, ResponseLembrete } from './shared/lembrete.model';
 import { LembreteService } from './shared/lembrete.service';
+import { LembreteListaComponent } from './lembrete-lista/lembrete-lista.component';
 
 
 @NgModule({
-  declarations: [LembreteItemListaComponent, ModalLembreteComponent ],
+  declarations: [LembreteItemListaComponent, ModalLembreteComponent, LembreteListaComponent ],
   imports: [
     CommonModule,
     RouterModule,
@@ -19,6 +20,7 @@ import { LembreteService } from './shared/lembrete.service';
   exports: [
     LembreteItemListaComponent, 
     ModalLembreteComponent,
+    LembreteListaComponent,
     FormsModule
   ],
   providers: [

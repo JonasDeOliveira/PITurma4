@@ -16,6 +16,10 @@ export class LembreteService {
     return this.http.get<ResponseLembretes[]>(this.API);
   }
 
+  // getIntervaloLembretes() {
+  //   return this.http.get<ResponseLembretes[]>(this.API);
+  // }
+
   createLembrete(request: Lembrete): Observable<Lembrete> {
     return this.http.post<Lembrete>(this.API, request);
   }
