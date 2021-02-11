@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ResponseAgPacientes } from '../../model/agPaciente';
+import { AgPacienteService } from '../../services/agPaciente';
+
 
 @Component({
   selector: 'app-minhas-consultas',
@@ -7,26 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MinhasConsultasComponent implements OnInit {
 
-  show = {
-    ag1: false,
-    ag2: false,
-    ag3: false,
-    ag4: false,
-    ag5: false,
-    ag6: false
-  };
+  constructor(public agPacienteService: AgPacienteService) { }
 
-  constructor() { }
+  responseAgPacientes : ResponseAgPacientes [];
 
-  ngOnInit(): void {
+  //implementar id usuario no parametro
+
+    ngOnInit() : void{
+    this.listarAgPacientePorUsuario(14);
   }
 
-  public abrir(num): void {
-    this.show[num] = true
+  listarAgPacientePorUsuario(idUsuario : number) {
+    this.agPacienteService.buscarAgPacientes(idUsuario).subscribe(
+      response => {
+        this.responseAgPacientes = response;
+      }
+    )  
   }
-
-  public fechar(num): void {
-    this.show[num] = false
-  }
-
 }

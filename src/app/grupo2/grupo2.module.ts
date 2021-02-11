@@ -10,12 +10,12 @@ import { PagamentoPlanoComponent } from './pages/pagamento-plano/pagamento-plano
 import { PagamentoParticularComponent } from './pages/pagamento-particular/pagamento-particular.component';
 import { ConfirmacaoConsultaComponent } from './pages/confirmacao-consulta/confirmacao-consulta.component';
 import { MinhasConsultasComponent } from './pages/minhas-consultas/minhas-consultas.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, AgendamentoConsultasComponent, CalendarioAgendamentoComponent, EscolhaEspecialistaComponent, PagamentoPlanoComponent, PagamentoParticularComponent, ConfirmacaoConsultaComponent, MinhasConsultasComponent],
   imports: [
-    CommonModule, RouterModule
+    CommonModule, RouterModule, HttpClientModule
   ]
 })
 export class Grupo2Module { }

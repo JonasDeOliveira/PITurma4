@@ -113,14 +113,14 @@ section{
       padding: 1%;
       display: flex;
       flex-direction: row;
-      justify-content: start;
+      justify-content: flex-start;
   }
   .nome-horario{
       margin-left: 2%;
       width: 82%;
       display: flex;
       flex-direction: column;
-      align-items: start;
+      align-items: flex-start;
       justify-content: center;
   }
   .texto-consulta{
