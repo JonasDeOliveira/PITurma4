@@ -22,9 +22,10 @@
               <nav class="menu-vertical">
                   <img class="usuario" src="assets/img-grupo4/usuario.png" width="150px">
                   <p class="editarFotoPerfil">Editar Foto do Perfil</p>
-                  <p class="senha">Alterar Senha</p>
+                  <button type="button" class="btn btn-modal" data-toggle="modal" data-target="#modal-salvar">Alterar Senha</button>
               </nav>
           </div>
+          
       
           <div class="container-form container">
               <div class="row">
@@ -32,7 +33,7 @@
                     <h3 class="sub">Dados Pessoais</h3>
                       <form>
                         <div class="row">
-                          <div class="form-group col-12 col-md-8">
+                          <div class="form-group col-12 col-md-7">
                               <label>Nome</label>
                               <input type="name" class="form-control" placeholder="Ex: Ana Maria">
                           </div>
@@ -40,8 +41,8 @@
                               <label>CRM</label>
                               <input type="crm" class="form-control" placeholder="00000">
                           </div>
-                          <div class="form-group col-12 col-md-1">
-                            <label class="label-form" for="uf-crm">UF</label>
+                          <div class="form-group col-12 col-md-2">
+                            <label class="label-form" for="uf-crm">UF CRM</label>
                             <select class="form-control style-input" id="uf-crm" required>
                                 <option>SP</option>
                                 <option>AC</option>
@@ -129,7 +130,7 @@
                               <label>Cidade</label>
                               <input type="cidade" class="form-control" placeholder="Ex: São Paulo">
                           </div>
-                          <div class="form-group col-12 col-md-1">
+                          <div class="form-group col-12 col-md-2">
                             <label class="label-form" for="uf-crm">UF</label>
                             <select class="form-control style-input" id="uf-crm" required>
                                 <option>SP</option>
@@ -160,11 +161,12 @@
                                 <option>TO</option>
                                 <option>DF</option>
                             </select>
-                        </div>                           <div class="form-group col-12 col-md-3">
+                        </div>                          
+                         <div class="form-group col-12 col-md-3">
                               <label>Telefone</label>
                               <input type="tel" class="form-control" placeholder="11 0000-0000">
                           </div>
-                          <div class="form-group col-12 col-md-4">
+                          <div class="form-group col-12 col-md-3">
                             <label>E-mail</label>
                             <input type="email" class="form-control" placeholder="exemple@exemple.com">
                           </div>
@@ -206,4 +208,27 @@
           
           </div>    
       </footer>
-          
+      <div class="modal fade" id="modal-salvar" tabindex="-1" role="dialog"  aria-labelledby="modal-salvarTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Digite a Nova Senha</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                      <input type="senha" class="form-control" placeholder="Nova Senha">
+                      <p></p>
+                    <input type="senha" class="form-control" placeholder="Confirme a Nova Senha">
+                    <p></p>
+              </div>
+  
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-verde" data-dismiss="modal">Salvar</button>
+                  <button type="button" class="btn btn-verde" data-dismiss="modal">Fechar</button>
+                </div>
+          </div>
+        </div> 
+    </div>

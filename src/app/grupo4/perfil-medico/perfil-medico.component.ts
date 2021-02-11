@@ -12,4 +12,5 @@ export class PerfilMedicoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
 }
