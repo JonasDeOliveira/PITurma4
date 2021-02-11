@@ -5,10 +5,11 @@
     padding-top:20px ;
 }
 
-p.excluir {
+.excluir {
     width: 100%;
     display: flex;
-   justify-content: space-between;  
+   justify-content:flex-end;  
+   cursor: pointer;
 } 
 
 p {

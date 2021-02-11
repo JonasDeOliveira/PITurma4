@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Lembrete } from './lembrete.module';
+import { Lembrete } from '../shared/lembrete.model';
 
 @Component({
   selector: 'app-lembrete-item-lista',

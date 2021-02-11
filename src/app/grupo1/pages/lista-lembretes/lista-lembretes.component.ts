@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Lembrete } from "../../components/lembrete-item-lista/lembrete.module";
+import { Lembrete } from "../../lembretes/shared/lembrete.model"
+import { LembreteItemListaComponent } from '../../lembretes/lembrete-item-lista/lembrete-item-lista.component';
+import { ModalLembreteComponent } from '../../lembretes/modal-lembrete/modal-lembrete.component'
 import "src/assets/grupo1/css/grupo1.component.css";
 
 

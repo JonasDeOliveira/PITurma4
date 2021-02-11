@@ -38,66 +38,7 @@
                     </div>
                 </div>
 
-                <!-- Modal Lembretes -->
-                <div class="modal fade bd-lembrete-modal-lg" tabindex="-1" role="dialog"
-                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h5 class="modal-title"> Criar Lembrete</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-
-                                <div class="form-group col-12">
-                                    <div class="row mt-1">
-                                        <div class="col-12">
-                                            <label for="formGroupExampleInput">Título</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput"
-                                                placeholder="Título do Lembrete" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mt-1">
-                                        <div class="col-12">
-                                            <label for="formGroupExampleInput">Descrição</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput"
-                                                placeholder="Descrição do Lembrete">
-                                        </div>
-                                    </div>
-
-                                    <div class="row mt-1">
-                                        <div class="col-12 col-lg-3">
-                                            <label>Data:</label>
-                                            <input type="date" class="form-control" placeholder="Data">
-                                        </div>
-                                        <div class="col-12 col-lg-3">
-                                            <label>Hora:</label>
-                                            <input type="time" class="form-control" placeholder="horário">
-                                        </div>
-                                        <div class="col-12 col-lg-3">
-                                            <label>Repete a cada:</label>
-                                            <input type="number" class="form-control" placeholder="1" min="0">
-                                        </div>
-                                        <div class="col-12 col-lg-3">
-                                            <label>Intervalo:</label>
-                                            <select class="form-control">
-                                                <option>Dias</option>
-                                                <option>Horas</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary btn_salvar">Criar Lembrete</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <app-modal-lembrete></app-modal-lembrete>
 
             </div>
         </section>

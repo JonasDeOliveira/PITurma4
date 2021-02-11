@@ -8,3 +8,14 @@ export interface Lembrete {
     intervaloLembrete: string,
     vencido: boolean
 }
+
+//GET Lembrete
+export interface ResponseLembrete {
+    lembrete: Lembrete
+}
+
+// GET Lembretes
+export interface ResponseLembretes {
+    lembretes : Lembrete[]
+}
+

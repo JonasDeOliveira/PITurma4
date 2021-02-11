@@ -1,7 +1,7 @@
 <li class="item-lista" [class.item-passado]="lembrete.vencido">
     <p class="titulo_lembrete">{{lembrete.tituloLembrete}}</p>
-    <p class="excluir ">Descrição: {{lembrete.descricaoLembrete}}<span class="todo__btn-excluir">X</span></p>
-    <p class="excluir font-weight-bold">Data: {{lembrete.dataLembrete}} -
+    <p >Descrição: {{lembrete.descricaoLembrete}}<span class="excluir todo__btn-excluir">X</span></p>
+    <p class=" font-weight-bold">Data: {{lembrete.dataLembrete}} -
         Hora:{{lembrete.horaLembrete}}
     </p>
     <p>Intervalo: A cada {{lembrete.nrRepeticao}} {{lembrete.intervaloLembrete}}.</p>
