@@ -76,6 +76,41 @@ body {
 }
 /* FIM CALENDÁRIO */
 
+/* INÍCIO RADIO TIPO CONSULTA */
+.form-check {
+    font-size: 16px;
+    margin-top: 31px;
+}
+
+.radio-tipo-consulta {
+    display: flex;
+}
+
+.title-tipo-consulta {
+    margin-top: 30px;
+}
+
+.form-check-inline-online {
+    display: inline-flex;
+    margin-left: 64px;
+    justify-content: end;
+}
+
+.form-check-inline-presencial {
+    display: inline-flex;
+    margin-left: 15px;
+    justify-content: end;
+}
+
+.form-check-label {
+    padding-left: 5px;
+}
+
+.form-check-input {
+    color: rgb(000, 080, 052);
+}
+/* FIM RADIO TIPO CONSULTA */
+
 /* INÍCIO AGENDA DO DIA */
 .title-agenda {
     color: #016F33;
@@ -107,6 +142,13 @@ body {
     box-shadow: none !important;
 }
 /* FIM AGENDA DO DIA */
+
+/* INÍCIO MODAL CANCELAR CONSULTA */
+.modal-cancelar-msg {
+    color: #8d8178;
+    font-size: 16px;
+}
+/* FIM MODAL CANCELAR CONSULTA */
 
 /* INÍCIO FOOTER */
 footer{
