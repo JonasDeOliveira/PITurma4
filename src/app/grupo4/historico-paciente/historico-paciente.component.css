@@ -49,18 +49,18 @@ thead .topo th {
 tbody tr th {
     font-weight: normal;
 }
-.btn-modal {
-    width: 150px;
-    font-size: 16px;
+.btn-lg {
+    width: 150px!important;
+    font-size: 16px!important;
     font-weight: 700!important;
-    cursor: pointer;
-    color: #2a764a;
+    cursor: pointer!important;
+    color: #2a764a!important;
     border: 1px solid #2a764a!important;
 }
-.btn-modal:hover {
-    color: #ffffff;
-    background-color: #2a764a;
-    border: 1px solid rgb(000, 080, 052); 
+.btn-lg:hover {
+    color: #ffffff!important;
+    background-color: #2a764a!important;
+    border: 1px solid rgb(000, 080, 052)!important;
     
 }
 footer{

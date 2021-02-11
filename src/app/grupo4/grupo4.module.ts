@@ -10,7 +10,8 @@ import { AtendimentoEspecialistaComponent } from './atendimento-especialista/ate
 import { PrescreverMedicacaoComponent } from './prescrever-medicacao/prescrever-medicacao.component';
 import { PerfilMedicoComponent } from './perfil-medico/perfil-medico.component';
 import { DashboardMedicoComponent } from './dashboard-medico/dashboard-medico.component';
-
+import {CadastromedicoService} from './cadastro-medico/cadastromedico.service';
+  import { from } from 'rxjs';
 @NgModule({
   declarations: [
     PerfilMedicoComponent, 
@@ -26,6 +27,10 @@ import { DashboardMedicoComponent } from './dashboard-medico/dashboard-medico.co
   imports: [
     CommonModule,
     RouterModule
+  ],
+
+  providers: [
+    CadastromedicoService
   ]
 })
 export class Grupo4Module { }

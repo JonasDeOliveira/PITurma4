@@ -39,36 +39,36 @@
             <td>dd/mm/aaaaa</td>
             <td>000.000.000-00</td>
             <td>Nome do Paciente</td>
-            <td><button type="button" class="btn btn-modal" data-toggle="modal" data-target="#modal-salvar">+ Ver Prontuário</button></td>
+            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">+ Ver Prontuário</button>
           </tr>
           <tr>
             <th scope="row">000000002</th>
             <td>dd/mm/aaaaa</td>
             <td>000.000.000-00</td>
             <td>Nome do Paciente</td>
-            <td><button type="button" class="btn btn-modal" data-toggle="modal" data-target="#modal-salvar">+ Ver Prontuário</button></td>
-          </tr>
+            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">+ Ver Prontuário</button>
+            </tr>
           <tr>
             <th scope="row">000000003</th>
             <td>dd/mm/aaaaa</td>
             <td>000.000.000-00</td>
             <td>Nome do Paciente</td>
-            <td><button type="button" class="btn btn-modal" data-toggle="modal" data-target="#modal-salvar">+ Ver Prontuário</button></td>
-          </tr>
+            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">+ Ver Prontuário</button>
+            </tr>
           <tr>
             <th scope="row">000000004</th>
             <td>dd/mm/aaaaa</td>
             <td>000.000.000-00</td>
             <td>Nome do Paciente</td>
-            <td><button type="button" class="btn btn-modal" data-toggle="modal" data-target="#modal-salvar">+ Ver Prontuário</button></td>
-          </tr>
+            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">+ Ver Prontuário</button>
+            </tr>
           <tr>
             <th scope="row">000000005</th>
             <td>dd/mm/aaaaa</td>
             <td>000.000.000-00</td>
             <td>Nome do Paciente</td>
-            <td><button type="submit" class="btn btn-modal" data-toggle="modal" data-target="#modal-salvar">+ Ver Prontuário</button></td>
-          </tr>
+            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">+ Ver Prontuário</button>
+            </tr>
         </tbody>
       </table>
     </div>
@@ -88,24 +88,43 @@
         </div>
     </div>    
 </footer>
-<div class="modal fade" id="modal-salvar" tabindex="-1" role="dialog"  aria-labelledby="modal-salvarTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Dados do Paciente</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div>
-                <h6>Prontuário</h6>
-                <p></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-verde" data-dismiss="modal">Fechar</button>
-            </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+
+  <div class="modal-header" id="modal-salvar">
+    <h5 class="modal-title">Prontuário Médico</h5>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12 ml-auto">
+        <label for="recipient-name" class="col-form-label"><h6>Subjetivo:</h6></label>
+        <input type="text" class="form-control" id="recipient-name">
       </div>
-    </div> 
-</div>
-//modal nao abre
+    </div>
+    <div class="row">
+      <div class="col-md-12 ml-auto">
+        <label for="recipient-name" class="col-form-label"><h6>Objetivo:</h6></label>
+        <input type="text" class="form-control" id="recipient-name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 ml-auto">
+        <label for="recipient-name" class="col-form-label"><h6>Avaliação:</h6></label>
+        <input type="text" class="form-control" id="recipient-name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 ml-auto">
+        <label for="recipient-name" class="col-form-label"><h6>Plano</h6></label>
+        <input type="text" class="form-control" id="recipient-name">
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+  </div>
+</ng-template>
