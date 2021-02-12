@@ -14,6 +14,7 @@ export class ModalLembreteComponent implements OnInit {//
 
   lembrete: Lembrete =
     {
+      idLembrete: 1,
       idPaciente: 12,
       nmTitulo: "Medicamento Controlado",
       dsLembrete: "Tomar comprimido de novalgina",

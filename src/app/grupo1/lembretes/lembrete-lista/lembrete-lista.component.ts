@@ -16,15 +16,27 @@ export class LembreteListaComponent implements OnInit {
     private lembreteService: LembreteService) { }
 
   ngOnInit(): void {
-    this.listarLembretes();
+    this.listarLembretes(this.idUsuario);
   }
 
-  listarLembretes() {
-    this.lembreteService.getLembretesByUsuario(this.idUsuario).subscribe(
+  listarLembretes(idUsuario: string){
+    this.lembreteService.getLembretesByUsuario(idUsuario).subscribe(
       response => {
         this.lembretes = response;
       }
     )
   }
+
+  deletarLembrete(idLembrete: number, idUsuario: string): void {
+    console.log(idLembrete);
+    if(confirm("Deseja apagar o lembrete?")) {    
+      this.lembreteService.deleteLembrete(idLembrete).subscribe(
+      response => {
+        console.log(idUsuario);
+        this.listarLembretes(idUsuario);
+      }  
+    )}
+  }
+
 
 }

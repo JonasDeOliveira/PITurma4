@@ -1,6 +1,6 @@
 <li class="item-lista" [class.item-passado]="lembrete.vencido">
     <p class="titulo_lembrete">{{lembrete.nmTitulo}}</p>
-    <p >Descrição: {{lembrete.dsLembrete}}<span class="excluir todo__btn-excluir">X</span></p>
+    <p >Descrição: {{lembrete.dsLembrete}}<span class="excluir todo__btn-excluir" (click)="deletarLembrete.emit(lembrete.idLembrete)">X</span></p>
     <p class=" font-weight-bold">Data: {{lembrete.dtLembrete}} -
         Hora:{{lembrete.hrHora}}
     </p>
