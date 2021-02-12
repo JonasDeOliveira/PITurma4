@@ -12,6 +12,8 @@ import { PerfilMedicoComponent } from './perfil-medico/perfil-medico.component';
 import { DashboardMedicoComponent } from './dashboard-medico/dashboard-medico.component';
 import {CadastromedicoService} from './cadastro-medico/cadastromedico.service';
   import { from } from 'rxjs';
+import { DashboardmedicoService } from './dashboard-medico/dashboardmedico.service';
+
 @NgModule({
   declarations: [
     PerfilMedicoComponent, 
@@ -30,7 +32,8 @@ import {CadastromedicoService} from './cadastro-medico/cadastromedico.service';
   ],
 
   providers: [
-    CadastromedicoService
+    CadastromedicoService,
+    DashboardmedicoService
   ]
 })
 export class Grupo4Module { }
