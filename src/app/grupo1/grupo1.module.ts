@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 import { FooterComponent } from './components/footer/footer.component';
@@ -19,7 +20,8 @@ import { PagesModule } from './pages/pages.module'
     CommonModule,
     RouterModule,
     PagesModule,
-    LembretesModule
+    LembretesModule,
+    ModalModule
   ],
   exports: [
     FooterComponent,
