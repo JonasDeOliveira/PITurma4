@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ResponseContrato } from '../../model/contrato';
-import { ContratoService } from '../../services/contrato.service';
+// import { ContratoService } from '../../services/contrato.service';
 
 @Component({
   selector: 'app-pagamento-plano',
@@ -9,7 +9,7 @@ import { ContratoService } from '../../services/contrato.service';
 })
 export class PagamentoPlanoComponent implements OnInit {
 
-  constructor(public contratoService: ContratoService) { }
+  //constructor(public contratoService: ContratoService) { }
 
   responseContrato : ResponseContrato;
 
@@ -18,11 +18,11 @@ export class PagamentoPlanoComponent implements OnInit {
   }
 
   listarContratoPorUsuario(idUsuario: number){
-    this.contratoService.buscarContratoPorUsuario(idUsuario).subscribe(
-      response => {
-        this.responseContrato = response;
-      }
-    )
+    // this.contratoService.buscarContratoPorUsuario(idUsuario).subscribe(
+    //   response => {
+    //     this.responseContrato = response;
+    //   }
+    // )
     }
   }
 
