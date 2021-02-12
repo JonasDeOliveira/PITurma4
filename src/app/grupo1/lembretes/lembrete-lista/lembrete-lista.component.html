@@ -4,7 +4,7 @@
         <div class="card rounded ">
             <div class="todo__tarefas" id="todoTarefas">
                 <ul class="todo__tarefas-lista" id="todoLista">
-                    <app-lembrete-item-lista *ngFor="let lembrete of lembretes" [lembrete]="lembrete" (alerta)="alerta()" (deletarLembrete)="deletarLembrete(lembrete.idLembrete)"></app-lembrete-item-lista>
+                    <app-lembrete-item-lista *ngFor="let lembrete of lembretes" [lembrete]="lembrete"  [idUsuario]="idUsuario" (deletarLembrete)="deletarLembrete(lembrete.idLembrete, idUsuario)"></app-lembrete-item-lista>
                 </ul>
             </div>
         </div>
