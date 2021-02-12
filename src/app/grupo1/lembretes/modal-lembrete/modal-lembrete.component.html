@@ -1,6 +1,6 @@
 <!-- Modal Lembretes -->
 <div class="modal fade bd-lembrete-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
+    aria-hidden="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form #formLembretes="ngForm">
@@ -49,7 +49,7 @@
                         <div class="col-12 col-lg-3">
                             <label>Intervalo:</label>
                             <select class="form-control">
-                                <option *ngFor="let lembreteIntervalo of lembreteIntervalos">
+                                <option *ngFor="let lembreteIntervalo of responseLembreteIntervalos">
                                     {{lembreteIntervalo.dsLembreteIntervalo}}</option>
                             </select>
                         </div>

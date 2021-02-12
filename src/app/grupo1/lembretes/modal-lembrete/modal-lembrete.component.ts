@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Lembrete, LembreteIntervalo } from '../shared/lembrete.model';
+import { Lembrete, LembreteIntervalo, ResponseLembretesIntervalo } from '../shared/lembrete.model';
+import { LembreteService } from '../shared/lembrete.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -9,17 +10,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class ModalLembreteComponent implements OnInit {
 
-  public modalRef: BsModalRef;
-
-  lembreteIntervalos : LembreteIntervalo[] = [
-    {
-      idLembreteIntervalo: 1,
-      dsLembreteIntervalo: "hora(s)"
-    },
-    {
-      idLembreteIntervalo: 2,
-      dsLembreteIntervalo: "dia(s)"
-    }];
+  responseLembreteIntervalos : ResponseLembretesIntervalo[];
 
   lembrete : Lembrete = 
     {
@@ -38,9 +29,19 @@ export class ModalLembreteComponent implements OnInit {
       vencido: false
     };
 
-  constructor() { };
+  constructor(private lembreteService: LembreteService,
+              public modalRef: BsModalRef) { };
 
   ngOnInit(): void {
+    this.listarIntervalos();
+  }
+
+  listarIntervalos() {
+    this.lembreteService.getIntervalosLembretes().subscribe(
+      response => {
+        this.responseLembreteIntervalos = response;
+      }
+    )
   }
 
 

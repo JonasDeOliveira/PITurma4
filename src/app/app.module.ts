@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { Grupo1Module } from './grupo1/grupo1.module';
@@ -25,7 +26,8 @@ import { ClienteComponent } from './grupo1/pages/cliente/cliente.component';
     Grupo3Module,
     Grupo4Module,
     FontAwesomeModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
