@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { Grupo1Module } from './grupo1/grupo1.module';
@@ -10,12 +10,12 @@ import { Grupo3Module } from './grupo3/grupo3.module';
 import { Grupo4Module } from './grupo4/grupo4.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ClienteComponent } from './grupo1/pages/cliente/cliente.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClienteComponent,
+    
   ],
   imports: [
     BrowserModule,
