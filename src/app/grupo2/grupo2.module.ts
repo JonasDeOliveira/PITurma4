@@ -11,6 +11,7 @@ import { PagamentoParticularComponent } from './pages/pagamento-particular/pagam
 import { ConfirmacaoConsultaComponent } from './pages/confirmacao-consulta/confirmacao-consulta.component';
 import { MinhasConsultasComponent } from './pages/minhas-consultas/minhas-consultas.component';
 import { HttpClientModule } from '@angular/common/http';
+import { from } from 'rxjs';
 
 
 @NgModule({
