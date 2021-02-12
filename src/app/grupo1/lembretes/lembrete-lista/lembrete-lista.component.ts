@@ -19,12 +19,27 @@ export class LembreteListaComponent implements OnInit {
     this.listarLembretes();
   }
 
-  listarLembretes() {
+  listarLembretes(): void {
     this.lembreteService.getLembretesByUsuario(this.idUsuario).subscribe(
       response => {
         this.lembretes = response;
       }
     )
+  }
+
+  deletarLembrete(idLembrete: number): void {
+    let resposta = confirm("Deseja apagar o lembrete?");
+    console.log(idLembrete);
+    if(resposta) {    
+      this.lembreteService.deleteLembrete(idLembrete).subscribe(
+      response => {
+        this.listarLembretes();
+      }  
+    )}
+  }
+
+  alerta() {
+    console.log("cliquei!!!")
   }
 
 }
