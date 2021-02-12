@@ -19,11 +19,13 @@ export class PagamentoPlanoComponent implements OnInit {
   }
 
   listarContratoPorUsuario(idUsuario: number){
+
     this.contratoService.buscarPlanosPaciente(idUsuario).subscribe(
       response => {
         this.responseContrato = response[0];
       }
     )
+
     }
   }
 
