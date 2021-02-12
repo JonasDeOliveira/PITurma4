@@ -1,62 +1,10 @@
 
 <body class="container-fluid">
-    <section class="container planos">
-        <h1>PLANOS</h1>
-        <br>
-        <div class="card-deck" class="planos" class="row" >
-            <div class="card" class="col-12 col-sm-6 col-md-6 col-lg-4">
-                <img class="card-img-top" src="assets/grupo1/img/BASIC.png" alt="Plano Basic">
-                <div class="card-body">
-                    <ul class="card-text" type="none">
-                        <li>- Agendamento de Serviços Farmacêuticos</li>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        </ul>
-                    <h5>GRATUITO</h5>
+    <section class="container planos" >
+        <h1 id="card-planos">PLANOS</h1>
+        
+        <app-card-planos ></app-card-planos>
 
-                    <button class="btn btn-menu" class="planos" disabled>Incluso</button>
-                </div>
-            </div>
-            <div class="card" class="col-12 col-sm-6 col-md-6 col-lg-4">
-                <img class="card-img-top" src="assets/grupo1/img/PLUS.png" alt="Plano Plus">
-                <div class="card-body">
-                    <ul class="card-text" type="none">
-                        <li>- Agendamento de Serviços Farmacêuticos</li>
-                        <li>- Consulta com o Clínico Geral</li>
-                        <br>
-                        <br>
-                        <br>
-                        </ul>
-                    <h5>R$ 00,00</h5>
-
-                    <button class="btn btn-menu btn-planos">
-                        <a routerLink="/dados-cliente">
-                            Assinar
-                        </a>
-                    </button>
-                </div>
-            </div>
-            <div class="card" class="col-12 col-sm-6 col-md-6 col-lg-4">
-                <img class="card-img-top" src="assets/grupo1/img/PREMIUM.png" alt="Plano Premium">
-                <div class="card-body">
-                    <ul class="card-text" type="none">
-                        <li>- Agendamento de Serviços Farmacêuticos</li>
-                        <li>- Consulta com o Clínico Geral</li>
-                        <li>- Consulta com Especialistas</li>
-                        <li>- Programa Nutricional</li>
-                        <br>
-                    </ul>
-                    <h5>R$ 00,00</h5>
-                    <button class="btn btn-menu btn-planos">
-                        <a routerLink="/dados-cliente">
-                            Assinar
-                        </a>
-                    </button>
-                </div>
-            </div>
-        </div>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

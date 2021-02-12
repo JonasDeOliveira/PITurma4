@@ -12,9 +12,11 @@ import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.co
 import { DadosClienteComponent } from './dados-cliente/dados-cliente.component';
 
 import { LembretesModule } from '../lembretes/lembretes.module';
+import { CardPlanosComponent } from './planos/card-planos/card-planos.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 @NgModule({
-  declarations: [PlanosComponent, PortalComponent, AreaClienteComponent, LoginClienteComponent, ListaLembretesComponent, CadastroClienteComponent, DadosClienteComponent],
+  declarations: [PlanosComponent, PortalComponent, AreaClienteComponent, LoginClienteComponent, ListaLembretesComponent, CadastroClienteComponent, DadosClienteComponent, CardPlanosComponent, UsuarioComponent],
   imports: [
     CommonModule,
     LembretesModule,

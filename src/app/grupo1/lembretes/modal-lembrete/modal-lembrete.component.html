@@ -1,6 +1,5 @@
 <!-- Modal Lembretes -->
-<div class="modal fade bd-lembrete-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
+<div class="bd-lembrete-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form #formLembretes="ngForm">
@@ -31,25 +30,27 @@
                     </div>
 
                     <div class="row mt-1">
-                        <div class="col-12 col-lg-3">
+                        <div class="col-12 col-lg-6">
                             <label>Data:</label>
                             <input type="date" class="form-control" id="dtLembrete" name="dtLembrete"
                                 [(ngModel)]="lembrete.dtLembrete" #dtLembrete="ngModel" required>
                         </div>
-                        <div class="col-12 col-lg-3">
+                        <div class="col-12 col-lg-6">
                             <label>Hora:</label>
                             <input type="time" class="form-control" id="hrHora" name="hrHora"
                                 [(ngModel)]="lembrete.hrHora" #hrHora="ngModel" required>
                         </div>
-                        <div class="col-12 col-lg-3">
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-12 col-lg-6">
                             <label>Repete a cada:</label>
                             <input type="number" class="form-control" placeholder="1" min="0" id="nrRepeticao"
                                 name="nrRepeticao" [(ngModel)]="lembrete.nrRepeticao" #nrRepeticao="ngModel" required>
                         </div>
-                        <div class="col-12 col-lg-3">
+                        <div class="col-12 col-lg-6">
                             <label>Intervalo:</label>
                             <select class="form-control">
-                                <option *ngFor="let lembreteIntervalo of lembreteIntervalos">
+                                <option *ngFor="let lembreteIntervalo of responseLembreteIntervalos">
                                     {{lembreteIntervalo.dsLembreteIntervalo}}</option>
                             </select>
                         </div>
@@ -58,8 +59,9 @@
 
 
 
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn_salvar">Criar Lembrete</button>
+                    <button type="button" class="btn btn_salvar">Criar Lembrete</button>
                 </div>
             </form>
         </div>

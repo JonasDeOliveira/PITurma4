@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 import { FooterComponent } from './components/footer/footer.component';
@@ -22,7 +23,8 @@ import { CartoesModule } from './cartoes/cartao.module'
     RouterModule,
     PagesModule,
     LembretesModule,
-    CartoesModule
+    CartoesModule,
+    ModalModule
   ],
   exports: [
     FooterComponent,

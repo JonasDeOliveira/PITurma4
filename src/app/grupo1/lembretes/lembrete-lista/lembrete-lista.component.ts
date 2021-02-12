@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Lembrete } from '../shared/lembrete.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { Lembrete, ResponseLembretes } from '../shared/lembrete.model';
+import { LembreteService } from '../../lembretes/shared/lembrete.service'
 
 @Component({
   selector: 'app-lembrete-lista',
@@ -8,87 +9,22 @@ import { Lembrete } from '../shared/lembrete.model';
 })
 export class LembreteListaComponent implements OnInit {
 
-  lembretes : Lembrete[] = [
-    {
-      idPaciente: 12,
-      nmTitulo: "Medicamento Controlado",
-      dsLembrete: "Tomar comprimido de novalgina",
-      dtLembrete: "22/12/2020",
-      dtCriacao: "22/10/2020",
-      hrHora: "08:00",
-      nrRepeticao: 2,
-      lembreteIntervalo: 
-      {
-        idLembreteIntervalo: 1,
-        dsLembreteIntervalo: "hora(s)"
-      },
-      vencido: false
-    },    
-    {
-      idPaciente: 12,
-      nmTitulo: "Medicamento Controlado",
-      dsLembrete: "Tomar comprimido de novalgina",
-      dtLembrete: "22/12/2020",
-      dtCriacao: "22/10/2020",
-      hrHora: "08:00",
-      nrRepeticao: 2,
-      lembreteIntervalo: 
-      {
-        idLembreteIntervalo: 1,
-        dsLembreteIntervalo: "hora(s)"
-      },
-      vencido: true
-    },
-    {
-      idPaciente: 12,
-      nmTitulo: "Medicamento Controlado",
-      dsLembrete: "Tomar comprimido de novalgina",
-      dtLembrete: "22/12/2020",
-      dtCriacao: "22/10/2020",
-      hrHora: "08:00",
-      nrRepeticao: 2,
-      lembreteIntervalo: 
-      {
-        idLembreteIntervalo: 1,
-        dsLembreteIntervalo: "hora(s)"
-      },
-      vencido: false
-    },
-    {
-      idPaciente: 12,
-      nmTitulo: "Medicamento Novalgina",
-      dsLembrete: "Tomar comprimido de novalgina",
-      dtLembrete: "22/12/2020",
-      dtCriacao: "22/10/2020",
-      hrHora: "08:00",
-      nrRepeticao: 2,
-      lembreteIntervalo: 
-      {
-        idLembreteIntervalo: 1,
-        dsLembreteIntervalo: "hora(s)"
-      },
-      vencido: true
-    },
-    {
-      idPaciente: 12,
-      nmTitulo: "Consulta com Cardiologista",
-      dsLembrete: "Cardiologista",
-      dtLembrete: "22/12/2020",
-      dtCriacao: "22/10/2020",
-      hrHora: "08:00",
-      nrRepeticao: 2,
-      lembreteIntervalo: 
-      {
-        idLembreteIntervalo: 1,
-        dsLembreteIntervalo: "hora(s)"
-      },
-      vencido: false
-    }
-  ]
+  @Input() idUsuario: string;
+  lembretes : ResponseLembretes[];
   
-  constructor() { }
+  constructor(
+    private lembreteService: LembreteService) { }
 
   ngOnInit(): void {
+    this.listarLembretes();
+  }
+
+  listarLembretes() {
+    this.lembreteService.getLembretesByUsuario(this.idUsuario).subscribe(
+      response => {
+        this.lembretes = response;
+      }
+    )
   }
 
 }

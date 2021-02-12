@@ -10,11 +10,11 @@ import { AreaClienteComponent } from './pages/area-cliente/area-cliente.componen
 
 export const Grupo1RoutingModule: Routes = [
     {path:'login-cliente', component: LoginClienteComponent},
-    {path:'lista-lembretes', component: ListaLembretesComponent},
+    {path:'lista-lembretes/:idUsuario', component: ListaLembretesComponent},
     {path:'cadastro-cliente', component: CadastroClienteComponent},
     {path:'dados-cliente', component: DadosClienteComponent},
     {path:'planos', component: PlanosComponent},
-    {path:'portal', component: PortalComponent},
+    {path:'', component: PortalComponent},
     {path:'area-cliente', component: AreaClienteComponent},
     
 ];
