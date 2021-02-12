@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalLembreteComponent } from '../../lembretes/modal-lembrete/modal-lembrete.component';
 import "src/assets/grupo1/css/grupo1.component.css";
 
@@ -12,10 +12,9 @@ import "src/assets/grupo1/css/grupo1.component.css";
 })
 export class ListaLembretesComponent implements OnInit {
 
-  modalRef: BsModalRef;
   idUsuario: string;
 
-  constructor(private modalService: BsModalService,
+  constructor(private modalService: NgbModal,
     private route: ActivatedRoute,
     private router: Router) { };
 
@@ -23,8 +22,9 @@ export class ListaLembretesComponent implements OnInit {
     this.idUsuario = this.route.snapshot.paramMap.get('idUsuario');
   }
 
-  openModal() {
-    this.modalRef = this.modalService.show(ModalLembreteComponent);
+  open() {
+    const modalRef = this.modalService.open(ModalLembreteComponent);
+    modalRef.componentInstance.name = 'World';
   }
 
 }

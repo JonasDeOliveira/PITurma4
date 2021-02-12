@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Lembrete, LembreteIntervalo, ResponseLembretesIntervalo } from '../shared/lembrete.model';
 import { LembreteService } from '../shared/lembrete.service';
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-modal-lembrete',
   templateUrl: './modal-lembrete.component.html',
   styleUrls: ['./modal-lembrete.component.css']
 })
-export class ModalLembreteComponent implements OnInit {
+export class ModalLembreteComponent implements OnInit {//
 
-  responseLembreteIntervalos : ResponseLembretesIntervalo[];
+  responseLembreteIntervalos: ResponseLembretesIntervalo[];
 
-  lembrete : Lembrete = 
+  lembrete: Lembrete =
     {
       idPaciente: 12,
       nmTitulo: "Medicamento Controlado",
@@ -21,7 +21,7 @@ export class ModalLembreteComponent implements OnInit {
       dtCriacao: "22/10/2020",
       hrHora: "08:00",
       nrRepeticao: 2,
-      lembreteIntervalo: 
+      lembreteIntervalo:
       {
         idLembreteIntervalo: 1,
         dsLembreteIntervalo: "hora(s)"
@@ -30,7 +30,7 @@ export class ModalLembreteComponent implements OnInit {
     };
 
   constructor(private lembreteService: LembreteService,
-              public modalRef: BsModalRef) { };
+                      public activeModal: NgbActiveModal) { };
 
   ngOnInit(): void {
     this.listarIntervalos();
@@ -43,7 +43,5 @@ export class ModalLembreteComponent implements OnInit {
       }
     )
   }
-
-
 
 }

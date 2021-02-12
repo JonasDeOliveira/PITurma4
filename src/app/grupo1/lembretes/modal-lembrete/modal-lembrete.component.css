@@ -46,3 +46,21 @@ section{
     width: 100%;
     padding: 1%;
 }
+
+.btn{
+    background-color: #319A75;
+    color: #fff;
+} 
+
+button#todoSubmit{
+    border-radius:0%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+    padding:2%;
+}
+
+section .btn:hover {
+    background-color: rgb(000, 080, 052);
+}
