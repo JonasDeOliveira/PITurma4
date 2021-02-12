@@ -1,33 +1,5 @@
 
 <div class="container">
-    <!--
-
-   
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-                <img src="img/logo-menu.png">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">    
-                <div class="col-lg-8 col-md-9 col-sm-9 col-xs-4 item-menu" >
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">Planos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Sustentabilidade</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Serviços</a></li>
-                    </ul>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-4 col-sm-4 col-xs-4">
-                    <div class="text-center">Login</div>
-                    <div>
-                        <button class="btn btn-menu">Paciente</button>
-                            <button class="btn btn-menu">Médico</button>
-                    </div>
-                </div>
-            </div>
-        </nav>   
-    </header>
-     -->
 
     <section class="container1 col-12">
         <div class="banner col-12"></div>
@@ -56,25 +28,15 @@
         </div>  
         
         <!-- cards com endereços encontrados -->
+          
         <div class="cardsEndereco col-12">
-            <div class="card">
+            <div *ngFor = "let loja of responseLojas" class="card">
                 <div class="card-body">
-                  <h5 class="card-title-drogasil">PENHA</h5>
-                  <p class="card-text-funcionamento">Todos os dias 00:01 às 23:59</p>
-                  <p class="card-text">Penha de França, 429</p>
-                  <p class="card-text">(11) 2091-8803/2941-9668</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title-drogaraia">PENHA</h5>
-                  <p class="card-text-funcionamento">Todos os dias 07:00 às 23:00</p>
-                  <p class="card-text">Penha de França, 429</p>
-                  <p class="card-text">(11) 2647-7749/97381-4323</p>
-
+                  <h5 class="card-title-drogasil"> {{loja.nmLoja}} </h5>
+                  <p class="card-text">{{loja.endereco}}</p>
+                  <p class="card-text">{{loja.contato}}</p>
                 </div>
             </div>
         </div>
     </section>
-   
 </div>
