@@ -22,7 +22,8 @@ export class PagamentoPlanoComponent implements OnInit {
 
     this.contratoService.buscarPlanosPaciente(idUsuario).subscribe(
       response => {
-        this.responseContrato = response[0];
+        console.log(response)
+       this.responseContrato[0] = response;
       }
     )
 

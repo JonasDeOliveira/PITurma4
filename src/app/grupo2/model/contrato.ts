@@ -2,15 +2,15 @@ export interface Contrato {
 
     idContrato: number;
     dtVigencia: Date;
-    plano: Plano;
+    plano: PlanosEntity;
 }
 
-export interface Plano {
+export interface PlanosEntity {
     idPlano: number;
     nmPlano: String;
     dsPlano: String;
 }
 
 export interface ResponseContrato {
-    contrato: Contrato
+    contrato: Contrato;
 }
