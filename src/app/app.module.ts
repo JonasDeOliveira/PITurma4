@@ -12,6 +12,7 @@ import { Grupo4Module } from './grupo4/grupo4.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ClienteComponent } from './grupo1/pages/cliente/cliente.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ClienteComponent } from './grupo1/pages/cliente/cliente.component';
     Grupo4Module,
     FontAwesomeModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
