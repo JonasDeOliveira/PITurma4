@@ -1,10 +1,29 @@
 <div class="row lembretes-plano">
     <div class="col-12 p-3">
         <h1 class="todo__title text-center p-2">Lembretes </h1>
+        <div class="row">
+            <div class="col-12 col-md-4 my-2">
+                <button type="button" value="" class="btn btn-atualizar" id="todoSubmit" data-toggle="modal"
+                    data-target=".bd-lembrete-modal-lg" (click)="listarLembretes(idUsuario)">Atualizar Lista</button>
+            </div>
+            <div class="col-12 col-md-8 controlar-lembretes">
+                <form class="controlar-lembretes-form">
+                    <label for="lembretes-ordem">Ordenar por:</label>
+                    <select name="lembretes-ordem" id="lembretes-ordem" class="form-control">
+                        <option value="valor1">Mais recente</option>
+                        <option value="valor2" selected>Mais antigo</option>
+                        <option value="valor3">Data de criação</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
         <div class="card rounded ">
             <div class="todo__tarefas" id="todoTarefas">
                 <ul class="todo__tarefas-lista" id="todoLista">
-                    <app-lembrete-item-lista *ngFor="let lembrete of lembretes" [lembrete]="lembrete"  [idUsuario]="idUsuario" (deletarLembrete)="deletarLembrete(lembrete.idLembrete, idUsuario)"></app-lembrete-item-lista>
+                    <app-lembrete-item-lista *ngFor="let lembrete of lembretes" [lembrete]="lembrete"
+                        [idUsuario]="idUsuario" (deletarLembrete)="deletarLembrete(lembrete.idLembrete, idUsuario)">
+                    </app-lembrete-item-lista>
                 </ul>
             </div>
         </div>

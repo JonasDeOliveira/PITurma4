@@ -24,7 +24,8 @@ export class ListaLembretesComponent implements OnInit {
 
   open() {
     const modalRef = this.modalService.open(ModalLembreteComponent);
-    modalRef.componentInstance.name = 'World';
+    modalRef.componentInstance.request.idPaciente = this.idUsuario;
+    modalRef.componentInstance.idUsuario = this.idUsuario;
   }
 
 }
