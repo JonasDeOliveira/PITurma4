@@ -10,8 +10,8 @@ export interface AgPaciente {
 export interface Agenda {
     idAgenda: number;
     medico: Medico;
-    diaDisponivel : Date;
-    horaInicial : Time;
+    data : Date;
+    periodo : Periodo;
 }
 
 export interface Medico {
@@ -28,6 +28,12 @@ export interface EspMed {
 export interface StatusConsulta {
     idStatusConsulta: number;
     dsStatusConsulta: String;
+}
+
+export interface Periodo {
+    idPeriodo: number;
+    horaInicial: Time;
+
 }
 
 

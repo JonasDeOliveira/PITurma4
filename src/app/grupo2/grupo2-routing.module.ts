@@ -8,6 +8,7 @@ import { ConfirmacaoConsultaComponent} from './pages/confirmacao-consulta/confir
 import { MinhasConsultasComponent} from './pages/minhas-consultas/minhas-consultas.component';
 
 
+
 export const Grupo2RoutingModule: Routes = [
 
 { path: 'agendamento-consultas', component: AgendamentoConsultasComponent},
@@ -17,6 +18,7 @@ export const Grupo2RoutingModule: Routes = [
 { path: 'pagamento-particular', component: PagamentoParticularComponent},
 { path: 'confirmacao-consulta', component: ConfirmacaoConsultaComponent},
 { path: 'minhas-consultas', component: MinhasConsultasComponent},
+
 
 ];
 
