@@ -30,6 +30,7 @@ export class MinhasConsultasComponent implements OnInit {
 
   listarAgPacientePorUsuario(idUsuario : number) {
     this.agPacienteService.buscarAgPacientes(idUsuario).subscribe(
+    
       response => {
         this.responseAgPacientes = response;
       }
