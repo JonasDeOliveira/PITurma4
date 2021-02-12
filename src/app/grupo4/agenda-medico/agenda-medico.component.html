@@ -25,75 +25,72 @@
 
                 </div>
             </div>
-            <div class="buttons-calendario">
-                <button type="button" class="btn btn-abrir-agenda" data-toggle="modal" data-target="#modalAbrirAgenda">
-                    Abrir Agenda
-                </button>
+            <!-- Modal Abrir Agenda -->
+            <ng-template #abrir let-c="close" let-d="dismiss">
+                <div class="modal-content modal-abrir-agenda">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="modal-basic-title">Selecione o(s) horário(s) e o tipo de consulta</h2>
+                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body modal-horarios">
+                          <div class="manha">
+                              <h3 class="title-horario">Manhã: </h3>
+                              <button type="button" class="btn btn-outline-success button-hora">07:00</button>
+                              <button type="button" class="btn btn-outline-success button-hora">08:00</button>
+                              <button type="button" class="btn btn-outline-success button-hora">09:00</button>
+                              <button type="button" class="btn btn-outline-success button-hora">10:00</button>
+                              <button type="button" class="btn btn-outline-success button-hora">11:00</button>
+                          </div>
+                          <div class="tarde">
+                              <h3 class="title-horario">Tarde: </h3>
+                              <button type="button" class="btn btn-outline-success button-hora">12:00</button>
+                              <button type="button" class="btn btn-outline-success button-hora">13:00</button>
+                              <button type="button" class="btn btn-outline-success button-hora">14:00</button>
+                              <button type="button" class="btn btn-outline-success button-hora">15:00</button>
+                              <button type="button" class="btn btn-outline-success button-hora">16:00</button>
+                              <button type="button" class="btn btn-outline-success button-hora">17:00</button>
+                          </div>
+                          <div class="noite">
+                              <h3 class="title-horario">Noite: </h3>
+                              <button type="button" class="btn btn-outline-success button-hora">18:00</button>
+                              <button type="button" class="btn btn-outline-success button-hora">19:00</button>
+                              <button type="button" class="btn btn-outline-success button-hora">20:00</button>
+                              <button type="button" class="btn btn-outline-success button-hora">21:00</button>
+                          </div>
+                          <div class="radio-tipo-consulta">
+                              <h3 class="title-tipo-consulta">Tipo de consulta: </h3>
+                          <div class="form-check form-check-inline-online">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                  value="option1">
+                              <label class="form-check-label" for="inlineRadio1">Online</label>
+                          </div>
+                          <div class="form-check form-check-inline-presencial">
+                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                  value="option2">
+                              <label class="form-check-label" for="inlineRadio2">Presencial</label>
+                          </div>
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn button-limpar" (click)="c('Save click')">Limpar seleção</button>
+                        <button type="button" class="btn button-salvar" (click)="c('Save click')">Salvar</button>
+                    </div>
+                </div>
+              </ng-template>
+              <!-- Fim Modal Abrir Agenda -->
+
+              <div class="buttons-calendario">
+                <button class="btn btn-abrir-agenda" (click)="open(abrir)">Abrir Agenda</button>
                 <button type="button" class="btn btn-consultar-agenda" data-toggle="modal"
                     data-target="#modalConsultarAgenda">
                     Consultar Agenda
                 </button>
-            </div>
+              </div>
+            
         </div>
-
-        <!-- Modal Abrir Agenda -->
-        <div class="modal fade" id="modalAbrirAgenda" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title" id="exampleModalLongTitle">Selecione o(s) horário(s):</h2>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body modal-horarios">
-                        <div class="manha">
-                            <h3>Manhã: </h3>
-                            <button type="button" class="btn btn-outline-success button-hora">09:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">10:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">11:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">12:00</button>
-                        </div>
-                        <div class="tarde">
-                            <h3>Tarde: </h3>
-                            <button type="button" class="btn btn-outline-success button-hora">14:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">15:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">16:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">17:00</button>
-                        </div>
-                        <div class="noite">
-                            <h3>Noite: </h3>
-                            <button type="button" class="btn btn-outline-success button-hora">18:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">19:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">20:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">21:00</button>
-                        </div>
-                        <div class="radio-tipo-consulta">
-                            <h3 class="title-tipo-consulta">Tipo de consulta: </h3>
-                        <div class="form-check form-check-inline-online">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                value="option1">
-                            <label class="form-check-label" for="inlineRadio1">Online</label>
-                        </div>
-                        <div class="form-check form-check-inline-presencial">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                value="option2">
-                            <label class="form-check-label" for="inlineRadio2">Presencial</label>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline button-limpar">Limpar seleção</button>
-                        <button type="button" class="btn button-salvar">Salvar</button>
-                        <!-- <button type="button" class="btn btn-secondary button-fechar"
-                            data-dismiss="modal">Fechar</button> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Fim Modal Abrir Agenda -->
-
+        
         <!-- Fim Calendário -->
 
         <!-- Início Agenda do Dia -->
@@ -102,8 +99,8 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <td>9h</td>
-                        <td>Elaine Moura</td>
+                        <td>7h</td>
+                        <td>José Filho</td>
                         <td>
                             Online
                         </td>
@@ -111,8 +108,36 @@
                             Confirmado
                         </td>
                         <td>
-                            <button type="button" class="btn-cancelar" data-toggle="modal"
-                                data-target="#modal-cancelar"></button>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8h</td>
+                        <td>Aline Miller</td>
+                        <td>
+                            Online
+                        </td>
+                        <td class="confirmado">
+                            Confirmado
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9h</td>
+                        <td>Elaine Moura</td>
+                        <td>
+                            Online
+                        </td>
+                        <td class="pendente">
+                            Pendente
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
                         </td>
                     </tr>
                     <tr>
@@ -125,9 +150,8 @@
                             Confirmado
                         </td>
                         <td>
-                            <button type="button" class="btn-cancelar" data-toggle="modal"
-                                data-target="#modal-cancelar">
-                            </button>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
                         </td>
                     </tr>
                     <tr>
@@ -140,8 +164,8 @@
                             Pendente
                         </td>
                         <td>
-                            <button type="button" class="btn-cancelar" data-toggle="modal"
-                                data-target="#modal-cancelar"></button>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
                         </td>
                     </tr>
                     <tr>
@@ -154,8 +178,8 @@
                             Confirmado
                         </td>
                         <td>
-                            <button type="button" class="btn-cancelar" data-toggle="modal"
-                                data-target="#modal-cancelar"></button>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
                         </td>
                     </tr>
                     <tr>
@@ -168,8 +192,8 @@
                             Pendente
                         </td>
                         <td>
-                            <button type="button" class="btn-cancelar" data-toggle="modal"
-                                data-target="#modal-cancelar"></button>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
                         </td>
                     </tr>
                     <tr>
@@ -182,8 +206,8 @@
                             Confirmado
                         </td>
                         <td>
-                            <button type="button" class="btn-cancelar" data-toggle="modal"
-                                data-target="#modal-cancelar"></button>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
                         </td>
                     </tr>
                     <tr>
@@ -196,8 +220,8 @@
                             Confirmado
                         </td>
                         <td>
-                            <button type="button" class="btn-cancelar" data-toggle="modal"
-                                data-target="#modal-cancelar"></button>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
                         </td>
                     </tr>
                     <tr>
@@ -210,8 +234,8 @@
                             Confirmado
                         </td>
                         <td>
-                            <button type="button" class="btn-cancelar" data-toggle="modal"
-                                data-target="#modal-cancelar"></button>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
                         </td>
                     </tr>
                     <tr>
@@ -224,8 +248,8 @@
                             Confirmado
                         </td>
                         <td>
-                            <button type="button" class="btn-cancelar" data-toggle="modal"
-                                data-target="#modal-cancelar"></button>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
                         </td>
                     </tr>
                     <tr>
@@ -238,8 +262,8 @@
                             Pendente
                         </td>
                         <td>
-                            <button type="button" class="btn-cancelar" data-toggle="modal"
-                                data-target="#modal-cancelar"></button>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
                         </td>
                     </tr>
                     <tr>
@@ -252,8 +276,8 @@
                             Confirmado
                         </td>
                         <td>
-                            <button type="button" class="btn-cancelar" data-toggle="modal"
-                                data-target="#modal-cancelar"></button>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
                         </td>
                     </tr>
                     <tr>
@@ -266,8 +290,8 @@
                             Pendente
                         </td>
                         <td>
-                            <button type="button" class="btn-cancelar" data-toggle="modal"
-                                data-target="#modal-cancelar"></button>
+                            <button type="button" class="btn-cancelar"
+                                 (click)="open(cancelar)"></button>
                         </td>
                     </tr>
                 </tbody>
@@ -275,25 +299,22 @@
         </div>
 
         <!-- Início Modal Cancelar Consulta-->
-        <div class="modal fade" id="modal-cancelar" tabindex="-1" role="dialog" aria-labelledby="modal-addTitle"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modal-addTitle">Atenção</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body modal-cancelar-msg">
-                        Tem certeza que deseja cancelar a consulta?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-verde" data-dismiss="modal">Sim</button>
-                    </div>
-                </div>
+        <ng-template #cancelar let-c="close" let-d="dismiss">
+            <div class="modal-content" id="modal-cancelar">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Atenção!</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body modal-cancelar-msg">
+                    <p>Deseja realmente cancelar a consulta?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-verde" (click)="c('Save click')">Sim</button>
+                  </div>
             </div>
-        </div>
+        </ng-template>
         <!-- Fim Modal Cancelar Consulta-->
 
         <!-- Fim Agenda do Dia -->
