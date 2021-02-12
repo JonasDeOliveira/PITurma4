@@ -7,12 +7,12 @@
                     data-target=".bd-lembrete-modal-lg" (click)="listarLembretes(idUsuario)">Atualizar Lista</button>
             </div>
             <div class="col-12 col-md-8 controlar-lembretes">
-                <form class="controlar-lembretes-form">
+                <form class="controlar-lembretes-form" #formControleLembrete="ngForm">
                     <label for="lembretes-ordem">Ordenar por:</label>
-                    <select name="lembretes-ordem" id="lembretes-ordem" class="form-control">
-                        <option value="valor1">Mais recente</option>
-                        <option value="valor2" selected>Mais antigo</option>
-                        <option value="valor3">Data de criação</option>
+                    <select name="lembretes-ordem" id="lembretes-ordem" class="form-control" (change)="onChange($event)">
+                        <option value="1" selected >Mais recente</option>
+                        <option value="2" >Mais antigo</option>
+                        <option value="3" >Data de criação</option>
                     </select>
                 </form>
             </div>

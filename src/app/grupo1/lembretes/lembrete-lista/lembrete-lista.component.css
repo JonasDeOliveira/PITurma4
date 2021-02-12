@@ -15,7 +15,12 @@
 }
 
 .btn-atualizar {
-    background-color: #c5c5c5;
+    color: white;
+    background-color: #3ec596;
+}
+
+.btn-atualizar:hover {
+    background-color: #319A75;
 }
 
 

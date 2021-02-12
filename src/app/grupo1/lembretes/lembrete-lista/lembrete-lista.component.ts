@@ -10,8 +10,8 @@ import { LembreteService } from '../../lembretes/shared/lembrete.service'
 export class LembreteListaComponent implements OnInit {
 
   @Input() idUsuario: string;
-  lembretes : ResponseLembretes[];
-  
+  lembretes: ResponseLembretes[];
+
   constructor(
     private lembreteService: LembreteService) { }
 
@@ -19,7 +19,8 @@ export class LembreteListaComponent implements OnInit {
     this.listarLembretes(this.idUsuario);
   }
 
-  listarLembretes(idUsuario: string){
+  //LISTAR LEMBRETES
+  listarLembretes(idUsuario: string) {
     this.lembreteService.getLembretesByUsuario(idUsuario).subscribe(
       response => {
         this.lembretes = response;
@@ -27,16 +28,52 @@ export class LembreteListaComponent implements OnInit {
     )
   }
 
-  deletarLembrete(idLembrete: number, idUsuario: string): void {
-    console.log(idLembrete);
-    if(confirm("Deseja apagar o lembrete?")) {    
-      this.lembreteService.deleteLembrete(idLembrete).subscribe(
+  listarLembretesMaisAntigos(idUsuario: string) {
+    this.lembreteService.getLembretesByDataInversa(idUsuario).subscribe(
       response => {
-        console.log(idUsuario);
-        this.listarLembretes(idUsuario);
-      }  
-    )}
+        this.lembretes = response;
+      }
+    )
   }
 
+  listarLembretesDataCriacao(idUsuario: string) {
+    this.lembreteService.getLembretesByDataCriacao(idUsuario).subscribe(
+      response => {
+        this.lembretes = response;
+      }
+    )
+  }
+
+  //DELETAR LEMBRETE
+  deletarLembrete(idLembrete: number, idUsuario: string): void {
+    console.log(idLembrete);
+    if (confirm("Deseja apagar o lembrete?")) {
+      this.lembreteService.deleteLembrete(idLembrete).subscribe(
+        response => {
+          console.log(idUsuario);
+          this.listarLembretes(idUsuario);
+        }
+      )
+    }
+  }
+
+  public onChange(event): void {
+    const opcao = event.target.value;
+
+    switch (opcao) {
+      case "1":
+        console.log(opcao)
+        this.listarLembretes(this.idUsuario);
+        break;
+      case "2":
+        console.log(opcao)
+        this.listarLembretesMaisAntigos(this.idUsuario);
+        break;
+      case "3":
+        console.log(opcao)
+        this.listarLembretesDataCriacao(this.idUsuario);
+        break;
+    }
+  }
 
 }

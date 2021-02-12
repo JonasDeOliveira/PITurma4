@@ -38,11 +38,24 @@ export class LembreteService {
     return this.http.get<ResponseLembretes[]>(URL);
   }
 
+  //GET lembretes by usuario e ordenar por mais antigo
+  getLembretesByDataInversa(idUsuario: string): Observable<ResponseLembretes[]> {
+    const URL = `${this.API}/user/${idUsuario}/dt-antiga`
+
+    return this.http.get<ResponseLembretes[]>(URL);
+  }
+
+  //GET lembretes by usuario e ordenar por data de criação
+  getLembretesByDataCriacao(idUsuario: string): Observable<ResponseLembretes[]> {
+    const URL = `${this.API}/user/${idUsuario}/dt-criacao`
+
+    return this.http.get<ResponseLembretes[]>(URL);
+  }
+
   //POST cadastrar lembrete
   createLembrete(request: Lembrete): Observable<Lembrete> {
     return this.http.post<Lembrete>(this.API, request);
   }
-
 
   //PUT atualizar lembrete
   updateLembrete(id: string, request: Lembrete): Observable<Lembrete> {
