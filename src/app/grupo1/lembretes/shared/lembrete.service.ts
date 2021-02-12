@@ -44,8 +44,8 @@ export class LembreteService {
     return this.http.put<Lembrete>(URL, request);
   }
 
-  deleteLembrete(id: number): Observable<any> {
-    const URL = `${this.API}/${id}`;
+  deleteLembrete(idLembrete: number): Observable<any> {
+    const URL = `${this.API}/${idLembrete}`;
     
     return this.http.delete<any>(URL);
   }

@@ -28,15 +28,15 @@
                                 <input type="text" class="form-control" id="login-email-med"
                                     placeholder="Digite sua senha" required>
                             </div>
-                            <button type="button" class="btn col-md-12 btn-verde mt-4"><a
-                                [routerLink]="['/area-cliente']">Entrar</a></button>
+                            <button type="button" class="btn col-md-12 btn-verde mt-4"
+                                [routerLink]="['/area-cliente']">Entrar</button>
                         </form>
                         <p class="text-center mb-3 mt-2 nav-item"><a class="nav-link" href="#" data-toggle="modal"
                                 data-target=".bd-example-modal-lg">Esqueceu sua senha?</a></p>
                         <div class="box-line my-2"></div>
                         <p class="text-center mt-3">Ainda não possui cadastro?</p>
-                        <button type="button" class="btn btn-verde"><a
-                            [routerLink]="['/cadastro-cliente']">Cadastrar</a></button>
+                        <button type="button" class="btn btn-verde"
+                            [routerLink]="['/cadastro-cliente']">Cadastrar</button>
                     </div>
                 </div>
             </div>
@@ -60,8 +60,7 @@
                             <div>
                                 <input type="text" class="form-control" id="email-rec-senha"
                                     placeholder="digite o seu e-mail">
-                                <button class="btn btn-verde"><a
-                                    routerLink="/area-cliente">Enviar</a></button>
+                                <button class="btn btn-verde" [routerLink]="['/area-cliente']">Enviar</button>
                             </div>
                         </div>
                     </div>
