@@ -70,6 +70,7 @@ body {
     background-color: #2a764a;
     border: 1px solid #2a764a;
     color : white;
+    margin-right: 15px;
 }
 
 .btn-verde:hover {
