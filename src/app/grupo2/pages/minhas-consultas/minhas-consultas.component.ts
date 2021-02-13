@@ -29,6 +29,7 @@ export class MinhasConsultasComponent implements OnInit {
 
     ngOnInit() : void{
     this.listarAgPacientePorUsuario(14);
+    
   }
 
   listarAgPacientePorUsuario(idUsuario : number) {
@@ -43,9 +44,9 @@ export class MinhasConsultasComponent implements OnInit {
     this.agPacienteService.alterarAgPacientes(idAgPaciente).subscribe(
       response => {
         alert('consulta cancelada com sucesso');
-        // console.log(this.router);
-        // this.listarAgPacientePorUsuario(14);
+        // console.log(this.router)
         this.router.navigate(['/minhas-consultas']);
+        this.listarAgPacientePorUsuario(14);
       },
       err => {
         console.log(err.message);
