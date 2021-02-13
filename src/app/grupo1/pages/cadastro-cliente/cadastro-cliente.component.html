@@ -35,9 +35,11 @@
                 <div class="form-group col-md-3">
                     <label for="cadastro-sexo">Sexo:</label>
                     <select class="form-control" id="cadastro-sexo">
-                        <option disabled selected>Selecione</option>
+                        <option *ngFor="let formularioCadastro of responseFormularioCadastro">
+                            {{formularioCadastro.genero.dsGenero}}</option>
+                        <!-- <option disabled selected>Selecione</option>
                         <option>Feminino</option>
-                        <option>Masculino</option>
+                        <option>Masculino</option>-->
                     </select>
                 </div>
             </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ResponseFormularioCadastro } from '../cliente/shared/cliente.model';
+import { ClienteService } from '../cliente/shared/cliente.service';
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cadastro-cliente.component.css']
 })
 export class CadastroClienteComponent implements OnInit {
+  
+  responseFormularioCadastro: ResponseFormularioCadastro;
 
-  constructor() { }
+  constructor(private clienteService: ClienteService) { }
 
   ngOnInit(): void {
+    this.getFormularioCadastro();
   }
 
+  getFormularioCadastro() {
+    this.clienteService.getFormularioCadastro().subscribe(
+      response => {
+        this.responseFormularioCadastro = response;
+      }
+    )
+}
 }

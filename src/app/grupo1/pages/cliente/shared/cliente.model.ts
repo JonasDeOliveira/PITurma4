@@ -74,3 +74,8 @@ import { Usuario } from '../../../usuario/shared/usuario.model';
         dsEmail: string
        
     }
+//GET Clientes
+export interface ResponseFormularioCadastro {
+    formularioCadastro: FormularioCadastro
+}
+
