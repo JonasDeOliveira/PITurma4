@@ -49,14 +49,14 @@
   <div class="lista-consultas col-10">
     <h4 id="titulo-agendadas">Consultas Agendadas</h4>
     <div *ngFor="let agPaciente of responseAgPacientes">
-      <div *ngIf="agPaciente.statusConsulta.id_statusConsulta == 1">
+      <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 1">
       <div  class="row consulta agendada d-flex align-items-center justify-content-between justify-content-between">
           <p class="texto-consulta col-8">
           {{agPaciente.agenda.data}} -
-          {{agPaciente.agenda.periodo.hora_inicial}} -
-          {{agPaciente.status_consulta.ds_status_consulta}} - Dr(a).
+          {{agPaciente.agenda.periodo.horaInicial}} -
+          {{agPaciente.statusConsulta.dsStatusConsulta}} - Dr(a).
           {{agPaciente.agenda.medico.nome}} -
-          {{agPaciente.agenda.medico.esp_med.ds_esp_med}}.
+          {{agPaciente.agenda.medico.espMed.dsEspMed}}.
         </p>
       <div>
         <button class="checkin col-2" data-toggle="modal" data-target="#checkinModal">Check-in</button>
@@ -70,14 +70,14 @@
     <h4 id="titulo-realizadas">Consultas Realizadas</h4>
     <div *ngFor="let agPaciente of responseAgPacientes">
    
-      <div *ngIf="agPaciente.status_consulta.id_status_consulta == 2">
+      <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 2">
       <div  class="row consulta realizada d-flex align-items-center justify-content-between">
         <p class="texto-consulta col-8">
           {{agPaciente.agenda.data}} -
-          {{agPaciente.agenda.periodo.hora_inicial}} -
-          {{agPaciente.status_consulta.ds_status_consulta}} - Dr(a).
+          {{agPaciente.agenda.periodo.horaInicial}} -
+          {{agPaciente.statusConsulta.dsStatusConsulta}} - Dr(a).
           {{agPaciente.agenda.medico.nome}} -
-          {{agPaciente.agenda.medico.esp_med.ds_esp_med}}.
+          {{agPaciente.agenda.medico.espMed.dsEspMed}}.
         </p>
         <button class="checkin col-6">Nova Consulta</button>
       </div>
@@ -86,14 +86,14 @@
 
     <h4 id="titulo-canceladas">Consultas Canceladas</h4>
     <div *ngFor="let agPaciente of responseAgPacientes">
-      <div *ngIf="agPaciente.status_consulta.id_status_consulta == 3">
+      <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 3">
       <div class="row consulta cancelada d-flex align-items-center justify-content-between">
         <p class="texto-consulta col-8">
           {{agPaciente.agenda.data}} -
-          {{agPaciente.agenda.periodo.hora_inicial}} -
-          {{agPaciente.status_consulta.ds_status_consulta}} - Dr(a).
+          {{agPaciente.agenda.periodo.horaInicial}} -
+          {{agPaciente.statusConsulta.dsStatusConsulta}} - Dr(a).
           {{agPaciente.agenda.medico.nome}} -
-          {{agPaciente.agenda.medico.esp_med.ds_esp_med}}.
+          {{agPaciente.agenda.medico.espMed.dsEspMed}}.
         </p>
       </div>
     </div>
