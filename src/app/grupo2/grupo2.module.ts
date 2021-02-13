@@ -11,7 +11,7 @@ import { PagamentoParticularComponent } from './pages/pagamento-particular/pagam
 import { ConfirmacaoConsultaComponent } from './pages/confirmacao-consulta/confirmacao-consulta.component';
 import { MinhasConsultasComponent } from './pages/minhas-consultas/minhas-consultas.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     CalendarioAgendamentoComponent, EscolhaEspecialistaComponent, PagamentoPlanoComponent, 
     PagamentoParticularComponent, ConfirmacaoConsultaComponent, MinhasConsultasComponent],
   imports: [
-    CommonModule, RouterModule, HttpClientModule
+    CommonModule, RouterModule, HttpClientModule, FormsModule
   ]
 })
 export class Grupo2Module { }

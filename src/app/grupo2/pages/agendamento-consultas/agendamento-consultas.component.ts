@@ -13,6 +13,8 @@ export class AgendamentoConsultasComponent implements OnInit {
   constructor(public espMedService: EspMedServiceService){}
 
   responseEspMed : ResponseEspMed[];
+  idEspMedString : string;
+  idEspSelect : number;
   
   ngOnInit(): void {
       this.listarEspecialidades();
@@ -23,10 +25,21 @@ export class AgendamentoConsultasComponent implements OnInit {
   listarEspecialidades(){
     this.espMedService.listarEspDisponiveis().subscribe(
       response => {
-        this.responseEspMed = response;
-        console.log(response);
+        this.responseEspMed = response;    
       }
     )
   }
+
+  salvarEspLS(){
+    this.espEscolhida();
+    localStorage.setItem("idEspMed", this.idEspMedString);  
+    
+  }
+
+  espEscolhida(){
+    this.idEspMedString = this.idEspSelect.toString();
+  }
+
+
 
 }
