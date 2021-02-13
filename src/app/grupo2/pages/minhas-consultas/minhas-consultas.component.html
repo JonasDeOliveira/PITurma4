@@ -59,7 +59,7 @@
           {{agPaciente.agenda.medico.espMed.dsEspMed}}.
         </p>
       <div>
-        <button class="checkin col-2" data-toggle="modal" data-target="#checkinModal">Check-in</button>
+        <!-- <button class="checkin col-2" data-toggle="modal" data-target="#checkinModal">Check-in</button> -->
         <button class="remarcar col-2" data-toggle="modal" data-target="#remarcarModal">Reagendar</button>
         <button class="col-2 btn-canc" data-toggle="modal" data-target="#cancelarModal" 
         value="AtualizarAgPaciente" (click)="atualizarAgPaciente(agPaciente.idAgPaciente)">Cancelar</button>
@@ -162,6 +162,7 @@
           </div>
           <div class="modal-body">
             Você tem certeza que deseja reagendar a consulta?
+            Isso irá cancelar sua consulta atual.
           </div>
           <div class="modal-footer">
             <a href="#"><button type="button" class="btn btn-secondary">Sim</button></a>
