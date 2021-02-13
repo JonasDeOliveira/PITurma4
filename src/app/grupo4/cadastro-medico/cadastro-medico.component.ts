@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CadastromedicoService } from './cadastromedico.service'
 
 @Component({
   selector: 'app-cadastro-medico',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroMedicoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cadastroService :CadastromedicoService) { }
+
+  dadosResposta: any
 
   ngOnInit(): void {
+    this.getDadosCadastro();
+  }
+
+  getDadosCadastro(){
+    this.cadastroService.getDadosCadastro().subscribe( 
+      resposta => {
+         this.dadosResposta = resposta;
+        console.log(resposta);
+      }
+    );
   }
 
 }

@@ -53,6 +53,7 @@ body {
     width: 120px;
     height: 40px;
     font-size: 15px;
+    font-weight: 700;
     background-color: #2a764a;
     margin-right: 30px;
     color: white;
@@ -64,9 +65,10 @@ body {
 }
 
 .btn-consultar-agenda {
-    width: 142px;
+    width: 150px;
     height: 40px;
     font-size: 15px;
+    font-weight: 700;
     background-color: rgb(108, 108, 100);
     color: white;
 }
@@ -75,6 +77,126 @@ body {
     background-color: rgb(146, 146, 136);
 }
 /* FIM CALENDÁRIO */
+
+/* INÍCIO BUTTONS HORÁRIOS */
+.modal-title {
+    color: #8d8178;
+    font-size: 1.4rem;
+}
+
+.modal-horarios {
+    display: flexbox;
+    justify-content: space-between;
+    width: 600px;
+    padding: 20px;
+    border-radius: 2px;
+}
+
+.manha {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tarde {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.noite {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+
+}
+
+.active:hover {
+    color: #319A75;
+}
+
+h2 {
+    color: #8D8178;
+}
+
+h3 {
+    font-size: 20px;
+    color: #8D8178;
+}
+
+.modal-content {
+    width: 600px;
+}
+
+.title-horario {
+    text-align: center;
+    display: grid;
+    margin-left: 10px;
+}
+
+.button-hora {
+    font-size: 15px;
+    color: #2a764a;
+    border: 1px solid #2a764a;
+}
+
+.button-hora:hover {
+    color: white;
+    background-color: #2a764a;
+}
+
+.button-limpar {
+    font-size: 14px;
+    border-color: rgb(108, 108, 100);
+    color:  rgb(108, 108, 100);
+}
+
+.button-salvar {
+    font-size: 14px;
+    background-color: #2a764a;
+    color: white;
+}
+
+.button-fechar {
+    font-size: 14px;
+}
+/* FIM BUTTONS HORÁRIOS */
+
+/* INÍCIO RADIO TIPO CONSULTA */
+.form-check {
+    font-size: 16px;
+    margin-top: 31px;
+}
+
+.radio-tipo-consulta {
+    display: flex;
+    justify-content: space-around;
+}
+
+.title-tipo-consulta {
+    margin-top: 30px;
+}
+
+.form-check-inline-online {
+    display: inline-flex;
+    margin-left: 64px;
+    justify-content: end;
+}
+
+.form-check-inline-presencial {
+    display: inline-flex;
+    margin-left: 15px;
+    justify-content: end;
+}
+
+.form-check-label {
+    padding-left: 5px;
+}
+
+.form-check-input {
+    color: rgb(000, 080, 052);
+}
+/* FIM RADIO TIPO CONSULTA */
 
 /* INÍCIO AGENDA DO DIA */
 .title-agenda {
@@ -94,6 +216,7 @@ body {
     border: none;
     width: 24px;
     height: 24px;
+    cursor: pointer;
     background-color: white;
     background-image: url('/assets/img-grupo4/close.png');
 }
@@ -107,6 +230,26 @@ body {
     box-shadow: none !important;
 }
 /* FIM AGENDA DO DIA */
+
+/* INÍCIO MODAL CANCELAR CONSULTA */
+.btn-verde {
+    font-size: 14px;
+    font-weight: 700;
+    background-color: #2a764a;
+    border: 1px solid #2a764a;
+    color : white;
+}
+
+.btn-verde:hover {
+    background-color: rgb(000, 080, 052);
+    border: 1px solid rgb(000, 080, 052); 
+}
+
+.modal-cancelar-msg {
+    color: #8d8178;
+    font-size: 17px;
+}
+/* FIM MODAL CANCELAR CONSULTA */
 
 /* INÍCIO FOOTER */
 footer{
