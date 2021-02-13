@@ -15,6 +15,7 @@ export class MinhasConsultasComponent implements OnInit {
   constructor(
     
     public agPacienteService: AgPacienteService,
+  
     private router: Router
     ) {
     
@@ -22,7 +23,7 @@ export class MinhasConsultasComponent implements OnInit {
 
 
   responseAgPacientes : ResponseAgPacientes [];
- 
+
 
   //implementar id usuario no parametro
 
@@ -42,9 +43,9 @@ export class MinhasConsultasComponent implements OnInit {
     this.agPacienteService.alterarAgPacientes(idAgPaciente).subscribe(
       response => {
         alert('consulta cancelada com sucesso');
-        console.log(this.router);
+        // console.log(this.router);
         // this.listarAgPacientePorUsuario(14);
-        this.router.navigate(['minhas-consultas']);
+        this.router.navigate(['/minhas-consultas']);
       },
       err => {
         console.log(err.message);

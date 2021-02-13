@@ -16,7 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, AgendamentoConsultasComponent, CalendarioAgendamentoComponent, EscolhaEspecialistaComponent, PagamentoPlanoComponent, PagamentoParticularComponent, ConfirmacaoConsultaComponent, MinhasConsultasComponent],
+  declarations: [HeaderComponent, FooterComponent, AgendamentoConsultasComponent, 
+    CalendarioAgendamentoComponent, EscolhaEspecialistaComponent, PagamentoPlanoComponent, 
+    PagamentoParticularComponent, ConfirmacaoConsultaComponent, MinhasConsultasComponent],
   imports: [
     CommonModule, RouterModule, HttpClientModule
   ]
