@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ResponseTipoRefeicao, TipoRefeicao } from '../shared/tipoRefeicao.model';
+import { TipoRefeicaoService } from '../shared/tipoRefeicao.service';
 
 @Component({
   selector: 'app-programa-nutricional',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgramaNutricionalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tipoRefeicaoService: TipoRefeicaoService) { }
+
+  responseTipoRefeicao: ResponseTipoRefeicao[];
 
   ngOnInit(): void {
+    this.listarTipoRefeicao();
   }
 
+  listarTipoRefeicao(){
+    this.tipoRefeicaoService.getTipoRefeicoes().subscribe(
+      response => {
+        this.responseTipoRefeicao= response;
+      }
+    )
+  }
 }

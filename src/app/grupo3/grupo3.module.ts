@@ -12,6 +12,9 @@ import { ResultadoBuscarReceitasComponent } from './resultado-buscar-receitas/re
 import { HistoricoAgservicoComponent } from './historico-agservico/historico-agservico.component';
 import { AgservicoComponent } from './agservico/agservico.component';
 import { ProcurarPacienteComponent } from './procurar-paciente/procurar-paciente.component';
+import { TipoRefeicaoService } from './shared/tipoRefeicao.service';
+
+
 
 @NgModule({
   
@@ -19,6 +22,12 @@ import { ProcurarPacienteComponent } from './procurar-paciente/procurar-paciente
   imports: [
     CommonModule,
     RouterModule
-  ]
+  ],
+  exports: [
+    ProgramaNutricionalComponent
+  ],
+providers:[
+ TipoRefeicaoService
+]
 })
 export class Grupo3Module { }

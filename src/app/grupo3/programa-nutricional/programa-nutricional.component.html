@@ -79,15 +79,8 @@
                             <div class="form-row  ">
                                 <div class="form-group col-md-12">
                                     <select id="inputEscolherRefeicao" class="form-control" id="EscolherRefeicao" required>
-                                        <option selected>Escolher a refeição</option>
-                                        <option>Café da manhã</option>
-                                        <option>Lanche da manhã</option>
-                                        <option>Almoço</option>
-                                        <option>Lanche da Tarde</option>
-                                        <option>Jantar</option>
-                                        <option>Ceia</option>
-                                        <option>Pré-treino</option>
-                                        <option>Pós-treino</option>
+                                        <option value ="selecione">Selecione a refeição</option>
+                                        <option *ngFor = "let tipoRefeicao of responseTipoRefeicao" [value]="tipoRefeicao.idTipoRefeicao">{{tipoRefeicao.dsTipoRefeicao}}</option>
                                     </select>
                                 </div>
 
