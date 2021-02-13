@@ -10,62 +10,62 @@
     <div class="page-title">
         <h1>Nova Conta</h1>
     </div>
-    <form class="form-group">
+    <form #formCadastro="ngForm" class="form-group" >
         <div class="page-title">
             <h3>Dados Pessoais</h3>
         </div>
         <div class="row">
             <div class="form-group col-12 col-md-4">
                 <label class="label-form" for="Especialidade">Especialidade</label>
-                <select class="form-control style-input" id="Especialidade" required>
-                    <option *ngFor="let esp of dadosResposta.especialidades">{{esp.dsEspMed}}</option>
+                <select class="form-control style-input" id="Especialidade" name="espMed" [(ngModel)]="request.espMed.idEspMed" #espMed="ngModel" required>
+                    <option *ngFor="let esp of dadosResposta.especialidades" [value]="esp.idEspMed" >{{esp.dsEspMed}}</option>
                 </select>
             </div>
             <div class="form-group col-12 col-md-2">
                 <label for="crm" class="label-form">CRM</label>
-                <input type="text" class="form-control style-input" id="crm" placeholder="0000000" required>
+                <input type="text" class="form-control style-input" id="nrCrm" name="nrCrm" [(ngModel)]="request.nrCrm" #nrCrm="ngModel" placeholder="0000000" required>
             </div>
             <div class="form-group col-12 col-md-1">
                 <label class="label-form" for="uf-crm">UF</label>
-                <select class="form-control style-input" id="uf-crm" required>
-                    <option *ngFor="let uf of dadosResposta.ufs">{{uf.dsUf}}</option>
+                <select class="form-control style-input" id="uf-crm" name="idUf" [(ngModel)]="request.uf.idUf" #idUf="ngModel" required>
+                    <option *ngFor="let uf of dadosResposta.ufs" [value]="uf.idUf">{{uf.dsUf}}</option>
                 </select>
             </div> 
             <div class="form-group col-12 col-md-2">
                 <label for="valor" class="label-form">Valor da consulta</label>
-                <input type="number" class="form-control style-input" id="valor" placeholder="R$000,00" required>
+                <input type="number" class="form-control style-input" id="valor" name="preco" [(ngModel)]="request.preco" #preco="ngModel" placeholder="R$000,00" required>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="telefone-medico" class="label-form">Telefone</label>
-                <input type="text" class="form-control style-input" id="telefone-medico" placeholder="DDD + telefone" required>
+                <input type="text" class="form-control style-input" id="telefone-medico" name="dsContato" [(ngModel)]="request.contatos.dsContato" #dsContato="ngModel" placeholder="DDD + telefone" required>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-12 col-md-7">
                 <label for="name-medico" class="label-form">Dr(a). Nome do Médico(a) </label>
-                <input type="text" class="form-control style-input" id="name-medico" placeholder="Ex.: Maria Helena da Silva" required>
+                <input type="text" class="form-control style-input" id="name-medico" name="nome" [(ngModel)]="request.nome" #nome="ngModel" placeholder="Ex.: Maria Helena da Silva" required>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label class="label-form" for="cpf">CPF</label>
-                <input type="text" class="form-control style-input" id="cpf" placeholder="000.000.000-00" required >
+                <input type="text" class="form-control style-input" id="cpf"  name="nrCpf" [(ngModel)]="request.nrCpf" #nrCpf="ngModel" placeholder="000.000.000-00" required >
             </div>
             <div class="form-group col-12 col-md-2">
                 <label for="data-consulta" class="label-form">Data de Nascimento</label>
-                <input type="text" class="form-control style-input" id="data-consulta" placeholder="dd/mm/aaaa" required>
+                <input type="text" class="form-control style-input" id="data-consulta" name="dtNascimento" [(ngModel)]="request.dtNascimento" #dtNascimento="ngModel" placeholder="dd/mm/aaaa" required>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-12 col-md-2">
                 <label class="label-form" for="cep">CEP</label>
-                <input type="text" class="form-control style-input" id="cep" placeholder="00000-000" required >
+                <input type="text" class="form-control style-input" id="cep" name="nrCep" [(ngModel)]="request.enderecos.endereco.nrCep" #nrCep="ngModel" placeholder="00000-000" required >
             </div>
             <div class="form-group col-12 col-md-4">
                 <label for="endereco-medico" class="label-form">Endereço Comercial</label>
-                <input type="text" class="form-control style-input" id="endereco-medico" placeholder="Ex.: Rua Joaquina 1234" required>
+                <input type="text" class="form-control style-input" id="endereco-medico" name="dsEndereco" [(ngModel)]="request.enderecos.dsEndereco" #dsEndereco="ngModel" placeholder="Ex.: Rua Joaquina 1234" required>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="Bairro" class="label-form">Bairro</label>
-                <input type="text" class="form-control style-input" id="bairro" placeholder="Ex.:Jd.Mairi" required>
+                <input type="text" class="form-control style-input" id="bairro" name="dsBairro" [(ngModel)]="request.enderecos.endereco.dsBairro" #dsBairro="ngModel" placeholder="Ex.:Jd.Mairi" required>
             </div>
             <div class="form-group col-12 col-md-1">
                 <label class="label-form" for="uf">UF</label>
@@ -75,8 +75,8 @@
             </div>
             <div class="form-group col-12 col-md-2">
                 <label class="label-form" for="cidade">Cidade</label>
-                <select class="form-control style-input" id="cidade" required>
-                    <option *ngFor="let cidade of dadosResposta.cidades">{{cidade.dsCidade}}</option>
+                <select class="form-control style-input" id="cidade" name="idCidade" [(ngModel)]="request.enderecos.endereco.idCidade" #idCidade="ngModel" required>
+                    <option *ngFor="let cidade of dadosResposta.cidades"[value]="cidade.dsCidade">{{cidade.dsCidade}}</option>
                     
                 </select>
             </div> 
@@ -88,12 +88,12 @@
         <div class="row">
             <div class="form-group col-12 col-md-6">
                 <label class="label-form" for="email">E-mail</label>
-                <input type="email" class="form-control style-input" id="email" placeholder="exemplo@exemplo.com.br" required>
+                <input type="email" class="form-control style-input" id="email" name="dsEmail" [(ngModel)]= "request.login.dsEmail" #dsEmail="ngModel" placeholder="exemplo@exemplo.com.br" required>
                 <br>
                 <div class="row"> 
                     <div class="col-12 col-md-6">
                         <label class="label-form" for="senha">Senha</label>
-                        <input type="password" class="form-control style-input" id="senha" placeholder="Digite uma senha">
+                        <input type="password" class="form-control style-input" id="senha" name="dsSenha" [(ngModel)]= "request.login.dsSenha" #dsSenha="ngModel" placeholder="Digite uma senha">
                     </div>
                     <div class="form-group col-12 col-md-6">
                         <label class="label-form" for="repeat-senha">Confirmar Senha</label>
@@ -103,7 +103,7 @@
             </div>
             <div class="text-center form-group col-12 col-md-6">
                 <p>Você pode alterar suas escolhas a qualquer momento nas suas configurações de conta.</p>
-                    <button type="submit" class="btn btn-verde mr-5" routerLink='/dashboard/medico'>Cadastrar</button>
+                    <button type="submit" class="btn btn-verde mr-5" routerLink='/dashboard/medico' value="Cadastrar" (click)="registrar()">Cadastrar</button>
             </div>
         </div>
     </form>

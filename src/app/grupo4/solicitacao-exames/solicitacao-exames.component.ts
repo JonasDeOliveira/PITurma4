@@ -6,9 +6,10 @@ import { Solicitacao} from './solicitacao.model';
 @Component({
   selector: 'app-solicitacao-exames',
   templateUrl: './solicitacao-exames.component.html',
-  styleUrls: ['./solicitacao-exames.component.css']
+  styleUrls: ['./solicitacao-exames.component.css'],
 })
 export class SolicitacaoExamesComponent implements OnInit {
+
 
   constructor(private solicitacaoService : SolicitacaoexameService,
     private route: ActivatedRoute,

@@ -22,7 +22,7 @@
               <nav class="menu-vertical">
                   <img class="usuario" src="assets/img-grupo4/usuario.png" width="150px">
                   <p class="editarFotoPerfil">Editar Foto do Perfil</p>
-                  <button type="button" class="btn btn-modal" data-toggle="modal" data-target="#modal-salvar">Alterar Senha</button>
+                  <button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">Alterar Senha</button>
               </nav>
           </div>
           
@@ -208,27 +208,23 @@
           
           </div>    
       </footer>
-      <div class="modal fade" id="modal-salvar" tabindex="-1" role="dialog"  aria-labelledby="modal-salvarTitle" aria-hidden="true" >
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Digite a Nova Senha</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div>
-                      <input type="senha" class="form-control" placeholder="Nova Senha">
-                      <p></p>
-                    <input type="senha" class="form-control" placeholder="Confirme a Nova Senha">
-                    <p></p>
-              </div>
-  
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-verde" data-dismiss="modal">Salvar</button>
-                  <button type="button" class="btn btn-verde" data-dismiss="modal">Fechar</button>
-                </div>
-          </div>
-        </div> 
-    </div>
+      
+      <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h5 class="modal-title">Definir Nova Senha</h5>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="senha" class="form-control" placeholder="Nova Senha">
+          <p></p>
+          <input type="senha" class="form-control" placeholder="Confirme a Nova Senha">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-verde" (click)="c('Save click')">Salvar</button>
+
+        </div>
+      </ng-template>
+      
+     
