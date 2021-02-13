@@ -8,7 +8,7 @@ import { Grupo3Module } from './grupo3/grupo3.module';
 import { Grupo4Module } from './grupo4/grupo4.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     Grupo2Module,
     Grupo3Module,
     Grupo4Module,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

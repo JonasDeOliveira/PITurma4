@@ -21,24 +21,28 @@
       </div>
     </div>
 
+
     <div class="divbotoes col-12">
       <div class="wrapper">
 
- 
+        
         <div class="menu col-12 text-center">
-          <select id="name">
+       
+          <select [(ngModel)]="idEspSelect" id="name" (ngModelChange)="espEscolhida()" >
             <option value="selecione">Selecione uma Especialidade</option>
-            <option *ngFor ="let espMed of responseEspMed" [value]="espMed.idEspMed">{{espMed.dsEspMed}}</option>
-            </select>
+            <option *ngFor ="let espMed of responseEspMed" [ngValue]="espMed.idEspMed">{{espMed.dsEspMed}}</option>
+          </select>
         </div>
       </div>
     </div>
-
+    
     <div class="divbotoes col-12">
       <div class="container col-12 text-center">
-        <a><button routerLink="/calendario-agendamento" class="btn-active">AGENDAR</button></a>
+        <a><button routerLink="/calendario-agendamento" class="btn-active" (click)="salvarEspLS()">AGENDAR</button></a>
       </div>
+      
     </div>
+
 
   
   </section>
