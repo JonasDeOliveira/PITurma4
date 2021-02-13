@@ -13,13 +13,9 @@ import { ResultadoBuscarReceitasComponent } from './resultado-buscar-receitas/re
 import { HistoricoAgservicoComponent } from './historico-agservico/historico-agservico.component';
 import { AgservicoComponent } from './agservico/agservico.component';
 import { ProcurarPacienteComponent } from './procurar-paciente/procurar-paciente.component';
-<<<<<<< HEAD
 import { TipoRefeicaoService } from './shared/tipoRefeicao.service';
-
-
-=======
 import { LojaService } from './shared/lojas.service';
->>>>>>> 50794aaeb0bb89c5e9f489487b47ee6dccc6efc9
+
 
 @NgModule({
   
@@ -30,19 +26,12 @@ import { LojaService } from './shared/lojas.service';
     RouterModule
   ],
   exports: [
-<<<<<<< HEAD
-    ProgramaNutricionalComponent
+ProgramaNutricionalComponent,
+SustentabilidadeComponent
   ],
 providers:[
- TipoRefeicaoService
+ TipoRefeicaoService,
+ LojaService
 ]
-=======
-    SustentabilidadeComponent
-  ],
-  providers: [
-    LojaService
-  ]
-
->>>>>>> 50794aaeb0bb89c5e9f489487b47ee6dccc6efc9
 })
 export class Grupo3Module { }
