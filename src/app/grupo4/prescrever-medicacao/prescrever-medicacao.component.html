@@ -1,3 +1,4 @@
+<body>
 <div class="container-fluid">
     <div class="row">
         <img src="assets/img-grupo4/banner-2.jpg" class="banner" alt="">
@@ -9,10 +10,8 @@
     <div class="row">
         <div class="form-group col-12 col-md-2">
             <select type="text" class="form-control style-input" id="tipo-receita" required>
-                <option>Tipo de Receita</option>
-                <option>Receituário Simples</option>
-                <option>Receituário de Antimicrobianos</option>
-                <option>Receituário de Controle Especial</option>
+                <option>Tipo Receita</option>
+                <option *ngFor="let tipoReceita of prescricoesResposta.listaTipoReceita">{{tipoReceita.dsTipoReceita}}</option>
             </select>
         </div>
         <div class="col-12 col-md-8">
@@ -27,7 +26,7 @@
         <div class="row mt-2">
             <div class="form-group col-12 col-md-12">
                 <label for="name-paciente" class="label-form">Nome do(a) Paciente</label>
-                <input type="text" class="form-control style-input" id="name-paciente" placeholder="Maria da Silva" disabled>
+                <input type="text" class="form-control style-input" id="name-paciente" placeholder="{{prescricoesResposta.nomePaciente}}" disabled>
             </div>
         </div>
 
@@ -44,8 +43,7 @@
                         <label for="idade" class="label-form">Medicação</label>
                         <select type="text" class="form-control style-input select-form" id="medicacao" required>
                             <option>Selecione a Medicação</option>
-                            <option>Dipirona</option>
-                            <option>Paracetamol</option>
+                            <option *ngFor="let medicacao of prescricoesResposta.listaMedicacao">{{medicacao.dsMedicacao}}</option>
                         </select>
                     </div>
                     <div class="form-group col-12 col-md-2">
@@ -60,17 +58,14 @@
                         <label for="idade" class="label-form">Via de Administração</label>
                         <select type="text" class="form-control style-input select-form" id="via-adm" required>
                             <option>Selecione a Via de Administração</option>
-                            <option>Uso Tópico</option>
-                            <option>Uso Local</option>
-                            <option>Via Oral</option>
+                            <option *ngFor="let viaAdm of prescricoesResposta.listaViaAdm">{{viaAdm.dsViaAdm}}</option>
                         </select>
                     </div>
                     <div class="form-group col-12 col-md-3">
                         <label for="idade" class="label-form">Forma Farmacêutica</label>
                         <select type="text" class="form-control style-input select-form" id="forma-farmaceutica" required>
                             <option>Selecione a Forma Farmacêutica</option>
-                            <option>Solução</option>
-                            <option>Comprimido</option>
+                            <option *ngFor="let formaFarmac of prescricoesResposta.listaFormaFarmac">{{formaFarmac.dsFormaFarmac}}</option>
                         </select>
                     </div>
                 </div>
@@ -275,3 +270,4 @@
         </div>
     </div>    
 </footer>
+</body>
