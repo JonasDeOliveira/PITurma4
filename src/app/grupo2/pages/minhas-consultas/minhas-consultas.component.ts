@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseAgPacientes } from '../../model/agPaciente';
-import { AgPacienteService } from '../../services/agPaciente';
+import { ResponseAgPacientes } from '../../shared/model/agPaciente';
+import { AgPacienteService } from '../../shared/services/agPaciente';
 
 
 @Component({
