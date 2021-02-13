@@ -1,7 +1,6 @@
 import { Time } from '@angular/common';
 
 export interface AgPaciente {
-
     idAgPaciente: number;
     agenda : Agenda;
     statusConsulta: StatusConsulta;
@@ -42,3 +41,7 @@ export interface ResponseAgPacientes {
     agPacientes: AgPaciente[]
 }
 
+//GET agPaciente
+export interface ResponseAgPaciente {
+    agPaciente: AgPaciente
+}

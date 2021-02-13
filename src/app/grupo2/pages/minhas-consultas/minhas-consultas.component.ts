@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ResponseAgPacientes } from '../../shared/model/agPaciente';
-import { AgPacienteService } from '../../shared/services/agPaciente';
+import { AgPacienteService } from '../../shared/services/agPaciente.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 
 @Component({
@@ -12,7 +14,14 @@ export class MinhasConsultasComponent implements OnInit {
 
   constructor(public agPacienteService: AgPacienteService) { }
 
+  
+  private route: ActivatedRoute
+  private router: Router
+  
   responseAgPacientes : ResponseAgPacientes [];
+  
+  idAgPaciente: number;
+  request: any;
 
   //implementar id usuario no parametro
 
@@ -27,5 +36,15 @@ export class MinhasConsultasComponent implements OnInit {
         this.responseAgPacientes = response;
       }
     )  
+  }
+
+  atualizarAgPaciente() {
+    this.agPacienteService.alterarAgPacientes (this.idAgPaciente, this.request).subscribe(
+      response => {
+        alert('consulta cancelada com sucesso');
+        this.router.navigate(['/minhas-consultas']);
+      },
+      err => alert('algo inesperado aconteceu')
+    )
   }
 }
