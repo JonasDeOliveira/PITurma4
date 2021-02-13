@@ -22,12 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     Grupo2Module,
     Grupo3Module,
     Grupo4Module,
-<<<<<<< HEAD
-    HttpClientModule
-=======
     HttpClientModule,
     NgbModule
->>>>>>> 50794aaeb0bb89c5e9f489487b47ee6dccc6efc9
   ],
   
   providers: [],

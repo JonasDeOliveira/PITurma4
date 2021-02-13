@@ -19,7 +19,6 @@ import { TipoRefeicaoService } from './shared/tipoRefeicao.service';
 
 =======
 import { LojaService } from './shared/lojas.service';
->>>>>>> 50794aaeb0bb89c5e9f489487b47ee6dccc6efc9
 
 @NgModule({
   
@@ -29,20 +28,17 @@ import { LojaService } from './shared/lojas.service';
     CommonModule,
     RouterModule
   ],
+
   exports: [
-<<<<<<< HEAD
-    ProgramaNutricionalComponent
-  ],
-providers:[
- TipoRefeicaoService
-]
-=======
+    ProgramaNutricionalComponent,
     SustentabilidadeComponent
   ],
-  providers: [
+
+  providers:[
+    TipoRefeicaoService,
     LojaService
   ]
 
->>>>>>> 50794aaeb0bb89c5e9f489487b47ee6dccc6efc9
+  
 })
 export class Grupo3Module { }
