@@ -10,16 +10,16 @@ export class CadastroMedicoComponent implements OnInit {
 
   constructor(private cadastroService :CadastromedicoService) { }
 
-  dadosResposta: any;
+  dadosResposta: any
 
   ngOnInit(): void {
     this.getDadosCadastro();
   }
 
   getDadosCadastro(){
-    this.cadastroService.getDadosCadastro().subscribe(
+    this.cadastroService.getDadosCadastro().subscribe( 
       resposta => {
-        this.dadosResposta = resposta;
+         this.dadosResposta = resposta;
         console.log(resposta);
       }
     );

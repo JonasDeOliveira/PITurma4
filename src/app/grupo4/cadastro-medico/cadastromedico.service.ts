@@ -10,7 +10,7 @@ export class CadastromedicoService {
 
   }
 
-  private readonly API = 'http://localhost:8080/cadastroMedico/1';
+  private readonly API = 'http://localhost:8080/cadastroMedico';
 
   getDadosCadastro() {
     return this.http.get(this.API);
