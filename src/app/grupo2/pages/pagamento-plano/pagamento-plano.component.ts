@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseContrato } from '../../model/contrato';
-import { ContratoService } from '../../services/contrato-service';
+import { ResponseContrato } from '../../shared/model/contrato';
+import { ContratoService } from '../../shared/services/contrato-service';
 
 
 @Component({
