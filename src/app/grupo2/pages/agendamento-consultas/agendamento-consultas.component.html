@@ -23,6 +23,11 @@
 
     <div class="divbotoes col-12">
       <div class="wrapper">
+
+        <div *ngFor ="let espMed of responseEspMed">
+          {{espMed.dsEspMed}}
+        </div>
+
         <div class="menu col-12 text-center">
           <select id="name">
             <option value="selecione">Selecione uma Especialidade</option>
