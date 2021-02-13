@@ -10,6 +10,7 @@ import { Grupo4Module } from './grupo4/grupo4.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
 @NgModule({
   declarations: [
     AppComponent
