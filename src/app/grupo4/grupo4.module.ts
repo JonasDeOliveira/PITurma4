@@ -11,8 +11,9 @@ import { PrescreverMedicacaoComponent } from './prescrever-medicacao/prescrever-
 import { PerfilMedicoComponent } from './perfil-medico/perfil-medico.component';
 import { DashboardMedicoComponent } from './dashboard-medico/dashboard-medico.component';
 import {CadastromedicoService} from './cadastro-medico/cadastromedico.service';
-  import { from } from 'rxjs';
 import { DashboardmedicoService } from './dashboard-medico/dashboardmedico.service';
+import { SolicitacaoexameService } from './solicitacao-exames/solicitacaoexame.service';
+import { PrescrevermedicacaoService } from './prescrever-medicacao/prescrevermedicacao.service';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -35,7 +36,9 @@ import { FormsModule } from '@angular/forms';
 
   providers: [
     CadastromedicoService,
-    DashboardmedicoService
+    DashboardmedicoService,
+    SolicitacaoexameService,
+    PrescrevermedicacaoService
   ]
 })
 export class Grupo4Module { }

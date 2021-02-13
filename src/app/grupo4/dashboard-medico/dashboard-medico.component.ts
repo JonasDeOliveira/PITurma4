@@ -25,10 +25,8 @@ export class DashboardMedicoComponent implements OnInit {
         console.log(resposta);
 
         this.data = new Date(Date.now()).toISOString().slice(0,10);
-        //console.log(data);
       }
     );
-
   }
 
 }
