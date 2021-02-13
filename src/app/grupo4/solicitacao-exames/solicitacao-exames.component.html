@@ -79,13 +79,14 @@
                     <div class="row mt-2">
                         <div class="form-group col-11">
                             <label for="exame" class="label-form">Exame</label>
-                            <select type="text" class="form-control style-input select-form" id="exame" required>
+                            <select type="text" class="form-control style-input select-form" id="exame" required [(ngModel)] = "select">
                                 <option>Selecione um tipo de exame</option>
-                                <option *ngFor="let exame of responseTelaSolicitacao.listaTipoExame">{{exame.dsTipoExame}}</option>
+                                <option *ngFor="let exam of responseTelaSolicitacao.listaTipoExame">{{exam.dsTipoExame}}</option>
                             </select>
                         </div>
                         <div class="form-group col-1">
-                            <button type="button" class="btn-add"  data-toggle="modal" data-target="#modal-add"></button>
+                            <button type="button" class="btn-add"  (click)=addItem()></button>
+                            <!-- <button type="button" class="btn-add"  data-toggle="modal" data-target="#modal-add"></button> -->
                         </div>
                     </div>
                 </div>
@@ -100,16 +101,10 @@
                             <th scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody *ngFor = "let item of listaExame">
                             <tr>
-                            <td class="texto-tabela">Glicose</td>
-                            <td class="text-left"><button type="button" class="btn-delete"></button></td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td class="texto-tabela">Colesterol</td>
-                                <td class="text-left"><button type="button" class="btn-delete"></button></td>
+                            <td class="texto-tabela">{{item}}</td>
+                            <td class="text-left"><button type="button" class="btn-delete" (click)=removerItem(item)></button></td>
                             </tr>
                         </tbody>
                     </table>

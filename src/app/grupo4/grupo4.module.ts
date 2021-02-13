@@ -14,6 +14,7 @@ import {CadastromedicoService} from './cadastro-medico/cadastromedico.service';
   import { from } from 'rxjs';
 import { DashboardmedicoService } from './dashboard-medico/dashboardmedico.service';
 import { SolicitacaoexameService } from './solicitacao-exames/solicitacaoexame.service';
+import { FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SolicitacaoexameService } from './solicitacao-exames/solicitacaoexame.s
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
 
   providers: [

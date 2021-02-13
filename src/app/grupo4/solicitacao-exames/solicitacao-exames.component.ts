@@ -18,6 +18,8 @@ export class SolicitacaoExamesComponent implements OnInit {
   idUsuario : any;
   idPaciente : any;
   data : any;
+  listaExame = [];
+  select = '';
 
   ngOnInit(): void {
     // this.idUsuario = this.route.snapshot.paramMap.get('idMedico');
@@ -34,6 +36,14 @@ export class SolicitacaoExamesComponent implements OnInit {
         this.data = new Date(Date.now()).toISOString().slice(0,10);
       }
     );
+  }
+
+  addItem(){
+    this.listaExame.push(this.select)
+  }
+
+  removerItem(item){
+    this.listaExame.splice(this.listaExame.indexOf(item),1)
   }
 
 }
