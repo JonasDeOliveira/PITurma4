@@ -28,6 +28,7 @@
 section{
     background-color: rgba(223, 239, 219, 0.24);
     width: 100%;
+    height: 500px;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -50,11 +51,7 @@ footer h4{
     display: inline;
 }
 
-/* BODY COMPLETO*/
-
-.titulo{
-    color: #005034;
-}
+/*BODY NOSSO*/
 
 .banner {
     background-image: url('/assets/img/banner.jpg');
@@ -64,14 +61,14 @@ footer h4{
     background-repeat: no-repeat;
 }
 
-.sub{
-    color: #005034;
+.tituloh1{
+    color: #428870;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
-.sub:hover{
-    color: #23A455;
-}
-
-.titulo-p{
-    color: #23A455;
-}
+.btn-verde{
+    background-color: #428870;
+    border: none;
+  }

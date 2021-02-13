@@ -10,7 +10,7 @@ import { LojaService } from '../shared/lojas.service';
 
 export class SustentabilidadeComponent implements OnInit {
 
-  constructor(private LojaService : LojaService) { }
+  constructor(private lojaService : LojaService) { }
 
   responseLojas : ResponseLojas[];
 
@@ -19,7 +19,7 @@ export class SustentabilidadeComponent implements OnInit {
   }
 
   listarLoja(){
-    this.LojaService.getLojas().subscribe (
+    this.lojaService.getLojas().subscribe (
       response => {
         this.responseLojas = response;
       }
