@@ -26,7 +26,7 @@
         <div class="row mt-2">
             <div class="form-group col-12 col-md-12">
                 <label for="name-paciente" class="label-form">Nome do(a) Paciente</label>
-                <input type="text" class="form-control style-input" id="name-paciente" placeholder="{{prescricoesResposta.nomePaciente}}" disabled>
+                <input type="text" class="form-control style-input" id="name-paciente" value="{{prescricoesResposta.nomePaciente}}" disabled>
             </div>
         </div>
 
@@ -127,45 +127,45 @@
         <div class="row mt-2">
             <div class="form-group col-12 col-md-9">
                 <label for="name-medico" class="label-form">Nome do(a) Médico(a)</label>
-                <input type="text" class="form-control style-input" id="name-medico" placeholder="Ana Maria Campos" disabled>
+                <input type="text" class="form-control style-input" id="name-medico" value="{{prescricoesResposta.medico.nome}}" disabled>
             </div>
             <div class="form-group col-12 col-md-2">
                 <label for="crm" class="label-form">CRM</label>
-                <input type="text" class="form-control style-input" id="crm" placeholder="11111" disabled>
+                <input type="text" class="form-control style-input" id="crm" value="{{prescricoesResposta.medico.nrCrm}}" disabled>
             </div>
             <div class="form-group col-12 col-md-1">
                 <label for="uf-crm" class="label-form">UF</label>
-                <input type="text" class="form-control style-input" id="uf-crm" placeholder="SP" disabled>
+                <input type="text" class="form-control style-input" id="uf-crm" value="{{prescricoesResposta.medico.ufCrm.dsUf}}" disabled>
             </div>
         </div>
 
         <div class="row mt-2">
             <div class="form-group col-12 col-md-9">
                 <label for="endereco" class="label-form">Endereço</label>
-                <input type="text" class="form-control style-input" id="endereco" placeholder="Rua A,  55" disabled>
+                <input type="text" class="form-control style-input" id="endereco" value="{{prescricoesResposta.medico.enderecos[0].dsEndereco}}" disabled>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="bairro" class="label-form">Bairro</label>
-                <input type="text" class="form-control style-input" id="bairro" placeholder="Penha" disabled>
+                <input type="text" class="form-control style-input" id="bairro" value="{{prescricoesResposta.medico.enderecos[0].dsBairro}}" disabled>
             </div>
         </div>
 
         <div class="row mt-2">
             <div class="form-group col-12 col-md-5">
                 <label for="cidade" class="label-form">Cidade</label>
-                <input type="text" class="form-control style-input" id="cidade" placeholder="São Paulo" disabled>
+                <input type="text" class="form-control style-input" id="cidade" value="{{prescricoesResposta.medico.enderecos[0].idCidade}}" disabled>
             </div>
             <div class="form-group col-12 col-md-1">
                 <label for="uf" class="label-form">UF</label>
-                <input type="text" class="form-control style-input" id="uf" placeholder="SP" disabled>
+                <input type="text" class="form-control style-input" id="uf" value="{{prescricoesResposta.medico.ufCrm.dsUf}}" disabled>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="tel" class="label-form">Telefone</label>
-                <input type="text" class="form-control style-input" id="tel" placeholder="(11) 2222-3333" disabled>
+                <input type="text" class="form-control style-input" id="tel" value= "{{prescricoesResposta.medico.contatos[0].dsContato}}" disabled>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="data-emissao" class="label-form">Data de Emissão</label>
-                <input type="date" class="form-control style-input" id="data-emissao" placeholder="08/12/2020" required>
+                <input type="text" class="form-control style-input" id="data-emissao" value="{{data}}" disabled>
             </div>
         </div>
 

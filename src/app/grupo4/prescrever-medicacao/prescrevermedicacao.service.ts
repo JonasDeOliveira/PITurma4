@@ -14,6 +14,8 @@ export class PrescrevermedicacaoService {
   
 
   getPrescricoes(idMedico:any, idPaciente:any) {
+    var data = new Date(Date.now()).toISOString().slice(0,10);
+    
     const URL = `${this.API}/${idMedico}/${idPaciente}`;
     return this.http.get<Prescricao>(URL); 
   }
