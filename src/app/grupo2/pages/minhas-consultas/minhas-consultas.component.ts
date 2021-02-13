@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ResponseAgPacientes } from '../../shared/model/agPaciente';
+import { AgPacienteService } from '../../shared/services/agPaciente.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ResponseAgPacientes } from '../../model/agPaciente';
-import { AgPacienteService } from '../../services/agPaciente.service';
+
 
 
 @Component({
@@ -11,39 +12,53 @@ import { AgPacienteService } from '../../services/agPaciente.service';
 })
 export class MinhasConsultasComponent implements OnInit {
 
-  constructor(public agPacienteService: AgPacienteService) { }
+  constructor(
+    
+    public agPacienteService: AgPacienteService,
+  
+    private router: Router
+    ) {
+    
+   }
 
-  
-  private route: ActivatedRoute
-  private router: Router
-  
+
   responseAgPacientes : ResponseAgPacientes [];
-  
-  idAgPaciente: number;
-  request: any;
+
 
   //implementar id usuario no parametro
 
     ngOnInit() : void{
     this.listarAgPacientePorUsuario(14);
+    
   }
 
   listarAgPacientePorUsuario(idUsuario : number) {
     this.agPacienteService.buscarAgPacientes(idUsuario).subscribe(
-    
       response => {
         this.responseAgPacientes = response;
       }
     )  
   }
 
-  atualizarAgPaciente() {
-    this.agPacienteService.alterarAgPacientes (this.idAgPaciente, this.request).subscribe(
+  atualizarAgPaciente(idAgPaciente : number) {
+    this.agPacienteService.alterarAgPacientes(idAgPaciente).subscribe(
       response => {
         alert('consulta cancelada com sucesso');
+        // console.log(this.router)
         this.router.navigate(['/minhas-consultas']);
+        this.listarAgPacientePorUsuario(14);
       },
-      err => alert('algo inesperado aconteceu')
+      err => {
+        console.log(err.message);
+        alert('erro ao cancelar consultar')}
+    
+    
     )
-  }
+    }
 }
+
+
+// if(confirm('Deseja remover a tarefa?')) {
+//   this.tarefaService.deleteTarefa(tarefaId).subscribe(
+//     response => {
+//       this.listarTodas();

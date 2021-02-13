@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseContrato } from '../../model/contrato';
-import { ContratoService } from '../../services/contrato-service';
+import { ResponseContratos } from '../../shared/model/contrato';
+import { ContratoService } from '../../shared/services/contrato-service';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class PagamentoPlanoComponent implements OnInit {
 
   constructor(public contratoService: ContratoService) { }
 
-  responseContrato : ResponseContrato;
+  responseContratos : ResponseContratos [];
 
   ngOnInit(): void {
     this.listarContratoPorUsuario(6);
@@ -22,8 +22,7 @@ export class PagamentoPlanoComponent implements OnInit {
 
     this.contratoService.buscarPlanosPaciente(idUsuario).subscribe(
       response => {
-        console.log(response)
-       this.responseContrato[0] = response;
+       this.responseContratos = response;
       }
     )
 

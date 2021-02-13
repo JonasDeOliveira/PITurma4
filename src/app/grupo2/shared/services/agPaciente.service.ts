@@ -24,12 +24,19 @@ export class AgPacienteService {
   //   return this.http.get<ResponseAgPaciente>(URL);
   // }
   
-  alterarAgPacientes(idAgPaciente: number, request: AgPaciente): Observable<AgPaciente> {
-    const URL = (this.APIMUDARSTATUSAGPACIENTE+idAgPaciente);
-    
-    return this.http.put<AgPaciente>(URL, request);
+  // alterarAgPacientes(idAgPaciente: number){
+  //   return this.http.get<any>(this.APIMUDARSTATUSAGPACIENTE+idAgPaciente);
+
+  // }
+
+
+  alterarAgPacientes(idAgPaciente: number): Observable<ResponseAgPacientes> {
+    const URL = `${this.APIMUDARSTATUSAGPACIENTE}/${idAgPaciente}`
+    return this.http.get<ResponseAgPacientes>(URL);
   }
+
 }
+
 
 
 

@@ -49,19 +49,20 @@
   <div class="lista-consultas col-10">
     <h4 id="titulo-agendadas">Consultas Agendadas</h4>
     <div *ngFor="let agPaciente of responseAgPacientes">
-      <div *ngIf="agPaciente.status_consulta.id_status_consulta == 1">
+      <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 1">
       <div  class="row consulta agendada d-flex align-items-center justify-content-between justify-content-between">
           <p class="texto-consulta col-8">
           {{agPaciente.agenda.data}} -
-          {{agPaciente.agenda.periodo.hora_inicial}} -
-          {{agPaciente.status_consulta.ds_status_consulta}} - Dr(a).
+          {{agPaciente.agenda.periodo.horaInicial}} -
+          {{agPaciente.statusConsulta.dsStatusConsulta}} - Dr(a).
           {{agPaciente.agenda.medico.nome}} -
-          {{agPaciente.agenda.medico.esp_med.ds_esp_med}}.
+          {{agPaciente.agenda.medico.espMed.dsEspMed}}.
         </p>
       <div>
-        <button class="checkin col-2" data-toggle="modal" data-target="#checkinModal">Check-in</button>
-        <button class="remarcar col-2" data-toggle="modal" data-target="#remarcarModal">Reagendar</button>
-        <button class="col-2 btn-canc" data-toggle="modal" data-target="#cancelarModal" value="AtualizarAgPaciente" (click)="atualizarAgPaciente()">Cancelar</button>
+        <!-- <button class="checkin col-2" data-toggle="modal" data-target="#checkinModal">Check-in</button> -->
+        <button class="remarcar col-6" data-toggle="modal" data-target="#remarcarModal">Reagendar</button>
+        <button class="col-6 btn-canc" data-toggle="modal" data-target="#cancelarModal" 
+        value="AtualizarAgPaciente" (click)="atualizarAgPaciente(agPaciente.idAgPaciente)">Cancelar</button>
       </div>
       </div>
     </div>
@@ -70,30 +71,31 @@
     <h4 id="titulo-realizadas">Consultas Realizadas</h4>
     <div *ngFor="let agPaciente of responseAgPacientes">
    
-      <div *ngIf="agPaciente.status_consulta.id_status_consulta == 2">
+      <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 2">
       <div  class="row consulta realizada d-flex align-items-center justify-content-between">
         <p class="texto-consulta col-8">
           {{agPaciente.agenda.data}} -
-          {{agPaciente.agenda.periodo.hora_inicial}} -
-          {{agPaciente.status_consulta.ds_status_consulta}} - Dr(a).
+          {{agPaciente.agenda.periodo.horaInicial}} -
+          {{agPaciente.statusConsulta.dsStatusConsulta}} - Dr(a).
           {{agPaciente.agenda.medico.nome}} -
-          {{agPaciente.agenda.medico.esp_med.ds_esp_med}}.
+          {{agPaciente.agenda.medico.espMed.dsEspMed}}.
+          <button class="checkin col-4">Nova Consulta</button>
         </p>
-        <button class="checkin col-6">Nova Consulta</button>
+      
       </div>
     </div>
     </div>
 
     <h4 id="titulo-canceladas">Consultas Canceladas</h4>
     <div *ngFor="let agPaciente of responseAgPacientes">
-      <div *ngIf="agPaciente.status_consulta.id_status_consulta == 3">
+      <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 3">
       <div class="row consulta cancelada d-flex align-items-center justify-content-between">
         <p class="texto-consulta col-8">
           {{agPaciente.agenda.data}} -
-          {{agPaciente.agenda.periodo.hora_inicial}} -
-          {{agPaciente.status_consulta.ds_status_consulta}} - Dr(a).
+          {{agPaciente.agenda.periodo.horaInicial}} -
+          {{agPaciente.statusConsulta.dsStatusConsulta}} - Dr(a).
           {{agPaciente.agenda.medico.nome}} -
-          {{agPaciente.agenda.medico.esp_med.ds_esp_med}}.
+          {{agPaciente.agenda.medico.espMed.dsEspMed}}.
         </p>
       </div>
     </div>
@@ -161,6 +163,7 @@
           </div>
           <div class="modal-body">
             Você tem certeza que deseja reagendar a consulta?
+            Isso irá cancelar sua consulta atual.
           </div>
           <div class="modal-footer">
             <a href="#"><button type="button" class="btn btn-secondary">Sim</button></a>
