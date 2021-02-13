@@ -24,9 +24,9 @@ export class AgendamentoConsultasComponent implements OnInit {
     this.espMedService.listarEspDisponiveis().subscribe(
       response => {
         this.responseEspMed = response;
+        console.log(response);
       }
     )
   }
-
 
 }
