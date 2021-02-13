@@ -79,3 +79,6 @@ export interface ResponseFormularioCadastro {
     formularioCadastro: FormularioCadastro
 }
 
+export interface ResponseFormularioMeusDados{
+    formularioMeusDados: FormularioMeusDados
+}

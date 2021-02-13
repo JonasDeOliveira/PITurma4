@@ -2,20 +2,25 @@
 <div class="bd-lembrete-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form #formLembretes="ngForm">
+            <form #formLembretes="ngForm"  (change)="ver()">
                 <div class="modal-header">
                     <h5 class="modal-title"> Criar Lembrete</h5>
                     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
                         <span aria-hidden="true">&times;</span>
-                      </button>
+                    </button>
                 </div>
 
+                <!-- /COMO PASSAR O VALOR DO ID DO USUÁRIO AQUI?????? -->
+                <!-- <input type="text" [value]="idUsuario" class="form-control" id="idPaciente" 
+                name="idPaciente" [(ngModel)]="request.idPaciente" #idPaciente="ngModel" required/> -->
+
+                
                 <div class="form-group col-12">
                     <div class="row mt-1">
                         <div class="col-12">
                             <label for="nmTitulo">Título</label>
                             <input type="text" class="form-control" id="nmTitulo" name="nmTitulo"
-                                [(ngModel)]="lembrete.nmTitulo" #nmTitulo="ngModel" minlength="5" required
+                                [(ngModel)]="request.nmTitulo" #nmTitulo="ngModel" minlength="5" required
                                 placeholder="Título do Lembrete">
                         </div>
                     </div>
@@ -24,7 +29,7 @@
                         <div class="col-12">
                             <label for="dsLembrete">Descrição</label>
                             <input type="text" class="form-control" id="dsLembrete" name="dsLembrete"
-                                [(ngModel)]="lembrete.dsLembrete" #dsLembrete="ngModel" minlength="5" required
+                                [(ngModel)]="request.dsLembrete" #dsLembrete="ngModel" minlength="5" required
                                 placeholder="Descrição do Lembrete">
                         </div>
                     </div>
@@ -33,24 +38,24 @@
                         <div class="col-12 col-lg-6">
                             <label>Data:</label>
                             <input type="date" class="form-control" id="dtLembrete" name="dtLembrete"
-                                [(ngModel)]="lembrete.dtLembrete" #dtLembrete="ngModel" required>
+                                [(ngModel)]="request.dtLembrete" #dtLembrete="ngModel" required>
                         </div>
                         <div class="col-12 col-lg-6">
                             <label>Hora:</label>
                             <input type="time" class="form-control" id="hrHora" name="hrHora"
-                                [(ngModel)]="lembrete.hrHora" #hrHora="ngModel" required>
+                                [(ngModel)]="request.hrHora" #hrHora="ngModel" required>
                         </div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-12 col-lg-6">
                             <label>Repete a cada:</label>
                             <input type="number" class="form-control" placeholder="1" min="0" id="nrRepeticao"
-                                name="nrRepeticao" [(ngModel)]="lembrete.nrRepeticao" #nrRepeticao="ngModel" required>
+                                name="nrRepeticao" [(ngModel)]="request.nrRepeticao" #nrRepeticao="ngModel" required>
                         </div>
                         <div class="col-12 col-lg-6">
                             <label>Intervalo:</label>
-                            <select class="form-control">
-                                <option *ngFor="let lembreteIntervalo of responseLembreteIntervalos">
+                            <select class="form-control" [(ngModel)]="request.lembreteIntervalo.idLembreteIntervalo" #idLembreteIntervalo="ngModel" name="idLembreteIntervalo">
+                                <option  *ngFor="let lembreteIntervalo of responseLembreteIntervalos" [value]="lembreteIntervalo.idLembreteIntervalo">
                                     {{lembreteIntervalo.dsLembreteIntervalo}}</option>
                             </select>
                         </div>
@@ -59,9 +64,8 @@
 
 
 
-
                 <div class="modal-footer">
-                    <button type="button" class="btn btn_salvar">Criar Lembrete</button>
+                    <button type="button" class="btn btn_salvar" (click)="registrar()">Criar Lembrete</button>
                 </div>
             </form>
         </div>

@@ -9,7 +9,8 @@ import { ClienteService } from '../cliente/shared/cliente.service';
 })
 export class CadastroClienteComponent implements OnInit {
   
-  responseFormularioCadastro: ResponseFormularioCadastro;
+  responseFormularioCadastro: any;
+  responseFormularioMeusDados: any;
 
   constructor(private clienteService: ClienteService) { }
 
@@ -21,7 +22,9 @@ export class CadastroClienteComponent implements OnInit {
     this.clienteService.getFormularioCadastro().subscribe(
       response => {
         this.responseFormularioCadastro = response;
+        console.log(response);
       }
     )
 }
+
 }
