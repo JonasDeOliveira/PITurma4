@@ -112,9 +112,9 @@
                             <div class="img-square-wrapper">
                                 <img src="http://via.placeholder.com/150" alt="Card imagem plano">
                             </div>
-                            <div class="card-body">
-                                <!-- <h4 class="card-title">{{responseContrato.planosEntity.nmPlano}}</h4> -->
-                                <!-- <p class="card-text">{{responseContrato.plano.ds_plano}}</p> -->
+                            <div *ngFor = "let contrato of responseContratos " class="card-body">
+                                <h4 class="card-title">{{contrato.plano.nmPlano}}</h4>
+                                <p class="card-text">{{contrato.plano.dsPlano}}</p>
                             </div>
                         </div>
                     </div>

@@ -11,6 +11,6 @@ export interface PlanosEntity {
     dsPlano: String;
 }
 
-export interface ResponseContrato {
-    contrato: Contrato;
+export interface ResponseContratos {
+    contratos: Contrato[];
 }
