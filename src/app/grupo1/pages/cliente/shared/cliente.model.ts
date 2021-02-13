@@ -2,6 +2,8 @@ import { Lembrete } from 'src/app/grupo1/lembretes/shared/lembrete.model'
 import { Planos } from '../../planos/shared/planos.model';
 import { Usuario } from '../../../usuario/shared/usuario.model';
 
+export interface Cliente{}
+
     export interface InputCliente {
     loginUsuario: LoginUsuario,
     usuario: Usuario,
@@ -74,11 +76,13 @@ import { Usuario } from '../../../usuario/shared/usuario.model';
         dsEmail: string
        
     }
-//GET Clientes
+//GET Clientes para Tela Cadastro
 export interface ResponseFormularioCadastro {
     formularioCadastro: FormularioCadastro
 }
 
+//GET Clientes para Tela Meus Dados
 export interface ResponseFormularioMeusDados{
     formularioMeusDados: FormularioMeusDados
 }
+

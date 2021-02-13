@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseFormularioCadastro } from '../cliente/shared/cliente.model';
+import { ResponseFormularioCadastro , FormularioCadastro} from '../cliente/shared/cliente.model';
 import { ClienteService } from '../cliente/shared/cliente.service';
 
 @Component({
@@ -10,14 +10,12 @@ import { ClienteService } from '../cliente/shared/cliente.service';
 export class CadastroClienteComponent implements OnInit {
   
   responseFormularioCadastro: any;
-  responseFormularioMeusDados: any;
-
+  
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit(): void {
     this.getFormularioCadastro();
   }
-
   getFormularioCadastro() {
     this.clienteService.getFormularioCadastro().subscribe(
       response => {

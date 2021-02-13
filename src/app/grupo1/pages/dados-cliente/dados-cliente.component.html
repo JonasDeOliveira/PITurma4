@@ -11,13 +11,14 @@
                     <div class="form-group col-md-9">
                         <label for="cadastro-nome">Nome Completo:</label>
                         <input type="text" class="form-control" id="cadastro-nome" placeholder="Digite o seu nome">
-                    </div>
+                       </div>
                     <div class="form-group col-md-3">
                         <label for="cadastro-sexo">Sexo:</label>
                         <select class="form-control" id="cadastro-sexo">
-                            <option disabled selected>Selecione</option>
-                            <option>Feminino</option>
-                            <option>Masculino</option>
+                            <option *ngFor="let formularioMeusDados of responseFormularioMeusDados.genero">
+                                {{formularioMeusDados.dsGenero}}</option>
+                            <!--<option>Feminino</option>
+                            <option>Masculino</option> -->
                         </select>
                     </div>
                 </div>
@@ -63,7 +64,10 @@
                     <div class="form-group col-md-2">
                         <label for="cadastro-estado">Estado:</label>
                         <select class="form-control" id="cadastro-estado">
-                            <option disabled selected>Selecione</option>
+                        <option *ngFor="let formularioMeusDados of responseFormularioMeusDados.ufs">
+                            {{formularioMeusDados.dsUf}}</option>
+                           
+                           <!--- <option disabled selected>Selecione</option>
                             <option>AC</option>
                             <option>AL</option>
                             <option>AP</option>
@@ -90,7 +94,7 @@
                             <option>SC</option>
                             <option>SP</option>
                             <option>SE</option>
-                            <option>TO</option>
+                            <option>TO</option> -->
                         </select>
                     </div>
                     <div class="form-group col-md-5">
@@ -175,7 +179,7 @@
                     <div class="card">
                         <img class="img-card" src="assets/grupo1/img/PREMIUM.png" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Plano Premim</h5>
+                            <h5 class="card-title">Plano Premium</h5>
                             <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
                             <p class="card-text">Consulta com o Clínico Gera</p>
                             <p class="card-text">Consulta com Especialistas</p>
