@@ -12,16 +12,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MinhasConsultasComponent implements OnInit {
 
-  constructor(public agPacienteService: AgPacienteService) { }
+  constructor(
+    
+    public agPacienteService: AgPacienteService,
+    private router: Router
+    ) {
+    
+   }
 
-  
-  private route: ActivatedRoute
-  private router: Router
-  
+
   responseAgPacientes : ResponseAgPacientes [];
-  
-  idAgPaciente: number;
-  request: any;
+ 
 
   //implementar id usuario no parametro
 
@@ -31,20 +32,31 @@ export class MinhasConsultasComponent implements OnInit {
 
   listarAgPacientePorUsuario(idUsuario : number) {
     this.agPacienteService.buscarAgPacientes(idUsuario).subscribe(
-    
       response => {
         this.responseAgPacientes = response;
       }
     )  
   }
 
-  atualizarAgPaciente() {
-    this.agPacienteService.alterarAgPacientes (this.idAgPaciente, this.request).subscribe(
+  atualizarAgPaciente(idAgPaciente : number) {
+    this.agPacienteService.alterarAgPacientes(idAgPaciente).subscribe(
       response => {
         alert('consulta cancelada com sucesso');
-        this.router.navigate(['/minhas-consultas']);
+        console.log(this.router);
+        // this.listarAgPacientePorUsuario(14);
+        this.router.navigate(['minhas-consultas']);
       },
-      err => alert('algo inesperado aconteceu')
+      err => {
+        console.log(err.message);
+        alert('erro ao cancelar consultar')}
+    
+    
     )
-  }
+    }
 }
+
+
+// if(confirm('Deseja remover a tarefa?')) {
+//   this.tarefaService.deleteTarefa(tarefaId).subscribe(
+//     response => {
+//       this.listarTodas();

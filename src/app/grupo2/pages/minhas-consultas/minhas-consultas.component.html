@@ -61,7 +61,8 @@
       <div>
         <button class="checkin col-2" data-toggle="modal" data-target="#checkinModal">Check-in</button>
         <button class="remarcar col-2" data-toggle="modal" data-target="#remarcarModal">Reagendar</button>
-        <button class="col-2 btn-canc" data-toggle="modal" data-target="#cancelarModal" value="AtualizarAgPaciente" (click)="atualizarAgPaciente()">Cancelar</button>
+        <button class="col-2 btn-canc" data-toggle="modal" data-target="#cancelarModal" 
+        value="AtualizarAgPaciente" (click)="atualizarAgPaciente(agPaciente.idAgPaciente)">Cancelar</button>
       </div>
       </div>
     </div>
