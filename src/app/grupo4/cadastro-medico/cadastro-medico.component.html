@@ -37,7 +37,7 @@
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="telefone-medico" class="label-form">Telefone</label>
-                <input type="text" class="form-control style-input" id="telefone-medico" name="dsContato" [(ngModel)]="request.contatos.dsContato" #dsContato="ngModel" placeholder="DDD + telefone" required>
+                <input type="text" class="form-control style-input" id="telefone-medico" name="dsContato" [(ngModel)]="request.contatos[0].dsContato" #dsContato="ngModel" placeholder="DDD + telefone" required>
             </div>
         </div>
         <div class="row">
@@ -57,15 +57,15 @@
         <div class="row">
             <div class="form-group col-12 col-md-2">
                 <label class="label-form" for="cep">CEP</label>
-                <input type="text" class="form-control style-input" id="cep" name="nrCep" [(ngModel)]="request.enderecos.endereco.nrCep" #nrCep="ngModel" placeholder="00000-000" required >
+                <input type="text" class="form-control style-input" id="cep" name="nrCep" [(ngModel)]="request.enderecos[0].nrCep" #nrCep="ngModel" placeholder="00000-000" required >
             </div>
             <div class="form-group col-12 col-md-4">
                 <label for="endereco-medico" class="label-form">Endereço Comercial</label>
-                <input type="text" class="form-control style-input" id="endereco-medico" name="dsEndereco" [(ngModel)]="request.enderecos.dsEndereco" #dsEndereco="ngModel" placeholder="Ex.: Rua Joaquina 1234" required>
+                <input type="text" class="form-control style-input" id="endereco-medico" name="dsEndereco" [(ngModel)]="request.enderecos[0].dsEndereco" #dsEndereco="ngModel" placeholder="Ex.: Rua Joaquina 1234" required>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="Bairro" class="label-form">Bairro</label>
-                <input type="text" class="form-control style-input" id="bairro" name="dsBairro" [(ngModel)]="request.enderecos.endereco.dsBairro" #dsBairro="ngModel" placeholder="Ex.:Jd.Mairi" required>
+                <input type="text" class="form-control style-input" id="bairro" name="dsBairro" [(ngModel)]="request.enderecos[0].dsBairro" #dsBairro="ngModel" placeholder="Ex.:Jd.Mairi" required>
             </div>
             <div class="form-group col-12 col-md-1">
                 <label class="label-form" for="uf">UF</label>
@@ -75,7 +75,7 @@
             </div>
             <div class="form-group col-12 col-md-2">
                 <label class="label-form" for="cidade">Cidade</label>
-                <select class="form-control style-input" id="cidade" name="idCidade" [(ngModel)]="request.enderecos.endereco.idCidade" #idCidade="ngModel" required>
+                <select class="form-control style-input" id="cidade" name="idCidade" [(ngModel)]="request.enderecos[0].idCidade" #idCidade="ngModel" required>
                     <option *ngFor="let cidade of dadosResposta.cidades"[value]="cidade.dsCidade">{{cidade.dsCidade}}</option>
                     
                 </select>

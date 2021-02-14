@@ -79,13 +79,13 @@
                     <div class="row mt-2">
                         <div class="form-group col-11">
                             <label for="exame" class="label-form">Exame</label>
-                            <select type="text" class="form-control style-input select-form" id="exame" required [(ngModel)] = "select">
+                            <select type="text" class="form-control style-input select-form" id="exame" name = "listaExame" required [(ngModel)]="select">
                                 <option>Selecione um tipo de exame</option>
-                                <option *ngFor="let exam of responseTelaSolicitacao.listaTipoExame">{{exam.dsTipoExame}}</option>
+                                <option *ngFor="let exam of responseTelaSolicitacao.listaTipoExame" [value]="exam.dsTipoExame">{{exam.dsTipoExame}}</option>
                             </select>
                         </div>
                         <div class="form-group col-1">
-                            <button type="button" class="btn-add"  (click)=addItem()></button>
+                            <button type="button" class="btn-add" (click)=addItem()></button>
                         </div>
                     </div>
                 </div>

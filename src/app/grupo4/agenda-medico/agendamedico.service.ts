@@ -15,7 +15,6 @@ export class AgendamedicoService {
   
   objMedico = JSON.parse(localStorage.getItem("medico"));
 
-  //LISTA AGENDAMENTOS PARA A DATA ATUAL COM STATUS AGENDADO (lista ao lado do calendário)
   getAgendamentos() {
     var data = new Date(Date.now()).toISOString().slice(0,10);
 
@@ -25,11 +24,8 @@ export class AgendamedicoService {
     return this.http.get(URL);
   }
 
-
-  //EXCLUI AGENDAMENTO COM ID ESPECÍFICO (clica no 'x' do lado do agendamento)
   cancelarAgendamento(idAgPaciente: number): Observable<any>{
     const URL = `${this.API2}/${idAgPaciente}`;   
     return this.http.delete<any>(URL);
   }
-  
 }
