@@ -113,14 +113,15 @@
         <div class="containerEsq">
             <!-- Dados do cartão de crédito -->
             <div class="dadosCC">
-                <form class="formDadosCC">
+                <form>
+                <!-- <form [(ngModel)]="cartao" #formCartao="ngForm" class="formDadosCC"> -->
                     <!-- linha 1 - Número do cartão -->
                     <div class="form-row">
-                        <div class="form-group col-12">
-                            <label for="numeroCC">Número do cartão*</label>
-                            <input type="text" class="form-control" id="numeroCC" placeholder="5555 5555 5555 5555"
+                        <!-- <div class="form-group col-12">
+                            <label  for="numeroCC">Número do cartão*</label>
+                            <input *ngFor ="let cartao of responseCartao" [ngValue]="cartao.nrCartao" name="nrCartao" #iptNrCartao ="ngModel" type="text" class="form-control" id="numeroCC" 
                                 required>
-                        </div>
+                        </div> -->
 
                     </div>
 
