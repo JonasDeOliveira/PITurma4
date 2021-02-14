@@ -78,13 +78,14 @@ h1 {
 .btn-active {
     background-color: #319A75;
     color: #FFFFFF;
-    border-radius: 10px;
+    border-radius: 15px;
     font-weight: 600;
     width: 200px;
     height: 50px;
     font-size: 20px;
     padding: 0px;
     border: 0px;
+    margin: 5px;
 }
 
 .btn-active:hover{
