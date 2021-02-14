@@ -14,6 +14,7 @@ import {CadastromedicoService} from './cadastro-medico/cadastromedico.service';
 import { DashboardmedicoService } from './dashboard-medico/dashboardmedico.service';
 import { SolicitacaoexameService } from './solicitacao-exames/solicitacaoexame.service';
 import { PrescrevermedicacaoService } from './prescrever-medicacao/prescrevermedicacao.service';
+import { AgendamedicoService } from './agenda-medico/agendamedico.service';
 import { FormsModule } from '@angular/forms';
 
 
@@ -39,7 +40,8 @@ import { FormsModule } from '@angular/forms';
     CadastromedicoService,
     DashboardmedicoService,
     SolicitacaoexameService,
-    PrescrevermedicacaoService
+    PrescrevermedicacaoService,
+    AgendamedicoService
   ]
 })
 export class Grupo4Module { }

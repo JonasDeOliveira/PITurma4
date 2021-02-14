@@ -95,204 +95,22 @@
 
         <!-- Início Agenda do Dia -->
         <div class="col-12 col-md-6">
-            <h1 class="text-center title-agenda">Agenda 18/12</h1>
+            <h1 class="text-center">{{data|date:"dd/MM/yyyy"}}</h1>
             <table class="table">
                 <tbody>
-                    <tr>
-                        <td>7h</td>
-                        <td>José Filho</td>
+                    <tr *ngFor="let agendamento of agendamentosResposta">
+                        <td>{{agendamento.agenda.periodo.horaInicial}}</td>
+                        <td>{{agendamento.paciente.nmNome}}</td>
                         <td>
-                            Online
+                            {{agendamento.agenda.tipoConsulta.dsTipoConsulta}}
                         </td>
                         <td class="confirmado">
-                            Confirmado
+                            {{agendamento.statusConsulta.dsStatusConsulta}}
                         </td>
-                        <td>
+                        <!-- <td>
                             <button type="button" class="btn-cancelar"
                                  (click)="open(cancelar)"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>8h</td>
-                        <td>Aline Miller</td>
-                        <td>
-                            Online
-                        </td>
-                        <td class="confirmado">
-                            Confirmado
-                        </td>
-                        <td>
-                            <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>9h</td>
-                        <td>Elaine Moura</td>
-                        <td>
-                            Online
-                        </td>
-                        <td class="pendente">
-                            Pendente
-                        </td>
-                        <td>
-                            <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>10h</td>
-                        <td>Maria Santos </td>
-                        <td>
-                            Online
-                        </td>
-                        <td class="confirmado">
-                            Confirmado
-                        </td>
-                        <td>
-                            <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>11h</td>
-                        <td>Renato Oliveira</td>
-                        <td>
-                            Presencial
-                        </td>
-                        <td class="pendente">
-                            Pendente
-                        </td>
-                        <td>
-                            <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>12h</td>
-                        <td>Beatriz Lima</td>
-                        <td>
-                            Online
-                        </td>
-                        <td class="confirmado">
-                            Confirmado
-                        </td>
-                        <td>
-                            <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>14h</td>
-                        <td>Marcelo Sousa</td>
-                        <td>
-                            Online
-                        </td>
-                        <td class="pendente">
-                            Pendente
-                        </td>
-                        <td>
-                            <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>15h</td>
-                        <td>Tiago Cardoso</td>
-                        <td>
-                            Presencial
-                        </td>
-                        <td class="confirmado">
-                            Confirmado
-                        </td>
-                        <td>
-                            <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>16h</td>
-                        <td>Paula Silva</td>
-                        <td>
-                            Online
-                        </td>
-                        <td class="confirmado">
-                            Confirmado
-                        </td>
-                        <td>
-                            <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>17h</td>
-                        <td>Luisa Pereira</td>
-                        <td>
-                            Online
-                        </td>
-                        <td class="confirmado">
-                            Confirmado
-                        </td>
-                        <td>
-                            <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>18h</td>
-                        <td>Dimas Silva</td>
-                        <td>
-                            Presencial
-                        </td>
-                        <td class="confirmado">
-                            Confirmado
-                        </td>
-                        <td>
-                            <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>19h</td>
-                        <td>Antônio Nunes</td>
-                        <td>
-                            Online
-                        </td>
-                        <td class="pendente">
-                            Pendente
-                        </td>
-                        <td>
-                            <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>20h</td>
-                        <td>Ana Teixeira</td>
-                        <td>
-                            Online
-                        </td>
-                        <td class="confirmado">
-                            Confirmado
-                        </td>
-                        <td>
-                            <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>21h</td>
-                        <td>Laura Monteiro</td>
-                        <td>
-                            Online
-                        </td>
-                        <td class="pendente">
-                            Pendente
-                        </td>
-                        <td>
-                            <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td>
+                        </td> -->
                     </tr>
                 </tbody>
             </table>
