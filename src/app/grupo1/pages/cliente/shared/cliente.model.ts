@@ -76,13 +76,24 @@ export interface Cliente{}
         dsEmail: string
        
     }
-//GET Clientes para Tela Cadastro
-export interface ResponseFormularioCadastro {
-    formularioCadastro: FormularioCadastro
-}
 
-//GET Clientes para Tela Meus Dados
-export interface ResponseFormularioMeusDados{
-    formularioMeusDados: FormularioMeusDados
-}
+    //----------------------------------------------------
+    //GET Clientes para Tela Cadastro
+    export interface ResponseFormularioCadastro {
+        formularioCadastro: FormularioCadastro
+    }
+
+    //----------------------------------------------------
+    //GET Clientes para Tela Meus Dados
+    export interface ResponseFormularioMeusDados{
+        formularioMeusDados: FormularioMeusDados
+    }
+
+    //----------------------------------------------------
+    export interface ResultData {
+        status: number;
+        mensagem: String;
+        retorno: any;
+        dtTimestampErro: Date;
+    }
 
