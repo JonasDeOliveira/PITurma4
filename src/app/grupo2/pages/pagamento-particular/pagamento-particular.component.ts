@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ResponseCartao } from '../../shared/model/cartao';
+import { PagamentoCartao } from '../../shared/model/pagamentoCartao';
 import { CartaoService } from '../../shared/services/cartao.service';
+import { PagamentoCartaoServiceService } from '../../shared/services/pagamento-cartao-service.service';
 
 @Component({
   selector: 'app-pagamento-particular',
@@ -9,10 +12,23 @@ import { CartaoService } from '../../shared/services/cartao.service';
 })
 export class PagamentoParticularComponent implements OnInit {
 
-  constructor(public cartaoService: CartaoService) { }
+  constructor(
+    public cartaoService: CartaoService,
+    public pagamentoCartaoService: PagamentoCartaoServiceService,
+    private router: Router 
+    ) { }
+
+  request: PagamentoCartao = {
+    idCartao: 1,
+    idAgPaciente: 3,
+    parcelas: 1,
+    }
+
   responseCartao :ResponseCartao[];
+
+
   ngOnInit(): void {
-    this.listarCartao(40);
+    this.listarCartao(1);
   }
 
   listarCartao(idUsuario: number){
@@ -20,4 +36,18 @@ export class PagamentoParticularComponent implements OnInit {
       response => {this.responseCartao = response;}
     )
   }
+      
+  cadastrarPagtoCartao() {
+    this.pagamentoCartaoService.cadastrarCartao(this.request).subscribe(
+      response => {
+        alert('Cartão cadastrado com sucesso');
+        this.router.navigate(['/pagamento-particular']);
+      },
+      error => {
+        alert('algo inesperado aconteceu');
+      }
+    )
+  }
 }
+
+

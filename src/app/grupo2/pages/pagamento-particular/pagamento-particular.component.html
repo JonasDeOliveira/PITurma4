@@ -183,7 +183,7 @@
                             <label for="numParcelas">Opções de parcelamento*</label>
                             <select id="numParcelas" class="form-control">
                                 <option selected>Escolha o número de parcelas</option>
-                                <option>...</option>
+                                <option>1</option>
                             </select>
                         </div>
                     </div>
@@ -227,7 +227,7 @@
                 <div class="btnConcluir">
                     <div class="col text-center">
                         <a routerLink='/confirmacao-consulta'><button
-                                class="btn-active clicavel">Confirmar</button></a>
+                                class="btn-active clicavel" value="CadastrarParticular" (click)="cadastrarPagtoCartao()">Confirmar</button></a>
                     </div>
                 </div>
             </div>

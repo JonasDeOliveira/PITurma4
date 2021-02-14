@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ResponseContratos } from '../../shared/model/contrato';
+import { PagamentoPlano } from '../../shared/model/pagamentoPlano';
 import { ContratoService } from '../../shared/services/contrato-service';
+import { PagamentoPlanoServiceService } from '../../shared/services/pagamento-plano-service.service';
 
 
 @Component({
@@ -9,8 +12,18 @@ import { ContratoService } from '../../shared/services/contrato-service';
   styleUrls: ['./pagamento-plano.component.css']
 })
 export class PagamentoPlanoComponent implements OnInit {
+ 
+  constructor(
+  public contratoService: ContratoService,
+  public pagamentoPlanoService: PagamentoPlanoServiceService,
+  private router: Router 
 
-  constructor(public contratoService: ContratoService) { }
+  ) { }
+
+  request: PagamentoPlano = {
+    idUsuario: 14,
+    idAgPaciente: 3
+  }
 
   responseContratos : ResponseContratos [];
 
@@ -26,6 +39,18 @@ export class PagamentoPlanoComponent implements OnInit {
       }
     )
 
+    }
+    
+    cadastrarPagtoPlano() {
+      this.pagamentoPlanoService.cadastrarPlano(this.request).subscribe(
+        response => {
+          alert('plano cadastrado com sucesso');
+          this.router.navigate(['/pagamento-plano']);
+        },
+        error => {
+          alert('algo inesperado aconteceu');
+        }
+      )
     }
   }
 
