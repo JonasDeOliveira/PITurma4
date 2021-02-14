@@ -1,5 +1,5 @@
 export interface Cadastro {
-  
+    idUsuario: null;
     espMed : EspMed;
     uf : Uf ;
     nome: string;

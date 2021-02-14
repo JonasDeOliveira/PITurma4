@@ -15,9 +15,9 @@
             <h3>Dados Pessoais</h3>
         </div>
         <div class="row">
-            <div class="form-group col-12 col-md-4">
+            <div class="form-group col-12 col-md-3">
                 <label class="label-form" for="Especialidade">Especialidade</label>
-                <select class="form-control style-input" id="Especialidade" name="espMed" [(ngModel)]="request.espMed.idEspMed" #espMed="ngModel" required>
+                <select class="form-control style-input" id="Especialidade" name="espMed" [(ngModel)]="request.espMed.idEspMed" #espMed="ngModel" placeholder="selecione" required>
                     <option *ngFor="let esp of dadosResposta.especialidades" [value]="esp.idEspMed" >{{esp.dsEspMed}}</option>
                 </select>
             </div>
@@ -25,7 +25,7 @@
                 <label for="crm" class="label-form">CRM</label>
                 <input type="text" class="form-control style-input" id="nrCrm" name="nrCrm" [(ngModel)]="request.nrCrm" #nrCrm="ngModel" placeholder="0000000" required>
             </div>
-            <div class="form-group col-12 col-md-1">
+            <div class="form-group col-12 col-md-2">
                 <label class="label-form" for="uf-crm">UF</label>
                 <select class="form-control style-input" id="uf-crm" name="idUf" [(ngModel)]="request.uf.idUf" #idUf="ngModel" required>
                     <option *ngFor="let uf of dadosResposta.ufs" [value]="uf.idUf">{{uf.dsUf}}</option>
@@ -59,7 +59,7 @@
                 <label class="label-form" for="cep">CEP</label>
                 <input type="text" class="form-control style-input" id="cep" name="nrCep" [(ngModel)]="request.enderecos[0].nrCep" #nrCep="ngModel" placeholder="00000-000" required >
             </div>
-            <div class="form-group col-12 col-md-4">
+            <div class="form-group col-12 col-md-3">
                 <label for="endereco-medico" class="label-form">Endereço Comercial</label>
                 <input type="text" class="form-control style-input" id="endereco-medico" name="dsEndereco" [(ngModel)]="request.enderecos[0].dsEndereco" #dsEndereco="ngModel" placeholder="Ex.: Rua Joaquina 1234" required>
             </div>
@@ -67,7 +67,7 @@
                 <label for="Bairro" class="label-form">Bairro</label>
                 <input type="text" class="form-control style-input" id="bairro" name="dsBairro" [(ngModel)]="request.enderecos[0].dsBairro" #dsBairro="ngModel" placeholder="Ex.:Jd.Mairi" required>
             </div>
-            <div class="form-group col-12 col-md-1">
+            <div class="form-group col-12 col-md-2">
                 <label class="label-form" for="uf">UF</label>
                 <select class="form-control style-input" id="uf" required>
                     <option *ngFor="let uf of dadosResposta.ufs">{{uf.dsUf}}</option>
