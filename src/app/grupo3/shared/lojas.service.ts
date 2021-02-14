@@ -17,6 +17,5 @@ export class LojaService {
   getLojas() {
     return this.http.get<ResponseLojas[]>(this.API);
   }
-
   
 }

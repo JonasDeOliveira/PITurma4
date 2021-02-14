@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Servicos, ResponseServicos } from '../shared/servico.model';
+import { ServicoService } from '../shared/servico.service';
 
 @Component({
   selector: 'app-agservico',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgservicoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private servicoService : ServicoService) { }
+
+  responseServicos : ResponseServicos[];
 
   ngOnInit(): void {
+    this.listarServicos();
+  }
+
+  listarServicos(){
+    this.servicoService.getServicos().subscribe(
+      response => {
+        this.responseServicos = response;
+      }
+    )
   }
 
 }

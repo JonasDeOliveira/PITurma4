@@ -33,8 +33,8 @@
             <div *ngFor = "let loja of responseLojas" class="card">
                 <div class="card-body">
                   <h5 class="card-title-drogasil"> {{loja.nmLoja}} </h5>
-                  <p class="card-text">{{loja.endereco}}</p>
-                  <p class="card-text">{{loja.contato}}</p>
+                  <p class="card-text"  *ngFor= "let endereco of loja.enderecos" >{{endereco.dsEndereco}}, Bairro: {{endereco.dsBairro}}</p>
+                  <p class="card-text"  *ngFor= "let contato of loja.contatos">{{contato.nrDdd}} {{contato.dsContato}}</p>
                 </div>
             </div>
         </div>

@@ -13,10 +13,7 @@
                     <label for="servico"><h5>1. Escolha o serviço</h5></label>
                     <select class="form-control" type="text" id="servico" required>
                         <option selected>Escolha a opção</option>
-                        <option>Aplicação de vacina</option>
-                        <option>Aplicação de medicamneto</option>
-                        <option>Aferição de pressão</option>
-                        <option>Teste de glicemia</option>
+                        <option  *ngFor = "let servico of responseServicos">{{servico.nome}} - R${{servico.preco}},00</option>
                     </select>
                     <div style="display: none;" class="alert alert-danger alert-servico" role="alert">
                         Campo Obrigatório
