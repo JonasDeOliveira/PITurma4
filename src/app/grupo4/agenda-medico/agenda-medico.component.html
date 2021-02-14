@@ -22,7 +22,7 @@
             <div>
                 <h1 class="text-center title-calendario">Calendário</h1>
                 <div class="calendario">
-
+                    <button type="button" class="btn btn-danger">HOJE</button>
                 </div>
             </div>
             <!-- Modal Abrir Agenda -->
@@ -107,17 +107,17 @@
                         <td class="confirmado">
                             {{agendamento.statusConsulta.dsStatusConsulta}}
                         </td>
-                        <!-- <td>
+                        <td>
                             <button type="button" class="btn-cancelar"
-                                 (click)="open(cancelar)"></button>
-                        </td> -->
+                            (click)="remover(agendamento.idAgPaciente)"></button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
         <!-- Início Modal Cancelar Consulta-->
-        <ng-template #cancelar let-c="close" let-d="dismiss">
+        <!-- <ng-template #cancelar let-c="close" let-d="dismiss">
             <div class="modal-content" id="modal-cancelar">
                 <div class="modal-header">
                     <h4 class="modal-title" id="modal-basic-title">Atenção!</h4>
@@ -129,10 +129,10 @@
                     <p>Deseja realmente cancelar a consulta?</p>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-verde" (click)="c('Save click')">Sim</button>
+                    <button type="button" class="btn btn-verde" (click)="remover(agendamento.idAgPaciente)">Sim</button>
                   </div>
             </div>
-        </ng-template>
+        </ng-template> -->
         <!-- Fim Modal Cancelar Consulta-->
 
         <!-- Fim Agenda do Dia -->

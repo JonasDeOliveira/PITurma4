@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AgendamedicoService } from './agendamedico.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agenda-medico',
@@ -10,7 +11,9 @@ import { AgendamedicoService } from './agendamedico.service';
 })
 export class AgendaMedicoComponent implements OnInit {
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private agendaService : AgendamedicoService) {
+  constructor(config: NgbModalConfig, private modalService: NgbModal, 
+    private agendaService : AgendamedicoService, private router: Router) {
+      
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -27,7 +30,6 @@ export class AgendaMedicoComponent implements OnInit {
   }
 
   getAgendamentos(){
-  
     this.agendaService.getAgendamentos().subscribe(
       resposta => {
         this.agendamentosResposta = resposta;
@@ -35,7 +37,17 @@ export class AgendaMedicoComponent implements OnInit {
 
         this.data = new Date(Date.now()).toISOString().slice(0,10);
       }
-    );
+    )
+  }
+
+  remover(idAgPaciente: number): void {
+    if(confirm('Deseja cancelar a consulta?')) {
+      this.agendaService.cancelarAgendamento(idAgPaciente).subscribe(
+        response => {
+          this.router.navigate(['/agenda/medico']); 
+        }
+      )
+    }
   }
 
 }
