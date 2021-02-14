@@ -22,75 +22,91 @@
             <div>
                 <h1 class="text-center title-calendario">Calendário</h1>
                 <div class="calendario">
-                    <button type="button" class="btn btn-danger">HOJE</button>
+                    <ng-template #teste let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modal-basic-title">Teste</h4>
+                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{data|date:"dd/MM/yyyy"}}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+                        </div>
+                    </ng-template>
+                    <button class="btn btn-lg btn-danger" (click)="open(teste)">HOJE</button>
                 </div>
             </div>
             <!-- Modal Abrir Agenda -->
             <ng-template #abrir let-c="close" let-d="dismiss">
                 <div class="modal-content modal-abrir-agenda">
                     <div class="modal-header">
-                        <h2 class="modal-title" id="modal-basic-title">Selecione o(s) horário(s) e o tipo de consulta</h2>
+                        <h2 class="modal-title" id="modal-basic-title">Selecione o(s) horário(s) e o tipo de consulta
+                        </h2>
                         <button type="button" class="close" aria-label="Close" (click)="c('Save click')">
-                          <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                         </button>
-                      </div>
-                      <div class="modal-body modal-horarios">
-                          <div class="manha">
-                              <h3 class="title-horario">Manhã: </h3>
-                              <button type="button" class="btn btn-outline-success button-hora">07:00</button>
-                              <button type="button" class="btn btn-outline-success button-hora">08:00</button>
-                              <button type="button" class="btn btn-outline-success button-hora">09:00</button>
-                              <button type="button" class="btn btn-outline-success button-hora">10:00</button>
-                              <button type="button" class="btn btn-outline-success button-hora">11:00</button>
-                          </div>
-                          <div class="tarde">
-                              <h3 class="title-horario">Tarde: </h3>
-                              <button type="button" class="btn btn-outline-success button-hora">12:00</button>
-                              <button type="button" class="btn btn-outline-success button-hora">13:00</button>
-                              <button type="button" class="btn btn-outline-success button-hora">14:00</button>
-                              <button type="button" class="btn btn-outline-success button-hora">15:00</button>
-                              <button type="button" class="btn btn-outline-success button-hora">16:00</button>
-                              <button type="button" class="btn btn-outline-success button-hora">17:00</button>
-                          </div>
-                          <div class="noite">
-                              <h3 class="title-horario">Noite: </h3>
-                              <button type="button" class="btn btn-outline-success button-hora">18:00</button>
-                              <button type="button" class="btn btn-outline-success button-hora">19:00</button>
-                              <button type="button" class="btn btn-outline-success button-hora">20:00</button>
-                              <button type="button" class="btn btn-outline-success button-hora">21:00</button>
-                          </div>
-                          <div class="radio-tipo-consulta">
-                              <h3 class="title-tipo-consulta">Tipo de consulta: </h3>
-                          <div class="form-check form-check-inline-online">
-                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                                  value="option1">
-                              <label class="form-check-label" for="inlineRadio1">Online</label>
-                          </div>
-                          <div class="form-check form-check-inline-presencial">
-                              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                                  value="option2">
-                              <label class="form-check-label" for="inlineRadio2">Presencial</label>
-                          </div>
-                          </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn button-limpar" (click)="c('Save click')">Limpar seleção</button>
+                    </div>
+                    <div class="modal-body modal-horarios">
+                        <div class="manha">
+                            <h3 class="title-horario">Manhã: </h3>
+                            <button type="button" class="btn btn-outline-success button-hora">07:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">08:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">09:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">10:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">11:00</button>
+                        </div>
+                        <div class="tarde">
+                            <h3 class="title-horario">Tarde: </h3>
+                            <button type="button" class="btn btn-outline-success button-hora">12:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">13:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">14:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">15:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">16:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">17:00</button>
+                        </div>
+                        <div class="noite">
+                            <h3 class="title-horario">Noite: </h3>
+                            <button type="button" class="btn btn-outline-success button-hora">18:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">19:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">20:00</button>
+                            <button type="button" class="btn btn-outline-success button-hora">21:00</button>
+                        </div>
+                        <div class="radio-tipo-consulta">
+                            <h3 class="title-tipo-consulta">Tipo de consulta: </h3>
+                            <div class="form-check form-check-inline-online">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                    value="option1">
+                                <label class="form-check-label" for="inlineRadio1">Online</label>
+                            </div>
+                            <div class="form-check form-check-inline-presencial">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                    value="option2">
+                                <label class="form-check-label" for="inlineRadio2">Presencial</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn button-limpar" (click)="c('Save click')">Limpar
+                            seleção</button>
                         <button type="button" class="btn button-salvar" (click)="c('Save click')">Salvar</button>
                     </div>
                 </div>
-              </ng-template>
-              <!-- Fim Modal Abrir Agenda -->
+            </ng-template>
+            <!-- Fim Modal Abrir Agenda -->
 
-              <div class="buttons-calendario">
+            <div class="buttons-calendario">
                 <button class="btn btn-abrir-agenda" (click)="open(abrir)">Abrir Agenda</button>
                 <button type="button" class="btn btn-consultar-agenda" data-toggle="modal"
                     data-target="#modalConsultarAgenda">
                     Consultar Agenda
                 </button>
-              </div>
-            
+            </div>
+
         </div>
-        
+
         <!-- Fim Calendário -->
 
         <!-- Início Agenda do Dia -->
@@ -109,7 +125,7 @@
                         </td>
                         <td>
                             <button type="button" class="btn-cancelar"
-                            (click)="remover(agendamento.idAgPaciente)"></button>
+                                (click)="remover(agendamento.idAgPaciente)"></button>
                         </td>
                     </tr>
                 </tbody>
