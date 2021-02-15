@@ -1,25 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { Lojas, ResponseLojas } from '../shared/lojas.model';
 import { LojaService } from '../shared/lojas.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-sustentabilidade',
   templateUrl: './sustentabilidade.component.html',
-  styleUrls: ['./sustentabilidade.component.css']
+  styleUrls: ['./sustentabilidade.component.css'],
+  providers: [NgbModalConfig, NgbModal]
 })
 
 export class SustentabilidadeComponent implements OnInit {
 
-  constructor(private lojaService : LojaService) { }
+  local: string;
+
+  constructor(private lojaService : LojaService) { 
+  }
 
   responseLojas : ResponseLojas[];
 
   ngOnInit(): void {
-    this.listarLoja();
+    //this.listarLoja();
   }
 
   listarLoja(){
     this.lojaService.getLojas().subscribe (
+      response => {
+        this.responseLojas = response;
+      }
+    )
+  }
+
+  buscarLojaPorLocal(){
+    this.lojaService.getLojasPorLocalidade(this.local).subscribe (
       response => {
         this.responseLojas = response;
       }

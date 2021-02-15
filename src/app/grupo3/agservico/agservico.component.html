@@ -13,10 +13,7 @@
                     <label for="servico"><h5>1. Escolha o serviço</h5></label>
                     <select class="form-control" type="text" id="servico" required>
                         <option selected>Escolha a opção</option>
-                        <option>Aplicação de vacina</option>
-                        <option>Aplicação de medicamneto</option>
-                        <option>Aferição de pressão</option>
-                        <option>Teste de glicemia</option>
+                        <option  *ngFor = "let servico of responseServicos">{{servico.nome}} - R${{servico.preco}},00</option>
                     </select>
                     <div style="display: none;" class="alert alert-danger alert-servico" role="alert">
                         Campo Obrigatório
@@ -27,51 +24,29 @@
             <div class="row align-items-end">
                 <div class="form-group col-12 col-lg-8 pt-3">
                     <label for="local"><h5>2. Selecione a localidade</h5></label>
-                    <input class="form-control" type="text" id="local" placeholder="Busque por rua, bairro ou cidade" required> 
+                    <input class="form-control" type="text" id="local" [(ngModel)]="local" name ="local" placeholder="Busque por rua, bairro ou cidade" required> 
                     <div style="display: none;" class="alert alert-danger alert-local" role="alert">
                         Campo Obrigatório
                     </div>
                 </div>
                 <div class="form-group col-12 col-lg-4 pt-3">
                     
-                    <button type="button" class="btn btn-success btn-verde" id="btn-ok">
+                    <button type="button" class="btn btn-success btn-verde" id="btn-ok" (click)="buscarLojaPorLocal()">
                         <label for="mostrar_lojas" class="sem-margin">OK</label>
                     </button>
                 </div>
             </div>
-            <input type="radio" name="mostrar_lojas" id="mostrar_lojas">
-            <div class="row lojas" id="abrir-lojas">
-                <div class="form-group col-12 col-lg-4 pt-3">
-                    <div class="card" id = "c1" style="width: 18rem;">
+
+             <!-- cards com endereços encontrados -->
+          
+            <div class="row">
+                <div class="form-group col-12 col-lg-4 pt-3 ml-1">
+                    <div class="card" *ngFor = "let loja of responseLojas" style="width: 18rem;">
                         <div class="card-body">
-                          <h5 class="card-title">Loja</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Seg à Sáb 07:30 às 23:30</h6>
-                          <h6 class="card-subtitle mb-2 text-muted">Domingos 00:30 às 00:30</h6>                       
-                          <p class="card-text">AVENIDA MAR FLORIANO PEIXOTO, 12 - GONZAGA - CEP: 11060300 - SANTOS - SP</p>
-                          <button type="button" class="btn btn-success btn-verde btn-seleciona">Selecione</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-12 col-lg-4 pt-3">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Loja</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Seg à Sáb 07:30 às 23:30</h6>
-                            <h6 class="card-subtitle mb-2 text-muted">Domingos 00:30 às 00:30</h6>                       
-                            <p class="card-text">AVENIDA MAR FLORIANO PEIXOTO, 12 - GONZAGA - CEP: 11060300 - SANTOS - SP</p>
-                            <button type="button" class="btn btn-success btn-verde">Selecione</button>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="form-group col-12 col-lg-4 pt-3">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Loja</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Seg à Sáb 07:30 às 23:30</h6>
-                            <h6 class="card-subtitle mb-2 text-muted">Domingos 00:30 às 00:30</h6>                       
-                            <p class="card-text">AVENIDA MAR FLORIANO PEIXOTO, 12 - GONZAGA - CEP: 11060300 - SANTOS - SP</p>
-                            <button type="button" class="btn btn-success btn-verde">Selecione</button>
+                        <h5 class="card-title">{{loja.nmLoja}} </h5>
+                        <p class="card-text" *ngFor= "let endereco of loja.enderecos"> {{endereco.dsEndereco}}, Bairro: {{endereco.dsBairro}} - CEP: {{endereco.nrCep}} - {{endereco.idCidade}}  - SP </p>
+                        <h6 class="card-subtitle mb-2 text-muted" *ngFor= "let contato of loja.contatos">{{contato.nrDdd}} {{contato.dsContato}}</h6>
+                        <button type="button" class="btn btn-success btn-verde btn-seleciona">Selecione</button>
                         </div>
                     </div>
                 </div>

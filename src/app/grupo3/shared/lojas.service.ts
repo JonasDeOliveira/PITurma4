@@ -13,10 +13,14 @@ export class LojaService {
   constructor(private http: HttpClient) { }
 
   private readonly API = 'http://localhost:8080/loja';
+  private readonly API2 = 'http://localhost:8080/lojas/';
 
   getLojas() {
     return this.http.get<ResponseLojas[]>(this.API);
   }
-
   
+  getLojasPorLocalidade(local: string): Observable<any> {
+    return this.http.get<ResponseLojas[]>(this.API2 + local);
+  }
+
 }

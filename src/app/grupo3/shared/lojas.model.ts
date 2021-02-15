@@ -1,7 +1,8 @@
 export interface Lojas {
+    idLoja: number;
     nmLoja: string;
-    endereco: Endereco [];
-    contato: Contato [];
+    enderecos: Endereco [];
+    contatos: Contato [];
 }
 
 export interface Endereco {
