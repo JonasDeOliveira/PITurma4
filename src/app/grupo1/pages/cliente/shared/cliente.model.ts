@@ -41,7 +41,7 @@ export interface Cliente{
     export interface Contrato {
         idContrato: number,
         dsContrato: string,
-        dtVigencia: Date,
+        dtVigencia: string,
         idPlano: number,
         idUsuario: number
     }

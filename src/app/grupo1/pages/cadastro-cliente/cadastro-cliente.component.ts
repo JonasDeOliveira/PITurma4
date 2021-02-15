@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { ResponseFormularioCadastro , FormularioCadastro, FormularioMeusDados, OutputCliente, Cidade} from '../cliente/shared/cliente.model';
+import { ResponseFormularioCadastro, FormularioCadastro, FormularioMeusDados, OutputCliente, Cidade } from '../cliente/shared/cliente.model';
 import { ClienteService } from '../cliente/shared/cliente.service';
 
 @Component({
@@ -8,18 +8,18 @@ import { ClienteService } from '../cliente/shared/cliente.service';
   styleUrls: ['./cadastro-cliente.component.css']
 })
 export class CadastroClienteComponent implements OnInit {
-  
+
   responseFormularioCadastro: any;
   responseCidadesByUf: any;
-  
-  outputCliente: OutputCliente={
+
+  outputCliente: OutputCliente = {
     loginUsuario: {
       idUsuario: null,
       dsSenha: '',
       dsEmail: ''
     },
-    usuario:{
-      idUsuario:null, 
+    usuario: {
+      idUsuario: null,
       idGenero: null,
       idEspMedica: null,
       idUfCrm: null,
@@ -28,43 +28,45 @@ export class CadastroClienteComponent implements OnInit {
       dtNascimento: null,
       nrCpf: '',
       nrCrm: '',
-      dsEndImg: '' ,
+      dsEndImg: '',
       idPreco: null,
-      enderecos:[{idEndereco: null,
+      enderecos: [{
+        idEndereco: null,
         dsEndereco: '',
         dsComplemento: '',
         dsBairro: '',
         nrCep: '',
         idCidade: null,
-        idUf: null}
-    ]
+        idUf: null
+      }]
     },
     ddd: '',
     celular: '',
-    contrato:{
+    contrato: {
       idContrato: null,
       dsContrato: '',
       dtVigencia: null,
       idPlano: null,
       idUsuario: null
     },
-    cartao:{
-      idCartao:null, 
-      idUsuario:null,
-      nrCartao:null,
-      codSeguranca:null,
-      dtValidade:'',
-      dtEmissao:''
+    cartao: {
+      idCartao: null,
+      idUsuario: null,
+      nrCartao: null,
+      codSeguranca: null,
+      dtValidade: '',
+      dtEmissao: ''
     }
 
   }
-  
+
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit(): void {
     this.getFormularioCadastro();
     this.getCidadesByUf();
   }
+
   getFormularioCadastro() {
     this.clienteService.getFormularioCadastro().subscribe(
       response => {
@@ -72,16 +74,18 @@ export class CadastroClienteComponent implements OnInit {
         console.log(response);
       }
     )
-}
-  getCidadesByUf(){
+  }
+
+  getCidadesByUf() {
     this.clienteService.getCidadesByUf(this.outputCliente.usuario.enderecos[0].idUf).subscribe(
       response => {
-        this.responseCidadesByUf= response;
+        this.responseCidadesByUf = response;
         console.log(response);
       }
     )
   }
-  ver(){
+  
+  ver() {
     console.log(this.outputCliente.usuario.enderecos[0].idUf)
   }
 }
