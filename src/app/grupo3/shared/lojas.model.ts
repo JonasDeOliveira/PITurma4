@@ -1,4 +1,5 @@
 export interface Lojas {
+    idLoja: number;
     nmLoja: string;
     enderecos: Endereco [];
     contatos: Contato [];
