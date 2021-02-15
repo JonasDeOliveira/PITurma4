@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormularioCadastro, ResponseFormularioCadastro, ResponseFormularioMeusDados} from './cliente.model';
+import { ResponseFormularioCadastro, ResponseFormularioMeusDados} from './cliente.model';
 import { Observable } from 'rxjs';
-import { Usuario } from 'src/app/grupo1/usuario/shared/usuario.model';
+
 
 @Injectable({
     providedIn: 'root'

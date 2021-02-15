@@ -2,7 +2,9 @@ import { Lembrete } from 'src/app/grupo1/lembretes/shared/lembrete.model'
 import { Planos } from '../../planos/shared/planos.model';
 import { Usuario } from '../../../usuario/shared/usuario.model';
 
-export interface Cliente{}
+export interface Cliente{
+
+}
 
     export interface InputCliente {
     loginUsuario: LoginUsuario,

@@ -21,3 +21,7 @@ export interface Endereco{
     nrCep: string,
     idCidade: number
 }
+
+export interface ResponseUsuario{
+    usuario: ResponseUsuario
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseFormularioCadastro , FormularioCadastro} from '../cliente/shared/cliente.model';
+import { ResponseFormularioCadastro , FormularioCadastro, FormularioMeusDados} from '../cliente/shared/cliente.model';
 import { ClienteService } from '../cliente/shared/cliente.service';
 
 @Component({

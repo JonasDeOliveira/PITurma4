@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../cliente/shared/cliente.service';
 import { Cliente, FormularioMeusDados, ResponseFormularioMeusDados} from '../cliente/shared/cliente.model';
+import { Usuario } from '../../usuario/shared/usuario.model';
 
 @Component({
   selector: 'app-dados-cliente',
@@ -11,8 +12,8 @@ export class DadosClienteComponent implements OnInit {
   
   idUsuario : string;
   responseFormularioMeusDados: any;
-
-  constructor(private clienteService: ClienteService) { }
+ 
+ constructor(private clienteService: ClienteService) { }
 
   ngOnInit(): void {
     this.getFormularioMeusDados()
