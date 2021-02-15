@@ -16,22 +16,24 @@
                 <div class="container container-box">
                     <div class="box-central col-md-4">
                         <h3 class="text-center">Login do Paciente</h3>
-                        <form id="id-form" name="formulario" action="#">
+                        <form id="id-form" name="formulario" action="#" #formLogin="ngForm" (change)="ver()">
                             <div class="form-group mt-4">
                                 <label for="login-email-med">E-mail</label>
-                                <input type="text" class="form-control" id="login-email-med"
+                                <input type="text" class="form-control" id="login-email" name="dsEmail"
+                                    [(ngModel)]="loginCliente.dsEmail" #dsEmail="ngModel"
                                     placeholder="Digite seu e-mail" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="login-email-med">Senha</label>
-                                <input type="text" class="form-control" id="login-email-med"
-                                    placeholder="Digite sua senha" required>
+                                <input type="password" class="form-control" id="login-senha" name="dsSenha"
+                                    [(ngModel)]="loginCliente.dsSenha" #dsSenha="ngModel" placeholder="Digite sua senha"
+                                    required>
                             </div>
                             <button type="button" class="btn col-md-12 btn-verde mt-4"
-                                [routerLink]="['/area-cliente']">Entrar</button>
+                                (click)="logarCliente()">Entrar</button>
                         </form>
-                        <p class="text-center mb-3 mt-2 nav-item"><a class="nav-link" href="#" data-toggle="modal"
+                        <p class="text-center mb-3 mt-2 nav-item" (click)="open(modalSenha)"><a class="nav-link"
                                 data-target=".bd-example-modal-lg">Esqueceu sua senha?</a></p>
                         <div class="box-line my-2"></div>
                         <p class="text-center mt-3">Ainda não possui cadastro?</p>
@@ -43,31 +45,31 @@
         </div>
     </div>
 
-    <!-- MODAL -->
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <!-- <h5 class="modal-title">Digite o e-mail cadastrado:</h5> -->
 
-                        <div class="form-group col-md-12 esqueci-senha">
-                            <label for="cartao-numero">Digite o e-mail cadastrado:</label>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <div>
-                                <input type="text" class="form-control" id="email-rec-senha"
-                                    placeholder="digite o seu e-mail">
-                                <button class="btn btn-verde" [routerLink]="['/area-cliente']">Enviar</button>
-                            </div>
+    <!-- MODAL -->
+    <ng-template #modalSenha class="modal-dialog modal-lg" let-c="close" let-d="dismiss">
+
+        <div class="modal-content">
+            <form #formLembretes="ngForm">
+                <div class="modal-header">
+                    <div class="form-group col-md-12 esqueci-senha">
+                        <label for="emailRec">Digite o e-mail cadastrado:</label>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div>
+                            <input type="text" class="form-control" id="emailRec" name="emailRec"
+                                placeholder="digite o seu e-mail" [(ngModel)]="loginCliente.dsEmail" 
+                                #emailRec="ngModel"
+                                required (change)="ver()">
+                            <button class="btn btn-verde" (click)="esqueceuSenha()"><a>Enviar</a></button>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
-    </div>
+    </ng-template>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

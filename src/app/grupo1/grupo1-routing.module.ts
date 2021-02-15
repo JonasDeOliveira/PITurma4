@@ -15,7 +15,7 @@ export const Grupo1RoutingModule: Routes = [
     {path:'dados-cliente', component: DadosClienteComponent},
     {path:'planos', component: PlanosComponent},
     {path:'', component: PortalComponent},
-    {path:'area-cliente', component: AreaClienteComponent},
+    {path:'area-cliente/:idUsuario', component: AreaClienteComponent},
     
 ];
 

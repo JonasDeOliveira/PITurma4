@@ -1,5 +1,4 @@
-
-        
+<body>
     <section class="container">
         <h2 class="text-center">Meus Dados</h2>
 
@@ -11,7 +10,7 @@
                     <div class="form-group col-md-9">
                         <label for="cadastro-nome">Nome Completo:</label>
                         <input type="text" class="form-control" id="cadastro-nome" placeholder="Digite o seu nome">
-                       </div>
+                    </div>
                     <div class="form-group col-md-3">
                         <label for="cadastro-sexo">Sexo:</label>
                         <select class="form-control" id="cadastro-sexo">
@@ -29,12 +28,12 @@
                     </div>
                     <div class="form-group col-md-1">
                         <label for="cadastro-ddd">DDD:</label>
-                        <input type="text" class="form-control" id="cadastro-ddd"
-                            placeholder="(000)">
+                        <input type="text" class="form-control" id="cadastro-ddd" placeholder="(000)">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="cadastro-celular">Celular:</label>
-                        <input type="text" class="form-control" id="cadastro-celular" placeholder="Digite o seu Celular">
+                        <input type="text" class="form-control" id="cadastro-celular"
+                            placeholder="Digite o seu Celular">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="cadastro-nascimento">Data de Nascimento:</label>
@@ -64,10 +63,10 @@
                     <div class="form-group col-md-2">
                         <label for="cadastro-estado">Estado:</label>
                         <select class="form-control" id="cadastro-estado">
-                        <option *ngFor="let formularioMeusDados of responseFormularioMeusDados.ufs">
-                            {{formularioMeusDados.dsUf}}</option>
-                           
-                           <!--- <option disabled selected>Selecione</option>
+                            <option *ngFor="let formularioMeusDados of responseFormularioMeusDados.ufs">
+                                {{formularioMeusDados.dsUf}}</option>
+
+                            <!--- <option disabled selected>Selecione</option>
                             <option>AC</option>
                             <option>AL</option>
                             <option>AP</option>
@@ -173,6 +172,7 @@
                         <div>
                             <h5 class="alinhamento">R$ 00,00</h5>
                         </div>
+                        <!--Botao do Modal de Cartão-->
                         <div><button type="button" class="btn btn-card" data-toggle="modal"
                                 data-target=".bd-example-modal-lg">Selecionar</button></div>
                     </div>
@@ -188,13 +188,16 @@
                         <div>
                             <h5 class="alinhamento">R$ 00,00</h5>
                         </div>
+                        <!--Botao do Modal de Cartão-->
                         <div><button type="button" class="btn btn-card" data-toggle="modal"
                                 data-target=".bd-example-modal-lg">Selecionar</button></div>
                     </div>
                 </div>
             </div>
 
-            <!-- MODAL -->
+<<<<<<< HEAD
+=======
+            <!-- MODAL CARTAO -->
             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg">
@@ -225,7 +228,8 @@
                                     <label for="cartao-vencimento">Data de vencimento:</label>
                                     <div class="vencimento-cartao">
                                         <div class="form-group col-md-10">
-                                            <input type="text" class="form-control" id="dtValidade" placeholder="00/0000">
+                                            <input type="text" class="form-control" id="dtValidade"
+                                                placeholder="00/0000">
                                         </div>
                                     </div>
                                 </div>
@@ -233,7 +237,8 @@
                                     <label for="cartao-emissao">Data de emissão:</label>
                                     <div class="emissao-cartao">
                                         <div class="form-group col-md-10">
-                                            <input type="text" class="form-control" id="dtEmissao" placeholder="00/0000">
+                                            <input type="text" class="form-control" id="dtEmissao"
+                                                placeholder="00/0000">
                                         </div>
                                     </div>
                                 </div>
@@ -264,27 +269,49 @@
                 </div>
             </div>
 
-            <div class="modal fade bd-foto-perfil-modal-lg" tabindex="-1" role="dialog"
-                aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Escolha uma foto para o seu perfil:</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="form-group">
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            <!-- MODAL FOTO -->
+            <ng-template #modalFotoCliente class="modal-dialog modal-lg" let-c="close" let-d="dismiss">
+                <div class="modal-content">
+                    <div class="modal fade bd-foto-perfil-modal-lg" tabindex="-1" role="dialog"
+                        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Escolha uma foto para o seu perfil:</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                        (click)="d('Cross click')">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <input type="file" class="form-control-file" id="alteraFotoCliente"
+                                            name="alteraFotoCliente" [(ngModel)]="dsEndImg" #alteraFotoCliente="ngModel"
+                                            (change)="ver()">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </ng-template>
 
-
+>>>>>>> e8f515632955e4bf730caac754f204d9723bcc0f
             <div class="form-group botoes-cadastro">
                 <a routerLink="/area-cliente"><button class="btn btns-cadastro">Alterar</button></a>
                 <a routerLink="/portal"><button class="btn btn-cancelar">Cancelar</button></a>
             </div>
         </form>
     </section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>

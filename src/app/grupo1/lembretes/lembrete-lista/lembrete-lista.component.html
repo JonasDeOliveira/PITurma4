@@ -10,7 +10,7 @@
                 <form class="controlar-lembretes-form" #formControleLembrete="ngForm">
                     <label for="lembretes-ordem">Ordenar por:</label>
                     <select name="lembretes-ordem" id="lembretes-ordem" class="form-control" (change)="onChange($event)">
-                        <option value="1" selected >Mais recente</option>
+                        <option value="1" [selected] >Mais recente</option>
                         <option value="2" >Mais antigo</option>
                         <option value="3" >Data de criação</option>
                     </select>

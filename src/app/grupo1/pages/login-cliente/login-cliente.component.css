@@ -71,6 +71,7 @@ a:hover {
 /* MODAL */
 
 .modal-content{
+    font-size: 0.8;
     padding: 20px;
     background-color: rgba(223, 239, 219);
 }
