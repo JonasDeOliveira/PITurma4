@@ -7,20 +7,23 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent} from './components/header/header.component';
 import { LembretesModule } from './lembretes/lembretes.module'
-import { PagesModule } from './pages/pages.module'
+import { PagesModule } from './pages/pages.module';
+import { CartoesModule } from './cartoes/cartao.module'
 
 
 
 @NgModule({
   declarations: [ 
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+   
   ],
   imports: [
     CommonModule,
     RouterModule,
     PagesModule,
     LembretesModule,
+    CartoesModule,
     ModalModule
   ],
   exports: [
