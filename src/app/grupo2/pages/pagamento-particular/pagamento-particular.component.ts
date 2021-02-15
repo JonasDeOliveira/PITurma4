@@ -19,16 +19,17 @@ export class PagamentoParticularComponent implements OnInit {
     ) { }
 
   request: PagamentoCartao = {
-    idCartao: 1,
     idAgPaciente: 3,
     parcelas: 1,
     }
 
   responseCartao :ResponseCartao[];
+  idPagamentoCartEscolhido : number;
+  idPgtoCartaoString : string;
 
 
   ngOnInit(): void {
-    this.listarCartao(1);
+    this.listarCartao(14);
   }
 
   listarCartao(idUsuario: number){
@@ -40,14 +41,21 @@ export class PagamentoParticularComponent implements OnInit {
   cadastrarPagtoCartao() {
     this.pagamentoCartaoService.cadastrarCartao(this.request).subscribe(
       response => {
-        alert('Cartão cadastrado com sucesso');
-        this.router.navigate(['/pagamento-particular']);
+        this.idPagamentoCartEscolhido = response;
+        this.salvarPagtoCartaoLs();
+        console.log(response);
+        console.log(localStorage.getItem("idPgto"))
       },
       error => {
-        alert('algo inesperado aconteceu');
+        alert('erro ao pagar consulta com cartão');
       }
     )
   }
+  salvarPagtoCartaoLs(){
+    this.idPgtoCartaoString = this.idPagamentoCartEscolhido.toString();
+    localStorage.setItem("idPgto", this.idPgtoCartaoString)
+  }
+
 }
 
 

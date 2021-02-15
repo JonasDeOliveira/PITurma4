@@ -12,23 +12,22 @@ import { PagamentoPlanoServiceService } from '../../shared/services/pagamento-pl
   styleUrls: ['./pagamento-plano.component.css']
 })
 export class PagamentoPlanoComponent implements OnInit {
- 
   constructor(
   public contratoService: ContratoService,
   public pagamentoPlanoService: PagamentoPlanoServiceService,
   private router: Router 
-
   ) { }
 
   request: PagamentoPlano = {
-    idUsuario: 14,
-    idAgPaciente: 3
+    idAgPaciente: 10
   }
 
   responseContratos : ResponseContratos [];
+  idPagamentoPlEscolhido : number;
+  idPgtoPlanoString : string;
 
   ngOnInit(): void {
-    this.listarContratoPorUsuario(6);
+    this.listarContratoPorUsuario(14);
   }
 
   listarContratoPorUsuario(idUsuario: number){
@@ -38,20 +37,24 @@ export class PagamentoPlanoComponent implements OnInit {
        this.responseContratos = response;
       }
     )
-
-    }
+  }
     
     cadastrarPagtoPlano() {
       this.pagamentoPlanoService.cadastrarPlano(this.request).subscribe(
         response => {
-          alert('plano cadastrado com sucesso');
-          this.router.navigate(['/pagamento-plano']);
+          this.idPagamentoPlEscolhido = response;
+          this.salvarPagtoPlanoLs();
         },
         error => {
-          alert('algo inesperado aconteceu');
+          alert('erro ao pagar consulta com plano');
         }
       )
     }
+    salvarPagtoPlanoLs(){
+      this.idPgtoPlanoString = this.idPagamentoPlEscolhido.toString();
+      localStorage.setItem("idPgto", this.idPgtoPlanoString)
+    }
+
   }
 
 

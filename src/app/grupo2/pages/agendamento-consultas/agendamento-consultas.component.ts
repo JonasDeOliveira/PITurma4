@@ -15,20 +15,27 @@ export class AgendamentoConsultasComponent implements OnInit {
   responseEspMed : ResponseEspMed[];
   idEspMedString : string;
   idEspSelect : number;
+
   
   ngOnInit(): void {
-      this.listarEspecialidades();
+      this.listarEspecialidades(1);
 
 
   }
 
-  listarEspecialidades(){
-    this.espMedService.listarEspDisponiveis().subscribe(
+  listarEspecialidades(idTipoConsulta: number){
+    this.espMedService.listarEspDisponiveis(idTipoConsulta).subscribe(
       response => {
-        this.responseEspMed = response;    
+        this.responseEspMed = response;
+        console.log(response);
+        if (response.length == 0){
+          alert('O tipo de consulta que você escolheu não está disponível para a especialidade selecionada.');
+        };    
       }
     )
   }
+
+
 
   salvarEspLS(){
     this.espEscolhida();

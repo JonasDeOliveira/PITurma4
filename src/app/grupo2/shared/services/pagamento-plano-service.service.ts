@@ -12,7 +12,7 @@ export class PagamentoPlanoServiceService {
 
   private readonly APICADASTRARPAGTOPLANO = 'http://localhost:8080/pagamento/plano';
   
-  cadastrarPlano (request: PagamentoPlano): Observable<PagamentoPlano> {
-    return this.http.post<PagamentoPlano>(this.APICADASTRARPAGTOPLANO, request);
+  cadastrarPlano (request: PagamentoPlano): Observable<number> {
+    return this.http.post<number>(this.APICADASTRARPAGTOPLANO, request);
   }
 }
