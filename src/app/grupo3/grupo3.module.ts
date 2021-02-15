@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import {RouterModule} from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { ProgramaNutricionalComponent } from './programa-nutricional/programa-nutricional.component';
 import { AgendaAlimentarComponent } from './agenda-alimentar/agenda-alimentar.component';
@@ -13,12 +14,9 @@ import { ResultadoBuscarReceitasComponent } from './resultado-buscar-receitas/re
 import { HistoricoAgservicoComponent } from './historico-agservico/historico-agservico.component';
 import { AgservicoComponent } from './agservico/agservico.component';
 import { ProcurarPacienteComponent } from './procurar-paciente/procurar-paciente.component';
-import { TipoRefeicaoService } from './shared/tipoRefeicao.service';
 import { LojaService } from './shared/lojas.service';
-<<<<<<< HEAD
-=======
-
->>>>>>> 3f08756588d242af82df5d3515447db5cdebab7d
+import { ProgramaNutriService } from './shared/ProgramaNutri/programaNutri.service';
+import { TipoRefeicaoService } from './shared/ProgramaNutri/tipoRefeicao.service';
 
 @NgModule({
   
@@ -26,29 +24,19 @@ import { LojaService } from './shared/lojas.service';
   
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
 
   exports: [
-<<<<<<< HEAD
     ProgramaNutricionalComponent,
     SustentabilidadeComponent
   ],
 
   providers:[
-    TipoRefeicaoService,
-    LojaService
+    ProgramaNutriService,
+    LojaService,
+    TipoRefeicaoService
   ]
-
-  
-=======
-ProgramaNutricionalComponent,
-SustentabilidadeComponent
-  ],
-providers:[
- TipoRefeicaoService,
- LojaService
-]
->>>>>>> 3f08756588d242af82df5d3515447db5cdebab7d
 })
 export class Grupo3Module { }

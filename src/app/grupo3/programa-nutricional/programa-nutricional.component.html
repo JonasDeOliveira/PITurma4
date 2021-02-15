@@ -18,9 +18,12 @@
                         <form action="#inicio">
                             <div class="form-row">
 
-                                <div class="form-group col-md-12">
-                                    <input type="nome" class="form-control" id="inputNome" placeholder="Nome"
-                                        disabled="">
+                                <div  *ngFor = "let dadosPaciente of responseDadosPaciente" class="form-group col-md-12">
+                                    <input type="nome" class="form-control" id="inputNome" placeholder="Nome">
+                                     {{dadosPaciente.nome}}
+                                     {{dadosPaciente.vlPeso}}
+                                     {{dadosPaciente.vlAltura}}
+                                     {{dadosPaciente.dsHabitosVicio}}
                                 </div>
 
                                 <div class="form-group col-md-4">
@@ -85,28 +88,28 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" id="inputNomePrato" required
+                                    <input type="text" class="form-control" id="nomeReceita" name = " nomeReceita" [(ngModel)]="request.nomeReceita" #nomeReceita= "ngModel" required
                                         placeholder="Nome do Prato">
                                 </div>
-
-
+                            
+                            
                                 <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" id="inputQuant" placeholder="Quantidade" required>
+                                    <input class="form-control" id="qtRendimento" name = "qtRendimento" [(ngModel)]="request.qtRendimento" #qtRendimento= "ngModel" placeholder="Calorias" required>
                                 </div>
 
 
                                 <div class="form-group col-md-12">
-                                    <textarea class="form-control" id="inputDescricao" placeholder="Descrição" required rows = "3"></textarea>
+                                    <textarea type="text" class="form-control" id="dsDescricao" name = "dsDescricao" [(ngModel)]="request.dsDescricao" #qtDescricao= "ngModel" placeholder="Descrição" required rows = "3"></textarea>
                                 </div>
+                            </div>
 
-                                <div class="form-group col-md-12">
-                                    <input type="text" class="form-control" id="inputCalorias" placeholder="Calorias" required>
-                                </div>
+                            <div class="form-group col-md-12">
+                                <input class="form-control" id="qtCalorias" name = "qtCalorias" [(ngModel)]="request.qtCalorias" #qtCalorias= "ngModel" placeholder="Quantidade" required>
                             </div>
 
             
                             <div class="row d-flex justify-content-center">
-                                <button type="button" class="btn btn-success btn-verde" id="btn-confirma">Confirmar</button>
+                                <button type="button" class="btn btn-success btn-verde" id="btn-confirma"  value="Cadastrar" (click)="cadastrar()">Confirmar</button>
                             </div>
 
                         </form>
