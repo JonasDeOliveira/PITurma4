@@ -19,7 +19,6 @@ export class PagamentoParticularComponent implements OnInit {
     ) { }
 
   request: PagamentoCartao = {
-    idCartao: 1,
     idAgPaciente: 3,
     parcelas: 1,
     }

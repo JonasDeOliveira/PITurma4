@@ -19,7 +19,6 @@ export class PagamentoPlanoComponent implements OnInit {
   ) { }
 
   request: PagamentoPlano = {
-    idUsuario: 20,
     idAgPaciente: 10
   }
 
