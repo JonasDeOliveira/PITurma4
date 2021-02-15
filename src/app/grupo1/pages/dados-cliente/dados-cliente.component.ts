@@ -13,7 +13,7 @@ export class DadosClienteComponent implements OnInit {
 
   idUsuario: string;
   responseFormularioMeusDados: any;
-  dsEndImg: "";
+  dsEndImg: string;
   
 
   constructor(private clienteService: ClienteService,
