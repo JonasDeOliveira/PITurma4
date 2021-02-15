@@ -44,6 +44,8 @@ export class PagamentoParticularComponent implements OnInit {
       response => {
         this.idPagamentoCartEscolhido = response;
         this.salvarPagtoCartaoLs();
+        console.log(response);
+        console.log(localStorage.getItem("idPgto"))
       },
       error => {
         alert('erro ao pagar consulta com cartão');

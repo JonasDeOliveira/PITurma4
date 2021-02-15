@@ -19,8 +19,8 @@ export class PagamentoPlanoComponent implements OnInit {
   ) { }
 
   request: PagamentoPlano = {
-    idUsuario: 14,
-    idAgPaciente: 3
+    idUsuario: 20,
+    idAgPaciente: 10
   }
 
   responseContratos : ResponseContratos [];
