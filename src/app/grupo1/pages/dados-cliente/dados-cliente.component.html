@@ -14,8 +14,8 @@
                     <div class="form-group col-md-3">
                         <label for="cadastro-sexo">Sexo:</label>
                         <select class="form-control" id="cadastro-sexo">
-                            <option *ngFor="let formularioMeusDados of responseFormularioMeusDados.genero">
-                                {{formularioMeusDados.dsGenero}}</option>
+                            <!-- <option *ngFor="let formularioMeusDados of responseFormularioMeusDados.genero">
+                                {{formularioMeusDados.dsGenero}}</option> -->
                             <!--<option>Feminino</option>
                             <option>Masculino</option> -->
                         </select>
@@ -63,8 +63,8 @@
                     <div class="form-group col-md-2">
                         <label for="cadastro-estado">Estado:</label>
                         <select class="form-control" id="cadastro-estado">
-                            <option *ngFor="let formularioMeusDados of responseFormularioMeusDados.ufs">
-                                {{formularioMeusDados.dsUf}}</option>
+                            <!-- <option *ngFor="let formularioMeusDados of responseFormularioMeusDados.ufs">
+                                {{formularioMeusDados.dsUf}}</option> -->
 
                             <!--- <option disabled selected>Selecione</option>
                             <option>AC</option>
@@ -117,8 +117,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-6" id="altera-foto">
                         <img id="img-perfil" src="assets/grupo1/img/icon_login.png">
-                        <button type="button" class="btn botao-altera-foto" data-toggle="modal"
-                            data-target=".bd-foto-perfil-modal-lg">Alterar Foto</button>
+                        <button type="button" class="btn botao-altera-foto" (click)="open(modalFotoCliente)"
+                            data-toggle="modal" data-target=".bd-foto-perfil-modal-lg">Alterar Foto</button> 
                     </div>
                     <div class="form altera-senha">
                         <label>Alterar a Senha:</label>
@@ -198,7 +198,7 @@
 <<<<<<< HEAD
 =======
             <!-- MODAL CARTAO -->
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            <div class="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -271,24 +271,22 @@
 
             <!-- MODAL FOTO -->
             <ng-template #modalFotoCliente class="modal-dialog modal-lg" let-c="close" let-d="dismiss">
-                <div class="modal-content">
-                    <div class="modal fade bd-foto-perfil-modal-lg" tabindex="-1" role="dialog"
-                        aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Escolha uma foto para o seu perfil:</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                        (click)="d('Cross click')">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <input type="file" class="form-control-file" id="alteraFotoCliente"
-                                            name="alteraFotoCliente" [(ngModel)]="dsEndImg" #alteraFotoCliente="ngModel"
-                                            (change)="ver()">
-                                    </div>
+
+                <div class="bd-foto-perfil-modal-lg" tabindex="-1" role="dialog"
+                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Escolha uma foto para o seu perfil:</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                    (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <!-- <input type="file" class="form-control-file" id="alteraFotoCliente"
+                                        name="alteraFotoCliente" [(ngModel)]="dsEndImg" #dsEndImg="ngModel"> -->
                                 </div>
                             </div>
                         </div>
