@@ -20,12 +20,15 @@ export class EscolhaEspecialistaComponent implements OnInit {
   idEspMedString : string = localStorage.getItem("idEspMed");
   idEspMed : number = parseInt(this.idEspMedString);
   responseAgenda : ResponseAgenda[];
+  respostaAgenda : ResponseAgenda;
   idAgPacienteEscolhida: number;
   idAgPacienteString: string;
   request: CadastroAgPaciente = {
     idUsuario: 7,
     idAgenda: 27
   }
+  idAgendaEscolhida: number;
+  idAgendaString: string;
   
   ngOnInit(): void {
       this.buscarAgenda(1 , 3);
@@ -34,8 +37,8 @@ export class EscolhaEspecialistaComponent implements OnInit {
      this.agendaService.listarPorEsp(idTipoConsulta,idEspecialidade).subscribe(
       response => {
         this.responseAgenda = response;
-        console.log(this.responseAgenda);
-        console.log(response);
+        // console.log(this.responseAgenda);
+        // console.log(response);
       }
      )
    }
@@ -52,7 +55,10 @@ export class EscolhaEspecialistaComponent implements OnInit {
     this.agPacienteService.cadastrarAgPaciente(this.request).subscribe(
       response => {
         this.idAgPacienteEscolhida = response;
+        console.log("response"  + response)
         this.salvarAgPacienteLs();
+        console.log("ls" + localStorage.getItem("idAgPaciente"));
+        this.alterarStatus(this.idAgPacienteEscolhida);
       },
       error => {
         alert('erro ao selecionar nova consulta');
@@ -64,6 +70,13 @@ export class EscolhaEspecialistaComponent implements OnInit {
     this.idAgPacienteString = this.idAgPacienteEscolhida.toString();
     localStorage.setItem("idAgPaciente", this.idAgPacienteString)
   }
+
+  alterarStatus(idAgPaciente: number){
+    idAgPaciente = this.idAgPacienteEscolhida;
+    this.agendaService.mudarStatus(idAgPaciente);
+  
+  }
+
 
 }
 

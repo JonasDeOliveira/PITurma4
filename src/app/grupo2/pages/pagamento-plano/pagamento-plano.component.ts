@@ -53,7 +53,7 @@ export class PagamentoPlanoComponent implements OnInit {
     }
     salvarPagtoPlanoLs(){
       this.idPgtoPlanoString = this.idPagamentoPlEscolhido.toString();
-      localStorage.setItem("idPgtoPlano", this.idPgtoPlanoString)
+      localStorage.setItem("idPgto", this.idPgtoPlanoString)
     }
 
   }

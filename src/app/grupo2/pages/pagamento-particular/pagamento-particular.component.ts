@@ -52,7 +52,7 @@ export class PagamentoParticularComponent implements OnInit {
   }
   salvarPagtoCartaoLs(){
     this.idPgtoCartaoString = this.idPagamentoCartEscolhido.toString();
-    localStorage.setItem("idPgtoPlano", this.idPgtoCartaoString)
+    localStorage.setItem("idPgto", this.idPgtoCartaoString)
   }
 
 }
