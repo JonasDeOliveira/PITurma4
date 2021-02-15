@@ -81,7 +81,7 @@
                         <form action="#inicio">
                             <div class="form-row  ">
                                 <div class="form-group col-md-12">
-                                    <select id="inputEscolherRefeicao" class="form-control" id="EscolherRefeicao" required>
+                                    <select id="inputEscolherRefeicao" class="form-control" id="EscolherRefeicao" name="idTipoRefeicao" [(ngModel)]="request.idTipoRefeicao.idTipoRefeicao" #idTipoRefeicao="ngModel"  required> 
                                         <option value ="selecione">Selecione a refeição</option>
                                         <option *ngFor = "let tipoRefeicao of responseTipoRefeicao" [value]="tipoRefeicao.idTipoRefeicao">{{tipoRefeicao.dsTipoRefeicao}}</option>
                                     </select>

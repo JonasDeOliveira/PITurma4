@@ -3,6 +3,7 @@ import { ProgramaNutriService} from '../../shared/ProgramaNutri/service/programa
 import { Cardapio, ResponseCardapio, ResponseDadosPaciente} from '../../shared/ProgramaNutri/model/programaNutri.model';
 import { TipoRefeicaoService } from '../../shared/ProgramaNutri/service/tipoRefeicao.service';
 import { ResponseTipoRefeicao } from '../../shared/ProgramaNutri/model/tipoRefeicao.model';
+import { NullTemplateVisitor } from '@angular/compiler';
 
 
 @Component({
@@ -16,27 +17,35 @@ export class ProgramaNutricionalComponent implements OnInit {
 
   constructor( private programaNutriService: ProgramaNutriService, private tipoRefeicaoService: TipoRefeicaoService) { }
 
-    
-  responseTipoRefeicao: ResponseTipoRefeicao[];
+    responseTipoRefeicao: ResponseTipoRefeicao;
+    responseDadosPaciente: ResponseDadosPaciente;
+    responseCardapio: ResponseCardapio;
 
-   responseDadosPaciente: ResponseDadosPaciente;
 
+    idTipoRefSelecionada: number;
+    idTipoRefString: string;
+
+  //  idMedico: any;
+  //idPaciente : any;
 
   ngOnInit(): void {
     this.listarTipoRefeicao();
-   // this.getExibirDadosPaciente(14);
-  
+  //  this.getExibirDadosPaciente(24);
   }
 
-  getExibirDadosPaciente(idUsuario: number){
+//***************************DADOS PACIENTE***********************************************
+//inicioDadosPaciente
+getExibirDadosPaciente(idUsuario: number){
     this.programaNutriService.getExibirDadosPaciente(idUsuario).subscribe( 
       response => {
          this.responseDadosPaciente= response;
       }
     );
  }
+ //FimDadosPaciente
 
-
+//*********************************TIPO REFEICAO**************************************
+//inicioTipoRefeicao
  listarTipoRefeicao(){
     this.tipoRefeicaoService.getTipoRefeicoes().subscribe(
       response => {
@@ -45,23 +54,24 @@ export class ProgramaNutricionalComponent implements OnInit {
     );
 }
 
+//**************************************CARDAPIO*******************************
+//inicioCardapio
 request: Cardapio = {
-    idPaciente: 24,
-    idMedico: 33,
-  idTipoRefeicao : {
-    idTipoRefeicao: 3,
-    dsTipoRefeicao: "Almoço"
+  idPaciente: 24,
+  idMedico: 33,
+ idTipoRefeicao : {
+  idTipoRefeicao : null,
+   dsTipoRefeicao: ''
   } ,
-  nomeReceita: '',
-  qtCalorias: 134,
-  qtRendimento: 12,
-  dsDescricao: ''
+ nomeReceita: '',
+ qtCalorias: 12,
+ qtRendimento: 123,
+ dsDescricao: ''
 }
 
 cadastrar() {
   this.programaNutriService.criarCardapio(this.request).subscribe(
     response => {
-      this
       alert('Cardapio realizado com sucesso!');
     },
     error => {
@@ -69,4 +79,6 @@ cadastrar() {
     }
   )
 }
+
+//FimCardapio
 }

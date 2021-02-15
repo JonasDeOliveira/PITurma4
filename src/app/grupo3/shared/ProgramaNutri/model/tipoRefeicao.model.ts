@@ -5,5 +5,5 @@ export interface IdTipoRefeicao{
 
 //getTipoRefeicao
 export interface ResponseTipoRefeicao {
-tipoRefeicao: IdTipoRefeicao[]
+tipoRefeicao: IdTipoRefeicao
 }
