@@ -24,8 +24,8 @@ export class AgendamedicoService {
     return this.http.get(URL);
   }
 
-  cancelarAgendamento(idAgPaciente: number): Observable<any>{
+  cancelarAgendamento(idAgPaciente: number, request: any): Observable<any>{
     const URL = `${this.API2}/${idAgPaciente}`;   
-    return this.http.delete<any>(URL);
+    return this.http.put<any>(URL, request );
   }
 }

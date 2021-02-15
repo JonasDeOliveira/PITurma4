@@ -11,7 +11,7 @@
     <div class="container pt-5">
         <h1 class="titulo-verde text-center">Solicitação de Exames</h1>
 
-        <form id="id-form" name="formulario" action="#">
+        <form id="id-form" name="formulario" action="#" #formSolicitacao="ngForm">
             <div class="row mt-2">
                 <div class="form-group col-12 col-md-9">
                     <label for="name-paciente" class="label-form">Nome do(a) paciente</label>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group col-12 col-md-3">
                     <label for="data-consulta" class="label-form">Data da consulta</label>
-                    <input type="text" class="form-control style-input" id="data-consulta" placeholder="{{data}}" disabled>
+                    <input type="text" class="form-control style-input" id="dtSolicitacao" name="dtSolicitacao" [(ngModel)]="request.dtSolicitacao" #dtSolicitacao="ngModel" placeholder="{{data}}" disabled>
                 </div>
             </div>
 
@@ -56,11 +56,11 @@
                 </div>
                 <div class="form-group col-12 col-md-4">
                     <label for="cidade-medico" class="label-form">Cidade</label>
-                    <input type="text" class="form-control style-input" id="cidade-medico" placeholder="{{responseTelaSolicitacao.medico.enderecos[0].idCidade}}" disabled>
+                    <input type="text" class="form-control style-input" id="cidade-medico" placeholder="{{responseTelaSolicitacao.medico.enderecos[0].cidade.dsCidade}}" disabled>
                 </div>
                 <div class="form-group col-12 col-md-1">
                     <label for="uf-endereco-medico" class="label-form">UF</label>
-                    <input type="text" class="form-control style-input" id="uf-endereco-medico" placeholder="{{responseTelaSolicitacao.medico.ufCrm.dsUf}}" disabled>
+                    <input type="text" class="form-control style-input" id="uf-endereco-medico" placeholder="{{responseTelaSolicitacao.medico.enderecos[0].cidade.uf.dsUf}}" disabled>
                 </div>
                 <div class="form-group col-12 col-md-3">
                     <label for="telefone-medico" class="label-form">Telefone</label>
@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="form-group col-12">
                     <label for="indicacao" class="label-form">Indicação Clínica</label>
-                    <input type="text" class="form-control style-input" id="indicacao" placeholder="" required>
+                    <input type="text" class="form-control style-input" id="dsIndicacaoClin" name="dsIndicacaoClin" [(ngModel)]="request.dsIndicacaoClin" #dsIndicacaoClin="ngModel" placeholder="" required>
                 </div> 
             </div>
 
@@ -81,7 +81,7 @@
                             <label for="exame" class="label-form">Exame</label>
                             <select type="text" class="form-control style-input select-form" id="exame" name = "listaExame" required [(ngModel)]="select">
                                 <option>Selecione um tipo de exame</option>
-                                <option *ngFor="let exam of responseTelaSolicitacao.listaTipoExame" [value]="exam.dsTipoExame">{{exam.dsTipoExame}}</option>
+                                <option *ngFor="let exam of responseTelaSolicitacao.listaTipoExame">{{exam.dsTipoExame}}</option>
                             </select>
                         </div>
                         <div class="form-group col-1">

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Login } from './login.model';
+import { Login, ResultData  } from './login.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,12 +10,17 @@ export class LoginmedicoService {
 
   constructor(private http : HttpClient) { }
 
-  private readonly API = 'http://localhost:8080/login/email';
+  private readonly API = 'http://localhost:8080/login';
 
-  fazerLogin(email : string){
-    const URL = `${this.API}/${email}`
-    return this.http.get<Login>(URL); 
+  getAcessoCliente(login: Login): Observable<ResultData>{
+    const URL = `${this.API}/cliente`
+   return this.http.post<ResultData>(URL, login);
+ }
 
-  }
-  
+ esqueceuASenha(email: String) {
+  const URL = `${this.API}/esqueceu-senha`
+
+  return this.http.post<ResultData>(URL, email);
+ }
+
 }

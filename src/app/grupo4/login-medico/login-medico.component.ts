@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Login } from './login.model';
 import { LoginmedicoService } from './loginmedico.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Login, ResultData } from './login.model'
 
 @Component({
   selector: 'app-login-medico',
@@ -11,33 +12,58 @@ import { LoginmedicoService } from './loginmedico.service';
 
 export class LoginMedicoComponent implements OnInit {
 
+  loginCliente: Login = {
+    idUsuario: null,
+    dsSenha: "",
+    dsEmail: ""
+  }
+
+  respostaLogin: ResultData;
+
   constructor(private loginService : LoginmedicoService,
-    private router: Router) { }
+    private router: Router,
+    config: NgbModalConfig,
+    private modalService: NgbModal) { }
 
 
-
-    
   ngOnInit(): void {
   }
 
-  logar(dsEmail: string, dsSenha: string){
-    this.loginService.fazerLogin(dsEmail).subscribe(
+  
+  logarCliente() {
+    this.loginService.getAcessoCliente(this.loginCliente).subscribe(
       response => {
-        if(response.dsEmail == dsEmail && response.dsSenha == dsSenha){
-          // console.log(dsEmail);
-          // console.log(response.idUsuario);
-        
-          localStorage.setItem("medico", JSON.stringify(response));
+        this.respostaLogin = response;
 
-          this.router.navigate(['/dashboard/medico']); 
-        } else {
-          alert("Login não realizado!");
-        }
+        localStorage.setItem("medico", JSON.stringify(response.retorno));
+
+        alert(response.mensagem);
+        this.router.navigate(['/dashboard/medico']);
       },
       error => {
-        alert("algo inesperado aconteceu");
+        alert(error.error.mensagem);
       }
     )
   }
+
+  esqueceuSenha() {
+    this.loginService.esqueceuASenha(this.loginCliente.dsEmail).subscribe(
+      response => {
+        alert(response.mensagem);
+        window.location.reload(true);
+      },
+      error => {
+        alert(error.error.mensagem);
+      });
+  }
+
+  ver() {
+    console.log(this.loginCliente);
+  }
+
+  open(content) {
+    this.modalService.open(content);
+  }
+
 
 }

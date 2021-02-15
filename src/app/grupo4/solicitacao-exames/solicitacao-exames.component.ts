@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SolicitacaoexameService } from './solicitacaoexame.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Solicitacao} from './solicitacao.model';
+import { CadastroSolicitacao} from './solicitacao.model';
 import {NgbModalConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -22,11 +22,33 @@ export class SolicitacaoExamesComponent implements OnInit {
       config.keyboard = false;
   }
 
+  request: CadastroSolicitacao = {
+    idSolicExame: null,
+    prontuario: {
+      idProntuario: null
+    },
+    paciente: {
+      idUsuario: null
+    },
+    medico: {
+      idUsuario: null
+    },
+    dtSolicitacao: null,
+    dsIndicacaoClin: '',
+    exames: [
+      {
+        idTipoExame: null,
+        dsTipoExame: ''
+      }
+    ]
+  }
+
+
   open(content) {
     this.modalService.open(content);
   }
 
-  responseTelaSolicitacao : Solicitacao;
+  responseTelaSolicitacao : any;
   idUsuario : any;
   idPaciente : any;
   data : any;
@@ -57,5 +79,13 @@ export class SolicitacaoExamesComponent implements OnInit {
   removerItem(item){
     this.listaExame.splice(this.listaExame.indexOf(item),1)
   }
+
+  // cadastrarSolicitação(){
+  //   this.solicitacaoService.cadastrarSolicitacaoExame(this.request).subscribe(
+  //     response =>
+  //     alert('Solicitação cadastrada com sucesso!');
+  //     this.router.navigate(['/dashboard/medico'])
+  //   )
+  // }
 
 }

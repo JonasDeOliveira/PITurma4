@@ -3,3 +3,10 @@ export interface Login {
     dsEmail: string;
     dsSenha: string;
 }
+
+export interface ResultData {
+    status: number;
+    mensagem: String;
+    retorno: any;
+    dtTimestampErro: Date;
+}
