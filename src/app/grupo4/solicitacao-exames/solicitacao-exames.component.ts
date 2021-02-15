@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SolicitacaoexameService } from './solicitacaoexame.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CadastroSolicitacao} from './solicitacao.model';
+import { CadastroSolicitacao, Exames} from './solicitacao.model';
 import {NgbModalConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -22,8 +22,8 @@ export class SolicitacaoExamesComponent implements OnInit {
       config.keyboard = false;
   }
 
+
   request: CadastroSolicitacao = {
-    idSolicExame: null,
     prontuario: {
       idProntuario: null
     },
@@ -37,8 +37,7 @@ export class SolicitacaoExamesComponent implements OnInit {
     dsIndicacaoClin: '',
     exames: [
       {
-        idTipoExame: null,
-        dsTipoExame: ''
+        idTipoExame: null
       }
     ]
   }
@@ -49,43 +48,50 @@ export class SolicitacaoExamesComponent implements OnInit {
   }
 
   responseTelaSolicitacao : any;
-  idUsuario : any;
-  idPaciente : any;
-  data : any;
   listaExame = [];
-  select = '';
+  select : Exames;
 
   ngOnInit(): void {
-    // this.idUsuario = this.route.snapshot.paramMap.get('idMedico');
-    // this.idPaciente = this.route.snapshot.paramMap.get('idPaciente');
-
-    this.idUsuario = 88;
-    this.idPaciente = 6;
-
-    this.solicitacaoService.getTelaSolicitacao(this.idUsuario, this.idPaciente).subscribe(
+    this.solicitacaoService.getTelaSolicitacao().subscribe(
       resposta => {
         this.responseTelaSolicitacao = resposta;
+        var dtSolicitacao =  new Date(Date.now()).toISOString().slice(0,10).split('-');
+        this.responseTelaSolicitacao.dtSolicitacao = dtSolicitacao[2] + '/' + dtSolicitacao[1] + '/' + dtSolicitacao[0];
         console.log(resposta);
-
-        this.data = new Date(Date.now()).toISOString().slice(0,10);
       }
     );
   }
 
+  registrar() {
+    this.request.dsIndicacaoClin = this.responseTelaSolicitacao.dsIndicacaoClin;
+    this.request.dtSolicitacao = this.responseTelaSolicitacao.dtSolicitacao;
+
+    //TODO: PEGAR DO LOCAL STORAGE
+    this.request.medico.idUsuario = 128;
+    this.request.paciente.idUsuario = 6;
+    this.request.prontuario.idProntuario = 7;
+    
+    this.request.exames = this.listaExame;
+
+    console.log(this.request);
+
+    this.solicitacaoService.cadastrarSolicitacaoExame(this.request).subscribe(
+      response => {
+        alert(response);
+      },
+      error => {
+        alert(error);
+      }
+    )
+  }
+
+
   addItem(){
-    this.listaExame.push(this.select)
+    console.log(this.select);
+    this.listaExame.push({"idTipoExame":this.select, "dsTipoExame": this.responseTelaSolicitacao.listaTipoExame.find(x=>x.idTipoExame == this.select).dsTipoExame})
   }
 
   removerItem(item){
     this.listaExame.splice(this.listaExame.indexOf(item),1)
   }
-
-  // cadastrarSolicitação(){
-  //   this.solicitacaoService.cadastrarSolicitacaoExame(this.request).subscribe(
-  //     response =>
-  //     alert('Solicitação cadastrada com sucesso!');
-  //     this.router.navigate(['/dashboard/medico'])
-  //   )
-  // }
-
 }

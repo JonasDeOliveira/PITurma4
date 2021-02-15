@@ -1,11 +1,10 @@
 
 //CADASTRAR SOLICITACAO
 export interface CadastroSolicitacao {
-    idSolicExame: number;
     prontuario: Prontuario;
     paciente: Paciente;
     medico: Medico;
-    dtSolicitacao: Date;
+    dtSolicitacao: string;
     dsIndicacaoClin: string;
     exames: Exames[];
 }
@@ -24,5 +23,4 @@ export interface Medico {
 
 export interface Exames {
     idTipoExame: number;
-    dsTipoExame: string;
 }

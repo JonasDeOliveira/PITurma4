@@ -12,15 +12,20 @@ export class SolicitacaoexameService {
 
   private readonly API = 'http://localhost:8080/solic_exame';
 
-  getTelaSolicitacao(idUsuario:any, idPaciente:any) {
+  objMedico = JSON.parse(localStorage.getItem("medico"));
+
+  getTelaSolicitacao() {
+    //TODO: pegar ID PACIENTE do storage
     //const URL = `${this.API}/${idUsuario}/${idPaciente}`;
-    const URL = `${this.API}/128/6`;
+    const URL = `${this.API}/${this.objMedico.idUsuario}/6`;
     return this.http.get<any>(URL); 
   }
 
   cadastrarSolicitacaoExame(request: CadastroSolicitacao): Observable<CadastroSolicitacao> {
-    return this.http.post<CadastroSolicitacao>(this.API, request);
+    const requestOptions: Object = {
+      responseType: 'text'
+    }
+    return this.http.post<CadastroSolicitacao>(this.API, request,requestOptions);
   }
-
 
 }

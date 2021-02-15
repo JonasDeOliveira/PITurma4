@@ -15,62 +15,64 @@
             <div class="row mt-2">
                 <div class="form-group col-12 col-md-9">
                     <label for="name-paciente" class="label-form">Nome do(a) paciente</label>
-                    <input type="text" class="form-control style-input" id="name-paciente" placeholder="{{responseTelaSolicitacao.nomePaciente}}" disabled>
+                    <input type="text" class="form-control style-input" id="name-paciente" value="{{responseTelaSolicitacao.nomePaciente}}" disabled>
                 </div>
                 <div class="form-group col-12 col-md-3">
                     <label for="data-consulta" class="label-form">Data da consulta</label>
-                    <input type="text" class="form-control style-input" id="dtSolicitacao" name="dtSolicitacao" [(ngModel)]="request.dtSolicitacao" #dtSolicitacao="ngModel" placeholder="{{data}}" disabled>
+                    <input type="text" class="form-control style-input" id="dtSolicitacao" name="dtSolicitacao" [(ngModel)]="responseTelaSolicitacao.dtSolicitacao" #dtSolicitacao="ngModel">
                 </div>
             </div>
 
             <div class="row mt-2">
                 <div class="form-group col-12 col-md-9">
                     <label for="name-medico" class="label-form">Nome do(a) médico(a)</label>
-                    <input type="text" class="form-control style-input" id="name-medico" placeholder="{{responseTelaSolicitacao.medico.nome}}" disabled>
+                    <input type="text" class="form-control style-input" id="nmMedico" name="nmMedio" [(ngModel)]="responseTelaSolicitacao.medico.nome" #nmMedico="ngModel" disabled>
                 </div>
                 <div class="form-group col-12 col-md-2">
                     <label for="numero-crm" class="label-form">CRM</label>
-                            <input type="text" class="form-control style-input" id="numero-crm" placeholder="{{responseTelaSolicitacao.medico.nrCrm}}" disabled>
+                            <input type="text" class="form-control style-input" id="numero-crm" value="{{responseTelaSolicitacao.medico.nrCrm}}" disabled>
                 </div>
                 <div class="form-group col-12 col-md-1">
                     <label for="crm-uf" class="label-form">UF</label>
-                    <input type="text" class="form-control style-input" id="crm-uf" placeholder="{{responseTelaSolicitacao.medico.ufCrm.dsUf}}" disabled>
+                    <input type="text" class="form-control style-input" id="crm-uf" value="{{responseTelaSolicitacao.medico.ufCrm.dsUf}}" disabled>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-12 col-md-4">
                     <label for="cep-medico" class="label-form">CEP</label>
-                    <input type="text" class="form-control style-input" id="cep-medico" placeholder="{{responseTelaSolicitacao.medico.enderecos[0].nrCep}}" disabled>
+                    <input type="text" class="form-control style-input" id="cep-medico" value="{{responseTelaSolicitacao.medico.enderecos[0].nrCep}}" disabled>
                 </div>
                 <div class="form-group col-12 col-md-8">
                     <label for="endereco-medico" class="label-form">Endereço</label>
-                    <input type="text" class="form-control style-input" id="endereco-medico" placeholder="{{responseTelaSolicitacao.medico.enderecos[0].dsEndereco}}" disabled>
+                    <input type="text" class="form-control style-input" id="endereco-medico" value="{{responseTelaSolicitacao.medico.enderecos[0].dsEndereco}}" disabled>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-12 col-md-4">
                     <label for="bairro-medico" class="label-form">Bairro</label>
-                    <input type="text" class="form-control style-input" id="bairro-medico" placeholder="{{responseTelaSolicitacao.medico.enderecos[0].dsBairro}}" disabled>
+                    <input type="text" class="form-control style-input" id="bairro-medico" value="{{responseTelaSolicitacao.medico.enderecos[0].dsBairro}}" disabled>
                 </div>
                 <div class="form-group col-12 col-md-4">
                     <label for="cidade-medico" class="label-form">Cidade</label>
-                    <input type="text" class="form-control style-input" id="cidade-medico" placeholder="{{responseTelaSolicitacao.medico.enderecos[0].cidade.dsCidade}}" disabled>
+                    <input type="text" class="form-control style-input" id="cidade-medico" value="{{responseTelaSolicitacao.medico.enderecos[0].cidade.dsCidade}}" disabled>
                 </div>
                 <div class="form-group col-12 col-md-1">
                     <label for="uf-endereco-medico" class="label-form">UF</label>
-                    <input type="text" class="form-control style-input" id="uf-endereco-medico" placeholder="{{responseTelaSolicitacao.medico.enderecos[0].cidade.uf.dsUf}}" disabled>
+                    <input type="text" class="form-control style-input" id="uf-endereco-medico" value="{{responseTelaSolicitacao.medico.enderecos[0].cidade.uf.dsUf}}" disabled>
                 </div>
                 <div class="form-group col-12 col-md-3">
                     <label for="telefone-medico" class="label-form">Telefone</label>
-                    <input type="text" class="form-control style-input" id="telefone-medico" placeholder="{{responseTelaSolicitacao.medico.contatos[0].dsContato}}" disabled>
+                    <input type="text" class="form-control style-input" id="telefone-medico" value="{{responseTelaSolicitacao.medico.contatos[0].dsContato}}" disabled>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-12">
-                    <label for="indicacao" class="label-form">Indicação Clínica</label>
-                    <input type="text" class="form-control style-input" id="dsIndicacaoClin" name="dsIndicacaoClin" [(ngModel)]="request.dsIndicacaoClin" #dsIndicacaoClin="ngModel" placeholder="" required>
+                    
+                    <label for="dsIndicacaoClin" class="label-form">Indicacao Clinica</label>
+                    <input type="text" class="form-control style-input" id="dsIndicacaoClin" name="dsIndicacaoClin" [(ngModel)]="responseTelaSolicitacao.dsIndicacaoClin" #dsIndicacaoClin="ngModel" required>
+                    <!-- <input type="text" class="form-control style-input" id="dsIndicacaoClin" name="dsIndicacaoClin" [(ngModel)]="request.dsIndicacaoClin" #dsIndicacaoClin="ngModel" placeholder="" required> -->
                 </div> 
             </div>
 
@@ -79,9 +81,9 @@
                     <div class="row mt-2">
                         <div class="form-group col-11">
                             <label for="exame" class="label-form">Exame</label>
-                            <select type="text" class="form-control style-input select-form" id="exame" name = "listaExame" required [(ngModel)]="select">
+                            <select type="text" class="form-control style-input select-form" id="exame" name="listaExame" required [(ngModel)]="select">
                                 <option>Selecione um tipo de exame</option>
-                                <option *ngFor="let exam of responseTelaSolicitacao.listaTipoExame">{{exam.dsTipoExame}}</option>
+                                <option *ngFor="let exam of responseTelaSolicitacao.listaTipoExame" value="{{exam.idTipoExame}}">{{exam.dsTipoExame}}</option>
                             </select>
                         </div>
                         <div class="form-group col-1">
@@ -102,7 +104,7 @@
                         </thead>
                         <tbody *ngFor = "let item of listaExame">
                             <tr>
-                            <td class="texto-tabela">{{item}}</td>
+                            <td class="texto-tabela">{{item.dsTipoExame}}</td>
                             <td class="text-left"><button type="button" class="btn-delete" (click)=removerItem(item)></button></td>
                             </tr>
                         </tbody>
@@ -111,7 +113,7 @@
             </div>
 
             <div class="text-center pb-4">
-                <button type="button" class="btn btn-verde btn-outline-primary" (click)="open(content)">Enviar Solicitação</button>
+                <button type="button" class="btn btn-verde btn-outline-primary" (click)="registrar()">Enviar Solicitação</button>
                 <button type="reset" class="btn btn-cinza" routerLink="/atendimento/especialista">Sair</button>
             </div>
         </form>

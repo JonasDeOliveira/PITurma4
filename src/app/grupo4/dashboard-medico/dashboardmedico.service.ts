@@ -12,7 +12,6 @@ export class DashboardmedicoService {
   private readonly API = 'http://localhost:8080/agendamentos';
   
   
-  //ARRUMAR COM O LOCALSTORAGE
   objMedico = JSON.parse(localStorage.getItem("medico"));
 
   getAgendamentos() {
