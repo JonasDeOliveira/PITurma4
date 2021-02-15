@@ -11,18 +11,27 @@ import { PlanosService } from '../planos/shared/planos.service';
   styleUrls: ['./cadastro-cliente.component.css']
 })
 export class CadastroClienteComponent implements OnInit {
-  
+
+  constructor(private clienteService: ClienteService,
+    private router: Router
+    ) {}
+
+  ngOnInit(): void {
+    this.getFormularioCadastro();
+    this.getCidadesByUf();
+  }
+
   responseFormularioCadastro: any;
   responseCidadesByUf: any;
-  
-  outputCliente: OutputCliente={
+
+  outputCliente: OutputCliente = {
     loginUsuario: {
       idUsuario: null,
       dsSenha: '',
       dsEmail: ''
     },
-    usuario:{
-      idUsuario:null, 
+    usuario: {
+      idUsuario: null,
       idGenero: null,
       idEspMedica: null,
       idUfCrm: null,
@@ -31,20 +40,21 @@ export class CadastroClienteComponent implements OnInit {
       dtNascimento: '',
       nrCpf: '',
       nrCrm: '',
-      dsEndImg: '' ,
+      dsEndImg: '',
       idPreco: null,
-      enderecos:[{idEndereco: null,
+      enderecos: [{
+        idEndereco: null,
         dsEndereco: '',
         dsComplemento: '',
         dsBairro: '',
         nrCep: '',
         idCidade: null,
-        idUf: null}
-    ]
+        idUf: null
+      }]
     },
     ddd: '',
     celular: '',
-    contrato:{
+    contrato: {
       idContrato: null,
       dsContrato: '',
       dtVigencia: '',
@@ -59,21 +69,11 @@ export class CadastroClienteComponent implements OnInit {
       codSeguranca:null,
       dtValidade:'',
       dtEmissao:''
-    }
-
-  }
-
-  constructor(private clienteService: ClienteService,
-    private router: Router
-    ) {
-    
-   }
-
-  ngOnInit(): void {
-    this.getFormularioCadastro();
-    this.getCidadesByUf();
     
   }
+    
+  }
+
   getFormularioCadastro() {
     this.clienteService.getFormularioCadastro().subscribe(
       response => {
@@ -81,16 +81,18 @@ export class CadastroClienteComponent implements OnInit {
         console.log(response);
       }
     )
-}
-  getCidadesByUf(){
+  }
+
+  getCidadesByUf() {
     this.clienteService.getCidadesByUf(this.outputCliente.usuario.enderecos[0].idUf).subscribe(
       response => {
-        this.responseCidadesByUf= response;
+        this.responseCidadesByUf = response;
         console.log(response);
       }
     )
   }
-  ver(){
+  
+  ver() {
     console.log(this.outputCliente.usuario.enderecos[0].idUf)
   }
   
