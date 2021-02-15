@@ -28,7 +28,7 @@ export interface Cliente{
     planos: Array<Planos>
     }
      //----------------------------------------------------
-    export interface FormularioMeusDados{
+    export interface FormularioMeusDados {
     ufs: Array<Uf>,
     genero: Array<Genero>,
     planos: Array<Planos>,

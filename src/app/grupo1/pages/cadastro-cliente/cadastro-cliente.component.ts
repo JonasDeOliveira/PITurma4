@@ -36,9 +36,10 @@ export class CadastroClienteComponent implements OnInit {
         dsComplemento: '',
         dsBairro: '',
         nrCep: '',
-        idCidade: null,
+        cidade: null,
         idUf: null
-      }]
+      }
+      ]
     },
     ddd: '',
     celular: '',
@@ -64,7 +65,6 @@ export class CadastroClienteComponent implements OnInit {
     }
 
   }
-
 
   constructor(private clienteService: ClienteService) { }
 
