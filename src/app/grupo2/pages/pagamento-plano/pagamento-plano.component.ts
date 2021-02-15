@@ -24,7 +24,8 @@ export class PagamentoPlanoComponent implements OnInit {
   }
 
   responseContratos : ResponseContratos [];
-  idPlano
+  idPagamentoPlEscolhido : number;
+  idPgtoPlanoString : string;
 
   ngOnInit(): void {
     this.listarContratoPorUsuario(6);
@@ -42,17 +43,17 @@ export class PagamentoPlanoComponent implements OnInit {
     cadastrarPagtoPlano() {
       this.pagamentoPlanoService.cadastrarPlano(this.request).subscribe(
         response => {
-          alert('plano cadastrado com sucesso');
-          this.router.navigate(['/pagamento-plano']);
+          this.idPagamentoPlEscolhido = response;
+          this.salvarPagtoPlanoLs();
         },
         error => {
-          alert('algo inesperado aconteceu');
+          alert('erro ao pagar consulta com plano');
         }
       )
     }
     salvarPagtoPlanoLs(){
-      this.idAgPacienteString = this.idAgPacienteEscolhida.toString();
-      localStorage.setItem("idAgPaciente", this.idAgPacienteString)
+      this.idPgtoPlanoString = this.idPagamentoPlEscolhido.toString();
+      localStorage.setItem("idPgtoPlano", this.idPgtoPlanoString)
     }
 
   }

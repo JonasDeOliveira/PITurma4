@@ -12,7 +12,7 @@ export class PagamentoCartaoServiceService {
 
   private readonly APICADASTRARPAGTOCARTAO = 'http://localhost:8080/pagamento/particular';
   
-  cadastrarCartao (request: PagamentoCartao): Observable<PagamentoCartao> {
-    return this.http.post<PagamentoCartao>(this.APICADASTRARPAGTOCARTAO, request);
+  cadastrarCartao (request: PagamentoCartao): Observable<number> {
+    return this.http.post<number>(this.APICADASTRARPAGTOCARTAO, request);
 }
 }
