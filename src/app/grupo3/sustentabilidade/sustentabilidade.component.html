@@ -18,10 +18,11 @@
             <form class="col-12">
                 <div class="form-row align-items-center">
                   <div class="col-md-6 my-1">
-                    <input type="text" class="form-control" id="localBusca" placeholder="Busque por cep, rua ou bairro">
+                    <input type="text" class="form-control" [(ngModel)]="local" name ="local" placeholder="Busque por rua, bairro ou cidade">
                   </div>
                   <div class="btnBusca">
-                    <button type="submit" class="btn btn-primary btn-verLocal">Buscar</button>
+                    <button type="button" class="btn btn-primary btn-verLocal" (click)="buscarLojaPorLocal()">Buscar</button>
+                    
                   </div>
                 </div>
             </form>            

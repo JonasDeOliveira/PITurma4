@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
 
 import { ProgramaNutricionalComponent } from './programa-nutricional/programa-nutricional.component';
 import { AgendaAlimentarComponent } from './agenda-alimentar/agenda-alimentar.component';
@@ -22,7 +23,8 @@ import { LojaService } from './shared/lojas.service';
   
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
 
   exports: [
