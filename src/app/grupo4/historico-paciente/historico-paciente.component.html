@@ -34,41 +34,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">000000001</th>
-            <td>dd/mm/aaaaa</td>
-            <td>000.000.000-00</td>
-            <td>Nome do Paciente</td>
+          <tr *ngFor="let atendimento of historicoResposta">
+            <th scope="row">{{atendimento.prontuario.idProntuario}}</th>
+            <td>{{atendimento.dtAtendimento}}</td>
+            <td>{{atendimento.paciente.nrCpf}}</td>
+            <td>{{atendimento.paciente.nmNome}}</td>
             <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">+ Ver Prontuário</button>
           </tr>
-          <tr>
-            <th scope="row">000000002</th>
-            <td>dd/mm/aaaaa</td>
-            <td>000.000.000-00</td>
-            <td>Nome do Paciente</td>
-            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">+ Ver Prontuário</button>
-            </tr>
-          <tr>
-            <th scope="row">000000003</th>
-            <td>dd/mm/aaaaa</td>
-            <td>000.000.000-00</td>
-            <td>Nome do Paciente</td>
-            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">+ Ver Prontuário</button>
-            </tr>
-          <tr>
-            <th scope="row">000000004</th>
-            <td>dd/mm/aaaaa</td>
-            <td>000.000.000-00</td>
-            <td>Nome do Paciente</td>
-            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">+ Ver Prontuário</button>
-            </tr>
-          <tr>
-            <th scope="row">000000005</th>
-            <td>dd/mm/aaaaa</td>
-            <td>000.000.000-00</td>
-            <td>Nome do Paciente</td>
-            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">+ Ver Prontuário</button>
-            </tr>
         </tbody>
       </table>
     </div>
@@ -120,6 +92,12 @@
     <div class="row">
       <div class="col-md-12 ml-auto">
         <label for="recipient-name" class="col-form-label"><h6>Plano</h6></label>
+        <input type="text" class="form-control" id="recipient-name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 ml-auto">
+        <label for="recipient-name" class="col-form-label"><h6>Observações:</h6></label>
         <input type="text" class="form-control" id="recipient-name">
       </div>
     </div>

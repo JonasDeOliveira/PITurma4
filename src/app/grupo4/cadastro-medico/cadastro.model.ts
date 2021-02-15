@@ -1,5 +1,4 @@
 export interface Cadastro {
-    idUsuario: null;
     espMed : EspMed;
     uf : Uf ;
     nome: string;
@@ -28,7 +27,7 @@ export interface Endereco {
     dsComplemento: string;
     dsBairro: string;
     nrCep: string;
-    idCidade: number;
+    cidade: Cidade;
 }
 export interface Contato {
     dsContato : string;
@@ -37,4 +36,8 @@ export interface Contato {
 export interface LoginUsuario {
     dsEmail : string;
     dsSenha : string;
+}
+export interface Cidade {
+    idCidade : number;
+    uf: Uf;
 }

@@ -13,7 +13,6 @@ export class CadastroMedicoComponent implements OnInit {
   constructor(private cadastroService :CadastromedicoService, private router: Router ) { }
 
   request: Cadastro = {
-    idUsuario: null,
     espMed : {
       idEspMed: null 
     },
@@ -33,8 +32,13 @@ export class CadastroMedicoComponent implements OnInit {
       dsComplemento: '',
       dsBairro: '',
       nrCep: '',
-      idCidade: null
+      cidade : {
+        idCidade: null,
+        uf: {
+            idUf: null
+        }
       }
+    }
     ],
     contatos: [
       {
