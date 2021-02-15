@@ -10,6 +10,7 @@ import { Output, EventEmitter } from '@angular/core';
 export class LembreteItemListaComponent implements OnInit {
 
   @Input() lembrete: Lembrete;
+  @Input() idUsuario: string;
   @Output("deletarLembrete") deletarLembrete : EventEmitter<any> = new EventEmitter();
   //@Output("alerta") alerta : EventEmitter<any> = new EventEmitter();
 

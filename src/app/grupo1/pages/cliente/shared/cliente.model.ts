@@ -2,6 +2,8 @@ import { Lembrete } from 'src/app/grupo1/lembretes/shared/lembrete.model'
 import { Planos } from '../../planos/shared/planos.model';
 import { Usuario } from '../../../usuario/shared/usuario.model';
 import { Cartao} from 'src/app/grupo1/Cartoes/shared/cartao.model';
+
+
 export interface OutputCliente {
    
         loginUsuario: LoginUsuario,
@@ -20,6 +22,38 @@ export interface OutputCliente {
         contatos: Array<Contato>;
         ufs: Array<Uf>,
         idPlano: number
+}
+export interface Cliente{}
+
+    export interface InputCliente {
+    loginUsuario: LoginUsuario,
+    usuario: Usuario,
+    ddd: String,
+    celular: String,
+    contrato: Contrato,
+    //cartao: Cartao    
+    }
+    //----------------------------------------------------
+    export interface AreaDoCliente{
+    nmNome: String,
+    idPaciente: number,
+    lembrete: Array<Lembrete> 
+    }
+    //----------------------------------------------------
+    export interface FormularioCadastro{
+    ufs: Array<Uf>,
+    genero: Array<Genero>,
+    planos: Array<Planos>
+    }
+     //----------------------------------------------------
+    export interface FormularioMeusDados{
+    usuario: Usuario,
+    dsEmail: string,
+    contatos: Array<Contato>,
+    ufs: Array<Uf>,
+    genero: Array<Genero>,
+    planos: Array<Planos>,
+    idPlano: number
     }
     //----------------------------------------------------
     export interface Contrato {
@@ -63,3 +97,24 @@ export interface OutputCliente {
         dsEmail: string
        
     }
+
+    //----------------------------------------------------
+    //GET Clientes para Tela Cadastro
+    export interface ResponseFormularioCadastro {
+        formularioCadastro: FormularioCadastro
+    }
+
+    //----------------------------------------------------
+    //GET Clientes para Tela Meus Dados
+    export interface ResponseFormularioMeusDados{
+        formularioMeusDados: FormularioMeusDados
+    }
+
+    //----------------------------------------------------
+    export interface ResultData {
+        status: number;
+        mensagem: String;
+        retorno: any;
+        dtTimestampErro: Date;
+    }
+

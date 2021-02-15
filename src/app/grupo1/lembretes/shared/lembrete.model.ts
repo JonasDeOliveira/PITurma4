@@ -1,6 +1,6 @@
 export interface Lembrete {
     idLembrete: number,
-    idPaciente: number,
+    idPaciente: string,
     nmTitulo: string,
     dsLembrete: string,
     dtLembrete: string,

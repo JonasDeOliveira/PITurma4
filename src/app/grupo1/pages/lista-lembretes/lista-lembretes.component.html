@@ -6,21 +6,11 @@
 
             <!-- Navegação Lembretes -->
             <div class="row nav-lembretes">
-                <div class="col-12 col-md-4 p-3 btn-lembrete">
+                <div class="col-12 col-md-4 btn-lembrete">
                     <!-- BOTAO NOVO LEMBRETE -->
                     <button type="button" value="" class="btn" id="todoSubmit" data-toggle="modal"
-                        data-target=".bd-lembrete-modal-lg" (click)="open()">Novo lembrete<i class="fas fa-plus pr-2"></i></button>
-                </div>
-
-                <div class="col-12 col-md-8 controlar-lembretes">
-                    <form class="controlar-lembretes-form">
-                        <label for="lembretes-ordem">Ordenar por:</label>
-                        <select name="lembretes-ordem" id="lembretes-ordem" class="form-control">
-                            <option value="valor1">Mais recente</option>
-                            <option value="valor2" selected>Mais antigo</option>
-                            <option value="valor3">Data de criação</option>
-                        </select>
-                    </form>
+                        data-target=".bd-lembrete-modal-lg" (click)="open()">Novo lembrete <i
+                            class="fas fa-plus pr-2"></i></button>
                 </div>
             </div>
             <!-- Categoria Lembretes -->

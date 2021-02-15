@@ -13,6 +13,7 @@ import { DadosClienteComponent } from './dados-cliente/dados-cliente.component';
 
 import { LembretesModule } from '../lembretes/lembretes.module';
 import { CardPlanosComponent } from './planos/card-planos/card-planos.component';
+import { ClienteService } from './cliente/shared/cliente.service';
 
 @NgModule({
   declarations: [PlanosComponent, PortalComponent, AreaClienteComponent, LoginClienteComponent, ListaLembretesComponent, CadastroClienteComponent, DadosClienteComponent, CardPlanosComponent],
@@ -20,7 +21,8 @@ import { CardPlanosComponent } from './planos/card-planos/card-planos.component'
     CommonModule,
     LembretesModule,
     RouterModule,
-    [ModalModule.forRoot()]
+    [ModalModule.forRoot()],
+ 
   ],
   exports: [PlanosComponent, 
     PortalComponent, 
@@ -30,6 +32,9 @@ import { CardPlanosComponent } from './planos/card-planos/card-planos.component'
     CadastroClienteComponent, 
     DadosClienteComponent],
 
+    providers: [
+      ClienteService
+    ]
 
 })
 export class PagesModule { }

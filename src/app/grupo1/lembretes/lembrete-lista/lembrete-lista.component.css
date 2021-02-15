@@ -14,6 +14,15 @@
     border-bottom: 1px solid #ccc;
 }
 
+.btn-atualizar {
+    color: white;
+    background-color: #3ec596;
+}
+
+.btn-atualizar:hover {
+    background-color: #319A75;
+}
+
 
 .todo__title{
     color:white;
@@ -85,3 +94,42 @@
 }
 
 /* Fim da lista de lembretes  */
+
+
+
+/* organizacao lembretes */
+
+.nav-lembretes {
+    display: flex;
+}
+
+.controlar-lembretes {
+    display: flex;
+    align-items: center;
+}
+
+.controlar-lembretes-form{
+    margin-right: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.controlar-lembretes-form label {
+    text-align: right;
+    margin-right: 20px;
+}
+
+@media(max-width:540px) {
+    .nav-lembretes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-lembrete .btn {
+        margin: auto;
+    }
+}
+
+
