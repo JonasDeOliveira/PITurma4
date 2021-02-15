@@ -2,23 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { ResponseAgPacientes } from '../../shared/model/agPaciente';
 import { AgPacienteService } from '../../shared/services/agPaciente.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
   selector: 'app-minhas-consultas',
   templateUrl: './minhas-consultas.component.html',
-  styleUrls: ['./minhas-consultas.component.css']
+  styleUrls: ['./minhas-consultas.component.css'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class MinhasConsultasComponent implements OnInit {
 
   constructor(
-    
     public agPacienteService: AgPacienteService,
-  
-    private router: Router
+    private router: Router,
+
+    config: NgbModalConfig, private modalService: NgbModal
     ) {
-    
+        config.backdrop = 'static';
+       config.keyboard = false;
    }
 
 
@@ -30,6 +32,9 @@ export class MinhasConsultasComponent implements OnInit {
     ngOnInit() : void{
     this.listarAgPacientePorUsuario(14);
     
+  }
+  open(content) {
+    this.modalService.open(content);
   }
 
   listarAgPacientePorUsuario(idUsuario : number) {

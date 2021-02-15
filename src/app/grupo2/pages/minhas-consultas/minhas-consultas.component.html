@@ -44,63 +44,87 @@
   </div>
   <div class="fechar-filtro"><b>x </b>Fechar Filtros</div>
 </div>
+
 <section class="container d-flex flex-column align-items-center">
   <h1>Minhas Consultas</h1>
   <div class="lista-consultas col-10">
     <h4 id="titulo-agendadas">Consultas Agendadas</h4>
     <div *ngFor="let agPaciente of responseAgPacientes">
       <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 1">
-      <div  class="row consulta agendada d-flex align-items-center justify-content-between justify-content-between">
+        <div class="row consulta agendada d-flex align-items-center justify-content-between justify-content-between">
           <p class="texto-consulta col-8">
-          {{agPaciente.agenda.data}} -
-          {{agPaciente.agenda.periodo.horaInicial}} -
-          {{agPaciente.statusConsulta.dsStatusConsulta}} - Dr(a).
-          {{agPaciente.agenda.medico.nome}} -
-          {{agPaciente.agenda.medico.espMed.dsEspMed}}.
-        </p>
-      <div>
-        <!-- <button class="checkin col-2" data-toggle="modal" data-target="#checkinModal">Check-in</button> -->
-        <button class="remarcar col-6" data-toggle="modal" data-target="#remarcarModal">Reagendar</button>
-        <button class="col-6 btn-canc" data-toggle="modal" data-target="#cancelarModal" 
-        value="AtualizarAgPaciente" (click)="atualizarAgPaciente(agPaciente.idAgPaciente)">Cancelar</button>
+            {{agPaciente.agenda.data}} -
+            {{agPaciente.agenda.periodo.horaInicial}} -
+            {{agPaciente.statusConsulta.dsStatusConsulta}} - Dr(a).
+            {{agPaciente.agenda.medico.nome}} -
+            {{agPaciente.agenda.medico.espMed.dsEspMed}}.
+          </p>
+          <div>
+            <!-- <button class="checkin col-2" data-toggle="modal" data-target="#checkinModal">Check-in</button> -->
+            <button type="button" (click)="open(contentReagendar)" class="remarcar col-6" data-toggle="modal"
+              data-target="#remarcarModal">Reagendar</button>
+            <button type="button" (click)="open(contentCancelar)" class="col-6 btn-canc" data-toggle="modal"
+              data-target="#cancelarModal">Cancelar</button>
+          </div>
+        </div>
       </div>
+      
+  <!-- AQUI cancelar  -->
+    <ng-template #contentCancelar let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Cancelar</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+
+      <div class="modal-body">
+        <p>Você tem certeza que deseja cancelar a consulta?</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" value="AtualizarAgPaciente" 
+        (click)="atualizarAgPaciente(agPaciente.idAgPaciente)" (click)="c('Close click')">Sim</button>
+        <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Não</button>
+      </div>
+
+    </ng-template>
+   <!-- AQUI  -->
     </div>
-  </div>
 
     <h4 id="titulo-realizadas">Consultas Realizadas</h4>
     <div *ngFor="let agPaciente of responseAgPacientes">
-   
       <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 2">
-      <div  class="row consulta realizada d-flex align-items-center justify-content-between">
-        <p class="texto-consulta col-8">
-          {{agPaciente.agenda.data}} -
-          {{agPaciente.agenda.periodo.horaInicial}} -
-          {{agPaciente.statusConsulta.dsStatusConsulta}} - Dr(a).
-          {{agPaciente.agenda.medico.nome}} -
-          {{agPaciente.agenda.medico.espMed.dsEspMed}}.
-          <button class="checkin col-4">Nova Consulta</button>
-        </p>
-      
+        <div class="row consulta realizada d-flex align-items-center justify-content-between">
+          <p class="texto-consulta col-8">
+            {{agPaciente.agenda.data}} -
+            {{agPaciente.agenda.periodo.horaInicial}} -
+            {{agPaciente.statusConsulta.dsStatusConsulta}} - Dr(a).
+            {{agPaciente.agenda.medico.nome}} -
+            {{agPaciente.agenda.medico.espMed.dsEspMed}}.
+            <button class="checkin col-4">Nova Consulta</button>
+          </p>
+
+        </div>
       </div>
-    </div>
     </div>
 
     <h4 id="titulo-canceladas">Consultas Canceladas</h4>
     <div *ngFor="let agPaciente of responseAgPacientes">
       <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 3">
-      <div class="row consulta cancelada d-flex align-items-center justify-content-between">
-        <p class="texto-consulta col-8">
-          {{agPaciente.agenda.data}} -
-          {{agPaciente.agenda.periodo.horaInicial}} -
-          {{agPaciente.statusConsulta.dsStatusConsulta}} - Dr(a).
-          {{agPaciente.agenda.medico.nome}} -
-          {{agPaciente.agenda.medico.espMed.dsEspMed}}.
-        </p>
+        <div class="row consulta cancelada d-flex align-items-center justify-content-between">
+          <p class="texto-consulta col-8">
+            {{agPaciente.agenda.data}} -
+            {{agPaciente.agenda.periodo.horaInicial}} -
+            {{agPaciente.statusConsulta.dsStatusConsulta}} - Dr(a).
+            {{agPaciente.agenda.medico.nome}} -
+            {{agPaciente.agenda.medico.espMed.dsEspMed}}.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-    <!-- Modal check-in -->
+
+    <!-- Modal check-in
     <div class="modal fade" id="checkinModal" tabindex="-1" role="dialog" aria-labelledby="checkinModal"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -116,7 +140,8 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+
     <!-- Modal Confirmar cancelar -->
     <div class="modal fade" id="cancelarModal" tabindex="-1" role="dialog" aria-labelledby="cancelarModal"
       aria-hidden="true">
@@ -153,25 +178,30 @@
         </div>
       </div>
     </div>
+
+
     <!-- Modal Confirmar reagendar -->
-    <div class="modal fade" id="remarcarModal" tabindex="-1" role="dialog" aria-labelledby="remarcarModal"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Reagendar Consulta</h5>
-          </div>
-          <div class="modal-body">
-            Você tem certeza que deseja reagendar a consulta?
-            Isso irá cancelar sua consulta atual.
-          </div>
-          <div class="modal-footer">
-            <a href="#"><button type="button" class="btn btn-secondary">Sim</button></a>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-          </div>
-        </div>
+    <ng-template #contentReagendar let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Reagendar</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div>
+
+      <div class="modal-body">
+        <p> Você tem certeza que deseja reagendar a consulta?
+          Isso irá cancelar sua consulta atual.</p>
+      </div>
+
+      <div class="modal-footer">
+        <a routerLink='/agendamento-consultas'><button type="button" class="btn btn-outline-dark"
+            (click)="c('Save click')">Sim</button></a>
+        <button type="button" class="btn btn-outline-dark" (click)="('Close click')">Não</button>
+      </div>
+
+    </ng-template>
+
   </div>
 </section>
 
