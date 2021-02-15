@@ -47,22 +47,23 @@
 
 
     <!-- MODAL -->
-    <ng-template #modalSenha class="modal-dialog modal-lg"  let-c="close" let-d="dismiss">
+    <ng-template #modalSenha class="modal-dialog modal-lg" let-c="close" let-d="dismiss">
 
         <div class="modal-content">
-            <form  #formLembretes="ngForm">
+            <form #formLembretes="ngForm">
                 <div class="modal-header">
                     <div class="form-group col-md-12 esqueci-senha">
                         <label for="emailRec">Digite o e-mail cadastrado:</label>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            (click)="d('Cross click')">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <div>
-                                <input type="text" class="form-control" id="emailRec" name="emailRec"
-                                placeholder="digite o seu e-mail" [(ngModel)]="loginCliente.dsEmail" #emailRec="ngModel"
+                            <input type="text" class="form-control" id="emailRec" name="emailRec"
+                                placeholder="digite o seu e-mail" [(ngModel)]="loginCliente.dsEmail" 
+                                #emailRec="ngModel"
                                 required (change)="ver()">
-                            <button class="btn btn-verde" (click)="esqueceuSenha()"><a
-                                    >Enviar</a></button>
+                            <button class="btn btn-verde" (click)="esqueceuSenha()"><a>Enviar</a></button>
                         </div>
                     </div>
                 </div>

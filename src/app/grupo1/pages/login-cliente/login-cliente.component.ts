@@ -66,7 +66,4 @@ export class LoginClienteComponent implements OnInit {
   open(content) {
     this.modalService.open(content);
   }
-
-
-
 }
