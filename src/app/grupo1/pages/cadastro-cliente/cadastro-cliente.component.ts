@@ -25,7 +25,7 @@ export class CadastroClienteComponent implements OnInit {
       idUfCrm: null,
       idTipoUsuario: null,
       nmNome: '',
-      dtNascimento: null,
+      dtNascimento: '',
       nrCpf: '',
       nrCrm: '',
       dsEndImg: '',
@@ -45,13 +45,18 @@ export class CadastroClienteComponent implements OnInit {
     contrato: {
       idContrato: null,
       dsContrato: '',
-      dtVigencia: null,
-      idPlano: null,
+      dtVigencia: '',
+      plano: {
+        idPlano: null,
+        nmPlano: '',
+        dsPlano: '',
+        vlPlano: null
+      },
       idUsuario: null
     },
     cartao: {
       idCartao: null,
-      idUsuario: null,
+      usuario: null,
       nrCartao: null,
       codSeguranca: null,
       dtValidade: '',
@@ -59,6 +64,7 @@ export class CadastroClienteComponent implements OnInit {
     }
 
   }
+
 
   constructor(private clienteService: ClienteService) { }
 
@@ -84,7 +90,7 @@ export class CadastroClienteComponent implements OnInit {
       }
     )
   }
-  
+
   ver() {
     console.log(this.outputCliente.usuario.enderecos[0].idUf)
   }

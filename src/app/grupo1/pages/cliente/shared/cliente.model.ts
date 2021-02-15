@@ -29,13 +29,10 @@ export interface Cliente{
     }
      //----------------------------------------------------
     export interface FormularioMeusDados{
-    usuario: Usuario,
-    dsEmail: string,
-    contatos: Array<Contato>,
     ufs: Array<Uf>,
     genero: Array<Genero>,
     planos: Array<Planos>,
-    idPlano: number
+    inputCliente : OutputCliente
     }
     //----------------------------------------------------
     export interface Contrato {
