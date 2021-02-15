@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DashboardmedicoService {
+export class AgendamedicoService {
 
   constructor(private http : HttpClient) { }
 
   private readonly API = 'http://localhost:8080/agendamentos';
+  private readonly API2 = 'http://localhost:8080/agPaciente/mudar-status';
+
   
-  
-  //ARRUMAR COM O LOCALSTORAGE
   objMedico = JSON.parse(localStorage.getItem("medico"));
 
   getAgendamentos() {
@@ -24,4 +24,8 @@ export class DashboardmedicoService {
     return this.http.get(URL);
   }
 
+  cancelarAgendamento(idAgPaciente: number): Observable<any>{
+    const URL = `${this.API2}/${idAgPaciente}`;   
+    return this.http.delete<any>(URL);
+  }
 }

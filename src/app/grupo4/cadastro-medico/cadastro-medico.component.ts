@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CadastromedicoService } from './cadastromedico.service'
+import { Router } from '@angular/router';
+import { Cadastro } from './cadastro.model';
 
 @Component({
   selector: 'app-cadastro-medico',
@@ -8,7 +10,42 @@ import { CadastromedicoService } from './cadastromedico.service'
 })
 export class CadastroMedicoComponent implements OnInit {
 
-  constructor(private cadastroService :CadastromedicoService) { }
+  constructor(private cadastroService :CadastromedicoService, private router: Router ) { }
+
+  request: Cadastro = {
+    idUsuario: null,
+    espMed : {
+      idEspMed: null 
+    },
+    uf : {
+      idUf: null
+    } ,
+    nome: '',
+    nrCpf:'',
+    dtNascimento : null,
+    nrCrm: '',
+    preco: {
+      vlConsulta: null
+    } ,
+    enderecos: [
+      {
+      dsEndereco: '',
+      dsComplemento: '',
+      dsBairro: '',
+      nrCep: '',
+      idCidade: null
+      }
+    ],
+    contatos: [
+      {
+        dsContato: ''
+    }
+    ],
+    login: {
+      dsEmail: '',
+      dsSenha: ''
+    }
+  }
 
   dadosResposta: any
 
@@ -23,6 +60,18 @@ export class CadastroMedicoComponent implements OnInit {
         console.log(resposta);
       }
     );
+  }
+
+  registrar() {
+    this.cadastroService.createCadastro(this.request).subscribe(
+      response => {
+        alert('Cadastro realizado com sucesso');
+        this.router.navigate(['/dashboard/medico']);
+      },
+      error => {
+        alert('algo inesperado aconteceu');
+      }
+    )
   }
 
 }

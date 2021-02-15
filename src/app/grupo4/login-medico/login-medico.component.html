@@ -15,17 +15,17 @@
             <div class="container container-box">
                 <div class="box-central col-md-4">
                     <h3 class="titulo-verde text-center">Login Área Médica</h3>
-                    <form id="id-form" name="formulario" action="#">
+                    <form id="id-form" name="formulario" #formLogin="ngForm">
                         <div class="form-group mt-2">
                             <label for="login-email-med" class="label-form">Email</label>
-                            <input type="text" class="form-control style-input" id="login-email-med" placeholder="Digite seu email" required>
+                            <input type="text" class="form-control style-input" id="dsEmail" name="dsEmail" ngModel placeholder="Digite seu email" required>
                         </div>
 
                         <div class="form-group">
                             <label for="login-email-med" class="label-form">Senha</label>
-                            <input type="text" class="form-control style-input" id="login-email-med" placeholder="Digite sua senha" required>
+                            <input type="text" class="form-control style-input" id="dsSenha" name="dsSenha" ngModel placeholder="Digite sua senha" required>
                         </div>
-                        <button type="submit" class="btn col-md-12 btn-verde mt-4" routerLink = "/dashboard/medico">Entrar</button>
+                        <button type="submit" class="btn col-md-12 btn-verde mt-4" (click)="logar(formLogin.value.dsEmail, formLogin.value.dsSenha)">Entrar</button>
                     </form>
                     <p class="text-center mb-3 mt-2"><a class="nav-link" href="#" data-toggle="modal"
                         data-target=".bd-example-modal-lg">Esqueceu sua senha?</a></p>

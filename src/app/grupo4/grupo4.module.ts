@@ -14,6 +14,9 @@ import {CadastromedicoService} from './cadastro-medico/cadastromedico.service';
 import { DashboardmedicoService } from './dashboard-medico/dashboardmedico.service';
 import { SolicitacaoexameService } from './solicitacao-exames/solicitacaoexame.service';
 import { PerfilmedicoService } from './perfil-medico/perfilmedico.service'
+import { PrescrevermedicacaoService } from './prescrever-medicacao/prescrevermedicacao.service';
+import { AgendamedicoService } from './agenda-medico/agendamedico.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,14 +32,17 @@ import { PerfilmedicoService } from './perfil-medico/perfilmedico.service'
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
 
   providers: [
     CadastromedicoService,
     DashboardmedicoService,
     SolicitacaoexameService,
-    PerfilmedicoService
+    PerfilmedicoService,
+    PrescrevermedicacaoService,
+    AgendamedicoService
   ]
 })
 export class Grupo4Module { }

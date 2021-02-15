@@ -1,7 +1,7 @@
 export interface Solicitacao {
     nomePaciente: string;
     medico: Medico;
-    listaTipoExame : Exames[]
+    listaTipoExame : Exames[];
 }
 
 export interface Medico {
@@ -24,13 +24,13 @@ export interface Endereco {
     dsEndereco: string;
     dsComplemento: string,
     dsBairro: string;
-    nrCep: string,
-    idCidade: number
+    nrCep: string;
+    idCidade: number;
 }
 
 export interface Contato {
     nrDdd: number;
-    dsContato: number
+    dsContato: number;
 }
 
 export interface Exames {
