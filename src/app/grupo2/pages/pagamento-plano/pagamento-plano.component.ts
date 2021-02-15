@@ -27,7 +27,7 @@ export class PagamentoPlanoComponent implements OnInit {
   idPgtoPlanoString : string;
 
   ngOnInit(): void {
-    this.listarContratoPorUsuario(6);
+    this.listarContratoPorUsuario(14);
   }
 
   listarContratoPorUsuario(idUsuario: number){

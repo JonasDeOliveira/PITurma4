@@ -29,7 +29,7 @@ export class PagamentoParticularComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.listarCartao(1);
+    this.listarCartao(14);
   }
 
   listarCartao(idUsuario: number){
