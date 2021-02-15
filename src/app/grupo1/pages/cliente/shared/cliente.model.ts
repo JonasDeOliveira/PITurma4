@@ -42,7 +42,7 @@ export interface Cliente{
         idContrato: number,
         dsContrato: string,
         dtVigencia: string,
-        idPlano: number,
+        plano: Planos,
         idUsuario: number
     }
      //----------------------------------------------------
@@ -50,6 +50,11 @@ export interface Cliente{
         idUf: number,
         dsUf: string
     }
+     //----------------------------------------------------
+
+
+
+
     //----------------------------------------------------
        export interface Genero {
         idGenero: number,
@@ -100,12 +105,16 @@ export interface Cliente{
         dtTimestampErro: Date;
     }
 
+    //----------------------------------------------------
+
     export interface Cidade {
         idCidade: number;
         cdCidadeIbge: number;
         dsCidade: string;
         uf: Uf
     }
+
+    //----------------------------------------------------
 
     export interface ResponseCidades {
        cidades: Cidade[]
