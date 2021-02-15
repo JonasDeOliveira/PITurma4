@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ResponseLojas, Lojas } from './lojas.model';
+import { ResponseLojas, Lojas } from '../model/lojas.model';
 import { Observable } from 'rxjs';
 
 

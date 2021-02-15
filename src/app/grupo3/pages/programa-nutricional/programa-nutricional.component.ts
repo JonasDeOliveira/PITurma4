@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ProgramaNutriService} from '../shared/ProgramaNutri/programaNutri.service';
-import { Cardapio, ResponseCardapio, ResponseDadosPaciente} from '../shared/ProgramaNutri/programaNutri.model';
-import { TipoRefeicaoService } from '../shared/ProgramaNutri/tipoRefeicao.service';
-import { ResponseTipoRefeicao } from '../shared/ProgramaNutri/tipoRefeicao.model';
+import { ProgramaNutriService} from '../../shared/ProgramaNutri/service/programaNutri.service';
+import { Cardapio, ResponseCardapio, ResponseDadosPaciente} from '../../shared/ProgramaNutri/model/programaNutri.model';
+import { TipoRefeicaoService } from '../../shared/ProgramaNutri/service/tipoRefeicao.service';
+import { ResponseTipoRefeicao } from '../../shared/ProgramaNutri/model/tipoRefeicao.model';
 
 
 @Component({

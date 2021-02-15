@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ResponseServicos, Servicos } from './servico.model';
+import { ResponseServicos, Servicos } from '../model/servico.model';
 import { Observable } from 'rxjs';
 
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseLojas } from '../shared/lojas.model';
-import { Servicos, ResponseServicos } from '../shared/servico.model';
-import { ServicoService } from '../shared/servico.service';
-import { LojaService } from '../shared/lojas.service';
+import { ResponseLojas } from '../../shared/model/lojas.model';
+import { Servicos, ResponseServicos } from '../../shared/model/servico.model';
+import { ServicoService } from '../../shared/service/servico.service';
+import { LojaService } from '../../shared/service/lojas.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 

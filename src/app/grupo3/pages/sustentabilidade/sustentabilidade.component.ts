@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Lojas, ResponseLojas } from '../shared/lojas.model';
-import { LojaService } from '../shared/lojas.service';
+import { Lojas, ResponseLojas } from '../../shared/model/lojas.model';
+import { LojaService } from '../../shared/service/lojas.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 

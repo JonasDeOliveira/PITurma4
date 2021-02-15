@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Cartao } from '../shared/cartao.model';
-import { CartaoService } from '../shared/cartao.service';
-import { PedidoService } from '../shared/pedido.service';
-import { Pedido } from '../shared/pedido.model';
+import { Cartao } from '../../shared/model/cartao.model';
+import { CartaoService } from '../../shared/service/cartao.service';
+import { PedidoService } from '../../shared/service/pedido.service';
+import { Pedido } from '../../shared/model/pedido.model';
 
 @Component({
   selector: 'app-pagamento-servico',
