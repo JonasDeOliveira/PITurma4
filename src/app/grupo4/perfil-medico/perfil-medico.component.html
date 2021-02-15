@@ -22,7 +22,7 @@
               <nav class="menu-vertical">
                   <img class="usuario" src="assets/img-grupo4/usuario.png" width="150px">
                   <p class="editarFotoPerfil">Editar Foto do Perfil</p>
-<!--<button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">Alterar Senha</button>-->
+      <button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">Alterar Senha</button> 
               </nav>
           </div>
           
@@ -99,7 +99,7 @@
                         
                          <div class="form-group col-12 col-md-3">
                               <label>Telefone</label>
-                              <input type="tel" class="form-control" >
+                              <input type="tel" class="form-control" value= {{dadosRetorno.medico.contatos[0].dsContato}} >
                           </div>
                           <div class="form-group col-12 col-md-3">
                             <label>E-mail</label>
@@ -143,7 +143,6 @@
           
           </div>    
       </footer>
-      <!--
       <ng-template #content let-c="close" let-d="dismiss">
         <div class="modal-header">
           <h5 class="modal-title">Definir Nova Senha</h5>
@@ -161,5 +160,5 @@
 
         </div>
       </ng-template>
-      -->
+    
      

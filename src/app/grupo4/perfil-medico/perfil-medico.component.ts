@@ -1,17 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfilmedicoService } from './perfilmedico.service'
-//import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
   selector: 'app-perfil-medico',
   templateUrl: './perfil-medico.component.html',
   styleUrls: ['./perfil-medico.component.css'],
-  //providers: [NgbModalConfig, NgbModal]
+  providers: [NgbModalConfig, NgbModal]
 })
 export class PerfilMedicoComponent implements OnInit {
 
-  /*constructor(config: NgbModalConfig, private modalService: NgbModal) {
+  /*constructor() {
+    
+  ngOnInit(): void {
+  }*/
+
+
+  constructor(private perfilService : PerfilmedicoService, config: NgbModalConfig, private modalService: NgbModal){
     // customize default values of modals used by this component tree
     config.backdrop = 'static';
     config.keyboard = false;
@@ -21,11 +27,6 @@ export class PerfilMedicoComponent implements OnInit {
     this.modalService.open(content);
   }
   
-  ngOnInit(): void {
-  }*/
-
-
-  constructor(private perfilService : PerfilmedicoService){}
 
   dadosRetorno : any
 
