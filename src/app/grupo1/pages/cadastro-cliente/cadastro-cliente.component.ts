@@ -62,13 +62,13 @@ export class CadastroClienteComponent implements OnInit {
       idUsuario: null
     },
     cartao:{
-      nmNome:'',
       idCartao:null, 
       idUsuario:null,
       nrCartao:null,
       codSeguranca:null,
       dtValidade:'',
-      dtEmissao:''
+      dtEmissao:'',
+      nmNome:'',
     
   }
     
@@ -100,7 +100,7 @@ export class CadastroClienteComponent implements OnInit {
     this.clienteService.createUsuario(this.outputCliente).subscribe(
       response => {
         alert('Cadastro realizado com sucesso');
-        this.router.navigate(['/area-cliente/6']);
+        this.router.navigate(['/area-cliente/']);
       },
       error => 
       { console.log(error)

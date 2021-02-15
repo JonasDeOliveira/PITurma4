@@ -13,6 +13,6 @@ import { Observable } from 'rxjs';
     private readonly API = 'http://localhost:8080/planos';
 
     getPlanos() {
-      return this.http.get<ResponsePlanos[]>(this.API);
+      return this.http.get<ResponsePlanos[]>('http://localhost:8080/planos');
     }
   }

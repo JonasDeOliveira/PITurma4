@@ -1,288 +1,253 @@
-
-    <section class="container">
-        <h2 class="text-center">Cadastro</h2>
-        <h6>Dados de Acesso:</h6>
-        <form (change)="ver()">
-            <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="cadastro-email">Email:</label>
-                    <input type="email" class="form-control" id="cadastro-email" placeholder="Digite o seu e-mail" 
-                    [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="cadastro-senha">Senha:</label>
-                    <input type="password" class="form-control" id="cadastro-senha" placeholder="Digite a senha" 
-                    [(ngModel)]="outputCliente.loginUsuario.dsSenha" #dsSenha="ngModel" name="dsSenha" required>
-                </div>
+<section class="container">
+    <h2 class="text-center">Cadastro</h2>
+    <h6>Dados de Acesso:</h6>
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                <label for="cadastro-email">Email:</label>
+                <input type="email" class="form-control" id="cadastro-email" placeholder="Digite o seu e-mail"
+                [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-8">
-                    <label for="cadastro-email2">Repita o Email:</label>
-                    <input type="email" class="form-control" id="cadastro-email2" placeholder="Digite o seu e-mail">
-                    <!-- <div *ngIf="dsEmail != ?????? (dsEmail.dirty || dsEmail.touched)" class="alert alert- light">
-                        <div [hidden]="!dsEmail.errors.required">
-                            Por favor confirmar o email.
-                        </div>
-                        <div [hidden]="!dsEmail">
-                            Email não confere.
-                        </div> 
-                    </div> -->  
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="cadastro-senha2">Repita a Senha:</label>
-                    <input type="password" class="form-control" id="cadastro-senha2" placeholder="Digite a senha">
-                </div>
-                <!-- <div *ngIf="dsSenha != ?????? (dsSenha.dirty || dsSenha.touched)" class="alert alert- light">
-                    <div [hidden]="!dsSenha.errors.required">
-                        Por favor confirmar a senha.
+            <div class="form-group col-md-4">
+                <label for="cadastro-senha">Senha:</label>
+                <input type="password" class="form-control" id="cadastro-senha" placeholder="Digite a senha"
+                [(ngModel)]="outputCliente.loginUsuario.dsSenha" #dsSenha="ngModel" name="dsSenha" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                <label for="cadastro-email2">Repita o Email:</label>
+                <input type="email" class="form-control" id="cadastro-email2" placeholder="Digite o seu e-mail">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="cadastro-senha2">Repita a Senha:</label>
+                <input type="password" class="form-control" id="cadastro-senha2" placeholder="Digite a senha">
+            </div>
+        </div>
+    </form>
+    <hr>
+    <h6>Dados Pessoais:</h6>
+    <form (change)="ver()">
+        <div class="form-row">
+            <div class="form-group col-md-9">
+                <label for="cadastro-nome">Nome Completo:</label>
+                <input type="text" class="form-control" id="cadastro-nome" placeholder="Digite o seu nome"
+                [(ngModel)]="outputCliente.usuario.nmNome" #nmNome="ngModel" name="nmNome" required>
+                <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)" class="alert alert-light">
+                    <div [hidden]="!nmNome.errors.required">
+                        O campo nome é obrigatório.
                     </div>
-                    <div [hidden]="!dsSenha">
-                        Senha não confere.
-                    </div> 
-                </div> -->  
+                    <div [hidden]="!nmNome.errors.minlength">
+                        O campo nome deve conter no mínimo 3 caracteres.
+                    </div>
+                 </div>
             </div>
-         <hr>
-        <h6>Dados Pessoais:</h6>
-              <div class="form-row">
-                <div class="form-group col-md-9">
-                    <label for="cadastro-nome">Nome Completo:</label>
-                    <input type="text" class="form-control" id="cadastro-nome" placeholder="Digite o seu nome" 
-                    [(ngModel)]="outputCliente.usuario.nmNome" #nmNome="ngModel" name="nmNome" minlength="3" required>
-                <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)" class="alert alert- light">
-                   <div [hidden]="!nmNome.errors.required">
-                       O campo nome é obrigatório.
-                   </div>
-                   <div [hidden]="!nmNome.errors.minlength">
-                       O campo nome deve conter no mínimo 3 caracteres.
-                   </div>
-                </div>
+            <div class="form-group col-md-3">
+                <label for="cadastro-sexo">Sexo:</label>
+                <select class="form-control" id="cadastro-sexo">
+                    <option disabled selected>Selecione</option>
+                    <option *ngFor="let genero of responseFormularioCadastro.genero" [value]= "genero.idgenero">
+                        {{genero.dsGenero}}</option>
+                    </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="cadastro-cpf">CPF:</label>
+                <input type="text" class="form-control" id="cadastro-cpf" placeholder="Digite o seu CPF" 
+                [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" minlength="11" required>
+                 <div *ngIf="nrCpf.errors && (nrCpf.dirty || nrCpf.touched)" class="alert alert-light">
+               <div [hidden]="!nrCpf.errors.required">
+                   O campo CPF é obrigatório.
                </div>
-                <div class="form-group col-md-3">
-                    <label for="cadastro-sexo">Sexo:</label>
-                    <select class="form-control" id="cadastro-sexo">
-                        <option disabled selected>Selecione</option>
-                        <option *ngFor="let genero of responseFormularioCadastro.genero" [value]= "genero.idgenero">
-                            {{genero.dsGenero}}</option>
-                        </select>
-                </div>
+               <div [hidden]="!nrCpf.errors.minlength">
+                   CPF deve conter no mínimo 11 caracteres.
+               </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="cadastro-cpf">CPF:</label>
-                    <input type="text" class="form-control" id="cadastro-cpf" placeholder="Digite o seu CPF" 
-                    [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" minlength="11" required>
-                    <div *ngIf="nrCpf.errors && (nrCpf.dirty || nrCpf.touched)" class="alert alert- light">
-                   <div [hidden]="!nrCpf.errors.required">
-                       O campo CPF é obrigatório.
-                   </div>
-                   <div [hidden]="!nrCpf.errors.minlength">
-                       CPF deve conter no mínimo 11 caracteres.
-                   </div>
-                </div>
             </div>
-                <div class="form-group col-md-1">
-                    <label for="cadastro-ddd">DDD:</label>
-                    <input type="text" class="form-control" id="cadastro-ddd" placeholder="(000)" 
-                    [(ngModel)]="outputCliente.ddd" #ddd="ngModel" name="ddd" minlength="3">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="cadastro-celular">Celular:</label>
-                    <input type="text" class="form-control" id="cadastro-celular" placeholder="Digite o seu Celular" 
-                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="8" required>
+            <div class="form-group col-md-1">
+                <label for="cadastro-ddd">DDD:</label>
+                <input type="text" class="form-control" id="cadastro-ddd"
+                    placeholder="(000)">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="cadastro-celular">Celular:</label>
+                <input type="text" class="form-control" id="cadastro-celular" placeholder="Digite o seu Celular"
+                [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="8" required>
                     <div *ngIf="celular.errors && (celular.dirty || celular.touched)" class="alert alert- light">
                         <div [hidden]="!celular.errors.required">
                             Informar telefone para contato.
                         </div>
-                    </div>                   
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="cadastro-nascimento">Data de Nascimento:</label>
-                    <input type="date" class="form-control" id="cadastro-nascimento" 
-                    [(ngModel)]="outputCliente.usuario.dtNascimento" #dtNascimento="ngModel" name="dtNascimento" required>
-                </div>
+                    </div> 
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="cadastro-cep">CEP:</label>
-                    <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP">
-                </div>
-                <div class="form-group col-md-7">
-                    <label for="cadastro-endereco">Endereço:</label>
-                    <input type="text" class="form-control" id="cadastro-endereco" placeholder="Digite o seu endereço"
-                    >
-                </div>
-                <div class="form-group col-md-1">
-                    <label for="cadastro-cep">Número:</label>
-                    <input type="text" class="form-control" id="cadastro-numero" placeholder="Número"
-                    >
-                </div>
+            <div class="form-group col-md-4">
+                <label for="cadastro-nascimento">Data de Nascimento:</label>
+                <input type="date" class="form-control" id="cadastro-nascimento"
+                [(ngModel)]="outputCliente.usuario.dtNascimento" #dtNascimento="ngModel" name="dtNascimento" required>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-5">
-                    <label for="cadastro-bairro">Bairro:</label>
-                    <input type="text" class="form-control" id="cadastro-bairro" placeholder="Digite o seu Bairro"
-                    >
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="cadastro-estado">Estado:</label>
-                    <select class="form-control" id="cadastro-estado" 
-<<<<<<< HEAD
-                    [(ngModel)]="outputCliente.usuario.enderecos[0].idUf" #idUf="ngModel" name="idUf" (change)="getCidadesByUf()">
-=======
-                    [(ngModel)]="outputCliente.usuario.enderecos[0].idUf"
-                     #idUf="ngModel" name="idUf" (change)="getCidadesByUf()">
->>>>>>> 6968036ba40097e2bf92c2fe0cd76ffffeb0979a
-                        <option disabled selected>Selecione</option>
-                        <option *ngFor="let uf of responseFormularioCadastro.ufs" [value]="uf.idUf">
-                            {{uf.dsUf}}</option>
-                        </select>
-                </div>
-                <div class="form-group col-md-5">
-                    <label for="cadastro-cidade">Cidade:</label>
-                    <!-- Traz a primeira posição do array -->
-                    <select class="form-control" id="cadastro-cidade">
-                        <option disabled selected>Selecione</option>
-                        <option *ngFor="let cidade of responseCidadesByUf" [value]="cidade.idCidade">
-                            {{cidade.dsCidade}}</option>                        
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="cadastro-cep">CEP:</label>
+                <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP">
+            </div>
+            <div class="form-group col-md-7">
+                <label for="cadastro-endereco">Endereço:</label>
+                <input type="text" class="form-control" id="cadastro-endereco"
+                    placeholder="Digite o seu endereço">
+            </div>
+            <div class="form-group col-md-1">
+                <label for="cadastro-cep">Número:</label>
+                <input type="text" class="form-control" id="cadastro-numero" placeholder="Número">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label for="cadastro-bairro">Bairro:</label>
+                <input type="text" class="form-control" id="cadastro-bairro" placeholder="Digite o seu Bairro">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="cadastro-estado">Estado:</label>
+                <select class="form-control" id="cadastro-estado" 
+                [(ngModel)]="outputCliente.usuario.enderecos[0].idUf"
+                 #idUf="ngModel" name="idUf" (change)="getCidadesByUf()">
+                    <option disabled selected>Selecione</option>
+                    <option *ngFor="let uf of responseFormularioCadastro.ufs" [value]="uf.idUf">
+                        {{uf.dsUf}}</option>
                     </select>
+            </div>
+            <div class="form-group col-md-5">
+                <label for="cadastro-cidade">Cidade:</label>
+                <select class="form-control" id="cadastro-cidade" >
+                    <option *ngFor="let cidade of responseCidadesByUf">
+                        {{cidade.dsCidade}}</option>                        
+                </select>
+            </div>
+        </div>
+        <hr>
+
+        <h6>Planos:</h6>
+
+        <div class="modal-body">
+            <div class="card-deck">
+                <div class="card">
+                    <img class="img-card" src="assets/grupo1/img/BASIC.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Plano Basic</h5>
+                        <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
+                    </div>
+                    <div>
+                        <h5 class="alinhamento">R$ 00,00</h5>
+                    </div>
+                    <div><button class="btn  btn-card" disabled>Incluso</button></div>
+                </div>
+                <div class="card">
+                    <img class="img-card" src="assets/grupo1/img/PLUS.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Plano Plus</h5>
+                        <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
+                        <p class="card-text">Consulta com o Clínico Gera</p>
+                    </div>
+                    <div>
+                        <h5 class="alinhamento">R$ 00,00</h5>
+                    </div>
+                    <div><button type="button" class="btn btn-card" data-toggle="modal"
+                            data-target=".bd-example-modal-lg">Selecionar</button></div>
+                </div>
+                <div class="card">
+                    <img class="img-card" src="assets/grupo1/img/PREMIUM.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Plano Premim</h5>
+                        <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
+                        <p class="card-text">Consulta com o Clínico Gera</p>
+                        <p class="card-text">Consulta com Especialistas</p>
+                        <p class="card-text">Programa Nutricional</p>
+                    </div>
+                    <div>
+                        <h5 class="alinhamento">R$ 00,00</h5>
+                    </div>
+                    <div><button type="button" class="btn btn-card" data-toggle="modal"
+                            data-target=".bd-example-modal-lg">Selecionar</button></div>
                 </div>
             </div>
-            <hr>
+        </div>
 
-            <h6>Planos:</h6>
-
-            <div class="modal-body">
-                <div class="card-deck">
-                    <div class="card">
-                        <img class="img-card" src="assets/grupo1/img/BASIC.png" alt="Card image cap">
-                        <div class="card-body">
-                            <!-- <h5 class="card-title">{{planos.nmPlano}}</h5> -->
-                            <h5 class="card-title">Plano Basic</h5>
-                            <!-- <p class="card-text">{{planos.servicos.dsServico}}</p> -->
-                            <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
-                        </div>
-                        <div>
-                            <!-- <h5 class="alinhamento">{{planos.vlPlano}}</h5> -->
-                            <h5 class="alinhamento">R$ 00,00</h5>
-                        </div>
-                        <div><button class="btn  btn-card" disabled>Incluso</button></div>
-                    </div>
-                    <div class="card">
-                        <img class="img-card" src="assets/grupo1/img/PLUS.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Plano Plus</h5>
-                            <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
-                            <p class="card-text">Consulta com o Clínico Gera</p>
-                        </div>
-                        <div>
-                            <h5 class="alinhamento">R$ 00,00</h5>
-                        </div>
-                        <div><button type="button" class="btn btn-card" data-toggle="modal"
-                                data-target=".bd-example-modal-lg">Selecionar</button></div>
-                    </div>
-                    <div class="card">
-                        <img class="img-card" src="assets/grupo1/img/PREMIUM.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Plano Premium</h5>
-                            <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
-                            <p class="card-text">Consulta com o Clínico Gera</p>
-                            <p class="card-text">Consulta com Especialistas</p>
-                            <p class="card-text">Programa Nutricional</p>
-                        </div>
-                        <div>
-                            <h5 class="alinhamento">R$ 00,00</h5>
-                        </div>
-                        <div><button type="button" class="btn btn-card" data-toggle="modal"
-                                data-target=".bd-example-modal-lg">Selecionar</button></div>
-                    </div>
-                </div>
-            </div>
-
-           <!-- MODAL -->
-  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-  aria-hidden="true">
-  
-  <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-          <form>
-              <div class="modal-header">
-                  <h5 class="modal-title">Dados do Cartão:</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
+       <!-- MODAL -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+      <form>
+          <div class="modal-header">
+              <h5 class="modal-title">Dados do Cartão:</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-12 cadastro-cartao">
+                  <label for="cartao-numero">Número do Cartão:</label>
+                  <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
+                  [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16 required" placeholder="0000 0000 0000 0000">
               </div>
-              <div class="form-row">
-                  <div class="form-group col-md-12 cadastro-cartao">
-                      <label for="cartao-numero">Número do Cartão:</label>
-                      <input type="text" class="form-control" id="cartao-numero" name="nrCartao" placeholder="0000 0000 0000 0000"
-                      [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16" required>
-                      <div [hidden]="!nrCartao.errors.required">
-                        Número de Cartão inválido.
-                    </div>
-                  </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-12">
+                  <label for="cartao-nome">Nome impresso no Cartão:</label>
+                  <!-- <input type="text" class="form-control" id="cartao-nome" 
+                [(ngModel)]="outputCliente.cartao.nmUsuario" cartao.nmUsuario="ngModel" minlength="11 required"
+                      placeholder="Nome impresso no Cartão"> -->
               </div>
-              <div class="form-row">
-                  <div class="form-group col-md-12">
-                      <label for="cartao-nome">Nome impresso no Cartão:</label>
-                      <input type="text" class="form-control" id="cartao-nome" placeholder="Nome impresso no Cartão"
-                    [(ngModel)]="outputCliente.cartao.nmNome" cartao.nmUsuario="ngModel" required>
-                    <div [hidden]="!nmNome.errors.required">
-                        O campo nome é obrigatório.
-                    </div>
-                  </div>
-              </div>
-              <div class="form-row ">
-                  <div class="form-group col-md-4">
-                      <label for="cartao-vencimento">Data de vencimento:</label>
-                      <div class="vencimento-cartao">
-                          <div class="form-group col-md-10">
-                              <input type="text" class="form-control" id="dtValidade" placeholder="00/0000"
-                              [(ngModel)]="outputCliente.cartao.dtValidade" name="dtValidade" #dtValidade="ngModel" minlength="6" required>
-                            </div>
-                      </div>
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="cartao-emissao">Data de emissão:</label>
-                      <div class="emissao-cartao">
-                        <div class="form-group col-md-10">
-                            <input type="text" class="form-control" id="dtEmissao" placeholder="00/0000"
-                             [(ngModel)]="outputCliente.cartao.dtEmissao" name="dtEmissao" #dtEmissao="ngModel" minlength="6" required>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
+          </div>
+          <div class="form-row ">
+              <div class="form-group col-md-4">
+                  <label for="cartao-vencimento">Data de vencimento:</label>
+                  <div class="vencimento-cartao">
                       <div class="form-group col-md-10">
-                          <input type="text" class="form-control" id="cartao-codigo-seguranca" placeholder="CVV"
-                            [(ngModel)]="outputCliente.cartao.codSeguranca" name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>
-                            <div [hidden]="!codSeguranca.errors.required">
-                                O código de segurança é obrigatório.
-                            </div>
+                          <input type="text" class="form-control" id="dtValidade" placeholder="00/0000"
+                          [(ngModel)]="outputCliente.cartao.dtValidade" name="dtValidade" #dtValidade="ngModel" minlength="6" required>
+                        </div>
+                  </div>
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="cartao-emissao">Data de emissão:</label>
+                  <div class="emissao-cartao">
+                      <div class="form-group col-md-10">
+                          <input type="text" class="form-control" id="dtEmissao" placeholder="00/0000"
+                          [(ngModel)]="outputCliente.cartao.dtEmissao" name="dtEmissao" #dtEmissao="ngModel" minlength="6" required>
                       </div>
                   </div>
               </div>
-              <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                      value="option1" checked>
-                  <label class="form-check-label" for="exampleRadios1">
-                      Salvar os dados do meu cartão para futuras compras.
-                  </label>
+              <div class="form-group col-md-4">
+                  <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
+                  <div class="form-group col-md-10">
+                      <input type="text" class="form-control" id="cartao-codigo-seguranca"
+                          placeholder="CVV"
+                          [(ngModel)]="outputCliente.cartao.codSeguranca" name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>>
+                  </div>
               </div>
-              <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                      value="option1" checked>
-                  <label class="form-check-label" for="exampleRadios1">
-                      Não salvar os dados.
-                  </label>
-              </div>
-          </form>
-      </div>
+          </div>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                  value="option1" checked>
+              <label class="form-check-label" for="exampleRadios1">
+                  Salvar os dados do meu cartão para futuras compras.
+              </label>
+          </div>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                  value="option1" checked>
+              <label class="form-check-label" for="exampleRadios1">
+                  Não salvar os dados.
+              </label>
+          </div>
+      </form>
   </div>
 </div>
-            <div class="form-group botoes-cadastro">
-                <button type="button" value="Cadastrar" (click)="cadastrar()" class="btn">Cadastrar</button>
-                <!-- <button [routerLink]="['/area-cliente']" class="btn btns-cadastro">Cadastrar</button> -->
-                <button [routerLink]="['/']" class="btn btn-cancelar">Cancelar</button>
-            </div>
-        </form>
-    </section>
+</div>
+     <div class="form-group botoes-cadastro">
+            <button type="button"  class="btn btns-cadastro">Cadastrar</button>
+            <button [routerLink]="['/']" class="btn btn-cancelar">Cancelar</button>
+        </div>
+    </form>
+</section>
