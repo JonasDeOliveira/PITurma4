@@ -9,7 +9,7 @@ export class EspMedServiceService {
 
 constructor(private http: HttpClient) { }
 
-private readonly APILISTARESPDISPONIVEIS = 'http://localhost:8080/agenda/especialidade';
+private readonly APILISTARESPDISPONIVEIS = 'http://localhost:8080/especialidade/agenda';
 
 
 listarEspDisponiveis(){
