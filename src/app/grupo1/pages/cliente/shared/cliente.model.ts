@@ -5,33 +5,15 @@ import { Cartao} from 'src/app/grupo1/Cartoes/shared/cartao.model';
 
 export interface Cliente{
 
+
 }
-export interface OutputCliente {
-   
-        loginUsuario: LoginUsuario,
-        usuario:Usuario,
-        ddd: string,
-        celular: string,
-        contrato: Contrato,
-        cartao: Cartao 
-        nmNome: string,
-        idPaciente: number,
-        lembretes:Array <Lembrete> 
-        uf:  Array<Uf>,
-        genero: Array<Genero> 
-        planos: Array<Planos> 
-        dsEmail: string,
-        contatos: Array<Contato>;
-        ufs: Array<Uf>,
-        idPlano: number
-}
-    export interface InputCliente {
+    export interface OutputCliente {
     loginUsuario: LoginUsuario,
     usuario: Usuario,
     ddd: String,
     celular: String,
     contrato: Contrato,
-    //cartao: Cartao    
+    cartao: Cartao    
     }
     //----------------------------------------------------
     export interface AreaDoCliente{
@@ -116,5 +98,17 @@ export interface OutputCliente {
         mensagem: String;
         retorno: any;
         dtTimestampErro: Date;
+    }
+
+    export interface Cidade {
+        idCidade: number;
+        cdCidadeIbge: number;
+        dsCidade: string;
+        uf: Uf
+    }
+
+    export interface ResponseCidades {
+       cidades: Cidade[]
+
     }
 

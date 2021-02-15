@@ -33,7 +33,7 @@ export class DadosClienteComponent implements OnInit {
   }
 
   getFormularioMeusDados() {
-    this.clienteService.getFormularioMeusDados('6').subscribe(
+    this.clienteService.getFormularioMeusDados(6).subscribe(
       response => {
         this.responseFormularioMeusDados = response;
         console.log(response);

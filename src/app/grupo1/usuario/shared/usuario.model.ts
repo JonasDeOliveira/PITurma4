@@ -19,7 +19,8 @@ export interface Endereco{
     dsComplemento: string,
     dsBairro: string,
     nrCep: string,
-    idCidade: number
+    idCidade: number,
+    idUf: number
 }
 
 export interface ResponseUsuario{

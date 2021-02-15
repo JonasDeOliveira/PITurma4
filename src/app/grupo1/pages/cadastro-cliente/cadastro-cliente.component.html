@@ -26,7 +26,7 @@
         </form>
         <hr>
         <h6>Dados Pessoais:</h6>
-        <form>
+        <form (change)="ver()">
             <div class="form-row">
                 <div class="form-group col-md-9">
                     <label for="cadastro-nome">Nome Completo:</label>
@@ -36,12 +36,9 @@
                     <label for="cadastro-sexo">Sexo:</label>
                     <select class="form-control" id="cadastro-sexo">
                         <option disabled selected>Selecione</option>
-                        <option *ngFor="let formularioCadastro of responseFormularioCadastro.genero">
-                            {{formularioCadastro.dsGenero}}</option>
-                        <!-- <option disabled selected>Selecione</option>
-                        <option>Feminino</option>
-                        <option>Masculino</option>-->
-                    </select>
+                        <option *ngFor="let genero of responseFormularioCadastro.genero" [value]= "genero.idgenero">
+                            {{genero.dsGenero}}</option>
+                        </select>
                 </div>
             </div>
             <div class="form-row">
@@ -87,42 +84,17 @@
                     <label for="cadastro-estado">Estado:</label>
                     <select class="form-control" id="cadastro-estado">
                         <option disabled selected>Selecione</option>
-                        <option *ngFor="let formularioCadastro of responseFormularioCadastro.ufs">
-                            {{formularioCadastro.dsUf}}</option>
-                       <!-- <option disabled selected>Selecione</option>
-                        <option>AC</option>
-                        <option>AL</option>
-                        <option>AP</option>
-                        <option>AM</option>
-                        <option>BA</option>
-                        <option>CE</option>
-                        <option>DF</option>
-                        <option>ES</option>
-                        <option>GO</option>
-                        <option>MA</option>
-                        <option>MT</option>
-                        <option>MS</option>
-                        <option>MG</option>
-                        <option>PA</option>
-                        <option>PB</option>
-                        <option>PR</option>
-                        <option>PE</option>
-                        <option>PI</option>
-                        <option>RJ</option>
-                        <option>RN</option>
-                        <option>RS</option>
-                        <option>RO</option>
-                        <option>RR</option>
-                        <option>SC</option>
-                        <option>SP</option>
-                        <option>SE</option>
-                        <option>TO</option> -->
-                    </select>
+                        <option *ngFor="let uf of responseFormularioCadastro.ufs" [(ngModel)]="outputCliente.usuario.enderecos[0].idUf" [value]="uf.idUf" #idUf="ngModel" name="idUf">
+                            {{uf.dsUf}}</option>
+                        </select>
                 </div>
                 <div class="form-group col-md-5">
                     <label for="cadastro-cidade">Cidade:</label>
-                    <select class="form-control" id="cadastro-cidade">
-                        <option disabled selected>Selecione</option>
+                    <select class="form-control" id="cadastro-cidade" >
+                        <option *ngFor="let cidade of responseCidadesByUf">
+                            {{cidade.dsCidade}}</option>
+
+                        <!-- <option disabled selected>Selecione</option>
                         <option>Bauru</option>
                         <option>Campinas</option>
                         <option>Diadema</option>
@@ -131,7 +103,7 @@
                         <option>São Paulo</option>
                         <option>São Bernardo do Campo</option>
                         <option>São Caetano do Sul</option>
-                        <option>Santo André</option>
+                        <option>Santo André</option> -->
                     </select>
                 </div>
             </div>
@@ -199,15 +171,15 @@
                   <div class="form-group col-md-12 cadastro-cartao">
                       <label for="cartao-numero">Número do Cartão:</label>
                       <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
-                      [(ngModel)]="cartao.nrCartao" #nrCartao="ngModel" minlength="16 required" placeholder="0000 0000 0000 0000">
+                      [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16 required" placeholder="0000 0000 0000 0000">
                   </div>
               </div>
               <div class="form-row">
                   <div class="form-group col-md-12">
                       <label for="cartao-nome">Nome impresso no Cartão:</label>
-                      <input type="text" class="form-control" id="cartao-nome" 
-                    [(ngModel)]="cartao.nmUsuario" cartao.nmUsuario="ngModel" minlength="11 required"
-                          placeholder="Nome impresso no Cartão">
+                      <!-- <input type="text" class="form-control" id="cartao-nome" 
+                    [(ngModel)]="outputCliente.cartao.nmUsuario" cartao.nmUsuario="ngModel" minlength="11 required"
+                          placeholder="Nome impresso no Cartão"> -->
                   </div>
               </div>
               <div class="form-row ">
@@ -216,7 +188,7 @@
                       <div class="vencimento-cartao">
                           <div class="form-group col-md-10">
                               <input type="text" class="form-control" id="dtValidade" placeholder="00/0000"
-                              [(ngModel)]="cartao.dtValidade" cartao.dtValidade="ngModel" minlength="6" required>
+                              [(ngModel)]="outputCliente.cartao.dtValidade" name="dtValidade" #dtValidade="ngModel" minlength="6" required>
                             </div>
                       </div>
                   </div>
@@ -225,7 +197,7 @@
                       <div class="emissao-cartao">
                           <div class="form-group col-md-10">
                               <input type="text" class="form-control" id="dtEmissao" placeholder="00/0000"
-                              [(ngModel)]="cartao.dtEmissao" cartao.dtEmissao="ngModel" minlength="6" required>
+                              [(ngModel)]="outputCliente.cartao.dtEmissao" name="dtEmissao" #dtEmissao="ngModel" minlength="6" required>
                           </div>
                       </div>
                   </div>
@@ -234,7 +206,7 @@
                       <div class="form-group col-md-10">
                           <input type="text" class="form-control" id="cartao-codigo-seguranca"
                               placeholder="CVV"
-                              [(ngModel)]="cartao.codSeguranca" cartao.codSeguranca="ngModel" minlength="3" required>>
+                              [(ngModel)]="outputCliente.cartao.codSeguranca" name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>>
                       </div>
                   </div>
               </div>
