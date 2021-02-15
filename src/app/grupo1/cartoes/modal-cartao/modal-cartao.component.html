@@ -14,13 +14,14 @@
                   <div class="form-group col-md-12 cadastro-cartao">
                       <label for="cartao-numero">Número do Cartão:</label>
                       <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
-                      [(ngModel)]="cartao.nrCartao" #nrCartao="ngModel" minlength="11 requeired" placeholder="0000 0000 0000 0000">
+                      [(ngModel)]="cartao.nrCartao" #nrCartao="ngModel" minlength="16 required" placeholder="0000 0000 0000 0000">
                   </div>
               </div>
               <div class="form-row">
                   <div class="form-group col-md-12">
                       <label for="cartao-nome">Nome impresso no Cartão:</label>
-                      <input type="text" class="form-control" id="cartao-nome"
+                      <input type="text" class="form-control" id="cartao-nome" 
+                    [(ngModel)]="cartao.nmUsuario" cartao.nmUsuario="ngModel" minlength="11 required"
                           placeholder="Nome impresso no Cartão">
                   </div>
               </div>
@@ -29,15 +30,17 @@
                       <label for="cartao-vencimento">Data de vencimento:</label>
                       <div class="vencimento-cartao">
                           <div class="form-group col-md-10">
-                              <input type="text" class="form-control" id="dtValidade" placeholder="00/0000">
-                          </div>
+                              <input type="text" class="form-control" id="dtValidade" placeholder="00/0000"
+                              [(ngModel)]="cartao.dtValidade" cartao.dtValidade="ngModel" minlength="6" required>
+                            </div>
                       </div>
                   </div>
                   <div class="form-group col-md-4">
                       <label for="cartao-emissao">Data de emissão:</label>
                       <div class="emissao-cartao">
                           <div class="form-group col-md-10">
-                              <input type="text" class="form-control" id="dtEmissao" placeholder="00/0000">
+                              <input type="text" class="form-control" id="dtEmissao" placeholder="00/0000"
+                              [(ngModel)]="cartao.dtEmissao" cartao.dtEmissao="ngModel" minlength="6" required>
                           </div>
                       </div>
                   </div>
@@ -45,7 +48,8 @@
                       <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
                       <div class="form-group col-md-10">
                           <input type="text" class="form-control" id="cartao-codigo-seguranca"
-                              placeholder="CVV">
+                              placeholder="CVV"
+                              [(ngModel)]="cartao.codSeguranca" cartao.codSeguranca="ngModel" minlength="3" required>>
                       </div>
                   </div>
               </div>

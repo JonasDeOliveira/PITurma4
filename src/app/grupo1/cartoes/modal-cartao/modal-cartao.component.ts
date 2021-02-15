@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModalConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+
+
 import {Cartao} from '../shared/cartao.model'
 
 @Component({

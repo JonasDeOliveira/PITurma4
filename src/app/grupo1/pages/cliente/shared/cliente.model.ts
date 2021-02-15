@@ -1,7 +1,7 @@
 import { Lembrete } from 'src/app/grupo1/lembretes/shared/lembrete.model'
 import { Planos } from '../../planos/shared/planos.model';
 import { Usuario } from '../../../usuario/shared/usuario.model';
-
+import { Cartao} from 'src/app/grupo1/Cartoes/shared/cartao.model';
 export interface OutputCliente {
    
         loginUsuario: LoginUsuario,
@@ -9,7 +9,7 @@ export interface OutputCliente {
         ddd: string,
         celular: string,
         contrato: Contrato,
-        //cartao: Cartao 
+        cartao: Cartao 
         nmNome: string,
         idPaciente: number,
         lembretes:Array <Lembrete> 
