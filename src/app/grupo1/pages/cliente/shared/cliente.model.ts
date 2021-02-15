@@ -2,6 +2,7 @@ import { Lembrete } from 'src/app/grupo1/lembretes/shared/lembrete.model'
 import { Planos } from '../../planos/shared/planos.model';
 import { Usuario } from '../../../usuario/shared/usuario.model';
 import { Cartao} from 'src/app/grupo1/Cartoes/shared/cartao.model';
+import { Output } from '@angular/core';
 
 export interface Cliente{
 
@@ -41,7 +42,7 @@ export interface Cliente{
     export interface Contrato {
         idContrato: number,
         dsContrato: string,
-        dtVigencia: Date,
+        dtVigencia: string,
         idPlano: number,
         idUsuario: number
     }
@@ -111,4 +112,4 @@ export interface Cliente{
        cidades: Cidade[]
 
     }
-
+  

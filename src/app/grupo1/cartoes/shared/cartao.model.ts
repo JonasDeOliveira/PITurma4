@@ -1,5 +1,6 @@
 export interface Cartao{
 
+      nmNome: string,
       idCartao:number, 
       idUsuario:number,
       nrCartao:number,

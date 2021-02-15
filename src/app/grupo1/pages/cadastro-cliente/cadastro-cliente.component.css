@@ -178,3 +178,6 @@ section .btn:hover {
     width: 70%;
     align-self: center;
 }
+.alert{
+ color: red;
+}

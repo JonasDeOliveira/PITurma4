@@ -1,6 +1,9 @@
+import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
 import { Component, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { ResponseFormularioCadastro , FormularioCadastro, FormularioMeusDados, OutputCliente, Cidade} from '../cliente/shared/cliente.model';
 import { ClienteService } from '../cliente/shared/cliente.service';
+import { PlanosService } from '../planos/shared/planos.service';
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -25,7 +28,7 @@ export class CadastroClienteComponent implements OnInit {
       idUfCrm: null,
       idTipoUsuario: null,
       nmNome: '',
-      dtNascimento: null,
+      dtNascimento: '',
       nrCpf: '',
       nrCrm: '',
       dsEndImg: '' ,
@@ -44,11 +47,12 @@ export class CadastroClienteComponent implements OnInit {
     contrato:{
       idContrato: null,
       dsContrato: '',
-      dtVigencia: null,
+      dtVigencia: '',
       idPlano: null,
       idUsuario: null
     },
     cartao:{
+      nmNome:'',
       idCartao:null, 
       idUsuario:null,
       nrCartao:null,
@@ -58,12 +62,17 @@ export class CadastroClienteComponent implements OnInit {
     }
 
   }
-  
-  constructor(private clienteService: ClienteService) { }
+
+  constructor(private clienteService: ClienteService,
+    private router: Router
+    ) {
+    
+   }
 
   ngOnInit(): void {
     this.getFormularioCadastro();
     this.getCidadesByUf();
+    
   }
   getFormularioCadastro() {
     this.clienteService.getFormularioCadastro().subscribe(
@@ -83,5 +92,18 @@ export class CadastroClienteComponent implements OnInit {
   }
   ver(){
     console.log(this.outputCliente.usuario.enderecos[0].idUf)
+  }
+  
+  cadastrar() {
+    this.clienteService.createUsuario(this.outputCliente).subscribe(
+      response => {
+        alert('Cadastro realizado com sucesso');
+        this.router.navigate(['/area-cliente/6']);
+      },
+      error => 
+      { console.log(error)
+        
+    }
+    )
   }
 }

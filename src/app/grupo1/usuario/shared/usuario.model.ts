@@ -6,7 +6,7 @@ export interface Usuario{
     idUfCrm: number,
     idTipoUsuario: number,
     nmNome: string,
-    dtNascimento: Date,
+    dtNascimento: string,
     nrCpf: string,
     nrCrm: string,
     dsEndImg: string
