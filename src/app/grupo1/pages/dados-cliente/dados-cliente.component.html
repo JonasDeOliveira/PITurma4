@@ -14,9 +14,8 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="cadastro-sexo">Sexo:</label>
-                        <select class="form-control" id="cadastro-sexo">
-                            <option selected>{{responseFormularioMeusDados.genero.dsGenero}}</option>
-                            <option *ngFor="let genero of responseFormularioMeusDados.genero" [value]="genero.idgenero">
+                        <select class="form-control" id="cadastro-sexo" [(ngModel)]="outputCliente.usuario.idGenero" #idGenero="ngModel" name="idGenero">
+                            <option *ngFor="let genero of responseFormularioMeusDados.genero" [value]="genero.idGenero">
                                 {{genero.dsGenero}}</option>
                         </select>
                     </div>
@@ -71,20 +70,17 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="cadastro-estado">Estado:</label>
-                        <!-- <select class="form-control" id="cadastro-estado"
-                            [(ngModel)]="outputCliente.usuario.enderecos[0].idUf" #idUf="ngModel" name="idUf"
+                        <select class="form-control" id="cadastro-estado"
+                            [(ngModel)]="outputCliente.usuario.enderecos[0].cidade.uf.idUf" #idUf="ngModel" name="idUf"
                             (change)="getCidadesByUf()">
-                            <option selected>{{responseFormularioMeusDados.usuario.enderecos.idUf}}</option>
                             <option *ngFor="let uf of responseFormularioMeusDados.ufs" [value]="uf.idUf">
                                 {{uf.dsUf}}</option>
                         </select>
-                    -->
                     </div>
                     <div class="form-group col-md-5">
                         <label for="cadastro-cidade">Cidade:</label>
-                        <select class="form-control" id="cadastro-cidade">
-                            <option selected>{{responseFormularioMeusDados.usuario.enderecos.idCidade}}</option>
-                            <option *ngFor="let cidade of responseCidadesByUf">
+                        <select class="form-control" id="cadastro-cidade" [(ngModel)]="outputCliente.usuario.enderecos[0].cidade.idCidade" name="idCidade">
+                            <option *ngFor="let cidade of responseCidadesByUf" [value]="cidade.idCidade" [selected]="cidade.idCidade == outputCliente.usuario.enderecos[0].cidade.idCidade">
                                 {{cidade.dsCidade}}</option>
                         </select>
                     </div>

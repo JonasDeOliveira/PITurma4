@@ -29,21 +29,18 @@ export interface Cliente{
     planos: Array<Planos>
     }
      //----------------------------------------------------
-    export interface FormularioMeusDados{
-    usuario: Usuario,
-    dsEmail: string,
-    contatos: Array<Contato>,
+    export interface FormularioMeusDados {
     ufs: Array<Uf>,
     genero: Array<Genero>,
     planos: Array<Planos>,
-    idPlano: number
+    inputCliente : OutputCliente
     }
     //----------------------------------------------------
     export interface Contrato {
         idContrato: number,
         dsContrato: string,
         dtVigencia: string,
-        idPlano: number,
+        plano: Planos,
         idUsuario: number
     }
      //----------------------------------------------------
@@ -51,7 +48,7 @@ export interface Cliente{
         idUf: number,
         dsUf: string
     }
-    //----------------------------------------------------
+     //----------------------------------------------------
        export interface Genero {
         idGenero: number,
         dsGenero: string
@@ -101,12 +98,16 @@ export interface Cliente{
         dtTimestampErro: Date;
     }
 
+    //----------------------------------------------------
+
     export interface Cidade {
         idCidade: number;
         cdCidadeIbge: number;
         dsCidade: string;
         uf: Uf
     }
+
+    //----------------------------------------------------
 
     export interface ResponseCidades {
        cidades: Cidade[]

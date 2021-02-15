@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../cliente/shared/cliente.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
-import { ResponseFormularioCadastro , FormularioCadastro, FormularioMeusDados, OutputCliente, Cidade, Cliente} from '../cliente/shared/cliente.model';
+import { ResponseFormularioCadastro, FormularioCadastro, FormularioMeusDados, OutputCliente, Cidade, Cliente, ResponseFormularioMeusDados, ResponseCidades } from '../cliente/shared/cliente.model';
 
 @Component({
   selector: 'app-dados-cliente',
@@ -40,7 +40,7 @@ export class DadosClienteComponent implements OnInit {
         dsComplemento: '',
         dsBairro: '',
         nrCep: '',
-        idCidade: null,
+        cidade: null,
         idUf: null
       }
       ]
@@ -51,12 +51,17 @@ export class DadosClienteComponent implements OnInit {
       idContrato: null,
       dsContrato: '',
       dtVigencia: '',
-      idPlano: null,
+      plano: {
+        idPlano: null,
+        nmPlano: '',
+        dsPlano: '',
+        vlPlano: null
+      },
       idUsuario: null
     },
     cartao: {
       idCartao: null,
-      idUsuario: null,
+      usuario: null,
       nrCartao: null,
       codSeguranca: null,
       dtValidade: '',
@@ -78,31 +83,23 @@ export class DadosClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFormularioMeusDados();
-    //this.passarDados();
-    this.getCidadesByUf();
-    
+
   }
 
   getFormularioMeusDados() {
-    this.clienteService.getFormularioMeusDados(6).subscribe(
+    this.clienteService.getFormularioMeusDados(141).subscribe(
       response => {
-        this.responseFormularioMeusDados = response;
         console.log(response);
-        this.outputCliente.usuario = this.responseFormularioMeusDados.usuario;
+        this.responseFormularioMeusDados = response;
+
+        this.outputCliente = this.responseFormularioMeusDados.inputCliente;
+        this.getCidadesByUf();
       }
     )
   }
 
-  passarDados(){
-    this.outputCliente.usuario = this.responseFormularioMeusDados.usuario;
-    this.outputCliente.loginUsuario.dsEmail = this.responseFormularioMeusDados.dsEmail;
-    this.outputCliente.ddd = this.responseFormularioMeusDados.nrDdd;
-
-
-  }
-
   getCidadesByUf() {
-    this.clienteService.getCidadesByUf(this.outputCliente.usuario.enderecos[0].idUf).subscribe(
+    this.clienteService.getCidadesByUf(this.outputCliente.usuario.enderecos[0].cidade.uf.idUf).subscribe(
       response => {
         this.responseCidadesByUf = response;
       }

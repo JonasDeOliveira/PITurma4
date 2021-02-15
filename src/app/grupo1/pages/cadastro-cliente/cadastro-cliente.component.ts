@@ -1,9 +1,6 @@
-import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
 import { Component, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { ResponseFormularioCadastro , FormularioCadastro, FormularioMeusDados, OutputCliente, Cidade} from '../cliente/shared/cliente.model';
+import { ResponseFormularioCadastro, FormularioCadastro, FormularioMeusDados, OutputCliente, Cidade } from '../cliente/shared/cliente.model';
 import { ClienteService } from '../cliente/shared/cliente.service';
-import { PlanosService } from '../planos/shared/planos.service';
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -11,15 +8,6 @@ import { PlanosService } from '../planos/shared/planos.service';
   styleUrls: ['./cadastro-cliente.component.css']
 })
 export class CadastroClienteComponent implements OnInit {
-
-  constructor(private clienteService: ClienteService,
-    private router: Router
-    ) {}
-
-  ngOnInit(): void {
-    this.getFormularioCadastro();
-    this.getCidadesByUf();
-  }
 
   responseFormularioCadastro: any;
   responseCidadesByUf: any;
@@ -48,9 +36,10 @@ export class CadastroClienteComponent implements OnInit {
         dsComplemento: '',
         dsBairro: '',
         nrCep: '',
-        idCidade: null,
+        cidade: null,
         idUf: null
-      }]
+      }
+      ]
     },
     ddd: '',
     celular: '',
@@ -58,20 +47,30 @@ export class CadastroClienteComponent implements OnInit {
       idContrato: null,
       dsContrato: '',
       dtVigencia: '',
-      idPlano: null,
+      plano: {
+        idPlano: null,
+        nmPlano: '',
+        dsPlano: '',
+        vlPlano: null
+      },
       idUsuario: null
     },
-    cartao:{
-      idCartao:null, 
-      idUsuario:null,
-      nrCartao:null,
-      codSeguranca:null,
-      dtValidade:'',
-      dtEmissao:'',
-      nmNome:'',
-    
+    cartao: {
+      idCartao: null,
+      //usuario: null,
+      nrCartao: null,
+      codSeguranca: null,
+      dtValidade: '',
+      dtEmissao: ''
+    }
+
   }
-    
+
+  constructor(private clienteService: ClienteService) { }
+
+  ngOnInit(): void {
+    this.getFormularioCadastro();
+    this.getCidadesByUf();
   }
 
   getFormularioCadastro() {
@@ -91,21 +90,8 @@ export class CadastroClienteComponent implements OnInit {
       }
     )
   }
-  
+
   ver() {
     console.log(this.outputCliente.usuario.enderecos[0].idUf)
-  }
-  
-  cadastrar() {
-    this.clienteService.createUsuario(this.outputCliente).subscribe(
-      response => {
-        alert('Cadastro realizado com sucesso');
-        this.router.navigate(['/area-cliente/']);
-      },
-      error => 
-      { console.log(error)
-        
-    }
-    )
   }
 }

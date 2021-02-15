@@ -1,8 +1,10 @@
+import { Usuario } from "../../usuario/shared/usuario.model";
+
 export interface Cartao{
 
       nmNome: string,
       idCartao:number, 
-      idUsuario:number,
+      usuario: Usuario,
       nrCartao:number,
       codSeguranca:number;
       dtValidade:string;

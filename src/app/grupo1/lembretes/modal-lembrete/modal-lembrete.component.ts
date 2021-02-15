@@ -56,7 +56,7 @@ export class ModalLembreteComponent implements OnInit {//
       response => {
         alert('Lembrete cadastrado com sucesso!');
         this.activeModal.dismiss('Cross click')
-        this.router.navigate([`/lista-lembretes/${this.idUsuario}`]); //NÃO FUNCIONA
+        window.location.reload();
       },
       error => {
         console.log(error);
