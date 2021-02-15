@@ -82,9 +82,9 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label for="cadastro-estado">Estado:</label>
-                    <select class="form-control" id="cadastro-estado">
+                    <select class="form-control" id="cadastro-estado" [(ngModel)]="outputCliente.usuario.enderecos[0].idUf" #idUf="ngModel" name="idUf" (change)="getCidadesByUf()">
                         <option disabled selected>Selecione</option>
-                        <option *ngFor="let uf of responseFormularioCadastro.ufs" [(ngModel)]="outputCliente.usuario.enderecos[0].idUf" [value]="uf.idUf" #idUf="ngModel" name="idUf">
+                        <option *ngFor="let uf of responseFormularioCadastro.ufs" [value]="uf.idUf">
                             {{uf.dsUf}}</option>
                         </select>
                 </div>
@@ -92,18 +92,7 @@
                     <label for="cadastro-cidade">Cidade:</label>
                     <select class="form-control" id="cadastro-cidade" >
                         <option *ngFor="let cidade of responseCidadesByUf">
-                            {{cidade.dsCidade}}</option>
-
-                        <!-- <option disabled selected>Selecione</option>
-                        <option>Bauru</option>
-                        <option>Campinas</option>
-                        <option>Diadema</option>
-                        <option>Guarulhos</option>
-                        <option>Osasco</option>
-                        <option>São Paulo</option>
-                        <option>São Bernardo do Campo</option>
-                        <option>São Caetano do Sul</option>
-                        <option>Santo André</option> -->
+                            {{cidade.dsCidade}}</option>                        
                     </select>
                 </div>
             </div>
