@@ -51,11 +51,6 @@ export interface Cliente{
         dsUf: string
     }
      //----------------------------------------------------
-
-
-
-
-    //----------------------------------------------------
        export interface Genero {
         idGenero: number,
         dsGenero: string
