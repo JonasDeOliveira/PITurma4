@@ -99,6 +99,9 @@ h1 {
     background-color: #319A75;
   }
   
+  .clicavel:focus {
+    background-color: #319A75;
+  }
 
 
 .btn {
