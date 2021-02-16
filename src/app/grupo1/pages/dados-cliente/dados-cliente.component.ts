@@ -65,7 +65,8 @@ export class DadosClienteComponent implements OnInit {
       nrCartao: null,
       codSeguranca: null,
       dtValidade: '',
-      dtEmissao: ''
+      dtEmissao: '',
+      nmNome: ''
     }
 
   }
