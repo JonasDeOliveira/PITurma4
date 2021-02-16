@@ -2,6 +2,7 @@ import { Usuario } from "../../usuario/shared/usuario.model";
 
 export interface Cartao{
 
+      nmNome: string,
       idCartao:number, 
       usuario: Usuario,
       nrCartao:number,
