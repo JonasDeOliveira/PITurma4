@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contrato } from '../../shared/model/contrato';
+import { Pagamento } from '../../shared/model/pagamento';
 import { PagamentoPlano } from '../../shared/model/pagamentoPlano';
 import { ContratoService } from '../../shared/services/contrato-service';
 import { PagamentoPlanoServiceService } from '../../shared/services/pagamento-plano-service.service';
@@ -23,7 +24,7 @@ export class PagamentoPlanoComponent implements OnInit {
   }
 
   responseContrato : Contrato;
-  idPagamentoPlEscolhido : number;
+  pagamentoPlEscolhido : Pagamento;
   idPgtoPlanoString : string;
 
   ngOnInit(): void {
@@ -42,7 +43,7 @@ export class PagamentoPlanoComponent implements OnInit {
     cadastrarPagtoPlano() {
       this.pagamentoPlanoService.cadastrarPlano(this.request).subscribe(
         response => {
-          this.idPagamentoPlEscolhido = response;
+          this.pagamentoPlEscolhido = response;
           this.salvarPagtoPlanoLs();
         },
         error => {
@@ -51,7 +52,7 @@ export class PagamentoPlanoComponent implements OnInit {
       )
     }
     salvarPagtoPlanoLs(){
-      this.idPgtoPlanoString = this.idPagamentoPlEscolhido.toString();
+      this.idPgtoPlanoString = this.pagamentoPlEscolhido.toString();
       localStorage.setItem("idPgto", this.idPgtoPlanoString)
     }
 

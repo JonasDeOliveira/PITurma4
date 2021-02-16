@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Pagamento } from '../model/pagamento';
 import { PagamentoCartao } from '../model/pagamentoCartao';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class PagamentoCartaoServiceService {
 
   private readonly APICADASTRARPAGTOCARTAO = 'http://localhost:8080/pagamento/cartao';
   
-  cadastrarCartao (request: PagamentoCartao): Observable<number> {
-    return this.http.post<number>(this.APICADASTRARPAGTOCARTAO, request);
+  cadastrarCartao (request: PagamentoCartao): Observable<Pagamento> {
+    return this.http.post<Pagamento>(this.APICADASTRARPAGTOCARTAO, request);
 }
 }

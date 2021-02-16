@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cartao } from '../../shared/model/cartao';
+import { Pagamento } from '../../shared/model/pagamento';
 import { PagamentoCartao } from '../../shared/model/pagamentoCartao';
 import { CartaoService } from '../../shared/services/cartao.service';
 import { PagamentoCartaoServiceService } from '../../shared/services/pagamento-cartao-service.service';
@@ -24,7 +25,7 @@ export class PagamentoParticularComponent implements OnInit {
     }
 
   responseCartao :Cartao;
-  idPagamentoCartEscolhido : number;
+  pagamentoCartEscolhido : Pagamento;
   idPgtoCartaoString : string;
   nomeTitular: string = "";
 
@@ -44,7 +45,7 @@ export class PagamentoParticularComponent implements OnInit {
   cadastrarPagtoCartao() {
     this.pagamentoCartaoService.cadastrarCartao(this.request).subscribe(
       response => {
-        this.idPagamentoCartEscolhido = response;
+        this.pagamentoCartEscolhido = response;
         this.salvarPagtoCartaoLs();
         console.log(response);
         console.log(localStorage.getItem("idPgto"))
@@ -55,7 +56,7 @@ export class PagamentoParticularComponent implements OnInit {
     )
   }
   salvarPagtoCartaoLs(){
-    this.idPgtoCartaoString = this.idPagamentoCartEscolhido.toString();
+    this.idPgtoCartaoString = this.pagamentoCartEscolhido.toString();
     localStorage.setItem("idPgto", this.idPgtoCartaoString)
   }
 
