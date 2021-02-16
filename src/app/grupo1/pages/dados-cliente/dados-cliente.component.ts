@@ -16,7 +16,15 @@ export class DadosClienteComponent implements OnInit {
 
   responseFormularioMeusDados: any;
   responseCidadesByUf: any;
-  retornoData: any;
+
+  confirmacao= {
+    senhaNova: '',
+    senhaConfirmacao: '',
+    senhaAtual: ''
+  };
+
+  password = document.getElementById("cadastro-senha-nova")
+  confirm_password = document.getElementById("cadastro-senha-nova2");
 
   outputCliente: OutputCliente = {
     loginUsuario: {
@@ -95,7 +103,12 @@ export class DadosClienteComponent implements OnInit {
         console.log(response);
         this.responseFormularioMeusDados = response;
 
+        
+
         this.outputCliente = this.responseFormularioMeusDados.inputCliente;
+
+        this.confirmacao.senhaAtual = this.outputCliente.loginUsuario.dsSenha;
+        
         this.getCidadesByUf();
       }
     )
@@ -116,12 +129,13 @@ export class DadosClienteComponent implements OnInit {
   alterarDadosCliente(){
     console.log(this.outputCliente);
 
-    this.clienteService.alteraDadosCliente('141', this.outputCliente).subscribe(
+    this.clienteService.alteraDadosCliente(157, this.outputCliente).subscribe(
       response => {
         alert("Dados alterados com sucesso.");
-        window.location.reload();
+        this.router.navigate([`/area-cliente/157`]);
       },
       error => {
+        console.log(error)
         alert('Algo inesperado aconteceu.');
       }
     )

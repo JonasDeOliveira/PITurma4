@@ -40,7 +40,7 @@
                             <label>Data:</label>
                             <!-- min="{{this.date | date: 'yyyy-MM-dd'}}" max="2050-01-01" -->
                             <input type="date"  class="form-control" id="dtLembrete" name="dtLembrete"
-                                [(ngModel)]="request.dtLembrete" #dtLembrete="ngModel" required min="{{this.minDate | date: 'yyyy-MM-dd'}}" max="{{this.maxDate | date: 'yyyy-MM-dd'}}" >
+                                [(ngModel)]="request.dtLembrete" #dtLembrete="ngModel" required [min]="minDate" [max]="maxDate" >
                                 <div *ngIf="dtLembrete.invalid && dtLembrete.touched" class="alert alert-danger mt-1" role="alert">
                                     Escolha uma data maior do que hoje
                                 </div>
