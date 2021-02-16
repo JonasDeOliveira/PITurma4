@@ -5,7 +5,7 @@ export interface Cartao{
       nmNome: string,
       idCartao:number, 
       usuario: Usuario,
-      nrCartao:number,
+      nrCartao:string,
       codSeguranca:number;
       dtValidade:string;
       dtEmissao:string;

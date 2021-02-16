@@ -64,7 +64,11 @@ export class DadosClienteComponent implements OnInit {
         idPlano: null,
         nmPlano: '',
         dsPlano: '',
-        vlPlano: null
+        vlPlano: null,
+        servicos:[{
+        idServicoPlano: null,
+        dsServico: ''
+        }]
       },
       idUsuario: null
     },

@@ -98,18 +98,14 @@
                         <div class="card rounded ">
                            <div class="card-image-overlay  p-3" >
                                 <img class="image_plano" src="assets/grupo1/img/basicCadastro.png" />
-                                 <ul class="ad-btn text-left pt-2" >
-
-                                   <!--
-                                   *ngfor= "let plano of areaDoCliente.planos"  
-                                    <li>{{plano.idPlano}}</li>
-                                     <li>{{plano.nmPlano}}</li>
-                                     <li>{{plano.dsPlano}}</li>
-                                     <li>{{plano.vlPlano}}</li>-->
-                                    <li>- Serviços Farmacêuticos</li>
-                                    <li>- Consulta com o Clínico Geral</li>
-                                    <li>- Consulta com Especialistas</li>
-                                    <li>- Programa Nutricional</li>
+                                 <ul class="ad-btn text-left  pt-4" >
+                                    
+                                     <li class=" p-1 font-weight-bold text-secondary">{{areaDoCliente.plano.nmPlano}}</li>
+                                     <li > {{areaDoCliente.plano.dsPlano}}</li>
+                                     <!-- <li >Valor do Plano: {{areaDoCliente.plano.vlPlano |  currency:'BRL':R$ }}</li> -->
+                                     <li class=" p-1 font-weight-bold text-secondary"><span>Serviços</span></li>
+                                     <li *ngFor="let servico of areaDoCliente.plano.servicos">{{servico.dsServico}}</li>
+                       
                                 </ul>
                                 <div class="success">
                                     <a routerLink="/planos"><button type="button" class="btn btn-plano"> Mudar

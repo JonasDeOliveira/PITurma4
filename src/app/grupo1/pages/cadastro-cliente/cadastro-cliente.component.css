@@ -61,27 +61,6 @@ li {
     background-color: #1f5e48;
 }
 
-
-@media(max-width: 425px){ 
-    footer .row .col-md-3 {
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
-
-    footer .container {
-        text-align: center;
-        margin: auto;
-        display: flex;
-        justify-content:center;
-        align-items:center;
-    }
-
-    footer li {
-        text-align: inherit;
-    }
-}
-
-
 .botoes-cadastro{
     float: right;
     text-decoration: none;
@@ -142,4 +121,6 @@ section .btn:hover {
 }
 .alert{
  color: red;
+ background: none;
+ border: none;
 }

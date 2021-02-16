@@ -93,7 +93,7 @@ export interface Cliente{
 
     //----------------------------------------------------
     //GET clientes para Area do Cliente
-  export interface ResponseAreadoCliente{
+    export interface ResponseAreadoCliente{
       areaDoCliente: AreaDoCliente
   }
    //---------------------------------------------------- 

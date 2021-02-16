@@ -14,7 +14,7 @@ export class ModalLembreteComponent implements OnInit {//
 
   idUsuario : string;
   responseLembreteIntervalos: ResponseLembretesIntervalo[];
-  minDate: Date;
+  minDate: Date = new Date();
   maxDate: Date = new Date(2050, 1, 1)
  
   request: Lembrete =

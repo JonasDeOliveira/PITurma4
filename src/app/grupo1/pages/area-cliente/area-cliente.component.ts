@@ -21,7 +21,7 @@ export class AreaClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAreaDoCliente();
-   // this.getPlanoAtual();
+  
   }
 
 
@@ -40,13 +40,5 @@ this.areaDoCliente.lembretes.splice(
 }
 }
 
-/*getPlanoAtual(){
-  this.planosService.getPlanoAtualById(6).subscribe(
-    response => {
-      this.areaDoCliente = response;
-      console.log(response);
-    }
-  )
-}*/
 
 }
