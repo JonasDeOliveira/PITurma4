@@ -17,9 +17,9 @@
     </div>
  
     <nav class="navbar navbar-light bg-light">
-      <form class="form-inline">
-        <input class="form-control style-input mr-sm-2" type="search" placeholder="Insira CPF do paciente" aria-label="Pesquisar">
-        <button class="btn btn-verde mr-5" type="submit">Buscar</button>
+      <form class="form-inline"  id="id-form" name="formulario" #formLogin="ngForm">
+        <input class="form-control style-input mr-sm-2" type="search" id="cpf" name="cpf" ngModel placeholder="Insira CPF do paciente" aria-label="Pesquisar">
+        <button class="btn btn-verde mr-5" type="button" (click)="getDadosHistoricoCpf(formLogin.value.cpf)" >Buscar</button>
       </form>
     </nav>
     <div class="table-responsive">
@@ -34,12 +34,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let atendimento of historicoResposta">
+          <tr class="topo" *ngFor="let atendimento of historicoCpfResposta">
             <th scope="row">{{atendimento.prontuario.idProntuario}}</th>
             <td>{{atendimento.dtAtendimento}}</td>
             <td>{{atendimento.paciente.nrCpf}}</td>
             <td>{{atendimento.paciente.nmNome}}</td>
-            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content)">+ Ver Prontuário</button>
+            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content , atendimento.prontuario.idProntuario )">+ Ver Prontuário</button>
+          </tr>
+        </tbody>
+        <tbody *ngIf="!veioDoAtendimento">
+          <tr class="topo" *ngFor="let atendimento of historicoMedicoResposta">
+            <th scope="row">{{atendimento.prontuario.idProntuario}}</th>
+            <td>{{atendimento.dtAtendimento}}</td>
+            <td>{{atendimento.paciente.nrCpf}}</td>
+            <td>{{atendimento.paciente.nmNome}}</td>
+            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content , atendimento.prontuario.idProntuario )">+ Ver Prontuário</button>
           </tr>
         </tbody>
       </table>
@@ -74,7 +83,7 @@
     <div class="row">
       <div class="col-md-12 ml-auto">
         <label for="recipient-name" class="col-form-label"><h6>Subjetivo:</h6></label>
-        <input type="text" class="form-control" id="recipient-name">
+        <input type="text" class="form-control" id="recipient-name" value>
       </div>
     </div>
     <div class="row">

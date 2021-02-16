@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 import {NgbModalConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { from } from 'rxjs';
@@ -16,27 +16,41 @@ export class HistoricoPacienteComponent implements OnInit {
 
   config.backdrop = 'static';
   config.keyboard = false;
+
   }
 
-  historicoResposta: any
+  historicoCpfResposta: any
   historicoMedicoResposta: any
+  prontuarioResposta: any
 
-  open(content) {
+  veioDoAtendimento;
+
+  open(content, id) {
     this.modalService.open(content ,{ size: 'lg'});
+    this.getDadoProntuario(id);
   }
   ngOnInit(): void {
-    this.getDadosHistoricoCpf();
     this.getDadosHistoricoMedico();
   }
 
   voltar() {
     this._location.back();
+    this.veioDoAtendimento = false;
   }
-  getDadosHistoricoCpf(){
-    this.historicoService.getDadosHistoricoCpf().subscribe( 
+  getDadosHistoricoCpf(cpf: string){
+    this.historicoService.getDadosHistoricoCpf(cpf).subscribe( 
       resposta => {
-         this.historicoResposta = resposta;
+         this.historicoCpfResposta = resposta;
         console.log(resposta);
+        this.veioDoAtendimento = true;
+      }
+    );
+  }
+
+  getDadoProntuario(idProntuario : number){
+    this.historicoService.getDadoProntuario(idProntuario).subscribe( 
+      resposta => {
+         this.prontuarioResposta = resposta;
       }
     );
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CadastromedicoService } from './cadastromedico.service'
 import { Router } from '@angular/router';
 import { Cadastro } from './cadastro.model';
@@ -50,7 +50,6 @@ export class CadastroMedicoComponent implements OnInit {
       dsSenha: ''
     }
   }
-
   dadosResposta: any
 
   ngOnInit(): void {
@@ -73,6 +72,7 @@ export class CadastroMedicoComponent implements OnInit {
         this.router.navigate(['/dashboard/medico']);
       },
       error => {
+        console.log(error);
         alert('algo inesperado aconteceu');
       }
     )

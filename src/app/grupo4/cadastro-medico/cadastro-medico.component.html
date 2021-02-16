@@ -10,7 +10,7 @@
     <div class="page-title">
         <h1>Nova Conta</h1>
     </div>
-    <form method="post" #formCadastro="ngForm" class="form-group" >
+    <form #formCadastro="ngForm" class="form-group" >
         <div class="page-title">
             <h3>Dados Pessoais</h3>
         </div>
@@ -20,65 +20,113 @@
                 <select class="form-control style-input" id="especialidade" name="espMed" [(ngModel)]="request.espMed.idEspMed" #espMed="ngModel" placeholder="selecione" required>
                     <option *ngFor="let esp of dadosResposta.especialidades" [value]="esp.idEspMed" >{{esp.dsEspMed}}</option>
                 </select>
+                <div *ngIf="espMed.invalid && espMed.touched" class="alert alert-danger" role="alert">
+                    Selecione uma especialidade.
+                </div>
             </div>
             <div class="form-group col-12 col-md-2">
                 <label for="crm" class="label-form">CRM</label>
                 <input type="text" class="form-control style-input" id="nrCrm" name="nrCrm" [(ngModel)]="request.nrCrm" #nrCrm="ngModel" placeholder="0000000" required>
+                <div *ngIf="nrCrm.invalid && nrCrm.touched" class="alert alert-danger" role="alert">
+                    Campo obrigatório.
+                </div>
             </div>
             <div class="form-group col-12 col-md-2">
                 <label class="label-form" for="uf-crm">UF</label>
                 <select class="form-control style-input" id="uf-crm" name="idUf" [(ngModel)]="request.uf.idUf" #idUf="ngModel" required>
                     <option *ngFor="let uf of dadosResposta.ufs" [value]="uf.idUf">{{uf.dsUf}}</option>
                 </select>
+                <div *ngIf="idUf.invalid && idUf.touched" class="alert alert-danger" role="alert">
+                    Selecione um estado.
+                </div>
             </div> 
             <div class="form-group col-12 col-md-2">
                 <label for="valor" class="label-form">Valor da consulta</label>
-                <input type="number" class="form-control style-input" id="valor" name="preco" [(ngModel)]="request.preco" #preco="ngModel" placeholder="R$000,00" required>
+                <input type="number" class="form-control style-input" id="valor" name="preco" [(ngModel)]="request.preco.vlConsulta" #preco="ngModel" placeholder="R$000,00" required>
+                <div *ngIf="preco.invalid && preco.touched" class="alert alert-danger" role="alert">
+                    Campo obrigatório.
+                </div>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="telefone-medico" class="label-form">Telefone</label>
                 <input type="text" class="form-control style-input" id="telefone-medico" name="dsContato" [(ngModel)]="request.contatos[0].dsContato" #dsContato="ngModel" placeholder="DDD + telefone" required>
+                <div *ngIf="dsContato.invalid && dsContato.touched" class="alert alert-danger" role="alert">
+                    Campo obrigatório.
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-12 col-md-7">
                 <label for="name-medico" class="label-form">Dr(a). Nome do Médico(a) </label>
                 <input type="text" class="form-control style-input" id="name-medico" name="nome" [(ngModel)]="request.nome" #nome="ngModel" placeholder="Ex.: Maria Helena da Silva" required>
+                <div *ngIf="nome.invalid && nome.touched" class="alert alert-danger" role="alert">
+                    Campo obrigatório.
+                </div>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label class="label-form" for="cpf">CPF</label>
-                <input type="text" class="form-control style-input" id="cpf"  name="nrCpf" [(ngModel)]="request.nrCpf" #nrCpf="ngModel" placeholder="000.000.000-00" required >
+                <input type="text" class="form-control style-input" id="cpf"  name="nrCpf" [(ngModel)]="request.nrCpf" #nrCpf="ngModel" placeholder="000.000.000-00" minlength="11" maxlength="11" required >
+                <div *ngIf="nrCpf.invalid && nrCpf.touched" class="alert alert-danger" role="alert">
+                    <div [hidden]="!nrCpf.errors.required">
+                        Campo origatório.
+                    </div>
+                    <div [hidden]="!nrCpf.errors.minlength">
+                        CPF deve conter 11 caracteres.
+                    </div>
+                </div>
             </div>
             <div class="form-group col-12 col-md-2">
                 <label for="data-consulta" class="label-form">Data de Nascimento</label>
                 <input type="text" class="form-control style-input" id="data-consulta" name="dtNascimento" [(ngModel)]="request.dtNascimento" #dtNascimento="ngModel" placeholder="dd/mm/aaaa" required>
+                <div *ngIf="dtNascimento.invalid && dtNascimento.touched" class="alert alert-danger" role="alert">
+                    Campo obrigatório.
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-12 col-md-2">
                 <label class="label-form" for="cep">CEP</label>
-                <input type="text" class="form-control style-input" id="cep" name="nrCep" [(ngModel)]="request.enderecos[0].nrCep" #nrCep="ngModel" placeholder="00000-000" required >
+                <input type="text" class="form-control style-input" id="cep" name="nrCep" [(ngModel)]="request.enderecos[0].nrCep" #nrCep="ngModel" placeholder="00000-000" minlength="8" maxlength="8" required >
+                <div *ngIf="nrCep.invalid && nrCep.touched" class="alert alert-danger" role="alert">
+                    <div [hidden]="!nrCep.errors.required">
+                        Campo obrigatório.
+                    </div>
+                    <div [hidden]="!nrCep.errors.minlength">
+                        Cep deve conter 8 caracteres.
+                    </div>
+                </div>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="endereco-medico" class="label-form">Endereço Comercial</label>
                 <input type="text" class="form-control style-input" id="endereco-medico" name="dsEndereco" [(ngModel)]="request.enderecos[0].dsEndereco" #dsEndereco="ngModel" placeholder="Ex.: Rua Joaquina 1234" required>
+                <div *ngIf="dsEndereco.invalid && dsEndereco.touched" class="alert alert-danger" role="alert">
+                    campo obrigatório.
+                </div>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="Bairro" class="label-form">Bairro</label>
                 <input type="text" class="form-control style-input" id="bairro" name="dsBairro" [(ngModel)]="request.enderecos[0].dsBairro" #dsBairro="ngModel" placeholder="Ex.:Jd.Mairi" required>
+                <div *ngIf="dsBairro.invalid && dsBairro.touched" class="alert alert-danger" role="alert">
+                    campo obrigatório.
+                </div>
             </div>
             <div class="form-group col-12 col-md-2">
                 <label class="label-form" for="uf">UF</label>
                 <select class="form-control style-input" id="uf" name="idUf" [(ngModel)]="request.enderecos[0].cidade.uf.idUf" #idUf="ngModel" required>
-                    <option *ngFor="let uf of dadosResposta.ufs">{{uf.dsUf}}</option>
+                    <option *ngFor="let uf of dadosResposta.ufs" [value]="uf.idUf">{{uf.dsUf}}</option>
                 </select>
+                <div *ngIf="idUf.invalid && idUf.touched" class="alert alert-danger" role="alert">
+                    selecione um estado.
+                </div>
             </div>
             <div class="form-group col-12 col-md-2">
                 <label class="label-form" for="cidade">Cidade</label>
                 <select class="form-control style-input" id="cidade" name="idCidade" [(ngModel)]="request.enderecos[0].cidade.idCidade" #idCidade="ngModel" required>
                     <option *ngFor="let cidade of dadosResposta.cidades"[value]="cidade.idCidade">{{cidade.dsCidade}}</option>
-                    
                 </select>
+                <div *ngIf="idCidade.invalid && idCidade.touched" class="alert alert-danger" role="alert">
+                    selecione um estado.
+                </div>
             </div> 
         </div>
         <hr>
@@ -88,22 +136,33 @@
         <div class="row">
             <div class="form-group col-12 col-md-6">
                 <label class="label-form" for="email">E-mail</label>
-                <input type="email" class="form-control style-input" id="email" name="dsEmail" [(ngModel)]= "request.login.dsEmail" #dsEmail="ngModel" placeholder="exemplo@exemplo.com.br" required>
+                <input type="email" class="form-control style-input" id="email" name="dsEmail" [(ngModel)]= "request.login.dsEmail" #dsEmail="ngModel" placeholder="exemplo@exemplo.com.br" email required >
+                <div *ngIf="dsEmail.invalid && dsEmail.touched" class="alert alert-danger" role="alert">
+                    campo obrigatório.
+                </div>
                 <br>
                 <div class="row"> 
                     <div class="col-12 col-md-6">
                         <label class="label-form" for="senha">Senha</label>
-                        <input type="password" class="form-control style-input" id="senha" name="dsSenha" [(ngModel)]= "request.login.dsSenha" #dsSenha="ngModel" placeholder="Digite uma senha">
+                        <input type="password" class="form-control style-input" id="senha" name="dsSenha" [(ngModel)]= "request.login.dsSenha" #dsSenha="ngModel" placeholder="Digite uma senha" minlength="8" required>
+                        <div *ngIf="dsSenha.invalid && dsSenha.touched" class="alert alert-danger" role="alert">
+                            <div [hidden]="!dsSenha.errors.required">
+                                campo obrigatório.
+                            </div>
+                            <div [hidden]="!dsSenha.errors.minlength">
+                                senha deve conter pelo menos 8 caracteres.
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-12 col-md-6">
                         <label class="label-form" for="repeat-senha">Confirmar Senha</label>
-                        <input type="password" class="form-control style-input" id="repeat-senha" placeholder="Repita a senha">
+                        <input type="password" class="form-control style-input" id="repeat-senha"  name="rpSenha"  placeholder="Repita a senha" required>
                     </div>
                 </div>
             </div>
             <div class="text-center form-group col-12 col-md-6">
                 <p>Você pode alterar suas escolhas a qualquer momento nas suas configurações de conta.</p>
-                    <button type="submit" class="btn btn-verde mr-5" routerLink='/dashboard/medico' value="Cadastro" (click)="registrar()">Cadastrar</button>
+                    <button type="button" class="btn btn-verde mr-5" routerLink='/dashboard/medico' value="Cadastro" (click)="registrar()"  [disabled]="formCadastro.invalid">Cadastrar</button>
             </div>
         </div>
     </form>

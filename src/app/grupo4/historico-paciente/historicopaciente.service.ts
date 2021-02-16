@@ -1,23 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {Router, NavigationEnd}  from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HistoricopacienteService {
 
-  constructor(private http : HttpClient) { 
+  constructor(private http : HttpClient,private router: Router) { }
+   
+  private readonly API = 'http://localhost:8080/atendimentosPaciente';
+  private readonly APII = 'http://localhost:8080/atendimento/medico';
+  private readonly APIII = 'http://localhost:8080/prontuario';
 
-  }
 
-  private readonly API = 'http://localhost:8080/atendimentosPaciente/44132323';
-  private readonly APII = 'http://localhost:8080/atendimento/medico/63';
+objMedico = JSON.parse(localStorage.getItem("medico"));
 
-  getDadosHistoricoCpf() {
-    return this.http.get(this.API);
+  getDadosHistoricoCpf(cpf : string) {
+    const URL = `${this.API}/${cpf}`
+    return this.http.get(URL);
   }
 
   getDadosHistoricoMedico() {
-    return this.http.get(this.APII);
+    const URL = `${this.APII}/${this.objMedico.idUsuario}`;
+    return this.http.get(URL);
   }
+
+  getDadoProntuario(idProntuario : number) {
+    const URL = `${this.APIII}/${idProntuario}`
+    return this.http.get(URL);
+  }
+
 }

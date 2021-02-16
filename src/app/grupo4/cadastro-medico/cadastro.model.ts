@@ -1,3 +1,4 @@
+
 export interface Cadastro {
     espMed : EspMed;
     uf : Uf ;
@@ -19,7 +20,7 @@ export interface EspMed {
 }
 
 export interface Preco {
-    vlConsulta : any;
+    vlConsulta : number;
 }
 
 export interface Endereco {
