@@ -76,7 +76,7 @@ h1 {
 }   
 
 .btn-active {
-    background-color: #319A75;
+    background-color: #787878;
     color: #FFFFFF;
     border-radius: 15px;
     font-weight: 600;
@@ -88,12 +88,19 @@ h1 {
     margin: 5px;
 }
 
-.btn-active:hover{
-    background-color: #787878;
+.clicavel:hover {
+    background-color: #319A75;
     color: #FFFFFF;
     padding: 0px;
     cursor: pointer;
-}
+  }
+
+  .clicado{
+    background-color: #319A75;
+  }
+  
+
+
 .btn {
 
 margin: 0px;
