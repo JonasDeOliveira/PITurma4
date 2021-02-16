@@ -3,7 +3,7 @@ export interface Planos {
     nmPlano: string,
     dsPlano: string,
     vlPlano: number
-    servicos:ServicoPlano
+    servicos: Array<ServicoPlano>
    
    
 }

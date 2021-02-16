@@ -210,6 +210,14 @@
                                     <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
                                         [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16"
                                         required placeholder="0000 0000 0000 0000">
+                                        <div *ngIf="nrCartao.errors && (nrCartao.dirty || nrCartao.touched)" class="alert alert-light">
+                                            <div [hidden]="!nrCartao.errors.required">
+                                                Insira o número do cartão.
+                                            </div>
+                                            <div [hidden]="!nrCartao.errors.minlength">
+                                                Número de cartão inválido.
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -218,6 +226,14 @@
                                     <input type="text" class="form-control" id="cartao-nome"
                                         [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="11"
                                         required placeholder="Nome impresso no Cartão">
+                                        <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)" class="alert alert-light">
+                                            <div [hidden]="!nmNome.errors.required">
+                                                Insira o número do cartão.
+                                            </div>
+                                            <div [hidden]="!nrCartao.errors.minlength">
+                                                Número de cartão inválido.
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                             <div class="form-row ">

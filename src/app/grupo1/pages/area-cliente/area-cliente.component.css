@@ -8,7 +8,7 @@
 
 
 .perfil::after{
-   content:url("/assets/grupo1/img/icon_login.png");
+   content:url("src/assets/grupo1/img/icon_login.png");
    max-width:100%;
 }
 
