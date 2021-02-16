@@ -7,7 +7,7 @@
                 <label for="cadastro-email">Email:</label>
                 <input type="email" class="form-control" id="cadastro-email" placeholder="Digite o seu e-mail"
                     [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required
-                    pattern="">
+                    pattern="[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+">
 
             </div>
             <div class="form-group col-md-4">
@@ -21,7 +21,7 @@
                 <label for="cadastro-email2">Repita o Email:</label>
                 <input type="email" class="form-control" id="cadastro-email2" placeholder="Digite o seu e-mail"
                     name="emailConfirmacao" #emailConfirmacao="ngModel" [(ngModel)]="confirmacao.emailConfirmacao"
-                    required>
+                    pattern="[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+" required>
                 <div *ngIf="emailConfirmacao.value != dsEmail.value && (emailConfirmacao.dirty || emailConfirmacao.touched)"
                     class="alert alert-light mt-1" role="alert">
                     O email informado não confere!
@@ -68,8 +68,9 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="cadastro-cpf">CPF:</label>
-                <input type="text" class="form-control" id="cadastro-cpf" placeholder="Digite o seu CPF"
-                    [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" minlength="11" required>
+                <input type="text" class="form-control" id="cadastro-cpf" placeholder="Digite o seu CPF" pattern="[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}"
+                    [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" minlength="11" maxlength="11"
+                    pattern="[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}" required>
                 <div *ngIf="nrCpf.errors && (nrCpf.dirty || nrCpf.touched)" class="alert alert-light">
                     <div [hidden]="!nrCpf.errors.required">
                         O campo CPF é obrigatório.
@@ -81,13 +82,14 @@
             </div>
             <div class="form-group col-md-1">
                 <label for="cadastro-ddd">DDD:</label>
-                <input type="text" class="form-control" id="cadastro-ddd" [(ngModel)]="outputCliente.ddd"
-                    placeholder="(000)" name="ddd" #ddd="ngModel">
+                <input type="text" class="form-control" id="cadastro-ddd" minlength="3" maxlength="3"
+                [(ngModel)]="outputCliente.ddd" placeholder="(000)" name="ddd" #ddd="ngModel">
             </div>
             <div class="form-group col-md-3">
                 <label for="cadastro-celular">Celular:</label>
                 <input type="text" class="form-control" id="cadastro-celular" placeholder="Digite o seu Celular"
-                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="8" required>
+                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="8" 
+                    pattern="(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$" required>
                 <div *ngIf="celular.errors && (celular.dirty || celular.touched)" class="alert alert- light">
                     <div [hidden]="!celular.errors.required">
                         Informar telefone para contato.
@@ -104,7 +106,7 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="cadastro-cep">CEP:</label>
-                <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP"
+                <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP" minlength="8" maxlength="8"
                     [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep">
 
             </div>
@@ -236,10 +238,7 @@
                                 <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)"
                                     class="alert alert-light">
                                     <div [hidden]="!nmNome.errors.required">
-                                        Insira o número do cartão.
-                                    </div>
-                                    <div [hidden]="!nrCartao.errors.minlength">
-                                        Número de cartão inválido.
+                                        Campo nome é obrigatório.
                                     </div>
                                 </div>
                             </div>
@@ -265,10 +264,6 @@
                         <button type="button" class="btn btns-cadastro btn-espaco"
                             (click)="limparCartao()">Cancelar</button>
                     </form>
-
-                    <!--   <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                (click)="d('Cross click')">                             <span aria-hidden="true">&times;</span>
-                            </button>-->
                 </div>
             </div>
         </div>
