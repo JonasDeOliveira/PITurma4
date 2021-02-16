@@ -15,6 +15,7 @@ export class DadosClienteComponent implements OnInit {
 
   responseFormularioMeusDados: any;
   responseCidadesByUf: any;
+  retornoData: any;
 
   outputCliente: OutputCliente = {
     loginUsuario: {
@@ -68,9 +69,7 @@ export class DadosClienteComponent implements OnInit {
       dtEmissao: '',
       nmNome: ''
     }
-
   }
-
 
   constructor(private clienteService: ClienteService,
     private router: Router,
@@ -83,7 +82,6 @@ export class DadosClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFormularioMeusDados();
-
   }
 
   getFormularioMeusDados() {
@@ -106,12 +104,22 @@ export class DadosClienteComponent implements OnInit {
     )
   }
 
-  ver() {
-    console.log(this.outputCliente.usuario);
-  }
-
   open(content) {
     this.modalService.open(content);
+  }
+
+  alterarDadosCliente(){
+    console.log(this.outputCliente);
+
+    this.clienteService.alteraDadosCliente('141', this.outputCliente).subscribe(
+      response => {
+        alert("Dados alterados com sucesso.");
+        window.location.reload();
+      },
+      error => {
+        alert('Algo inesperado aconteceu.');
+      }
+    )
   }
 
 }

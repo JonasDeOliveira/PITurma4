@@ -2,19 +2,29 @@
     <section class="container">
         <h2 class="text-center">Meus Dados</h2>
 
-        <form>
+        <form #formDadosCliente="ngForm">
 
             <h6>Dados Pessoais:</h6>
-            <form (change)="ver()">
+            <form>
                 <div class="form-row">
                     <div class="form-group col-md-9">
                         <label for="dados-cliente-nome">Nome Completo:</label>
                         <input type="text" class="form-control" id="dados-cliente-nome"
-                            [(ngModel)]="outputCliente.usuario.nmNome" #nmNome="ngModel" name="nmNome">
+                            [(ngModel)]="outputCliente.usuario.nmNome" #nmNome="ngModel" name="nmNome" required
+                            minlength="3" maxlength="100">
+                        <div *ngIf="nmNome.errors && (nmNome.touched)" class="alert alert-light">
+                            <div [hidden]="!nmNome.errors.required">
+                                O campo nome é obrigatório.
+                            </div>
+                            <div [hidden]="!nmNome.errors.minlength">
+                                O campo nome deve conter no mínimo 3 caracteres.
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="cadastro-sexo">Sexo:</label>
-                        <select class="form-control" id="cadastro-sexo" [(ngModel)]="outputCliente.usuario.idGenero" #idGenero="ngModel" name="idGenero">
+                        <select class="form-control" id="cadastro-sexo" [(ngModel)]="outputCliente.usuario.idGenero"
+                            #idGenero="ngModel" name="idGenero">
                             <option *ngFor="let genero of responseFormularioMeusDados.genero" [value]="genero.idGenero">
                                 {{genero.dsGenero}}</option>
                         </select>
@@ -23,49 +33,103 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="cadastro-cpf">CPF:</label>
-                        <input type="text" class="form-control" id="cadastro-cpf"
-                            [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf">
+                        <input disabled type="text" class="form-control" id="cadastro-cpf"
+                            [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" required>
                     </div>
                     <div class="form-group col-md-1">
                         <label for="cadastro-ddd">DDD:</label>
                         <input type="text" class="form-control" id="cadastro-ddd" [(ngModel)]="outputCliente.ddd"
-                            #nrDdd="ngModel" name="nrDdd">
+                            #nrDdd="ngModel" name="nrDdd" required minlength="3" maxlength="3">
+                        <div *ngIf="nrDdd.errors && (nrDdd.touched)" class="alert alert-light">
+                            <div [hidden]="!nrDdd.errors.required">
+                                O campo ddd é obrigatório.
+                            </div>
+                            <div [hidden]="!nrDdd.errors.minlength">
+                                O campo ddd deve conter no mínimo 3 caracteres.
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="cadastro-celular">Celular:</label>
                         <input type="text" class="form-control" id="cadastro-celular"
-                            [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular">
+                            [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" required minlength="9"
+                            maxlength="9">
+                        <div *ngIf="celular.errors && (celular.touched)" class="alert alert-light">
+                            <div [hidden]="!celular.errors.required">
+                                O campo celular é obrigatório.
+                            </div>
+                            <div [hidden]="!celular.errors.minlength">
+                                O campo celular deve conter no mínimo 9 caracteres.
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="cadastro-nascimento">Data de Nascimento:</label>
                         <input type="date" class="form-control" id="cadastro-nascimento"
-                            [(ngModel)]="outputCliente.usuario.dtNascimento" #dtNascimento="ngModel"
-                            name="dtNascimento">
+                            [(ngModel)]="outputCliente.usuario.dtNascimento" #dtNascimento="ngModel" name="dtNascimento"
+                            required>
+                        <div *ngIf="dtNascimento.errors && (dtNascimento.touched)" class="alert alert-light">
+                            <div [hidden]="!dtNascimento.errors.required">
+                                O campo data de nascimento é obrigatório.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="cadastro-cep">CEP:</label>
-                        <input type="text" class="form-control" id="cadastro-cep" [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep">
+                        <input type="text" class="form-control" id="cadastro-cep"
+                            [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep"
+                            required minlength="8" maxlength="8">
+                        <div *ngIf="nrCep.errors && (nrCep.touched)" class="alert alert-light">
+                            <div [hidden]="!nrCep.errors.required">
+                                O campo CEP é obrigatório.
+                            </div>
+                            <div [hidden]="!nrCep.errors.minlength">
+                                O campo CEP deve conter no mínimo 8 caracteres.
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-md-7">
                         <label for="cadastro-endereco">Endereço:</label>
-                        <input type="text" class="form-control" id="cadastro-endereco">
-                            <!-- [(ngModel)]="outputCliente.usuario.enderecos[0].dsEndereco" #dsEndereco="ngModel"
-                            name="dsEndereco"> -->
+                        <input type="text" class="form-control" id="cadastro-endereco"
+                            [(ngModel)]="outputCliente.usuario.enderecos[0].dsEndereco" #dsEndereco="ngModel"
+                            name="dsEndereco" required minlength="5" maxlength="100">
+                            <div *ngIf="dsEndereco.errors && (dsEndereco.touched)" class="alert alert-light">
+                                <div [hidden]="!dsEndereco.errors.required">
+                                    O campo endereço é obrigatório.
+                                </div>
+                                <div [hidden]="!dsEndereco.errors.minlength">
+                                    O campo endereço deve conter no mínimo 5 caracteres.
+                                </div>
+                            </div>
                     </div>
                     <div class="form-group col-md-1">
                         <label for="cadastro-cep">Número:</label>
-                        <input type="text" class="form-control" id="cadastro-numero">
-                            <!-- [(ngModel)]="outputCliente.usuario.enderecos[0].dsComplemento" #dsComplemento="ngModel"
-                            name="dsComplemento"> -->
+                        <input type="text" class="form-control" id="cadastro-numero"
+                            [(ngModel)]="outputCliente.usuario.enderecos[0].dsComplemento" #dsComplemento="ngModel"
+                            name="dsComplemento" required minlength="1" maxlength="30">
+                            <div *ngIf="dsComplemento.errors && (dsComplemento.touched)" class="alert alert-light">
+                                <div [hidden]="!dsComplemento.errors.required">
+                                    O campo número é obrigatório.
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-5">
                         <label for="cadastro-bairro">Bairro:</label>
-                        <input type="text" class="form-control" id="cadastro-bairro">
-                            <!-- [(ngModel)]="outputCliente.usuario.enderecos[0].dsBairro" #dsBairro="ngModel" name="dsBairro"> -->
+                        <input type="text" class="form-control" id="cadastro-bairro"
+                            [(ngModel)]="outputCliente.usuario.enderecos[0].dsBairro" #dsBairro="ngModel"
+                            name="dsBairro" required minlength="5" maxlength="30">
+                            <div *ngIf="dsBairro.errors && (dsBairro.touched)" class="alert alert-light">
+                                <div [hidden]="!dsBairro.errors.required">
+                                    O campo bairro é obrigatório.
+                                </div>
+                                <div [hidden]="!dsBairro.errors.minlength">
+                                    O campo bairro deve conter no mínimo 5 caracteres.
+                                </div>
+                            </div>
                     </div>
                     <div class="form-group col-md-2">
                         <label for="cadastro-estado">Estado:</label>
@@ -78,8 +142,10 @@
                     </div>
                     <div class="form-group col-md-5">
                         <label for="cadastro-cidade">Cidade:</label>
-                        <select class="form-control" id="cadastro-cidade" [(ngModel)]="outputCliente.usuario.enderecos[0].cidade.idCidade" name="idCidade">
-                            <option *ngFor="let cidade of responseCidadesByUf" [value]="cidade.idCidade" [selected]="cidade.idCidade == outputCliente.usuario.enderecos[0].cidade.idCidade">
+                        <select class="form-control" id="cadastro-cidade"
+                            [(ngModel)]="outputCliente.usuario.enderecos[0].cidade.idCidade" name="idCidade">
+                            <option *ngFor="let cidade of responseCidadesByUf" [value]="cidade.idCidade"
+                                [selected]="cidade.idCidade == outputCliente.usuario.enderecos[0].cidade.idCidade">
                                 {{cidade.dsCidade}}</option>
                         </select>
                     </div>
