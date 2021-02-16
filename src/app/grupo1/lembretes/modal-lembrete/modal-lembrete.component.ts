@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Lembrete, LembreteIntervalo, ResponseLembretesIntervalo } from '../shared/lembrete.model';
 import { LembreteService } from '../shared/lembrete.service';
+//import { LembreteComponent } from '../shared/lembrete.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 
@@ -13,6 +14,8 @@ export class ModalLembreteComponent implements OnInit {//
 
   idUsuario : string;
   responseLembreteIntervalos: ResponseLembretesIntervalo[];
+  minDate: Date;
+  maxDate: Date = new Date(2050, 1, 1)
  
   request: Lembrete =
     {
@@ -39,6 +42,7 @@ export class ModalLembreteComponent implements OnInit {//
   ngOnInit(): void {
     console.log(this.request.idPaciente);
     this.listarIntervalos();
+    this.minDate = new Date();
   }
 
   listarIntervalos() {
@@ -65,6 +69,7 @@ export class ModalLembreteComponent implements OnInit {//
       }
     )
   }
+
 
   ver() {
     console.log(this.request);

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ClienteService } from '../cliente/shared/cliente.service';
+import {PlanosService} from '../planos/shared/planos.service'
+
+
+
 
 @Component({
   selector: 'app-area-cliente',
@@ -7,9 +12,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AreaClienteComponent implements OnInit {
 
-  constructor() { }
+  
+
+  constructor( private clienteService: ClienteService, private planosService: PlanosService) { }
+
+  areaDoCliente : any;
+  public lembretes=[] ;
 
   ngOnInit(): void {
+    this.getAreaDoCliente();
+   // this.getPlanoAtual();
   }
+
+
+getAreaDoCliente(){
+  this.clienteService.getAreaClienteById(6).subscribe(
+    response => {
+      this.areaDoCliente = response;
+      console.log(response);
+    }
+  )
+}
+removeTarefa(lembrete){
+  if (confirm("Deseja apagar o lembrete?")) {
+this.areaDoCliente.lembretes.splice(
+  this.areaDoCliente.lembretes.indexOf(lembrete),1);
+}
+}
+
+/*getPlanoAtual(){
+  this.planosService.getPlanoAtualById(6).subscribe(
+    response => {
+      this.areaDoCliente = response;
+      console.log(response);
+    }
+  )
+}*/
 
 }
