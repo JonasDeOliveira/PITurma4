@@ -8,7 +8,7 @@
         <div class="texto-trilha d-flex flex-column">
             <a routerLink='/agendamento-consultas'>
                 <div class="trilha">Consulta</div>
-                <div class="opcao">Presencial</div>
+                <div class="opcao">{{dsConsulta}}</div>
             </a>
         </div>
     </div>
@@ -21,9 +21,7 @@
         <div class="texto-trilha d-flex flex-column">
             <a routerLink='/agendamento-consultas'>
                 <div class="trilha ">Especialidade</div>
-                <!-- Resgatar na trilha  -->
-                <!-- <div class="opcao ">endocrinologia</div> -->
-                <div class="opcao ">{{especialidadeMedica}}</div>
+                <div class="opcao ">{{dsEspecialidade}}</div>
             </a>
         </div>
     </div>
@@ -120,7 +118,7 @@
             </div>
             <div class="horarios">
                 <a routerLink='/pagamento-plano'>
-                <a href="#"><button class="hora" (click)="criarAgPaciente()" (click)="salvarAgPacienteLs()">{{agenda.periodo.horaInicial}}</button></a>
+                <a href="#"><button class="hora" (click)="criarAgPaciente(agenda.idAgenda)">{{agenda.periodo.horaInicial}}</button></a>
                 <!-- <button class="hora">15:00</button>
                 <button class="hora">16:00</button>
                 <button class="hora">17:00</button>

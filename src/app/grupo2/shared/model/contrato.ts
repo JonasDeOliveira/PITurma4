@@ -7,6 +7,6 @@ export interface Contrato {
 
 export interface Planos {
     idPlano: number;
-    nmPlano: String;
-    dsPlano: String;
+    nmPlano: string;
+    dsPlano: string;
 }
