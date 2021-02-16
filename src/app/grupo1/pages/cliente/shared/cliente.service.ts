@@ -47,7 +47,7 @@ export class ClienteService {
     return this.http.post<OutputCliente>('http://localhost:8080/cliente/cadastrar', outputCliente);
   }
 
-  alteraDadosCliente(idUsuario: string, request: OutputCliente): Observable<OutputCliente> {
+  alteraDadosCliente(idUsuario: number, request: OutputCliente): Observable<OutputCliente> {
     return this.http.put<OutputCliente>(`${this.API}/cliente/alterar/${idUsuario}`, request);
   }
 
