@@ -26,7 +26,7 @@ import { Observable } from 'rxjs';
         const URL = `${this.API}/cidadeBuscar/${idUf}`
         return this.http.get<ResponseCidades>(URL);
     }
-    createUsuario(outputCliente: OutputCliente): Observable<OutputCliente> {
-        return this.http.post<OutputCliente>('http://localhost:8080/usuario', outputCliente);
+    createCliente(outputCliente: OutputCliente): Observable<OutputCliente> {
+        return this.http.post<OutputCliente>('http://localhost:8080/cliente/cadastrar', outputCliente);
     }
     }

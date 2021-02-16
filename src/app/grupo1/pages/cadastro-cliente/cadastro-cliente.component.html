@@ -1,13 +1,14 @@
 <section class="container">
     <h2 class="text-center">Cadastro</h2>
     <h6>Dados de Acesso:</h6>
-    <form>
+    <form (change)="ver()">
         <div class="form-row">
             <div class="form-group col-md-8">
                 <label for="cadastro-email">Email:</label>
                 <input type="email" class="form-control" id="cadastro-email" placeholder="Digite o seu e-mail"
-                [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required>
-            </div>
+                [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required
+                (change)="validateEmail()">
+                </div>
             <div class="form-group col-md-4">
                 <label for="cadastro-senha">Senha:</label>
                 <input type="password" class="form-control" id="cadastro-senha" placeholder="Digite a senha"
@@ -17,11 +18,13 @@
         <div class="form-row">
             <div class="form-group col-md-8">
                 <label for="cadastro-email2">Repita o Email:</label>
-                <input type="email" class="form-control" id="cadastro-email2" placeholder="Digite o seu e-mail">
+                <input type="email" class="form-control" id="cadastro-email2" placeholder="Digite o seu e-mail"
+                name="emailConfirmacao">
             </div>
             <div class="form-group col-md-4">
                 <label for="cadastro-senha2">Repita a Senha:</label>
-                <input type="password" class="form-control" id="cadastro-senha2" placeholder="Digite a senha">
+                <input type="password" class="form-control" id="cadastro-senha2" placeholder="Digite a senha"
+                name="senhaConfirmacao">
             </div>
         </div>
     </form>
@@ -44,9 +47,10 @@
             </div>
             <div class="form-group col-md-3">
                 <label for="cadastro-sexo">Sexo:</label>
-                <select class="form-control" id="cadastro-sexo">
+                <select class="form-control" id="cadastro-sexo"
+                [(ngModel)]="outputCliente.usuario.idGenero" #idGenero="ngModel" name="idGenero" required>
                     <option disabled selected>Selecione</option>
-                    <option *ngFor="let genero of responseFormularioCadastro.genero" [value]= "genero.idgenero">
+                    <option *ngFor="let genero of responseFormularioCadastro.genero" [value]= "genero.idGenero">
                         {{genero.dsGenero}}</option>
                     </select>
             </div>
@@ -89,23 +93,26 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="cadastro-cep">CEP:</label>
-                <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP">
+                <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP"
+                [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep"> 
               
             </div>
             <div class="form-group col-md-7">
                 <label for="cadastro-endereco">Endereço:</label>
-                <input type="text" class="form-control" id="cadastro-endereco"
-                    placeholder="Digite o seu endereço">
+                <input type="text" class="form-control" id="cadastro-endereco" placeholder="Digite o seu endereço"
+                [(ngModel)]="outputCliente.usuario.enderecos[0].dsEndereco" #dsEndereco="ngModel" name="dsEndereco">
             </div>
             <div class="form-group col-md-1">
                 <label for="cadastro-cep">Número:</label>
-                <input type="text" class="form-control" id="cadastro-numero" placeholder="Número">
+                <input type="text" class="form-control" id="cadastro-numero" placeholder="Número"
+                [(ngModel)]="outputCliente.usuario.enderecos[0].dsComplemento" #dsComplemento="ngModel" name="dsComplemento">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-5">
                 <label for="cadastro-bairro">Bairro:</label>
-                <input type="text" class="form-control" id="cadastro-bairro" placeholder="Digite o seu Bairro">
+                <input type="text" class="form-control" id="cadastro-bairro" placeholder="Digite o seu Bairro"
+                [(ngModel)]="outputCliente.usuario.enderecos[0].dsBairro" #dsBairro="ngModel" name="dsComplemento">
             </div>
             <div class="form-group col-md-2">
                 <label for="cadastro-estado">Estado:</label>
@@ -119,8 +126,9 @@
             </div>
             <div class="form-group col-md-5">
                 <label for="cadastro-cidade">Cidade:</label>
-                <select class="form-control" id="cadastro-cidade" >
-                    <option *ngFor="let cidade of responseCidadesByUf">
+                <select class="form-control" id="cadastro-cidade" 
+                [(ngModel)]="outputCliente.usuario.enderecos[0].cidade.idCidade" #idCidade="ngModel" name="idCidade">
+                    <option *ngFor="let cidade of responseCidadesByUf" [value]="cidade.idCidade">
                         {{cidade.dsCidade}}</option>                        
                 </select>
             </div>
@@ -147,7 +155,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Plano Plus</h5>
                         <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
-                        <p class="card-text">Consulta com o Clínico Gera</p>
+                        <p class="card-text">Consulta com o Clínico Geral</p>
                     </div>
                     <div>
                         <h5 class="alinhamento">R$ 00,00</h5>
@@ -183,7 +191,8 @@
     <form>
           <div class="modal-header">
               <h5 class="modal-title">Dados do Cartão:</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+              (click)="d('Cross click')">
                   <span aria-hidden="true">&times;</span>
               </button>
           </div>
@@ -191,15 +200,15 @@
               <div class="form-group col-md-12 cadastro-cartao">
                   <label for="cartao-numero">Número do Cartão:</label>
                   <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
-                  [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16 required" placeholder="0000 0000 0000 0000">
+                  [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16" required placeholder="0000 0000 0000 0000">
               </div>
           </div>
           <div class="form-row">
               <div class="form-group col-md-12">
                   <label for="cartao-nome">Nome impresso no Cartão:</label>
-                  <!-- <input type="text" class="form-control" id="cartao-nome" 
-                [(ngModel)]="outputCliente.cartao.nmUsuario" cartao.nmUsuario="ngModel" minlength="11 required"
-                      placeholder="Nome impresso no Cartão"> -->
+                  <input type="text" class="form-control" id="cartao-nome" 
+                [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="11" required
+                      placeholder="Nome impresso no Cartão">
               </div>
           </div>
           <div class="form-row ">
@@ -212,16 +221,7 @@
                         </div>
                   </div>
               </div>
-              <div class="form-group col-md-4">
-                  <label for="cartao-emissao">Data de emissão:</label>
-                  <div class="emissao-cartao">
-                      <div class="form-group col-md-10">
-                          <input type="text" class="form-control" id="dtEmissao" placeholder="00/0000"
-                          [(ngModel)]="outputCliente.cartao.dtEmissao" name="dtEmissao" #dtEmissao="ngModel" minlength="6" required>
-                      </div>
-                  </div>
-              </div>
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-8">
                   <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
                   <div class="form-group col-md-10">
                       <input type="text" class="form-control" id="cartao-codigo-seguranca"
@@ -245,6 +245,7 @@
                   Não salvar os dados.
               </label>
           </div>
+          <button type="button" (click)="confirmar()" class="btn btns-cadastro">Confirmar</button>
       </form>
   </div>
 </div>
