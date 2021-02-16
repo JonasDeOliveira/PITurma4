@@ -2,7 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { ResponseFormularioCadastro, FormularioCadastro, FormularioMeusDados, OutputCliente, Cidade } from '../cliente/shared/cliente.model';
+import { OutputCliente} from '../cliente/shared/cliente.model';
 import { ClienteService } from '../cliente/shared/cliente.service';
 import { LoginClienteComponent } from '../login-cliente/login-cliente.component';
 
@@ -46,7 +46,12 @@ export class CadastroClienteComponent implements OnInit {
         dsComplemento: '',
         dsBairro: '',
         nrCep: '',
-        cidade: null,
+        cidade: {
+          idCidade: null,
+          cdCidadeIbge: null,
+          dsCidade: "",
+          uf: null
+        },
         idUf: null
       }
       ]
@@ -86,14 +91,13 @@ export class CadastroClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFormularioCadastro();
-    this.getCidadesByUf();
   }
 
   getFormularioCadastro() {
     this.clienteService.getFormularioCadastro().subscribe(
       response => {
-        this.responseFormularioCadastro = response;
         console.log(response);
+        this.responseFormularioCadastro = response;
       }
     )
   }

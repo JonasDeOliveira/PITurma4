@@ -46,19 +46,18 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="cadastro-cep">CEP:</label>
-                        <input type="text" class="form-control" id="cadastro-cep">
-                            <!-- [(ngModel)]="outputCliente.usuario.enderecos.nrCep" #nrCep="ngModel" name="nrCep"> -->
+                        <input type="text" class="form-control" id="cadastro-cep" [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep">
                     </div>
                     <div class="form-group col-md-7">
                         <label for="cadastro-endereco">Endereço:</label>
                         <input type="text" class="form-control" id="cadastro-endereco">
-                            <!-- [(ngModel)]="outputCliente.usuario.enderecos.dsEndereco" #dsEndereco="ngModel"
+                            <!-- [(ngModel)]="outputCliente.usuario.enderecos[0].dsEndereco" #dsEndereco="ngModel"
                             name="dsEndereco"> -->
                     </div>
                     <div class="form-group col-md-1">
                         <label for="cadastro-cep">Número:</label>
                         <input type="text" class="form-control" id="cadastro-numero">
-                            <!-- [(ngModel)]="outputCliente.usuario.enderecos.dsComplemento" #dsComplemento="ngModel"
+                            <!-- [(ngModel)]="outputCliente.usuario.enderecos[0].dsComplemento" #dsComplemento="ngModel"
                             name="dsComplemento"> -->
                     </div>
                 </div>
@@ -66,7 +65,7 @@
                     <div class="form-group col-md-5">
                         <label for="cadastro-bairro">Bairro:</label>
                         <input type="text" class="form-control" id="cadastro-bairro">
-                            <!-- [(ngModel)]="outputCliente.usuario.enderecos.dsBairro" #dsBairro="ngModel" name="dsBairro"> -->
+                            <!-- [(ngModel)]="outputCliente.usuario.enderecos[0].dsBairro" #dsBairro="ngModel" name="dsBairro"> -->
                     </div>
                     <div class="form-group col-md-2">
                         <label for="cadastro-estado">Estado:</label>
