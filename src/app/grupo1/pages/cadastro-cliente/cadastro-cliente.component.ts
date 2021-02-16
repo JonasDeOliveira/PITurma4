@@ -139,6 +139,7 @@ export class CadastroClienteComponent implements OnInit {
   }
 
   open(content) {
+    // this.modalService.open(content);
     this.modalService.open(content);
   }
  
@@ -159,6 +160,24 @@ export class CadastroClienteComponent implements OnInit {
         this.open(content)
         break;
     }
+  }
+
+  limparCartao():void {
+    console.log(this.outputCliente.cartao)
+      this.outputCliente.cartao = {
+        nmNome: '',
+        idCartao:null, 
+        usuario: null,
+        nrCartao:'',
+        codSeguranca:null,
+        dtValidade:'',
+        dtEmissao:''
+      }
+
+      this.outputCliente.contrato.plano.idPlano = 1;
+
+      console.log(this.outputCliente.cartao)
+      this.modalService.dismissAll();
   }
 
 }
