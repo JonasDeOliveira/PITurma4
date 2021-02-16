@@ -90,13 +90,23 @@
 <section class="container d-flex flex-column alig-items-center">
 
     <!-- filtro -->
-    <div class="filtro">
-        <h6>Filtrar por período:</h6>
+    <!-- <div class="filtro">
         <div class="periodo form-group">
             <label for="manha"><input type="checkbox" name="periodo" value="manha" id="manha"> Manhã</label>
             <label for="tarde"><input type="checkbox" name="periodo" value="tarde" id="tarde"> Tarde</label>
             <label for="noite"><input type="checkbox" name="periodo" value="noite" id="noite"> Noite</label>
         </div>
+    </div> -->
+
+    <div class="filtro">
+        <!-- <form [formGroup]="form" (ngSubmit)="submit()">
+            <label formArrayName="periodo" *ngFor="let periodo of periodoFormArray.controls; let i = index">
+              <input type="checkbox" [formControlName]="i">
+              {{periodoData[i].name}}
+            </label> -->
+            <!-- <div *ngIf="!form.valid">Selecione um periodo</div> -->
+            <!-- <button [disabled]="!form.valid">filtrar</button>
+          </form> -->
     </div>
     <!-- fim filtro -->
 
