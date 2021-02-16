@@ -101,7 +101,6 @@ export class AgservicoComponent implements OnInit {
     )
   }
 
-
   getHorasIndisponiveis(data: string){
     this.data = data;
 

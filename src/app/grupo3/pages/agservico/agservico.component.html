@@ -25,9 +25,6 @@
                 <div class="form-group col-12 col-lg-8 pt-3">
                     <label for="local"><h5>2. Selecione a localidade</h5></label>
                     <input class="form-control" type="text" id="local" [(ngModel)]="local" name ="local" placeholder="Busque por rua, bairro ou cidade" required> 
-                    <div style="display: none;" class="alert alert-danger alert-local" role="alert">
-                        Campo Obrigatório
-                    </div>
                 </div>
                 <div class="form-group col-12 col-lg-4 pt-3">
                     
@@ -37,6 +34,11 @@
                 </div>
             </div>
 
+            <div class="row" >
+                <div style="display: block;" class="alert alert-danger alert-local" role="alert" style="width: 80%;">
+                    Sua busca não retornou resultados
+                </div>
+            </div>
             <!-- cards com endereços encontrados -->
           
             <div class="row">
