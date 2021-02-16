@@ -90,6 +90,7 @@
             <div class="form-group col-md-4">
                 <label for="cadastro-cep">CEP:</label>
                 <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP">
+              
             </div>
             <div class="form-group col-md-7">
                 <label for="cadastro-endereco">Endereço:</label>
@@ -151,13 +152,13 @@
                     <div>
                         <h5 class="alinhamento">R$ 00,00</h5>
                     </div>
-                    <div><button type="button" class="btn btn-card" data-toggle="modal"
-                            data-target=".bd-example-modal-lg">Selecionar</button></div>
+                    <div><button type="button" class="btn btn-card" (click)="open(modalCartaoCliente)"
+                        data-toggle="modal" data-target=".bd-example-modal-lg">Selecionar</button></div>
                 </div>
                 <div class="card">
                     <img class="img-card" src="assets/grupo1/img/PREMIUM.png" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Plano Premim</h5>
+                        <h5 class="card-title">Plano Premium</h5>
                         <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
                         <p class="card-text">Consulta com o Clínico Gera</p>
                         <p class="card-text">Consulta com Especialistas</p>
@@ -166,18 +167,20 @@
                     <div>
                         <h5 class="alinhamento">R$ 00,00</h5>
                     </div>
-                    <div><button type="button" class="btn btn-card" data-toggle="modal"
-                            data-target=".bd-example-modal-lg">Selecionar</button></div>
-                </div>
+                    <div><button type="button" class="btn btn-card" (click)="open(modalCartaoCliente)"
+                        data-toggle="modal" data-target=".bd-example-modal-lg">Selecionar</button></div>
+                    </div>
             </div>
         </div>
 
        <!-- MODAL -->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-aria-hidden="true">
+       <ng-template #modalCartaoCliente class="modal-dialog modal-lg" let-c="close" let-d="dismiss">
+        <div class="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
 <div class="modal-dialog modal-lg">
   <div class="modal-content">
-      <form>
+     
+    <form>
           <div class="modal-header">
               <h5 class="modal-title">Dados do Cartão:</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -223,10 +226,11 @@ aria-hidden="true">
                   <div class="form-group col-md-10">
                       <input type="text" class="form-control" id="cartao-codigo-seguranca"
                           placeholder="CVV"
-                          [(ngModel)]="outputCliente.cartao.codSeguranca" name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>>
+                          [(ngModel)]="outputCliente.cartao.codSeguranca" name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>
                   </div>
               </div>
           </div>
+
           <div class="form-check">
               <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
                   value="option1" checked>
@@ -245,8 +249,9 @@ aria-hidden="true">
   </div>
 </div>
 </div>
+</ng-template>
      <div class="form-group botoes-cadastro">
-            <button type="button"  class="btn btns-cadastro">Cadastrar</button>
+            <button type="button" (click)="cadastrar()" class="btn btns-cadastro">Cadastrar</button>
             <button [routerLink]="['/']" class="btn btn-cancelar">Cancelar</button>
         </div>
     </form>

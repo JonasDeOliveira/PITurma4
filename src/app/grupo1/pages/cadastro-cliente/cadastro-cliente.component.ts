@@ -1,4 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ResponseFormularioCadastro, FormularioCadastro, FormularioMeusDados, OutputCliente, Cidade } from '../cliente/shared/cliente.model';
 import { ClienteService } from '../cliente/shared/cliente.service';
 
@@ -56,17 +58,23 @@ export class CadastroClienteComponent implements OnInit {
       idUsuario: null
     },
     cartao: {
-      idCartao: null,
-      //usuario: null,
-      nrCartao: null,
-      codSeguranca: null,
-      dtValidade: '',
-      dtEmissao: ''
+      nmNome: '',
+      idCartao:null, 
+      usuario: null,
+      nrCartao:null,
+      codSeguranca:null,
+      dtValidade:'',
+      dtEmissao:''
     }
 
   }
 
-  constructor(private clienteService: ClienteService) { }
+  constructor(private clienteService: ClienteService,
+              private router: Router,
+              config: NgbModalConfig,
+              private modalService: NgbModal ) {
+              config.backdrop = 'static';
+              config.keyboard = false; }
 
   ngOnInit(): void {
     this.getFormularioCadastro();
@@ -93,5 +101,19 @@ export class CadastroClienteComponent implements OnInit {
 
   ver() {
     console.log(this.outputCliente.usuario.enderecos[0].idUf)
+  }
+  cadastrar() {
+    this.clienteService.createUsuario(this.outputCliente).subscribe(
+      response => {
+        alert('Cadastro realizado com sucesso');
+        this.router.navigate(['/area-cliente']);
+      },
+      error => {
+        alert('algo inesperado aconteceu');
+      }
+    )
+  }
+  open(content) {
+    this.modalService.open(content);
   }
 }
