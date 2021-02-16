@@ -8,12 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class CadastromedicoService {
 
-  constructor(private http : HttpClient) { 
-
-  }
+  constructor(private http : HttpClient) { }
 
   private readonly API = 'http://localhost:8080/cadastroMedico';
-
   private readonly APII = 'http://localhost:8080/medico';
 
   getDadosCadastro() {
