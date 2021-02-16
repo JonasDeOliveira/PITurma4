@@ -28,35 +28,22 @@ export class ConfirmacaoConsultaComponent implements OnInit {
 
   }
 
-  reponsePagamento: Pagamento;
-  responseTipoConsulta: TipoConsulta;
-  responseAgPaciente: AgPaciente;
+  pagamento: Pagamento = JSON.parse(localStorage.getItem("pagamento"));
+  tipoPagamento: string = this.pagamento.formaPgt.dsFormaPagamento;
+  tipoConsulta: TipoConsulta = JSON.parse(localStorage.getItem("tipoConsulta"));
+  dsTipoConsulta: string = this.tipoConsulta.dsTipoConsulta;
+  agPaciente: AgPaciente = JSON.parse(localStorage.getItem("agPaciente"));
+  nomeMedico: string = this.agPaciente.agenda.medico.nome;
+  especialidade: string = this.agPaciente.agenda.medico.espMed.dsEspMed;
+  data: Date = this.agPaciente.agenda.data;
 
   ngOnInit(): void {
-    this.listarPagamento(33);
-    this.listarAgPaciente(3);
-    this.listarTipoConsulta(1)
+  
   }
 
   open(content) {
     this.modalService.open(content);
   }
-
-  listarPagamento(idPagamento: number){
-    this.pagamentoService.buscarPagamento(idPagamento).subscribe(
-      response => {this.reponsePagamento = response}
-    )
-  };
-  listarAgPaciente(idAgPaciente: number){
-    this.agPacienteService.listarAgPacientePorId(idAgPaciente).subscribe(
-      response => {this.responseAgPaciente = response}
-    )
-  };
-  listarTipoConsulta(idTipoConsulta: number){
-    this.tipoConsultaService.buscarTipoConsulta(idTipoConsulta).subscribe(
-      response => {this.responseTipoConsulta = response}
-    )
-  };
 
 }
 

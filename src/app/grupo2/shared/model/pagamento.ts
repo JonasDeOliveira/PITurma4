@@ -3,7 +3,7 @@ export interface Pagamento {
     idAgPagamento: number;
     idCartao: number;
     idContrato: number;
-    idFormaPgt: number;
+    formaPgt: TipoPagamento;
     idNF: number;
     idAgPaciente: number;
     idPedido: number;
@@ -11,6 +11,11 @@ export interface Pagamento {
     dtPagamento: Date;
     nrParcela: number;
  
+ }
+
+ export interface TipoPagamento{
+     idFormaPagamento: number;
+     dsFormaPagamento: string;
  }
 
 

@@ -20,9 +20,7 @@ export class AgendamentoConsultasComponent implements OnInit {
 
   
   ngOnInit(): void {
-      this.listarEspecialidades(1);
-
-
+    this.listarEspecialidades(1);
   }
 
   listarEspecialidades(idTipoConsulta: number){

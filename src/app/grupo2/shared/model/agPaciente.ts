@@ -14,19 +14,19 @@ export interface Agenda {
 }
 
 export interface Medico {
-    nome: String;
+    nome: string;
     espMed: EspMed;
 
 }
 
 export interface EspMed {
     idEspMed: number;
-    dsEspMed: String;
+    dsEspMed: string;
 }
 
 export interface StatusConsulta {
     idStatusConsulta: number;
-    dsStatusConsulta: String;
+    dsStatusConsulta: string;
 }
 
 export interface Periodo {
