@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group col-12 col-md-3">
                     <label for="data-consulta" class="label-form">Data da consulta</label>
-                    <input type="text" class="form-control style-input" id="dtSolicitacao" name="dtSolicitacao" [(ngModel)]="responseTelaSolicitacao.dtSolicitacao" #dtSolicitacao="ngModel">
+                    <input type="text" class="form-control style-input" id="dtSolicitacao" name="dtSolicitacao" [(ngModel)]="responseTelaSolicitacao.dtSolicitacao" #dtSolicitacao="ngModel" disabled>
                 </div>
             </div>
 
@@ -71,7 +71,7 @@
                 <div class="form-group col-12">
                     
                     <label for="dsIndicacaoClin" class="label-form">Indicacao Clinica</label>
-                    <input type="text" class="form-control style-input" id="dsIndicacaoClin" name="dsIndicacaoClin" [(ngModel)]="responseTelaSolicitacao.dsIndicacaoClin" #dsIndicacaoClin="ngModel" required>
+                    <input type="text" class="form-control style-input" id="dsIndicacaoClin" name="dsIndicacaoClin" [(ngModel)]="request.dsIndicacaoClin" #dsIndicacaoClin="ngModel" required>
                     <!-- <input type="text" class="form-control style-input" id="dsIndicacaoClin" name="dsIndicacaoClin" [(ngModel)]="request.dsIndicacaoClin" #dsIndicacaoClin="ngModel" placeholder="" required> -->
                 </div> 
             </div>

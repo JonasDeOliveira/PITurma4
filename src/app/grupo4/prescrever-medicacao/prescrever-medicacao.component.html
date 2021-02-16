@@ -9,9 +9,9 @@
 <div class="container pt-5">
     <div class="row">
         <div class="form-group col-12 col-md-2">
-            <select type="text" class="form-control style-input" id="tipo-receita" required>
+            <select type="text" class="form-control style-input" id="tipo-receita" name="tipoReceita" [(ngModel)]="request.tipoReceita.idTipoReceita" #tipoReceita="ngModel" required>
                 <option>Tipo Receita</option>
-                <option *ngFor="let tipoReceita of prescricoesResposta.listaTipoReceita">{{tipoReceita.dsTipoReceita}}</option>
+                <option *ngFor="let tipoReceita of responsePrescricao.listaTipoReceita">{{tipoReceita.dsTipoReceita}}</option>
             </select>
         </div>
         <div class="col-12 col-md-8">
@@ -22,11 +22,11 @@
         </div>
     </div>
     
-    <form id="id-form" name="formulario" action="#">
+    <form id="id-form" name="formulario" action="#" #formPrescricao="ngForm">
         <div class="row mt-2">
             <div class="form-group col-12 col-md-12">
                 <label for="name-paciente" class="label-form">Nome do(a) Paciente</label>
-                <input type="text" class="form-control style-input" id="name-paciente" value="{{prescricoesResposta.nomePaciente}}" disabled>
+                <input type="text" class="form-control style-input" id="name-paciente" value="{{responsePrescricao.nomePaciente}}" disabled>
             </div>
         </div>
 
@@ -41,31 +41,31 @@
                 <div class="row">
                     <div class="form-group col-12 col-md-2">
                         <label for="idade" class="label-form">Medicação</label>
-                        <select type="text" class="form-control style-input select-form" id="medicacao" required>
+                        <select type="text" class="form-control style-input select-form" id="medicacao" required name="idMedicacao" [(ngModel)]="idMedicacao">
                             <option>Selecione a Medicação</option>
-                            <option *ngFor="let medicacao of prescricoesResposta.listaMedicacao">{{medicacao.dsMedicacao}}</option>
+                            <option *ngFor="let medicacao of responsePrescricao.listaMedicacao" value="{{medicacao.idMedicacao}}">{{medicacao.dsMedicacao}}</option>
                         </select>
                     </div>
                     <div class="form-group col-12 col-md-2">
                         <label for="quantidade" class="label-form">Quantidade</label>
-                        <input type="number" class="form-control style-input" id="quantidade" placeholder="" required>
+                        <input type="number" class="form-control style-input" id="quantidade" name="vlQuantidade" [(ngModel)]="vlQuantidade" required>
                     </div>
                     <div class="form-group col-12 col-md-2">
                         <label for="concentracao" class="label-form">Concentração</label>
-                        <input type="text" class="form-control style-input" id="concentracao" placeholder="" required>
+                        <input type="text" class="form-control style-input" id="concentracao" name="vlConcentracao" [(ngModel)]="vlConcentracao" required>
                     </div>
                     <div class="form-group col-12 col-md-3">
                         <label for="idade" class="label-form">Via de Administração</label>
-                        <select type="text" class="form-control style-input select-form" id="via-adm" required>
+                        <select type="text" class="form-control style-input select-form" id="via-adm" name="idViaAdm" [(ngModel)]="idViaAdm" required>
                             <option>Selecione a Via de Administração</option>
-                            <option *ngFor="let viaAdm of prescricoesResposta.listaViaAdm">{{viaAdm.dsViaAdm}}</option>
+                            <option *ngFor="let viaAdm of responsePrescricao.listaViaAdm" value="{{viaAdm.idViaAdm}}">{{viaAdm.dsViaAdm}}</option>
                         </select>
                     </div>
                     <div class="form-group col-12 col-md-3">
                         <label for="idade" class="label-form">Forma Farmacêutica</label>
-                        <select type="text" class="form-control style-input select-form" id="forma-farmaceutica" required>
+                        <select type="text" class="form-control style-input select-form" id="forma-farmaceutica" name="idFormaFarmac" [(ngModel)]="idFormaFarmac" required>
                             <option>Selecione a Forma Farmacêutica</option>
-                            <option *ngFor="let formaFarmac of prescricoesResposta.listaFormaFarmac">{{formaFarmac.dsFormaFarmac}}</option>
+                            <option *ngFor="let formaFarmac of responsePrescricao.listaFormaFarmac" value="{{formaFarmac.idFormaFarmac}}">{{formaFarmac.dsFormaFarmac}}</option>
                         </select>
                     </div>
                 </div>
@@ -73,12 +73,12 @@
                 <div class="row mt-2">
                     <div class="form-group col-12 col-md-11">
                         <label for="orientacoes" class="label-form">Orientações de Uso (Dose, Posologia)</label>
-                        <input type="text" class="form-control style-input" id="orientacoes" placeholder="" required>
+                        <input type="text" class="form-control style-input" id="orientacoes" name="dsOrientacoes" [(ngModel)]="dsOrientacoes" required>
                     </div>
                     <div class="form-group col-12 col-md-1">
 
                         <!--Editar botao modal Adicinar remédio-->
-                        <button type="button" class="btn-add" data-toggle="modal" data-target="#modal-add"></button>
+                        <button type="button" class="btn-add" data-toggle="modal" data-target="#modal-add" (click)=addItem()></button>
                     </div>
                 </div>
             </div>
@@ -98,26 +98,15 @@
                         <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody *ngFor = "let item of listaPrescricao">
                         <tr>
-                        <td class="texto-tabela">Dipirona</td>
-                        <td class="texto-tabela">1 caixa</td>
-                        <td class="texto-tabela">10 mg</td>
-                        <td class="texto-tabela">Via Oral</td>
-                        <td class="texto-tabela">Comprimido</td>
-                        <td class="texto-tabela">Tomar 1 comprimido de 8/8h</td>
-                        <td><button type="button" class="btn-delete"></button></td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td class="texto-tabela">Paracetamol</td>
-                            <td class="texto-tabela">1 caixa</td>
-                            <td class="texto-tabela">5 mg</td>
-                            <td class="texto-tabela">Via Oral</td>
-                            <td class="texto-tabela">Comprimido</td>
-                            <td class="texto-tabela">Tomar 1 comprimido de 6/6h</td>
-                            <td><button type="button" class="btn-delete"></button></td>
+                        <td class="texto-tabela">{{item.dsMedicacao}}</td>
+                        <td class="texto-tabela">{{item.vlQuantidade}}</td>
+                        <td class="texto-tabela">{{item.vlConcentracao}}</td>
+                        <td class="texto-tabela">{{item.dsViaAdm}}</td>
+                        <td class="texto-tabela">{{item.dsFormaFarmac}}</td>
+                        <td class="texto-tabela">{{item.dsOrientacoes}}</td>
+                        <td><button type="button" class="btn-delete" (click)=removerItem(item)></button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -127,45 +116,45 @@
         <div class="row mt-2">
             <div class="form-group col-12 col-md-9">
                 <label for="name-medico" class="label-form">Nome do(a) Médico(a)</label>
-                <input type="text" class="form-control style-input" id="name-medico" value="{{prescricoesResposta.medico.nome}}" disabled>
+                <input type="text" class="form-control style-input" id="name-medico" value="{{responsePrescricao.medico.nome}}" disabled>
             </div>
             <div class="form-group col-12 col-md-2">
                 <label for="crm" class="label-form">CRM</label>
-                <input type="text" class="form-control style-input" id="crm" value="{{prescricoesResposta.medico.nrCrm}}" disabled>
+                <input type="text" class="form-control style-input" id="crm" value="{{responsePrescricao.medico.nrCrm}}" disabled>
             </div>
             <div class="form-group col-12 col-md-1">
                 <label for="uf-crm" class="label-form">UF</label>
-                <input type="text" class="form-control style-input" id="uf-crm" value="{{prescricoesResposta.medico.ufCrm.dsUf}}" disabled>
+                <input type="text" class="form-control style-input" id="uf-crm" value="{{responsePrescricao.medico.ufCrm.dsUf}}" disabled>
             </div>
         </div>
 
         <div class="row mt-2">
             <div class="form-group col-12 col-md-9">
                 <label for="endereco" class="label-form">Endereço</label>
-                <input type="text" class="form-control style-input" id="endereco" value="{{prescricoesResposta.medico.enderecos[0].dsEndereco}}" disabled>
+                <input type="text" class="form-control style-input" id="endereco" value="{{responsePrescricao.medico.enderecos[0].dsEndereco}}" disabled>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="bairro" class="label-form">Bairro</label>
-                <input type="text" class="form-control style-input" id="bairro" value="{{prescricoesResposta.medico.enderecos[0].dsBairro}}" disabled>
+                <input type="text" class="form-control style-input" id="bairro" value="{{responsePrescricao.medico.enderecos[0].dsBairro}}" disabled>
             </div>
         </div>
 
         <div class="row mt-2">
             <div class="form-group col-12 col-md-5">
                 <label for="cidade" class="label-form">Cidade</label>
-                <input type="text" class="form-control style-input" id="cidade" value="{{prescricoesResposta.medico.enderecos[0].idCidade}}" disabled>
+                <input type="text" class="form-control style-input" id="cidade" value="{{responsePrescricao.medico.enderecos[0].cidade.dsCidade}}" disabled>
             </div>
             <div class="form-group col-12 col-md-1">
                 <label for="uf" class="label-form">UF</label>
-                <input type="text" class="form-control style-input" id="uf" value="{{prescricoesResposta.medico.ufCrm.dsUf}}" disabled>
+                <input type="text" class="form-control style-input" id="uf" value="{{responsePrescricao.medico.enderecos[0].cidade.uf.dsUf}}" disabled>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="tel" class="label-form">Telefone</label>
-                <input type="text" class="form-control style-input" id="tel" value= "{{prescricoesResposta.medico.contatos[0].dsContato}}" disabled>
+                <input type="text" class="form-control style-input" id="tel" value= "{{responsePrescricao.medico.contatos[0].dsContato}}" disabled>
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="data-emissao" class="label-form">Data de Emissão</label>
-                <input type="text" class="form-control style-input" id="data-emissao" value="{{data}}" disabled>
+                <input type="text" class="form-control style-input" id="dtEmissao" name="dtEmissao" [(ngModel)]="responsePrescricao.dtEmissao" #dtEmissao="ngModel" disabled>
             </div>
         </div>
 
@@ -182,7 +171,7 @@
 
         <div class="text-center">
             <!--Editar botao modal Salvar-->
-            <button type="submit" class="btn btn-verde mr-5" data-toggle="modal" data-target="#modal-salvar">Salvar</button>
+            <button type="submit" class="btn btn-verde mr-5" data-toggle="modal" data-target="#modal-salvar" (click)="registrar()">Salvar</button>
           
             <!--botão "Enviar" para modal que está funcionando-->
             <!--<button type="button" class="btn btn-verde btn-outline-primary" (click)="open(content)">Enviar</button> -->

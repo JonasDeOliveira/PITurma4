@@ -15,8 +15,9 @@ export class SolicitacaoexameService {
   objMedico = JSON.parse(localStorage.getItem("medico"));
 
   getTelaSolicitacao() {
-    //TODO: pegar ID PACIENTE do storage
+    //TODO: pegar IDs do storage
     //const URL = `${this.API}/${idUsuario}/${idPaciente}`;
+    
     const URL = `${this.API}/${this.objMedico.idUsuario}/6`;
     return this.http.get<any>(URL); 
   }
@@ -25,7 +26,7 @@ export class SolicitacaoexameService {
     const requestOptions: Object = {
       responseType: 'text'
     }
-    return this.http.post<CadastroSolicitacao>(this.API, request,requestOptions);
+    return this.http.post<CadastroSolicitacao>(this.API, request, requestOptions);
   }
 
 }

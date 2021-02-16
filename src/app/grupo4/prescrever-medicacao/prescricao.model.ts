@@ -1,56 +1,41 @@
-export interface Prescricao {
-    listaTipoReceita : Array<TipoReceita>;
-    nomePaciente: string;
-    listaMedicacao: Array<Medicacao>;
-    listaViaAdm: Array<ViaAdm>;
-    listaFormaFarmac: Array<FormaFarmac>;
+
+//CADASTRAR PRESCRIÇÃO
+export interface CadastroPrescricao {
+    paciente: Paciente;
+    prontuario: Prontuario;
     medico: Medico;
+    tipoReceita: TipoReceita;
+    dtEmissao: string;
+    dsEndImgAssMed: string;
+    prescricoes: Prescricao[];
 }
 
-export interface TipoReceita {
-    idTipoReceita: number;
-    dsTipoReceita: string;
+export interface Paciente {
+    idUsuario: number;
 }
 
-export interface Medicacao {
-    idMedicacao: number;
-    dsMedicacao: string;
-}
-
-export interface ViaAdm {
-    idViaAdm: number;
-    dsViaAdm: string;
-}
-
-export interface FormaFarmac {
-    idFormaFarmac: number;
-    dsFormaFarmac: string;
+export interface Prontuario {
+    idProntuario: number;
 }
 
 export interface Medico {
     idUsuario: number;
-    ufCrm: UfCrm;
-    nome: string;
-    nrCrm: number;
-    enderecos: Endereco[];
-    contatos: Contato[];
 }
 
-export interface UfCrm {
-    idUf: number;
-    dsUf: string;
+export interface TipoReceita {
+    idTipoReceita: number
 }
 
-export interface Endereco {
-    idEndereco: number;
-    dsEndereco: string;
-    dsComplemento: string;
-    dsBairro: string;
-    nrCep: string;
-    idCidade: number;
+export interface Prescricao {
+    idMedicacao: number;
+    idFormaFarmac: number;
+    idViaAdm: number;
+    vlQuantidade: string;
+    vlConcentracao: string;
+    dsOrientacoes: string;
 }
 
-export interface Contato {
-    nrDdd: number;
-    dsContato: number;
+export interface Medicacao {
+    idMedicacao: number,
+    dsMedicacao: string
 }

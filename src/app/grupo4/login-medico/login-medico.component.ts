@@ -23,7 +23,11 @@ export class LoginMedicoComponent implements OnInit {
   constructor(private loginService : LoginmedicoService,
     private router: Router,
     config: NgbModalConfig,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal) { 
+
+      config.backdrop = 'static';
+      config.keyboard = false;
+    }
 
 
   ngOnInit(): void {

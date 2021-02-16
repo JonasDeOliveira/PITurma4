@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Prescricao } from './prescricao.model';
+import { CadastroPrescricao} from './prescricao.model';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +13,21 @@ export class PrescrevermedicacaoService {
 
   private readonly API = 'http://localhost:8080/receituario';
   
-  
+  objMedico = JSON.parse(localStorage.getItem("medico"));
 
-  getPrescricoes(idMedico:any, idPaciente:any) {
-    var data = new Date(Date.now()).toISOString().slice(0,10);
-    
-    const URL = `${this.API}/${idMedico}/${idPaciente}`;
-    return this.http.get<Prescricao>(URL); 
+  getTelaPrescricoes() {
+    //TODO: pegar ID PACIENTE do storage
+    //const URL = `${this.API}/${idUsuario}/${idPaciente}`;
+
+    const URL = `${this.API}/${this.objMedico.idUsuario}/6`;
+    return this.http.get<any>(URL); 
+  }
+
+  cadastrarPrescricao(request: CadastroPrescricao): Observable<CadastroPrescricao> {
+    const requestOptions: Object = {
+      responseType: 'text'
+    }
+    return this.http.post<CadastroPrescricao>(this.API, request, requestOptions);
   }
 
 }

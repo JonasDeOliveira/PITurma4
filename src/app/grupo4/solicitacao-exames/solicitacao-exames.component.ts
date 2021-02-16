@@ -22,6 +22,10 @@ export class SolicitacaoExamesComponent implements OnInit {
       config.keyboard = false;
   }
 
+  open(content) {
+    this.modalService.open(content);
+  }
+
 
   request: CadastroSolicitacao = {
     prontuario: {
@@ -43,13 +47,10 @@ export class SolicitacaoExamesComponent implements OnInit {
   }
 
 
-  open(content) {
-    this.modalService.open(content);
-  }
-
   responseTelaSolicitacao : any;
   listaExame = [];
   select : Exames;
+
 
   ngOnInit(): void {
     this.solicitacaoService.getTelaSolicitacao().subscribe(
@@ -62,8 +63,8 @@ export class SolicitacaoExamesComponent implements OnInit {
     );
   }
 
+  
   registrar() {
-    this.request.dsIndicacaoClin = this.responseTelaSolicitacao.dsIndicacaoClin;
     this.request.dtSolicitacao = this.responseTelaSolicitacao.dtSolicitacao;
 
     //TODO: PEGAR DO LOCAL STORAGE
