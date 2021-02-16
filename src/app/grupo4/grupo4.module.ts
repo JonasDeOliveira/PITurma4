@@ -17,6 +17,7 @@ import { PerfilmedicoService } from './perfil-medico/perfilmedico.service'
 import { PrescrevermedicacaoService } from './prescrever-medicacao/prescrevermedicacao.service';
 import { AgendamedicoService } from './agenda-medico/agendamedico.service';
 import { FormsModule } from '@angular/forms';
+import { AtendimentoespecialistaService } from './atendimento-especialista/atendimentoespecialista.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FormsModule } from '@angular/forms';
     SolicitacaoexameService,
     PerfilmedicoService,
     PrescrevermedicacaoService,
-    AgendamedicoService
+    AgendamedicoService,
+    AtendimentoespecialistaService
   ]
 })
 export class Grupo4Module { }

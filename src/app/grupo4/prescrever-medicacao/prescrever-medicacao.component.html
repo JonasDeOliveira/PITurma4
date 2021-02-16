@@ -76,9 +76,7 @@
                         <input type="text" class="form-control style-input" id="orientacoes" name="dsOrientacoes" [(ngModel)]="dsOrientacoes" required>
                     </div>
                     <div class="form-group col-12 col-md-1">
-
-                        <!--Editar botao modal Adicinar remédio-->
-                        <button type="button" class="btn-add" data-toggle="modal" data-target="#modal-add" (click)=addItem()></button>
+                        <button type="button" class="btn-add" (click)=addItem()></button>
                     </div>
                 </div>
             </div>
@@ -170,61 +168,50 @@
         </div>
 
         <div class="text-center">
-            <!--Editar botao modal Salvar-->
-            <button type="submit" class="btn btn-verde mr-5" data-toggle="modal" data-target="#modal-salvar" (click)="registrar()">Salvar</button>
-          
-            <!--botão "Enviar" para modal que está funcionando-->
+            
+            <!-- <button type="submit" class="btn btn-verde mr-5" (click)="open(abrir)" (click)="registrar()">Salvar</button> -->
             <!--<button type="button" class="btn btn-verde btn-outline-primary" (click)="open(content)">Enviar</button> -->
+            <button type="submit" class="btn btn-verde mr-5" (click)="registrar()">Salvar</button>
             <button type="reset" class="btn btn-cinza mr-5">Limpar</button>
             <button type="button" routerLink='/atendimento/especialista' class="btn btn-cinza">Sair</button>
         </div> 
     </form>
 </div>
 
-<!-- Modal Adicionar (FAZER)-->
-<div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="modal-addTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modal-addTitle">Atenção</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body modal-add-msg">
-                Medicamento adicionado com sucesso!
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn  btn-verde" data-dismiss="modal">Ok</button>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Modal Adicionar-->
+<!-- <ng-template #add let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h5 class="modal-title" id="modal-salvarTitle">Atenção</h5>
+        <button type="button" class="close" aria-label="Close" (click)="c('Save click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Medicamento adicionado com sucesso!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-verde" (click)="c('Save click')">Ok</button>
+      </div>  
+</ng-template> -->
 
-<!-- Modal Salvar (FAZER)-->
+<!-- Modal Salvar-->
+<!-- <ng-template #abrir let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h5 class="modal-title" id="modal-salvarTitle">Atenção</h5>
+        <button type="button" class="close" aria-label="Close" (click)="c('Save click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Receituário salvo com sucesso!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-verde" (click)="c('Save click')">Ok</button>
+      </div>  
+</ng-template> -->
 
-<div class="modal fade" id="modal-salvar" tabindex="-1" role="dialog" aria-labelledby="modal-salvarTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modal-salvarTitle">Atenção</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body modal-salvar-msg">
-                Receituário salvo com sucesso!
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn  btn-verde" data-dismiss="modal">Ok</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!--Modal Enviar (FUNCIONANDO)-->
-<!--<ng-template #content let-c="close" let-d="dismiss">
+<!--Modal Enviar-->
+<!-- <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
       <h5 class="modal-title"> Enviar Receituário</h5>
       <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -242,7 +229,7 @@
         <button type="button" class="btn btn-cinza" data-dismiss="modal" (click)="c('Save click')" >Fechar</button>
         <button type="button" class="btn btn-verde"  (click)="c('Save click')">Enviar</button>
     </div>
-  </ng-template>-->
+</ng-template> -->
 
 <footer class="mt-4">
     <div class="row">

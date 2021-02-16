@@ -31,10 +31,10 @@
                 <h1 class="titulo-verde color-text">Atendimento</h1>
             </div>
             <div class="form-group col-12 col-md-2">
-                <input type="date" class="form-control style-input" id="date-atendimento" placeholder="23/01/2021" disabled>
+                <input type="text" class="form-control style-input" id="date-atendimento" value="{{atendimentoResposta.data}}" disabled>
             </div>
             <div class="form-group col-12 col-md-2">
-                <input type="text" class="form-control style-input" id="number-atendimento" placeholder="Nº Atendimento" disabled>
+                <input type="text" class="form-control style-input" id="number-atendimento" value="{{atendimentoResposta.idAtendimento}}" disabled>
             </div>
         </div>
         
@@ -42,15 +42,15 @@
             <div class="row mt-2">
                 <div class="form-group col-12 col-md-6">
                     <label for="name-paciente" class="label-form">Nome do(a) Paciente</label>
-                    <input type="text" class="form-control style-input" id="name-paciente" placeholder="Maria da Silva" disabled>
+                    <input type="text" class="form-control style-input" id="name-paciente" value="{{atendimentoResposta.nomePaciente}}" disabled>
                 </div>
                 <div class="form-group col-12 col-md-2">
                     <label for="idade" class="label-form">Idade</label>
-                    <input type="text" class="form-control style-input" id="idade" placeholder="35" disabled>
+                    <input type="text" class="form-control style-input" id="idade" value="{{atendimentoResposta.idade}}" disabled>
                 </div>
                 <div class="form-group col-12 col-md-2">
                     <label for="genero" class="label-form">Gênero</label>
-                    <input type="text" class="form-control style-input" id="genero" placeholder="Feminino" disabled>
+                    <input type="text" class="form-control style-input" id="genero" value="{{atendimentoResposta.genero}}" disabled>
                 </div>
                 <div class="form-group col-12 col-md-1">
                     <label for="peso" class="label-form">Peso</label>
@@ -89,7 +89,7 @@
                     <h3 class="titulo-cinza color-text">Prontuário</h3>
                 </div>
                 <div class="form-group col-12 col-md-2">
-                    <input type="text" class="form-control style-input" id="number-prontuario" placeholder="Nº Prontuário" disabled>
+                    <input type="text" class="form-control style-input" id="number-prontuario" value="{{atendimentoResposta.idProntuario}}" disabled>
                 </div>
             </div>
 
@@ -123,32 +123,28 @@
             </div>
 
             <div class="text-center mt-2">
-                <button type="submit" class="btn  btn-verde mr-5" data-toggle="modal" data-target="#modal-salvar">Salvar</button>
+                <button type="submit" class="btn  btn-verde mr-5" (click)="open(abrir)">Salvar</button>
                 <button type="reset" class="btn btn-cinza">Limpar</button>
             </div>
         </form>
     </div>
 </section>
 
-<!-- Modal -->
-<div class="modal fade" id="modal-salvar" tabindex="-1" role="dialog" aria-labelledby="modal-salvarTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
+<!-- Modal Salvar-->
+<ng-template #abrir let-c="close" let-d="dismiss">
+    <div class="modal-header">
         <h5 class="modal-title" id="modal-salvarTitle">Atenção</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <button type="button" class="close" aria-label="Close" (click)="c('Save click')">
+          <span aria-hidden="true">&times;</span>
         </button>
-        </div>
-        <div class="modal-body modal-salvar-msg">
-        Prontuário de atendimento salvo com sucesso!
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn  btn-verde" data-dismiss="modal">Ok</button>
-        </div>
-    </div>
-    </div>
-</div>
+      </div>
+      <div class="modal-body">
+        <p>Prontuário de atendimento salvo com sucesso!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-verde" (click)="c('Save click')">Ok</button>
+      </div>  
+</ng-template>
 
 <footer>
     <div class="row">
