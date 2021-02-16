@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule} from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from "@angular/material/icon";
+
+  
 
 import { ProgramaNutricionalComponent } from './pages/programa-nutricional/programa-nutricional.component';
 import { AgendaAlimentarComponent } from './pages/agenda-alimentar/agenda-alimentar.component';
@@ -18,6 +21,7 @@ import { LojaService } from './shared/service/lojas.service';
 import { ProgramaNutriService } from './shared/ProgramaNutri/service/programaNutri.service';
 import { TipoRefeicaoService } from './shared/ProgramaNutri/service/tipoRefeicao.service';
 
+
 @NgModule({
   
   declarations: [PagamentoServicoComponent, SustentabilidadeComponent, ConfirmacaoAgendamentoComponent,PesquisarReceitasComponent, ResultadoBuscarReceitasComponent, HistoricoAgservicoComponent, AgservicoComponent, HistoricoAgservicoComponent, AgservicoComponent, ProcurarPacienteComponent, ProgramaNutricionalComponent, AgendaAlimentarComponent, ResultadoReceitaComponent],
@@ -25,12 +29,13 @@ import { TipoRefeicaoService } from './shared/ProgramaNutri/service/tipoRefeicao
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
   ],
 
   exports: [
     ProgramaNutricionalComponent,
-    SustentabilidadeComponent
+    SustentabilidadeComponent,
   ],
 
   providers:[

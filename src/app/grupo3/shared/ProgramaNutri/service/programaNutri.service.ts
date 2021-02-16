@@ -11,12 +11,14 @@ export class ProgramaNutriService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly API = 'http://localhost:8080/programa-nutricional/';
+  private readonly API = 'http://localhost:8080/programa-nutricional';
 
   private readonly API2 = 'http://localhost:8080/cardapio';
 
   getExibirDadosPaciente(idUsuario: number) {
-    return this.http.get<ResponseDadosPaciente>(this.API+idUsuario);
+  //  return this.http.get<ResponseDadosPaciente>(this.API+idUsuario);
+    const URL = `${this.API}/${idUsuario}`;
+    return this.http.get<DadosPaciente>(URL); 
  }
 
 

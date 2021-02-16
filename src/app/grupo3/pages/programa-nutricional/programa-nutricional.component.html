@@ -18,46 +18,49 @@
                         <form action="#inicio">
                             <div class="form-row">
 
-                                <div  *ngFor = "let dadosPaciente of responseDadosPaciente" class="form-group col-md-12">
-                                    <input type="nome" class="form-control" id="inputNome" placeholder="Nome">
-                                     {{dadosPaciente.nome}}
-                                     {{dadosPaciente.vlPeso}}
-                                     {{dadosPaciente.vlAltura}}
-                                     {{dadosPaciente.dsHabitosVicio}}
-                                </div>
-
-                                <div class="form-group col-md-4">
-                                    <input type="idade" class="form-control" id="inputIdade" placeholder="Idade"
-                                        disabled="">
-                                </div>
-
-                                <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" id="inputPeso" placeholder="Peso"
-                                        disabled="">
-                                </div>
-
-                                <div class="form-group col-md-4">
-                                    <input type="text" class="form-control" id="inputAltura" placeholder="Altura"
-                                        disabled="">
-                                </div>
-
                                 <div class="form-group col-md-12">
-                                    <label for="inputObjetivo">Objetivo</label>
-                                    <input type="objetivo" class="form-control" id="inputObjetivo"
+                                    <label for="name-paciente" class="label-form">Nome do(a) Paciente</label>
+                                    <input type="text" class="form-control" id="nome" value="{{dadosPacienteResposta.nome}}" disabled>
+                                </div>
+                    
+            
+                                <div class="form-group col-md-4">
+                                    <label for="idade" class="label-form">Idade</label>
+                                    <input type="text" class="form-control" id="dtNascimento" value="{{dadosPacienteResposta.dtNascimento}}"
+                                        disabled="">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="peso" class="label-form">Peso</label>
+                                    <input type="text" class="form-control" id="vlPeso" value="{{dadosPacienteResposta.vlPeso}}" name="vlPeso"
+                                        disabled="">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="altura" class="label-form">Altura</label>
+                                    <input type="text" class="form-control" id="vlAltura"  value="{{dadosPacienteResposta.vlAltura}}" name="vlAltura"
+                                        disabled="">
+                                </div>
+
+                
+                                <div class="form-group col-md-12">
+                                    <label for="objetivo" class="label-form">Objetivo</label>
+                                    <input type="objetivo" class="form-control" id="dsObjetivo" value="{{dadosPacienteResposta.dsObjetivo}}" name="dsObjetivo"
                                         disabled="">
                                 </div>
 
                                 <div class="form-group  col-md-12">
-                                    <label for="inputRestricoes">Restrições</label>
-                                    <input type="text" class="form-control" id="inputRestricoes"
+                                    <label for="restricoes"  class="label-form">Restrições</label>
+                                    <input type="text" class="form-control" id="dsAlergiasRestricoes" value ="{{dadosPacienteResposta.dsAlergiasRestricoes}}" name="dsAlergiasRestricoes"
                                      disabled="">
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <label for="inputPraticaAtividade">Pratica Atividade</label>
-                                    <input type="text" class="form-control" id="inputPraticaAtividade"
+                                    <label for="praticaAtividade"  class="label-form">Hábitos e Vícios</label>
+                                    <input type="text" class="form-control" id="dsHabitosVicios" value="{{dadosPacienteResposta.dsHabitosVicios}}" name="dsHabitosVicios"
                                      disabled="">
                                 </div>
+
                             </div>
                         </form>
                     </div>
@@ -81,7 +84,7 @@
                         <form action="#inicio">
                             <div class="form-row  ">
                                 <div class="form-group col-md-12">
-                                    <select id="inputEscolherRefeicao" class="form-control" id="EscolherRefeicao" name="idTipoRefeicao" [(ngModel)]="request.idTipoRefeicao.idTipoRefeicao" #idTipoRefeicao="ngModel"  required> 
+                                    <select class="form-control" id="EscolherRefeicao" name="idTipoRefeicao" [(ngModel)]="request.idTipoRefeicao.idTipoRefeicao" #idTipoRefeicao="ngModel" placeholder="Escolha a refeição" required> 
                                         <option value ="selecione">Selecione a refeição</option>
                                         <option *ngFor = "let tipoRefeicao of responseTipoRefeicao" [value]="tipoRefeicao.idTipoRefeicao">{{tipoRefeicao.dsTipoRefeicao}}</option>
                                     </select>
@@ -122,14 +125,14 @@
 
                  
                     <div  class="receitas">
-                        <h5><button class="btn-padrao"><i class="fa fa-plus" aria-hidden="true"></i></button>Refeição<button class="btn-padrao"><i class="fa fa-trash"></i></button></h5>
+                        <h5><button class="btn-padrao"><mat-icon>add</mat-icon></button>Refeição<button class="btn-padrao"><mat-icon>delete</mat-icon></button></h5>
                         <h6>Nome do Prato</h6>
                         <h6>Quantidade</h6>
                         <h6>Calorias</h6>
                     </div>
 
                     <div  class="receitas">
-                        <h5><button class="btn-padrao"><i class="fa fa-plus" aria-hidden="true"></i></button>Refeição<button class="btn-padrao"><i class="fa fa-trash"></i></button></h5>
+                        <h5><button class="btn-padrao"></button>Refeição<button class="btn-padrao"><i class="fa fa-trash"></i></button></h5>
                         <h6>Nome do Prato</h6>
                         <h6>Quantidade</h6>
                         <h6>Calorias</h6>
@@ -190,7 +193,7 @@
 
 
 
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

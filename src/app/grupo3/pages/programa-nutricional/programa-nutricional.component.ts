@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProgramaNutriService} from '../../shared/ProgramaNutri/service/programaNutri.service';
-import { Cardapio, ResponseCardapio, ResponseDadosPaciente} from '../../shared/ProgramaNutri/model/programaNutri.model';
+import { Cardapio, DadosPaciente, ResponseCardapio, ResponseDadosPaciente} from '../../shared/ProgramaNutri/model/programaNutri.model';
 import { TipoRefeicaoService } from '../../shared/ProgramaNutri/service/tipoRefeicao.service';
 import { ResponseTipoRefeicao } from '../../shared/ProgramaNutri/model/tipoRefeicao.model';
 import { NullTemplateVisitor } from '@angular/compiler';
@@ -18,30 +18,49 @@ export class ProgramaNutricionalComponent implements OnInit {
   constructor( private programaNutriService: ProgramaNutriService, private tipoRefeicaoService: TipoRefeicaoService) { }
 
     responseTipoRefeicao: ResponseTipoRefeicao;
-    responseDadosPaciente: ResponseDadosPaciente;
+ 
+   dadosPacienteResposta : DadosPaciente;
+
     responseCardapio: ResponseCardapio;
-
-
-    idTipoRefSelecionada: number;
-    idTipoRefString: string;
-
-  //  idMedico: any;
+  
+   idUsuario: any;
   //idPaciente : any;
 
   ngOnInit(): void {
     this.listarTipoRefeicao();
   //  this.getExibirDadosPaciente(24);
+  //this.idMedico = 33;
+  //this.idPaciente= 24;
+   this.idUsuario = 7;
+   this.programaNutriService.getExibirDadosPaciente(this.idUsuario).subscribe(
+    response => {
+      this.dadosPacienteResposta=response;
+    }
+  );
   }
 
 //***************************DADOS PACIENTE***********************************************
 //inicioDadosPaciente
-getExibirDadosPaciente(idUsuario: number){
-    this.programaNutriService.getExibirDadosPaciente(idUsuario).subscribe( 
-      response => {
-         this.responseDadosPaciente= response;
-      }
-    );
- }
+
+//dadosPaciente: any = {
+ // nome: '',
+ // vlPeso: null,
+ // vlAltura: null,
+ // dsHabitosVicios: '',
+ // dsAlergiasRestricoes: '',
+ // dsObjetivo: ''
+//}
+
+//getExibirDadosPaciente(idUsuario: number){
+//    this.programaNutriService.getExibirDadosPaciente(33).subscribe( 
+ //     response => {
+ //        this.responseDadosPaciente= response;
+  //    }
+  //  );
+ //}
+
+ 
+
  //FimDadosPaciente
 
 //*********************************TIPO REFEICAO**************************************
@@ -64,14 +83,15 @@ request: Cardapio = {
    dsTipoRefeicao: ''
   } ,
  nomeReceita: '',
- qtCalorias: 12,
- qtRendimento: 123,
+ qtCalorias: null,
+ qtRendimento: null,
  dsDescricao: ''
 }
 
 cadastrar() {
   this.programaNutriService.criarCardapio(this.request).subscribe(
     response => {
+     //   this.responseCardapio= response;
       alert('Cardapio realizado com sucesso!');
     },
     error => {
@@ -81,4 +101,5 @@ cadastrar() {
 }
 
 //FimCardapio
+
 }

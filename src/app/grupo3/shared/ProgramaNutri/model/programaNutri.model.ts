@@ -2,6 +2,7 @@ import { IdTipoRefeicao } from "./tipoRefeicao.model";
 
 export interface DadosPaciente {
     nome: string;
+    dtNascimento : string;
     vlPeso: number;
     vlAltura: number;
     dsHabitosVicios: string;
@@ -10,7 +11,7 @@ export interface DadosPaciente {
 }
 
 export interface ResponseDadosPaciente {
-    dadosPaciente: DadosPaciente
+   dadosPaciente: DadosPaciente
 }
 
 //Get Cadastrar Cardapio
