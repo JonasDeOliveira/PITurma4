@@ -70,34 +70,19 @@
                                             <!-- BOTAO NOVO LEMBRETE -->
                                             <button type="button" value="" class="todo-form__btn btn" id="todoSubmit"
                                                 data-toggle="modal" data-target=".bd-lembrete-modal-lg">Novo lembrete<img
-                                                src="/assets/grupo1/img/add.png"    class=" fa-plus pr-2"/></button>
+                                                src="/assets/grupo1/img/add.png" class=" fa-plus pr-2"/></button>
                                         </div>
                                     <div class="todo__tarefas" id="todoTarefas">
                                         <ul class="todo__tarefas-lista" id="todoLista">
-                                            <li class="item-lista">
-                                                <p class="titulo_lembrete">Medicamento Controlado</p>
-                                                <p class="excluir ">Descrição: Tomar comprimido de novalgina<span
-                                                        class="todo__btn-excluir">X</span></p>
-                                                <p class="excluir font-weight-bold">Data: 22/12/2020 - Hora:15:00
+                                           <li class="item-lista" *ngFor="let lembrete of areaDoCliente.lembretes">
+                                                <p class="titulo_lembrete">{{lembrete.nmTitulo}}</p>
+                                                <p class="excluir ">Descriçao: {{lembrete.dsLembrete}}<span
+                                                        class=" todo__btn-excluir" >X</span></p>
+                                                <p class="excluir font-weight-bold">Data: {{lembrete.dtCriacao}} - Hora: {{lembrete.hrHora}}
                                                 </p>
-                                                <p>Intervalo: A cada 8h.</p>
+                                                <p>Intervalo:  A cada {{lembrete.nrRepeticao}} {{lembrete.lembreteIntervalo.dsLembreteIntervalo}}</p>
                                             </li>
-                                            <li class="item-lista">
-                                                <p class="titulo_lembrete">Buscar Exames</p>
-                                                <p class="excluir ">Descrição: Buscar exames no laboratório <span
-                                                        class="todo__btn-excluir">X</span></p>
-                                                <p class="excluir font-weight-bold">Data: 22/12/2020 - Hora:15:00
-                                                </p>
-
-                                            </li>
-                                            <li class="item-lista">
-                                                <p class="titulo_lembrete">Eletrocardiograma</p>
-                                                <p class="excluir ">Descrição: Fazer o eletro no laboratório <span
-                                                        class="todo__btn-excluir">X</span></p>
-                                                <p class="excluir font-weight-bold"> Data: 22/12/2020 - Hora:15:00
-                                                </p>
-
-                                            </li>
+                                           
                                         </ul>
                                             <p class="mais_lembretes text-center"><a routerLink="/lista-lembretes">Carregar mais
                                                 lembretes</a></p>
@@ -110,9 +95,9 @@
                     <div class="col-md-4 col-sm-12 col-12 p-3 ">
                         <h1 class="todo__title text-center p-2">Meu Plano Atual </h1>
                         <div class="card rounded ">
-                            <div class="card-image-overlay  p-3">
-                                <img class="image_plano" src="assets/grupo1/img/premium (2).png" />
-                                <ul class="ad-btn text-left" >
+                           <div class="card-image-overlay  p-3">
+                                <img class="image_plano" src="assets/grupo1/img/basicCadastro.png" />
+                                 <ul class="ad-btn text-left" >
                                     <li>- Serviços Farmacêuticos</li>
                                     <li>- Consulta com o Clínico Geral</li>
                                     <li>- Consulta com Especialistas</li>

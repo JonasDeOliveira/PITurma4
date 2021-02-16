@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseCidades, ResponseFormularioCadastro, ResponseFormularioMeusDados} from './cliente.model';
+import { ResponseCidades, ResponseFormularioCadastro, ResponseFormularioMeusDados, ResponseAreadoCliente} from './cliente.model';
 import { Observable } from 'rxjs';
 
 
@@ -27,5 +27,11 @@ import { Observable } from 'rxjs';
         return this.http.get<ResponseCidades>(URL);
 
     }
+
+    getAreaClienteById(idUsuario: number): Observable<ResponseAreadoCliente>{
+      const URL = `${this.API}/cliente/area-cliente/${idUsuario}`
+      return this.http.get<ResponseAreadoCliente>(URL);
+
+  }
   
 }
