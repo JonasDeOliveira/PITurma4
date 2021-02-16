@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { Agenda, Medico } from '../../shared/model/agenda';
+import { TipoConsulta} from '../../shared/model/tipoConsulta';
+import { EspMed } from '../../shared/model/espMed';
 import { CadastroAgPaciente } from '../../shared/model/cadastroAgPaciente';
 import { Resposta } from '../../shared/model/resposta';
 import { AgendaService } from '../../shared/services/agenda.service';
 import { AgPacienteService } from '../../shared/services/agPaciente.service';
 import { of } from 'rxjs';
+import { AgPaciente } from '../../shared/model/agPaciente';
 
 @Component({
   selector: 'app-escolha-especialista',
@@ -30,46 +33,64 @@ export class EscolhaEspecialistaComponent implements OnInit {
     //   this.addCheckboxes();
     // });
   }
-  
-  idEspMedString : string = localStorage.getItem("idEspMed");
-  idEspMed : number = parseInt(this.idEspMedString);
-  responseAgenda : Agenda;
+
+  // Valores armazenados no LS
+  especialidade: EspMed = JSON.parse(localStorage.getItem("espMed"));
+  dsEspecialidade: string = this.especialidade.dsEspMed;
+
+  idEsp: number = this.especialidade.idEspMed;
+
+
+  consulta : TipoConsulta = JSON.parse(localStorage.getItem("tipoConsulta")); 
+  dsConsulta : string = this.consulta.dsTipoConsulta;
+
+  idTipoConsulta: number = this.consulta.idTipoConsulta;
+
   arrayAgendas: Agenda[];
-  respostaString:  Resposta;
-  especialidadeMedica: string = "";
-  idAgPacienteEscolhida: number;
-  idAgPacienteString: string;
+  agPacienteEscolhida: Agenda;
+  idAgePaciente: number;
+
+
+  
+  // idAgPacienteString: string;
+  // responseAgenda : Agenda;
+  // respostaString:  Resposta;
+  // especialidadeMedica: string = "";
+  // idAgendaEscolhida: number;
+  // idAgendaString: string;
+
+  
   request: CadastroAgPaciente = {
-    idUsuario: 7,
-    idAgenda: 27
+    idUsuario: 142,
+    idAgenda: 0
   }
-  idAgendaEscolhida: number;
-  idAgendaString: string;
+
+
+  //Variaveis para o filtro
   form: FormGroup;
   periodoData = [];
 
   
   ngOnInit(): void {
-      this.buscarAgenda(1 , 20);
+      this.buscarAgenda(this.idTipoConsulta , this.idEsp);
   }
    buscarAgenda(idTipoConsulta: number,idEspecialidade: number){
      this.agendaService.listarPorEsp(idTipoConsulta,idEspecialidade).subscribe(
-      response => {
-        this.arrayAgendas = response;
-        this.especialidadeMedica = this.arrayAgendas[0].medico.espMed.dsEspMed;
-        
-      }
+      response => this.arrayAgendas = response
      )
    }
 
-  criarAgPaciente() {
+  criarAgPaciente(idAgenda: number) {
+    console.log(idAgenda);
+    this.request.idAgenda = idAgenda;
     this.agPacienteService.cadastrarAgPaciente(this.request).subscribe(
       response => {
-        this.idAgPacienteEscolhida = response;
-        console.log("response"  + response)
-        this.salvarAgPacienteLs();
+        localStorage.setItem("idAgPaciente", JSON.stringify(response));
+        this.idAgePaciente = response.idAgPaciente;
+        this.alterarStatus(this.idAgePaciente);
+       
+        console.log("response"  +  JSON.stringify(response))
         console.log("ls" + localStorage.getItem("idAgPaciente"));
-        this.alterarStatus(this.idAgPacienteEscolhida);
       },
       error => {
         alert('erro ao selecionar nova consulta');
@@ -77,19 +98,15 @@ export class EscolhaEspecialistaComponent implements OnInit {
     )
   }
 
-  salvarAgPacienteLs(){
-    this.idAgPacienteString = this.idAgPacienteEscolhida.toString();
-    localStorage.setItem("idAgPaciente", this.idAgPacienteString)
-  }
-
   alterarStatus(idAgPaciente: number){
-    idAgPaciente = this.idAgPacienteEscolhida;
-    this.agendaService.mudarStatus(idAgPaciente);
+    this.agendaService.mudarStatus(idAgPaciente).subscribe(
     response => {
-      this.respostaString = response;
       alert(response.resposta);
     }
+    )
   }
+
+  // Metodos do filtro
   get periodoFormArray() {
     return this.form.controls.periodo as FormArray;
   }
