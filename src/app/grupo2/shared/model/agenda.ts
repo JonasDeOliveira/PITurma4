@@ -30,10 +30,3 @@ export interface Periodo {
 
 }
 
-export interface ResponseAgenda {
-    agenda: Agenda[]
-}
-
-export interface ResponseAgenda {
-    resposta: string;
-}

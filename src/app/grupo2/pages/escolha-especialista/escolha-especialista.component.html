@@ -22,8 +22,8 @@
             <a routerLink='/agendamento-consultas'>
                 <div class="trilha ">Especialidade</div>
                 <!-- Resgatar na trilha  -->
-                <div class="opcao ">endocrinologia</div>
-                <!-- <div class="opcao ">{{responseAgenda[0].medico.espMed.dsEspMed}}</div> -->
+                <!-- <div class="opcao ">endocrinologia</div> -->
+                <div class="opcao ">{{especialidadeMedica}}</div>
             </a>
         </div>
     </div>
@@ -101,7 +101,7 @@
     <!-- fim filtro -->
 
   
-    <div *ngFor = "let agenda of responseAgenda" class="card-medico row">
+    <div *ngFor = "let agenda of arrayAgendas" class="card-medico row">
         <div class="foto" id="medico1"></div>
         <div class="nome-horario">
             <div class="texto-consulta">
