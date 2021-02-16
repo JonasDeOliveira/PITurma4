@@ -16,6 +16,9 @@
                             <input type="text" class="form-control" id="nmTitulo" name="nmTitulo"
                                 [(ngModel)]="request.nmTitulo" #nmTitulo="ngModel" minlength="5" required
                                 placeholder="Título do Lembrete">
+                                <div *ngIf="nmTitulo.invalid && nmTitulo.touched" class="alert alert-danger mt-1" role="alert">
+                                    Título é necessário
+                                </div>
                         </div>
                     </div>
 
@@ -25,31 +28,44 @@
                             <input type="text" class="form-control" id="dsLembrete" name="dsLembrete"
                                 [(ngModel)]="request.dsLembrete" #dsLembrete="ngModel" minlength="5" required
                                 placeholder="Descrição do Lembrete">
+                                <div *ngIf="dsLembrete.invalid && dsLembrete.touched" class="alert alert-danger mt-1" role="alert">
+                                    Descrição é necessária
+                                </div>
                         </div>
                     </div>
 
                     <div class="row mt-1">
                         <div class="col-12 col-lg-6">
                             <label>Data:</label>
-                            <input type="date" class="form-control" id="dtLembrete" name="dtLembrete"
-                                [(ngModel)]="request.dtLembrete" #dtLembrete="ngModel" required>
+                            <!-- min="{{this.date | date: 'yyyy-MM-dd'}}" max="2050-01-01" -->
+                            <input type="date"  class="form-control" id="dtLembrete" name="dtLembrete"
+                                [(ngModel)]="request.dtLembrete" #dtLembrete="ngModel" required min="{{this.minDate | date: 'yyyy-MM-dd'}}" max="{{this.maxDate | date: 'yyyy-MM-dd'}}" >
+                                <div *ngIf="dtLembrete.invalid && dtLembrete.touched" class="alert alert-danger mt-1" role="alert">
+                                    Escolha uma data maior do que hoje
+                                </div>
                         </div>
                         <div class="col-12 col-lg-6">
                             <label>Hora:</label>
                             <input type="time" class="form-control" id="hrHora" name="hrHora"
                                 [(ngModel)]="request.hrHora" #hrHora="ngModel" required>
+                                <div *ngIf="hrHora.invalid && hrHora.touched" class="alert alert-danger mt-1" role="alert">
+                                    Escolha um horário
+                                </div>
                         </div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-12 col-lg-6">
                             <label>Repete a cada:</label>
                             <input type="number" class="form-control" placeholder="1" min="0" id="nrRepeticao"
-                                name="nrRepeticao" [(ngModel)]="request.nrRepeticao" #nrRepeticao="ngModel" required>
+                                name="nrRepeticao" [(ngModel)]="request.nrRepeticao" #nrRepeticao="ngModel" required min=1 max=10>
+                                <div *ngIf="hrHora.invalid && hrHora.touched" class="alert alert-danger mt-1" role="alert">
+                                    Escolha um número de repetições entre 1 e 10
+                                </div>
                         </div>
                         <div class="col-12 col-lg-6">
                             <label>Intervalo:</label>
                             <select class="form-control" [(ngModel)]="request.lembreteIntervalo.idLembreteIntervalo" #idLembreteIntervalo="ngModel" name="idLembreteIntervalo" (change)="ver()" >
-                                <option  *ngFor="let lembreteIntervalo of responseLembreteIntervalos" [value]="lembreteIntervalo.idLembreteIntervalo" required>
+                                <option  *ngFor="let lembreteIntervalo of responseLembreteIntervalos" [value]="lembreteIntervalo.idLembreteIntervalo" required [selected]="lembreteIntervalo.idLembreteIntervalo == 1">
                                     {{lembreteIntervalo.dsLembreteIntervalo}}</option>
                             </select>
                         </div>
