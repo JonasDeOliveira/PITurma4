@@ -1,3 +1,4 @@
+import { SelectorListContext } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ResponseEspMed } from '../../shared/model/espMed';
 import { EspMedServiceService } from '../../shared/services/esp-med-service.service';
@@ -15,6 +16,7 @@ export class AgendamentoConsultasComponent implements OnInit {
   responseEspMed : ResponseEspMed[];
   idEspMedString : string;
   idEspSelect : number;
+  teste : string = "selecione"
 
   
   ngOnInit(): void {
@@ -35,8 +37,6 @@ export class AgendamentoConsultasComponent implements OnInit {
     )
   }
 
-
-
   salvarEspLS(){
     this.espEscolhida();
     localStorage.setItem("idEspMed", this.idEspMedString);  
@@ -45,6 +45,7 @@ export class AgendamentoConsultasComponent implements OnInit {
 
   espEscolhida(){
     this.idEspMedString = this.idEspSelect.toString();
+    console.log(this.idEspMedString)
   }
 
 
