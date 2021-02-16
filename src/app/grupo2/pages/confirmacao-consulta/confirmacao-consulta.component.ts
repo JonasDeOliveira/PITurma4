@@ -37,7 +37,7 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   especialidade: string = this.agPaciente.agenda.medico.espMed.dsEspMed;
   data: Date = this.agPaciente.agenda.data;
 
-  ngOnInit(): void {
+  ngOnInit():void {
   
   }
 
