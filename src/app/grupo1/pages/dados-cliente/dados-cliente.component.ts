@@ -4,6 +4,7 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { OutputCliente } from '../cliente/shared/cliente.model';
 
+
 @Component({
   selector: 'app-dados-cliente',
   templateUrl: './dados-cliente.component.html',

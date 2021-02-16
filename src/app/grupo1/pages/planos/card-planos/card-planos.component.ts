@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-planos.component.css']
 })
 export class CardPlanosComponent implements OnInit {
+  responsePlanos: any;
 
   constructor() { }
 

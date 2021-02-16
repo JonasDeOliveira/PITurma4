@@ -73,13 +73,14 @@ export class CadastroClienteComponent implements OnInit {
         nmPlano: '',
         dsPlano: '',
         vlPlano: null,
-        servicos: [{
+        servicos:[{
           idServicoPlano: null,
           dsServico: ''
         }
         ]
       },
       idUsuario: null
+      
     },
     cartao: {
       nmNome: '',

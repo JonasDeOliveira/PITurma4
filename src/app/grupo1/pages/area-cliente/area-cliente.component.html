@@ -68,10 +68,11 @@
                                         <div class="text-btn ">
 
                                             <!-- BOTAO NOVO LEMBRETE -->
-                                            <button type="button" value="" class="todo-form__btn btn" id="todoSubmit"
-                                                data-toggle="modal" data-target=".bd-lembrete-modal-lg">Novo lembrete<img
-                                                src="/assets/grupo1/img/add.png" class=" fa-plus pr-2"/></button>
+                                            <button type="button" (click)="open()" class="todo-form__btn btn" id="todoSubmit"
+                                                 data-target=".bd-lembrete-modal-lg">Novo lembrete<img
+                                                src="/assets/grupo1/img/add.png"  class=" fa-plus pr-2"></button>
                                         </div>
+                                        
                                     <div class="todo__tarefas" id="todoTarefas">
                                         <ul class="todo__tarefas-lista" id="todoLista">
                                            <li class="item-lista" *ngFor="let lembrete of areaDoCliente.lembretes.slice(0,5)" (click)="removeTarefa(lembrete)">
@@ -100,9 +101,9 @@
                                 <img class="image_plano" src="assets/grupo1/img/basicCadastro.png" />
                                  <ul class="ad-btn text-left  pt-4" >
                                     
-                                     <li class=" p-1 font-weight-bold text-secondary">{{areaDoCliente.plano.nmPlano}}</li>
+                                     <li class=" p-1 font-weight-bold text-secondary">{{areaDoCliente.plano.nmPlano |titlecase}}</li>
                                      <li > {{areaDoCliente.plano.dsPlano}}</li>
-                                     <!-- <li >Valor do Plano: {{areaDoCliente.plano.vlPlano |  currency:'BRL':R$ }}</li> -->
+                                      <li >Valor do Plano: {{areaDoCliente.plano.vlPlano |  currency:'BRL':true }}</li> 
                                      <li class=" p-1 font-weight-bold text-secondary"><span>Serviços</span></li>
                                      <li *ngFor="let servico of areaDoCliente.plano.servicos">{{servico.dsServico}}</li>
                        
