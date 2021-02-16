@@ -1,8 +1,10 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { AbstractControl, FormControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ResponseFormularioCadastro, FormularioCadastro, FormularioMeusDados, OutputCliente, Cidade } from '../cliente/shared/cliente.model';
 import { ClienteService } from '../cliente/shared/cliente.service';
+import { LoginClienteComponent } from '../login-cliente/login-cliente.component';
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -13,6 +15,12 @@ export class CadastroClienteComponent implements OnInit {
 
   responseFormularioCadastro: any;
   responseCidadesByUf: any;
+
+  password = document.getElementById("cadastro-senha")
+  confirm_password = document.getElementById("cadastro-senha2");
+
+  email = document.getElementById("cadastro-email")
+  confirm_email = document.getElementById("cadastro-email2");
 
   outputCliente: OutputCliente = {
     loginUsuario: {
@@ -100,20 +108,34 @@ export class CadastroClienteComponent implements OnInit {
   }
 
   ver() {
-    console.log(this.outputCliente.usuario.enderecos[0].idUf)
+    console.log(this.outputCliente)
   }
   cadastrar() {
-    this.clienteService.createUsuario(this.outputCliente).subscribe(
+    this.clienteService.createCliente(this.outputCliente).subscribe(
       response => {
         alert('Cadastro realizado com sucesso');
-        this.router.navigate(['/area-cliente']);
+        //this.router.navigate(['/area-cliente/6']);
       },
       error => {
-        alert('algo inesperado aconteceu');
-      }
+        console.log(error)
+      //alert('algo inesperado aconteceu');
+     }
     )
   }
   open(content) {
     this.modalService.open(content);
+  }
+  confirmar() {
+     
+  }
+validatePassword(){
+  if(this.password != this.confirm_password) {
+    alert("As senhas não conferem!");
+    }
+  }
+validateEmail(){
+  if(this.email != this.confirm_email) {
+    alert("Os emails não conferem!");
+    }
   }
 }
