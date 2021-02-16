@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EspMed } from '../../shared/model/agenda';
+import { TipoConsulta } from '../../shared/model/tipoConsulta';
 import { EspMedServiceService } from '../../shared/services/esp-med-service.service';
 import { TipoConsultaService } from '../../shared/services/tipo-consulta.service';
 
@@ -21,10 +22,12 @@ export class AgendamentoConsultasComponent implements OnInit {
   responseEspMed : EspMed[];
   idEspMedString : string;
   idEspSelect : number;
+  tipoConsultaEscolhida : TipoConsulta;
+  idTipoConsulta : number;
  
  
   ngOnInit(): void {
-      this.listarEspecialidades(142);
+      // this.listarEspecialidades(142);
     //TODO - Implementar localStorage
   }
 
@@ -42,19 +45,30 @@ export class AgendamentoConsultasComponent implements OnInit {
 
   salvarEspLS(){
     this.espMedService.buscarEspPorId(this.idEspSelect).subscribe(
-      response => localStorage.setItem("tipoConsulta", JSON.stringify(response))
+      response => localStorage.setItem("espMed", JSON.stringify(response))
     )
 }
 
   salvarTipoConsultaPresencialLS(){
     this.tipoConsultaService.buscarTipoConsulta(2).subscribe(
-      response => localStorage.setItem("tipoConsulta", JSON.stringify(response))
+      response => {
+      this.tipoConsultaEscolhida = response;
+      this.idTipoConsulta = this.tipoConsultaEscolhida.idTipoConsulta;
+      this.listarEspecialidades(this.idTipoConsulta);
+      localStorage.setItem("tipoConsulta", JSON.stringify(response));
+
+    }
     )
   }
 
   salvarTipoConsultaOnlineLS(){
     this.tipoConsultaService.buscarTipoConsulta(1).subscribe(
-      response => localStorage.setItem("tipoConsulta", JSON.stringify(response))
-    )
+      response => {
+      this.tipoConsultaEscolhida = response;
+      this.idTipoConsulta = this.tipoConsultaEscolhida.idTipoConsulta;
+      this.listarEspecialidades(this.idTipoConsulta);
+      localStorage.setItem("tipoConsulta", JSON.stringify(response));
     }
+    )
+  }
 }

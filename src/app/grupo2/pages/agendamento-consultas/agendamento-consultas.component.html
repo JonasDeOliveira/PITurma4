@@ -24,7 +24,7 @@
     <div class="divbotoes col-12">
       <div class="wrapper">
         <div class="menu col-12 text-center">
-         <select class="custom-select custom-select-lg mb-3" [(ngModel)]="idEspSelect" id="name" name="esp">
+         <select class="custom-select custom-select-lg mb-3" [(ngModel)]="idEspSelect" id="name" name="esp" (change)="salvarEspLS()">
            <option selected value="undefined">Selecione a especialidade</option>
             <option *ngFor ="let espMed of responseEspMed" [ngValue]="espMed.idEspMed">{{espMed.dsEspMed}}</option>
           </select>
@@ -38,7 +38,7 @@
 
     <div class="divbotoes col-12">
       <div class="container col-12 text-center">
-        <a><button routerLink="/calendario-agendamento" class="btn-active clicado" (click)="salvarEspLS()">AGENDAR</button></a>
+        <a><button routerLink="/calendario-agendamento" class="btn-active clicado" >AGENDAR</button></a>
       </div>
       
     </div>

@@ -8,7 +8,7 @@
         <div class="texto-trilha d-flex flex-column">
             <a routerLink='/agendamento-consultas'>
             <div class="trilha">Consulta</div>
-            <div class="opcao">Presencial</div>
+            <div class="opcao">{{dsConsulta}}</div>
           </a>
         </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="texto-trilha d-flex flex-column">
           <a routerLink='/agendamento-consultas'>
             <div class="trilha ">Especialidade</div>
-            <div class="opcao ">Endocrinologia</div>
+            <div class="opcao ">{{dsEspecialidade}}</div>
           </a>
         </div>
     </div>
@@ -84,7 +84,7 @@
 
 <!-- <p>Calendario</p> -->
 
-<ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+<ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" style="background-color: greenyellow colorTheme = theme-green " ></ngb-datepicker>
 
 <hr/>
 
