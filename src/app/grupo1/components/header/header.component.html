@@ -5,10 +5,11 @@
             <a routerLink="/"><img src="assets/grupo1/img/logo-menu.png"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+                aria-label="Toggle navigation" (click) = "toggleNavbar()">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse"
+            [ngClass] = "{'show': navbarOpen}" id="navbarSupportedContent">
                 <div class="col-lg-7 col-md-9 col-sm-9 col-xs-4 item-menu">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item"><a class="nav-link" href="/planos#card-planos">Planos</a></li>
