@@ -16,6 +16,11 @@ export class CadastroClienteComponent implements OnInit {
   responseFormularioCadastro: any;
   responseCidadesByUf: any;
 
+  confirmacao= {
+    emailConfirmacao: '',
+    senhaConfirmacao: ''
+  };
+
   password = document.getElementById("cadastro-senha")
   confirm_password = document.getElementById("cadastro-senha2");
 
@@ -131,15 +136,5 @@ export class CadastroClienteComponent implements OnInit {
   }
   confirmar() {
      
-  }
-validatePassword(){
-  if(this.password != this.confirm_password) {
-    alert("As senhas não conferem!");
-    }
-  }
-validateEmail(){
-  if(this.email != this.confirm_email) {
-    alert("Os emails não conferem!");
-    }
   }
 }

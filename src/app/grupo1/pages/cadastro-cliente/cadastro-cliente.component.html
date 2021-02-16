@@ -6,8 +6,8 @@
             <div class="form-group col-md-8">
                 <label for="cadastro-email">Email:</label>
                 <input type="email" class="form-control" id="cadastro-email" placeholder="Digite o seu e-mail"
-                    [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required
-                    (change)="validateEmail()">
+                    [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required>
+                
             </div>
             <div class="form-group col-md-4">
                 <label for="cadastro-senha">Senha:</label>
@@ -19,12 +19,18 @@
             <div class="form-group col-md-8">
                 <label for="cadastro-email2">Repita o Email:</label>
                 <input type="email" class="form-control" id="cadastro-email2" placeholder="Digite o seu e-mail"
-                    name="emailConfirmacao">
+                    name="emailConfirmacao" #emailConfirmacao="ngModel" [(ngModel)]="confirmacao.emailConfirmacao" required>
+                    <div *ngIf="emailConfirmacao.value != dsEmail.value && (emailConfirmacao.dirty || emailConfirmacao.touched)" class="alert alert-light mt-1" role="alert">
+                       O email informado não confere!
+                    </div>
             </div>
             <div class="form-group col-md-4">
                 <label for="cadastro-senha2">Repita a Senha:</label>
                 <input type="password" class="form-control" id="cadastro-senha2" placeholder="Digite a senha"
-                    name="senhaConfirmacao">
+                    name="senhaConfirmacao" #senhaConfirmacao="ngModel" [(ngModel)]="confirmacao.senhaConfirmacao" required>
+                    <div *ngIf="senhaConfirmacao.value != dsSenha.value && (senhaConfirmacao.dirty || senhaConfirmacao.touched)" class="alert alert-light mt-1" role="alert">
+                        A senha informada não confere!
+                    </div>
             </div>
         </div>
         <hr>
@@ -255,7 +261,7 @@
             </div>
         </ng-template>
         <div class="form-group botoes-cadastro">
-            <button type="button" (click)="cadastrar()" class="btn btns-cadastro">Cadastrar</button>
+            <button type="button" (click)="cadastrar()" class="btn btns-cadastro"[disabled]="formCadastro.invalid">Cadastrar</button>
             <button [routerLink]="['/']" class="btn btn-cancelar">Cancelar</button>
         </div>
     </form>

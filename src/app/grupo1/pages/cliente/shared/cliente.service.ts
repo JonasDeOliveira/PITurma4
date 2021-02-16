@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Output } from '@angular/core';
-import { OutputCliente, ResponseCidades, ResponseFormularioCadastro, ResponseFormularioMeusDados, ResponseAreadoCliente} from './cliente.model';
+import { OutputCliente, ResponseCidades, ResponseFormularioCadastro, ResponseFormularioMeusDados,ResponseAreadoCliente} from './cliente.model';
 import { Observable } from 'rxjs';
 
 
