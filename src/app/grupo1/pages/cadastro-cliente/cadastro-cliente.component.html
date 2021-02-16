@@ -199,91 +199,92 @@
         </div>
     </div>
 
-    <!-- MODAL -->
-    <ng-template #modalCartaoCliente class="modal-dialog modal-lg" let-c="close" let-d="dismiss">
-        <div class="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-header">
-                    <h5 class="modal-title">Dados do Cartão:</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        (click)="d('Cross click')">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12 cadastro-cartao">
-                        <label for="cartao-numero">Número do Cartão:</label>
-                        <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
-                            [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16" required
-                            placeholder="0000 0000 0000 0000">
-                        <div *ngIf="nrCartao.errors && (nrCartao.dirty || nrCartao.touched)" class="alert alert-light">
-                            <div [hidden]="!nrCartao.errors.required">
-                                Insira o número do cartão.
-                            </div>
-                            <div [hidden]="!nrCartao.errors.minlength">
-                                Número de cartão inválido.
-                            </div>
+<!-- MODAL -->
+<ng-template #modalCartaoCliente class="modal-dialog modal-lg" let-c="close" let-d="dismiss">
+    <div class="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form #formCartao="ngForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Dados do Cartão:</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12 cadastro-cartao">
+                            <label for="cartao-numero">Número do Cartão:</label>
+                            <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
+                                [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16"
+                                required placeholder="0000 0000 0000 0000">
+                                <div *ngIf="nrCartao.errors && (nrCartao.dirty || nrCartao.touched)" class="alert alert-light">
+                                    <div [hidden]="!nrCartao.errors.required">
+                                        Insira o número do cartão.
+                                    </div>
+                                    <div [hidden]="!nrCartao.errors.minlength">
+                                        Número de cartão inválido.
+                                    </div>
+                                </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label for="cartao-nome">Nome impresso no Cartão:</label>
-                        <input type="text" class="form-control" id="cartao-nome"
-                            [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="11" required
-                            placeholder="Nome impresso no Cartão">
-                        <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)" class="alert alert-light">
-                            <div [hidden]="!nmNome.errors.required">
-                                Insira o número do cartão.
-                            </div>
-                            <div [hidden]="!nrCartao.errors.minlength">
-                                Número de cartão inválido.
-                            </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="cartao-nome">Nome impresso no Cartão:</label>
+                            <input type="text" class="form-control" id="cartao-nome"
+                                [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="11"
+                                required placeholder="Nome impresso no Cartão">
+                                <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)" class="alert alert-light">
+                                    <div [hidden]="!nmNome.errors.required">
+                                        Insira o número do cartão.
+                                    </div>
+                                    <div [hidden]="!nrCartao.errors.minlength">
+                                        Número de cartão inválido.
+                                    </div>
+                                </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-row ">
-                    <div class="form-group col-md-4">
-                        <label for="cartao-vencimento">Data de vencimento:</label>
-                        <div class="vencimento-cartao">
+                    <div class="form-row ">
+                        <div class="form-group col-md-4">
+                            <label for="cartao-vencimento">Data de vencimento:</label>
+                            <div class="vencimento-cartao">
+                                <div class="form-group col-md-10">
+                                    <input type="text" class="form-control" id="dtValidade"
+                                        placeholder="00/0000" [(ngModel)]="outputCliente.cartao.dtValidade"
+                                        name="dtValidade" #dtValidade="ngModel" minlength="6" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
                             <div class="form-group col-md-10">
-                                <input type="text" class="form-control" id="dtValidade" placeholder="00/0000"
-                                    [(ngModel)]="outputCliente.cartao.dtValidade" name="dtValidade"
-                                    #dtValidade="ngModel" minlength="6" required>
+                                <input type="text" class="form-control" id="cartao-codigo-seguranca"
+                                    placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca"
+                                    name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group col-md-8">
-                        <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
-                        <div class="form-group col-md-10">
-                            <input type="text" class="form-control" id="cartao-codigo-seguranca" placeholder="CVV"
-                                [(ngModel)]="outputCliente.cartao.codSeguranca" name="codSeguranca"
-                                #codSeguranca="ngModel" minlength="3" required>
-                        </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                            value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Salvar os dados do meu cartão para futuras compras.
+                        </label>
                     </div>
-                </div>
-
-                <!-- <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                                Salvar os dados do meu cartão para futuras compras.
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                                Não salvar os dados.
-                            </label>
-                        </div> -->
-                <button type="button" class="btn btns-cadastro" (click)="d('Cross click')">Confirmar</button>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                            value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Não salvar os dados.
+                        </label>
+                    </div>
+                    <button type="button" class="btn btns-cadastro">Confirmar</button>
                 </form>
             </div>
         </div>
-        </div>
-    </ng-template>
+    </div>
+</ng-template>
     <div class="form-group botoes-cadastro">
         <button type="button" (click)="cadastrar()" class="btn btns-cadastro"
             [disabled]="formCadastro.invalid">Cadastrar</button>
