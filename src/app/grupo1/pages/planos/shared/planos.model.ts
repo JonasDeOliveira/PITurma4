@@ -1,5 +1,5 @@
 export interface Planos {
-    idPlano: BigInteger,
+    idPlano: number,
     nmPlano: string,
     dsPlano: string,
     vlPlano: number

@@ -16,16 +16,17 @@ export class CadastroClienteComponent implements OnInit {
   responseFormularioCadastro: any;
   responseCidadesByUf: any;
 
+  planos = {
+    plano1: 1,
+    plano2: 2,
+    plano3: 3
+  }
+
   confirmacao= {
     emailConfirmacao: '',
     senhaConfirmacao: ''
   };
 
-  password = document.getElementById("cadastro-senha")
-  confirm_password = document.getElementById("cadastro-senha2");
-
-  email = document.getElementById("cadastro-email")
-  confirm_email = document.getElementById("cadastro-email2");
 
   outputCliente: OutputCliente = {
     loginUsuario: {
@@ -38,7 +39,7 @@ export class CadastroClienteComponent implements OnInit {
       idGenero: null,
       idEspMedica: null,
       idUfCrm: null,
-      idTipoUsuario: null,
+      idTipoUsuario: 1,
       nmNome: '',
       dtNascimento: '',
       nrCpf: '',
@@ -68,7 +69,7 @@ export class CadastroClienteComponent implements OnInit {
       dsContrato: '',
       dtVigencia: '',
       plano: {
-        idPlano: null,
+        idPlano: 1,
         nmPlano: '',
         dsPlano: '',
         vlPlano: null
@@ -79,7 +80,7 @@ export class CadastroClienteComponent implements OnInit {
       nmNome: '',
       idCartao:null, 
       usuario: null,
-      nrCartao:null,
+      nrCartao:'',
       codSeguranca:null,
       dtValidade:'',
       dtEmissao:''
@@ -131,10 +132,28 @@ export class CadastroClienteComponent implements OnInit {
      }
     )
   }
+
   open(content) {
     this.modalService.open(content);
   }
-  confirmar() {
-     
+ 
+  selecaoPlano(event, content): void {
+    const id = event.target.id;
+
+    switch (id) {
+      case "1":
+        this.outputCliente.contrato.plano.idPlano = 1
+        event.target.enabled
+        break;
+      case "2":
+        this.outputCliente.contrato.plano.idPlano = 2
+        this.open(content)
+        break;
+      case "3":
+        this.outputCliente.contrato.plano.idPlano = 3
+        this.open(content)
+        break;
+    }
   }
+
 }
