@@ -1,0 +1,38 @@
+
+/* Inicio Foto perfil */
+.perfil{
+    color: #444444;
+    margin-right: 70px;
+    font-size: 0.8rem;
+}
+
+
+.perfil::after{
+   content:url("src/assets/grupo1/img/icon_login.png");
+   max-width:100%;
+}
+
+ .btn{
+     
+    background-color: #319A75;
+    color: #fff;
+   
+} 
+
+section .btn:hover {
+    background-color: rgb(000, 080, 052);
+}
+
+/* FIM Foto perfil */
+
+
+.lembretes-plano {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+/* Titulo */
+.titulo{
+    color: #319A75;
+}
