@@ -82,7 +82,9 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label for="cadastro-estado">Estado:</label>
-                    <select class="form-control" id="cadastro-estado" [(ngModel)]="outputCliente.usuario.enderecos[0].idUf" #idUf="ngModel" name="idUf" (change)="getCidadesByUf()">
+                    <select class="form-control" id="cadastro-estado" 
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].idUf"
+                     #idUf="ngModel" name="idUf" (change)="getCidadesByUf()">
                         <option disabled selected>Selecione</option>
                         <option *ngFor="let uf of responseFormularioCadastro.ufs" [value]="uf.idUf">
                             {{uf.dsUf}}</option>
@@ -219,7 +221,7 @@
 </div>
 
             <div class="form-group botoes-cadastro">
-                <button [routerLink]="['/area-cliente']" class="btn">Cadastrar</button>
+                <button [routerLink]="['/area-cliente']" class="btn btns-cadastro">Cadastrar</button>
                 <button [routerLink]="['/']" class="btn btn-cancelar">Cancelar</button>
             </div>
         </form>

@@ -9,12 +9,6 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
-                <!-- /COMO PASSAR O VALOR DO ID DO USUÁRIO AQUI?????? -->
-                <!-- <input type="text" [value]="idUsuario" class="form-control" id="idPaciente" 
-                name="idPaciente" [(ngModel)]="request.idPaciente" #idPaciente="ngModel" required/> -->
-
-                
                 <div class="form-group col-12">
                     <div class="row mt-1">
                         <div class="col-12">
@@ -54,8 +48,8 @@
                         </div>
                         <div class="col-12 col-lg-6">
                             <label>Intervalo:</label>
-                            <select class="form-control" [(ngModel)]="request.lembreteIntervalo.idLembreteIntervalo" #idLembreteIntervalo="ngModel" name="idLembreteIntervalo">
-                                <option  *ngFor="let lembreteIntervalo of responseLembreteIntervalos" [value]="lembreteIntervalo.idLembreteIntervalo">
+                            <select class="form-control" [(ngModel)]="request.lembreteIntervalo.idLembreteIntervalo" #idLembreteIntervalo="ngModel" name="idLembreteIntervalo" (change)="ver()" >
+                                <option  *ngFor="let lembreteIntervalo of responseLembreteIntervalos" [value]="lembreteIntervalo.idLembreteIntervalo" required>
                                     {{lembreteIntervalo.dsLembreteIntervalo}}</option>
                             </select>
                         </div>

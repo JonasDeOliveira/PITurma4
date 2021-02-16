@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { FormsModule } from '@angular/forms';
 
 
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent} from './components/header/header.component';
 import { LembretesModule } from './lembretes/lembretes.module'
 import { PagesModule } from './pages/pages.module';
-import { CartoesModule } from './cartoes/cartao.module'
+import { CartoesModule } from './cartoes/cartao.module';
+import { HeaderLogadoComponent } from './components/header-logado/header-logado.component'
 
 
 
@@ -16,6 +18,7 @@ import { CartoesModule } from './cartoes/cartao.module'
   declarations: [ 
     FooterComponent,
     HeaderComponent,
+    HeaderLogadoComponent,
    
   ],
   imports: [
@@ -24,7 +27,8 @@ import { CartoesModule } from './cartoes/cartao.module'
     PagesModule,
     LembretesModule,
     CartoesModule,
-    ModalModule
+    ModalModule,
+    FormsModule
   ],
   exports: [
     FooterComponent,

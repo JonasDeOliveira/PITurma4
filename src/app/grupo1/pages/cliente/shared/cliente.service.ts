@@ -34,4 +34,9 @@ import { Observable } from 'rxjs';
 
   }
   
+  getPlanoAtualById(idUsuario:number): Observable<ResponseAreadoCliente>{
+  const URL = `${this.API}/cliente/area-cliente/${idUsuario}`
+      return this.http.get<ResponseAreadoCliente>(URL);
+  }
+
 }

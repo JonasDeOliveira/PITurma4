@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Lembrete, LembreteIntervalo, ResponseLembretesIntervalo } from '../shared/lembrete.model';
 import { LembreteService } from '../shared/lembrete.service';
+//import { LembreteComponent } from '../shared/lembrete.service';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 
@@ -56,7 +57,7 @@ export class ModalLembreteComponent implements OnInit {//
       response => {
         alert('Lembrete cadastrado com sucesso!');
         this.activeModal.dismiss('Cross click')
-        this.router.navigate([`/lista-lembretes/${this.idUsuario}`]); //NÃO FUNCIONA
+        window.location.reload();
       },
       error => {
         console.log(error);

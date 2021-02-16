@@ -1,3 +1,4 @@
+import { Cidade } from "../../pages/cliente/shared/cliente.model";
 
 export interface Usuario{
     idUsuario:number, 
@@ -6,20 +7,21 @@ export interface Usuario{
     idUfCrm: number,
     idTipoUsuario: number,
     nmNome: string,
-    dtNascimento: Date,
+    dtNascimento: string,
     nrCpf: string,
     nrCrm: string,
     dsEndImg: string
     idPreco: number
     enderecos: Array<Endereco>
 }
+
 export interface Endereco{
     idEndereco: number,
     dsEndereco: string,
     dsComplemento: string,
     dsBairro: string,
     nrCep: string,
-    idCidade: number,
+    cidade: Cidade,
     idUf: number
 }
 

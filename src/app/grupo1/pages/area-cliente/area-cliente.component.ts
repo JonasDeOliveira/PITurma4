@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../cliente/shared/cliente.service';
-import { Output, EventEmitter, Input } from '@angular/core'; 
-import {LembreteItemListaComponent} from '../../lembretes/lembrete-item-lista/lembrete-item-lista.component'
-import { Lembrete, ResponseLembretes } from '../../lembretes/shared/lembrete.model';
-import { LembreteService } from '../../lembretes/shared/lembrete.service'
+import {PlanosService} from '../planos/shared/planos.service'
+
+
 
 
 @Component({
@@ -13,16 +12,16 @@ import { LembreteService } from '../../lembretes/shared/lembrete.service'
 })
 export class AreaClienteComponent implements OnInit {
 
-  @Input() idUsuario: string;
-  @Output("deletarLembrete") deletarLembrete : EventEmitter<any> = new EventEmitter();
   
-  constructor( private clienteService: ClienteService, ) { }
+
+  constructor( private clienteService: ClienteService, private planosService: PlanosService) { }
 
   areaDoCliente : any;
-
+  public lembretes=[] ;
 
   ngOnInit(): void {
     this.getAreaDoCliente();
+   // this.getPlanoAtual();
   }
 
 
@@ -34,4 +33,20 @@ getAreaDoCliente(){
     }
   )
 }
+removeTarefa(lembrete){
+  if (confirm("Deseja apagar o lembrete?")) {
+this.areaDoCliente.lembretes.splice(
+  this.areaDoCliente.lembretes.indexOf(lembrete),1);
+}
+}
+
+/*getPlanoAtual(){
+  this.planosService.getPlanoAtualById(6).subscribe(
+    response => {
+      this.areaDoCliente = response;
+      console.log(response);
+    }
+  )
+}*/
+
 }
