@@ -3,9 +3,15 @@ export interface Planos {
     nmPlano: string,
     dsPlano: string,
     vlPlano: number
+    servicos:Array<ServicoPlano>
+   
+   
+}
 
-   // idServicoPlano: BigInteger,
-   //servicos:Array<ServicoPlano>,
+export interface ServicoPlano{
+    idServicoPlano: BigInteger,
+    dsServico: string
+    
 }
 
 //GET Planos

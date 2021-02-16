@@ -6,8 +6,9 @@
             <div class="form-group col-md-8">
                 <label for="cadastro-email">Email:</label>
                 <input type="email" class="form-control" id="cadastro-email" placeholder="Digite o seu e-mail"
-                    [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required>
-
+                    [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required
+                    pattern="">
+                
             </div>
             <div class="form-group col-md-4">
                 <label for="cadastro-senha">Senha:</label>
