@@ -15,22 +15,15 @@ export class AgPacienteService {
   private readonly APIGETAGPACIENTE = 'http://localhost:8080/agPaciente/';
   private readonly APIMUDARSTATUSAGPACIENTE = 'http://localhost:8080/agPaciente/mudar-status';
   private readonly APICADASTRARAGPCTE = 'http://localhost:8080/agPaciente/cadastrar'
+  private readonly APIGETAGPCTEPORID = 'http://localhost:8080/agPacientePorId/'
 
   buscarAgPacientes(idUsuario: number){
     return this.http.get<ResponseAgPacientes[]>(this.APIGETAGPACIENTE+idUsuario);
   }
 
-  // getAgPaciente(idUsuario: string): Observable<ResponseAgPaciente> {
-  //   const URL = `${this.APIGETAGPACIENTE}/${idUsuario}`
-
-  //   return this.http.get<ResponseAgPaciente>(URL);
-  // }
-  
-  // alterarAgPacientes(idAgPaciente: number){
-  //   return this.http.get<any>(this.APIMUDARSTATUSAGPACIENTE+idAgPaciente);
-
-  // }
-
+  listarAgPacientePorId(idAgPaciente: number){
+    return this.http.get<ResponseAgPaciente>(this.APIGETAGPCTEPORID+idAgPaciente);
+  }
 
   alterarAgPacientes(idAgPaciente: number): Observable<ResponseAgPacientes> {
     const URL = `${this.APIMUDARSTATUSAGPACIENTE}/${idAgPaciente}`

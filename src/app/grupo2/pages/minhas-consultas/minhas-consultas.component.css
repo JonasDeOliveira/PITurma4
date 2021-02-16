@@ -84,11 +84,13 @@ h4{
 
 button{
     background-color: #319A75;
-    border-radius: 10px;
+    border-radius: 20px;
     color: white;
-    font-weight: 600;
+    font-weight: 400;
+    width: 120px;
+    height: 30px;
     margin-left: 1%;
-    text-align: center;
+    /* text-align: center; */
 }
 button:hover{
     background-color:#5cc3a0

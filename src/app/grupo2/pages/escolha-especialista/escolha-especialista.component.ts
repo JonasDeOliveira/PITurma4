@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseAgenda } from '../../shared/model/agenda';
+import { Agenda } from '../../shared/model/agenda';
 import { CadastroAgPaciente } from '../../shared/model/cadastroAgPaciente';
 import { AgendaService } from '../../shared/services/agenda.service';
 import { AgPacienteService } from '../../shared/services/agPaciente.service';
@@ -19,8 +19,10 @@ export class EscolhaEspecialistaComponent implements OnInit {
   
   idEspMedString : string = localStorage.getItem("idEspMed");
   idEspMed : number = parseInt(this.idEspMedString);
-  responseAgenda : ResponseAgenda[];
-  respostaAgenda : ResponseAgenda;
+  responseAgenda : Agenda;
+  arrayAgendas: Agenda[];
+  respostaAgenda : Agenda;
+  especialidadeMedica: string = "";
   idAgPacienteEscolhida: number;
   idAgPacienteString: string;
   request: CadastroAgPaciente = {
@@ -36,9 +38,10 @@ export class EscolhaEspecialistaComponent implements OnInit {
    buscarAgenda(idTipoConsulta: number,idEspecialidade: number){
      this.agendaService.listarPorEsp(idTipoConsulta,idEspecialidade).subscribe(
       response => {
-        this.responseAgenda = response;
-        // console.log(this.responseAgenda);
-        // console.log(response);
+        this.arrayAgendas = response;
+        this.especialidadeMedica = this.arrayAgendas[0].medico.espMed.dsEspMed;
+        console.log("Response Agenda" + JSON.stringify(this.responseAgenda));
+        
       }
      )
    }

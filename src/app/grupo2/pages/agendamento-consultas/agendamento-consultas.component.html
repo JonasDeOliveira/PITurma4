@@ -14,25 +14,22 @@
       <h1>Qual é o tipo de consulta que você quer agendar?</h1>
     </div>
 
-    <div class="divbotoes col-12 ">
-      <div class="container col-12 text-center">
-        <button class="btn-active">Online</button>
-        <button class="btn-active">Presencial</button>
-      </div>
-    </div>
-
-
+  <form>
     <div class="divbotoes col-12">
       <div class="wrapper">
         <div class="menu col-12 text-center">
-          <select [(ngModel)]="idEspSelect" id="name" (ngModelChange)="espEscolhida()">
-            <option value="selecione" disabled selected="selected">Selecione uma Especialidade</option>
+         <select class="custom-select custom-select-lg mb-3" [(ngModel)]="idEspSelect" id="name" name="esp"(change)="espEscolhida()">
+           <option selected value="undefined">Selecione a especialidade</option>
             <option *ngFor ="let espMed of responseEspMed" [ngValue]="espMed.idEspMed">{{espMed.dsEspMed}}</option>
           </select>
         </div>
       </div>
     </div>
-    
+  </form>
+
+
+
+
     <div class="divbotoes col-12">
       <div class="container col-12 text-center">
         <a><button routerLink="/calendario-agendamento" class="btn-active" (click)="salvarEspLS()">AGENDAR</button></a>

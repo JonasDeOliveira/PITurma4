@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ResponseCartao } from '../../shared/model/cartao';
+import { ResponseCartao, Cartao } from '../../shared/model/cartao';
 import { PagamentoCartao } from '../../shared/model/pagamentoCartao';
 import { CartaoService } from '../../shared/services/cartao.service';
 import { PagamentoCartaoServiceService } from '../../shared/services/pagamento-cartao-service.service';
@@ -23,9 +23,10 @@ export class PagamentoParticularComponent implements OnInit {
     parcelas: 1,
     }
 
-  responseCartao :ResponseCartao[];
+  responseCartao :Cartao;
   idPagamentoCartEscolhido : number;
   idPgtoCartaoString : string;
+  nomeTitular: string = "";
 
 
   ngOnInit(): void {
@@ -34,7 +35,9 @@ export class PagamentoParticularComponent implements OnInit {
 
   listarCartao(idUsuario: number){
     this.cartaoService.listarCartaoPorUsuario(idUsuario).subscribe(
-      response => {this.responseCartao = response;}
+      response => {this.responseCartao = response[0];
+      this.nomeTitular=response[0].nrCartao;
+      }
     )
   }
       
