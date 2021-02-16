@@ -8,7 +8,7 @@
                 <input type="email" class="form-control" id="cadastro-email" placeholder="Digite o seu e-mail"
                     [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required
                     pattern="">
-                
+
             </div>
             <div class="form-group col-md-4">
                 <label for="cadastro-senha">Senha:</label>
@@ -161,8 +161,9 @@
                 <div>
                     <h5 class="alinhamento">R$ 00,00</h5>
                 </div>
-                <div><button class="btn  btn-card" [id]="planos.plano1" [disabled]="planos.plano1 == this.outputCliente.contrato.plano.idPlano"
-                    (click)="selecaoPlano($event, modalCartaoCliente)">Selecionar</button></div>
+                <div><button class="btn  btn-card" [id]="planos.plano1"
+                        [disabled]="planos.plano1 == this.outputCliente.contrato.plano.idPlano"
+                        (click)="selecaoPlano($event, modalCartaoCliente)">Selecionar</button></div>
             </div>
             <div class="card">
                 <img class="img-card" src="assets/grupo1/img/PLUS.png" alt="Card image cap">
@@ -174,8 +175,8 @@
                 <div>
                     <h5 class="alinhamento">R$ 00,00</h5>
                 </div>
-                <div><button type="button" class="btn btn-card" [id]="planos.plano2" [disabled]="planos.plano2 == this.outputCliente.contrato.plano.idPlano"
-                        
+                <div><button type="button" class="btn btn-card" [id]="planos.plano2"
+                        [disabled]="planos.plano2 == this.outputCliente.contrato.plano.idPlano"
                         (click)="selecaoPlano($event, modalCartaoCliente)">Selecionar</button></div>
             </div>
             <div class="card">
@@ -190,7 +191,8 @@
                 <div>
                     <h5 class="alinhamento">R$ 00,00</h5>
                 </div>
-                <div><button type="button" class="btn btn-card" [id]="planos.plano3" [disabled]="planos.plano3 == this.outputCliente.contrato.plano.idPlano"
+                <div><button type="button" class="btn btn-card" [id]="planos.plano3"
+                        [disabled]="planos.plano3 == this.outputCliente.contrato.plano.idPlano"
                         (click)="selecaoPlano($event, modalCartaoCliente)">Selecionar</button></div>
             </div>
             <!-- (click)="open(modalCartaoCliente) -->
@@ -218,14 +220,32 @@
                                 <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
                                     [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16"
                                     required placeholder="0000 0000 0000 0000">
+                                <div *ngIf="nrCartao.errors && (nrCartao.dirty || nrCartao.touched)"
+                                    class="alert alert-light">
+                                    <div [hidden]="!nrCartao.errors.required">
+                                        Insira o número do cartão.
+                                    </div>
+                                    <div [hidden]="!nrCartao.errors.minlength">
+                                        Número de cartão inválido.
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="cartao-nome">Nome impresso no Cartão:</label>
-                                <input type="text" class="form-control" id="cartao-nome" name="nmNome"
+                                <input type="text" class="form-control" id="cartao-nome"
                                     [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="11" required
                                     placeholder="Nome impresso no Cartão">
+                                <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)"
+                                    class="alert alert-light">
+                                    <div [hidden]="!nmNome.errors.required">
+                                        Insira o número do cartão.
+                                    </div>
+                                    <div [hidden]="!nrCartao.errors.minlength">
+                                        Número de cartão inválido.
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-row ">
@@ -247,6 +267,13 @@
                                         name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Salvar os dados do meu cartão para futuras compras.
+                            </label>
                         </div>
 
                         <!-- <div class="form-check">

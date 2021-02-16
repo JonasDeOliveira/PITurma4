@@ -102,7 +102,7 @@
                                     
                                      <li class=" p-1 font-weight-bold text-secondary">{{areaDoCliente.plano.nmPlano}}</li>
                                      <li > {{areaDoCliente.plano.dsPlano}}</li>
-                                     <li >Valor do Plano: {{areaDoCliente.plano.vlPlano |  currency:'BRL':R$ }}</li>
+                                     <!-- <li >Valor do Plano: {{areaDoCliente.plano.vlPlano |  currency:'BRL':R$ }}</li> -->
                                      <li class=" p-1 font-weight-bold text-secondary"><span>Serviços</span></li>
                                      <li *ngFor="let servico of areaDoCliente.plano.servicos">{{servico.dsServico}}</li>
                        
