@@ -10,11 +10,12 @@
                     <div class="form-group col-md-9">
                         <label for="dados-cliente-nome">Nome Completo:</label>
                         <input type="text" class="form-control" id="dados-cliente-nome"
-                            [(ngModel)]="outputCliente.usuario.nmNome" #nmNome="ngModel" name="nmNome">
+                            [(ngModel)]="outputCliente.usuario.nmNome" #nmNome="ngModel" name="nmNome" minlength="3">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="cadastro-sexo">Sexo:</label>
-                        <select class="form-control" id="cadastro-sexo" [(ngModel)]="outputCliente.usuario.idGenero" #idGenero="ngModel" name="idGenero">
+                        <select class="form-control" id="cadastro-sexo" [(ngModel)]="outputCliente.usuario.idGenero"
+                            #idGenero="ngModel" name="idGenero">
                             <option *ngFor="let genero of responseFormularioMeusDados.genero" [value]="genero.idGenero">
                                 {{genero.dsGenero}}</option>
                         </select>
@@ -66,7 +67,8 @@
                     <div class="form-group col-md-5">
                         <label for="cadastro-bairro">Bairro:</label>
                         <input type="text" class="form-control" id="cadastro-bairro"
-                            [(ngModel)]="outputCliente.usuario.enderecos[0].dsBairro" #dsBairro="ngModel" name="dsBairro">
+                            [(ngModel)]="outputCliente.usuario.enderecos[0].dsBairro" #dsBairro="ngModel"
+                            name="dsBairro">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="cadastro-estado">Estado:</label>
@@ -79,8 +81,10 @@
                     </div>
                     <div class="form-group col-md-5">
                         <label for="cadastro-cidade">Cidade:</label>
-                        <select class="form-control" id="cadastro-cidade" [(ngModel)]="outputCliente.usuario.enderecos[0].cidade.idCidade" name="idCidade">
-                            <option *ngFor="let cidade of responseCidadesByUf" [value]="cidade.idCidade" [selected]="cidade.idCidade == outputCliente.usuario.enderecos[0].cidade.idCidade">
+                        <select class="form-control" id="cadastro-cidade"
+                            [(ngModel)]="outputCliente.usuario.enderecos[0].cidade.idCidade" name="idCidade">
+                            <option *ngFor="let cidade of responseCidadesByUf" [value]="cidade.idCidade"
+                                [selected]="cidade.idCidade == outputCliente.usuario.enderecos[0].cidade.idCidade">
                                 {{cidade.dsCidade}}</option>
                         </select>
                     </div>
@@ -260,8 +264,8 @@
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <!-- <input type="file" class="form-control-file" id="alteraFotoCliente"
-                                        name="alteraFotoCliente" [(ngModel)]="dsEndImg" #dsEndImg="ngModel"> -->
+                                    <input type="file" class="form-control-file" id="alteraFotoCliente"
+                                        name="alteraFotoCliente" [(ngModel)]="dsEndImg" #dsEndImg="ngModel">
                                 </div>
                             </div>
                         </div>
