@@ -22,11 +22,18 @@ import { Observable } from 'rxjs';
         const URL = `${this.API}/cliente/meus-dados/${idUsuario}`
        return this.http.get<ResponseFormularioMeusDados>(URL);
     }
+
     getCidadesByUf(idUf: number): Observable<ResponseCidades>{
         const URL = `${this.API}/cidadeBuscar/${idUf}`
         return this.http.get<ResponseCidades>(URL);
     }
+
     createUsuario(outputCliente: OutputCliente): Observable<OutputCliente> {
         return this.http.post<OutputCliente>('http://localhost:8080/usuario', outputCliente);
     }
+
+    alteraDadosCliente(idUsuario: string, request: OutputCliente): Observable<OutputCliente>{
+        return this.http.put<OutputCliente>(`${this.API}/cliente/alterar/${idUsuario}`, request);
+    }
+
     }
