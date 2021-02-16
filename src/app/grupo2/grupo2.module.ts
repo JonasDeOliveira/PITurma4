@@ -12,15 +12,28 @@ import { ConfirmacaoConsultaComponent } from './pages/confirmacao-consulta/confi
 import { MinhasConsultasComponent } from './pages/minhas-consultas/minhas-consultas.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, AgendamentoConsultasComponent, 
     CalendarioAgendamentoComponent, EscolhaEspecialistaComponent, PagamentoPlanoComponent, 
-    PagamentoParticularComponent, ConfirmacaoConsultaComponent, MinhasConsultasComponent],
+    PagamentoParticularComponent, ConfirmacaoConsultaComponent, MinhasConsultasComponent, CalendarioAgendamentoComponent],
   imports: [
-    CommonModule, RouterModule, HttpClientModule, FormsModule
-  ]
+    CommonModule, RouterModule, HttpClientModule, FormsModule, BrowserModule, NgbModule
+  ],
+  exports: [CalendarioAgendamentoComponent],
+  bootstrap: [CalendarioAgendamentoComponent]
 })
 export class Grupo2Module { }
+
+
+// //adicionado em @NgModule..  para teste do calendario: 
+// @NgModule({
+//   imports: [BrowserModule, FormsModule, NgbModule],
+//   declarations: [CalendarioAgendamentoComponent],
+//   exports: [CalendarioAgendamentoComponent],
+//   bootstrap: [CalendarioAgendamentoComponent]
+// })
