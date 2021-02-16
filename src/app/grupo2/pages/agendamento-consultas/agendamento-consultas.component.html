@@ -15,8 +15,8 @@
     </div>
     <div class="divbotoes col-12 ">
       <div class="container col-12 text-center">
-        <button class="btn-active clicavel">Online</button>
-        <button class="btn-active clicavel">Presencial</button>
+        <button class="btn-active clicavel" (click)="salvarTipoConsultaOnlineLS()">Online</button>
+        <button class="btn-active clicavel" (click)="salvarTipoConsultaPresencialLS()">Presencial</button>
       </div>
     </div>
 
@@ -24,7 +24,7 @@
     <div class="divbotoes col-12">
       <div class="wrapper">
         <div class="menu col-12 text-center">
-         <select class="custom-select custom-select-lg mb-3" [(ngModel)]="idEspSelect" id="name" name="esp"(change)="espEscolhida()">
+         <select class="custom-select custom-select-lg mb-3" [(ngModel)]="idEspSelect" id="name" name="esp">
            <option selected value="undefined">Selecione a especialidade</option>
             <option *ngFor ="let espMed of responseEspMed" [ngValue]="espMed.idEspMed">{{espMed.dsEspMed}}</option>
           </select>
