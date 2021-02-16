@@ -16,7 +16,13 @@ export class DadosClienteComponent implements OnInit {
   responseFormularioMeusDados: any;
   responseCidadesByUf: any;
 
-  confirmacao= {
+  planos = {
+    plano1: 1,
+    plano2: 2,
+    plano3: 3
+  }
+
+  confirmacao = {
     senhaNova: '',
     senhaConfirmacao: '',
     senhaAtual: ''
@@ -65,9 +71,9 @@ export class DadosClienteComponent implements OnInit {
         nmPlano: '',
         dsPlano: '',
         vlPlano: null,
-        servicos:[{
-        idServicoPlano: null,
-        dsServico: ''
+        servicos: [{
+          idServicoPlano: null,
+          dsServico: ''
         }]
       },
       idUsuario: null
@@ -97,17 +103,15 @@ export class DadosClienteComponent implements OnInit {
   }
 
   getFormularioMeusDados() {
-    this.clienteService.getFormularioMeusDados(157).subscribe(
+    this.clienteService.getFormularioMeusDados(165).subscribe(
       response => {
         console.log(response);
         this.responseFormularioMeusDados = response;
 
-        
-
         this.outputCliente = this.responseFormularioMeusDados.inputCliente;
 
         this.confirmacao.senhaAtual = this.outputCliente.loginUsuario.dsSenha;
-        
+
         this.getCidadesByUf();
       }
     )
@@ -125,13 +129,13 @@ export class DadosClienteComponent implements OnInit {
     this.modalService.open(content);
   }
 
-  alterarDadosCliente(){
+  alterarDadosCliente() {
     console.log(this.outputCliente);
 
-    this.clienteService.alteraDadosCliente(157, this.outputCliente).subscribe(
+    this.clienteService.alteraDadosCliente(165, this.outputCliente).subscribe(
       response => {
         alert("Dados alterados com sucesso.");
-        this.router.navigate([`/area-cliente/157`]);
+        this.router.navigate([`/area-cliente/165`]);
       },
       error => {
         console.log(error)
@@ -139,5 +143,48 @@ export class DadosClienteComponent implements OnInit {
       }
     )
   }
+
+  selecaoPlano(event, content): void {
+    const id = event.target.id;
+
+    switch (id) {
+      case "1":
+        this.outputCliente.contrato.plano.idPlano = 1
+        event.target.enabled
+        break;
+      case "2":
+        this.outputCliente.contrato.plano.idPlano = 2
+        this.open(content)
+        break;
+      case "3":
+        this.outputCliente.contrato.plano.idPlano = 3
+        this.open(content)
+        break;
+    }
+  }
+
+  limparCartao(): void {
+    console.log(this.outputCliente.cartao)
+    this.outputCliente.cartao = {
+      nmNome: '',
+      idCartao: null,
+      usuario: null,
+      nrCartao: '',
+      codSeguranca: null,
+      dtValidade: '',
+      dtEmissao: ''
+    }
+
+    this.outputCliente.contrato.plano.idPlano = 1;
+
+    console.log(this.outputCliente.cartao)
+    this.modalService.dismissAll();
+  }
+
+  ver() {
+    console.log(this.outputCliente)
+  }
+
+
 
 }
