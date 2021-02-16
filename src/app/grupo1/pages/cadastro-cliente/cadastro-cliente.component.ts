@@ -128,12 +128,12 @@ export class CadastroClienteComponent implements OnInit {
   confirmar() {
      
   }
-validatePassword(){
+  validatePassword(){
   if(this.password != this.confirm_password) {
     alert("As senhas não conferem!");
     }
   }
-validateEmail(){
+  validateEmail(){
   if(this.email != this.confirm_email) {
     alert("Os emails não conferem!");
     }
