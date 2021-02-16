@@ -9,7 +9,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent} from './components/header/header.component';
 import { LembretesModule } from './lembretes/lembretes.module'
 import { PagesModule } from './pages/pages.module';
-import { CartoesModule } from './cartoes/cartao.module'
+import { CartoesModule } from './cartoes/cartao.module';
+import { HeaderLogadoComponent } from './components/header-logado/header-logado.component'
 
 
 
@@ -17,6 +18,7 @@ import { CartoesModule } from './cartoes/cartao.module'
   declarations: [ 
     FooterComponent,
     HeaderComponent,
+    HeaderLogadoComponent,
    
   ],
   imports: [

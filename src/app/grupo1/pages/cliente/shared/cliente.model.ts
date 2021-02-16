@@ -20,7 +20,8 @@ export interface Cliente{
     export interface AreaDoCliente{
     nmNome: String,
     idPaciente: number,
-    lembrete: Array<Lembrete> 
+    lembretes: Array<Lembrete> 
+    plano: Planos
     }
     //----------------------------------------------------
     export interface FormularioCadastro{
@@ -91,9 +92,14 @@ export interface Cliente{
     }
 
     //----------------------------------------------------
+    //GET clientes para Area do Cliente
+  export interface ResponseAreadoCliente{
+      areaDoCliente: AreaDoCliente
+  }
+   //---------------------------------------------------- 
     export interface ResultData {
         status: number;
-        mensagem: String;
+        mensagem: string;
         retorno: any;
         dtTimestampErro: Date;
     }
