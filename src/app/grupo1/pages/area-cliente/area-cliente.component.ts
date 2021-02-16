@@ -26,12 +26,12 @@ export class AreaClienteComponent implements OnInit {
 
 
 getAreaDoCliente(){
-  this.clienteService.getAreaClienteById(6).subscribe(
+  //this.clienteService.getAreaClienteById(6).subscribe(
     response => {
       this.areaDoCliente = response;
       console.log(response);
     }
-  )
+  //)
 }
 removeTarefa(lembrete){
   if (confirm("Deseja apagar o lembrete?")) {

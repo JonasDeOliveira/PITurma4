@@ -1,41 +1,46 @@
 <section class="container">
     <h2 class="text-center">Cadastro</h2>
     <h6>Dados de Acesso:</h6>
-    <form (change)="ver()">
+    <form (change)="ver()" #formCadastro="ngForm">
         <div class="form-row">
             <div class="form-group col-md-8">
                 <label for="cadastro-email">Email:</label>
                 <input type="email" class="form-control" id="cadastro-email" placeholder="Digite o seu e-mail"
-                [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required
-                (change)="validateEmail()">
-                </div>
+                    [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required>
+                
+            </div>
             <div class="form-group col-md-4">
                 <label for="cadastro-senha">Senha:</label>
                 <input type="password" class="form-control" id="cadastro-senha" placeholder="Digite a senha"
-                [(ngModel)]="outputCliente.loginUsuario.dsSenha" #dsSenha="ngModel" name="dsSenha" required>
+                    [(ngModel)]="outputCliente.loginUsuario.dsSenha" #dsSenha="ngModel" name="dsSenha" required>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-8">
                 <label for="cadastro-email2">Repita o Email:</label>
                 <input type="email" class="form-control" id="cadastro-email2" placeholder="Digite o seu e-mail"
-                name="emailConfirmacao">
+                    name="emailConfirmacao" #emailConfirmacao="ngModel" [(ngModel)]="confirmacao.emailConfirmacao" required>
+                    <div *ngIf="emailConfirmacao.value != dsEmail.value && (emailConfirmacao.dirty || emailConfirmacao.touched)" class="alert alert-light mt-1" role="alert">
+                       O email informado não confere!
+                    </div>
             </div>
             <div class="form-group col-md-4">
                 <label for="cadastro-senha2">Repita a Senha:</label>
                 <input type="password" class="form-control" id="cadastro-senha2" placeholder="Digite a senha"
-                name="senhaConfirmacao">
+                    name="senhaConfirmacao" #senhaConfirmacao="ngModel" [(ngModel)]="confirmacao.senhaConfirmacao" required>
+                    <div *ngIf="senhaConfirmacao.value != dsSenha.value && (senhaConfirmacao.dirty || senhaConfirmacao.touched)" class="alert alert-light mt-1" role="alert">
+                        A senha informada não confere!
+                    </div>
             </div>
         </div>
-    </form>
-    <hr>
-    <h6>Dados Pessoais:</h6>
-    <form (change)="ver()">
+        <hr>
+        <h6>Dados Pessoais:</h6>
+
         <div class="form-row">
             <div class="form-group col-md-9">
                 <label for="cadastro-nome">Nome Completo:</label>
                 <input type="text" class="form-control" id="cadastro-nome" placeholder="Digite o seu nome"
-                [(ngModel)]="outputCliente.usuario.nmNome" #nmNome="ngModel" name="nmNome" required>
+                    [(ngModel)]="outputCliente.usuario.nmNome" #nmNome="ngModel" name="nmNome" required>
                 <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)" class="alert alert-light">
                     <div [hidden]="!nmNome.errors.required">
                         O campo nome é obrigatório.
@@ -43,93 +48,95 @@
                     <div [hidden]="!nmNome.errors.minlength">
                         O campo nome deve conter no mínimo 3 caracteres.
                     </div>
-                 </div>
+                </div>
             </div>
             <div class="form-group col-md-3">
                 <label for="cadastro-sexo">Sexo:</label>
-                <select class="form-control" id="cadastro-sexo"
-                [(ngModel)]="outputCliente.usuario.idGenero" #idGenero="ngModel" name="idGenero" required>
+                <select class="form-control" id="cadastro-sexo" [(ngModel)]="outputCliente.usuario.idGenero"
+                    #idGenero="ngModel" name="idGenero" required>
                     <option disabled selected>Selecione</option>
-                    <option *ngFor="let genero of responseFormularioCadastro.genero" [value]= "genero.idGenero">
+                    <option *ngFor="let genero of responseFormularioCadastro.genero" [value]="genero.idGenero">
                         {{genero.dsGenero}}</option>
-                    </select>
+                </select>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="cadastro-cpf">CPF:</label>
-                <input type="text" class="form-control" id="cadastro-cpf" placeholder="Digite o seu CPF" 
-                [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" minlength="11" required>
-                 <div *ngIf="nrCpf.errors && (nrCpf.dirty || nrCpf.touched)" class="alert alert-light">
-               <div [hidden]="!nrCpf.errors.required">
-                   O campo CPF é obrigatório.
-               </div>
-               <div [hidden]="!nrCpf.errors.minlength">
-                   CPF deve conter no mínimo 11 caracteres.
-               </div>
-            </div>
+                <input type="text" class="form-control" id="cadastro-cpf" placeholder="Digite o seu CPF"
+                    [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" minlength="11" required>
+                <div *ngIf="nrCpf.errors && (nrCpf.dirty || nrCpf.touched)" class="alert alert-light">
+                    <div [hidden]="!nrCpf.errors.required">
+                        O campo CPF é obrigatório.
+                    </div>
+                    <div [hidden]="!nrCpf.errors.minlength">
+                        CPF deve conter no mínimo 11 caracteres.
+                    </div>
+                </div>
             </div>
             <div class="form-group col-md-1">
                 <label for="cadastro-ddd">DDD:</label>
-                <input type="text" class="form-control" id="cadastro-ddd"
-                    placeholder="(000)">
+                <input type="text" class="form-control" id="cadastro-ddd" [(ngModel)]="outputCliente.ddd"
+                    placeholder="(000)" name="ddd" #ddd="ngModel">
             </div>
             <div class="form-group col-md-3">
                 <label for="cadastro-celular">Celular:</label>
                 <input type="text" class="form-control" id="cadastro-celular" placeholder="Digite o seu Celular"
-                [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="8" required>
-                    <div *ngIf="celular.errors && (celular.dirty || celular.touched)" class="alert alert- light">
-                        <div [hidden]="!celular.errors.required">
-                            Informar telefone para contato.
-                        </div>
-                    </div> 
+                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="8" required>
+                <div *ngIf="celular.errors && (celular.dirty || celular.touched)" class="alert alert- light">
+                    <div [hidden]="!celular.errors.required">
+                        Informar telefone para contato.
+                    </div>
+                </div>
             </div>
             <div class="form-group col-md-4">
                 <label for="cadastro-nascimento">Data de Nascimento:</label>
                 <input type="date" class="form-control" id="cadastro-nascimento"
-                [(ngModel)]="outputCliente.usuario.dtNascimento" #dtNascimento="ngModel" name="dtNascimento" required>
+                    [(ngModel)]="outputCliente.usuario.dtNascimento" #dtNascimento="ngModel" name="dtNascimento"
+                    required>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="cadastro-cep">CEP:</label>
                 <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP"
-                [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep"> 
-              
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep">
+
             </div>
             <div class="form-group col-md-7">
                 <label for="cadastro-endereco">Endereço:</label>
                 <input type="text" class="form-control" id="cadastro-endereco" placeholder="Digite o seu endereço"
-                [(ngModel)]="outputCliente.usuario.enderecos[0].dsEndereco" #dsEndereco="ngModel" name="dsEndereco">
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsEndereco" #dsEndereco="ngModel" name="dsEndereco">
             </div>
             <div class="form-group col-md-1">
                 <label for="cadastro-cep">Número:</label>
                 <input type="text" class="form-control" id="cadastro-numero" placeholder="Número"
-                [(ngModel)]="outputCliente.usuario.enderecos[0].dsComplemento" #dsComplemento="ngModel" name="dsComplemento">
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsComplemento" #dsComplemento="ngModel"
+                    name="dsComplemento">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-5">
                 <label for="cadastro-bairro">Bairro:</label>
                 <input type="text" class="form-control" id="cadastro-bairro" placeholder="Digite o seu Bairro"
-                [(ngModel)]="outputCliente.usuario.enderecos[0].dsBairro" #dsBairro="ngModel" name="dsComplemento">
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsBairro" #dsBairro="ngModel" name="dsComplemento">
             </div>
             <div class="form-group col-md-2">
                 <label for="cadastro-estado">Estado:</label>
-                <select class="form-control" id="cadastro-estado" 
-                [(ngModel)]="outputCliente.usuario.enderecos[0].idUf"
-                 #idUf="ngModel" name="idUf" (change)="getCidadesByUf()">
+                <select class="form-control" id="cadastro-estado" [(ngModel)]="outputCliente.usuario.enderecos[0].idUf"
+                    #idUf="ngModel" name="idUf" (change)="getCidadesByUf()">
                     <option disabled selected>Selecione</option>
                     <option *ngFor="let uf of responseFormularioCadastro.ufs" [value]="uf.idUf">
                         {{uf.dsUf}}</option>
-                    </select>
+                </select>
             </div>
             <div class="form-group col-md-5">
                 <label for="cadastro-cidade">Cidade:</label>
-                <select class="form-control" id="cadastro-cidade" 
-                [(ngModel)]="outputCliente.usuario.enderecos[0].cidade.idCidade" #idCidade="ngModel" name="idCidade">
+                <select class="form-control" id="cadastro-cidade"
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].cidade.idCidade" #idCidade="ngModel"
+                    name="idCidade">
                     <option *ngFor="let cidade of responseCidadesByUf" [value]="cidade.idCidade">
-                        {{cidade.dsCidade}}</option>                        
+                        {{cidade.dsCidade}}</option>
                 </select>
             </div>
         </div>
@@ -161,7 +168,7 @@
                         <h5 class="alinhamento">R$ 00,00</h5>
                     </div>
                     <div><button type="button" class="btn btn-card" (click)="open(modalCartaoCliente)"
-                        data-toggle="modal" data-target=".bd-example-modal-lg">Selecionar</button></div>
+                            data-toggle="modal" data-target=".bd-example-modal-lg">Selecionar</button></div>
                 </div>
                 <div class="card">
                     <img class="img-card" src="assets/grupo1/img/PREMIUM.png" alt="Card image cap">
@@ -176,83 +183,85 @@
                         <h5 class="alinhamento">R$ 00,00</h5>
                     </div>
                     <div><button type="button" class="btn btn-card" (click)="open(modalCartaoCliente)"
-                        data-toggle="modal" data-target=".bd-example-modal-lg">Selecionar</button></div>
-                    </div>
+                            data-toggle="modal" data-target=".bd-example-modal-lg">Selecionar</button></div>
+                </div>
             </div>
         </div>
 
-       <!-- MODAL -->
-       <ng-template #modalCartaoCliente class="modal-dialog modal-lg" let-c="close" let-d="dismiss">
-        <div class="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-        aria-hidden="true">
-<div class="modal-dialog modal-lg">
-  <div class="modal-content">
-     
-    <form>
-          <div class="modal-header">
-              <h5 class="modal-title">Dados do Cartão:</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-              (click)="d('Cross click')">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="form-row">
-              <div class="form-group col-md-12 cadastro-cartao">
-                  <label for="cartao-numero">Número do Cartão:</label>
-                  <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
-                  [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16" required placeholder="0000 0000 0000 0000">
-              </div>
-          </div>
-          <div class="form-row">
-              <div class="form-group col-md-12">
-                  <label for="cartao-nome">Nome impresso no Cartão:</label>
-                  <input type="text" class="form-control" id="cartao-nome" 
-                [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="11" required
-                      placeholder="Nome impresso no Cartão">
-              </div>
-          </div>
-          <div class="form-row ">
-              <div class="form-group col-md-4">
-                  <label for="cartao-vencimento">Data de vencimento:</label>
-                  <div class="vencimento-cartao">
-                      <div class="form-group col-md-10">
-                          <input type="text" class="form-control" id="dtValidade" placeholder="00/0000"
-                          [(ngModel)]="outputCliente.cartao.dtValidade" name="dtValidade" #dtValidade="ngModel" minlength="6" required>
-                        </div>
-                  </div>
-              </div>
-              <div class="form-group col-md-8">
-                  <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
-                  <div class="form-group col-md-10">
-                      <input type="text" class="form-control" id="cartao-codigo-seguranca"
-                          placeholder="CVV"
-                          [(ngModel)]="outputCliente.cartao.codSeguranca" name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>
-                  </div>
-              </div>
-          </div>
+        <!-- MODAL -->
+        <ng-template #modalCartaoCliente class="modal-dialog modal-lg" let-c="close" let-d="dismiss">
+            <div class="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
 
-          <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                  value="option1" checked>
-              <label class="form-check-label" for="exampleRadios1">
-                  Salvar os dados do meu cartão para futuras compras.
-              </label>
-          </div>
-          <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                  value="option1" checked>
-              <label class="form-check-label" for="exampleRadios1">
-                  Não salvar os dados.
-              </label>
-          </div>
-          <button type="button" (click)="confirmar()" class="btn btns-cadastro">Confirmar</button>
-      </form>
-  </div>
-</div>
-</div>
-</ng-template>
-     <div class="form-group botoes-cadastro">
-            <button type="button" (click)="cadastrar()" class="btn btns-cadastro">Cadastrar</button>
+                        <form>
+                            <div class="modal-header">
+                                <h5 class="modal-title">Dados do Cartão:</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                    (click)="d('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12 cadastro-cartao">
+                                    <label for="cartao-numero">Número do Cartão:</label>
+                                    <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
+                                        [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16"
+                                        required placeholder="0000 0000 0000 0000">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="cartao-nome">Nome impresso no Cartão:</label>
+                                    <input type="text" class="form-control" id="cartao-nome"
+                                        [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="11"
+                                        required placeholder="Nome impresso no Cartão">
+                                </div>
+                            </div>
+                            <div class="form-row ">
+                                <div class="form-group col-md-4">
+                                    <label for="cartao-vencimento">Data de vencimento:</label>
+                                    <div class="vencimento-cartao">
+                                        <div class="form-group col-md-10">
+                                            <input type="text" class="form-control" id="dtValidade"
+                                                placeholder="00/0000" [(ngModel)]="outputCliente.cartao.dtValidade"
+                                                name="dtValidade" #dtValidade="ngModel" minlength="6" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-8">
+                                    <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
+                                    <div class="form-group col-md-10">
+                                        <input type="text" class="form-control" id="cartao-codigo-seguranca"
+                                            placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca"
+                                            name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                    value="option1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Salvar os dados do meu cartão para futuras compras.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                    value="option1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Não salvar os dados.
+                                </label>
+                            </div>
+                            <button type="button" (click)="confirmar()" class="btn btns-cadastro">Confirmar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <div class="form-group botoes-cadastro">
+            <button type="button" (click)="cadastrar()" class="btn btns-cadastro"[disabled]="formCadastro.invalid">Cadastrar</button>
             <button [routerLink]="['/']" class="btn btn-cancelar">Cancelar</button>
         </div>
     </form>

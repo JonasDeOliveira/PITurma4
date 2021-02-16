@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../cliente/shared/cliente.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
-import { ResponseFormularioCadastro, FormularioCadastro, FormularioMeusDados, OutputCliente, Cidade, Cliente, ResponseFormularioMeusDados, ResponseCidades } from '../cliente/shared/cliente.model';
+import { OutputCliente } from '../cliente/shared/cliente.model';
 
 @Component({
   selector: 'app-dados-cliente',
@@ -15,6 +15,7 @@ export class DadosClienteComponent implements OnInit {
 
   responseFormularioMeusDados: any;
   responseCidadesByUf: any;
+  retornoData: any;
 
   outputCliente: OutputCliente = {
     loginUsuario: {
@@ -68,9 +69,7 @@ export class DadosClienteComponent implements OnInit {
       dtEmissao: '',
       nmNome: ''
     }
-
   }
-
 
   constructor(private clienteService: ClienteService,
     private router: Router,
@@ -83,11 +82,10 @@ export class DadosClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFormularioMeusDados();
-
   }
 
   getFormularioMeusDados() {
-    this.clienteService.getFormularioMeusDados(141).subscribe(
+    this.clienteService.getFormularioMeusDados(157).subscribe(
       response => {
         console.log(response);
         this.responseFormularioMeusDados = response;
@@ -106,12 +104,22 @@ export class DadosClienteComponent implements OnInit {
     )
   }
 
-  ver() {
-    console.log(this.outputCliente.usuario);
-  }
-
   open(content) {
     this.modalService.open(content);
+  }
+
+  alterarDadosCliente(){
+    console.log(this.outputCliente);
+
+    this.clienteService.alteraDadosCliente('141', this.outputCliente).subscribe(
+      response => {
+        alert("Dados alterados com sucesso.");
+        window.location.reload();
+      },
+      error => {
+        alert('Algo inesperado aconteceu.');
+      }
+    )
   }
 
 }
