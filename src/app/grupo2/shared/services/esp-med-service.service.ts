@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseEspMed } from '../model/espMed';
+import { EspMed } from '../model/agenda';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,6 @@ private readonly APILISTARESPDISPONIVEIS = 'http://localhost:8080/especialidade/
 
 
 listarEspDisponiveis(idTipoConsulta: number){
-  return this.http.get<ResponseEspMed[]>(this.APILISTARESPDISPONIVEIS+idTipoConsulta);
+  return this.http.get<EspMed[]>(this.APILISTARESPDISPONIVEIS+idTipoConsulta);
 }
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseTipoConsulta } from '../model/tipoConsulta';
+import { TipoConsulta } from '../model/tipoConsulta';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class TipoConsultaService {
   private readonly APIGETTIPOCONSULTA = 'http://localhost:8080/tipoConsulta/ '
 
   buscarTipoConsulta(idTipoConsulta: number){
-    return this.http.get<ResponseTipoConsulta>(this.APIGETTIPOCONSULTA+idTipoConsulta);
+    return this.http.get<TipoConsulta>(this.APIGETTIPOCONSULTA+idTipoConsulta);
   }
 }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ResponseContratos } from '../../shared/model/contrato';
+import { Contrato } from '../../shared/model/contrato';
 import { PagamentoPlano } from '../../shared/model/pagamentoPlano';
 import { ContratoService } from '../../shared/services/contrato-service';
 import { PagamentoPlanoServiceService } from '../../shared/services/pagamento-plano-service.service';
@@ -22,7 +22,7 @@ export class PagamentoPlanoComponent implements OnInit {
     idAgPaciente: 10
   }
 
-  responseContratos : ResponseContratos [];
+  responseContrato : Contrato;
   idPagamentoPlEscolhido : number;
   idPgtoPlanoString : string;
 
@@ -34,7 +34,7 @@ export class PagamentoPlanoComponent implements OnInit {
 
     this.contratoService.buscarPlanosPaciente(idUsuario).subscribe(
       response => {
-       this.responseContratos = response;
+       this.responseContrato = response;
       }
     )
   }

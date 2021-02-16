@@ -1,6 +1,6 @@
 import { SelectorListContext } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { ResponseEspMed } from '../../shared/model/espMed';
+import { EspMed } from '../../shared/model/agenda';
 import { EspMedServiceService } from '../../shared/services/esp-med-service.service';
 
 
@@ -13,7 +13,7 @@ export class AgendamentoConsultasComponent implements OnInit {
   
   constructor(public espMedService: EspMedServiceService){}
 
-  responseEspMed : ResponseEspMed[];
+  responseEspMed : EspMed[];
   idEspMedString : string;
   idEspSelect : number;
   teste : string = "selecione"

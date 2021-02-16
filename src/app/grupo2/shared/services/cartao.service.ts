@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ResponseCartao, Cartao } from '../model/cartao';
+import { Cartao } from '../model/cartao';
 
 @Injectable({
   providedIn: 'root'

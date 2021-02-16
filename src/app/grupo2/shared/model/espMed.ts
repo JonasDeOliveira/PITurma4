@@ -6,9 +6,3 @@ export interface EspMed {
 }
 
 
-
-// GET espMedByAgenda
-export interface ResponseEspMed {
-    espMed: EspMed[]
-}
-

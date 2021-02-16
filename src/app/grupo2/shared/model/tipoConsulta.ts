@@ -3,7 +3,4 @@ export interface TipoConsulta{
     dsTipoConsulta: string;
 }
 
-export interface ResponseTipoConsulta{
-    responseTipoConsulta: ResponseTipoConsulta;
-}
 

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseAgPacientes } from '../../shared/model/agPaciente';
+import { AgPaciente } from '../../shared/model/agPaciente';
 import { AgPacienteService } from '../../shared/services/agPaciente.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Resposta } from '../../shared/model/resposta';
 
 
 @Component({
@@ -24,7 +25,9 @@ export class MinhasConsultasComponent implements OnInit {
    }
 
 
-  responseAgPacientes : ResponseAgPacientes [];
+  responseAgPacientes : AgPaciente [];
+  respostaString: Resposta;
+ 
 
 
   //implementar id usuario no parametro
@@ -48,7 +51,8 @@ export class MinhasConsultasComponent implements OnInit {
   atualizarAgPaciente(idAgPaciente : number) {
     this.agPacienteService.alterarAgPacientes(idAgPaciente).subscribe(
       response => {
-        alert('consulta cancelada com sucesso');
+        this.respostaString=response;
+        alert(response.resposta);
         // console.log(this.router)
         this.router.navigate(['/minhas-consultas']);
         this.listarAgPacientePorUsuario(14);
@@ -62,8 +66,3 @@ export class MinhasConsultasComponent implements OnInit {
     }
 }
 
-
-// if(confirm('Deseja remover a tarefa?')) {
-//   this.tarefaService.deleteTarefa(tarefaId).subscribe(
-//     response => {
-//       this.listarTodas();

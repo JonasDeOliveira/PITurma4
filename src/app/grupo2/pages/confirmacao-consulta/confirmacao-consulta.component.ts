@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ResponseAgPaciente } from '../../shared/model/agPaciente';
-import { ResponsePagamento } from '../../shared/model/pagamento';
-import { ResponseTipoConsulta } from '../../shared/model/tipoConsulta';
+import { AgPaciente,  } from '../../shared/model/agPaciente';
+import { Pagamento } from '../../shared/model/pagamento';
+import { TipoConsulta } from '../../shared/model/tipoConsulta';
 import { AgPacienteService } from '../../shared/services/agPaciente.service';
 import { PagamentoService } from '../../shared/services/pagamento.service';
 import { TipoConsultaService } from '../../shared/services/tipo-consulta.service';
@@ -28,9 +28,9 @@ export class ConfirmacaoConsultaComponent implements OnInit {
 
   }
 
-  reponsePagamento: ResponsePagamento;
-  responseTipoConsulta: ResponseTipoConsulta;
-  responseAgPaciente: ResponseAgPaciente;
+  reponsePagamento: Pagamento;
+  responseTipoConsulta: TipoConsulta;
+  responseAgPaciente: AgPaciente;
 
   ngOnInit(): void {
     this.listarPagamento(33);

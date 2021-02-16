@@ -34,14 +34,3 @@ export interface Periodo {
     horaInicial: Time;
 
 }
-
-
-// GET agPacientes
-export interface ResponseAgPacientes {
-    agPacientes: AgPaciente[]
-}
-
-//GET agPaciente
-export interface ResponseAgPaciente {
-    agPaciente: AgPaciente
-}

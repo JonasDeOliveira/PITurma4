@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Agenda } from '../model/agenda';
+import { Resposta } from '../model/resposta';
 
 
 @Injectable({
@@ -19,7 +20,7 @@ export class AgendaService {
   }
 
   mudarStatus(idAgPaciente: number){
-    return this.http.get<Agenda>(this.MUDARSTATUSAGENDADA + idAgPaciente);
+    return this.http.get<Resposta>(this.MUDARSTATUSAGENDADA + idAgPaciente);
   }
 
 }

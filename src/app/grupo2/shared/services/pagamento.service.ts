@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponsePagamento } from '../model/pagamento';
+import { Pagamento } from '../model/pagamento';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class PagamentoService {
   private readonly APIGETPAGAMENTO = 'http://localhost:8080/pagamento/ '
 
   buscarPagamento(idPagamento: number){
-    return this.http.get<ResponsePagamento>(this.APIGETPAGAMENTO+idPagamento);
+    return this.http.get<Pagamento>(this.APIGETPAGAMENTO+idPagamento);
   }
 }
 

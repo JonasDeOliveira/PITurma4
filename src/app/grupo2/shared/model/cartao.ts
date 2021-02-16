@@ -9,6 +9,3 @@ export interface Cartao{
     dtEmissao: Date;
 }
 
-export interface ResponseCartao {
-    cartao: Cartao[]
-}

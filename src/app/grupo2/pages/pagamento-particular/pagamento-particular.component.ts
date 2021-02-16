@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ResponseCartao, Cartao } from '../../shared/model/cartao';
+import { Cartao } from '../../shared/model/cartao';
 import { PagamentoCartao } from '../../shared/model/pagamentoCartao';
 import { CartaoService } from '../../shared/services/cartao.service';
 import { PagamentoCartaoServiceService } from '../../shared/services/pagamento-cartao-service.service';

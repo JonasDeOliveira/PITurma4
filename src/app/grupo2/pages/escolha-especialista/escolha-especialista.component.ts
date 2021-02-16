@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Agenda } from '../../shared/model/agenda';
+import { Agenda, Medico } from '../../shared/model/agenda';
 import { CadastroAgPaciente } from '../../shared/model/cadastroAgPaciente';
+import { Resposta } from '../../shared/model/resposta';
 import { AgendaService } from '../../shared/services/agenda.service';
 import { AgPacienteService } from '../../shared/services/agPaciente.service';
 
@@ -21,7 +22,7 @@ export class EscolhaEspecialistaComponent implements OnInit {
   idEspMed : number = parseInt(this.idEspMedString);
   responseAgenda : Agenda;
   arrayAgendas: Agenda[];
-  respostaAgenda : Agenda;
+  respostaString:  Resposta;
   especialidadeMedica: string = "";
   idAgPacienteEscolhida: number;
   idAgPacienteString: string;
@@ -31,28 +32,20 @@ export class EscolhaEspecialistaComponent implements OnInit {
   }
   idAgendaEscolhida: number;
   idAgendaString: string;
+
   
   ngOnInit(): void {
-      this.buscarAgenda(1 , 3);
+      this.buscarAgenda(1 , 20);
   }
    buscarAgenda(idTipoConsulta: number,idEspecialidade: number){
      this.agendaService.listarPorEsp(idTipoConsulta,idEspecialidade).subscribe(
       response => {
         this.arrayAgendas = response;
         this.especialidadeMedica = this.arrayAgendas[0].medico.espMed.dsEspMed;
-        console.log("Response Agenda" + JSON.stringify(this.responseAgenda));
         
       }
      )
    }
-  // TESTE MOSTRAR ESPECIALIDADE NA TRILHA - ERRO 
-  //  mostrarLocalStorage(){
-  //   response => {
-  //     this.idEspMedString = response;
-  //     console.log(this.idEspMedString);
-  //       console.log(response);
-  //   }
-  //  }
 
   criarAgPaciente() {
     this.agPacienteService.cadastrarAgPaciente(this.request).subscribe(
@@ -77,9 +70,10 @@ export class EscolhaEspecialistaComponent implements OnInit {
   alterarStatus(idAgPaciente: number){
     idAgPaciente = this.idAgPacienteEscolhida;
     this.agendaService.mudarStatus(idAgPaciente);
-  
+    response => {
+      this.respostaString = response;
+      alert(response.resposta);
+    }
   }
 
-
 }
-

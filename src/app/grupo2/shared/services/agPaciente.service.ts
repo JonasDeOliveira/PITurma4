@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { AgPaciente, ResponseAgPaciente, ResponseAgPacientes } from '../model/agPaciente';
+import { AgPaciente} from '../model/agPaciente';
 import { Observable } from 'rxjs';
 import { CadastroAgPaciente } from '../model/cadastroAgPaciente';
+import { Resposta } from '../model/resposta';
 
 @Injectable({
   providedIn: 'root'
@@ -18,16 +19,16 @@ export class AgPacienteService {
   private readonly APIGETAGPCTEPORID = 'http://localhost:8080/agPacientePorId/'
 
   buscarAgPacientes(idUsuario: number){
-    return this.http.get<ResponseAgPacientes[]>(this.APIGETAGPACIENTE+idUsuario);
+    return this.http.get<AgPaciente[]>(this.APIGETAGPACIENTE+idUsuario);
   }
 
   listarAgPacientePorId(idAgPaciente: number){
-    return this.http.get<ResponseAgPaciente>(this.APIGETAGPCTEPORID+idAgPaciente);
+    return this.http.get<AgPaciente>(this.APIGETAGPCTEPORID+idAgPaciente);
   }
 
-  alterarAgPacientes(idAgPaciente: number): Observable<ResponseAgPacientes> {
+  alterarAgPacientes(idAgPaciente: number): Observable<Resposta> {
     const URL = `${this.APIMUDARSTATUSAGPACIENTE}/${idAgPaciente}`
-    return this.http.get<ResponseAgPacientes>(URL);
+    return this.http.get<Resposta>(URL);
   }
 
   cadastrarAgPaciente (request: CadastroAgPaciente): Observable<number>{

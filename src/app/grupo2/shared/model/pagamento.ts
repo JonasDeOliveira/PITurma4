@@ -13,8 +13,5 @@ export interface Pagamento {
  
  }
 
- export interface ResponsePagamento{
-     responsePagamento: ResponsePagamento;
- }
 
 

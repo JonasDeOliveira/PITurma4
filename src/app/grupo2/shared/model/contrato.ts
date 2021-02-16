@@ -10,7 +10,3 @@ export interface Planos {
     nmPlano: String;
     dsPlano: String;
 }
-
-export interface ResponseContratos {
-    contratos: Contrato[];
-}
