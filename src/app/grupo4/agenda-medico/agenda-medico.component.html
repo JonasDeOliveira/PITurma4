@@ -50,29 +50,9 @@
                         </button>
                     </div>
                     <div class="modal-body modal-horarios">
-                        <div class="manha">
-                            <h3 class="title-horario">Manhã: </h3>
-                            <button type="button" class="btn btn-outline-success button-hora">07:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">08:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">09:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">10:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">11:00</button>
-                        </div>
-                        <div class="tarde">
-                            <h3 class="title-horario">Tarde: </h3>
-                            <button type="button" class="btn btn-outline-success button-hora">12:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">13:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">14:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">15:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">16:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">17:00</button>
-                        </div>
-                        <div class="noite">
-                            <h3 class="title-horario">Noite: </h3>
-                            <button type="button" class="btn btn-outline-success button-hora">18:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">19:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">20:00</button>
-                            <button type="button" class="btn btn-outline-success button-hora">21:00</button>
+                        <div class="manha" *ngFor="let horario of responsePeriodos">
+                            <button type="button" class="btn btn-outline-success button-hora">{{ horario.agenda.periodo.horaInicial }}</button>
+                            
                         </div>
                         <div class="radio-tipo-consulta">
                             <h3 class="title-tipo-consulta">Tipo de consulta: </h3>

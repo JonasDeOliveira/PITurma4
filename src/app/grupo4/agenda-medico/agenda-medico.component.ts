@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AgendamedicoService } from './agendamedico.service';
+import { ResponsePeriodos } from './agenda.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,10 +25,11 @@ export class AgendaMedicoComponent implements OnInit {
 
   agendamentosResposta: any;
   data: any;
-  request: any
+  responsePeriodos: ResponsePeriodos[];
 
   ngOnInit(): void {
     this.getAgendamentos();
+    this.getHorarios();
   }
 
   getAgendamentos(){
@@ -43,13 +45,36 @@ export class AgendaMedicoComponent implements OnInit {
 
   remover(idAgPaciente: number): void {
     if(confirm('Deseja cancelar a consulta?')) {
-      this.agendaService.cancelarAgendamento(idAgPaciente, this.request).subscribe(
+      this.agendaService.cancelarAgendamento(idAgPaciente).subscribe(
         response => {
           this.router.navigate(['/agenda/medico']); 
           console.log(idAgPaciente)
         }
       )
     }
+  }
+
+  getHorarios() {
+    this.agendaService.getHorarios().subscribe(
+      response => {
+        this.responsePeriodos = response;
+        console.log(response);
+
+        this.data = new Date(Date.now()).toISOString().slice(0,10);
+      }
+    )
+  }
+
+  registrar(data: Date): void {
+    this.agendaService.abrirAgenda(data).subscribe(
+      response => {
+        alert('Agenda cadastrada com sucesso!');
+        this.router.navigate(['/agenda/medico']);
+      },
+      error => {
+        alert('Algo inesperado aconteceu!');
+      }
+    )
   }
 
 }
