@@ -4,6 +4,9 @@ import { Servicos, ResponseServicos } from '../../shared/model/servico.model';
 import { ServicoService } from '../../shared/service/servico.service';
 import { LojaService } from '../../shared/service/lojas.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { HorarioService } from '../../shared/service/horario.service';
+import { Horario, ResponseDatas, DtHorario } from '../../shared/model/horario.model';
+import { AgServico } from '../../shared/model/agservico.model';
 
 
 @Component({
@@ -14,16 +17,72 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AgservicoComponent implements OnInit {
   
-  local: string ;
+  local: string; 
+  idLoja: number; 
+  idServico: number;
+  horario: string;
+  data: string; 
+  agendamentos: AgServico[];
+  ag: AgServico;
+  
 
-  constructor(private servicoService : ServicoService, private lojaService : LojaService) { }
+  hrManha: string[]; //todos os horários da manhã
+  hrTarde: string[]; //todos os horários da tarde
+  hrNoite: string[]; //todos os horários da noite
 
-  responseServicos : ResponseServicos[];
-  responseLojas : ResponseLojas[];
+  hrManhaExibir: string[]; //apenas horários disponíveis da manhã
+  hrTardeExibir: string[]; //apenas horários disponíveis da tarde
+  hrNoiteExibir: string[]; //apenas horários disponíveis da noite
+
+  hrIndisp: string[]; //recebe os horários que já estão agendados
+
+  exibir: boolean; //variavel que exibe os horários
+  tem: boolean;
+
+  responseServicos : ResponseServicos[]; //recebe os serviços
+  responseLojas : ResponseLojas[]; //recebe as lojas
+  responseDatas : ResponseDatas[];
+
+  constructor(private servicoService : ServicoService, private lojaService : LojaService, config: NgbModalConfig, private modalService: NgbModal, private horarioService : HorarioService) { 
+    config.backdrop = 'static';
+    config.keyboard = false;
+
+    this.exibir = false; //não exibe os horários
+    this.hrManha = ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30"];
+    this.hrTarde = ["15:00", "15:30", "16:00", "16:30", "17:00", "17:30"];
+    this.hrNoite = ["19:00", "19:30", "20:00", "20:30", "21:00", "21:30"];
+    this.hrManhaExibir = new Array; 
+    this.hrTardeExibir = new Array; 
+    this.hrNoiteExibir = new Array; 
+    this.ag = new AgServico(); 
+    this.agendamentos = new Array; 
+
+  }
 
   ngOnInit(): void {
     this.listarServicos();
   }
+
+  open(content) {
+    this.modalService.open(content);
+  }
+
+  getLoja(id: number){
+    this.idLoja = id; 
+    console.log("Id seviço: "+ this.idServico);
+    console.log("Id loja: "+id);
+  }
+
+  getServico(id: number){
+    this.idServico = id;
+    console.log("Id serviço: "+id);
+  }
+
+  getHora(hora: string){
+    this.horario = hora;
+    console.log("Horario: "+hora);
+  }
+
 
   listarServicos(){
     this.servicoService.getServicos().subscribe(
@@ -41,4 +100,76 @@ export class AgservicoComponent implements OnInit {
     )
   }
 
+
+  getHorasIndisponiveis(data: string){
+    this.data = data;
+
+    this.horarioService.getHorasIndisponiveis(this.idLoja, data).subscribe(
+      response => {
+        this.hrIndisp = response;
+      }
+    )
+    this.exibir = true;
+    console.log(this.hrIndisp);
+    
+    //horários manhã
+    for(let m=0; m<6; m++){
+      this.tem = false; 
+      for(let i=0; i<this.hrIndisp.length; i++){
+        if (this.hrManha[m].localeCompare(this.hrIndisp[i]) == 0){
+          this.tem = true;
+        }
+      }
+      if (this.tem == false){
+        this.hrManhaExibir.push(this.hrManha[m]);
+      }
+    }
+
+    //horários tarde
+    for(let m=0; m<6; m++){
+      this.tem = false; 
+      for(let i=0; i<this.hrIndisp.length; i++){
+        if (this.hrTarde[m].localeCompare(this.hrIndisp[i]) == 0){
+          this.tem = true;
+        }
+
+      }
+      if (this.tem == false){
+        this.hrTardeExibir.push(this.hrTarde[m]);
+      }
+    }
+
+    //horarios noite
+    for(let m=0; m<6; m++){
+      this.tem = false; 
+      for(let i=0; i<this.hrIndisp.length; i++){
+        if (this.hrNoite[m].localeCompare(this.hrIndisp[i]) == 0){
+          this.tem = true;
+        }
+
+      }
+      if (this.tem == false){
+        this.hrNoiteExibir.push(this.hrNoite[m]);
+      }
+    }
+
+    this.exibir = true;
+  }
+  
+  salvarAgServico(){
+
+    //adicionar o agendamento atual no array de agendamentos 
+    this.ag.idLoja = this.idLoja;
+    this.ag.idServico = this.idServico;
+    this.ag.dtHr =  this.data + " " + this.horario + ":00"; 
+    console.log(this.ag.dtHr);
+    console.log("Serviço salvo com sucesso!");
+
+    this.agendamentos.push(this.ag);
+
+    //depois enviar o array agendamentos para a pag de pagamentos. 
+    localStorage.setItem("agendamentos", JSON.stringify(this.agendamentos));
+    //this.router.navigate(['/resultado-buscar-receitas']);
+  }
+  
 }

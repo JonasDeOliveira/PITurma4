@@ -11,9 +11,9 @@
             <div class="row">
                 <div class="form-group col-12 col-lg-8 pt-3">
                     <label for="servico"><h5>1. Escolha o serviço</h5></label>
-                    <select class="form-control" type="text" id="servico" required>
+                    <select class="form-control" type="text" id="servico" [(ngModel)]="idServico" name="servico" required>
                         <option selected>Escolha a opção</option>
-                        <option  *ngFor = "let servico of responseServicos">{{servico.nome}} - R${{servico.preco}},00</option>
+                        <option  *ngFor = "let servico of responseServicos" [ngValue]="servico.id" >{{servico.nome}} - R${{servico.preco}},00</option>
                     </select>
                     <div style="display: none;" class="alert alert-danger alert-servico" role="alert">
                         Campo Obrigatório
@@ -46,7 +46,7 @@
                         <h5 class="card-title">{{loja.nmLoja}} </h5>
                         <p class="card-text" *ngFor= "let endereco of loja.enderecos"> {{endereco.dsEndereco}}, Bairro: {{endereco.dsBairro}} - CEP: {{endereco.nrCep}} - {{endereco.idCidade}}  - SP </p>
                         <h6 class="card-subtitle mb-2 text-muted" *ngFor= "let contato of loja.contatos">{{contato.nrDdd}} {{contato.dsContato}}</h6>
-                        <button type="button" class="btn btn-success btn-verde btn-seleciona">Selecione</button>
+                        <button type="button" class="btn btn-success btn-verde btn-seleciona"  (click)="getLoja(loja.idLoja)">Selecione</button>
                         </div>
                     </div>
                 </div>
@@ -57,45 +57,45 @@
             </div>
             
             <div class="row p-15">
-                <div class="form-group col-12 col-lg-5 pt-3 calendario">
+                <div class="form-group col-12 col-lg-5 pt-3 calendario" style="height: 400px;">
                     <div class="containerx">
-                        <div class="calendar">
+                        
+                        <a (click)="getHorasIndisponiveis('2021-02-02')"> <img class="img-fluid "
+                            src="/assets/img/calendar.png">
+                        </a>
+                        <!--<div class="calendar">
                           
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
                 
-                <div class="form-group col-12 col-lg-5 offset-md-1 pt-3">
+
+               <!-- <button type="button" class="btn btn-success btn-verde btn-seleciona"  (click)="getHorasIndisponiveis('2021-02-02')">CLIQUE AQUI</button>
+               -->     
+
+                <div class="form-group col-12 col-lg-5 offset-md-1 pt-3" *ngIf = "exibir == true">
                     <div class="row p-15" style="background-color: white;">
                         <h5>Sexta feira, 05 de fevereiro de 2021</h5>
                     </div>
-
+                    
                     <div class="form-group col-12 col-lg-12 pt-3 horarios">
-                        <div class="row justify-content-around">
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
+                        <div class="row justify-content-start pt-2 pl-2 pr-2"><p>Manhã</p></div>
+                        <div class="row justify-content-around pt-1 pl-2 pr-2">                            
+                            <button *ngFor = "let hora of hrManhaExibir" type="button" class="btn btn-success btn-verde" (click)="getHora(hora)">{{hora}}</button>
                         </div>
-                        <div class="row justify-content-around pt-5">
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
+                    
+                        <div class="row justify-content-start pt-2 pl-2 pr-2"><p>Tarde</p></div>
+                        <div class="row justify-content-around pt-1 pl-2 pr-2">
+                            <button *ngFor = "let hora of hrTardeExibir" type="button" class="btn btn-success btn-verde" (click)="getHora(hora)">{{hora}}</button>
                         </div>
-                        <div class="row justify-content-around pt-5">
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
-                            <button type="button" class="btn btn-success btn-verde">8:15</button>
+                    
+                        <div class="row justify-content-start pt-2 pl-2 pr-2"><p>Noite</p></div>
+                        <div class="row justify-content-around pt-1 pl-2 pr-2">
+                            <button *ngFor = "let hora of hrNoiteExibir" type="button" class="btn btn-success btn-verde" (click)="getHora(hora)">{{hora}}</button>
                         </div>
                         <br>
                     </div>
-
                 </div>
                 
             </div>
@@ -103,31 +103,27 @@
              <!-- Button trigger modal -->
             <div class="row d-flex justify-content-center p-15">
                 <br>
-                <button type="button" class="btn btn-success btn-verde btn-lg" id="btn-confirma" data-toggle="modal" data-target="#exampleModal">Confirmar</button>
+                <button type="button" class="btn btn-success btn-verde btn-lg" (click)="open(content)" id="btn-confirma" data-toggle="modal" data-target="#exampleModal">Confirmar</button>
             </div>
             <br><br>
-           
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmar agendamento</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                    Deseja agendar outro serviço?
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="#formacao">SIM</a></button>
-                    <button type="button" class="btn btn-primary">CONCLUIR</button>
-                    </div>
-                </div>
-                </div>
-            </div>
 
+            <!-- Modal -->
+            <ng-template #content let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">Confirmar agendamento</h4>
+                  <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Deseja agendar outro serviço?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Agendar outro</button>
+                  <button type="button" class="btn btn-outline-dark" (click)="salvarAgServico()">Concluir</button>
+                </div>
+            </ng-template>
+              
         </form>    
     </section>
 
