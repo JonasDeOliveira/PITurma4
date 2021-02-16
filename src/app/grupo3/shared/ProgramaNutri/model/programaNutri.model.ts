@@ -15,9 +15,9 @@ export interface ResponseDadosPaciente {
 
 //Get Cadastrar Cardapio
 export interface Cardapio{
-  idTipoRefeicao: IdTipoRefeicao
-  idPaciente: number;
-  idMedico: number;
+    idTipoRefeicao: IdTipoRefeicao;
+    idPaciente: number;
+    idMedico: number;
     nomeReceita: string;
     qtCalorias: number;
     qtRendimento: number;
@@ -26,4 +26,4 @@ export interface Cardapio{
 
 export interface ResponseCardapio{
     cardapio: Cardapio
-    }
+}

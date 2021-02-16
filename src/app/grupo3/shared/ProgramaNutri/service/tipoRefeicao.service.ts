@@ -15,7 +15,7 @@ export class TipoRefeicaoService {
   private readonly API = 'http://localhost:8080/tipo-refeicoes';
 
   getTipoRefeicoes() {
-    return this.http.get<ResponseTipoRefeicao[]>(this.API);
+    return this.http.get<ResponseTipoRefeicao>(this.API);
   }
   
 }
