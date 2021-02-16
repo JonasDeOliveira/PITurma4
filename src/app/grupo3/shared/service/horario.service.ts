@@ -20,11 +20,4 @@ export class HorarioService {
     return this.http.get<string[]>(URL);
   }
 
-
-  /*getHorasIndisponiveis(id: number, data: string): Observable<ResponseDatas[]> {
-    const URL = `${this.API}/${id}/${data}`
-    console.log(URL);
-    return this.http.get<ResponseDatas[]>(URL);
-  } */
-
 }

@@ -7,6 +7,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HorarioService } from '../../shared/service/horario.service';
 import { Horario, ResponseDatas, DtHorario } from '../../shared/model/horario.model';
 import { AgServico } from '../../shared/model/agservico.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -43,7 +44,7 @@ export class AgservicoComponent implements OnInit {
   responseLojas : ResponseLojas[]; //recebe as lojas
   responseDatas : ResponseDatas[];
 
-  constructor(private servicoService : ServicoService, private lojaService : LojaService, config: NgbModalConfig, private modalService: NgbModal, private horarioService : HorarioService) { 
+  constructor(private servicoService : ServicoService, private lojaService : LojaService, config: NgbModalConfig, private modalService: NgbModal, private horarioService : HorarioService, private router: Router) { 
     config.backdrop = 'static';
     config.keyboard = false;
 
@@ -162,14 +163,26 @@ export class AgservicoComponent implements OnInit {
     this.ag.idLoja = this.idLoja;
     this.ag.idServico = this.idServico;
     this.ag.dtHr =  this.data + " " + this.horario + ":00"; 
+
     console.log(this.ag.dtHr);
     console.log("Serviço salvo com sucesso!");
 
     this.agendamentos.push(this.ag);
+  }
+
+
+  concluirAgServico(){
+
+    this.salvarAgServico();
 
     //depois enviar o array agendamentos para a pag de pagamentos. 
     localStorage.setItem("agendamentos", JSON.stringify(this.agendamentos));
-    //this.router.navigate(['/resultado-buscar-receitas']);
+    this.router.navigate(['/pagamento-servico']);
+  }
+
+  novoAgServico(){
+    
+    this.salvarAgServico();
   }
   
 }

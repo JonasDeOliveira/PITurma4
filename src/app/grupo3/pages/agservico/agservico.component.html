@@ -37,11 +37,11 @@
                 </div>
             </div>
 
-             <!-- cards com endereços encontrados -->
+            <!-- cards com endereços encontrados -->
           
             <div class="row">
-                <div class="form-group col-12 col-lg-4 pt-3 ml-1">
-                    <div class="card" *ngFor = "let loja of responseLojas" style="width: 18rem;">
+                <div class="form-group col-12 col-lg-4 pt-3 ml-1" *ngFor = "let loja of responseLojas">
+                    <div class="card"  style="width: 18rem;">
                         <div class="card-body">
                         <h5 class="card-title">{{loja.nmLoja}} </h5>
                         <p class="card-text" *ngFor= "let endereco of loja.enderecos"> {{endereco.dsEndereco}}, Bairro: {{endereco.dsBairro}} - CEP: {{endereco.nrCep}} - {{endereco.idCidade}}  - SP </p>
@@ -50,7 +50,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
+
+             <!-- /cards com endereços encontrados -->
 
             <div class="row p-15 pt-5">
                 <h5>3. Selecione data e horário</h5>
@@ -119,8 +121,8 @@
                   <p>Deseja agendar outro serviço?</p>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Agendar outro</button>
-                  <button type="button" class="btn btn-outline-dark" (click)="salvarAgServico()">Concluir</button>
+                  <button type="button" class="btn btn-outline-dark" (click)="novoAgServico()">Agendar outro</button>
+                  <button type="button" class="btn btn-outline-dark" (click)="concluirAgServico()">Concluir</button>
                 </div>
             </ng-template>
               
