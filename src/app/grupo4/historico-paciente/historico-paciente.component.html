@@ -19,6 +19,7 @@
     <nav class="navbar navbar-light bg-light">
       <form class="form-inline"  id="id-form" name="formulario" #formLogin="ngForm">
         <input class="form-control style-input mr-sm-2" type="search" id="cpf" name="cpf" ngModel placeholder="Insira CPF do paciente" aria-label="Pesquisar">
+        
         <button class="btn btn-verde mr-5" type="button" (click)="getDadosHistoricoCpf(formLogin.value.cpf)" >Buscar</button>
       </form>
     </nav>
