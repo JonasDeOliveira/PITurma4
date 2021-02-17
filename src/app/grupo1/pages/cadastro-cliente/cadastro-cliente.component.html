@@ -8,7 +8,7 @@
                 <input type="email" class="form-control" id="cadastro-email" placeholder="Digite o seu e-mail"
                     [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required>
                     <!-- pattern="[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+"> -->
-                    <div *ngIf= "(dsEmail.dirty || dsEmail.touched)"
+                    <div *ngIf= "dsEmail.errors && (dsEmail.dirty || dsEmail.touched)"
                     class="alert alert-light mt-1" role="alert">
                     O campo e-mail é obrigatório.
                 </div>                 
@@ -17,7 +17,7 @@
                 <label for="cadastro-senha">Senha:</label>
                 <input type="password" class="form-control" id="cadastro-senha" placeholder="Digite a senha"
                     [(ngModel)]="outputCliente.loginUsuario.dsSenha" #dsSenha="ngModel" name="dsSenha" required>
-                <div *ngIf= "(dsSenha.dirty || dsSenha.touched)"
+                <div *ngIf= "dsSenha.errors &&(dsSenha.dirty || dsSenha.touched)"
                     class="alert alert-light mt-1" role="alert">
                     Insira uma senha.
                 </div>
@@ -222,7 +222,7 @@
                             <div class="form-group col-md-12 cadastro-cartao">
                                 <label for="cartao-numero">Número do Cartão:</label>
                                 <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
-                                    [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16"
+                                    [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16" maxlength="16"
                                     required placeholder="0000 0000 0000 0000">
                                 <div *ngIf="nrCartao.errors && (nrCartao.dirty || nrCartao.touched)"
                                     class="alert alert-light">
@@ -276,7 +276,7 @@
     </ng-template>
     <div class="form-group botoes-cadastro">
         <button type="button" (click)="cadastrar()" class="btn btns-cadastro btn-espaco"
-            [disabled]="formCadastro.invalid">Cadastrar</button>
+            [disabled]="formCadastro.invalid && formCadastro.untouched">Cadastrar</button>
         <button [routerLink]="['/']" class="btn btn-cancelar btn-espaco">Cancelar</button>
     </div>
 </section>
