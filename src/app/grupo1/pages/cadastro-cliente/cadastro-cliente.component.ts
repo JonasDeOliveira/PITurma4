@@ -53,7 +53,7 @@ export class CadastroClienteComponent implements OnInit {
       nrCpf: '',
       nrCrm: '',
       dsEndImg: '',
-      idPreco: null,
+      //idPreco: null,
       enderecos: [{
         idEndereco: null,
         dsEndereco: '',

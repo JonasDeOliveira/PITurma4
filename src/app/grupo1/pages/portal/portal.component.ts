@@ -10,6 +10,9 @@ export class PortalComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if(localStorage.getItem("cliente") == null && localStorage.getItem("isLogado") == null) {
+      localStorage.setItem("isLogado", JSON.stringify(false))
+    } 
   }
 
 }

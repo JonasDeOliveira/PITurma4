@@ -36,3 +36,24 @@ section .btn:hover {
 .titulo{
     color: #319A75;
 }
+
+.item-menu{
+    padding: 25px 12px;
+    font-size: 1rem;
+}
+
+.avatar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nome-cliente {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+    align-items: flex-end;
+}
+
+.img-login-foto {
+    cursor: pointer;
+}

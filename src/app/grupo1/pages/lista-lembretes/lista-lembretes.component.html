@@ -9,8 +9,12 @@
                 <div class="col-12 col-md-4 btn-lembrete">
                     <!-- BOTAO NOVO LEMBRETE -->
                     <button type="button" value="" class="btn" id="todoSubmit" data-toggle="modal"
-                        data-target=".bd-lembrete-modal-lg" (click)="open()">Novo lembrete <i
+                         (click)="open()">Novo lembrete <i
                             class="fas fa-plus pr-2"></i></button>
+                </div>
+                <div class="col-12 col-md-8 voltar">
+                    <button type="button" class="btn btn-voltar" data-toggle="modal"
+                     [routerLink]="['/area-cliente']">Voltar</button>
                 </div>
             </div>
             <!-- Categoria Lembretes -->

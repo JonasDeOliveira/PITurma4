@@ -42,3 +42,13 @@ section .btn:hover {
 .titulo{
     color: #319A75;
 }
+
+.voltar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-voltar{
+    background-color: #3ec596;
+    color: #fff;
+}

@@ -15,8 +15,8 @@ import { ModalLembreteComponent } from '../../lembretes/modal-lembrete/modal-lem
 })
 export class AreaClienteComponent implements OnInit {
 
-  cliente = JSON.parse(localStorage.getItem("cliente"));
   idUsuario: string;
+  cliente = JSON.parse(localStorage.getItem("cliente"));
   ehLogado = JSON.parse(localStorage.getItem("isLogado"));
 
   constructor( private clienteService: ClienteService, 

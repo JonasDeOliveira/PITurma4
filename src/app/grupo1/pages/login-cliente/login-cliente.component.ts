@@ -38,13 +38,15 @@ export class LoginClienteComponent implements OnInit {
       response => {
         this.respostaLogin = response;
 
+        if(response.tipoUsuario == 1) {
         localStorage.setItem("cliente", JSON.stringify(response.retorno));
         this.isLogado = true;
         localStorage.setItem("isLogado", JSON.stringify(this.isLogado));
-
-        alert(response.mensagem);
-        //this.router.navigate([`/area-cliente`]);
         window.location.replace("http://localhost:4200/area-cliente");
+        } else {
+          alert("Usuário não é cliente. Use o login da Área do Médico!")
+        }
+
       },
       error => {
         alert(error.error.mensagem);

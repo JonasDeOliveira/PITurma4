@@ -11,7 +11,7 @@ export interface Usuario{
     nrCpf: string,
     nrCrm: string,
     dsEndImg: string
-    idPreco: number
+    //idPreco: number
     enderecos: Array<Endereco>
 }
 

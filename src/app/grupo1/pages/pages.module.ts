@@ -21,8 +21,7 @@ import { ClienteService } from './cliente/shared/cliente.service';
     CommonModule,
     LembretesModule,
     RouterModule,
-    [ModalModule.forRoot()],
- 
+    [ModalModule.forRoot()]
   ],
   exports: [PlanosComponent, 
     PortalComponent, 

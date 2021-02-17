@@ -59,7 +59,7 @@ export class DadosClienteComponent implements OnInit {
       nrCpf: '',
       nrCrm: '',
       dsEndImg: '',
-      idPreco: null,
+      //idPreco: null,
       enderecos: [{
         idEndereco: null,
         dsEndereco: '',
@@ -115,10 +115,10 @@ export class DadosClienteComponent implements OnInit {
   confirm_password = document.getElementById("cadastro-senha-nova2");
 
   ngOnInit(): void {
-    if(this.cliente != null) {
-    this.idUsuario = this.cliente.idUsuario;
-    this.getFormularioMeusDados();
-    this.getPlanos()
+    if (this.cliente != null) {
+      this.idUsuario = this.cliente.idUsuario;
+      this.getFormularioMeusDados();
+      this.getPlanos()
     }
   }
 
@@ -129,8 +129,8 @@ export class DadosClienteComponent implements OnInit {
         this.responseFormularioMeusDados = response;
 
         this.outputCliente = this.responseFormularioMeusDados.inputCliente;
-        this.dadosAtuais.cartaoAtual = this.outputCliente.cartao;
         this.dadosAtuais.planoAtual = this.outputCliente.contrato.plano.idPlano;
+        this.dadosAtuais.cartaoAtual = this.outputCliente.cartao;
 
         this.getCidadesByUf();
       }
@@ -149,11 +149,19 @@ export class DadosClienteComponent implements OnInit {
     this.modalService.open(content);
   }
 
-  alterarDadosCliente() {
-    console.log(this.outputCliente);
-    if(this.confirmacao.senhaNova != "" && this.confirmacao.senhaNova!=null) {
 
+  //TODO: Rever isso aqui!!!!----------------------------
+  alterarDadosCliente() {
+
+    //TODO: Rever isso aqui!!!!----------------------------
+    console.log(this.outputCliente);
+    if (this.confirmacao.senhaNova != "" && this.confirmacao.senhaNova != null) {
+      this.outputCliente.loginUsuario.dsSenha = this.confirmacao.senhaNova;
     }
+
+    this.outputCliente.loginUsuario.dsSenha = "";
+
+    //------------------------------------------------------
 
     this.clienteService.alteraDadosCliente(Number(this.idUsuario), this.outputCliente).subscribe(
       response => {
@@ -203,22 +211,27 @@ export class DadosClienteComponent implements OnInit {
 
   ver() {
     //console.log(this.outputCliente)
+    console.log(this.confirmacao.senhaAtual);
     console.log(this.confirmacao.senhaNova);
+    console.log(this.outputCliente.loginUsuario.dsSenha);
   }
 
   conferirSenha(): void {
-    this.loginService.conferirSenha(this.confirmacao.senhaAtual).subscribe(
-      response => {
-        console.log(response.mensagem);
-        //this.confirmacao.mensagem = response.mensagem;
-        this.confirmacao.mensagem = "";
-      },
-      error => {
-        console.log(error.error.mensagem);
-        this.confirmacao.mensagem = error.error.mensagem;
-      }
-    )
+    if(this.confirmacao.senhaAtual != "") {
+      this.loginService.conferirSenha(this.confirmacao.senhaAtual).subscribe(
+        response => {
+          console.log(response.mensagem);
+          //this.confirmacao.mensagem = response.mensagem;
+          this.confirmacao.mensagem = "";
+        },
+        error => {
+          console.log(error.error.mensagem);
+          this.confirmacao.mensagem = error.error.mensagem;
+        }
+      )
+    }
   }
+
 
   getPlanos() {
     this.planosService.getPlanos().subscribe(
@@ -229,7 +242,7 @@ export class DadosClienteComponent implements OnInit {
     )
   }
 
-  
+
 
 }
 

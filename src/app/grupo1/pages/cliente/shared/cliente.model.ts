@@ -102,6 +102,7 @@ export interface Cliente{
         mensagem: string;
         retorno: any;
         dtTimestampErro: Date;
+        tipoUsuario: number;
     }
 
     //----------------------------------------------------
