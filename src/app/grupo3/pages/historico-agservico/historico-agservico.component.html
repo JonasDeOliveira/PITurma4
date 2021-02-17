@@ -9,86 +9,70 @@
                 <h1 class="titulo">Meus Agendamentos</h1>
             </div>
             <div class="col-12 col-lg-4">
-                <h5><a href="" class="sub"> Realizar novo agendamento > </a> </h5>
+                <h5><a [routerLink] = "['/agservico']" class="sub" > Realizar novo agendamento > </a> </h5>
             </div>
         </div>
 
-        <button type="button" class="btn btn-success btn-verde btn-seleciona"  (click)="clickAqui()">CLIQUE AQUI</button>
-    
 
-        <div *ngIf = "exibir3 == true">
-        <div class="row pl-3 pt-4">
-            <h4 class="titulo-p">Próximos agendamentos</h4>
-        </div>
-
-        <div class="row">
-            <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agAgendados">
-                <div class="card" style="width: 90%;">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ag.dsServico}}</h5>
-                      <p class="card-text">Horário: {{ag.dtDataHora}}.</p>
-                      <p class="card-text">Data: Sexta-feira, 18 de dezembro de 2020</p>
-                      <p class="card-text">Local: {{ag.endLoja}} </p>
-                    </div>
-                </div>
+        <div *ngIf = "agendamentos == false">
+            <div class="row pl-3 pt-5">
+                <h5>Não há agendamentos para esse usuário</h5>
             </div>
         </div>
-        </div>
 
-       <!-- <div class="row">
-            <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agAgendados">
-                <div class="card" style="width: 90%;">
-                    <div class="card-body">
-                      <h5 class="card-title">Aplicação de medicamento</h5>
-                      <p class="card-text">Horário: 8:15 a.m.</p>
-                      <p class="card-text">Data: Sexta-feira, 18 de dezembro de 2020</p>
-                      <p class="card-text">Local: Avenida Mar Floriano Peixoto, 12 </p>
-                    </div>
-                </div>
+
+        <!-- <div *ngIf = "exibir3 == true"> -->
+        <div *ngIf = "agAgendados.length > 0">
+            <div class="row pl-3 pt-4">
+                <h4 class="titulo-p">Próximos agendamentos</h4>
             </div>
-        </div>
-        </div> -->
 
-
-        <div class="row pl-3 pt-5">
-            <h4 class="titulo-p">Histórico de agendamentos</h4>
-        </div>
-
-        <div class="row">
-            <div class="col-12 col-lg-6 pt-3">
-                <div class="card" style="width: 90%;">
-                    <div class="card-body">
-                      <h5 class="card-title">Aplicação de medicamento</h5>
-                      <p class="card-text">Horário: 8:15 a.m.</p>
-                      <p class="card-text">Data: Sexta-feira, 18 de dezembro de 2020</p>
-                      <p class="card-text">Local: Avenida Mar Floriano Peixoto, 12 </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 pt-3">
-                <div class="card" style="width: 90%;">
-                    <div class="card-body">
-                      <h5 class="card-title">Aplicação de medicamento</h5>
-                      <p class="card-text">Horário: 8:15 a.m.</p>
-                      <p class="card-text">Data: Sexta-feira, 18 de dezembro de 2020</p>
-                      <p class="card-text">Local: Avenida Mar Floriano Peixoto, 12 </p>
+            <div class="row">
+                <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agAgendados">
+                    <div class="card" style="width: 90%;">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ag.servico.nome}}</h5>
+                        <p class="card-text">Horário: {{ag.dtDataHora}}</p>
+                        <p class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row pl-3 pt-5">
-            <h4 class="titulo-p">Agendamentos Cancelados</h4>
-        </div>
+        <!-- <div *ngIf = "exibir1 == true"> -->
+        <div *ngIf = "agRealizados.length > 0">
+            <div class="row pl-3 pt-5">
+                <h4 class="titulo-p">Histórico de agendamentos</h4>
+            </div>
 
-        <div class="row pb-5">
-            <div class="col-12 col-lg-6 pt-3">
-                <div class="card" style="width: 90%;">
-                    <div class="card-body">
-                      <h5 class="card-title">Aplicação de medicamento</h5>
-                      <p class="card-text">Horário: 8:15 a.m.</p>
-                      <p class="card-text">Data: Sexta-feira, 18 de dezembro de 2020</p>
-                      <p class="card-text">Local: Avenida Mar Floriano Peixoto, 12 </p>
+            <div class="row">
+                <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agRealizados">
+                    <div class="card" style="width: 90%;">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ag.servico.nome}}</h5>
+                        <p class="card-text">Horário: {{ag.dtDataHora}}</p>
+                        <p class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <!-- <div *ngIf = "exibir2 == true"> -->
+        <div *ngIf = "agCancelados.length > 0"> 
+            <div class="row pl-3 pt-5">
+                <h4 class="titulo-p">Agendamentos Cancelados</h4>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agCancelados">
+                    <div class="card" style="width: 90%;">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ag.servico.nome}}</h5>
+                        <p class="card-text">Horário: {{ag.dtDataHora}}</p>
+                        <p class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </p>
+                        </div>
                     </div>
                 </div>
             </div>

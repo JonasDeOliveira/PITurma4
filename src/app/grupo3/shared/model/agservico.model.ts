@@ -1,3 +1,6 @@
+import { Lojas } from './lojas.model';
+import { Servicos } from './servico.model';
+
 export class AgServico {
 
     idAgendamento: number;
@@ -8,8 +11,9 @@ export class AgServico {
     dtHr: string;
     dtDataHora: string;
 
-    dsServico: string;
-    endLoja: string;
+    loja: Lojas; 
+    servico: Servicos; 
+
 }
 
 export interface ResponseAgendamentos {
