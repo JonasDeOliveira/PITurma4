@@ -38,7 +38,7 @@
             </div>
         </div>
         
-        <form id="id-form" name="formulario" action="#">
+        <form id="id-form" name="formulario" #formCadastro="ngForm" action="#">
             <div class="row mt-2">
                 <div class="form-group col-12 col-md-6">
                     <label for="name-paciente" class="label-form">Nome do(a) Paciente</label>
@@ -54,33 +54,33 @@
                 </div>
                 <div class="form-group col-12 col-md-1">
                     <label for="peso" class="label-form">Peso</label>
-                    <input type="text" class="form-control style-input" id="peso" placeholder="">
+                    <input type="text" class="form-control style-input" id="peso" name="vlPeso" [(ngModel)]="request.vlPeso" #vlPeso="ngModel" placeholder="">
                 </div>
                 <div class="form-group col-12 col-md-1">
                     <label for="altura" class="label-form">Altura</label>
-                    <input type="text" class="form-control style-input" id="altura" placeholder="">
+                    <input type="text" class="form-control style-input" id="altura" name="vlAltura" [(ngModel)]="request.vlAltura" #vlAltura="ngModel" placeholder="">
                 </div>
             </div>
 
             <div class="row mt-2">
                 <div class="form-group col-12 col-md-7">
                     <label for="habitos" class="label-form">Hábitos/Vícios</label>
-                    <input type="text" class="form-control style-input" id="habitos" placeholder="" required>
+                    <input type="text" class="form-control style-input" id="habitos" name="dsHabitosVicios" [(ngModel)]="request.dsHabitosVicios" #dsHabitosVicios="ngModel" placeholder="" required>
                 </div>
                 <div class="form-group col-12 col-md-5">
                     <label for="alergias" class="label-form">Alergias/Restrições</label>
-                    <input type="text" class="form-control style-input" id="alergias" placeholder="" required>
+                    <input type="text" class="form-control style-input" id="alergias" name="dsAlergiasRestricoes" [(ngModel)]="request.dsAlergiasRestricoes" #dsAlergiasRestricoes="ngModel" placeholder="" required>
                 </div>
             </div>
 
             <div class="row mt-2">
                 <div class="form-group col-12 col-md-6">
                     <label for="medicacao-continua" class="label-form">Medicação de Uso Contínuo</label>
-                    <input type="text" class="form-control style-input" id="medicacao-continua" placeholder="" required>
+                    <input type="text" class="form-control style-input" id="medicacao-continua" name="dsMedicacaoUsoContinuo" [(ngModel)]="request.dsMedicacaoUsoContinuo" #dsMedicacaoUsoContinuo="ngModel" placeholder="" required>
                 </div>
                 <div class="form-group col-12 col-md-6">
                     <label for="problema-saude" class="label-form">Problemas de Saúde</label>
-                    <input type="text" class="form-control style-input" id="problema-saude" placeholder="" required>
+                    <input type="text" class="form-control style-input" id="problema-saude" name="dsProblemasSaude" [(ngModel)]="request.dsProblemasSaude" #dsProblemasSaude="ngModel" placeholder="" required>
                 </div>
             </div>
 
@@ -96,34 +96,35 @@
             <div class="row mt-2">
                 <div class="form-group col-12 col-md-6">
                     <label for="subjetivo" class="label-form">Subjetivo</label>
-                    <textarea  class="form-control style-input-text-area" id="subjetivo" rows="4" required></textarea>
+                    <textarea  class="form-control style-input-text-area" rows="4" id="subjetivo" name="dsSubjetivo" [(ngModel)]="request.prontuario.dsSubjetivo" #dsSubjetivo="ngModel" required></textarea>
                 </div>
                 <div class="form-group col-12 col-md-6">
                     <label for="objetivo" class="label-form">Objetivo</label>
-                    <textarea  class="form-control style-input-text-area" id="objetivo" rows="4" required></textarea>
+                    <textarea  class="form-control style-input-text-area" rows="4" id="objetivo" name="dsObjetivo" [(ngModel)]="request.prontuario.dsObjetivo" #dsObjetivo="ngModel" required></textarea>
                 </div>
             </div>
 
             <div class="row mt-2">
                 <div class="form-group col-12 col-md-6">
                     <label for="avaliacao" class="label-form">Avaliação</label>
-                    <textarea  class="form-control style-input-text-area" id="avaliacao" rows="4" required></textarea>
+                    <textarea  class="form-control style-input-text-area" rows="4" id="avaliacao" name="dsAvaliacao" [(ngModel)]="request.prontuario.dsAvaliacao" #dsAvaliacao="ngModel" required></textarea>
                 </div>
                 <div class="form-group col-12 col-md-6">
                     <label for="plano" class="label-form">Plano</label>
-                    <textarea  class="form-control style-input-text-area" id="plano" rows="4" required></textarea>
+                    <textarea  class="form-control style-input-text-area" rows="4" id="plano" name="dsPlano" [(ngModel)]="request.prontuario.dsPlano" #dsPlano="ngModel" required></textarea>
                 </div>
             </div>
 
             <div class="row  mt-2">
                 <div class="form-group col-12">
                     <label for="observacoes" class="label-form">Observações</label>
-                    <textarea  class="form-control style-input-text-area" id="observacoes" rows="4" required></textarea>
+                    <textarea  class="form-control style-input-text-area" id="observacoes" name="dsObservacoes" [(ngModel)]="request.prontuario.dsObservacoes" #dsObservacoes="ngModel" rows="4" required></textarea>
                 </div>
             </div>
 
             <div class="text-center mt-2">
-                <button type="submit" class="btn  btn-verde mr-5" (click)="open(abrir)">Salvar</button>
+                <!-- <button type="submit" class="btn  btn-verde mr-5" (click)="open(abrir)">Salvar</button> -->
+                <button type="button" class="btn  btn-verde mr-5" value="Cadastro" (click)="registrar()">Salvar</button>
                 <button type="reset" class="btn btn-cinza">Limpar</button>
             </div>
         </form>
@@ -131,7 +132,7 @@
 </section>
 
 <!-- Modal Salvar-->
-<ng-template #abrir let-c="close" let-d="dismiss">
+<!-- <ng-template #abrir let-c="close" let-d="dismiss">
     <div class="modal-header">
         <h5 class="modal-title" id="modal-salvarTitle">Atenção</h5>
         <button type="button" class="close" aria-label="Close" (click)="c('Save click')">
@@ -144,7 +145,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-verde" (click)="c('Save click')">Ok</button>
       </div>  
-</ng-template>
+</ng-template> -->
 
 <footer>
     <div class="row">

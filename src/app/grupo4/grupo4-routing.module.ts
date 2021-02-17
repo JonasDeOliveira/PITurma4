@@ -14,7 +14,7 @@ import { PerfilMedicoComponent } from './perfil-medico/perfil-medico.component';
 export const Grupo4RoutingModule: Routes = [
     {path: 'cadastro/medico' , component: CadastroMedicoComponent},
     {path: 'historico/paciente' , component: HistoricoPacienteComponent},
-    { path: 'atendimento/especialista', component: AtendimentoEspecialistaComponent},
+    { path: 'atendimento/especialista/:id/:idPaciente', component: AtendimentoEspecialistaComponent},
     { path: 'prescrever/medicacao', component: PrescreverMedicacaoComponent},
     { path: 'agenda/medico', component: AgendaMedicoComponent},
     { path: 'login/medico', component:LoginMedicoComponent},

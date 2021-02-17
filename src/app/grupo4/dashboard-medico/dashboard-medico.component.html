@@ -12,45 +12,43 @@
     <button class="sair">Sair</button>
   </div>
 </div>
-
-
-
-
 <br>
 <br>
 <div class="container">
   <div class="row">
-    <div class="agenda col-12 col-md-5">
+    <div class="col-12 col-md-1"></div>
+    <div class="agenda col-12 col-md-10">
       <h1 class="text-center">{{data|date:"dd/MM/yyyy"}}</h1>
       <table class="table">
         <tbody>
           <tr *ngFor="let agendamento of agendamentosResposta">
-            <td>{{agendamento.agenda.periodo.horaInicial}}</td>
-            <td>{{agendamento.paciente.nmNome}}</td>
-            <td>
+            <td class="tdAgenda">{{agendamento.agenda.periodo.horaInicial}}</td>
+            <td class="tdAgenda">{{agendamento.paciente.nmNome}}</td>
+            <td class="tdAgenda">
               {{agendamento.agenda.tipoConsulta.dsTipoConsulta}}
             </td>
-            <td class="confirmado">
+            <td class="tdAgenda confirmado">
               {{agendamento.statusConsulta.dsStatusConsulta}}
+            </td>
+            <td>
+              <button class="menu2" [routerLink]="['/atendimento/especialista', agendamento.idAgPaciente, agendamento.paciente.idUsuario]">Iniciar Atendimento</button>
             </td>
           </tr>
         </tbody>
       </table>
-
     </div>
-    <div class="botoes col-12 col-md-6">
-      <button class="menu" routerLink="/atendimento/especialista">Iniciar Atendimento</button>
-      <br>
-      <br>
-      <br>
+    <div class="col-12 col-md-1"></div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-4">
       <button class="menu" routerLink="/historico/paciente" >Histórico de Pacientes</button>
-      <br>
-      <br>
-      <br>
+    </div>
+    <div class="col-4">
       <button class="menu" routerLink="/agenda/medico">Agenda Geral</button>
-      <br>
-      <br>
-      <br>
+    </div>
+    <div class="col-4">
       <button class="menu">Plano Nutricional</button>
     </div>
   </div>

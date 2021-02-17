@@ -13,6 +13,8 @@ export class DashboardMedicoComponent implements OnInit {
   agendamentosResposta: any;
   data: any;
 
+  
+
   ngOnInit(): void {
     this.getAgendamentos();
   }

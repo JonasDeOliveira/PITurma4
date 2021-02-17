@@ -1,34 +1,34 @@
 //CADASTRAR Atendimento
 export interface Atendimento {
-    data : String;
-    idAtendimento: number;
-    nomePaciente: string;
-    idade: number;
-    genero: string;
-    idProntuario: number;
+    paciente : Paciente;
+    medico: Medico;
+    prontuario: Prontuario;
+    agPaciente: AgPaciente;
+    vlPeso: number;
+    vlAltura: number;
+    dsHabitosVicios: string;
+    dsAlergiasRestricoes: string;
+    dsMedicacaoUsoContinuo: string;
+    dsProblemasSaude: string;
+    dtAtendimento: any;
 }
 
-// export interface CadastroSolicitacao {
-//     prontuario: Prontuario;
-//     paciente: Paciente;
-//     medico: Medico;
-//     dtSolicitacao: string;
-//     dsIndicacaoClin: string;
-//     exames: Exames[];
-// }
+export interface Paciente {
+    idUsuario: any;
+}
 
-// export interface Prontuario {
-//     idProntuario: number;
-// }
+export interface Medico {
+    idUsuario: any;
+}
 
-// export interface Paciente {
-//     idUsuario: number;
-// }
+export interface Prontuario {
+    dsSubjetivo: string;
+    dsObjetivo: string;
+    dsAvaliacao: string;
+    dsPlano: string;
+    dsObservacoes: string;
+}
 
-// export interface Medico {
-//     idUsuario: number;
-// }
-
-// export interface Exames {
-//     idTipoExame: number;
-// }
+export interface AgPaciente {
+    idAgPaciente: any;
+}
