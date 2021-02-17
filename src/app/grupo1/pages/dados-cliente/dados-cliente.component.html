@@ -154,7 +154,7 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-6" id="altera-foto">
-                        <img id="img-perfil" src="assets/grupo1/img/icon_login.png">
+                        <img id="img-perfil" src= "{{outputCliente.usuario.dsEndImg}}">
                         <button type="button" class="btn botao-altera-foto" (click)="open(modalFotoCliente)"
                             data-toggle="modal" data-target=".bd-foto-perfil-modal-lg">Alterar Foto</button>
                     </div>
@@ -205,8 +205,8 @@
                     <div class="card">
                         <img class="img-card" src="assets/grupo1/img/BASIC.png" alt="Card image cap">
                         <h5 class="card-title">{{responsePlanos[0].nmPlano}} </h5>
-                        <div *ngFor="let servicos of responsePlanos[0].servicos" class="card-body">
-                            <p class="card-text">{{servicos.dsServico}}</p>
+                        <div class="card-body">
+                            <p *ngFor="let servicos of responsePlanos[0].servicos"  class="card-text">{{servicos.dsServico}}</p>
                         </div>
                         <div>
                             <h5 class="alinhamento">R${{responsePlanos[0].vlPlano}},00</h5>
@@ -218,8 +218,8 @@
                     <div class="card">
                         <img class="img-card" src="assets/grupo1/img/PLUS.png" alt="Card image cap">
                         <h5 class="card-title">{{responsePlanos[1].nmPlano}}</h5>
-                        <div *ngFor="let servicos of responsePlanos[1].servicos" class="card-body">
-                            <p class="card-text">{{servicos.dsServico}}</p>
+                        <div class="card-body">
+                            <p *ngFor="let servicos of responsePlanos[1].servicos"  class="card-text">{{servicos.dsServico}}</p>
                         </div>
                         <div>
                             <h5 class="alinhamento">R${{responsePlanos[1].vlPlano}},00</h5>
@@ -231,8 +231,8 @@
                     <div class="card">
                         <img class="img-card" src="assets/grupo1/img/PREMIUM.png" alt="Card image cap">
                         <h5 class="card-title">{{responsePlanos[2].nmPlano}}</h5>
-                        <div *ngFor="let servicos of responsePlanos[2].servicos" class="card-body">
-                            <p class="card-text">{{servicos.dsServico}}</p>
+                        <div  class="card-body">
+                            <p *ngFor="let servicos of responsePlanos[2].servicos" class="card-text">{{servicos.dsServico}}</p>
                         </div>
                         <div>
                             <h5 class="alinhamento">R${{responsePlanos[2].vlPlano}},00</h5>
@@ -277,8 +277,8 @@
                                     <div class="form-group col-md-12">
                                         <label for="cartao-nome">Nome impresso no Cartão:</label>
                                         <input type="text" class="form-control" id="cartao-nome" name="nmNome"
-                                            [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="10"
-                                            maxlength="30" required placeholder="Nome impresso no Cartão">
+                                            [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="10" maxlength="30"
+                                            required placeholder="Nome impresso no Cartão">
                                         <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)"
                                             class="alert alert-light">
                                             <div [hidden]="!nmNome.errors.required">
@@ -300,8 +300,7 @@
                                         <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
                                         <input type="text" class="form-control" id="cartao-codigo-seguranca"
                                             placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca"
-                                            name="codSeguranca" #codSeguranca="ngModel" minlength="3" maxlength="3"
-                                            required>
+                                            name="codSeguranca" #codSeguranca="ngModel" minlength="3" maxlength="3" required>
                                     </div>
                                 </div>
 
@@ -331,8 +330,8 @@
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <!-- <input type="file" class="form-control-file" id="alteraFotoCliente"
-                                        name="alteraFotoCliente" [(ngModel)]="dsEndImg" #dsEndImg="ngModel"> -->
+                                    <input type="file" class="form-control-file" id="alteraFotoCliente"
+                                        name="dsEndImg" [(ngModel)]="outputCliente.usuario.dsEndImg" #dsEndImg="ngModel">
                                 </div>
                             </div>
                         </div>
@@ -343,7 +342,7 @@
             <div class="form-group botoes-cadastro">
                 <button type="button" class="btn btns-cadastro btn-espaco" (click)="alterarDadosCliente()"
                     [disabled]="formDadosCliente.invalid">Alterar</button>
-                <button routerLink="/" class="btn btn-cancelar btn-espaco">Cancelar</button>
+                <button routerLink="/area-cliente" class="btn btn-cancelar btn-espaco">Cancelar</button>
             </div>
         </form>
     </section>
