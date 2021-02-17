@@ -55,7 +55,8 @@ this.areaDoCliente.lembretes.splice(
 //IMPLEMENTAR NO HEADER LOGADO
 sair() {
   if(confirm("Deseja mesmo sair?")) {
-    localStorage.removeItem("usuario");
+    localStorage.removeItem("cliente");
+    localStorage.setItem("ehLogado", JSON.stringify(true));
     this.router.navigate([`/`]);
   }
 

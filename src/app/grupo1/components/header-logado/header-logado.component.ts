@@ -14,5 +14,10 @@ export class HeaderLogadoComponent implements OnInit {
   }
   toggleNavbar(){ 
     this.navbarOpen =! this.navbarOpen; 
-    };
+    }
+
+    logout(){
+      localStorage.removeItem("cliente");
+      localStorage.setItem("isLogado","false");
+    }
 }

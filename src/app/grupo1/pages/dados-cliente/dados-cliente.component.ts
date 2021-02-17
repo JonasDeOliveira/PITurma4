@@ -35,8 +35,12 @@ export class DadosClienteComponent implements OnInit {
     senhaConfirmacao: '',
     senhaAtual: '',
     mensagem: '',
-    cartaoAtual: null
   };
+
+  dadosAtuais = {
+    cartaoAtual: null,
+    planoAtual: null
+  }
 
   password = document.getElementById("cadastro-senha-nova")
   confirm_password = document.getElementById("cadastro-senha-nova2");
@@ -123,9 +127,8 @@ export class DadosClienteComponent implements OnInit {
         this.responseFormularioMeusDados = response;
 
         this.outputCliente = this.responseFormularioMeusDados.inputCliente;
-        this.outputCliente.loginUsuario.dsSenha = "";
-        //this.confirmacao.senhaAtual = this.outputCliente.loginUsuario.dsSenha;
-        this.confirmacao.cartaoAtual = this.outputCliente.cartao;
+        this.dadosAtuais.cartaoAtual = this.outputCliente.cartao;
+        this.dadosAtuais.planoAtual = this.outputCliente.contrato.plano.idPlano;
 
         this.getCidadesByUf();
       }
@@ -146,6 +149,9 @@ export class DadosClienteComponent implements OnInit {
 
   alterarDadosCliente() {
     console.log(this.outputCliente);
+    if(this.confirmacao.senhaNova != "" && this.confirmacao.senhaNova!=null) {
+
+    }
 
     this.clienteService.alteraDadosCliente(Number(this.idUsuario), this.outputCliente).subscribe(
       response => {
@@ -186,20 +192,20 @@ export class DadosClienteComponent implements OnInit {
 
   limparCartao(): void {
     console.log(this.outputCliente.cartao)
-    this.outputCliente.cartao = this.confirmacao.cartaoAtual;
-
-    this.outputCliente.contrato.plano.idPlano = 1;
+    this.outputCliente.contrato.plano.idPlano = this.dadosAtuais.planoAtual;
+    this.outputCliente.cartao = this.dadosAtuais.cartaoAtual;
 
     console.log(this.outputCliente.cartao)
     this.modalService.dismissAll();
   }
 
   ver() {
-    console.log(this.outputCliente)
+    //console.log(this.outputCliente)
+    console.log(this.confirmacao.senhaNova);
   }
 
   conferirSenha(): void {
-    this.loginService.conferirSenha(this.outputCliente.loginUsuario.dsSenha).subscribe(
+    this.loginService.conferirSenha(this.confirmacao.senhaAtual).subscribe(
       response => {
         console.log(response.mensagem);
         //this.confirmacao.mensagem = response.mensagem;

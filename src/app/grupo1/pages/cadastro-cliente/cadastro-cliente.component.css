@@ -91,6 +91,8 @@ section .btn:hover {
 
 .card-text{
     font-size: 0.75rem;
+    text-align: left;
+    
 }
 
 .btn-card{
@@ -123,8 +125,5 @@ section .btn:hover {
  color: red;
  background: none;
  border: none;
-}
-
-.card-text{
-    line-height: 5px;
+ line-height: 5px; 
 }
