@@ -15,24 +15,25 @@ import { ModalLembreteComponent } from '../../lembretes/modal-lembrete/modal-lem
 })
 export class AreaClienteComponent implements OnInit {
 
-  idUsuario: string ='6';
+  cliente = JSON.parse(localStorage.getItem("cliente"));
+  idUsuario: string;
 
-  constructor( private clienteService: ClienteService, private planosService: PlanosService
-    , private router: Router,
+  constructor( private clienteService: ClienteService, 
+    private planosService: PlanosService, 
+    private router: Router,
     private modalService: NgbModal) { }
 
   areaDoCliente : any;
   public lembretes=[] ;
 
   ngOnInit(): void {
+    this.idUsuario = this.cliente.idUsuario;
     this.getAreaDoCliente();
-  
-    
   }
 
 
 getAreaDoCliente(){
-  this.clienteService.getAreaClienteById(6).subscribe(
+  this.clienteService.getAreaClienteById().subscribe(
     response => {
       this.areaDoCliente = response;
       console.log(response);
@@ -51,5 +52,13 @@ this.areaDoCliente.lembretes.splice(
 }
 }
 
+//IMPLEMENTAR NO HEADER LOGADO
+sair() {
+  if(confirm("Deseja mesmo sair?")) {
+    localStorage.removeItem("usuario");
+    this.router.navigate([`/`]);
+  }
+
+}
 
 }

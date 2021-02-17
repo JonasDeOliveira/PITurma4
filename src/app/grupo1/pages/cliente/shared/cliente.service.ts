@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseCidades, ResponseFormularioCadastro, ResponseFormularioMeusDados, ResponseAreadoCliente,OutputCliente} from './cliente.model';
 import { Observable } from 'rxjs';
+import { ResponsePlanos } from '../../planos/shared/planos.model';
 
 
 @Injectable({
@@ -12,6 +13,7 @@ import { Observable } from 'rxjs';
     constructor(private http: HttpClient) { }
   
     private readonly API = 'http://localhost:8080';
+    cliente = JSON.parse(localStorage.getItem("cliente"));
      
     getFormularioCadastro(){
        const URL = `${this.API}/cliente/cadastro`
@@ -20,35 +22,39 @@ import { Observable } from 'rxjs';
 
   
 
-  getFormularioMeusDados(idUsuario: number): Observable<ResponseFormularioMeusDados> {
-    const URL = `${this.API}/cliente/meus-dados/${idUsuario}`
+  getFormularioMeusDados(): Observable<ResponseFormularioMeusDados> {
+    const URL = `${this.API}/cliente/meus-dados/${this.cliente.idUsuario}`
     return this.http.get<ResponseFormularioMeusDados>(URL);
   }
  
  
-
   getCidadesByUf(idUf: number): Observable<ResponseCidades> {
     const URL = `${this.API}/cidadeBuscar/${idUf}`
     return this.http.get<ResponseCidades>(URL);
   }
 
-  getAreaClienteById(idUsuario: number): Observable<ResponseAreadoCliente> {
-    const URL = `${this.API}/cliente/area-cliente/${idUsuario}`
+  getAreaClienteById(): Observable<ResponseAreadoCliente> {
+    const URL = `${this.API}/cliente/area-cliente/${this.cliente.idUsuario}`
     return this.http.get<ResponseAreadoCliente>(URL);
 
   }
 
+  //TODO: Deletar?
   createUsuario(outputCliente: OutputCliente): Observable<OutputCliente> {
     return this.http.post<OutputCliente>('http://localhost:8080/usuario', outputCliente);
   }
 
   createCliente(outputCliente: OutputCliente): Observable<OutputCliente> {
-    return this.http.post<OutputCliente>('http://localhost:8080/cliente/cadastrar', outputCliente);
+    const URL = `${this.API}/cliente/cadastrar`;
+    return this.http.post<OutputCliente>(URL, outputCliente);
   }
 
   alteraDadosCliente(idUsuario: number, request: OutputCliente): Observable<OutputCliente> {
-    return this.http.put<OutputCliente>(`${this.API}/cliente/alterar/${idUsuario}`, request);
+    const URL = `${this.API}/cliente/alterar/${idUsuario}`
+    return this.http.put<OutputCliente>(URL, request);
   }
 
-
+  getPlanos() {
+    return this.http.get<ResponsePlanos[]>('http://localhost:8080/planos');
+  }
 }

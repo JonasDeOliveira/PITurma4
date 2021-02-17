@@ -124,3 +124,7 @@ section .btn:hover {
  background: none;
  border: none;
 }
+
+.card-text{
+    line-height: 5px;
+}

@@ -33,7 +33,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="cadastro-cpf">CPF:</label>
-                        <input disabled type="text" class="form-control" id="cadastro-cpf"
+                        <input type="text" class="form-control" id="cadastro-cpf"
                             [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" required>
                     </div>
                     <div class="form-group col-md-1">
@@ -160,18 +160,16 @@
                     </div>
                     <div class="form altera-senha">
                         <label>Alterar a Senha:</label>
-                        <div class="form-row"></div>
-                        <div class="form-group col-md-6">
-                            <label for="cadastro-senha">Senha atual:</label>
-                            <input type="password" class="form-control" id="cadastro-senha"
-                                (ngModel)="outputCliente.loginUsuario.dsSenha" #dsSenha="ngModel" name="dsSenha"
-                                placeholder="Digite a senha">
-                            <!-- <div *ngIf="dsSenhaNova.touched || senhaConfirmacao.touched">
-                                <div *ngIf="confirmacao.senhaAtual != dsSenha.value" class="alert alert-light mt-1 justify-content-right"
-                                    role="alert">
-                                    A senha informada não confere!
-                                </div> 
-                            </div>  -->
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="cadastro-senha">Senha atual:</label>
+                                <input type="password" class="form-control" id="cadastro-senha"
+                                    [(ngModel)]="outputCliente.loginUsuario.dsSenha" #dsSenha="ngModel" name="dsSenha"
+                                    placeholder="Digite a senha" (change)="conferirSenha()">
+                                <div *ngIf="dsSenha.touched && confirmacao.mensagem!='' " class="alert">
+                                    {{confirmacao.mensagem}}
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-row">
@@ -202,33 +200,37 @@
 
             <h6>Planos:</h6>
 
-            <div class="modal-body" id="planos-dados">
+            <div class="modal-body">
                 <div class="card-deck">
                     <div class="card">
                         <img class="img-card" src="assets/grupo1/img/BASIC.png" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Plano Basic</h5>
+                            <!-- <div *ngFor="let servico ">
+
+                            </div> -->
                             <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
                         </div>
                         <div>
                             <h5 class="alinhamento">R$ 00,00</h5>
                         </div>
-                        <div><button class="btn  btn-card" disabled>Incluso</button></div>
+                        <div><button class="btn  btn-card" [id]="planos.plano1"
+                                [disabled]="planos.plano1 == this.outputCliente.contrato.plano.idPlano"
+                                (click)="selecaoPlano($event, modalCartaoCliente)">Selecionar</button></div>
                     </div>
                     <div class="card">
                         <img class="img-card" src="assets/grupo1/img/PLUS.png" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Plano Plus</h5>
                             <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
-                            <p class="card-text">Consulta com o Clínico Gera</p>
+                            <p class="card-text">Consulta com o Clínico Geral</p>
                         </div>
                         <div>
                             <h5 class="alinhamento">R$ 00,00</h5>
                         </div>
-                        <!--Botao do Modal de Cartão-->
-                        <div><button type="button" class="btn btn-card" (click)="open(modalCartaoCliente)"
-                                data-toggle="modal" data-target=".bd-example-modal-lg">Selecionar</button>
-                        </div>
+                        <div><button type="button" class="btn btn-card" [id]="planos.plano2"
+                                [disabled]="planos.plano2 == this.outputCliente.contrato.plano.idPlano"
+                                (click)="selecaoPlano($event, modalCartaoCliente)">Selecionar</button></div>
                     </div>
                     <div class="card">
                         <img class="img-card" src="assets/grupo1/img/PREMIUM.png" alt="Card image cap">
@@ -242,68 +244,77 @@
                         <div>
                             <h5 class="alinhamento">R$ 00,00</h5>
                         </div>
-                        <!--Botao do Modal de Cartão-->
-                        <div><button type="button" class="btn btn-card" (click)="open(modalCartaoCliente)"
-                                data-toggle="modal" data-target=".bd-example-modal-lg">Selecionar</button></div>
+                        <div><button type="button" class="btn btn-card" [id]="planos.plano3"
+                                [disabled]="planos.plano3 == this.outputCliente.contrato.plano.idPlano"
+                                (click)="selecaoPlano($event, modalCartaoCliente)">Selecionar</button></div>
                     </div>
+                    <!-- (click)="open(modalCartaoCliente) -->
                 </div>
             </div>
 
             <!-- MODAL CARTAO -->
-            <ng-template #modalCartaoCliente class="modal-dialog modal-lg" let-c="close" let-d="dismiss">
+            <ng-template #modalCartaoCliente class="modal-dialog modal-lg" let-c="close" let-d="dismiss" let-modal>
                 <div class="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
-                            <form>
+                            <form #formCartao="ngForm">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Dados do Cartão:</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                        (click)="d('Cross click')">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <h5 class="modal-title modal-basic-title">Dados do Cartão:</h5>
+
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-12 cadastro-cartao">
                                         <label for="cartao-numero">Número do Cartão:</label>
-                                        <input type="text" class="form-control" id="cartao-numero"
-                                            placeholder="0000 0000 0000 0000">
+                                        <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
+                                            [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel"
+                                            minlength="16" required placeholder="0000 0000 0000 0000">
+                                        <div *ngIf="nrCartao.errors && (nrCartao.dirty || nrCartao.touched)"
+                                            class="alert alert-light">
+                                            <div [hidden]="!nrCartao.errors.required">
+                                                Insira o número do cartão.
+                                            </div>
+                                            <div [hidden]="!nrCartao.errors.minlength">
+                                                Número de cartão inválido.
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label for="cartao-nome">Nome impresso no Cartão:</label>
-                                        <input type="text" class="form-control" id="cartao-nome"
-                                            placeholder="Nome impresso no Cartão">
+                                        <input type="text" class="form-control" id="cartao-nome" name="nmNome"
+                                            [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="10"
+                                            required placeholder="Nome impresso no Cartão">
+                                        <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)"
+                                            class="alert alert-light">
+                                            <div [hidden]="!nmNome.errors.required">
+                                                Campo nome é obrigatório.
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-row ">
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-5">
                                         <label for="cartao-vencimento">Data de vencimento:</label>
                                         <div class="vencimento-cartao">
-                                            <div class="form-group col-md-10">
-                                                <input type="text" class="form-control" id="dtValidade"
-                                                    placeholder="00/0000">
-                                            </div>
+                                            <input type="date" class="form-control" id="dtValidade"
+                                                placeholder="00/0000" [(ngModel)]="outputCliente.cartao.dtValidade"
+                                                name="dtValidade" #dtValidade="ngModel" required>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="cartao-emissao">Data de emissão:</label>
-                                        <div class="emissao-cartao">
-                                            <div class="form-group col-md-10">
-                                                <input type="text" class="form-control" id="dtEmissao"
-                                                    placeholder="00/0000">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-7">
                                         <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
-                                        <div class="form-group col-md-10">
-                                            <input type="text" class="form-control" id="cartao-codigo-seguranca"
-                                                placeholder="CVV">
-                                        </div>
+                                        <input type="text" class="form-control" id="cartao-codigo-seguranca"
+                                            placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca"
+                                            name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>
                                     </div>
                                 </div>
+
+                                <button type="button" class="btn btns-cadastro btn-espaco" (click)="d('Cross click')"
+                                    [disabled]="formCartao.invalid">Confirmar</button>
+                                <button type="button" class="btn btns-cadastro btn-espaco"
+                                    (click)="limparCartao()">Cancelar</button>
                             </form>
                         </div>
                     </div>

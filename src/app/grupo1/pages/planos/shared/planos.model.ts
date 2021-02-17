@@ -13,7 +13,6 @@ export interface ServicoPlano{
     dsServico: string
     
 }
-
 //GET Planos
 export interface ResponsePlanos {
     planos: Planos[]

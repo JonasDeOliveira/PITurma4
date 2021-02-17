@@ -12,14 +12,15 @@ import "src/assets/grupo1/css/grupo1.component.css";
 })
 export class ListaLembretesComponent implements OnInit {
 
-  idUsuario: string;
+  cliente = JSON.parse(localStorage.getItem("cliente"));
+  idUsuario : string;
 
   constructor(private modalService: NgbModal,
     private route: ActivatedRoute,
     private router: Router) { };
 
   ngOnInit(): void {
-    this.idUsuario = this.route.snapshot.paramMap.get('idUsuario');
+    this.idUsuario = this.cliente.idUsuario;
   }
 
   open() {

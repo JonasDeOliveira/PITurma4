@@ -40,7 +40,7 @@ export class LoginClienteComponent implements OnInit {
         localStorage.setItem("cliente", JSON.stringify(response.retorno));
 
         alert(response.mensagem);
-        this.router.navigate([`/area-cliente/${response.retorno.idUsuario}`]);
+        this.router.navigate([`/area-cliente`]);
       },
       error => {
         alert(error.error.mensagem);

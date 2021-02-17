@@ -64,3 +64,9 @@ button#todoSubmit{
 section .btn:hover {
     background-color: rgb(000, 080, 052);
 }
+
+.alert{
+    color: red;
+    background: none;
+    border: none;
+   }
