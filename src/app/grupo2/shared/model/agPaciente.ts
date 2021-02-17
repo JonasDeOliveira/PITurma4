@@ -4,6 +4,7 @@ export interface AgPaciente {
     idAgPaciente: number;
     agenda : Agenda;
     statusConsulta: StatusConsulta;
+
 }
 
 export interface Agenda {
@@ -16,7 +17,6 @@ export interface Agenda {
 export interface Medico {
     nome: string;
     espMed: EspMed;
-
 }
 
 export interface EspMed {
