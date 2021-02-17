@@ -180,8 +180,8 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="numParcelas">Opções de parcelamento*</label>
-                            <select id="numParcelas" class="form-control">
-                                <option selected>Escolha o número de parcelas</option>
+                            <select class="custom-select mb-2" [(ngModel)]="qtadeParcelas" id="name" name="parc"(change)="salvarQtdadeParcelasLS()">
+                                <option disabled value="undefined">Escolha o número de parcelas</option>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>

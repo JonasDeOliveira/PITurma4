@@ -125,6 +125,14 @@ section{
     padding: 0px;
     border: 0px;
   }
+
+  .btn-outline-primary {
+    width: 90px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #00A6FF;
+    color: #FFFFFF;
+  }
   
   @media(max-width:1010px){
       .foto{

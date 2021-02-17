@@ -95,18 +95,19 @@
                     <img id="img-lembrete" src="/assets/assets-grupo2/calendar.png"/>
                 </div>
             </div>
-            <div class="confirmacao-meio">
+            <div class="confirmacao-meio text-center">
                 <p>Tipo de consulta: {{consulta}}</p>
                 <p>Especialista: {{nmMedico}}</p>
                 <p>Especialidade: {{dsEspecialidade}}</p>
                 <p>Data: 23/10/2017 14:00</p>
                 <p>Pagamento: Plano Premium</p>
-                <button type="button" class="btn-confirm clicavel">Agendar</button>
-                <p class="texto-lembrete">Quero receber o lembrete da minha consulta via:</p>
+                <button type="button" class="btn-confirm clicavel">Confirmar</button>
+                <p class="texto-lembrete text-center">Quero receber o lembrete da minha consulta via:</p>
             </div>
+          
             <div class="confirmacao-baixo d-flex justify-content-center">
-                <button type="button" (click)="open(contentEmail)" class="btn-confirm" data-toggle="modal" data-target="#emailModal">E-mail</button>
-                <button type="button" (click)="open(contentWhatsapp)" class="btn-confirm" data-toggle="modal" data-target="#whatsModal">WhatsApp</button>
+                <button type="button"class="btn-outline-primary" (click)="open(contentEmail)" data-toggle="modal" data-target="#emailModal">E-mail</button>
+                <button type="button" class="btn-outline-primary" (click)="open(contentWhatsapp)" data-toggle="modal" data-target="#whatsModal">WhatsApp</button>
             </div>
 
             <!-- Modal e-mail -->
