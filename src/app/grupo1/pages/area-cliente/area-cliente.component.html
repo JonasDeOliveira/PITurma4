@@ -1,7 +1,7 @@
 
    <section>
         <div class="container">
-            <h4 class="text-center titulo">Acompanhe aqui as informações do seu perfil.</h4>
+            <h4 class="text-center titulo">Acompanhe aqui as informações do seu perfil e serviços.</h4>
             <div class="row images" id="ads">
                 <!-- Category Card -->
                 <div class="col-md-3 col-sm-6 col-12  p-2">
@@ -9,10 +9,10 @@
                         <div class="card-image">
                             <img class="img-fluid rounded mx-auto d-block p-3" src="/assets/grupo1/img/consulta.png"
                                 alt="Icon Consulta" />
-                            <p class="text-card text-center">Acompanhe aqui as <br>suas consultas</p>
+                            <p class="text-card text-center">Agendar consulta<br> com especialista</p>
                         </div>
                         <div class="card-image-overlay m-auto p-3">
-                            <a class="ad-btn " routerLink="#">Consultas</a>
+                            <a class="ad-btn " routerLink="#">Agendar</a>
                         </div>
                     </div>
                 </div>
@@ -21,10 +21,10 @@
                         <div class="card-image">
                             <img class="img-fluid rounded mx-auto d-block p-3" src="/assets/grupo1/img/exames.png"
                                 alt="Icon exame" />
-                            <p class="text-card">Veja solicitações<br> de exames</p>
+                            <p class="text-card">Acompanhe<br> suas consultas</p>
                         </div>
                         <div class="card-image-overlay m-auto p-3">
-                            <a class="ad-btn" routerLink="#">Exames</a>
+                            <a class="ad-btn" routerLink="#">Consultas</a>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                                             <!-- BOTAO NOVO LEMBRETE -->
                                             <button type="button" (click)="open()" class="todo-form__btn btn" id="todoSubmit"
                                                  data-target=".bd-lembrete-modal-lg">Novo lembrete<img
-                                                src="/assets/grupo1/img/add.png"  class=" fa-plus pr-2"></button>
+                                                src="/assets/grupo1/img/add.png"  alt="imagem mais" class=" fa-plus pr-2"></button> 
                                         </div>
                                         
                                     <div class="todo__tarefas" id="todoTarefas">
@@ -101,11 +101,11 @@
                                 <img class="image_plano" src="assets/grupo1/img/basicCadastro.png" />
                                  <ul class="ad-btn text-left  pt-4" >
                                     
-                                     <li class=" p-1 font-weight-bold text-secondary">{{areaDoCliente.plano.nmPlano |titlecase}}</li>
-                                     <li > {{areaDoCliente.plano.dsPlano}}</li>
-                                      <li >Valor do Plano: {{areaDoCliente.plano.vlPlano |  currency:'BRL':true }}</li> 
-                                     <li class=" p-1 font-weight-bold text-secondary"><span>Serviços</span></li>
-                                     <li *ngFor="let servico of areaDoCliente.plano.servicos">{{servico.dsServico}}</li>
+                                     <li class=" p-1 font-weight-bold text-center text-secondary h4">{{areaDoCliente.plano.nmPlano |titlecase}}</li>
+                                     <li class="text-center "> {{areaDoCliente.plano.dsPlano}}</li>
+                                      <li class="text-center">Valor do Plano: {{areaDoCliente.plano.vlPlano |  currency:'BRL':true }}</li> 
+                                     <li class=" p-1 font-weight-bold text-secondary text-center"><span>Serviços</span></li>
+                                     <li *ngFor="let servico of areaDoCliente.plano.servicos " class="text-center">{{servico.dsServico}}</li>
                        
                                 </ul>
                                 <div class="success">
