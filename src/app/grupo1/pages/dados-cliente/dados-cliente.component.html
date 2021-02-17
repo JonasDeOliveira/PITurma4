@@ -158,13 +158,13 @@
                         <button type="button" class="btn botao-altera-foto" (click)="open(modalFotoCliente)"
                             data-toggle="modal" data-target=".bd-foto-perfil-modal-lg">Alterar Foto</button>
                     </div>
-                    <div class="form altera-senha">
+                    <div class="form altera-senha" (change)="ver()">
                         <label>Alterar a Senha:</label>
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                 <label for="cadastro-senha">Senha atual:</label>
                                 <input type="password" class="form-control" id="cadastro-senha"
-                                    [(ngModel)]="outputCliente.loginUsuario.dsSenha" #dsSenha="ngModel" name="dsSenha"
+                                    [(ngModel)]="confirmacao.senhaAtual" #dsSenha="ngModel" name="dsSenha"
                                     placeholder="Digite a senha" (change)="conferirSenha()">
                                 <div *ngIf="dsSenha.touched && confirmacao.mensagem!='' " class="alert">
                                     {{confirmacao.mensagem}}

@@ -2,9 +2,10 @@ import { Component, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { OutputCliente} from '../cliente/shared/cliente.model';
+import { LoginUsuario, OutputCliente } from '../cliente/shared/cliente.model';
 import { ClienteService } from '../cliente/shared/cliente.service';
 import { PlanosService } from '../planos/shared/planos.service';
+import { LoginClienteService } from '../cliente/shared/loginCliente.service';
 import { LoginClienteComponent } from '../login-cliente/login-cliente.component';
 
 @Component({
@@ -18,17 +19,22 @@ export class CadastroClienteComponent implements OnInit {
   responseCidadesByUf: any;
   responsePlanos: any;
 
+  loginCliente: LoginUsuario = {
+    idUsuario: null,
+    dsSenha: "",
+    dsEmail: ""
+  }
+
   planos = {
     plano1: 1,
     plano2: 2,
     plano3: 3
   }
 
-  confirmacao= {
+  confirmacao = {
     emailConfirmacao: '',
     senhaConfirmacao: ''
   };
-
 
   outputCliente: OutputCliente = {
     loginUsuario: {
@@ -75,34 +81,36 @@ export class CadastroClienteComponent implements OnInit {
         nmPlano: '',
         dsPlano: '',
         vlPlano: null,
-        servicos:[{
+        servicos: [{
           idServicoPlano: null,
           dsServico: ''
         }
         ]
       },
       idUsuario: null
-      
+
     },
     cartao: {
       nmNome: '',
-      idCartao:null, 
+      idCartao: null,
       usuario: null,
-      nrCartao:'',
-      codSeguranca:null,
-      dtValidade:'',
-      dtEmissao:''
+      nrCartao: '',
+      codSeguranca: null,
+      dtValidade: '',
+      dtEmissao: ''
     }
 
   }
 
   constructor(private clienteService: ClienteService,
-              private planosService: PlanosService,
-              private router: Router,
-              config: NgbModalConfig,
-              private modalService: NgbModal ) {
-              config.backdrop = 'static';
-              config.keyboard = false; }
+    private loginService: LoginClienteService,
+    private planosService: PlanosService,
+    private router: Router,
+    config: NgbModalConfig,
+    private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit(): void {
     this.getFormularioCadastro();
@@ -126,20 +134,22 @@ export class CadastroClienteComponent implements OnInit {
       }
     )
   }
-  
+
   ver() {
     console.log(this.outputCliente)
   }
+
   cadastrar() {
     this.clienteService.createCliente(this.outputCliente).subscribe(
       response => {
         alert('Cadastro realizado com sucesso');
-        //this.router.navigate(['/area-cliente/6']);
+        this.loginCliente = this.outputCliente.loginUsuario;
+        this.logarCliente()
       },
       error => {
         console.log(error)
-      //alert('algo inesperado aconteceu');
-     }
+        //alert('algo inesperado aconteceu');
+      }
     )
   }
 
@@ -147,7 +157,7 @@ export class CadastroClienteComponent implements OnInit {
     // this.modalService.open(content);
     this.modalService.open(content);
   }
- 
+
   selecaoPlano(event, content): void {
     const id = event.target.id;
 
@@ -167,23 +177,24 @@ export class CadastroClienteComponent implements OnInit {
     }
   }
 
-  limparCartao():void {
+  limparCartao(): void {
     console.log(this.outputCliente.cartao)
-      this.outputCliente.cartao = {
-        nmNome: '',
-        idCartao:null, 
-        usuario: null,
-        nrCartao:'',
-        codSeguranca:null,
-        dtValidade:'',
-        dtEmissao:''
-      }
+    this.outputCliente.cartao = {
+      nmNome: '',
+      idCartao: null,
+      usuario: null,
+      nrCartao: '',
+      codSeguranca: null,
+      dtValidade: '',
+      dtEmissao: ''
+    }
 
-      this.outputCliente.contrato.plano.idPlano = 1;
+    this.outputCliente.contrato.plano.idPlano = 1;
 
-      console.log(this.outputCliente.cartao)
-      this.modalService.dismissAll();
+    console.log(this.outputCliente.cartao)
+    this.modalService.dismissAll();
   }
+
   getPlanos() {
     this.planosService.getPlanos().subscribe(
       response => {
@@ -191,5 +202,18 @@ export class CadastroClienteComponent implements OnInit {
         this.responsePlanos = response;
       }
     )
-    }
- }
+  }
+
+  logarCliente() {
+    this.loginService.getAcessoCliente(this.loginCliente).subscribe(
+      response => {
+        localStorage.setItem("cliente", JSON.stringify(response.retorno));
+        localStorage.setItem("isLogado", JSON.stringify(true));
+        this.router.navigate([`/area-cliente`]);
+      },
+      error => {
+        alert(error.error.mensagem);
+      }
+    )
+  }
+}

@@ -51,7 +51,7 @@ export class LoginClienteComponent implements OnInit {
   esqueceuSenha() {
     this.loginService.esqueceuASenha(this.loginCliente.dsEmail).subscribe(
       response => {
-        alert(response.mensagem);
+        //alert(response.mensagem);
         window.location.reload(true);
       },
       error => {
