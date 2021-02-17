@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ReceitaService } from '../shared/receitas.service'
+import { ResponseReceitas, Receitas } from '../shared/receitas.model'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pesquisar-receitas',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PesquisarReceitasComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private receitaService : ReceitaService, private router: Router) { }
+ 
+  responseReceitas : ResponseReceitas[];
+  iptBusca='';
+  
   ngOnInit(): void {
+
+  }
+
+
+  getCategoria(categoria : string) {
+    this.iptBusca = categoria;
+    this.listarReceitas();
+  }
+  
+  listarReceitas() {
+    this.receitaService.consultarReceitas(this.iptBusca).subscribe (
+      response => {
+        //this.responseReceitas = response;
+        localStorage.setItem("resultReceitas", JSON.stringify(response));
+        localStorage.setItem("palavraPesquisada", this.iptBusca);
+        this.router.navigate(['/resultado-buscar-receitas']);
+      }
+    )
   }
 
 }

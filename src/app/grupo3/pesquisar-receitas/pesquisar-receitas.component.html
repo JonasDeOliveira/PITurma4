@@ -1,5 +1,5 @@
 <div class="container">
-  
+
 
     <section>
         <div class="banner">
@@ -8,28 +8,29 @@
             <h3>Receitas</h3>
             <nav class="navbar navbar-light bg-light">
                 <form class="form-inline">
-                    <input class="form-control mr-sm-2 botao-pesquisar" id="botao-pesquisar" type="search"
-                        placeholder="Buscar receita" aria-label="Pesquisar"><a href="#"><img src="/assets/img-grupo3/search-icon.png"
-                            width="20px" height="20px"></a>
+                    <input class="form-control mr-sm-2 botao-pesquisar" id="botao-pesquisar" type="text"
+                        placeholder="Buscar receita" name="ipt_busca" aria-label="Pesquisar" [(ngModel)]="iptBusca">
+                    <a (click)="listarReceitas()"><img src="/assets/img-grupo3/search-icon.png" width="20px" height="20px"></a>
                 </form>
             </nav>
         </div>
+
         <div class="container1 align-items-center">
             <div class="row">
-                <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                    <a href="../TELA 04/resultado-buscar-receitas.html"> <img class="img-fluid mb-3 mt-3 ml-3"
+                <div  class="col-12 col-lg-4 col-md-4 col-sm-4">
+                    <a (click)="getCategoria('sopas')" > <img class="img-fluid mb-3 mt-3 ml-3"
                             src="/assets/img-grupo3/soup-1787997_640 (1).jpg">
                         <h4 class="opcao">SOPAS</h4>
                     </a>
                 </div>
                 <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                    <a href="#"> <img class="img-fluid mb-3 mt-3 ml-2" src="/assets/img-grupo3/salad-374173_640.jpg">
-                        <h4 class="opcao">SALADAS</h4>
+                    <a (click)="getCategoria('saladas')"> <img class="img-fluid mb-3 mt-3 ml-2" src="/assets/img-grupo3/salad-374173_640.jpg">
+                        <h4  class="opcao">SALADAS</h4>
                     </a>
                 </div>
                 <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                    <a href="#"> <img class="img-fluid mb-3 mt-3" src="/assets/img-grupo3/salmon-1238248_640.jpg">
-                        <h4 class="opcao">PEIXES</h4>
+                    <a (click)="getCategoria('peixes')"> <img class="img-fluid mb-3 mt-3" src="/assets/img-grupo3/salmon-1238248_640.jpg">
+                        <h4  class="opcao">PEIXES</h4>
                     </a>
                 </div>
             </div>
@@ -37,18 +38,18 @@
         <div class="container2 align-items-center">
             <div class="row">
                 <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                    <a href="#"><img class="img-fluid mb-3 mt-3 ml-3" src="/assets/img-grupo3/steak-2936531_640.jpg">
-                        <h4 class="opcao">CARNES</h4>
+                    <a (click)="getCategoria('carnes')"><img class="img-fluid mb-3 mt-3 ml-3" src="/assets/img-grupo3/steak-2936531_640.jpg">
+                        <h4  class="opcao">CARNES</h4>
                     </a>
                 </div>
                 <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                    <a href="#"> <img class="img-fluid mb-3 mt-3 ml-2" src="/assets/img-grupo3/food-1631727_640.jpg">
+                    <a (click)="getCategoria('aves')"> <img class="img-fluid mb-3 mt-3 ml-2" src="/assets/img-grupo3/food-1631727_640.jpg">
                         <h4 class="opcao">AVES</h4>
                     </a>
                 </div>
                 <div class="col-12 col-lg-4 col-md-4 col-sm-4">
-                    <a href="#"><img class="img-fluid mb-3 mt-3" src="/assets/img-grupo3/spaghetti-660748_640.jpg">
-                        <h4 class="opcao">MASSAS</h4>
+                    <a (click)="getCategoria('massas')"><img class="img-fluid mb-3 mt-3" src="/assets/img-grupo3/spaghetti-660748_640.jpg">
+                        <h4  class="opcao">MASSAS</h4>
                     </a>
                 </div>
             </div>

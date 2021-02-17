@@ -13,17 +13,17 @@ import { ResultadoBuscarReceitasComponent } from './resultado-buscar-receitas/re
 
 export const Grupo3RoutingModule: Routes = [
 
-{path: 'agenda-alimentar', component: AgendaAlimentarComponent},
-{path: 'resultado-receita', component: ResultadoReceitaComponent},
-{path: 'programa-nutricional', component: ProgramaNutricionalComponent},
-{path: 'agservico', component:AgservicoComponent},
-{path: 'procurar-paciente', component:ProcurarPacienteComponent},
-{path: 'pagamento-servico', component: PagamentoServicoComponent},
-{path: 'sustentabilidade', component: SustentabilidadeComponent},
-{path: 'confirmacao-agendamento', component: ConfirmacaoAgendamentoComponent},
-{path: 'pesquisar-receitas', component: PesquisarReceitasComponent},
-{path: 'resultado-buscar-receitas', component: ResultadoBuscarReceitasComponent},
-{path: 'historico-agservico', component:HistoricoAgservicoComponent}
+    { path: 'agenda-alimentar', component: AgendaAlimentarComponent },
+    { path: 'resultado-receita/:id', component: ResultadoReceitaComponent },
+    { path: 'programa-nutricional', component: ProgramaNutricionalComponent },
+    { path: 'agservico', component: AgservicoComponent },
+    { path: 'procurar-paciente', component: ProcurarPacienteComponent },
+    { path: 'pagamento-servico', component: PagamentoServicoComponent },
+    { path: 'sustentabilidade', component: SustentabilidadeComponent },
+    { path: 'confirmacao-agendamento', component: ConfirmacaoAgendamentoComponent },
+    { path: 'pesquisar-receitas', component: PesquisarReceitasComponent },
+    { path: 'resultado-buscar-receitas', component: ResultadoBuscarReceitasComponent },
+    { path: 'historico-agservico', component: HistoricoAgservicoComponent }
 
 ];
 

@@ -12,13 +12,24 @@ import { ResultadoBuscarReceitasComponent } from './resultado-buscar-receitas/re
 import { HistoricoAgservicoComponent } from './historico-agservico/historico-agservico.component';
 import { AgservicoComponent } from './agservico/agservico.component';
 import { ProcurarPacienteComponent } from './procurar-paciente/procurar-paciente.component';
+import { ReceitaService } from './shared/receitas.service';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   
   declarations: [PagamentoServicoComponent, SustentabilidadeComponent, ConfirmacaoAgendamentoComponent,PesquisarReceitasComponent, ResultadoBuscarReceitasComponent, HistoricoAgservicoComponent, AgservicoComponent, HistoricoAgservicoComponent, AgservicoComponent, ProcurarPacienteComponent, ProgramaNutricionalComponent, AgendaAlimentarComponent, ResultadoReceitaComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
+  ],
+  exports: [
+    PesquisarReceitasComponent
+  ],
+  providers: [
+    ReceitaService
   ]
 })
 export class Grupo3Module { }
+

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ReceitaService } from '../shared/receitas.service'
+import { ResponseReceitas, Receitas, Receita } from '../shared/receitas.model'
+import { Router,  ActivatedRoute} from '@angular/router';
+
 
 @Component({
   selector: 'app-resultado-receita',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultadoReceitaComponent implements OnInit {
 
-  constructor() { }
+  resultadoBuscaReceitas: any;
+  palavraPesquisada: any;
+  iptBusca: any;
+  idReceita: any;
+  receita: Receita;
+  responseReceita: any;
+  
+
+  constructor(private router: Router, private receitaService: ReceitaService, private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.idReceita = this.activatedRoute.snapshot.paramMap.get("id");
+    this.receitaService.mostrarReceita(this.idReceita).subscribe(
+      response => { 
+        this.receita = response;      
+      }
+
+    )
+    
+
   }
+
+  
 
 }
