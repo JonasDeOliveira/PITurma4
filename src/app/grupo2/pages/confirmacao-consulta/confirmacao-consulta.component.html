@@ -9,7 +9,7 @@
                 <div class="texto-trilha d-flex flex-column">
                   <a routerLink='/agendamento-consultas'>
                     <div class="trilha">Consulta</div>
-                    <div class="opcao">Presencial</div>
+                    <div class="opcao">{{dsConsulta}}</div>
                   </a>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <div class="texto-trilha d-flex flex-column">
                   <a routerLink='/agendamento-consultas'>
                     <div class="trilha ">Especialidade</div>
-                    <div class="opcao ">Endocrinologia</div>
+                    <div class="opcao ">{{dsEspecialidade}}</div>
                   </a>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <div class="texto-trilha d-flex flex-column">
                   <a routerLink='/escolha-especialista'>
                     <div class="trilha">Especialista</div>
-                    <div class="opcao">Dra Brinquedos</div>
+                    <div class="opcao">{{nmMedico}}</div>
                   </a>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                 <div class="texto-trilha d-flex flex-column">
                   <a routerLink='/escolha-especialista'>
                     <div class="trilha">Horário</div>
-                    <div class="opcao">14:00</div>
+                    <div class="opcao">{{horario}}</div>
                   </a>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                 <div class="texto-trilha d-flex flex-column">
                   <a routerLink='/pagamento-plano'>
                     <div class="trilha">Pagamento</div>
-                    <div class="opcao">Plano Premium</div>
+                    <div class="opcao">{{tipoPagamento}}</div>
                   </a>
                 </div>
             </div>
@@ -89,7 +89,7 @@
             <div class="confirmacao-cima d-flex justify-content-center">
                 <div class="texto-confirmacao-esquerda">
                     <p class="titulo-confirmacao">CONFIRMAÇÃO CONSULTA</p>
-                    <p class="texto-detalhes">Estes são os detalhes do agendamento:</p>
+                    <p class="texto-detalhes">Confira se as informações estão corretas e confirme o agendamento</p>
                 </div>
                 <div class="d-flex justify-content-end">
                     <img id="img-lembrete" src="/assets/assets-grupo2/calendar.png"/>
