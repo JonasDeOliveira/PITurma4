@@ -75,3 +75,8 @@ footer h4{
 .titulo-p{
     color: #23A455;
 }
+
+a {
+    cursor:pointer;
+    text-decoration: underline;
+}

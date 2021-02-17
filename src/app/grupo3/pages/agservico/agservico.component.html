@@ -12,8 +12,8 @@
                 <div class="form-group col-12 col-lg-8 pt-3">
                     <label for="servico"><h5>1. Escolha o serviço</h5></label>
                     <select class="form-control" type="text" id="servico" [(ngModel)]="idServico" name="servico" required>
-                        <option selected>Escolha a opção</option>
-                        <option  *ngFor = "let servico of responseServicos" [ngValue]="servico.id" >{{servico.nome}} - R${{servico.preco}},00</option>
+                        <option selected value="undefined">Escolha a opção</option>
+                        <option  *ngFor = "let servico of responseServicos" [ngValue]="servico.id">{{servico.nome}} - R${{servico.preco}},00</option>
                     </select>
                     <div style="display: none;" class="alert alert-danger alert-servico" role="alert">
                         Campo Obrigatório
@@ -124,7 +124,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-dark" (click)="novoAgServico()">Agendar outro</button>
-                  <button type="button" class="btn btn-outline-dark" (click)="concluirAgServico()">Concluir</button>
+                  <button type="button" class="btn btn-outline-dark" (click)="concluirAgServico(d)">Concluir</button>
                 </div>
             </ng-template>
               
