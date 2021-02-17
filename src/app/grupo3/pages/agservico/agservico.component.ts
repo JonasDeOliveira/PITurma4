@@ -25,6 +25,7 @@ export class AgservicoComponent implements OnInit {
   horario: string;
   data: string; 
   agendamentos: AgServico[];
+  servicos: Servicos[];
   ag: AgServico;
   
 
@@ -41,7 +42,7 @@ export class AgservicoComponent implements OnInit {
   exibir: boolean; //variavel que exibe os horários
   tem: boolean;
 
-  responseServicos : ResponseServicos[]; //recebe os serviços
+  responseServicos : ResponseServicos; //recebe os serviços
   responseLojas : ResponseLojas[]; //recebe as lojas
   responseDatas : ResponseDatas[];
 
@@ -58,6 +59,7 @@ export class AgservicoComponent implements OnInit {
     this.hrNoiteExibir = new Array; 
     this.ag = new AgServico(); 
     this.agendamentos = new Array; 
+    this.servicos = new Array;
 
   }
 
@@ -68,6 +70,7 @@ export class AgservicoComponent implements OnInit {
   open(content) {
     this.modalService.open(content);
   }
+
 
   getLoja(id: number){
     this.idLoja = id; 
@@ -85,13 +88,14 @@ export class AgservicoComponent implements OnInit {
     console.log("Horario: "+hora);
   }
 
-
   listarServicos(){
     this.servicoService.getServicos().subscribe(
       response => {
         this.responseServicos = response;
       }
     )
+
+    
   }
 
   buscarLojaPorLocal(){
@@ -153,7 +157,6 @@ export class AgservicoComponent implements OnInit {
         this.hrNoiteExibir.push(this.hrNoite[m]);
       }
     }
-
     this.exibir = true;
   }
   
@@ -164,19 +167,29 @@ export class AgservicoComponent implements OnInit {
     this.ag.idServico = this.idServico;
     this.ag.dtHr =  this.data + " " + this.horario + ":00"; 
 
+    //this.responseServicos.servicos.forEach(element => {
+    //  if (this.idServico == element.id){
+    //    this.servicos.push(element);
+    //  }
+    //});
+    
+
     console.log(this.ag.dtHr);
     console.log("Serviço salvo com sucesso!");
 
-    this.agendamentos.push(this.ag);
+    this.agendamentos.push(this.ag) ;
   }
 
-
-  concluirAgServico(){
+  concluirAgServico(callback: any){
 
     this.salvarAgServico();
 
     //depois enviar o array agendamentos para a pag de pagamentos. 
     localStorage.setItem("agendamentos", JSON.stringify(this.agendamentos));
+    localStorage.setItem("servicos", JSON.stringify(this.servicos));
+
+    //FECHAR A MODAL AQUI
+    callback('Cross click');
     this.router.navigate(['/pagamento-servico']);
   }
 

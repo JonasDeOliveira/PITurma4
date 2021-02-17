@@ -15,7 +15,7 @@ export class ServicoService {
   private readonly API = 'http://localhost:8080/servicos';
 
   getServicos() {
-    return this.http.get<ResponseServicos[]>(this.API);
+    return this.http.get<ResponseServicos>(this.API);
   }
 
 }

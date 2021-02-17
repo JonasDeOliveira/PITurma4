@@ -26,7 +26,7 @@
             
                                 <div class="form-group col-md-4">
                                     <label for="idade" class="label-form">Idade</label>
-                                    <input type="text" class="form-control" id="dtNascimento" value="{{dadosPacienteResposta.dtNascimento}}"
+                                    <input type="text" class="form-control" id="dtNascimento" value="{{dadosPacienteResposta.dtNascimento | date: 'dd/MM/yyyy'}}"
                                         disabled="">
                                 </div>
 
@@ -120,19 +120,21 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-5 c1C">
+                <div class="col-12 col-lg-5 c1C" >
                     <h2 class="tt-cardapio">CARDÁPIO</h2>
 
                  
-                    <div  class="receitas">
-                        <h5><button class="btn-padrao"><mat-icon>add</mat-icon></button>Refeição<button class="btn-padrao"><mat-icon>delete</mat-icon></button></h5>
-                        <h6>Nome do Prato</h6>
-                        <h6>Quantidade</h6>
-                        <h6>Calorias</h6>
+                    <div  class="div row"  *ngFor = "let cardapio of responseCardapio">
+                        <h6>{{cardapio.nomeReceita}}</h6> 
+                        <h6>{{cardapio.qtCalorias}}</h6>
+                        <h6>{{cardapio.qtRendimento}}</h6>
+                        <h6>{{cardapio.dsDescricao}}</h6>
+    
                     </div>
+            
 
                     <div  class="receitas">
-                        <h5><button class="btn-padrao"></button>Refeição<button class="btn-padrao"><i class="fa fa-trash"></i></button></h5>
+                        <h5><button class="btn-padrao"><mat-icon>add</mat-icon></button>Refeição<button class="btn-padrao"><mat-icon>delete</mat-icon></button></h5>
                         <h6>Nome do Prato</h6>
                         <h6>Quantidade</h6>
                         <h6>Calorias</h6>

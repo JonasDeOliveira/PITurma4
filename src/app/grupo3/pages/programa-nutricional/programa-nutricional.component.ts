@@ -6,6 +6,7 @@ import { ResponseTipoRefeicao } from '../../shared/ProgramaNutri/model/tipoRefei
 import { NullTemplateVisitor } from '@angular/compiler';
 
 
+
 @Component({
   selector: 'app-programa-nutricional',
   templateUrl: './programa-nutricional.component.html',
@@ -21,23 +22,27 @@ export class ProgramaNutricionalComponent implements OnInit {
  
    dadosPacienteResposta : DadosPaciente;
 
-    responseCardapio: ResponseCardapio;
-  
-   idUsuario: any;
-  //idPaciente : any;
+  responseCardapio: ResponseCardapio[];
+
+   listCardapios: ProgramaNutriService[];
+
+
+   idPaciente = localStorage.getItem("idPaciente");
+  idUsuario = parseInt(this.idPaciente);
+
 
   ngOnInit(): void {
     this.listarTipoRefeicao();
-  //  this.getExibirDadosPaciente(24);
-  //this.idMedico = 33;
-  //this.idPaciente= 24;
-   this.idUsuario = 7;
+
    this.programaNutriService.getExibirDadosPaciente(this.idUsuario).subscribe(
     response => {
       this.dadosPacienteResposta=response;
     }
   );
+  this.listCardapios= new Array; 
+  
   }
+
 
 //***************************DADOS PACIENTE***********************************************
 //inicioDadosPaciente
@@ -76,8 +81,8 @@ export class ProgramaNutricionalComponent implements OnInit {
 //**************************************CARDAPIO*******************************
 //inicioCardapio
 request: Cardapio = {
-  idPaciente: 24,
-  idMedico: 33,
+  idPaciente: this.idUsuario,
+  idMedico: 63,
  idTipoRefeicao : {
   idTipoRefeicao : null,
    dsTipoRefeicao: ''
@@ -100,6 +105,17 @@ cadastrar() {
   )
 }
 
+
+//Listar Cardapio do usuário
+listarCardapios(){
+  this.programaNutriService.getListarCardapios(this.idUsuario).subscribe (
+   response => {
+      this.responseCardapio = response;
+    }
+  )
+}
+
+    
 //FimCardapio
 
 }

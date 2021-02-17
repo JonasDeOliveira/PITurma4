@@ -9,71 +9,30 @@
                 <div class="col-12">
                     <div class="container">
                         <h3 class="mt-4 mb-3 ml-1">
-                            Busca por: Sopas
+                            Busca por: {{palavraPesquisada}}
                         </h3>
                     </div>
                 </div>
             </div>
             <div class="row mb-5">
-                <div class="col-12 col-sm-6 px-5">
-                    <div class="row background">
-                        <div class="col-12 col-sm-5">
-                            <a href="#">
-                                <img class="img-fluid mb-3 mt-3" src="/assets/img-grupo3/soup-2006317_1280.jpg">
+                <div class= "col-12 col-sm-6 col-md-6 col-xs-12 mb-3" *ngFor="let receita of resultadoBuscaReceitas">
+                    <div class="row background ml-2 mr-2">
+                        <div class="col-12 col-sm-6 col-md-6 col-xs-12 col-lg-6 col-xl-6">
+                            <a [routerLink] = "['/resultado-receita', receita.idReceita]" (click)="abrirReceita(receita.idReceita)">
+                                <img class="img-fluid mb-3 mt-3" src={{receita.endImagem}}>
                             </a>
                         </div>
-                        <div class="col-12 col-sm-7">
-                            <h4 class="opcao mt-4"><a href="#">Sopa de abóbora</a></h4>
-                            <h6>Calorias: 00kcal</h6>
-                            <h6>Rendimento: 3 porções</h6>
+                        <div class="col-12 col-sm-6 col-md-6 col-xs-12  col-lg-6 col-xl-6">
+                            <h4 class="opcao mt-4"><a [routerLink] = "['/resultado-receita', receita.idReceita]" >{{receita.nomeReceita}}</a></h4>
+                            <h6>Calorias: {{receita.qtCalorias}}</h6>
+                            <h6>Rendimento: {{receita.qtRendimento}} porções</h6>
                         </div>
+                        
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 px-5">
-                    <div class="row background">
-                        <div class="col-12 col-sm-5">
-                            <a href="#">
-                                <img class="img-fluid mb-3 mt-3" src="/assets/img-grupo3/tomato-soup-2288056_640.jpg">
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-7">
-                            <h4 class="opcao mt-4"><a href="#">Sopa de tomate</a></h4>
-                            <h6>Calorias: 00kcal</h6>
-                            <h6>Rendimento: 3 porções</h6>
-                        </div>
-                    </div>
-                </div>
+            
             </div>
-            <div class="row mb-5">
-                <div class="col-12 col-sm-6 px-5">
-                    <div class="row background">
-                        <div class="col-12 col-sm-5">
-                            <a href="#">
-                                <img class="img-fluid mb-3 mt-3" src="/assets/img-grupo3/soup-570922_640.jpg">
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-7">
-                            <h4 class="opcao mt-4"><a href="#">Sopa de ervilha</a></h4>
-                            <h6>Calorias: 00kcal</h6>
-                            <h6>Rendimento: 3 porções</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 px-5">
-                    <div class="row background">
-                        <div class="col-12 col-sm-5">
-                            <a href="#">
-                                <img class="img-fluid mb-3 mt-3" src="/assets/img-grupo3/soup-1787997_640 (1).jpg">
-                            </a>
-                        </div>
-                        <div class="col-12 col-sm-7">
-                            <h4 class="opcao mt-4"><a href="#">Sopa de cenoura</a></h4>
-                            <h6>Calorias: 00kcal</h6>
-                            <h6>Rendimento: 3 porções</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
 
