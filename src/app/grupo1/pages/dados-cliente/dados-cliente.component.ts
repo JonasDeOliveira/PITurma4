@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { OutputCliente } from '../cliente/shared/cliente.model';
 import { Cartao } from '../../Cartoes/shared/cartao.model';
 import { LoginClienteService } from '../cliente/shared/loginCliente.service';
+import { PlanosService } from '../planos/shared/planos.service';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class DadosClienteComponent implements OnInit {
 
   responseFormularioMeusDados: any;
   responseCidadesByUf: any;
+  responsePlanos: any;
 
   planos = {
     plano1: 1,
@@ -97,9 +99,8 @@ export class DadosClienteComponent implements OnInit {
     }
   }
 
-
-
   constructor(private clienteService: ClienteService,
+    private planosService: PlanosService,
     private loginService: LoginClienteService,
     private router: Router,
     config: NgbModalConfig,
@@ -112,6 +113,7 @@ export class DadosClienteComponent implements OnInit {
   ngOnInit(): void {
     this.idUsuario = this.cliente.idUsuario;
     this.getFormularioMeusDados();
+    this.getPlanos()
   }
 
   getFormularioMeusDados() {
@@ -163,8 +165,8 @@ export class DadosClienteComponent implements OnInit {
     switch (id) {
       case "1":
         if (confirm("Deseja alterar o plano?")) {
-        this.outputCliente.contrato.plano.idPlano = 1
-        event.target.enabled
+          this.outputCliente.contrato.plano.idPlano = 1
+          event.target.enabled
         }
         break;
       case "2":
@@ -210,4 +212,13 @@ export class DadosClienteComponent implements OnInit {
     )
   }
 
+  getPlanos() {
+    this.planosService.getPlanos().subscribe(
+      response => {
+        console.log(response);
+        this.responsePlanos = response;
+      }
+    )
+  }
 }
+
