@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
-import { AgservicoComponent } from './agservico/agservico.component';
-import { HistoricoAgservicoComponent } from './historico-agservico/historico-agservico.component';
-import { ProcurarPacienteComponent } from './procurar-paciente/procurar-paciente.component';
-import { AgendaAlimentarComponent } from './agenda-alimentar/agenda-alimentar.component';
-import { ProgramaNutricionalComponent } from './programa-nutricional/programa-nutricional.component';
-import { ResultadoReceitaComponent } from './resultado-receita/resultado-receita.component';
-import { ConfirmacaoAgendamentoComponent } from './confirmacao-agendamento/confirmacao-agendamento.component';
-import { PagamentoServicoComponent } from './pagamento-servico/pagamento-servico.component';
-import { SustentabilidadeComponent } from './sustentabilidade/sustentabilidade.component';
-import { PesquisarReceitasComponent } from './pesquisar-receitas/pesquisar-receitas.component'
-import { ResultadoBuscarReceitasComponent } from './resultado-buscar-receitas/resultado-buscar-receitas.component';
+import { AgservicoComponent } from './pages/agservico/agservico.component';
+import { HistoricoAgservicoComponent } from './pages/historico-agservico/historico-agservico.component';
+import { ProcurarPacienteComponent } from './pages/procurar-paciente/procurar-paciente.component';
+import { AgendaAlimentarComponent } from './pages/agenda-alimentar/agenda-alimentar.component';
+import { ProgramaNutricionalComponent } from './pages/programa-nutricional/programa-nutricional.component';
+import { ResultadoReceitaComponent } from './pages/resultado-receita/resultado-receita.component';
+import { ConfirmacaoAgendamentoComponent } from './pages/confirmacao-agendamento/confirmacao-agendamento.component';
+import { PagamentoServicoComponent } from './pages/pagamento-servico/pagamento-servico.component';
+import { SustentabilidadeComponent } from './pages/sustentabilidade/sustentabilidade.component';
+import { PesquisarReceitasComponent } from './pages/pesquisar-receitas/pesquisar-receitas.component'
+import { ResultadoBuscarReceitasComponent } from './pages/resultado-buscar-receitas/resultado-buscar-receitas.component';
 
 export const Grupo3RoutingModule: Routes = [
 

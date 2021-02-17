@@ -1,0 +1,43 @@
+
+<div class="container">
+
+    <section class="container1 col-12">
+        <div class="banner col-12"></div>
+        <h1>Programa descarte consciente</h1>
+        <br>
+        <div class="sobre col-12">
+            <p>Estima-se que, para cada quilo de medicamento descartado no lixo comum ou na fossa sanitária, cerca de 450 mil litros de água são contaminados. Compreendendo a dimensão desse impacto ambiental, o Grupo RD buscou uma solução para a correta destinação de medicamentos vencidos ou em desuso e disponibiliza diversos pontos de coleta de medicamentos em suas lojas. </p>
+            <p>Utilize o localizador abaixo e encontre o ponto de coleta mais próximo.</p>
+        </div>
+        <br>
+
+        <!-- busca localidade -->
+        <h2 class="tituloSelecao">Selecione a localidade</h2>
+        <br>
+        <div class="buscaLocal">
+            <form class="col-12">
+                <div class="form-row align-items-center">
+                  <div class="col-md-6 my-1">
+                    <input type="text" class="form-control" [(ngModel)]="local" name ="local" placeholder="Busque por rua, bairro ou cidade">
+                  </div>
+                  <div class="btnBusca">
+                    <button type="button" class="btn btn-primary btn-verLocal" (click)="buscarLojaPorLocal()">Buscar</button>
+                    
+                  </div>
+                </div>
+            </form>            
+        </div>  
+        
+        <!-- cards com endereços encontrados -->
+          
+        <div class="cardsEndereco col-12">
+            <div *ngFor = "let loja of responseLojas" class="card">
+                <div class="card-body">
+                  <h5 class="card-title-drogasil"> {{loja.nmLoja}} </h5>
+                  <p class="card-text"  *ngFor= "let endereco of loja.enderecos" >{{endereco.dsEndereco}}, Bairro: {{endereco.dsBairro}}</p>
+                  <p class="card-subtitle"  *ngFor= "let contato of loja.contatos">{{contato.nrDdd}} {{contato.dsContato}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
