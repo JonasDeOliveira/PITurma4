@@ -3,7 +3,7 @@ import { Time } from '@angular/common';
 export interface Agenda {
     idAgenda: number;
     medico: Medico;
-    data : Date;
+    data : any;
     periodo : Periodo;
 }
 

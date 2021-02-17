@@ -34,8 +34,8 @@ export class ConfirmacaoConsultaComponent implements OnInit {
 
   }
 
-  pagamento: Pagamento = JSON.parse(localStorage.getItem("pagamento"));
-  tipoPagamento: string = this.pagamento.formaPgt.dsFormaPagamento;
+  tipoPagamento: string = JSON.parse(localStorage.getItem("tipoPagamento"));
+  dsTpPagamento: string; 
   
   especialidade: EspMed = JSON.parse(localStorage.getItem("espMed"));
   dsEspecialidade: string = this.especialidade.dsEspMed;
@@ -49,79 +49,21 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   nmMedico : string = this.agenda.medico.nome;
   horario : Time = this.agenda.periodo.horaInicial;
 
+  data = this.agenda.data;
+
   ngOnInit():void {
-  
+    if (this.tipoPagamento == "1"){
+      this.dsTpPagamento="Plano"
+    } else if (this.tipoPagamento == "2"){
+      this.dsTpPagamento="Cartão"
+    }
+    ;
   }
 
   open(content) {
     this.modalService.open(content);
   }
 
-
-  request: PagamentoPlano = {
-    idAgPaciente: 10
-  }
-
-
-  
-  responseContrato : Contrato;
-  pagamentoPlEscolhido : Pagamento;
-  idPgtoPlanoString : string;
- 
-
-
-
- 
-
-  // request: CadastroAgPaciente = {
-  //   idUsuario: 142,
-  //   idAgenda: 0
-  // }
-
-
-  // criarAgPaciente(idAgenda: number) {
-  //   console.log(idAgenda);
-  //   // this.request.idAgenda = idAgenda;
-  //   this.agPacienteService.cadastrarAgPaciente().subscribe(
-  //     response => {
-        
-       
-  //       console.log("response"  +  JSON.stringify(response))
-  //       console.log("ls" + localStorage.getItem("idAgPaciente"));
-  //     },
-  //     error => {
-  //       alert('erro ao selecionar nova consulta');
-  //     }
-  //   )
-  // }
-
-
-  
-  cadastrarPagtoPlano() {
-    // this.pagamentoPlanoService.cadastrarPlano(this.request).subscribe(
-    //   response => {
-    //     this.pagamentoPlEscolhido = response;
-    //     this.salvarPagtoPlanoLs();
-        
-    //   },
-    //   error => {
-    //     alert('erro ao pagar consulta com plano');
-    //   }
-    // )
-  }
-
 }
-
-// cadastrarPagtoCartao() {
-//   this.pagamentoCartaoService.cadastrarCartao(this.request).subscribe(
-//     response => {
-//       this.pagamentoCartEscolhido = response;
-//       this.salvarPagtoCartaoLs();
-//       console.log(response);
-//       console.log(localStorage.getItem("idPgto"))
-//     },
-//     error => {
-//       alert('erro ao pagar consulta com cartão');
-//     }
-//   )
-// }
+  
+  

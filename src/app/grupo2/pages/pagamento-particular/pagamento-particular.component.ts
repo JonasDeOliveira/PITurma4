@@ -32,6 +32,7 @@ export class PagamentoParticularComponent implements OnInit {
   nmMedico : string = this.agenda.medico.nome;
   horario : Time = this.agenda.periodo.horaInicial;
   vlConsulta: number = this.agenda.medico.preco.vlConsulta;
+  data = this.agenda.data;
 
   nmTitular:string;
   nrCartao: string;

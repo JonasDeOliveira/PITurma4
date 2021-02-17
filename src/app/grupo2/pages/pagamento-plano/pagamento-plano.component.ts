@@ -34,9 +34,11 @@ export class PagamentoPlanoComponent implements OnInit {
   agenda: Agenda = JSON.parse(localStorage.getItem("agenda"));
   nmMedico : string = this.agenda.medico.nome;
   horario : Time = this.agenda.periodo.horaInicial;
+  data = this.agenda.data;
 
   nmPlano: string;
   dsContrato:string;
+
 
   ngOnInit(): void {
     this.listarContratoPorUsuario(142);

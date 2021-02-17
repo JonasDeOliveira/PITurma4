@@ -17,18 +17,10 @@ export class EscolhaEspecialistaComponent implements OnInit {
   constructor(
     public agendaService: AgendaService,
     public agPacienteService : AgPacienteService,
-    // private formBuilder: FormBuilder,
+
 
     ){  
-    //   this.form = this.formBuilder.group({
-    //   periodo: new FormArray([], minSelectedCheckboxes(0))
-    // });
-  
-  
-    // of(this.getPeriodo()).subscribe(periodo => {
-    //   this.periodoData = periodo;
-    //   this.addCheckboxes();
-    // });
+   
   }
 
   // Valores armazenados no LS
@@ -41,10 +33,6 @@ export class EscolhaEspecialistaComponent implements OnInit {
   idTipoConsulta: number = this.consulta.idTipoConsulta;
 
   arrayAgendas: Agenda[];
-
-  //Variaveis para o filtro
-  form: FormGroup;
-  periodoData = [];
   
   ngOnInit(): void {
       this.buscarAgenda(this.idTipoConsulta , this.idEsp);
@@ -69,41 +57,6 @@ export class EscolhaEspecialistaComponent implements OnInit {
     )
   }
 
-  // Metodos do filtro
-  get periodoFormArray() {
-    return this.form.controls.periodo as FormArray;
-  }
-  private addCheckboxes() {
-    this.periodoData.forEach(() => this.periodoFormArray.push(new FormControl(false)));
-  }
   
-  getPeriodo() {
-    return [
-      { id: ["1", "2", "3", "4", "5"], name: 'manha' }, 
-      { id: ["6", "7", "8", "9", "10", "11"], name: 'tarde' },
-      { id: ["12", "13", "14", "15"], name: 'noite' }
-  
-    ];
-  }
-  
-  submit() {
-    const selectedPeriodoIds = this.form.value.periodo
-      .map((checked, i) => checked ? this.periodoData[i].id : null)
-      .filter(v => v !== null);
-  
-    console.log(selectedPeriodoIds);
-  }
-  }
-  
-  function minSelectedCheckboxes(min = 0) {
-  const validator: ValidatorFn = (formArray: FormArray) => {
-    const totalSelected = formArray.controls
-      .map(control => control.value)
-      .reduce((prev, next) => next ? prev + next : prev, 0);
-  
-    return totalSelected >= min ? null : { required: true };
-  };
-  
-  return validator;
 }
   
