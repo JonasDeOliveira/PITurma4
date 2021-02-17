@@ -2,8 +2,8 @@
     <div class="card" class="col-12 col-sm-6 col-md-6 col-lg-4">
         <img class="card-img-top" src="assets/grupo1/img/BASIC.png" alt="Plano Basic">
         <div class="card-body">
-            <ul class="card-text" type="none">
-                <li>- Agendamento de Serviços Farmacêuticos</li>
+            <ul class="card-text" type="none" *ngFor="let servicos of responsePlanos[0].servicos">
+                <p class="card-text">{{servicos.dsServico}}</p>
                 <br>
                 <br>
                 <br>
@@ -16,15 +16,14 @@
     </div>
     <div class="card" class="col-12 col-sm-6 col-md-6 col-lg-4">
         <img class="card-img-top" src="assets/grupo1/img/PLUS.png" alt="Plano Plus">
-        <div class="card-body">
-            <ul class="card-text" type="none">
-                <li>- Agendamento de Serviços Farmacêuticos</li>
-                <li>- Consulta com o Clínico Geral</li>
+        <div class="card-body" class="alinhar">
+            <ul class="card-text" type="none" *ngFor="let servicos of responsePlanos[1].servicos">
+                <li class="card-text">{{servicos.dsServico}}</li>
                 <br>
                 <br>
                 <br>
                 </ul>
-            <h5>R$ 00,00</h5>
+            <h5>R${{responsePlanos[1].vlPlano}},00</h5>
 
             <button class="btn btn-menu btn-planos">
                 <a routerLink="/dados-cliente">
@@ -35,15 +34,12 @@
     </div>
     <div class="card" class="col-12 col-sm-6 col-md-6 col-lg-4">
         <img class="card-img-top" src="assets/grupo1/img/PREMIUM.png" alt="Plano Premium">
-        <div class="card-body">
-            <ul class="card-text" type="none">
-                <li>- Agendamento de Serviços Farmacêuticos</li>
-                <li>- Consulta com o Clínico Geral</li>
-                <li>- Consulta com Especialistas</li>
-                <li>- Programa Nutricional</li>
+        <div class="card-body"> 
+            <ul class="card-text" type="none" *ngFor="let servicos of responsePlanos[2].servicos">
+                <li class="card-text">{{servicos.dsServico}}</li>
                 <br>
             </ul>
-            <h5>R$ 00,00</h5>
+            <h5>R${{responsePlanos[2].vlPlano}},00</h5>
             <button class="btn btn-menu btn-planos">
                 <a routerLink="/dados-cliente">
                     Assinar
