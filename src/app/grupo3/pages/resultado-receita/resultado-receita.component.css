@@ -48,8 +48,11 @@ section{
     color: #444444;
 }
 
-h6 {
+h6, h5 {
     text-align: center;
+}
+p {
+    text-indent: 1.5em;
 }
 
 .texto {
