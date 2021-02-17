@@ -1,9 +1,11 @@
+import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Agenda } from '../../shared/model/agenda';
+import { Agenda} from '../../shared/model/agenda';
 import { AgPaciente,  } from '../../shared/model/agPaciente';
 import { CadastroAgPaciente } from '../../shared/model/cadastroAgPaciente';
 import { Contrato } from '../../shared/model/contrato';
+import { EspMed } from '../../shared/model/espMed';
 import { Pagamento } from '../../shared/model/pagamento';
 import { PagamentoPlano } from '../../shared/model/pagamentoPlano';
 import { TipoConsulta } from '../../shared/model/tipoConsulta';
@@ -34,12 +36,18 @@ export class ConfirmacaoConsultaComponent implements OnInit {
 
   pagamento: Pagamento = JSON.parse(localStorage.getItem("pagamento"));
   tipoPagamento: string = this.pagamento.formaPgt.dsFormaPagamento;
-  tipoConsulta: TipoConsulta = JSON.parse(localStorage.getItem("tipoConsulta"));
-  dsTipoConsulta: string = this.tipoConsulta.dsTipoConsulta;
-  agPaciente: AgPaciente = JSON.parse(localStorage.getItem("agPaciente"));
-  nomeMedico: string = this.agPaciente.agenda.medico.nome;
-  especialidade: string = this.agPaciente.agenda.medico.espMed.dsEspMed;
-  data: Date = this.agPaciente.agenda.data;
+  
+  especialidade: EspMed = JSON.parse(localStorage.getItem("espMed"));
+  dsEspecialidade: string = this.especialidade.dsEspMed;
+  idEsp: number = this.especialidade.idEspMed;
+
+  consulta : TipoConsulta = JSON.parse(localStorage.getItem("tipoConsulta")); 
+  dsConsulta : string = this.consulta.dsTipoConsulta;
+  idTipoConsulta: number = this.consulta.idTipoConsulta;
+
+  agenda: Agenda = JSON.parse(localStorage.getItem("agenda"));
+  nmMedico : string = this.agenda.medico.nome;
+  horario : Time = this.agenda.periodo.horaInicial;
 
   ngOnInit():void {
   
@@ -54,6 +62,8 @@ export class ConfirmacaoConsultaComponent implements OnInit {
     idAgPaciente: 10
   }
 
+
+  
   responseContrato : Contrato;
   pagamentoPlEscolhido : Pagamento;
   idPgtoPlanoString : string;
