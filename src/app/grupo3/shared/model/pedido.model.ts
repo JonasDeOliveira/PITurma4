@@ -1,6 +1,17 @@
+import { AgServico } from "./agservico.model";
+import { Cartao } from "./cartao.model";
+
 export interface Pedido {
+    idPedido;
+    paciente: Usuario;
+    agendamentos: AgServico;
+    cartao: Cartao;
+}
 
-    vlTotal: string;
-    agendamentos: [];
+export interface Usuario {
+    idPaciente: number;
+}
 
+export interface ResponsePedido {
+    pedido: Pedido []
 }

@@ -11,10 +11,10 @@ export class CartaoService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly API = 'http://localhost:8080/pagamento-servico';
+  private readonly API = 'http://localhost:8080/cartao';
 
-
-  createCartao(request: Cartao): Observable<Cartao> {
+  gravarCartao(request: Cartao): Observable<Cartao> {
     return this.http.post<Cartao>(this.API, request);
   }
+
 }
