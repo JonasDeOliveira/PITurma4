@@ -29,7 +29,7 @@ export class AgendamedicoService {
 
   cancelarAgendamento(idAgPaciente: number): Observable<any>{
     const URL = `${this.API2}/${idAgPaciente}`;   
-    return this.http.delete<any>(URL);
+    return this.http.put<any>(URL, null);
   }
 
   getHorarios() {
@@ -38,13 +38,6 @@ export class AgendamedicoService {
     const URL = `${this.API3}/2021-06-06`;
     return this.http.get<ResponsePeriodos[]>(URL);
   }
-
-  /* getHorario() {
-    var data = new Date(Date.now()).toISOString().slice(0,10);
-
-    const URL = `${this.API3}/${data}`;
-    return this.http.get(URL);
-  } */
 
   /* abrirAgenda(data: Date): Observable<any> {
     return this.http.post<any>(this.API4, data);
