@@ -86,6 +86,14 @@ export class AgendaMedicoComponent implements OnInit {
     )
   }
 
+  onClickHorarios(indice: number){
+    if(this.responsePeriodos[indice].disponibilidade == 0){
+      this.responsePeriodos[indice].disponibilidade = 1;
+    } else {
+      this.responsePeriodos[indice].disponibilidade = 0;
+    }
+  }
+
   /* registrar(data: Date): void {
     this.agendaService.abrirAgenda(data).subscribe(
       response => {

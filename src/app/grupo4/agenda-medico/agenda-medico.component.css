@@ -39,10 +39,7 @@ body {
 
 .calendario {
     width: 100%;
-    height: 570px;
 }
-
-
 
 .buttons-calendario {
     display: flex;
@@ -274,3 +271,8 @@ footer h4{
     text-decoration: underline;
 }
 /* FIM FOOTER */
+
+.negativo {
+    background-color: white !important;
+    color:black;
+}

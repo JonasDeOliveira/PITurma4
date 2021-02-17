@@ -23,17 +23,6 @@
             <div class="calendario col-12 d-flex justify-content-center">
                 <div>
                     <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-                    <!-- <hr />
-                    <table>
-                        <tbody>
-                            <tr *ngFor="let horario of responsePeriodos">
-                                <td>{{ horario.periodo.dsPerido }}
-                                    <button class="btn btn-primary">{{ horario.periodo.horaInicial }}</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button class="btn btn-lg btn-success" (click)="getHorarios()">Listar</button> -->
                 </div>
             </div>
             <!-- Modal Abrir Agenda -->
@@ -52,31 +41,31 @@
                                 <tr>
                                     <div>Manhã: </div>
                                     <td>
-                                        <button class="btn btn-primary ml-2" ng-class="{'btn-abrir-agenda': responsePeriodos.disponibilidade == 0}">{{responsePeriodos[0].periodo.horaInicial}}</button>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[1].periodo.horaInicial}}</button>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[2].periodo.horaInicial}}</button>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[3].periodo.horaInicial}}</button>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[4].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[0].disponibilidade == '0'}" (click)="onClickHorarios(0)">{{responsePeriodos[0].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2"[ngClass]="{'negativo': responsePeriodos[1].disponibilidade == '0'}" (click)="onClickHorarios(1)">{{responsePeriodos[1].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[2].disponibilidade == '0'}" (click)="onClickHorarios(2)">{{responsePeriodos[2].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[3].disponibilidade == '0'}" (click)="onClickHorarios(3)">{{responsePeriodos[3].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[4].disponibilidade == '0'}" (click)="onClickHorarios(4)">{{responsePeriodos[4].periodo.horaInicial}}</button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <div>Tarde: </div>
                                     <td>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[5].periodo.horaInicial}}</button>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[6].periodo.horaInicial}}</button>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[7].periodo.horaInicial}}</button>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[8].periodo.horaInicial}}</button>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[9].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[5].disponibilidade == '0'}" (click)="onClickHorarios(5)">{{responsePeriodos[5].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[6].disponibilidade == '0'}" (click)="onClickHorarios(6)">{{responsePeriodos[6].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[7].disponibilidade == '0'}" (click)="onClickHorarios(7)">{{responsePeriodos[7].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[8].disponibilidade == '0'}" (click)="onClickHorarios(8)">{{responsePeriodos[8].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[9].disponibilidade == '0'}" (click)="onClickHorarios(9)">{{responsePeriodos[9].periodo.horaInicial}}</button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <div>Noite: </div>
                                     <td>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[10].periodo.horaInicial}}</button>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[11].periodo.horaInicial}}</button>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[12].periodo.horaInicial}}</button>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[13].periodo.horaInicial}}</button>
-                                        <button class="btn btn-primary ml-2">{{responsePeriodos[14].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[10].disponibilidade == '0'}" (click)="onClickHorarios(10)">{{responsePeriodos[10].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[11].disponibilidade == '0'}" (click)="onClickHorarios(11)">{{responsePeriodos[11].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[12].disponibilidade == '0'}" (click)="onClickHorarios(12)">{{responsePeriodos[12].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[13].disponibilidade == '0'}" (click)="onClickHorarios(13)">{{responsePeriodos[13].periodo.horaInicial}}</button>
+                                        <button class="btn btn-verde ml-2" [ngClass]="{'negativo': responsePeriodos[14].disponibilidade == '0'}" (click)="onClickHorarios(14)">{{responsePeriodos[14].periodo.horaInicial}}</button>
                                     </td>
                                 </tr>
                             </tbody>
