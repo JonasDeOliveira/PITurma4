@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./agservico.component.css'],
   providers: [NgbModalConfig, NgbModal]
 })
+
 export class AgservicoComponent implements OnInit {
   
   local: string; 

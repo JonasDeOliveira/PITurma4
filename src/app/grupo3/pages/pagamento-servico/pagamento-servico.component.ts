@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Cartao } from '../../shared/model/cartao.model';
+import { Cartao, ResponseCartao } from '../../shared/model/cartao.model';
 import { CartaoService } from '../../shared/service/cartao.service';
 import { PedidoService } from '../../shared/service/pedido.service';
-import { Pedido } from '../../shared/model/pedido.model';
+import { Pedido, ResponsePedido } from '../../shared/model/pedido.model';
 
 @Component({
   selector: 'app-pagamento-servico',
@@ -14,45 +14,71 @@ export class PagamentoServicoComponent implements OnInit {
 
   constructor(
     private cartaoService: CartaoService,
-    private pedidoService: PedidoService,
-
+    private pedidoService: PedidoService
   ) { }
 
-  request: Cartao = {
-    nrCartao: '',
-    codSeguranca: '',
-    dtValidade: '',
-    dtEmissao: ''
-  }
-
-  requestPedido: Pedido = {
-    vlTotal: '',
-    agendamentos: [],
-  }
+  responsePedido: ResponsePedido;
+  responseCartao: ResponseCartao;
+  idPedido: string;
 
   ngOnInit(): void {
-  }
-
-  registrarCartao() {
-    this.cartaoService.createCartao(this.request).subscribe(
+    let agendamentoStorage = JSON.parse(localStorage.getItem("agendamentos"));
+    this.idPedido = agendamentoStorage[0].idServico;
+    this.pedidoService.getServico(this.idPedido).subscribe(
       response => {
-        alert('Cartão cadastrado com sucesso');
-      },
-      error => {
-        alert('Algo inesperado aconteceu');
+        this.responsePedido = response;
+        console.log(this.responsePedido);
       }
     )
   }
 
+  //   localStorage.getItem("agendamentos");
+  //   agendamentosServ = JSON.parse(localStorage.getItem("agendamentos"));
+
+  // request: Pedido = {
+  //   idPedido: null,
+  //   paciente: {
+  //     idPaciente: 1
+  //   },
+  //   agendamentos: {
+  //     idAgendamento: 1,
+  //     // idServico: {
+  //     //   idServico: 1
+  //     // },
+  //     // idLoja: 1,
+  //     // dtHr: ''
+  //   }
+    
+  // }
+
+  // requestCartao: Cartao = {
+  //     nrCartao: '',
+  //     nmCartao: '',
+  //     codSeguranca: '',
+  //     dtValidade: '',
+  //     dtEmissao: ''
+  // }
+  
   registrarPedido() {
-    this.pedidoService.createPedido(this.requestPedido).subscribe(
-      response => {
-        alert('Pedido finalizado com sucesso');
-      },
-      error => {
-        alert('Algo inesperado aconteceu');
-      }
-    )
+    // this.pedidoService.criarPedido(this.request).subscribe(
+    //   response => {
+    //     alert('Pedido finalizado com sucesso');
+    //   },
+    //   error => {
+    //     alert('Algo inesperado aconteceu');
+    //   }
+    // )
+  }
+  
+  registrarCartao() {
+    // this.cartaoService.gravarCartao(this.requestCartao).subscribe(
+    //   response => {
+    //     alert('Cartão cadastrado com sucesso');
+    //   },
+    //   error => {
+    //     alert('Algo inesperado aconteceu');
+    //   }
+    // )
   }
 
 }
