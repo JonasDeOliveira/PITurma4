@@ -105,6 +105,7 @@ export class CadastroClienteComponent implements OnInit {
               config.keyboard = false; }
 
   ngOnInit(): void {
+    
     this.getFormularioCadastro();
     this.getPlanos()
   }
