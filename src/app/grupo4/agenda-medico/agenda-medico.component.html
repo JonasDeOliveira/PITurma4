@@ -19,24 +19,24 @@
 
         <!-- Início Calendário -->
         <div class="col-12 col-md-6">
-            <div>
-                <h1 class="text-center title-calendario">Calendário</h1>
-                <div class="calendario">
-                    <ng-template #teste let-c="close" let-d="dismiss">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="modal-basic-title">Teste</h4>
-                            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>{{data|date:"dd/MM/yyyy"}}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
-                        </div>
-                    </ng-template>
-                    <button class="btn btn-lg btn-danger" (click)="open(teste)">HOJE</button>
+            <h1 class="text-center title-calendario">Calendário</h1>
+            <div class="calendario col-12 d-flex justify-content-center">
+                <div>
+
+                    <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+
+                    <hr />
+
+                    <table>
+                        <tbody>
+                            <tr *ngFor="let horario of responsePeriodos">
+                                <td>{{ horario.periodo.dsPerido }}
+                                    <button class="btn btn-primary">{{ horario.periodo.horaInicial }}</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-lg btn-success" (click)="getHorarios()">Listar</button>
                 </div>
             </div>
             <!-- Modal Abrir Agenda -->
@@ -50,10 +50,10 @@
                         </button>
                     </div>
                     <div class="modal-body modal-horarios">
-                        <div class="manha" *ngFor="let horario of responsePeriodos">
-                            <button type="button" class="btn btn-outline-success button-hora">{{ horario.agenda.periodo.horaInicial }}</button>
+                        <!-- <div *ngFor="let horario of responsePeriodos">
+                            <button type="button">{{ horario.periodo.horaInicial }}</button>
                             
-                        </div>
+                        </div> -->
                         <div class="radio-tipo-consulta">
                             <h3 class="title-tipo-consulta">Tipo de consulta: </h3>
                             <div class="form-check form-check-inline-online">

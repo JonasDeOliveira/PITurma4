@@ -18,6 +18,8 @@ import { PrescrevermedicacaoService } from './prescrever-medicacao/prescrevermed
 import { AgendamedicoService } from './agenda-medico/agendamedico.service';
 import { FormsModule } from '@angular/forms';
 import { AtendimentoespecialistaService } from './atendimento-especialista/atendimentoespecialista.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,13 @@ import { AtendimentoespecialistaService } from './atendimento-especialista/atend
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    BrowserModule,
+    NgbModule
   ],
-
+  exports: [
+    AgendaMedicoComponent
+  ],
   providers: [
     CadastromedicoService,
     DashboardmedicoService,
@@ -45,6 +51,9 @@ import { AtendimentoespecialistaService } from './atendimento-especialista/atend
     PrescrevermedicacaoService,
     AgendamedicoService,
     AtendimentoespecialistaService
+  ],
+  bootstrap: [
+    AgendaMedicoComponent
   ]
 })
 export class Grupo4Module { }

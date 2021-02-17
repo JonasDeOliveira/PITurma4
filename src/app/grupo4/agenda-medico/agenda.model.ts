@@ -1,11 +1,9 @@
 export interface Periodo {
     idPeriodo: number;
+    dsPerido: string;
+    horaInicial: string;
 }
 
 export interface ResponsePeriodos {
-    periodos : Periodo[];
-}
-
-export interface ResponsePeriodo {
-    periodo: Periodo
+    periodos : Periodo[]
 }

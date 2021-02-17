@@ -40,8 +40,9 @@ body {
 .calendario {
     width: 100%;
     height: 570px;
-    border: 1px solid rgb(228, 228, 228);
 }
+
+
 
 .buttons-calendario {
     display: flex;

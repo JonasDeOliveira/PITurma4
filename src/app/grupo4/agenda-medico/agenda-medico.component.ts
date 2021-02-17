@@ -3,6 +3,7 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AgendamedicoService } from './agendamedico.service';
 import { ResponsePeriodos } from './agenda.model';
 import { Router } from '@angular/router';
+import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-agenda-medico',
@@ -13,7 +14,8 @@ import { Router } from '@angular/router';
 export class AgendaMedicoComponent implements OnInit {
 
   constructor(config: NgbModalConfig, private modalService: NgbModal, 
-    private agendaService : AgendamedicoService, private router: Router) {
+    private agendaService : AgendamedicoService, private router: Router,
+    private calendar: NgbCalendar) {
       
     config.backdrop = 'static';
     config.keyboard = false;
@@ -23,13 +25,21 @@ export class AgendaMedicoComponent implements OnInit {
     this.modalService.open(content);
   }
 
+  model: NgbDateStruct;                 
+  date: {year: number, month: number};
+
   agendamentosResposta: any;
   data: any;
+  //horarioResposta: any;
   responsePeriodos: ResponsePeriodos[];
 
   ngOnInit(): void {
     this.getAgendamentos();
-    this.getHorarios();
+    //this.getHorarios();
+  }
+
+  selectToday() {    
+    this.model = this.calendar.getToday();    
   }
 
   getAgendamentos(){
@@ -54,18 +64,28 @@ export class AgendaMedicoComponent implements OnInit {
     }
   }
 
+  /* getHorario() {
+    this.agendaService.getHorario().subscribe(
+      response => {
+        this.horarioResposta = response;
+
+        this.data = new Date(Date.now()).toISOString().slice(0,10);
+      }
+    )
+  } */
+
   getHorarios() {
     this.agendaService.getHorarios().subscribe(
-      response => {
-        this.responsePeriodos = response;
-        console.log(response);
+      resposta => {
+        this.responsePeriodos = resposta;
+        console.log(resposta);
 
         this.data = new Date(Date.now()).toISOString().slice(0,10);
       }
     )
   }
 
-  registrar(data: Date): void {
+  /* registrar(data: Date): void {
     this.agendaService.abrirAgenda(data).subscribe(
       response => {
         alert('Agenda cadastrada com sucesso!');
@@ -75,6 +95,6 @@ export class AgendaMedicoComponent implements OnInit {
         alert('Algo inesperado aconteceu!');
       }
     )
-  }
+  } */
 
 }

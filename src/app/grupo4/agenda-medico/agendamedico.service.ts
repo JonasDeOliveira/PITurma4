@@ -36,11 +36,17 @@ export class AgendamedicoService {
     var data = new Date(Date.now()).toISOString().slice(0,10);
 
     const URL = `${this.API3}/${data}`;
-
     return this.http.get<ResponsePeriodos[]>(URL);
   }
 
-  abrirAgenda(data: Date): Observable<any> {
+  /* getHorario() {
+    var data = new Date(Date.now()).toISOString().slice(0,10);
+
+    const URL = `${this.API3}/${data}`;
+    return this.http.get(URL);
+  } */
+
+  /* abrirAgenda(data: Date): Observable<any> {
     return this.http.post<any>(this.API4, data);
-  }
+  } */
 }
