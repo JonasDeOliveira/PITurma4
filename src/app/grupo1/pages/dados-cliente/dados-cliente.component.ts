@@ -42,9 +42,6 @@ export class DadosClienteComponent implements OnInit {
     planoAtual: null
   }
 
-  password = document.getElementById("cadastro-senha-nova")
-  confirm_password = document.getElementById("cadastro-senha-nova2");
-
   outputCliente: OutputCliente = {
     loginUsuario: {
       idUsuario: null,
@@ -114,10 +111,15 @@ export class DadosClienteComponent implements OnInit {
     config.keyboard = false;
   }
 
+  password = document.getElementById("cadastro-senha-nova")
+  confirm_password = document.getElementById("cadastro-senha-nova2");
+
   ngOnInit(): void {
+    if(this.cliente != null) {
     this.idUsuario = this.cliente.idUsuario;
     this.getFormularioMeusDados();
     this.getPlanos()
+    }
   }
 
   getFormularioMeusDados() {

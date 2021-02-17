@@ -15,7 +15,7 @@ export class ModalLembreteComponent implements OnInit {//
   idUsuario : string;
   responseLembreteIntervalos: ResponseLembretesIntervalo[];
   minDate: Date = new Date();
-  maxDate: Date = new Date(2050, 1, 1)
+  maxDate: Date = new Date(2023, 1, 1)
  
   request: Lembrete =
     {
@@ -40,9 +40,11 @@ export class ModalLembreteComponent implements OnInit {//
                       private router: Router ) { };
 
   ngOnInit(): void {
-    console.log(this.request.idPaciente);
-    this.listarIntervalos();
-    this.minDate = new Date();
+    if(this.idUsuario != null) {
+      console.log(this.request.idPaciente);
+      this.listarIntervalos();
+    }
+
   }
 
   listarIntervalos() {

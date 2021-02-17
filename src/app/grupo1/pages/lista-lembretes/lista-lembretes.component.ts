@@ -20,7 +20,9 @@ export class ListaLembretesComponent implements OnInit {
     private router: Router) { };
 
   ngOnInit(): void {
+    if(this.cliente != null) {
     this.idUsuario = this.cliente.idUsuario;
+    }
   }
 
   open() {

@@ -16,7 +16,9 @@ export class LembreteListaComponent implements OnInit {
     private lembreteService: LembreteService) { }
 
   ngOnInit(): void {
-    this.listarLembretes(this.idUsuario);
+    if(this.idUsuario != null) {
+      this.listarLembretes(this.idUsuario);
+    }
   }
 
   //LISTAR LEMBRETES

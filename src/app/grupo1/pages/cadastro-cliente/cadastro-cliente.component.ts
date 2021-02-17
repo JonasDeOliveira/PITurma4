@@ -210,7 +210,7 @@ export class CadastroClienteComponent implements OnInit {
       response => {
         localStorage.setItem("cliente", JSON.stringify(response.retorno));
         localStorage.setItem("isLogado", JSON.stringify(true));
-        this.router.navigate([`/area-cliente`]);
+        window.location.replace("http://localhost:4200/area-cliente");
       },
       error => {
         alert(error.error.mensagem);

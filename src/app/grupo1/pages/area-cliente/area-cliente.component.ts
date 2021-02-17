@@ -17,6 +17,7 @@ export class AreaClienteComponent implements OnInit {
 
   cliente = JSON.parse(localStorage.getItem("cliente"));
   idUsuario: string;
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
 
   constructor( private clienteService: ClienteService, 
     private planosService: PlanosService, 
@@ -27,8 +28,11 @@ export class AreaClienteComponent implements OnInit {
   public lembretes=[] ;
 
   ngOnInit(): void {
-    this.idUsuario = this.cliente.idUsuario;
-    this.getAreaDoCliente();
+    console.log(this.ehLogado);
+    if(this.cliente != null) {
+      this.idUsuario = this.cliente.idUsuario;
+      this.getAreaDoCliente();
+    }
   }
 
 
@@ -52,14 +56,5 @@ this.areaDoCliente.lembretes.splice(
 }
 }
 
-//IMPLEMENTAR NO HEADER LOGADO
-sair() {
-  if(confirm("Deseja mesmo sair?")) {
-    localStorage.removeItem("cliente");
-    localStorage.setItem("ehLogado", JSON.stringify(true));
-    this.router.navigate([`/`]);
-  }
-
-}
 
 }

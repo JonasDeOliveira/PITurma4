@@ -20,8 +20,6 @@ import { ResponsePlanos } from '../../planos/shared/planos.model';
       return this.http.get<ResponseFormularioCadastro>(URL);
     }
 
-  
-
   getFormularioMeusDados(): Observable<ResponseFormularioMeusDados> {
     const URL = `${this.API}/cliente/meus-dados/${this.cliente.idUsuario}`
     return this.http.get<ResponseFormularioMeusDados>(URL);
