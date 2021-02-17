@@ -19,6 +19,7 @@ export class LoginClienteComponent implements OnInit {
     dsEmail: ""
   }
   respostaLogin: ResultData;
+  isLogado = false;
 
   constructor(private loginService: LoginClienteService,
     private router: Router,
@@ -38,12 +39,17 @@ export class LoginClienteComponent implements OnInit {
         this.respostaLogin = response;
 
         localStorage.setItem("cliente", JSON.stringify(response.retorno));
+        this.isLogado = true;
+        localStorage.setItem("isLogado", JSON.stringify(this.isLogado));
 
         alert(response.mensagem);
-        this.router.navigate([`/area-cliente`]);
+        //this.router.navigate([`/area-cliente`]);
+        window.location.replace("http://localhost:4200/area-cliente");
       },
       error => {
         alert(error.error.mensagem);
+        this.isLogado = false;
+        localStorage.setItem("isLogado", JSON.stringify(this.isLogado));
       }
     )
   }

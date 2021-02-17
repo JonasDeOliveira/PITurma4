@@ -113,6 +113,7 @@ export class CadastroClienteComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.getFormularioCadastro();
     this.getPlanos()
   }

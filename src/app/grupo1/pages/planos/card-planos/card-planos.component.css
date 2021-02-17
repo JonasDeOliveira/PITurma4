@@ -103,7 +103,8 @@ a{
     text-decoration: none;
     color: white;
 }
-
-.alinhar{
-    text-align: left
+.card-text{
+    font-size: 0.75rem;
+    text-align: left;
+    
 }
