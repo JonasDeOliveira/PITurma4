@@ -33,7 +33,8 @@ import { HeaderLogadoComponent } from './components/header-logado/header-logado.
   exports: [
     FooterComponent,
     HeaderComponent,
-    RouterModule
+    RouterModule,
+    HeaderLogadoComponent
   ]
 })
 export class Grupo1Module { }

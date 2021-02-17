@@ -1,5 +1,5 @@
-<app-header></app-header>
-
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
 <router-outlet></router-outlet>
 
 <app-footer></app-footer>

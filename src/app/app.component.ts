@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'piturma4';
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
 }

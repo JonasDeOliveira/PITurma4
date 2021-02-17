@@ -205,7 +205,7 @@
                     <div class="card">
                         <img class="img-card" src="assets/grupo1/img/BASIC.png" alt="Card image cap">
                         <h5 class="card-title">{{responsePlanos[0].nmPlano}} </h5>
-                        <div *ngFor="let servicos of responsePlanos[0].servicos" class="card-body" >
+                        <div *ngFor="let servicos of responsePlanos[0].servicos" class="card-body">
                             <p class="card-text">{{servicos.dsServico}}</p>
                         </div>
                         <div>
@@ -220,7 +220,7 @@
                         <h5 class="card-title">{{responsePlanos[1].nmPlano}}</h5>
                         <div *ngFor="let servicos of responsePlanos[1].servicos" class="card-body">
                             <p class="card-text">{{servicos.dsServico}}</p>
-                            </div>
+                        </div>
                         <div>
                             <h5 class="alinhamento">R${{responsePlanos[1].vlPlano}},00</h5>
                         </div>
@@ -231,7 +231,7 @@
                     <div class="card">
                         <img class="img-card" src="assets/grupo1/img/PREMIUM.png" alt="Card image cap">
                         <h5 class="card-title">{{responsePlanos[2].nmPlano}}</h5>
-                        <div *ngFor="let servicos of responsePlanos[2].servicos" class="card-body">                    
+                        <div *ngFor="let servicos of responsePlanos[2].servicos" class="card-body">
                             <p class="card-text">{{servicos.dsServico}}</p>
                         </div>
                         <div>
@@ -261,7 +261,7 @@
                                         <label for="cartao-numero">Número do Cartão:</label>
                                         <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
                                             [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel"
-                                            minlength="16" required placeholder="0000 0000 0000 0000">
+                                            minlength="16" maxlength="16" required placeholder="0000 0000 0000 0000">
                                         <div *ngIf="nrCartao.errors && (nrCartao.dirty || nrCartao.touched)"
                                             class="alert alert-light">
                                             <div [hidden]="!nrCartao.errors.required">
@@ -278,7 +278,7 @@
                                         <label for="cartao-nome">Nome impresso no Cartão:</label>
                                         <input type="text" class="form-control" id="cartao-nome" name="nmNome"
                                             [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="10"
-                                            required placeholder="Nome impresso no Cartão">
+                                            maxlength="30" required placeholder="Nome impresso no Cartão">
                                         <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)"
                                             class="alert alert-light">
                                             <div [hidden]="!nmNome.errors.required">
@@ -300,7 +300,8 @@
                                         <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
                                         <input type="text" class="form-control" id="cartao-codigo-seguranca"
                                             placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca"
-                                            name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>
+                                            name="codSeguranca" #codSeguranca="ngModel" minlength="3" maxlength="3"
+                                            required>
                                     </div>
                                 </div>
 
