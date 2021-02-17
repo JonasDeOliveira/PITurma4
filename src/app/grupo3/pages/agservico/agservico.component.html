@@ -34,11 +34,11 @@
                 </div>
             </div>
 
-            <div class="row" >
+             <!-- <div class="row" >
                 <div style="display: block;" class="alert alert-danger alert-local" role="alert" style="width: 80%;">
                     Sua busca não retornou resultados
                 </div>
-            </div>
+            </div> -->
             <!-- cards com endereços encontrados -->
           
             <div class="row">
@@ -55,7 +55,7 @@
             </div> 
 
              <!-- /cards com endereços encontrados -->
-
+            <div *ngIf = "exibir2 == true"> <!--DIV DO EXIBIR PARTE 3-->
             <div class="row p-15 pt-5">
                 <h5>3. Selecione data e horário</h5>
             </div>
@@ -80,7 +80,7 @@
 
                 <div class="form-group col-12 col-lg-5 offset-md-1 pt-3" *ngIf = "exibir == true">
                     <div class="row p-15" style="background-color: white;">
-                        <h5>Sexta feira, 05 de fevereiro de 2021</h5>
+                        <h5>{{data}}</h5>
                     </div>
                     
                     <div class="form-group col-12 col-lg-12 pt-3 horarios">
@@ -127,6 +127,8 @@
                   <button type="button" class="btn btn-outline-dark" (click)="concluirAgServico(d)">Concluir</button>
                 </div>
             </ng-template>
+
+        </div> <!--FIM DA DIV DO EXIBIR PARTE 3-->
               
         </form>    
     </section>
