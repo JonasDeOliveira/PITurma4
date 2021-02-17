@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderLogadoComponent implements OnInit {
 
+  navbarOpen : boolean;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  toggleNavbar(){ 
+    this.navbarOpen =! this.navbarOpen; 
+    };
 }
