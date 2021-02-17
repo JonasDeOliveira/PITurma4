@@ -204,15 +204,12 @@
                 <div class="card-deck">
                     <div class="card">
                         <img class="img-card" src="assets/grupo1/img/BASIC.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Plano Basic</h5>
-                            <!-- <div *ngFor="let servico ">
-
-                            </div> -->
-                            <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
+                        <h5 class="card-title">{{responsePlanos[0].nmPlano}} </h5>
+                        <div *ngFor="let servicos of responsePlanos[0].servicos" class="card-body" >
+                            <p class="card-text">{{servicos.dsServico}}</p>
                         </div>
                         <div>
-                            <h5 class="alinhamento">R$ 00,00</h5>
+                            <h5 class="alinhamento">R${{responsePlanos[0].vlPlano}},00</h5>
                         </div>
                         <div><button class="btn  btn-card" [id]="planos.plano1"
                                 [disabled]="planos.plano1 == this.outputCliente.contrato.plano.idPlano"
@@ -220,13 +217,12 @@
                     </div>
                     <div class="card">
                         <img class="img-card" src="assets/grupo1/img/PLUS.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Plano Plus</h5>
-                            <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
-                            <p class="card-text">Consulta com o Clínico Geral</p>
-                        </div>
+                        <h5 class="card-title">{{responsePlanos[1].nmPlano}}</h5>
+                        <div *ngFor="let servicos of responsePlanos[1].servicos" class="card-body">
+                            <p class="card-text">{{servicos.dsServico}}</p>
+                            </div>
                         <div>
-                            <h5 class="alinhamento">R$ 00,00</h5>
+                            <h5 class="alinhamento">R${{responsePlanos[1].vlPlano}},00</h5>
                         </div>
                         <div><button type="button" class="btn btn-card" [id]="planos.plano2"
                                 [disabled]="planos.plano2 == this.outputCliente.contrato.plano.idPlano"
@@ -234,15 +230,12 @@
                     </div>
                     <div class="card">
                         <img class="img-card" src="assets/grupo1/img/PREMIUM.png" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Plano Premium</h5>
-                            <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
-                            <p class="card-text">Consulta com o Clínico Gera</p>
-                            <p class="card-text">Consulta com Especialistas</p>
-                            <p class="card-text">Programa Nutricional</p>
+                        <h5 class="card-title">{{responsePlanos[2].nmPlano}}</h5>
+                        <div *ngFor="let servicos of responsePlanos[2].servicos" class="card-body">                    
+                            <p class="card-text">{{servicos.dsServico}}</p>
                         </div>
                         <div>
-                            <h5 class="alinhamento">R$ 00,00</h5>
+                            <h5 class="alinhamento">R${{responsePlanos[2].vlPlano}},00</h5>
                         </div>
                         <div><button type="button" class="btn btn-card" [id]="planos.plano3"
                                 [disabled]="planos.plano3 == this.outputCliente.contrato.plano.idPlano"

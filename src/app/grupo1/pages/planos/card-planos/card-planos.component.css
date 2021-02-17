@@ -86,10 +86,6 @@ h1 {
     color: #319A75;
 }
 
-.planos {
-    text-align: center;     
-}
-
 h5 {
     text-align: center;
     color: #319A75;
@@ -106,4 +102,8 @@ li {
 a{
     text-decoration: none;
     color: white;
+}
+
+.alinhar{
+    text-align: left
 }
