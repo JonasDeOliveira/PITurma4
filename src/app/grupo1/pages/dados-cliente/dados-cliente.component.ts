@@ -3,6 +3,8 @@ import { ClienteService } from '../cliente/shared/cliente.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { OutputCliente } from '../cliente/shared/cliente.model';
+import { Cartao } from '../../Cartoes/shared/cartao.model';
+import { LoginClienteService } from '../cliente/shared/loginCliente.service';
 
 
 @Component({
@@ -13,6 +15,9 @@ import { OutputCliente } from '../cliente/shared/cliente.model';
 })
 
 export class DadosClienteComponent implements OnInit {
+
+  cliente = JSON.parse(localStorage.getItem("cliente"));
+  idUsuario: string;
 
   responseFormularioMeusDados: any;
   responseCidadesByUf: any;
@@ -26,7 +31,9 @@ export class DadosClienteComponent implements OnInit {
   confirmacao = {
     senhaNova: '',
     senhaConfirmacao: '',
-    senhaAtual: ''
+    senhaAtual: '',
+    mensagem: '',
+    cartaoAtual: null
   };
 
   password = document.getElementById("cadastro-senha-nova")
@@ -90,7 +97,10 @@ export class DadosClienteComponent implements OnInit {
     }
   }
 
+
+
   constructor(private clienteService: ClienteService,
+    private loginService: LoginClienteService,
     private router: Router,
     config: NgbModalConfig,
     private modalService: NgbModal
@@ -100,18 +110,20 @@ export class DadosClienteComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.idUsuario = this.cliente.idUsuario;
     this.getFormularioMeusDados();
   }
 
   getFormularioMeusDados() {
-    this.clienteService.getFormularioMeusDados(165).subscribe(
+    this.clienteService.getFormularioMeusDados().subscribe(
       response => {
         console.log(response);
         this.responseFormularioMeusDados = response;
 
         this.outputCliente = this.responseFormularioMeusDados.inputCliente;
-
-        this.confirmacao.senhaAtual = this.outputCliente.loginUsuario.dsSenha;
+        this.outputCliente.loginUsuario.dsSenha = "";
+        //this.confirmacao.senhaAtual = this.outputCliente.loginUsuario.dsSenha;
+        this.confirmacao.cartaoAtual = this.outputCliente.cartao;
 
         this.getCidadesByUf();
       }
@@ -133,10 +145,10 @@ export class DadosClienteComponent implements OnInit {
   alterarDadosCliente() {
     console.log(this.outputCliente);
 
-    this.clienteService.alteraDadosCliente(165, this.outputCliente).subscribe(
+    this.clienteService.alteraDadosCliente(Number(this.idUsuario), this.outputCliente).subscribe(
       response => {
         alert("Dados alterados com sucesso.");
-        this.router.navigate([`/area-cliente/165`]);
+        this.router.navigate([`/area-cliente`]);
       },
       error => {
         console.log(error)
@@ -150,31 +162,29 @@ export class DadosClienteComponent implements OnInit {
 
     switch (id) {
       case "1":
+        if (confirm("Deseja alterar o plano?")) {
         this.outputCliente.contrato.plano.idPlano = 1
         event.target.enabled
+        }
         break;
       case "2":
-        this.outputCliente.contrato.plano.idPlano = 2
-        this.open(content)
+        if (confirm("Deseja alterar o plano?")) {
+          this.outputCliente.contrato.plano.idPlano = 2
+          this.open(content)
+        }
         break;
       case "3":
-        this.outputCliente.contrato.plano.idPlano = 3
-        this.open(content)
+        if (confirm("Deseja alterar o plano?")) {
+          this.outputCliente.contrato.plano.idPlano = 3
+          this.open(content)
+        }
         break;
     }
   }
 
   limparCartao(): void {
     console.log(this.outputCliente.cartao)
-    this.outputCliente.cartao = {
-      nmNome: '',
-      idCartao: null,
-      usuario: null,
-      nrCartao: '',
-      codSeguranca: null,
-      dtValidade: '',
-      dtEmissao: ''
-    }
+    this.outputCliente.cartao = this.confirmacao.cartaoAtual;
 
     this.outputCliente.contrato.plano.idPlano = 1;
 
@@ -186,6 +196,18 @@ export class DadosClienteComponent implements OnInit {
     console.log(this.outputCliente)
   }
 
-
+  conferirSenha(): void {
+    this.loginService.conferirSenha(this.outputCliente.loginUsuario.dsSenha).subscribe(
+      response => {
+        console.log(response.mensagem);
+        //this.confirmacao.mensagem = response.mensagem;
+        this.confirmacao.mensagem = "";
+      },
+      error => {
+        console.log(error.error.mensagem);
+        this.confirmacao.mensagem = error.error.mensagem;
+      }
+    )
+  }
 
 }

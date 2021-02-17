@@ -79,6 +79,7 @@ section .btn:hover {
         color: #ffff;
         position: relative;
         background-color: #319A75;
+        cursor: pointer;
 
 }
 

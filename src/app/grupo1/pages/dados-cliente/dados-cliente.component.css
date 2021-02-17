@@ -116,6 +116,12 @@ li {
     background-color: #1f5e48;
 }
 
+.alert{
+    color: red;
+    background: none;
+    border: none;
+   }
+
 
 
 

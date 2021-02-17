@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
     constructor(private http: HttpClient) { }
   
     private readonly API = 'http://localhost:8080/login';
+    cliente = JSON.parse(localStorage.getItem("cliente"));
 
     getAcessoCliente(loginUsuario: LoginUsuario): Observable<ResultData>{
         const URL = `${this.API}/cliente`
@@ -22,5 +23,10 @@ import { Observable } from 'rxjs';
 
       return this.http.post<ResultData>(URL, email);
      }
+
+     conferirSenha(senha: String) {
+      const URL = `${this.API}/conferir-senha/${this.cliente.idUsuario}`
+      return this.http.post<ResultData>(URL, senha)
+    }
 
   }

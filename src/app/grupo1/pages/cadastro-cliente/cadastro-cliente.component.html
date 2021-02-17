@@ -238,7 +238,7 @@
                             <div class="form-group col-md-12">
                                 <label for="cartao-nome">Nome impresso no Cartão:</label>
                                 <input type="text" class="form-control" id="cartao-nome" name="nmNome"
-                                    [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="11" required
+                                    [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="10" required
                                     placeholder="Nome impresso no Cartão">
                                 <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)"
                                     class="alert alert-light">

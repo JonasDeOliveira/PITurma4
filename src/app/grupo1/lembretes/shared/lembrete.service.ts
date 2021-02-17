@@ -11,6 +11,9 @@ export class LembreteService {
   constructor(private http: HttpClient) { }
 
   private readonly API = 'http://localhost:8080/lembrete';
+ 
+  cliente = JSON.parse(localStorage.getItem("cliente"));
+
 
   //GET todos os lembretes
   getLembretes() {
@@ -33,21 +36,21 @@ export class LembreteService {
 
   //GET lembretes by usuario e ordenar por mais recente
   getLembretesByUsuario(idUsuario: string): Observable<ResponseLembretes[]> {
-    const URL = `${this.API}/user/${idUsuario}`
+    const URL = `${this.API}/user/${this.cliente.idUsuario}`
 
     return this.http.get<ResponseLembretes[]>(URL);
   }
 
   //GET lembretes by usuario e ordenar por mais antigo
   getLembretesByDataInversa(idUsuario: string): Observable<ResponseLembretes[]> {
-    const URL = `${this.API}/user/${idUsuario}/dt-antiga`
+    const URL = `${this.API}/user/${this.cliente.idUsuario}/dt-antiga`
 
     return this.http.get<ResponseLembretes[]>(URL);
   }
 
   //GET lembretes by usuario e ordenar por data de criação
   getLembretesByDataCriacao(idUsuario: string): Observable<ResponseLembretes[]> {
-    const URL = `${this.API}/user/${idUsuario}/dt-criacao`
+    const URL = `${this.API}/user/${this.cliente.idUsuario}/dt-criacao`
 
     return this.http.get<ResponseLembretes[]>(URL);
   }

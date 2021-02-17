@@ -33,7 +33,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="cadastro-cpf">CPF:</label>
-                        <input disabled type="text" class="form-control" id="cadastro-cpf"
+                        <input type="text" class="form-control" id="cadastro-cpf"
                             [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" required>
                     </div>
                     <div class="form-group col-md-1">
@@ -160,18 +160,16 @@
                     </div>
                     <div class="form altera-senha">
                         <label>Alterar a Senha:</label>
-                        <div class="form-row"></div>
-                        <div class="form-group col-md-6">
-                            <label for="cadastro-senha">Senha atual:</label>
-                            <input type="password" class="form-control" id="cadastro-senha"
-                                (ngModel)="outputCliente.loginUsuario.dsSenha" #dsSenha="ngModel" name="dsSenha"
-                                placeholder="Digite a senha">
-                            <!-- <div *ngIf="dsSenhaNova.touched || senhaConfirmacao.touched">
-                                <div *ngIf="confirmacao.senhaAtual != dsSenha.value" class="alert alert-light mt-1 justify-content-right"
-                                    role="alert">
-                                    A senha informada não confere!
-                                </div> 
-                            </div>  -->
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="cadastro-senha">Senha atual:</label>
+                                <input type="password" class="form-control" id="cadastro-senha"
+                                    [(ngModel)]="outputCliente.loginUsuario.dsSenha" #dsSenha="ngModel" name="dsSenha"
+                                    placeholder="Digite a senha" (change)="conferirSenha()">
+                                <div *ngIf="dsSenha.touched && confirmacao.mensagem!='' " class="alert">
+                                    {{confirmacao.mensagem}}
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-row">
@@ -260,7 +258,7 @@
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
-                            <form #formCartao="ngForm" (change)="ver()">
+                            <form #formCartao="ngForm">
                                 <div class="modal-header">
                                     <h5 class="modal-title modal-basic-title">Dados do Cartão:</h5>
 
@@ -270,7 +268,7 @@
                                         <label for="cartao-numero">Número do Cartão:</label>
                                         <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
                                             [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel"
-                                            minlength="16" maxlength="16" placeholder="0000 0000 0000 0000">
+                                            minlength="16" required placeholder="0000 0000 0000 0000">
                                         <div *ngIf="nrCartao.errors && (nrCartao.dirty || nrCartao.touched)"
                                             class="alert alert-light">
                                             <div [hidden]="!nrCartao.errors.required">
@@ -286,8 +284,8 @@
                                     <div class="form-group col-md-12">
                                         <label for="cartao-nome">Nome impresso no Cartão:</label>
                                         <input type="text" class="form-control" id="cartao-nome" name="nmNome"
-                                            [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="11"
-                                            maxlength="11" placeholder="Nome impresso no Cartão">
+                                            [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="10"
+                                            required placeholder="Nome impresso no Cartão">
                                         <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)"
                                             class="alert alert-light">
                                             <div [hidden]="!nmNome.errors.required">
@@ -302,14 +300,14 @@
                                         <div class="vencimento-cartao">
                                             <input type="date" class="form-control" id="dtValidade"
                                                 placeholder="00/0000" [(ngModel)]="outputCliente.cartao.dtValidade"
-                                                name="dtValidade" #dtValidade="ngModel">
+                                                name="dtValidade" #dtValidade="ngModel" required>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-7">
                                         <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
                                         <input type="text" class="form-control" id="cartao-codigo-seguranca"
                                             placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca"
-                                            name="codSeguranca" #codSeguranca="ngModel" minlength="3" maxlength="3">
+                                            name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>
                                     </div>
                                 </div>
 
