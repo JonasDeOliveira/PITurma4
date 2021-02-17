@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
   })
   export class PlanosService {
-  
+   
     constructor(private http: HttpClient) { }
   
     private readonly API = 'http://localhost:8080/planos';

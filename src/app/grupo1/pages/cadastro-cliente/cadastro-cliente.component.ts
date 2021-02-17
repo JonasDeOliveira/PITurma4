@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { OutputCliente} from '../cliente/shared/cliente.model';
 import { ClienteService } from '../cliente/shared/cliente.service';
+import { PlanosService } from '../planos/shared/planos.service';
 import { LoginClienteComponent } from '../login-cliente/login-cliente.component';
 
 @Component({
@@ -15,6 +16,7 @@ export class CadastroClienteComponent implements OnInit {
 
   responseFormularioCadastro: any;
   responseCidadesByUf: any;
+  responsePlanos: any;
 
   planos = {
     plano1: 1,
@@ -95,6 +97,7 @@ export class CadastroClienteComponent implements OnInit {
   }
 
   constructor(private clienteService: ClienteService,
+              private planosService: PlanosService,
               private router: Router,
               config: NgbModalConfig,
               private modalService: NgbModal ) {
@@ -103,6 +106,7 @@ export class CadastroClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFormularioCadastro();
+    this.getPlanos()
   }
 
   getFormularioCadastro() {
@@ -122,7 +126,7 @@ export class CadastroClienteComponent implements OnInit {
       }
     )
   }
-
+  
   ver() {
     console.log(this.outputCliente)
   }
@@ -180,5 +184,12 @@ export class CadastroClienteComponent implements OnInit {
       console.log(this.outputCliente.cartao)
       this.modalService.dismissAll();
   }
-
-}
+  getPlanos() {
+    this.planosService.getPlanos().subscribe(
+      response => {
+        console.log(response);
+        this.responsePlanos = response;
+      }
+    )
+    }
+ }

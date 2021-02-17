@@ -52,5 +52,9 @@ footer {
     footer li {
         text-align: inherit;
     }
+    #direitos{
+        text-align: center;
+        size: 6px;
+    }
 }
 

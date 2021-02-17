@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseCidades, ResponseFormularioCadastro, ResponseFormularioMeusDados, ResponseAreadoCliente,OutputCliente} from './cliente.model';
 import { Observable } from 'rxjs';
+import { ResponsePlanos } from '../../planos/shared/planos.model';
 
 
 @Injectable({
@@ -53,5 +54,7 @@ import { Observable } from 'rxjs';
     return this.http.put<OutputCliente>(URL, request);
   }
 
-
+  getPlanos() {
+    return this.http.get<ResponsePlanos[]>('http://localhost:8080/planos');
+  }
 }

@@ -8,21 +8,28 @@
                 <input type="email" class="form-control" id="cadastro-email" placeholder="Digite o seu e-mail"
                     [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required>
                     <!-- pattern="[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+"> -->
-
+                    <div *ngIf= "(dsEmail.dirty || dsEmail.touched)"
+                    class="alert alert-light mt-1" role="alert">
+                    O campo e-mail é obrigatório.
+                </div>                 
             </div>
             <div class="form-group col-md-4">
                 <label for="cadastro-senha">Senha:</label>
                 <input type="password" class="form-control" id="cadastro-senha" placeholder="Digite a senha"
                     [(ngModel)]="outputCliente.loginUsuario.dsSenha" #dsSenha="ngModel" name="dsSenha" required>
+                <div *ngIf= "(dsSenha.dirty || dsSenha.touched)"
+                    class="alert alert-light mt-1" role="alert">
+                    Insira uma senha.
+                </div>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-8">
                 <label for="cadastro-email2">Repita o Email:</label>
                 <input type="email" class="form-control" id="cadastro-email2" placeholder="Digite o seu e-mail"
-                    name="emailConfirmacao" #emailConfirmacao="ngModel" [(ngModel)]="confirmacao.emailConfirmacao"
-                    required> <!-- pattern="[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+"  -->
-                <div *ngIf="emailConfirmacao.value != dsEmail.value && (emailConfirmacao.dirty || emailConfirmacao.touched ||emailConfirmacao.invalid )"
+                    [(ngModel)]="confirmacao.emailConfirmacao" #emailConfirmacao="ngModel" name="emailConfirmacao" required> 
+                    <!-- pattern="[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+"  -->
+                <div *ngIf="emailConfirmacao.value != dsEmail.value && (emailConfirmacao.dirty || emailConfirmacao.touched)"
                     class="alert alert-light mt-1" role="alert">
                     O email informado não confere!
                 </div>
@@ -68,9 +75,9 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="cadastro-cpf">CPF:</label>
-                <input type="text" class="form-control" id="cadastro-cpf" placeholder="Digite o seu CPF" pattern="[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}"
-                    [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" minlength="11" maxlength="11"
-                    required> <!-- pattern="[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}" required> -->
+                <input type="text" class="form-control" id="cadastro-cpf" placeholder="Digite o seu CPF"
+                    [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" minlength="11" maxlength="11" required> 
+                <!-- pattern="[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}" required> -->
                 <div *ngIf="nrCpf.errors && (nrCpf.dirty || nrCpf.touched)" class="alert alert-light">
                     <div [hidden]="!nrCpf.errors.required">
                         O campo CPF é obrigatório.
@@ -82,7 +89,7 @@
             </div>
             <div class="form-group col-md-1">
                 <label for="cadastro-ddd">DDD:</label>
-                <input type="text" class="form-control" id="cadastro-ddd" minlength="3" maxlength="3"
+                <input type="text" class="form-control" id="cadastro-ddd" required
                 [(ngModel)]="outputCliente.ddd" placeholder="(000)" name="ddd" #ddd="ngModel">
                 <div *ngIf="ddd.invalid" class="alert alert- light">
                     <div [hidden]="!celular.errors.required">
@@ -93,8 +100,8 @@
             <div class="form-group col-md-3">
                 <label for="cadastro-celular">Celular:</label>
                 <input type="text" class="form-control" id="cadastro-celular" placeholder="Digite o seu Celular"
-                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="8" 
-                    required><!--  pattern="(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"  -->
+                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="8" required>
+                    <!--  pattern="(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"  -->
                 <div *ngIf="celular.errors && (celular.dirty || celular.touched)" class="alert alert- light">
                     <div [hidden]="!celular.errors.required">
                         Informar telefone para contato.
@@ -104,34 +111,32 @@
             <div class="form-group col-md-4">
                 <label for="cadastro-nascimento">Data de Nascimento:</label>
                 <input type="date" class="form-control" id="cadastro-nascimento"
-                    [(ngModel)]="outputCliente.usuario.dtNascimento" #dtNascimento="ngModel" name="dtNascimento"
-                    required>
+                    [(ngModel)]="outputCliente.usuario.dtNascimento" #dtNascimento="ngModel" name="dtNascimento" required>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="cadastro-cep">CEP:</label>
                 <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP" minlength="8" maxlength="8"
-                    [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep">
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep"required>
 
             </div>
             <div class="form-group col-md-7">
                 <label for="cadastro-endereco">Endereço:</label>
                 <input type="text" class="form-control" id="cadastro-endereco" placeholder="Digite o seu endereço"
-                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsEndereco" #dsEndereco="ngModel" name="dsEndereco">
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsEndereco" #dsEndereco="ngModel" name="dsEndereco" required>
             </div>
             <div class="form-group col-md-1">
                 <label for="cadastro-cep">Número:</label>
                 <input type="text" class="form-control" id="cadastro-numero" placeholder="Número"
-                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsComplemento" #dsComplemento="ngModel"
-                    name="dsComplemento">
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsComplemento" #dsComplemento="ngModel" name="dsComplemento">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-5">
                 <label for="cadastro-bairro">Bairro:</label>
                 <input type="text" class="form-control" id="cadastro-bairro" placeholder="Digite o seu Bairro"
-                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsBairro" #dsBairro="ngModel" name="dsBairro">
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsBairro" #dsBairro="ngModel" name="dsBairro" required>
             </div>
             <div class="form-group col-md-2">
                 <label for="cadastro-estado">Estado:</label>
@@ -161,12 +166,12 @@
         <div class="card-deck">
             <div class="card">
                 <img class="img-card" src="assets/grupo1/img/BASIC.png" alt="Card image cap">
-                <div class="card-body" >
-                    <h5 class="card-title">Plano Basic</h5>
-                    <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
+                <h5 class="card-title">{{responsePlanos[0].nmPlano}} </h5>
+                <div *ngFor="let servicos of responsePlanos[0].servicos" class="card-body" >
+                    <p class="card-text">{{servicos.dsServico}}</p>
                 </div>
                 <div>
-                    <h5 class="alinhamento">R$ 00,00</h5>
+                    <h5 class="alinhamento">R${{responsePlanos[0].vlPlano}},00</h5>
                 </div>
                 <div><button class="btn  btn-card" [id]="planos.plano1"
                         [disabled]="planos.plano1 == this.outputCliente.contrato.plano.idPlano"
@@ -174,13 +179,12 @@
             </div>
             <div class="card">
                 <img class="img-card" src="assets/grupo1/img/PLUS.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Plano Plus</h5>
-                    <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
-                    <p class="card-text">Consulta com o Clínico Geral</p>
-                </div>
+                <h5 class="card-title">{{responsePlanos[1].nmPlano}}</h5>
+                <div *ngFor="let servicos of responsePlanos[1].servicos" class="card-body">
+                    <p class="card-text">{{servicos.dsServico}}</p>
+                    </div>
                 <div>
-                    <h5 class="alinhamento">R$ 00,00</h5>
+                    <h5 class="alinhamento">R${{responsePlanos[1].vlPlano}},00</h5>
                 </div>
                 <div><button type="button" class="btn btn-card" [id]="planos.plano2"
                         [disabled]="planos.plano2 == this.outputCliente.contrato.plano.idPlano"
@@ -188,15 +192,12 @@
             </div>
             <div class="card">
                 <img class="img-card" src="assets/grupo1/img/PREMIUM.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Plano Premium</h5>
-                    <p class="card-text">Agendamento de Serviços Farmacêuticos</p>
-                    <p class="card-text">Consulta com o Clínico Gera</p>
-                    <p class="card-text">Consulta com Especialistas</p>
-                    <p class="card-text">Programa Nutricional</p>
+                <h5 class="card-title">{{responsePlanos[2].nmPlano}}</h5>
+                <div *ngFor="let servicos of responsePlanos[2].servicos" class="card-body">                    
+                    <p class="card-text">{{servicos.dsServico}}</p>
                 </div>
                 <div>
-                    <h5 class="alinhamento">R$ 00,00</h5>
+                    <h5 class="alinhamento">R${{responsePlanos[2].vlPlano}},00</h5>
                 </div>
                 <div><button type="button" class="btn btn-card" [id]="planos.plano3"
                         [disabled]="planos.plano3 == this.outputCliente.contrato.plano.idPlano"
@@ -253,8 +254,7 @@
                                 <label for="cartao-vencimento">Data de vencimento:</label>
                                 <div class="vencimento-cartao">
                                         <input type="date" class="form-control" id="dtValidade" placeholder="00/0000"
-                                            [(ngModel)]="outputCliente.cartao.dtValidade" name="dtValidade"
-                                            #dtValidade="ngModel" required>
+                                            [(ngModel)]="outputCliente.cartao.dtValidade" name="dtValidade" #dtValidade="ngModel" required>
                                 </div>
                             </div>
                             <div class="form-group col-md-7">
@@ -265,7 +265,8 @@
                             </div>
                         </div>
                         
-                        <button type="button" class="btn btns-cadastro btn-espaco" (click)="d('Cross click')" [disabled]="formCartao.invalid">Confirmar</button>
+                        <button type="button" class="btn btns-cadastro btn-espaco" (click)="d('Cross click')" 
+                        [disabled]="formCartao.invalid">Confirmar</button>
                         <button type="button" class="btn btns-cadastro btn-espaco"
                             (click)="limparCartao()">Cancelar</button>
                     </form>
