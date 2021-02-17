@@ -14,17 +14,17 @@ export class CadastroMedicoComponent implements OnInit {
 
   request: Cadastro = {
     espMed : {
-      idEspMed: null 
+      idEspMed: null,
     },
     uf : {
-      idUf: null
+      idUf: null,
     } ,
     nome: '',
     nrCpf:'',
     dtNascimento : null,
     nrCrm: '',
     preco: {
-      vlConsulta: null
+      vlConsulta: null,
     } ,
     enderecos: [
       {
@@ -35,19 +35,19 @@ export class CadastroMedicoComponent implements OnInit {
       cidade : {
         idCidade: null,
         uf: {
-            idUf: null
+            idUf: null,
         }
       }
     }
     ],
     contatos: [
       {
-        dsContato: ''
+        dsContato: '',
     }
     ],
     login: {
       dsEmail: '',
-      dsSenha: ''
+      dsSenha: '',
     }
   }
   dadosResposta: any

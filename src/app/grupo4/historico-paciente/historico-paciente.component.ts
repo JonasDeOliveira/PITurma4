@@ -22,12 +22,11 @@ export class HistoricoPacienteComponent implements OnInit {
   historicoCpfResposta: any
   historicoMedicoResposta: any
   prontuarioResposta: any
-
   veioDoAtendimento;
 
   open(content, id) {
-    this.modalService.open(content ,{ size: 'lg'});
     this.getDadoProntuario(id);
+    this.modalService.open(content ,{ size: 'lg'});
   }
   ngOnInit(): void {
     this.getDadosHistoricoMedico();
@@ -51,6 +50,7 @@ export class HistoricoPacienteComponent implements OnInit {
     this.historicoService.getDadoProntuario(idProntuario).subscribe( 
       resposta => {
          this.prontuarioResposta = resposta;
+         console.log(resposta);
       }
     );
   }
