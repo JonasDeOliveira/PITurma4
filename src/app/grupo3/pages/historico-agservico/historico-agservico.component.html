@@ -13,12 +13,30 @@
             </div>
         </div>
 
+        <button type="button" class="btn btn-success btn-verde btn-seleciona"  (click)="clickAqui()">CLIQUE AQUI</button>
+    
+
+        <div *ngIf = "exibir3 == true">
         <div class="row pl-3 pt-4">
             <h4 class="titulo-p">Próximos agendamentos</h4>
         </div>
 
         <div class="row">
-            <div class="col-12 col-lg-6 pt-3">
+            <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agAgendados">
+                <div class="card" style="width: 90%;">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ag.dsServico}}</h5>
+                      <p class="card-text">Horário: {{ag.dtDataHora}}.</p>
+                      <p class="card-text">Data: Sexta-feira, 18 de dezembro de 2020</p>
+                      <p class="card-text">Local: {{ag.endLoja}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+       <!-- <div class="row">
+            <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agAgendados">
                 <div class="card" style="width: 90%;">
                     <div class="card-body">
                       <h5 class="card-title">Aplicação de medicamento</h5>
@@ -29,6 +47,8 @@
                 </div>
             </div>
         </div>
+        </div> -->
+
 
         <div class="row pl-3 pt-5">
             <h4 class="titulo-p">Histórico de agendamentos</h4>

@@ -68,6 +68,7 @@ export class AgservicoComponent implements OnInit {
     this.modalService.open(content);
   }
 
+
   getLoja(id: number){
     this.idLoja = id; 
     console.log("Id seviço: "+ this.idServico);
@@ -152,7 +153,6 @@ export class AgservicoComponent implements OnInit {
         this.hrNoiteExibir.push(this.hrNoite[m]);
       }
     }
-
     this.exibir = true;
   }
   
@@ -176,6 +176,7 @@ export class AgservicoComponent implements OnInit {
 
     //depois enviar o array agendamentos para a pag de pagamentos. 
     localStorage.setItem("agendamentos", JSON.stringify(this.agendamentos));
+    //FECHAR A MODAL AQUI
     this.router.navigate(['/pagamento-servico']);
   }
 
