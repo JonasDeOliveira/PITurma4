@@ -92,6 +92,7 @@ section .btn:hover {
 .card-text{
     font-size: 0.75rem;
     text-align: left;
+    line-height: 1rem;
     
 }
 
