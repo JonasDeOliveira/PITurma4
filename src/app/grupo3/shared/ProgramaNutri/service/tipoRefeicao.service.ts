@@ -12,10 +12,10 @@ export class TipoRefeicaoService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly API = 'http://localhost:8080/tipo-refeicoes';
+  private readonly API4 = 'http://localhost:8080/tipo-refeicoes';
 
   getTipoRefeicoes() {
-    return this.http.get<ResponseTipoRefeicao>(this.API);
+    return this.http.get<ResponseTipoRefeicao>(this.API4);
   }
   
 }
