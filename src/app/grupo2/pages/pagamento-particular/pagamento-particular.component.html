@@ -9,7 +9,7 @@
         <div class="texto-trilha d-flex flex-column">
             <a routerLink='/agendamento-consultas'>
                 <div class="trilha">Consulta</div>
-                <div class="opcao">Presencial</div>
+                <div class="opcao">{{dsConsulta}}</div>
             </a>
         </div>
     </div>
@@ -21,7 +21,7 @@
         <div class="texto-trilha d-flex flex-column">
             <a routerLink='/agendamento-consultas'>
                 <div class="trilha ">Especialidade</div>
-                <div class="opcao ">Endocrinologia</div>
+                <div class="opcao ">{{dsEspecialidade}}</div>
             </a>
         </div>
     </div>
@@ -45,7 +45,7 @@
         <div class="texto-trilha d-flex flex-column">
             <a routerLink='/escolha-especialista'>
                 <div class="trilha">Especialista</div>
-                <div class="opcao">Dra Brinquedos</div>
+                <div class="opcao">{{nmMedico}}</div>
             </a>
         </div>
     </div>
@@ -57,7 +57,7 @@
         <div class="texto-trilha d-flex flex-column">
             <a routerLink='/escolha-especialista'>
                 <div class="trilha">Horário</div>
-                <div class="opcao">14:00</div>
+                <div class="opcao">{{horario}}</div>
             </a>
         </div>
     </div>
@@ -114,14 +114,13 @@
             <!-- Dados do cartão de crédito -->
             <div class="dadosCC">
                 <form>
-                <!-- <form [(ngModel)]="cartao" #formCartao="ngForm" class="formDadosCC"> -->
                     <!-- linha 1 - Número do cartão -->
                     <div class="form-row">
-                        <!-- <div class="form-group col-12">
+                        <div class="form-group col-12">
                             <label  for="numeroCC">Número do cartão*</label>
-                            <input *ngFor ="let cartao of responseCartao" [ngValue]="cartao.nrCartao" name="nrCartao" #iptNrCartao ="ngModel" type="text" class="form-control" id="numeroCC" 
-                                required>
-                        </div> -->
+                            <input [(ngModel)]="nrCartao" name="nrCartao" type="text" class="form-control" id="nrCartao"
+                                placeholder="Digite o número do Cartao" required>
+                        </div>
 
                     </div>
 
@@ -129,7 +128,7 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="nomeTitular">Nome do titular do cartão*</label>
-                            <input [(ngModel)]="nomeTitular" name="nomeTitular" type="text" class="form-control" id="nomeTitular"
+                            <input [(ngModel)]="nmTitular" name="nmTitular" type="text" class="form-control" id="nmTitular"
                                 placeholder="Digite o nome como gravado no cartão" required>
                         </div>
                     </div>
@@ -184,6 +183,8 @@
                             <select id="numParcelas" class="form-control">
                                 <option selected>Escolha o número de parcelas</option>
                                 <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
                             </select>
                         </div>
                     </div>
@@ -207,27 +208,25 @@
                 <table class="table">
                     <tr class="cabecalho ">
                         <th class="produto text-center">SERVIÇO</th>
-                        <th class="quantidade text-center">QTD</th>
+                        <th class="quantidade text-center">ESPECIALISTA</th>
                         <th class="preco text-center">PARCELAS</th>
-                        <th class="preco text-center">VALOR</th>
                     </tr>
                     <tr class="dadosPedido">
-                        <td class="text-left">Endocrinologia</td>
-                        <td class="text-center">01</td>
+                        <td class="text-left">Consulta {{dsEspecialidade}}</td>
+                        <td class="text-center">Dr(a) {{nmMedico}}</td>
                         <td class="text-right">3x de R$ 42,00</td>
-                        <td class="text-right">R$ 126,00</td>
                     </tr>
                 </table>
                 <table class="table">
                     <tr>
                         <th colspan="2" class="total">Total</th>
-                        <td class="total text-right">R$ 126,00</td>
+                        <td class="total text-right">R$ {{vlConsulta}}</td>
                     </tr>
                 </table>
                 <div class="btnConcluir">
                     <div class="col text-center">
                         <a routerLink='/confirmacao-consulta'><button
-                                class="btn-active clicavel" value="CadastrarParticular" (click)="cadastrarPagtoCartao()">Confirmar</button></a>
+                                class="btn-active clicavel" value="CadastrarParticular" (click)="salvarTipoPagamento()">Confirmar</button></a>
                     </div>
                 </div>
             </div>

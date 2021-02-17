@@ -15,12 +15,11 @@ export class AgendaService {
   private readonly MUDARSTATUSAGENDADA = 'http://localhost:8080/agenda/disponibilidade/'
 
   listarPorEsp(idTipoConsulta: number, idEspecialidade: number){
-    // return this.http.get<ResponseAgenda[]>`${this.APIAGENDAPORESP}/${idTipoConsulta}/${idEspecialidade}`;
     return this.http.get<Agenda[]>(this.APIAGENDAPORESP + idTipoConsulta + "/" + idEspecialidade);
   }
 
   mudarStatus(idAgPaciente: number){
-    return this.http.get<Resposta>(this.MUDARSTATUSAGENDADA + idAgPaciente);
+    return this.http.get<boolean>(this.MUDARSTATUSAGENDADA + idAgPaciente);
   }
 
 }

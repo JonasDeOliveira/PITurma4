@@ -45,7 +45,9 @@ export class AgendamentoConsultasComponent implements OnInit {
 
   salvarEspLS(){
     this.espMedService.buscarEspPorId(this.idEspSelect).subscribe(
-      response => localStorage.setItem("espMed", JSON.stringify(response))
+      response => {localStorage.setItem("espMed", JSON.stringify(response))
+      console.log(localStorage.getItem("espMed"))
+    }
     )
 }
 
@@ -56,7 +58,7 @@ export class AgendamentoConsultasComponent implements OnInit {
       this.idTipoConsulta = this.tipoConsultaEscolhida.idTipoConsulta;
       this.listarEspecialidades(this.idTipoConsulta);
       localStorage.setItem("tipoConsulta", JSON.stringify(response));
-
+      console.log(localStorage.getItem("tipoConsulta"))
     }
     )
   }
@@ -68,6 +70,7 @@ export class AgendamentoConsultasComponent implements OnInit {
       this.idTipoConsulta = this.tipoConsultaEscolhida.idTipoConsulta;
       this.listarEspecialidades(this.idTipoConsulta);
       localStorage.setItem("tipoConsulta", JSON.stringify(response));
+      console.log(localStorage.getItem("tipoConsulta"))
     }
     )
   }

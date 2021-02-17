@@ -33,7 +33,7 @@ export class MinhasConsultasComponent implements OnInit {
   //implementar id usuario no parametro
 
     ngOnInit() : void{
-    this.listarAgPacientePorUsuario(14);
+    this.listarAgPacientePorUsuario(142);
     
   }
   open(content) {
@@ -53,9 +53,8 @@ export class MinhasConsultasComponent implements OnInit {
       response => {
         this.respostaString=response;
         alert(response.resposta);
-        // console.log(this.router)
-        this.router.navigate(['/minhas-consultas']);
-        this.listarAgPacientePorUsuario(14);
+        // this.router.navigate(['/minhas-consultas']);
+        this.listarAgPacientePorUsuario(142);
       },
       err => {
         console.log(err.message);

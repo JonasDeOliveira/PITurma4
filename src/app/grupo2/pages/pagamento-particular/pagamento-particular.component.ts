@@ -1,8 +1,9 @@
+import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cartao } from '../../shared/model/cartao';
-import { Pagamento } from '../../shared/model/pagamento';
-import { PagamentoCartao } from '../../shared/model/pagamentoCartao';
+import { Agenda } from '../../shared/model/agenda';
+import { EspMed } from '../../shared/model/espMed';
+import { TipoConsulta } from '../../shared/model/tipoConsulta';
 import { CartaoService } from '../../shared/services/cartao.service';
 import { PagamentoCartaoServiceService } from '../../shared/services/pagamento-cartao-service.service';
 
@@ -19,47 +20,37 @@ export class PagamentoParticularComponent implements OnInit {
     private router: Router 
     ) { }
 
-  request: PagamentoCartao = {
-    idAgPaciente: 3,
-    parcelas: 1,
-    }
+  especialidade: EspMed = JSON.parse(localStorage.getItem("espMed"));
+  dsEspecialidade: string = this.especialidade.dsEspMed;
+  idEsp: number = this.especialidade.idEspMed;
 
-  responseCartao :Cartao;
-  pagamentoCartEscolhido : Pagamento;
-  idPgtoCartaoString : string;
-  nomeTitular: string = "";
+  consulta : TipoConsulta = JSON.parse(localStorage.getItem("tipoConsulta")); 
+  dsConsulta : string = this.consulta.dsTipoConsulta;
+  idTipoConsulta: number = this.consulta.idTipoConsulta;
+
+  agenda: Agenda = JSON.parse(localStorage.getItem("agenda"));
+  nmMedico : string = this.agenda.medico.nome;
+  horario : Time = this.agenda.periodo.horaInicial;
+  vlConsulta: number = this.agenda.medico.preco.vlConsulta;
+
+  nmTitular:string;
+  nrCartao: string;
 
 
   ngOnInit(): void {
-    this.listarCartao(14);
+    this.listarCartao(142);
   }
 
   listarCartao(idUsuario: number){
     this.cartaoService.listarCartaoPorUsuario(idUsuario).subscribe(
-      response => {this.responseCartao = response[0];
-      this.nomeTitular=response[0].nrCartao;
-      }
-    )
-  }
-      
-  cadastrarPagtoCartao() {
-    this.pagamentoCartaoService.cadastrarCartao(this.request).subscribe(
       response => {
-        this.pagamentoCartEscolhido = response;
-        this.salvarPagtoCartaoLs();
-        console.log(response);
-        console.log(localStorage.getItem("idPgto"))
-      },
-      error => {
-        alert('erro ao pagar consulta com cartão');
+      this.nmTitular = response[0].usuario.nmNome;
+      this.nrCartao = response[0].nrCartao;
       }
     )
   }
-  salvarPagtoCartaoLs(){
-    this.idPgtoCartaoString = this.pagamentoCartEscolhido.toString();
-    localStorage.setItem("idPgto", this.idPgtoCartaoString)
-  }
-
+  salvarTipoPagamento(){
+    localStorage.setItem("tipoPagamento", "2")
 }
-
+}
 
