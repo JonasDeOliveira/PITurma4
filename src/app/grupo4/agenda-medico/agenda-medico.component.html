@@ -22,11 +22,8 @@
             <h1 class="text-center title-calendario">Calendário</h1>
             <div class="calendario col-12 d-flex justify-content-center">
                 <div>
-
                     <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-
-                    <hr />
-
+                    <!-- <hr />
                     <table>
                         <tbody>
                             <tr *ngFor="let horario of responsePeriodos">
@@ -36,11 +33,11 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-lg btn-success" (click)="getHorarios()">Listar</button>
+                    <button class="btn btn-lg btn-success" (click)="getHorarios()">Listar</button> -->
                 </div>
             </div>
             <!-- Modal Abrir Agenda -->
-            <ng-template #abrir let-c="close" let-d="dismiss">
+            <ng-template #content let-c="close" let-d="dismiss">
                 <div class="modal-content modal-abrir-agenda">
                     <div class="modal-header">
                         <h2 class="modal-title" id="modal-basic-title">Selecione o(s) horário(s) e o tipo de consulta
@@ -50,10 +47,40 @@
                         </button>
                     </div>
                     <div class="modal-body modal-horarios">
-                        <!-- <div *ngFor="let horario of responsePeriodos">
-                            <button type="button">{{ horario.periodo.horaInicial }}</button>
-                            
-                        </div> -->
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <div>Manhã: </div>
+                                    <td>
+                                        <button class="btn btn-primary ml-2" ng-class="{'btn-abrir-agenda': responsePeriodos.disponibilidade == 0}">{{responsePeriodos[0].periodo.horaInicial}}</button>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[1].periodo.horaInicial}}</button>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[2].periodo.horaInicial}}</button>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[3].periodo.horaInicial}}</button>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[4].periodo.horaInicial}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <div>Tarde: </div>
+                                    <td>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[5].periodo.horaInicial}}</button>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[6].periodo.horaInicial}}</button>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[7].periodo.horaInicial}}</button>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[8].periodo.horaInicial}}</button>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[9].periodo.horaInicial}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <div>Noite: </div>
+                                    <td>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[10].periodo.horaInicial}}</button>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[11].periodo.horaInicial}}</button>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[12].periodo.horaInicial}}</button>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[13].periodo.horaInicial}}</button>
+                                        <button class="btn btn-primary ml-2">{{responsePeriodos[14].periodo.horaInicial}}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <div class="radio-tipo-consulta">
                             <h3 class="title-tipo-consulta">Tipo de consulta: </h3>
                             <div class="form-check form-check-inline-online">
@@ -78,7 +105,7 @@
             <!-- Fim Modal Abrir Agenda -->
 
             <div class="buttons-calendario">
-                <button class="btn btn-abrir-agenda" (click)="open(abrir)">Abrir Agenda</button>
+                <button class="btn btn-abrir-agenda" (click)="open(content)">Abrir Agenda</button>
                 <button type="button" class="btn btn-consultar-agenda" data-toggle="modal"
                     data-target="#modalConsultarAgenda">
                     Consultar Agenda

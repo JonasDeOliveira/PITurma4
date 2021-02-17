@@ -23,6 +23,7 @@ export class AgendaMedicoComponent implements OnInit {
 
   open(content) {
     this.modalService.open(content);
+    this.getHorarios();
   }
 
   model: NgbDateStruct;                 
@@ -31,7 +32,7 @@ export class AgendaMedicoComponent implements OnInit {
   agendamentosResposta: any;
   data: any;
   //horarioResposta: any;
-  responsePeriodos: ResponsePeriodos[];
+  responsePeriodos: any;
 
   ngOnInit(): void {
     this.getAgendamentos();

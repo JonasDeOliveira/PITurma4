@@ -35,7 +35,7 @@ export class AgendamedicoService {
   getHorarios() {
     var data = new Date(Date.now()).toISOString().slice(0,10);
 
-    const URL = `${this.API3}/${data}`;
+    const URL = `${this.API3}/2021-06-06`;
     return this.http.get<ResponsePeriodos[]>(URL);
   }
 
