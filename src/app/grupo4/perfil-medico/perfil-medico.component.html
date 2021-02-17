@@ -35,16 +35,43 @@
                         <div class="row">
                           <div class="form-group col-12 col-md-7">
                               <label>Nome</label>
-                              <input type="name" class="form-control" value= {{dadosRetorno.medico.nome}}>
+                              <input type="nome" class="form-control" id="name-medico" name="nome" [(ngModel)]="request.medico.nome" #nome="ngModel"/>
                           </div>
                           <div class="form-group col-12 col-md-3">
                               <label>CRM</label>
-                              <input type="crm" class="form-control" value= {{dadosRetorno.medico.nrCrm}}>
+                              <input type="crm" class="form-control" name="nrCrm" [(ngModel)]="request.medico.nrCrm"/>
                           </div>
                           <div class="form-group col-12 col-md-2">
                             <label class="label-form" for="crm-uf">UF CRM</label>
-                            <select class="form-control style-input" id="uf-crm" required>
-                              <option *ngFor="let uf of dadosRetorno.ufs">{{uf.dsUf}}</option>
+                            <select class="form-control style-input" id="uf-crm" name="dsUf" [(ngModel)]="request.medico.ufCrm.idUf">
+                              <option disabled selected [value]="request.medico.ufCrm.dsUf" >{{request.medico.ufCrm.dsUf}}</option> 
+                              <option [value]="request.ufs[0].idUf" >{{request.ufs[0].dsUf}}</option> 
+                              <option [value]="request.ufs[1].idUf" >{{request.ufs[1].dsUf}}</option>
+                              <option [value]="request.ufs[2].idUf" >{{request.ufs[2].dsUf}}</option> 
+                              <option [value]="request.ufs[3].idUf" >{{request.ufs[3].dsUf}}</option> 
+                              <option [value]="request.ufs[4].idUf" >{{request.ufs[4].dsUf}}</option> 
+                              <option [value]="request.ufs[5].idUf" >{{request.ufs[5].dsUf}}</option> 
+                              <option [value]="request.ufs[6].idUf" >{{request.ufs[6].dsUf}}</option> 
+                              <option [value]="request.ufs[7].idUf" >{{request.ufs[7].dsUf}}</option> 
+                              <option [value]="request.ufs[8].idUf" >{{request.ufs[8].dsUf}}</option> 
+                              <option [value]="request.ufs[9].idUf" >{{request.ufs[9].dsUf}}</option> 
+                              <option [value]="request.ufs[10].idUf" >{{request.ufs[10].dsUf}}</option> 
+                              <option [value]="request.ufs[11].idUf" >{{request.ufs[11].dsUf}}</option> 
+                              <option [value]="request.ufs[12].idUf" >{{request.ufs[12].dsUf}}</option> 
+                              <option [value]="request.ufs[13].idUf" >{{request.ufs[13].dsUf}}</option> 
+                              <option [value]="request.ufs[14].idUf" >{{request.ufs[14].dsUf}}</option> 
+                              <option [value]="request.ufs[15].idUf" >{{request.ufs[15].dsUf}}</option> 
+                              <option [value]="request.ufs[16].idUf" >{{request.ufs[16].dsUf}}</option> 
+                              <option [value]="request.ufs[17].idUf" >{{request.ufs[17].dsUf}}</option> 
+                              <option [value]="request.ufs[18].idUf" >{{request.ufs[18].dsUf}}</option> 
+                              <option [value]="request.ufs[19].idUf" >{{request.ufs[19].dsUf}}</option> 
+                              <option [value]="request.ufs[20].idUf" >{{request.ufs[20].dsUf}}</option> 
+                              <option [value]="request.ufs[21].idUf" >{{request.ufs[21].dsUf}}</option> 
+                              <option [value]="request.ufs[22].idUf" >{{request.ufs[22].dsUf}}</option> 
+                              <option [value]="request.ufs[23].idUf" >{{request.ufs[23].dsUf}}</option> 
+                              <option [value]="request.ufs[24].idUf" >{{request.ufs[24].dsUf}}</option> 
+                              <option [value]="request.ufs[25].idUf" >{{request.ufs[25].dsUf}}</option>
+                              <option [value]="request.ufs[26].idUf" >{{request.ufs[26].dsUf}}</option>                     
                           </select>
                         </div> 
                         </div>
@@ -52,68 +79,129 @@
                           <div class="row">
                           <div class="col-12 col-md-4">
                             <label class="label-form" for="Especialidade">Especialidade</label>
-                            <select class="form-control style-input" id="Especialidade" required>
-                              <option *ngFor="let esp of dadosRetorno.especialidades">{{esp.dsEspMed}}</option>
-                            </select>
+                            <select class="form-control style-input" id="Especialidade" name="dsEspMed" [(ngModel)]="request.medico.espMed.idEspMed">
+                              <option disabled selected >{{request.medico.espMed.idEspMed}}</option>
+                              <option [value]="request.especialidades[0].idEspMed">{{request.especialidades[0].dsEspMed}}</option>
+                              <option [value]="request.especialidades[1].idEspMed">{{request.especialidades[1].dsEspMed}}</option>   
+                              <option [value]="request.especialidades[2].idEspMed">{{request.especialidades[2].dsEspMed}}</option>
+                              <option [value]="request.especialidades[3].idEspMed">{{request.especialidades[3].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[4].idEspMed">{{request.especialidades[4].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[5].idEspMed">{{request.especialidades[5].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[6].idEspMed">{{request.especialidades[6].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[7].idEspMed">{{request.especialidades[7].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[8].idEspMed">{{request.especialidades[8].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[9].idEspMed">{{request.especialidades[9].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[10].idEspMed">{{request.especialidades[10].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[11].idEspMed">{{request.especialidades[11].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[12].idEspMed">{{request.especialidades[12].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[13].idEspMed">{{request.especialidades[13].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[14].idEspMed">{{request.especialidades[14].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[15].idEspMed">{{request.especialidades[15].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[16].idEspMed">{{request.especialidades[16].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[17].idEspMed">{{request.especialidades[17].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[18].idEspMed">{{request.especialidades[18].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[19].idEspMed">{{request.especialidades[19].dsEspMed}}</option> 
+                              <option [value]="request.especialidades[20].idEspMed">{{request.especialidades[20].dsEspMed}}</option>                       
+                            </select>                    
                           </div>
                           <div class="form-group col-12 col-md-4">
                               <label>Data de Nascimento</label>
-                              <input type="data" class="form-control" value= {{dadosRetorno.medico.dtNascimento}}>
+                              <input type="data" class="form-control" name="dtNascimento" [(ngModel)]="request.medico.dtNascimento"/>
                           </div>
                     
                           <div class="form-group col-12 col-md-4">
                               <label>CPF</label>
-                              <input type="cpf" class="form-control" value= {{dadosRetorno.medico.nrCpf}}>
+                              <input type="cpf" class="form-control"  name="nrCpf" [(ngModel)]="request.medico.nrCpf"/>
                           </div>
                         </div>
   
                         <div class="row">
                           <div class="form-group col-12 col-md-3" >
                             <label>CEP</label>
-                            <input type="cep" class="form-control" value= {{dadosRetorno.medico.enderecos[0].nrCep}} >
+                            <input type="cep" class="form-control" name="nrCep" [(ngModel)]="request.medico.enderecos[0].nrCep"/>
                           </div>
                           <div class="form-group col-12 col-md-5">
                               <label>Endereço Comercial</label>
-                              <input type="endereco" class="form-control" value= {{dadosRetorno.medico.enderecos[0].dsEndereco}} >
+                              <input type="endereco" class="form-control" name="dsEndereco" [(ngModel)]="request.medico.enderecos[0].dsEndereco"/>
                           </div>
                           <div class="form-group col-12 col-md-4">
                               <label>Bairro</label>
-                              <input type="bairro" class="form-control"value= {{dadosRetorno.medico.enderecos[0].dsBairro}}>
+                              <input type="bairro" class="form-control" name="dsBairro" [(ngModel)]="request.medico.enderecos[0].dsBairro"/>
                           </div>
                         </div>
   
                         <div class="row">
                           <div class="form-group col-12 col-md-2">
-                            <label class="label-form" for="uf-crm">UF</label>
-                            <select class="form-control style-input" id="uf" required>
-                              <option *ngFor="let uf of dadosRetorno.ufs">{{uf.dsUf}}</option>
+                            <label class="label-form" for="uf">UF</label>
+                          <select class="form-control style-input" id="uf" name="dsUf" [(ngModel)]="request.medico.enderecos[0].cidade.uf.idUf">
+                           <option disabled selected [value]="request.medico.enderecos[0].cidade.uf.dsUf">{{request.medico.enderecos[0].cidade.uf.dsUf}}</option>                                                            
+                              <option [value]="request.ufs[0].idUf" >{{request.ufs[0].dsUf}}</option> 
+                              <option [value]="request.ufs[1].idUf" >{{request.ufs[1].dsUf}}</option>
+                              <option [value]="request.ufs[2].idUf" >{{request.ufs[2].dsUf}}</option> 
+                              <option [value]="request.ufs[3].idUf" >{{request.ufs[3].dsUf}}</option> 
+                              <option [value]="request.ufs[4].idUf" >{{request.ufs[4].dsUf}}</option> 
+                              <option [value]="request.ufs[5].idUf" >{{request.ufs[5].dsUf}}</option> 
+                              <option [value]="request.ufs[6].idUf" >{{request.ufs[6].dsUf}}</option> 
+                              <option [value]="request.ufs[7].idUf" >{{request.ufs[7].dsUf}}</option> 
+                              <option [value]="request.ufs[8].idUf" >{{request.ufs[8].dsUf}}</option> 
+                              <option [value]="request.ufs[9].idUf" >{{request.ufs[9].dsUf}}</option> 
+                              <option [value]="request.ufs[10].idUf" >{{request.ufs[10].dsUf}}</option> 
+                              <option [value]="request.ufs[11].idUf" >{{request.ufs[11].dsUf}}</option> 
+                              <option [value]="request.ufs[12].idUf" >{{request.ufs[12].dsUf}}</option> 
+                              <option [value]="request.ufs[13].idUf" >{{request.ufs[13].dsUf}}</option> 
+                              <option [value]="request.ufs[14].idUf" >{{request.ufs[14].dsUf}}</option> 
+                              <option [value]="request.ufs[15].idUf" >{{request.ufs[15].dsUf}}</option> 
+                              <option [value]="request.ufs[16].idUf" >{{request.ufs[16].dsUf}}</option> 
+                              <option [value]="request.ufs[17].idUf" >{{request.ufs[17].dsUf}}</option> 
+                              <option [value]="request.ufs[18].idUf" >{{request.ufs[18].dsUf}}</option> 
+                              <option [value]="request.ufs[19].idUf" >{{request.ufs[19].dsUf}}</option> 
+                              <option [value]="request.ufs[20].idUf" >{{request.ufs[20].dsUf}}</option> 
+                              <option [value]="request.ufs[21].idUf" >{{request.ufs[21].dsUf}}</option> 
+                              <option [value]="request.ufs[22].idUf" >{{request.ufs[22].dsUf}}</option> 
+                              <option [value]="request.ufs[23].idUf" >{{request.ufs[23].dsUf}}</option> 
+                              <option [value]="request.ufs[24].idUf" >{{request.ufs[24].dsUf}}</option> 
+                              <option [value]="request.ufs[25].idUf" >{{request.ufs[25].dsUf}}</option>
+                              <option [value]="request.ufs[26].idUf" >{{request.ufs[26].dsUf}}</option> 
+ 
                           </select>
                         </div>
                         
                           <div class="form-group col-12 col-md-2">
                               <label>Cidade</label>
-                              <select class="form-control style-input" id="cidade" required>
-                               <option *ngFor="let cidade of dadosRetorno.cidades">{{cidade.dsCidade}}</option>
+                              <select class="form-control style-input" name="dsCidade" [(ngModel)]="request.medico.enderecos[0].cidade.idCidade">
+                               <option disebled selected [value]="request.medico.enderecos[0].cidade.dsCidade">{{request.medico.enderecos[0].cidade.dsCidade}}</option>
+                               <option [value]="request.cidades[0].idCidade">{{request.cidades[0].dsCidade}}</option>
+                               <option [value]="request.cidades[1].idCidade">{{request.cidades[1].dsCidade}}</option>
+                               <option [value]="request.cidades[2].idCidade">{{request.cidades[2].dsCidade}}</option>
+                               <option [value]="request.cidades[3].idCidade">{{request.cidades[3].dsCidade}}</option>
+                               <option [value]="request.cidades[4].idCidade">{{request.cidades[4].dsCidade}}</option>
+                               <option [value]="request.cidades[5].idCidade">{{request.cidades[5].dsCidade}}</option>
+                               <option [value]="request.cidades[6].idCidade">{{request.cidades[6].dsCidade}}</option>
+                               <option [value]="request.cidades[7].idCidade">{{request.cidades[7].dsCidade}}</option>
+                               <option [value]="request.cidades[8].idCidade">{{request.cidades[8].dsCidade}}</option>
+                               <option [value]="request.cidades[9].idCidade">{{request.cidades[9].dsCidade}}</option>
+                               <option [value]="request.cidades[10].idCidade">{{request.cidades[10].dsCidade}}</option>
+                               <option [value]="request.cidades[11].idCidade">{{request.cidades[11].dsCidade}}</option>
                             </select>
                         </div>
                         
                          <div class="form-group col-12 col-md-3">
-                              <label>Telefone</label>
-                              <input type="tel" class="form-control" value= {{dadosRetorno.medico.contatos[0].dsContato}} >
+                              <label>Telefone</label>                          
+                              <input type="tel" class="form-control" name="dsContato" [(ngModel)]="request.medico.contatos[0].dsContato"/>
                           </div>
                           <div class="form-group col-12 col-md-3">
                             <label>E-mail</label>
-                            <input type="email" class="form-control" value= {{dadosRetorno.dsEmail}}>
+                            <input type="email" class="form-control" name="dsEmail" [(ngModel)]="request.dsEmail"/>
                           </div>
                           <div class="form-group col-12 col-md-2">
                             <label>Valor da Consulta</label>
-                            <input type="valor" class="form-control" value= {{dadosRetorno.medico.preco.vlConsulta}}>
+                            <input type="valor" class="form-control" name="vlConsulta" [(ngModel)]="request.medico.preco.vlConsulta"/>
                           </div>
                         </div>
                         <br>
                         <div class="row">
                           <div class="col-12 col-md-6" id="btn-dados">
-                              <button class="bt-padrao">Alterar Dados</button>
+                              <button class="bt-padrao"  value="Atualizar" (click)="atualizar()">Alterar Dados</button>
                           </div>
                           <div class="col-12 col-md-6" id="btn-voltar">
                             <button class="bt-voltar"routerLink="/dashboard/medico">Voltar</button>
@@ -151,9 +239,9 @@
           </button>
         </div>
         <div class="modal-body">
-          <input type="senha" class="form-control" placeholder="Nova Senha">
+          <input type="senha" class="form-control" placeholder="Nova Senha" />
           <p></p>
-          <input type="senha" class="form-control" placeholder="Confirme a Nova Senha">
+          <input type="senha" class="form-control" placeholder="Confirme a Nova Senha"/>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-verde" (click)="c('Save click')">Salvar</button>
