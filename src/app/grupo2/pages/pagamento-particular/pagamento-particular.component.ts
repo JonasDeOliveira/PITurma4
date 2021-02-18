@@ -34,13 +34,18 @@ export class PagamentoParticularComponent implements OnInit {
   vlConsulta: number = this.agenda.medico.preco.vlConsulta;
   data = this.agenda.data;
 
+  //USAR QUANDO FIZER O MERGE!!!!!!!!!!!!
+
+  // idUsuario: number = JSON.parse(localStorage.getItem("cliente")).idUsuario;
+
+
   nmTitular:string;
   nrCartao: string;
   qtdadeParcString : string;
   qtadeParcelas : number;
 
-
   ngOnInit(): void {
+    //MUDAR QUANDO FIZER O MERGE
     this.listarCartao(142);
   }
 
@@ -49,6 +54,7 @@ export class PagamentoParticularComponent implements OnInit {
       response => {
       this.nmTitular = response[0].usuario.nmNome;
       this.nrCartao = response[0].nrCartao;
+
       }
     )
   }

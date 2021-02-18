@@ -33,7 +33,7 @@
                 <div class="texto-trilha d-flex flex-column">
                   <a routerLink='/calendario-agendamento'>
                     <div class="trilha ">Data</div>
-                    <div class="opcao">23/10/2017</div>
+                    <div class="opcao">{{data}}</div>
                   </a>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                 <div class="texto-trilha d-flex flex-column">
                   <a routerLink='/pagamento-plano'>
                     <div class="trilha">Pagamento</div>
-                    <div class="opcao">{{tipoPagamento}}</div>
+                    <div class="opcao">{{dsTpPagamento}}</div>
                   </a>
                 </div>
             </div>
@@ -95,11 +95,11 @@
                 </div>
             </div>
             <div class="confirmacao-meio text-center">
-                <p>Tipo de consulta: {{consulta}}</p>
+                <p>Tipo de consulta: {{dsConsulta}}</p>
                 <p>Especialista: {{nmMedico}}</p>
                 <p >Especialidade: {{dsEspecialidade}}</p>
-                <p > Data: 23/10/2017 14:00</p>
-                <p >Pagamento: Plano Premium</p>
+                <p > Data: {{data}} {{horario}}</p>
+                <p >Pagamento: {{dsTpPagamento}}</p>
                 <!-- <button type="button" class="btn-confirm clicavel">Confirmar</button> -->
                 <p class="texto-detalhes">Confira se as informações acima estão corretas e clique para confirmar a consulta.</p>
                 <!-- modal confirmação consulta -->

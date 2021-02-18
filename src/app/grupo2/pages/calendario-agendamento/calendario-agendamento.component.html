@@ -81,11 +81,11 @@
 
 <section class="d-flex justify-content-center">
 <a>
-<div routerLink='/escolha-especialista'>
+
 
 <!-- <p>Calendario</p> -->
 
-<ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" style="background-color: greenyellow colorTheme = theme-green " ></ngb-datepicker>
+<ngb-datepicker #dp [(ngModel)]="model" (dateSelect)="dataSelect()" (navigate)="date = $event.next" style="background-color: greenyellow colorTheme = theme-green " ></ngb-datepicker>
 
 <hr/>
 
@@ -98,7 +98,7 @@
 <pre>Month: {{ date.month }}.{{ date.year }}</pre>
 <pre>Model: {{ model | json }}</pre> -->
 
-</div>
+
 </a>
 </section>
 <!-- FIM CALENDARIO DATEPICKER -->

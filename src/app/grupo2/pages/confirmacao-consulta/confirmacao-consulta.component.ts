@@ -49,7 +49,7 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   nmMedico : string = this.agenda.medico.nome;
   horario : Time = this.agenda.periodo.horaInicial;
 
-  data = this.agenda.data;
+  data: string;
 
   ngOnInit():void {
     if (this.tipoPagamento == "1"){
@@ -57,7 +57,14 @@ export class ConfirmacaoConsultaComponent implements OnInit {
     } else if (this.tipoPagamento == "2"){
       this.dsTpPagamento="Cartão"
     }
-    ;
+    this.conversorData();
+  }
+
+  conversorData(){
+    let data = JSON.parse(localStorage.getItem("data")).slice(0,10);
+    let dataFormato = data.split("-");
+    let dataFinal = `${dataFormato[2]}/${dataFormato[1]}/${dataFormato[0]}`;
+    this.data = dataFinal;
   }
 
   open(content) {
@@ -66,4 +73,6 @@ export class ConfirmacaoConsultaComponent implements OnInit {
 
 }
   
+
+
   

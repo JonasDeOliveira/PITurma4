@@ -32,14 +32,26 @@ export class EscolhaEspecialistaComponent implements OnInit {
   dsConsulta : string = this.consulta.dsTipoConsulta;
   idTipoConsulta: number = this.consulta.idTipoConsulta;
 
+
   arrayAgendas: Agenda[];
+  arrayAgendasData: Agenda[];
+
+  data: Date = JSON.parse(localStorage.getItem("data"));;
   
   ngOnInit(): void {
-      this.buscarAgenda(this.idTipoConsulta , this.idEsp);
+    this.buscarAgenda(this.idTipoConsulta , this.idEsp);
+    this.buscarAgendaporData(this.arrayAgendas, this.data);
+    ;
   }
    buscarAgenda(idTipoConsulta: number,idEspecialidade: number){
      this.agendaService.listarPorEsp(idTipoConsulta,idEspecialidade).subscribe(
       response => this.arrayAgendas = response
+     )
+   }
+
+   buscarAgendaporData(agendas: Agenda[], data: Date){
+     this.agendaService.filtrarAgendasPorData(agendas, data).subscribe(
+       response => this.arrayAgendasData = response
      )
    }
 
