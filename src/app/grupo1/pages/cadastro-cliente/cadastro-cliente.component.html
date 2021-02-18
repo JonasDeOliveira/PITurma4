@@ -100,7 +100,7 @@
             <div class="form-group col-md-3">
                 <label for="cadastro-celular">Celular:</label>
                 <input type="text" class="form-control" id="cadastro-celular" placeholder="Digite o seu Celular"
-                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="8" required>
+                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="8" maxlength="9" required>
                     <!--  pattern="(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"  -->
                 <div *ngIf="celular.errors && (celular.dirty || celular.touched)" class="alert alert- light">
                     <div [hidden]="!celular.errors.required">
@@ -115,10 +115,11 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-4" method="get" action=".">
                 <label for="cadastro-cep">CEP:</label>
-                <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP" minlength="8" maxlength="8"
-                    [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep"required>
+                <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP" minlength="8" maxlength="9"
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep"required
+                    onblur="pesquisacep(this.value);">
 
             </div>
             <div class="form-group col-md-7">
@@ -280,3 +281,4 @@
         <button [routerLink]="['/']" class="btn btn-cancelar btn-espaco">Cancelar</button>
     </div>
 </section>
+<script src="../cliente/shared/cep.endereco.js"></script>
