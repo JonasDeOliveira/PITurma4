@@ -37,7 +37,6 @@ export class PagamentoParticularComponent implements OnInit {
   nmTitular:string;
   nrCartao: string;
 
-
   ngOnInit(): void {
     this.listarCartao(142);
   }
@@ -47,6 +46,7 @@ export class PagamentoParticularComponent implements OnInit {
       response => {
       this.nmTitular = response[0].usuario.nmNome;
       this.nrCartao = response[0].nrCartao;
+
       }
     )
   }
