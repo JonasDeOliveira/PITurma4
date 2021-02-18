@@ -2,8 +2,9 @@ import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Agenda } from '../../shared/model/agenda';
-import { Cartao } from '../../shared/model/cartao';
+import { Cartao, Cliente } from '../../shared/model/cartao';
 import { EspMed } from '../../shared/model/espMed';
+import { TipoPagamento } from '../../shared/model/pagamento';
 import { TipoConsulta } from '../../shared/model/tipoConsulta';
 import { CartaoService } from '../../shared/services/cartao.service';
 import { PagamentoCartaoServiceService } from '../../shared/services/pagamento-cartao-service.service';
@@ -35,10 +36,7 @@ export class PagamentoParticularComponent implements OnInit {
   vlConsulta: number = this.agenda.medico.preco.vlConsulta;
   data = this.agenda.data;
 
-  //USAR QUANDO FIZER O MERGE!!!!!!!!!!!!
-
-  // idUsuario: number = JSON.parse(localStorage.getItem("cliente")).idUsuario;
-
+ 
 
   nmTitular:string = "";
   nrCartao: string  = "";
@@ -55,12 +53,19 @@ export class PagamentoParticularComponent implements OnInit {
   };
   
   qtdadeParcString : string;
-  qtadeParcelas : number;
+  qtadeParcelas : number = 1;
+  valorParcela : number = this.vlConsulta/this.qtadeParcelas;
 
-
+  usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
+  idUsuario:number = this.usuario.idUsuario;
+  
+  tipoPagamento: TipoPagamento = {
+    idFormaPagamento: 2,
+    dsFormaPagamento: "Cartão"
+  }; 
+  
   ngOnInit(): void {
-    //MUDAR QUANDO FIZER O MERGE
-    this.listarCartao(142);
+    this.listarCartao(this.idUsuario);
   }
 
   listarCartao(idUsuario: number){
@@ -73,7 +78,7 @@ export class PagamentoParticularComponent implements OnInit {
     )
   }
   salvarTipoPagamento(){
-    localStorage.setItem("tipoPagamento", "2")
+    localStorage.setItem("tipoPagamento", JSON.stringify(this.tipoPagamento))
     console.log(this.cartao)
 }
 

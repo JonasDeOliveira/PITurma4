@@ -59,12 +59,12 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   parcelas: number = JSON.parse(localStorage.getItem("qtadeParcelas"));
   cartao: Cartao = JSON.parse(localStorage.getItem("cartao"))
 
-  //VOLTAR APOS MERGE
-  //usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
-  // idUsuario:number = usuario.idUsuario;
+  
+  usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
+  idUsuario:number = this.usuario.idUsuario;
   
   //TIRAR APOS MERGE
-  idUsuario = 142;
+  // idUsuario = 142;
 
   data: string;
 
@@ -85,6 +85,7 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   
 
   ngOnInit():void {
+    console.log(this.dsTipoPagamento)
     if (this.tipoPagamento.idFormaPagamento == 1){
       this.tipoPagamento.dsFormaPagamento="Plano"
     } else if (this.tipoPagamento.idFormaPagamento == 2){
@@ -96,7 +97,7 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   conversorData(){
     let data = JSON.parse(localStorage.getItem("data")).slice(0,10);
     let dataFormato = data.split("-");
-    let dataFinal = `${dataFormato[2]}/${dataFormato[1]}/${dataFormato[0]}`;
+    let dataFinal = `${dataFormato[2]}/0${dataFormato[1]-1}/${dataFormato[0]}`;
     this.data = dataFinal;
   }
 
