@@ -26,9 +26,9 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@ng-bootstrap/ng-bootstrap": "^6.2.0",
     "bootstrap": "^4.0.0",
+    "date-fns": "^2.16.1",
     "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^6.2.0",
-    "date-fns": "^2.16.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
