@@ -174,7 +174,8 @@ export class AgservicoComponent implements OnInit {
     this.ag = new AgServico(); 
     this.ag.idLoja = this.idLoja;
     this.ag.idServico = this.idServico;
-    this.ag.dtHr =  this.data + " " + this.horario + ":00"; 
+    //this.ag.dtHr =  this.data + " " + this.horario + ":00"; 
+    this.ag.dtDataHora =  "02/02/2021 " + this.horario + ":00"; 
 
     console.log(this.ag.dtHr);
     console.log("Serviço salvo com sucesso!");
@@ -184,7 +185,6 @@ export class AgservicoComponent implements OnInit {
 
   concluirAgServico(callback: any){
 
-    this.agendamentos = JSON.parse(localStorage.getItem("agendamentos"));
     this.salvarAgServico();
 
     //depois enviar o array agendamentos para a pag de pagamentos. 

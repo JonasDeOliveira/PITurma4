@@ -8,6 +8,7 @@ import { ServicoService } from '../../shared/service/servico.service';
 import { AgServico } from '../../shared/model/agservico.model';
 import { AgServicoService } from '../../shared/service/agservico.service';
 import { element } from 'protractor';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pagamento-servico',
@@ -17,19 +18,24 @@ import { element } from 'protractor';
 
 export class PagamentoServicoComponent implements OnInit {
 
-  agendamento: AgServico[];
+  agendamentos: AgServico[];
   servicos: Servicos[];
   total: number;
+  cartao: Cartao;
+  pedido: Pedido;
 
   constructor(
     public cartaoService: CartaoService,
     public pedidoService: PedidoService,
     public agendamentoService: AgServico,
-    public servicoService: ServicoService
+    public servicoService: ServicoService,
+    private router: Router
   ) {
-    this.agendamento = new Array;
+    this.agendamentos = new Array;
     this.servicos = new Array;
     this.total = 0;
+    this.cartao = new Cartao;
+    this.pedido = new Pedido; 
    }
 
   responsePedido: ResponsePedido;
@@ -41,32 +47,23 @@ export class PagamentoServicoComponent implements OnInit {
   //dados cartao
   nmTitular:string;
   nrCartao: string;
+  cvv: string;
+  mesVencimento: string;
+  anoVencimento: string;
   qtdParcelas: number;
-
-  // idLoja : number = this.agendamento.idLoja;
-  // dataHora : string = this.agendamento.dtHr;
-  // idServico: number = this.agendamento.idServico;
-
 
   ngOnInit(): void {
     this.getAgendamento();
     this.getServicos();
-    // let agendamentoStorage = JSON.parse(localStorage.getItem("agendamentos"));
-    // this.idPedido = agendamentoStorage[0].idServico;
-    // this.pedidoService.getServico(this.idPedido).subscribe(
-    //   response => {
-    //     this.responsePedido = response;
-    //     console.log(this.responsePedido);
-    //    }
-    // )
+    
   }
 
   getAgendamento(){
-    this.agendamento = JSON.parse(localStorage.getItem("agendamentos"));
+    this.agendamentos = JSON.parse(localStorage.getItem("agendamentos"));
   }
 
   getServicos(){
-    this.agendamento.forEach(element => {
+    this.agendamentos.forEach(element => {
       this.servicoService.getServicoById(element.idServico).subscribe(
         response => {
           this.servicos.push(response);
@@ -75,36 +72,36 @@ export class PagamentoServicoComponent implements OnInit {
         }
       )
     })
-   }
+  }
 
-  // request: Pedido = {
-  //   idPedido: null,
-  //   paciente: {
-  //     idPaciente: 1
-  //   },    
-  //   agendamentos: {
-  //     AgServico,
-  //   }
-  //   cartao: Cartao;
-  // }
-
-  // requestCartao: Cartao = {
-  //     nrCartao: '',
-  //     nmCartao: '',
-  //     codSeguranca: '',
-  //     dtValidade: '',
-  //     dtEmissao: ''
-  // }
   
   registrarPedido() {
-    // this.pedidoService.criarPedido(this.request).subscribe(
-    //   response => {
-    //     alert('Pedido finalizado com sucesso');
-    //   },
-    //   error => {
-    //     alert('Algo inesperado aconteceu');
-    //   }
-    // )
+
+    //salvando os dados do cartão no obj cartão
+    this.cartao.nmNome = this.nmTitular;
+    this.cartao.codSeguranca = this.cvv;
+    this.cartao.nrCartao = this.nrCartao;
+    this.cartao.dtValidade = this.anoVencimento+"-"+this.mesVencimento+"-01 00:00:00";
+    this.cartao.dtEmissao = "2022-02-02 21:30:00";
+    this.cartao.usuario = JSON.parse(localStorage.getItem("cliente"));
+
+    this.pedido.cartao = this.cartao;
+    this.pedido.agendamentos = this.agendamentos;
+    this.pedido.idUsuario = this.cartao.usuario.idUsuario;
+
+    console.log(this.pedido);
+
+    this.pedidoService.criarPedido(this.pedido).subscribe(
+      response => {
+        alert('Pedido finalizado com sucesso');
+        localStorage.removeItem("agendamentos");
+        this.router.navigate(['/confirmacao-agendamento']);
+
+      }, error => {
+        localStorage.removeItem("agendamentos");
+        alert('Algo inesperado aconteceu');
+      }
+    )
   }
   
   registrarCartao() {

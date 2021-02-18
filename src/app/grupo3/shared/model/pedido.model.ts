@@ -3,14 +3,18 @@ import { Cartao } from "./cartao.model";
 
 export interface Pedido {
     idPedido: number;
-    paciente: Usuario;
-    agendamentos: AgServico;
+    idUsuario: number;
+    agendamentos: AgServico[];
     cartao: Cartao;
 }
 
-export interface Usuario {
-    idPaciente: number;
+export class Pedido {
+    idPedido: number;
+    idUsuario: number;
+    agendamentos: AgServico[];
+    cartao: Cartao;
 }
+
 
 export interface ResponsePedido {
     pedido: Pedido []

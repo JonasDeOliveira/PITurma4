@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AgServico, ResponseAgendamentos } from '../../shared/model/agservico.model';
 import { Router } from '@angular/router';
 import { AgServicoService } from '../../shared/service/agservico.service';
+import { Usuario } from 'src/app/grupo1/usuario/shared/usuario.model';
 
 @Component({
   selector: 'app-historico-agservico',
@@ -10,7 +11,6 @@ import { AgServicoService } from '../../shared/service/agservico.service';
 })
 export class HistoricoAgservicoComponent implements OnInit {
 
-  idUsuario: number;
   responseAgendamentos: AgServico[]; 
 
   agAgendados: AgServico[];
@@ -18,13 +18,13 @@ export class HistoricoAgservicoComponent implements OnInit {
   agCancelados: AgServico[];
 
   agendamentos: boolean;
+  usuario: Usuario;
   
   constructor(private agendamentoService : AgServicoService, private router: Router) { 
     this.agAgendados = new Array; 
     this.agRealizados = new Array; 
     this.agCancelados = new Array; 
-
-    this.idUsuario = 1;
+    this.usuario = JSON.parse(localStorage.getItem("cliente"));
     this.agendamentos = true;
   }
 
@@ -34,7 +34,7 @@ export class HistoricoAgservicoComponent implements OnInit {
 
   listarAgendamentos(){
 
-    this.agendamentoService.getAgendamentosPorUsuario(this.idUsuario).subscribe(
+    this.agendamentoService.getAgendamentosPorUsuario(this.usuario.idUsuario).subscribe(
       response => {
         this.responseAgendamentos = response; 
 

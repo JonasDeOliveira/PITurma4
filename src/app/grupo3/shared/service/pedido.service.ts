@@ -23,8 +23,8 @@ export class PedidoService {
     return this.http.post<Pedido>(this.API, request);
   }
 
-  getServico(id) {
-    const URL = `${this.API}/${id}`;
+  getServico(id: number) {
+    const URL = `${this.API}/${id}`
     return this.http.get<any>(URL);
   }
 

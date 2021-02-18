@@ -44,41 +44,41 @@
                 <div class="form-row">                  
                     <div class="form-group col-12 col-lg-4">
                         <label for="dtVencMes">Mês de vencimento*</label>
-                        <select id="dtVencMes" class="form-control" required>
-                            <option selected>Mês</option>
-                            <option>01 - janeiro</option>
-                            <option>02 - fevereiro</option>
-                            <option>03 - março</option>
-                            <option>04 - abril</option>
-                            <option>05 - maio</option>
-                            <option>06 - junho</option>
-                            <option>07 - julho</option>
-                            <option>08 - agosto</option>
-                            <option>09 - setembro</option>
-                            <option>10 - outubro</option>
-                            <option>11 - novembro</option>
-                            <option>12 - dezembro</option>
+                        <select [(ngModel)]="mesVencimento" name="mesVencimento" id="dtVencMes" class="form-control" required>
+                            <option selected  value="undefined">Mês</option>
+                            <option [ngValue]="01">01 - janeiro</option>
+                            <option [ngValue]="02">02 - fevereiro</option>
+                            <option [ngValue]="03">03 - março</option>
+                            <option [ngValue]="04">04 - abril</option>
+                            <option [ngValue]="05">05 - maio</option>
+                            <option [ngValue]="06">06 - junho</option>
+                            <option [ngValue]="07">07 - julho</option>
+                            <option [ngValue]="08">08 - agosto</option>
+                            <option [ngValue]="09">09 - setembro</option>
+                            <option [ngValue]="10">10 - outubro</option>
+                            <option [ngValue]="11">11 - novembro</option>
+                            <option [ngValue]="12">12 - dezembro</option>
                         </select>
                     </div>
                     <div class="form-group col-12 col-lg-4">
                         <label for="dtVencAno">Ano de vencimento*</label>
-                        <select id="dtVencAno" class="form-control" required>
-                            <option selected>Ano</option>
-                            <option>2021</option>
-                            <option>2022</option>
-                            <option>2023</option>
-                            <option>2025</option>
-                            <option>2026</option>
-                            <option>2027</option>
-                            <option>2028</option>
-                            <option>2029</option>
-                            <option>2030</option>
-                            <option>2031</option>
+                        <select [(ngModel)]="anoVencimento" name="anoVencimento"  id="dtVencAno" class="form-control" required>
+                            <option selected value="undefined">Ano</option>
+                            <option [ngValue]="2021">2021</option>
+                            <option [ngValue]="2022">2022</option>
+                            <option [ngValue]="2023">2023</option>
+                            <option [ngValue]="2024">2024</option>
+                            <option [ngValue]="2025">2025</option>
+                            <option [ngValue]="2026">2026</option>
+                            <option [ngValue]="2027">2027</option>
+                            <option [ngValue]="2028">2028</option>
+                            <option [ngValue]="2029">2029</option>
+                            <option [ngValue]="2030">2030</option>
                         </select>                
                     </div>
                     <div class="form-group col-12 col-lg-4">
                             <label for="codSegCC">CVV*</label>
-                            <input type="text" class="form-control" id="codSegCC" placeholder="000" required>
+                            <input  [(ngModel)]="cvv" name="cvv" type="text" class="form-control" id="codSegCC" placeholder="000" required>
                     </div>
                 </div>
                             
@@ -87,11 +87,11 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                           <label for="numParcelas">Opções de parcelamento*</label>
-                            <select id="numParcelas" class="form-control">
+                            <select [(ngModel)]="qtdParcelas" name="qtdParcelas" id="numParcelas" class="form-control">
                                 <option selected>Escolha o número de parcelas</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
+                                <option [ngValue]="1">1</option>
+                                <option [ngValue]="2">2</option>
+                                <option [ngValue]="3">3</option>
                             </select>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                 </table>
                 <div class="btnConcluir">
                     <div class="col text-center">
-                    <button type="submit" class="btn-lg btn btn-success" (click)="registrarPedido()"><a href="../Tela3-ConfirmacaoDeAgendamento/confirmacao_agendamento_servicos.html">Finalizar pagamento</a></button>
+                    <button type="submit" class="btn-lg btn btn-success" (click)="registrarPedido()">Finalizar pagamento</button>
                     </div>
                 </div>
             </div>
