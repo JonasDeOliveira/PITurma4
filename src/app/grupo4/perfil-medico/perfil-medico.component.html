@@ -80,7 +80,7 @@
               <label class="label-form" for="Especialidade">Especialidade</label>
               <select class="form-control style-input" id="Especialidade" name="dsEspMed"
                 [(ngModel)]="request.medico.espMed.idEspMed">
-                <option disabled selected>{{request.medico.espMed.idEspMed}}</option>
+                <option disabled selected [value]="request.medico.espMed.dsEspMed">{{request.medico.espMed.dsEspMed}}</option>
                 <option [value]="request.especialidades[0].idEspMed">{{request.especialidades[0].dsEspMed}}</option>
                 <option [value]="request.especialidades[1].idEspMed">{{request.especialidades[1].dsEspMed}}</option>
                 <option [value]="request.especialidades[2].idEspMed">{{request.especialidades[2].dsEspMed}}</option>

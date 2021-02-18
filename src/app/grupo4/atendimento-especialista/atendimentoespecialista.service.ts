@@ -14,7 +14,6 @@ export class AtendimentoespecialistaService {
   
 
   getAtendimentos(idAgPaciente:any) {
-   // var data = new Date(Date.now()).toISOString().slice(0,10);
     
     const URL = `${this.API}/tela/${idAgPaciente}`;
     // `${this.API}/${data}/${this.objMedico.idUsuario}`;
