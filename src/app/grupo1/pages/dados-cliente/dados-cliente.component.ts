@@ -164,7 +164,7 @@ export class DadosClienteComponent implements OnInit {
 
     this.clienteService.alteraDadosCliente(Number(this.idUsuario), this.outputCliente).subscribe(
       response => {
-        alert("Dados alterados com sucesso.");
+        alert(response.mensagem);
         this.router.navigate([`/area-cliente`]);
       },
       error => {
@@ -214,7 +214,7 @@ export class DadosClienteComponent implements OnInit {
     // console.log(this.confirmacao.senhaAtual);
     // console.log(this.confirmacao.senhaNova);
     // console.log(this.outputCliente.loginUsuario.dsSenha);
-    console.log(this.outputCliente.usuario.dsEndImg);
+    //console.log(this.outputCliente.usuario.dsEndImg);
   }
 
   conferirSenha(): void {

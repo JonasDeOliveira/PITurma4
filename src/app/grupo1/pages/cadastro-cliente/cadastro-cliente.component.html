@@ -120,7 +120,7 @@
         <div class="form-row">
             <div class="form-group col-md-4" method="get" action=".">
                 <label for="cadastro-cep">CEP:</label>
-                <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP" minlength="8" maxlength="9"
+                <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP" minlength="8" maxlength="8"
                     [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep"required
                     onblur="pesquisacep(this.value);">
 

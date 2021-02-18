@@ -145,7 +145,7 @@ export class CadastroClienteComponent implements OnInit {
   cadastrar() {
     this.clienteService.createCliente(this.outputCliente).subscribe(
       response => {
-        alert('Cadastro realizado com sucesso');
+        alert(response.mensagem);
         this.loginCliente = this.outputCliente.loginUsuario;
         this.logarCliente()
       },
