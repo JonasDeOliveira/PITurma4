@@ -47,7 +47,7 @@
                     <div class="form-group col-md-1">
                         <label for="cadastro-ddd">DDD:</label>
                         <input type="text" class="form-control" id="cadastro-ddd" [(ngModel)]="outputCliente.ddd"
-                            #nrDdd="ngModel" name="nrDdd" required minlength="3" maxlength="3">
+                            #nrDdd="ngModel" name="nrDdd" required minlength="3" maxlength="3" mask="000">
                         <div *ngIf="nrDdd.errors && (nrDdd.touched)" class="alert alert-light">
                             <div [hidden]="!nrDdd.errors.required">
                                 O campo ddd é obrigatório.
@@ -356,7 +356,7 @@
 
             <div class="form-group botoes-cadastro">
                 <button type="button" class="btn btns-cadastro btn-espaco" (click)="alterarDadosCliente()"
-                    [disabled]="formDadosCliente.invalid">Alterar</button>
+                    [disabled]="formDadosCliente.invalid || confirmacao.valida == false">Alterar</button>
                 <button routerLink="/area-cliente" class="btn btn-cancelar btn-espaco">Cancelar</button>
             </div>
         </form>
