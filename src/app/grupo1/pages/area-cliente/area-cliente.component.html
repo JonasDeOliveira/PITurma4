@@ -1,10 +1,5 @@
 <div *ngIf="ehLogado == false">
-    <div class="container">
-        <div class="col-12 mensagem-login">
-            <span>Área do Cliente restrita a usuários logados!</span>
-        </div>
-    </div>
-        <!-- <app-mensagem-login></app-mensagem-login> -->
+    <app-mensagem-login></app-mensagem-login>
 </div>
 <section *ngIf="ehLogado">
     <div class="container">

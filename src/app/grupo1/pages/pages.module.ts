@@ -14,9 +14,10 @@ import { DadosClienteComponent } from './dados-cliente/dados-cliente.component';
 import { LembretesModule } from '../lembretes/lembretes.module';
 import { CardPlanosComponent } from './planos/card-planos/card-planos.component';
 import { ClienteService } from './cliente/shared/cliente.service';
+import { MensagemLoginComponent } from './mensagem-login/mensagem-login.component';
 
 @NgModule({
-  declarations: [PlanosComponent, PortalComponent, AreaClienteComponent, LoginClienteComponent, ListaLembretesComponent, CadastroClienteComponent, DadosClienteComponent, CardPlanosComponent],
+  declarations: [PlanosComponent, PortalComponent, AreaClienteComponent, LoginClienteComponent, ListaLembretesComponent, CadastroClienteComponent, DadosClienteComponent, CardPlanosComponent, MensagemLoginComponent],
   imports: [
     CommonModule,
     LembretesModule,

@@ -13,6 +13,7 @@ import "src/assets/grupo1/css/grupo1.component.css";
 export class ListaLembretesComponent implements OnInit {
 
   cliente = JSON.parse(localStorage.getItem("cliente"));
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
   idUsuario : string;
 
   constructor(private modalService: NgbModal,

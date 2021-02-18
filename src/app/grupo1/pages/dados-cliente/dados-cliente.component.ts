@@ -18,6 +18,7 @@ import { PlanosService } from '../planos/shared/planos.service';
 export class DadosClienteComponent implements OnInit {
 
   cliente = JSON.parse(localStorage.getItem("cliente"));
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
   idUsuario: string;
 
   responseFormularioMeusDados: any;
@@ -111,8 +112,8 @@ export class DadosClienteComponent implements OnInit {
     config.keyboard = false;
   }
 
-  password = document.getElementById("cadastro-senha-nova")
-  confirm_password = document.getElementById("cadastro-senha-nova2");
+  // password = document.getElementById("cadastro-senha-nova")
+  // confirm_password = document.getElementById("cadastro-senha-nova2");
 
   ngOnInit(): void {
     if (this.cliente != null) {
@@ -129,6 +130,8 @@ export class DadosClienteComponent implements OnInit {
         this.responseFormularioMeusDados = response;
 
         this.outputCliente = this.responseFormularioMeusDados.inputCliente;
+
+        this.outputCliente.loginUsuario.dsSenha = "";
         this.dadosAtuais.planoAtual = this.outputCliente.contrato.plano.idPlano;
         this.dadosAtuais.cartaoAtual = this.outputCliente.cartao;
 
@@ -152,16 +155,12 @@ export class DadosClienteComponent implements OnInit {
 
   //TODO: Rever isso aqui!!!!----------------------------
   alterarDadosCliente() {
-
-    //TODO: Rever isso aqui!!!!----------------------------
     console.log(this.outputCliente);
     if (this.confirmacao.senhaNova != "" && this.confirmacao.senhaNova != null) {
       this.outputCliente.loginUsuario.dsSenha = this.confirmacao.senhaNova;
     }
 
-    this.outputCliente.loginUsuario.dsSenha = "";
-
-    //------------------------------------------------------
+    console.log(this.outputCliente.loginUsuario.dsSenha);
 
     this.clienteService.alteraDadosCliente(Number(this.idUsuario), this.outputCliente).subscribe(
       response => {
@@ -177,6 +176,7 @@ export class DadosClienteComponent implements OnInit {
 
   selecaoPlano(event, content): void {
     const id = event.target.id;
+    this.dadosAtuais.planoAtual = this.outputCliente.contrato.plano.idPlano
 
     switch (id) {
       case "1":
@@ -210,14 +210,15 @@ export class DadosClienteComponent implements OnInit {
   }
 
   ver() {
-    //console.log(this.outputCliente)
-    console.log(this.confirmacao.senhaAtual);
-    console.log(this.confirmacao.senhaNova);
-    console.log(this.outputCliente.loginUsuario.dsSenha);
+    console.log(this.outputCliente)
+    // console.log(this.confirmacao.senhaAtual);
+    // console.log(this.confirmacao.senhaNova);
+    // console.log(this.outputCliente.loginUsuario.dsSenha);
+    console.log(this.outputCliente.usuario.dsEndImg);
   }
 
   conferirSenha(): void {
-    if(this.confirmacao.senhaAtual != "") {
+    if (this.confirmacao.senhaAtual != "") {
       this.loginService.conferirSenha(this.confirmacao.senhaAtual).subscribe(
         response => {
           console.log(response.mensagem);
@@ -241,6 +242,20 @@ export class DadosClienteComponent implements OnInit {
       }
     )
   }
+
+
+  //VER ESSE MÉTODO PARA FUNCIONAR A IMAGEM NO FRONT...
+  // getDsEndImg() {
+  //   if (this.outputCliente.usuario.getDsEndImg().contains("/assets/grupo1/img/avatar/")) {
+  //     String dsEndImg = usuario.getDsEndImg().substring(25, usuario.getDsEndImg().length() - 1);
+  //     usuarioEntity.setDsEndImg("/assets/grupo1/img/avatar/" + dsEndImg);
+  //   } else if (this.outputCliente.usuario.getDsEndImg().contains("C:\\fakepath\\")) {
+  //     String dsEndImg = this.outputCliente.usuario.getDsEndImg().substring(13, usuario.getDsEndImg().length() - 1);
+  //     usuarioEntity.setDsEndImg("/assets/grupo1/img/avatar/" + dsEndImg);
+  //   } else {
+  //     usuarioEntity.setDsEndImg("/assets/grupo1/img/avatar/" + usuario.getDsEndImg());
+  //   }
+  // }
 
 
 
