@@ -21,6 +21,9 @@ export class CadastroClienteComponent implements OnInit {
   responseCidadesByUf: any;
   responsePlanos: any;
 
+  minDate: Date = new Date(1910,1,1);
+  maxDate: Date = new Date();
+
   loginCliente: LoginUsuario = {
     idUsuario: null,
     dsSenha: "",
@@ -145,13 +148,13 @@ export class CadastroClienteComponent implements OnInit {
   cadastrar() {
     this.clienteService.createCliente(this.outputCliente).subscribe(
       response => {
-        alert('Cadastro realizado com sucesso');
+        alert(response.mensagem);
         this.loginCliente = this.outputCliente.loginUsuario;
         this.logarCliente()
       },
       error => {
         console.log(error)
-        //alert('algo inesperado aconteceu');
+        alert(error.error.mensagem);
       }
     )
   }

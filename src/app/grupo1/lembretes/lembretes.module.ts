@@ -7,6 +7,11 @@ import { LembreteItemListaComponent} from './lembrete-item-lista/lembrete-item-l
 import { ModalLembreteComponent } from './modal-lembrete/modal-lembrete.component';
 import { LembreteService } from './shared/lembrete.service';
 import { LembreteListaComponent } from './lembrete-lista/lembrete-lista.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 
 
 @NgModule({
@@ -14,7 +19,8 @@ import { LembreteListaComponent } from './lembrete-lista/lembrete-lista.componen
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    NgxMaskModule.forRoot(maskConfig)
   ],
   exports: [
     LembreteItemListaComponent, 

@@ -86,7 +86,7 @@
                                             <p class="titulo_lembrete">{{lembrete.nmTitulo}}</p>
                                             <p class="excluir ">Descriçao: {{lembrete.dsLembrete}}<span
                                                     class=" todo__btn-excluir">X</span></p>
-                                            <p class="excluir font-weight-bold">Data: {{lembrete.dtCriacao}} - Hora:
+                                            <p class="excluir font-weight-bold">Data: {{lembrete.dtLembrete | date: 'dd/MM/yyyy'}} - Hora:
                                                 {{lembrete.hrHora}}
                                             </p>
                                             <p>Intervalo: A cada {{lembrete.nrRepeticao}}
