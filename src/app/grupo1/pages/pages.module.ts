@@ -16,6 +16,12 @@ import { CardPlanosComponent } from './planos/card-planos/card-planos.component'
 import { ClienteService } from './cliente/shared/cliente.service';
 import { MensagemLoginComponent } from './mensagem-login/mensagem-login.component';
 import { ComponentsModule } from '../components/components.module';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
+
 
 @NgModule({
   declarations: [PlanosComponent, PortalComponent, AreaClienteComponent, LoginClienteComponent, ListaLembretesComponent, CadastroClienteComponent, DadosClienteComponent, CardPlanosComponent, MensagemLoginComponent],
@@ -24,6 +30,7 @@ import { ComponentsModule } from '../components/components.module';
     LembretesModule,
     RouterModule,
     ComponentsModule,
+    NgxMaskModule.forRoot(maskConfig),
     [ModalModule.forRoot()]
   ],
   exports: [PlanosComponent, 
