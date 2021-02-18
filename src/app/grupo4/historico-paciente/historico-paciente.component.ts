@@ -43,9 +43,10 @@ export class HistoricoPacienteComponent implements OnInit {
         console.log(resposta);
         this.veioDoAtendimento = true;
       },
-        error => {
-          alert('não há prontuarios para este cpf');
-        }
+       error => {
+        console.log(error);
+        alert('cpf já cadastrado');
+      }
     );
   }
   getDadoProntuario(idProntuario : number){
@@ -63,9 +64,6 @@ export class HistoricoPacienteComponent implements OnInit {
          this.historicoMedicoResposta = respostaMed;
         console.log(respostaMed);
       },
-      error => {
-        alert('não há prontuários cadastrados');
-      }
     );
   }
 

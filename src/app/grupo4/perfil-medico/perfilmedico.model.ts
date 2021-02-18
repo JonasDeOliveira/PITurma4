@@ -1,6 +1,6 @@
 export interface PerfilMedico{
     espMed : EspMed;
-    ufCrm : Uf ;
+    uf : Uf ;
     nome: string;
     nrCpf:string;
     dtNascimento : any;

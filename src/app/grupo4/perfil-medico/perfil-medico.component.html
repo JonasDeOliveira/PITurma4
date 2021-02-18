@@ -30,21 +30,20 @@
     <div class="row">
       <div class="col-12">
         <h3 class="sub">Dados Pessoais</h3>
-        <form>
+        <form #formAtualizar="ngForm">
           <div class="row">
             <div class="form-group col-12 col-md-7">
               <label>Nome</label>
-              <input type="nome" class="form-control" id="name-medico" name="nome" [(ngModel)]="request.medico.nome"
+              <input type="text" class="form-control" id="name-medico" name="nome" [(ngModel)]="request.medico.nome"
                 #nome="ngModel" />
             </div>
             <div class="form-group col-12 col-md-3">
               <label>CRM</label>
-              <input type="crm" class="form-control" name="nrCrm" [(ngModel)]="request.medico.nrCrm" />
+              <input type="text" class="form-control" name="nrCrm" [(ngModel)]="request.medico.nrCrm" />
             </div>
             <div class="form-group col-12 col-md-2">
               <label class="label-form" for="crm-uf">UF CRM</label>
-              <select class="form-control style-input" id="uf-crm" name="dsUf" [(ngModel)]="request.medico.ufCrm.idUf">
-                <option disabled selected [value]="request.medico.ufCrm.dsUf">{{request.medico.ufCrm.dsUf}}</option>
+              <select class="form-control style-input" id="uf-crm" name="idUf" [(ngModel)]="request.medico.uf.idUf">
                 <option [value]="request.ufs[0].idUf">{{request.ufs[0].dsUf}}</option>
                 <option [value]="request.ufs[1].idUf">{{request.ufs[1].dsUf}}</option>
                 <option [value]="request.ufs[2].idUf">{{request.ufs[2].dsUf}}</option>
@@ -79,9 +78,8 @@
           <div class="row">
             <div class="col-12 col-md-4">
               <label class="label-form" for="Especialidade">Especialidade</label>
-              <select class="form-control style-input" id="Especialidade" name="dsEspMed"
+              <select class="form-control style-input" id="Especialidade" name="idEspMed"
                 [(ngModel)]="request.medico.espMed.idEspMed">
-                <option disabled selected>{{request.medico.espMed.idEspMed}}</option>
                 <option [value]="request.especialidades[0].idEspMed">{{request.especialidades[0].dsEspMed}}</option>
                 <option [value]="request.especialidades[1].idEspMed">{{request.especialidades[1].dsEspMed}}</option>
                 <option [value]="request.especialidades[2].idEspMed">{{request.especialidades[2].dsEspMed}}</option>
@@ -107,39 +105,37 @@
             </div>
             <div class="form-group col-12 col-md-4">
               <label>Data de Nascimento</label>
-              <input type="data" class="form-control" name="dtNascimento" [(ngModel)]="request.medico.dtNascimento" />
+              <input type="text" class="form-control" name="dtNascimento" [(ngModel)]="request.medico.dtNascimento" />
             </div>
 
             <div class="form-group col-12 col-md-4">
               <label>CPF</label>
-              <input type="cpf" class="form-control" name="nrCpf" [(ngModel)]="request.medico.nrCpf" />
+              <input type="text" class="form-control" name="nrCpf" [(ngModel)]="request.medico.nrCpf" />
             </div>
           </div>
 
           <div class="row">
             <div class="form-group col-12 col-md-3">
               <label>CEP</label>
-              <input type="cep" class="form-control" name="nrCep" [(ngModel)]="request.medico.enderecos[0].nrCep" />
+              <input type="text" class="form-control" name="nrCep" [(ngModel)]="request.medico.enderecos[0].nrCep" />
             </div>
             <div class="form-group col-12 col-md-5">
               <label>Endereço Comercial</label>
-              <input type="endereco" class="form-control" name="dsEndereco"
+              <input type="text" class="form-control" name="dsEndereco"
                 [(ngModel)]="request.medico.enderecos[0].dsEndereco" />
             </div>
             <div class="form-group col-12 col-md-4">
               <label>Bairro</label>
-              <input type="bairro" class="form-control" name="dsBairro"
+              <input type="text" class="form-control" name="dsBairro"
                 [(ngModel)]="request.medico.enderecos[0].dsBairro" />
             </div>
           </div>
 
           <div class="row">
-            <div class="form-group col-12 col-md-2">
+            <!--<div class="form-group col-12 col-md-2">
               <label class="label-form" for="uf">UF</label>
-              <select class="form-control style-input" id="uf" name="dsUf"
+              <select class="form-control style-input" id="uf" name="idUf"
                 [(ngModel)]="request.medico.enderecos[0].cidade.uf.idUf">
-                <option disabled selected [value]="request.medico.enderecos[0].cidade.uf.dsUf">
-                  {{request.medico.enderecos[0].cidade.uf.dsUf}}</option>
                 <option [value]="request.ufs[0].idUf">{{request.ufs[0].dsUf}}</option>
                 <option [value]="request.ufs[1].idUf">{{request.ufs[1].dsUf}}</option>
                 <option [value]="request.ufs[2].idUf">{{request.ufs[2].dsUf}}</option>
@@ -169,12 +165,11 @@
                 <option [value]="request.ufs[26].idUf">{{request.ufs[26].dsUf}}</option>
 
               </select>
-            </div>
+            </div>-->
 
             <div class="form-group col-12 col-md-2">
               <label>Cidade</label>
-              <select class="form-control style-input" name="dsCidade"
-                [(ngModel)]="request.medico.enderecos[0].cidade.idCidade">
+              <select class="form-control style-input" name="idCidade" [(ngModel)]="request.medico.enderecos[0].cidade.idCidade">
                 <option disebled selected [value]="request.medico.enderecos[0].cidade.dsCidade">
                   {{request.medico.enderecos[0].cidade.dsCidade}}</option>
                 <option [value]="request.cidades[0].idCidade">{{request.cidades[0].dsCidade}}</option>
@@ -194,8 +189,7 @@
 
             <div class="form-group col-12 col-md-3">
               <label>Telefone</label>
-              <input type="tel" class="form-control" name="dsContato"
-                [(ngModel)]="request.medico.contatos[0].dsContato" />
+              <input type="text" class="form-control" name="dsContato"  [(ngModel)]="request.medico.contatos[0].dsContato" />
             </div>
             <div class="form-group col-12 col-md-3">
               <label>E-mail</label>
@@ -203,20 +197,20 @@
             </div>
             <div class="form-group col-12 col-md-2">
               <label>Valor da Consulta</label>
-              <input type="valor" class="form-control" name="vlConsulta"
-                [(ngModel)]="request.medico.preco.vlConsulta" />
+              <input type="number" class="form-control" name="vlConsulta" [(ngModel)]="request.medico.preco.vlConsulta" />
             </div>
           </div>
           <br>
           <div class="row">
             <div class="col-12 col-md-6" id="btn-dados">
-              <button class="bt-padrao" value="Atualizar" (click)="atualizar()">Alterar Dados</button>
+              <button class="bt-padrao" type="button" value="Atualizar" (click)="atualizar()">Alterar Dados</button>
             </div>
             <div class="col-12 col-md-6" id="btn-voltar">
               <button class="bt-voltar" routerLink="/dashboard/medico">Voltar</button>
             </div>
           </div>
         </form>
+    {{request.medico | json}}
       </div>
     </div>
   </div>
@@ -250,7 +244,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <input type="senha" class="form-control" name="dsSenha1" #dsSenha1="ngModel" placeholder="Nova Senha"
+    <input type="password" class="form-control" name="dsSenha1" #dsSenha1="ngModel" placeholder="Nova Senha"
       [(ngModel)]="loginMedico.dsSenha"/>
     </div>
   <div class="modal-footer">

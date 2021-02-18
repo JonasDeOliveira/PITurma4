@@ -33,7 +33,7 @@ export class PerfilMedicoComponent implements OnInit {
       espMed: {
           idEspMed: null
       },
-      ufCrm: {
+      uf: {
           idUf: null 
       },
       nome: '',
@@ -65,10 +65,7 @@ export class PerfilMedicoComponent implements OnInit {
   },
  
     ufs : [
-        {
-          idUf :  null,
-          dsUf : ''
-        }
+    
     ],
 
     especialidades : [
@@ -93,6 +90,7 @@ loginMedico : any = {
 
   open(content) {
     this.modalService.open(content);
+    
   }
   
   ngOnInit(): void {
@@ -116,7 +114,7 @@ loginMedico : any = {
         this.router.navigate(['perfil/medico']); 
       },
       (error) => {
-        console.log(this.request);
+        console.log(error);
         alert('Algo inesperado aconteceu');
       }
     )
