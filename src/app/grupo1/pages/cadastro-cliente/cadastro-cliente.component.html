@@ -94,8 +94,8 @@
             <div class="form-group col-md-1">
                 <label for="cadastro-ddd">DDD:</label>
                 <input type="text" class="form-control" id="cadastro-ddd" required
-                [(ngModel)]="outputCliente.ddd" placeholder="(000)" name="ddd" #ddd="ngModel">
-                <div *ngIf="ddd.errors && (ddd.dirty || ddd.touched)"class="alert alert- light" minlegth="3" maxlength="3">
+                [(ngModel)]="outputCliente.ddd" placeholder="(000)" name="ddd" #ddd="ngModel" minlegth="3" maxlength="3">
+                <div *ngIf="ddd.errors && (ddd.dirty || ddd.touched)"class="alert alert- light">
                     <div [hidden]="!celular.errors.required">
                         Informe o DDD
                     </div>
@@ -104,7 +104,7 @@
             <div class="form-group col-md-3">
                 <label for="cadastro-celular">Celular:</label>
                 <input type="text" class="form-control" id="cadastro-celular" placeholder="Digite o seu Celular"
-                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="10" maxlength="10" required mask="00000-0000">
+                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="9" maxlength="10" required mask="00000-0000">
                     <!--  pattern="(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"  -->
                 <div *ngIf="celular.errors && (celular.dirty || celular.touched)" class="alert alert- light">
                     <div [hidden]="!celular.errors.required">

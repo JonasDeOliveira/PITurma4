@@ -82,7 +82,7 @@
                                     <ul class="todo__tarefas-lista" id="todoLista">
                                         <li class="item-lista"
                                             *ngFor="let lembrete of areaDoCliente.lembretes.slice(0,5)"
-                                            (click)="removeTarefa(lembrete)">
+                                            (click)="removeTarefa(lembrete.idLembrete)">
                                             <p class="titulo_lembrete">{{lembrete.nmTitulo}}</p>
                                             <p class="excluir ">Descriçao: {{lembrete.dsLembrete}}<span
                                                     class=" todo__btn-excluir">X</span></p>

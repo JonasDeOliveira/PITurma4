@@ -61,7 +61,7 @@
                         <label for="cadastro-celular">Celular:</label>
                         <input type="text" class="form-control" id="cadastro-celular"
                             [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" required 
-                            minlength="10" maxlength="10" required mask="00000-0000">
+                            minlength="9" maxlength="10" required mask="00000-0000">
                         <div *ngIf="celular.errors && (celular.touched)" class="alert alert-light">
                             <div [hidden]="!celular.errors.required">
                                 O campo celular é obrigatório.
@@ -310,7 +310,7 @@
                                     <div class="form-group col-md-7">
                                         <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
                                         <input type="text" class="form-control" id="cartao-codigo-seguranca"
-                                            placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca"
+                                            placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca" 
                                             name="codSeguranca" #codSeguranca="ngModel" minlength="3" maxlength="3"
                                             required>
                                     </div>
