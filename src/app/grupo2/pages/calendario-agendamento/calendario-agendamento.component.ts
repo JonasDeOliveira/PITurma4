@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import { EspMed } from '../../shared/model/agenda';
 import { TipoConsulta } from '../../shared/model/tipoConsulta';
+import {  Router } from '@angular/router';
 
 
 @Component({
@@ -18,10 +19,14 @@ import { TipoConsulta } from '../../shared/model/tipoConsulta';
 
 export class CalendarioAgendamentoComponent implements OnInit {
 
-  model: NgbDateStruct;                 
+  model: NgbDateStruct;
+  data: Date;                 
   date: {year: number, month: number};  
 
-  constructor(private calendar: NgbCalendar) {
+  constructor(
+    private calendar: NgbCalendar,
+    private router: Router
+    ) {
   }
 
   especialidade: EspMed = JSON.parse(localStorage.getItem("espMed"));
@@ -36,6 +41,13 @@ export class CalendarioAgendamentoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  dataSelect(){
+    this.data = new Date(this.model.year, this.model.month, this.model.day, 0, 0, 0, 0);
+
+    localStorage.setItem("data", JSON.stringify(this.data));
+    this.router.navigate(['escolha-especialista']);
   }
 
 }

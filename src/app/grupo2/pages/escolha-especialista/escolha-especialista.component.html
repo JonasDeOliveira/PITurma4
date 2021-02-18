@@ -34,7 +34,7 @@
         <div class="texto-trilha d-flex flex-column">
             <a routerLink='/calendario-agendamento'>
                 <div class="trilha ">Data</div>
-                <div class="opcao">01/03/2021</div>
+                <div class="opcao">{{data}}</div>
             </a>
         </div>
     </div>
@@ -98,8 +98,14 @@
 
     <!-- fim filtro -->
 
+<<<<<<< HEAD
   
     <div *ngFor = "let agenda of arrayAgendas" class="card-medico row">
+=======
+  <!-- LEMBRAR DE VOLTAR ESSA AQUI -->
+    <!-- <div *ngFor = "let agenda of arrayAgendasData" class="card-medico row"> -->
+        <div *ngFor = "let agenda of arrayAgendas" class="card-medico row">
+>>>>>>> 102477aa59c493cb86a5b65ce01e09d7090ae78d
         <div class="foto" id="medico1"></div>
         <div class="nome-horario">
             <div class="texto-consulta">

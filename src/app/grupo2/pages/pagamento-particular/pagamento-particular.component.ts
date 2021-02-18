@@ -2,6 +2,7 @@ import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Agenda } from '../../shared/model/agenda';
+import { Cartao } from '../../shared/model/cartao';
 import { EspMed } from '../../shared/model/espMed';
 import { TipoConsulta } from '../../shared/model/tipoConsulta';
 import { CartaoService } from '../../shared/services/cartao.service';
@@ -39,10 +40,20 @@ export class PagamentoParticularComponent implements OnInit {
   // idUsuario: number = JSON.parse(localStorage.getItem("cliente")).idUsuario;
 
 
-  nmTitular:string;
-  nrCartao: string;
+  nmTitular:string = "";
+  nrCartao: string  = "";
+  mesVenc: string;
+  anoVenc: string;
+  cvv: string = "";
+
+  cartao: Cartao = {
+    nrCartao: this.nrCartao,
+    codSeguranca : this.cvv,
+    usuario : {nmNome: this.nmTitular}
+  };
   qtdadeParcString : string;
   qtadeParcelas : number;
+
 
   ngOnInit(): void {
     //MUDAR QUANDO FIZER O MERGE

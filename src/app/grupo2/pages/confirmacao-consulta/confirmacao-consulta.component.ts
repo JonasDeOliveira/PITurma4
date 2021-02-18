@@ -66,7 +66,7 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   //TIRAR APOS MERGE
   idUsuario = 142;
 
-  data = this.agenda.data;
+  data: string;
 
   agPaciente: AgPaciente;
   pagamento: Pagamento;
@@ -90,7 +90,14 @@ export class ConfirmacaoConsultaComponent implements OnInit {
     } else if (this.tipoPagamento.idFormaPagamento == 2){
       this.tipoPagamento.dsFormaPagamento="Cartão"
     }
-    ;
+    this.conversorData();
+  }
+
+  conversorData(){
+    let data = JSON.parse(localStorage.getItem("data")).slice(0,10);
+    let dataFormato = data.split("-");
+    let dataFinal = `${dataFormato[2]}/${dataFormato[1]}/${dataFormato[0]}`;
+    this.data = dataFinal;
   }
 
   open(content) {
@@ -108,4 +115,3 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   }
 
 }
-  
