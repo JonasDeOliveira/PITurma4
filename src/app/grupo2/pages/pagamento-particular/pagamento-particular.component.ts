@@ -51,6 +51,7 @@ export class PagamentoParticularComponent implements OnInit {
     codSeguranca : this.cvv,
     usuario : {nmNome: this.nmTitular}
   };
+  
   qtdadeParcString : string;
   qtadeParcelas : number;
 

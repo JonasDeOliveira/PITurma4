@@ -1,0 +1,209 @@
+<div class="container">
+    <div class="banner"></div>
+
+    <section>
+
+        <div class="row titulo">
+            <h1>Programa nutricional</h1>
+        </div>
+
+        <div class="container cT">
+            <div class="row">
+                <div class="col-12 col-lg-7">
+                    <div class="row c1A">
+                        <div class="row pt-10">
+                            <h2>Informações do paciente</h2>
+                        </div>
+
+                        <form action="#inicio">
+                            <div class="form-row">
+
+                                <div class="form-group col-md-12">
+                                    <label for="name-paciente" class="label-form">Nome do(a) Paciente</label>
+                                    <input type="text" class="form-control" id="nome" value="{{dadosPacienteResposta.nome}}" disabled>
+                                </div>
+                    
+            
+                                <div class="form-group col-md-4">
+                                    <label for="idade" class="label-form">Idade</label>
+                                    <input type="text" class="form-control" id="dtNascimento" value="{{dadosPacienteResposta.dtNascimento | date: 'dd/MM/yyyy'}}"
+                                        disabled="">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="peso" class="label-form">Peso</label>
+                                    <input type="text" class="form-control" id="vlPeso" value="{{dadosPacienteResposta.vlPeso}}" name="vlPeso"
+                                        disabled="">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="altura" class="label-form">Altura</label>
+                                    <input type="text" class="form-control" id="vlAltura"  value="{{dadosPacienteResposta.vlAltura}}" name="vlAltura"
+                                        disabled="">
+                                </div>
+
+                
+                                <div class="form-group col-md-12">
+                                    <label for="objetivo" class="label-form">Objetivo</label>
+                                    <input type="objetivo" class="form-control" id="dsObjetivo" value="{{dadosPacienteResposta.dsObjetivo}}" name="dsObjetivo"
+                                        disabled="">
+                                </div>
+
+                                <div class="form-group  col-md-12">
+                                    <label for="restricoes"  class="label-form">Restrições</label>
+                                    <input type="text" class="form-control" id="dsAlergiasRestricoes" value ="{{dadosPacienteResposta.dsAlergiasRestricoes}}" name="dsAlergiasRestricoes"
+                                     disabled="">
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="praticaAtividade"  class="label-form">Hábitos e Vícios</label>
+                                    <input type="text" class="form-control" id="dsHabitosVicios" value="{{dadosPacienteResposta.dsHabitosVicios}}" name="dsHabitosVicios"
+                                     disabled="">
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+
+
+                    <div class="row c1B">
+
+                        <div class="row tt">
+                            <div class="col-12 col-lg-12">
+                                <h2>Montar Cardápio</h2>
+                            </div>
+                        </div>
+
+                        <div class="row tt">
+                            <div class="col-12 col-lg-12">
+                                <h4>Escolher a refeição</h4>
+                            </div>
+                        </div>
+
+                        <form action="#inicio">
+                            <div class="form-row  ">
+                                <div class="form-group col-md-12">
+                                    <select class="form-control" id="EscolherRefeicao" name="idTipoRefeicao" [(ngModel)]="request.idTipoRefeicao.idTipoRefeicao" #idTipoRefeicao="ngModel" placeholder="Escolha a refeição" required> 
+                                        <option value ="selecione">Selecione a refeição</option>
+                                        <option *ngFor = "let tipoRefeicao of responseTipoRefeicao" [value]="tipoRefeicao.idTipoRefeicao">{{tipoRefeicao.dsTipoRefeicao}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" id="nomeReceita" name = " nomeReceita" [(ngModel)]="request.nomeReceita" #nomeReceita= "ngModel" required
+                                        placeholder="Nome do Prato">
+                                </div>
+                            
+                            
+                                <div class="form-group col-md-6">
+                                    <input class="form-control" id="qtRendimento" name = "qtRendimento" [(ngModel)]="request.qtRendimento" #qtRendimento= "ngModel" placeholder="Calorias" required>
+                                </div>
+
+
+                                <div class="form-group col-md-12">
+                                    <textarea type="text" class="form-control" id="dsDescricao" name = "dsDescricao" [(ngModel)]="request.dsDescricao" #qtDescricao= "ngModel" placeholder="Descrição" required rows = "3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <input class="form-control" id="qtCalorias" name = "qtCalorias" [(ngModel)]="request.qtCalorias" #qtCalorias= "ngModel" placeholder="Quantidade" required>
+                            </div>
+
+            
+                            <div class="row d-flex justify-content-center">
+                                <button type="button" class="btn btn-success btn-verde" id="btn-confirma"  value="Cadastrar" (click)="cadastrar()">Confirmar</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-5 c1C" >
+                    <h2 class="tt-cardapio">CARDÁPIO</h2>
+
+                 
+                    <div  class="div row"  *ngFor = "let cardapio of responseCardapio">
+                        <h6>{{cardapio.nomeReceita}}</h6> 
+                        <h6>{{cardapio.qtCalorias}}</h6>
+                        <h6>{{cardapio.qtRendimento}}</h6>
+                        <h6>{{cardapio.dsDescricao}}</h6>
+    
+                    </div>
+            
+
+                    <div  class="receitas">
+                        <h5><button class="btn-padrao"><mat-icon>add</mat-icon></button>Refeição<button class="btn-padrao"><mat-icon>delete</mat-icon></button></h5>
+                        <h6>Nome do Prato</h6>
+                        <h6>Quantidade</h6>
+                        <h6>Calorias</h6>
+                    </div>
+
+                        <div  class="receitas">
+                            <h5><button class="btn-padrao"><i class="fa fa-plus" aria-hidden="true"></i></button>Refeição<button class="btn-padrao"><i class="fa fa-trash"></i></button></h5>
+                            <h6>Nome do Prato</h6>
+                            <h6>Quantidade</h6>
+                            <h6>Calorias</h6>
+                        </div>
+
+                        <div  class="receitas">
+                            <h5><button class="btn-padrao"><i class="fa fa-plus" aria-hidden="true"></i></button>Refeição<button class="btn-padrao"><i class="fa fa-trash"></i></button></h5>
+                            <h6>Nome do Prato</h6>
+                            <h6>Quantidade</h6>
+                            <h6>Calorias</h6>
+                        </div>
+                        
+                        <div  class="receitas">
+                            <h5><button class="btn-padrao"><i class="fa fa-plus" aria-hidden="true"></i></button>Refeição<button class="btn-padrao"><i class="fa fa-trash"></i></button></h5>
+                            <h6>Nome do Prato</h6>
+                            <h6>Quantidade</h6>
+                            <h6>Calorias</h6>
+                        </div>
+                    
+                        <div class="row d-flex justify-content-center">
+                            <button type="button" class="btn-verde btn-success btn-verde" id="bt-finalizar" data-toggle="modal" data-target="#finalizarModal">Finalizar</button>
+                        </div>
+
+                        <div class="modal fade" id="finalizarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Programa Nutricional</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                    Cardápio criado com sucessso!
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn-verde btn-primary">Ok</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                    </div>
+                
+
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        
+</div>
