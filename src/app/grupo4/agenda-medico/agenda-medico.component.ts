@@ -65,16 +65,6 @@ export class AgendaMedicoComponent implements OnInit {
     }
   }
 
-  /* getHorario() {
-    this.agendaService.getHorario().subscribe(
-      response => {
-        this.horarioResposta = response;
-
-        this.data = new Date(Date.now()).toISOString().slice(0,10);
-      }
-    )
-  } */
-
   getHorarios() {
     this.agendaService.getHorarios().subscribe(
       resposta => {
@@ -94,8 +84,8 @@ export class AgendaMedicoComponent implements OnInit {
     }
   }
 
-  /* registrar(data: Date): void {
-    this.agendaService.abrirAgenda(data).subscribe(
+  cadastrarAgenda(): void {
+    this.agendaService.cadastrarAgenda(this.agendamentosResposta).subscribe(
       response => {
         alert('Agenda cadastrada com sucesso!');
         this.router.navigate(['/agenda/medico']);
@@ -104,6 +94,6 @@ export class AgendaMedicoComponent implements OnInit {
         alert('Algo inesperado aconteceu!');
       }
     )
-  } */
+  } 
 
 }

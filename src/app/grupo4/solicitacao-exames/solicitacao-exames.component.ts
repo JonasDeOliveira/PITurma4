@@ -74,7 +74,7 @@ export class SolicitacaoExamesComponent implements OnInit {
     
     this.request.exames = this.listaExame;
 
-    console.log(this.request);
+    console.log(this.request.dtSolicitacao);
 
     this.solicitacaoService.cadastrarSolicitacaoExame(this.request).subscribe(
       response => {

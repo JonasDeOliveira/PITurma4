@@ -39,14 +39,15 @@ export class AgendamedicoService {
     return this.http.get<ResponsePeriodos[]>(URL);
   }
 
+  cadastrarAgenda(request: any): Observable<any> {
+    const URL = `${this.API4}/2021-06-06`
+    return this.http.post<any>(URL, request);
+  } 
+
   /* getHorario() {
     var data = new Date(Date.now()).toISOString().slice(0,10);
 
     const URL = `${this.API3}/${data}`;
     return this.http.get(URL);
-  } */
-
-  /* abrirAgenda(data: Date): Observable<any> {
-    return this.http.post<any>(this.API4, data);
   } */
 }

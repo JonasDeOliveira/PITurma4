@@ -41,7 +41,7 @@ export class AtendimentoEspecialistaComponent implements OnInit {
       dsAlergiasRestricoes : "",
       dsMedicacaoUsoContinuo : "",
       dsProblemasSaude : "",
-      dtAtendimento : "17/02/2021",
+      dtAtendimento : "",
       //capturar a data do dia nesse formato e o id do medico do login
   }
 
@@ -59,7 +59,11 @@ export class AtendimentoEspecialistaComponent implements OnInit {
     this.atendEspService.getAtendimentos(this.request.agPaciente.idAgPaciente).subscribe(
       resposta => {
         this.atendimentoResposta = resposta;
+
+        localStorage.setItem("paciente", JSON.stringify(resposta));
         console.log(resposta);
+
+
       }
     );
   }
