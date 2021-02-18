@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { AgPaciente} from '../model/agPaciente';
 import { Observable } from 'rxjs';
-import { CadastroAgPaciente } from '../model/cadastroAgPaciente';
 import { Resposta } from '../model/resposta';
+import { CadastroAgPactPgto } from '../model/cadastroAgPactPgto';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +31,7 @@ export class AgPacienteService {
     return this.http.get<Resposta>(URL);
   }
 
-  cadastrarAgPaciente (request: CadastroAgPaciente): Observable<AgPaciente>{
+  cadastrarAgPaciente (request: CadastroAgPactPgto): Observable<AgPaciente>{
     return this.http.post<AgPaciente>(this.APICADASTRARAGPCTE, request);
   }
 }

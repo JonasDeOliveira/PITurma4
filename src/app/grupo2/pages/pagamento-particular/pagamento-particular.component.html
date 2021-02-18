@@ -1,6 +1,5 @@
-
- <!-- trilha 5 -->
- <div class="rowtrilha d-flex flex-wrap justify-content-center">
+<!-- trilha 5 -->
+<div class="rowtrilha d-flex flex-wrap justify-content-center">
     <div class="cada-item d-flex flex-column">
         <div class="bola-linha d-flex">
             <div class="bolinha bolinha-cheia">1</div>
@@ -33,7 +32,7 @@
         <div class="texto-trilha d-flex flex-column">
             <a routerLink='/calendario-agendamento'>
                 <div class="trilha ">Data</div>
-                <div class="opcao">23/10/2017</div>
+                <div class="opcao">{{data}}</div>
             </a>
         </div>
     </div>
@@ -102,8 +101,7 @@
         <!--- botoes Particular e Planos -->
         <div class="row">
             <div class="container text-center col-12 md-3 mt-3 mb-5">
-                <a routerLink='/pagamento-plano'><button
-                        class="btn-active clicavel">Plano</button></a>
+                <a routerLink='/pagamento-plano'><button class="btn-active clicavel">Plano</button></a>
                 <button class="btn-active clicado">Particular</button>
             </div>
         </div>
@@ -117,7 +115,7 @@
                     <!-- linha 1 - Número do cartão -->
                     <div class="form-row">
                         <div class="form-group col-12">
-                            <label  for="numeroCC">Número do cartão*</label>
+                            <label for="numeroCC">Número do cartão*</label>
                             <input [(ngModel)]="nrCartao" name="nrCartao" type="text" class="form-control" id="nrCartao"
                                 placeholder="Digite o número do Cartao" required>
                         </div>
@@ -128,8 +126,8 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="nomeTitular">Nome do titular do cartão*</label>
-                            <input [(ngModel)]="nmTitular" name="nmTitular" type="text" class="form-control" id="nmTitular"
-                                placeholder="Digite o nome como gravado no cartão" required>
+                            <input [(ngModel)]="nmTitular" name="nmTitular" type="text" class="form-control"
+                                id="nmTitular" placeholder="Digite o nome como gravado no cartão" required>
                         </div>
                     </div>
 
@@ -137,41 +135,42 @@
                     <div class="form-row">
                         <div class="form-group col-12 col-lg-4">
                             <label for="dtVencMes">Mês de vencimento*</label>
-                            <select id="dtVencMes" class="form-control" required>
-                                <option selected>Mês</option>
-                                <option>01 - janeiro</option>
-                                <option>02 - fevereiro</option>
-                                <option>03 - março</option>
-                                <option>04 - abril</option>
-                                <option>05 - maio</option>
-                                <option>06 - junho</option>
-                                <option>07 - julho</option>
-                                <option>08 - agosto</option>
-                                <option>09 - setembro</option>
-                                <option>10 - outubro</option>
-                                <option>11 - novembro</option>
-                                <option>12 - dezembro</option>
+                            <select [(ngModel)]="mesVenc" name="mesVenc" id="dtVencMes" class="form-control" required>
+                                <option value="undefined" selected>Mês</option>
+                                <option value="1">01 - janeiro</option>
+                                <option value="2">02 - fevereiro</option>
+                                <option value="3">03 - março</option>
+                                <option value="4">04 - abril</option>
+                                <option value="5">05 - maio</option>
+                                <option value="6">06 - junho</option>
+                                <option value="7">07 - julho</option>
+                                <option value="8">08 - agosto</option>
+                                <option value="9">09 - setembro</option>
+                                <option value="10">10 - outubro</option>
+                                <option value="11">11 - novembro</option>
+                                <option value="12">12 - dezembro</option>
                             </select>
                         </div>
                         <div class="form-group col-12 col-lg-4">
                             <label for="dtVencAno">Ano de vencimento*</label>
-                            <select id="dtVencAno" class="form-control" required>
-                                <option selected>Ano</option>
-                                <option>2020</option>
-                                <option>2021</option>
-                                <option>2022</option>
-                                <option>2023</option>
-                                <option>2025</option>
-                                <option>2026</option>
-                                <option>2027</option>
-                                <option>2028</option>
-                                <option>2029</option>
-                                <option>2030</option>
+                            <select  [(ngModel)]="anoVenc" name="anoVenc" id="dtVencAno" class="form-control" required>
+                                <option value="undefined" selected>Ano</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
                             </select>
                         </div>
                         <div class="form-group col-12 col-lg-4">
                             <label for="codSegCC">CVV*</label>
-                            <input type="text" class="form-control" id="codSegCC" placeholder="000" required>
+                            <input [(ngModel)]="cvv" name="cvv" type="text" class="form-control" id="codSegCC" placeholder="000" required>
                         </div>
                     </div>
 
@@ -180,7 +179,8 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="numParcelas">Opções de parcelamento*</label>
-                            <select class="custom-select mb-2" [(ngModel)]="qtadeParcelas" id="name" name="parc"(change)="salvarQtdadeParcelasLS()">
+                            <select class="custom-select mb-2" [(ngModel)]="qtadeParcelas" id="name" name="parc"
+                                (change)="salvarQtdadeParcelasLS()">
                                 <option disabled value="undefined">Escolha o número de parcelas</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -225,8 +225,8 @@
                 </table>
                 <div class="btnConcluir">
                     <div class="col text-center">
-                        <a routerLink='/confirmacao-consulta'><button
-                                class="btn-active clicavel" value="CadastrarParticular" (click)="salvarTipoPagamento()">Confirmar</button></a>
+                        <a routerLink='/confirmacao-consulta'><button class="btn-active clicavel"
+                                value="CadastrarParticular" (click)="salvarTipoPagamento()">Confirmar</button></a>
                     </div>
                 </div>
             </div>
