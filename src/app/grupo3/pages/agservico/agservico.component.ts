@@ -26,6 +26,7 @@ export class AgservicoComponent implements OnInit {
   data: string; 
   agendamentos: AgServico[];
   servicos: Servicos[];
+  servicos2: Servicos[];
   ag: AgServico;
   
 
@@ -59,9 +60,9 @@ export class AgservicoComponent implements OnInit {
     this.hrManhaExibir = new Array; 
     this.hrTardeExibir = new Array; 
     this.hrNoiteExibir = new Array; 
-    this.ag = new AgServico(); 
     this.agendamentos = new Array; 
     this.servicos = new Array;
+    this.servicos2 = new Array;
 
   }
 
@@ -77,7 +78,7 @@ export class AgservicoComponent implements OnInit {
   getLoja(id: number){
     this.idLoja = id; 
     console.log("Id seviço: "+ this.idServico);
-    console.log("Id loja: "+id);
+    console.log("Id loja: "+id); 
 
     this.exibir2 = true;
     
@@ -99,8 +100,6 @@ export class AgservicoComponent implements OnInit {
         this.responseServicos = response;
       }
     )
-
-    
   }
 
   buscarLojaPorLocal(){
@@ -164,10 +163,6 @@ export class AgservicoComponent implements OnInit {
         this.exibir = true;
       }
     )
-
-
-
-    
     console.log(this.hrIndisp);
     
     
@@ -177,15 +172,16 @@ export class AgservicoComponent implements OnInit {
   salvarAgServico(){
 
     //adicionar o agendamento atual no array de agendamentos 
+    this.ag = new AgServico(); 
     this.ag.idLoja = this.idLoja;
     this.ag.idServico = this.idServico;
     this.ag.dtHr =  this.data + " " + this.horario + ":00"; 
 
-    //this.responseServicos.servicos.forEach(element => {
-    //  if (this.idServico == element.id){
-    //    this.servicos.push(element);
-    //  }
-    //});
+   // this.responseServicos.servicos.forEach(element => {
+   //   if (this.idServico == element.id){
+   //     this.servicos.push(element);
+   //   }
+   // });
     
 
     console.log(this.ag.dtHr);
@@ -207,9 +203,11 @@ export class AgservicoComponent implements OnInit {
     this.router.navigate(['/pagamento-servico']);
   }
 
-  novoAgServico(){
+  novoAgServico(callback: any){
     
     this.salvarAgServico();
+    //FECHAR A MODAL AQUI
+    callback('Cross click');
   }
   
 }

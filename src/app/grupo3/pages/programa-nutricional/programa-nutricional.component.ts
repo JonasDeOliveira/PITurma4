@@ -27,7 +27,7 @@ export class ProgramaNutricionalComponent implements OnInit {
    listCardapios: ProgramaNutriService[];
 
 
-   idPaciente = localStorage.getItem("idPaciente");
+  idPaciente = localStorage.getItem("idPaciente");
   idUsuario = parseInt(this.idPaciente);
 
 
