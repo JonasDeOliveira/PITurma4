@@ -104,7 +104,7 @@
             <div class="form-group col-md-3">
                 <label for="cadastro-celular">Celular:</label>
                 <input type="text" class="form-control" id="cadastro-celular" placeholder="Digite o seu Celular"
-                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="10" maxlength="10" required mask="00000-0000">
+                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="9" maxlength="10" required mask="00000-0000">
                     <!--  pattern="(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"  -->
                 <div *ngIf="celular.errors && (celular.dirty || celular.touched)" class="alert alert- light">
                     <div [hidden]="!celular.errors.required">
