@@ -10,16 +10,16 @@
             <div class="collapse navbar-collapse item-menu" id="navbarSupportedContent">
                 <div class="col-8">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" [routerLink]="['/planos']">Planos</a></li>
+                        <li class="nav-item"><a class="nav-link" [routerLink]="['/planos#card-planos']">Planos</a></li>
                         <li class="nav-item"><a class="nav-link" [routerLink]="['/']">Sustentabilidade</a></li>
-                        <li class="nav-item"><a class="nav-link" [routerLink]="['/']">Serviços</a></li>
+                        <li class="nav-item"><a class="nav-link" [routerLink]="['/#servicos']">Serviços</a></li>
                         <li class="nav-item"><a class="nav-link" [routerLink]="['/area-cliente']"><b>Minha Área</b></a></li>
                     </ul>
                 </div>
                 <div class="col-4 avatar">
                         <div class="nome-cliente">
-                            <span id="txt-login">Olá, Laura</span>
-                            <!-- TODO: substituir pelos dados de usuario {{usuario.nmNome}} -->
+                            <span id="txt-login" > Olá, {{usuario.nmNome}}</span>
+                            <!-- TODO: substituir pelos dados de usuario -->
                             <a href="/"><button class="btn btn-sm botao-sair" (click)="logout()">Sair</button></a>
                         </div>
                         <div class="img-login">
