@@ -57,3 +57,7 @@ section .btn:hover {
 .img-login-foto {
     cursor: pointer;
 }
+
+.nav-link{
+    cursor: pointer;
+}

@@ -1,3 +1,6 @@
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
+
 <section class="container">
     <h2 class="text-center">Cadastro</h2>
     <h6>Dados de Acesso:</h6>
@@ -282,3 +285,4 @@
     </div>
 </section>
 <script src="../cliente/shared/cep.endereco.js"></script>
+<app-footer></app-footer>

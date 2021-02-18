@@ -1,4 +1,6 @@
 
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
 <body class="container-fluid">
     <section class="container planos" >
         <h1 id="card-planos">PLANOS</h1>
@@ -18,4 +20,5 @@
         crossorigin="anonymous"></script>
   
 </body>
+<app-footer></app-footer>
 

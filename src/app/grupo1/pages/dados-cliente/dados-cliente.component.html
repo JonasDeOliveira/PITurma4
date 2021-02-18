@@ -1,3 +1,6 @@
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
+
 <div *ngIf="ehLogado == false">
     <app-mensagem-login></app-mensagem-login>
 </div>
@@ -371,3 +374,4 @@
         crossorigin="anonymous"></script>
 
 </body>
+<app-footer></app-footer>

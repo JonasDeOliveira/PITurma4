@@ -15,6 +15,7 @@ import { LembretesModule } from '../lembretes/lembretes.module';
 import { CardPlanosComponent } from './planos/card-planos/card-planos.component';
 import { ClienteService } from './cliente/shared/cliente.service';
 import { MensagemLoginComponent } from './mensagem-login/mensagem-login.component';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [PlanosComponent, PortalComponent, AreaClienteComponent, LoginClienteComponent, ListaLembretesComponent, CadastroClienteComponent, DadosClienteComponent, CardPlanosComponent, MensagemLoginComponent],
@@ -22,6 +23,7 @@ import { MensagemLoginComponent } from './mensagem-login/mensagem-login.componen
     CommonModule,
     LembretesModule,
     RouterModule,
+    ComponentsModule,
     [ModalModule.forRoot()]
   ],
   exports: [PlanosComponent, 

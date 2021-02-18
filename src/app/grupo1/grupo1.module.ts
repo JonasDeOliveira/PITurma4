@@ -5,20 +5,15 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule } from '@angular/forms';
 
 
-import { FooterComponent } from './components/footer/footer.component';
-import { HeaderComponent} from './components/header/header.component';
+import { ComponentsModule } from './components/components.module'
 import { LembretesModule } from './lembretes/lembretes.module'
 import { PagesModule } from './pages/pages.module';
 import { CartoesModule } from './cartoes/cartao.module';
-import { HeaderLogadoComponent } from './components/header-logado/header-logado.component';
+
 
 
 @NgModule({
-  declarations: [ 
-    FooterComponent,
-    HeaderComponent,
-    HeaderLogadoComponent
-  ],
+  declarations: [ ],
   imports: [
     CommonModule,
     RouterModule,
@@ -29,10 +24,8 @@ import { HeaderLogadoComponent } from './components/header-logado/header-logado.
     FormsModule
   ],
   exports: [
-    FooterComponent,
-    HeaderComponent,
-    RouterModule,
-    HeaderLogadoComponent
+    ComponentsModule,
+    RouterModule
   ]
 })
 export class Grupo1Module { }
