@@ -26,6 +26,7 @@ export class AgservicoComponent implements OnInit {
   data: string; 
   agendamentos: AgServico[];
   servicos: Servicos[];
+  servicos2: Servicos[];
   ag: AgServico;
   
 
@@ -40,6 +41,7 @@ export class AgservicoComponent implements OnInit {
   hrIndisp: string[]; //recebe os horários que já estão agendados
 
   exibir: boolean; //variavel que exibe os horários
+  exibir2: boolean; //variavel que exibe a parte de data/hora
   tem: boolean;
 
   responseServicos : ResponseServicos; //recebe os serviços
@@ -51,15 +53,16 @@ export class AgservicoComponent implements OnInit {
     config.keyboard = false;
 
     this.exibir = false; //não exibe os horários
+    this.exibir2 = false; //não exibe a parte3
     this.hrManha = ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30"];
     this.hrTarde = ["15:00", "15:30", "16:00", "16:30", "17:00", "17:30"];
     this.hrNoite = ["19:00", "19:30", "20:00", "20:30", "21:00", "21:30"];
     this.hrManhaExibir = new Array; 
     this.hrTardeExibir = new Array; 
     this.hrNoiteExibir = new Array; 
-    this.ag = new AgServico(); 
     this.agendamentos = new Array; 
     this.servicos = new Array;
+    this.servicos2 = new Array;
 
   }
 
@@ -75,7 +78,10 @@ export class AgservicoComponent implements OnInit {
   getLoja(id: number){
     this.idLoja = id; 
     console.log("Id seviço: "+ this.idServico);
-    console.log("Id loja: "+id);
+    console.log("Id loja: "+id); 
+
+    this.exibir2 = true;
+    
   }
 
   getServico(id: number){
@@ -94,8 +100,6 @@ export class AgservicoComponent implements OnInit {
         this.responseServicos = response;
       }
     )
-
-    
   }
 
   buscarLojaPorLocal(){
@@ -112,66 +116,72 @@ export class AgservicoComponent implements OnInit {
     this.horarioService.getHorasIndisponiveis(this.idLoja, data).subscribe(
       response => {
         this.hrIndisp = response;
+
+        //comparando os horários 
+
+        //horários manhã
+        for(let m=0; m<6; m++){
+          this.tem = false; 
+          for(let i=0; i<this.hrIndisp.length; i++){
+            if (this.hrManha[m].localeCompare(this.hrIndisp[i]) == 0){
+              this.tem = true;
+            }
+          }
+          if (this.tem == false){
+            this.hrManhaExibir.push(this.hrManha[m]);
+          }
+        }
+
+        //horários tarde
+        for(let m=0; m<6; m++){
+          this.tem = false; 
+          for(let i=0; i<this.hrIndisp.length; i++){
+            if (this.hrTarde[m].localeCompare(this.hrIndisp[i]) == 0){
+              this.tem = true;
+            }
+
+          }
+          if (this.tem == false){
+            this.hrTardeExibir.push(this.hrTarde[m]);
+          }
+        }
+
+        //horarios noite
+        for(let m=0; m<6; m++){
+          this.tem = false; 
+          for(let i=0; i<this.hrIndisp.length; i++){
+            if (this.hrNoite[m].localeCompare(this.hrIndisp[i]) == 0){
+              this.tem = true;
+            }
+
+          }
+          if (this.tem == false){
+            this.hrNoiteExibir.push(this.hrNoite[m]);
+          }
+        }
+
+        this.exibir = true;
       }
     )
-    this.exibir = true;
     console.log(this.hrIndisp);
     
-    //horários manhã
-    for(let m=0; m<6; m++){
-      this.tem = false; 
-      for(let i=0; i<this.hrIndisp.length; i++){
-        if (this.hrManha[m].localeCompare(this.hrIndisp[i]) == 0){
-          this.tem = true;
-        }
-      }
-      if (this.tem == false){
-        this.hrManhaExibir.push(this.hrManha[m]);
-      }
-    }
-
-    //horários tarde
-    for(let m=0; m<6; m++){
-      this.tem = false; 
-      for(let i=0; i<this.hrIndisp.length; i++){
-        if (this.hrTarde[m].localeCompare(this.hrIndisp[i]) == 0){
-          this.tem = true;
-        }
-
-      }
-      if (this.tem == false){
-        this.hrTardeExibir.push(this.hrTarde[m]);
-      }
-    }
-
-    //horarios noite
-    for(let m=0; m<6; m++){
-      this.tem = false; 
-      for(let i=0; i<this.hrIndisp.length; i++){
-        if (this.hrNoite[m].localeCompare(this.hrIndisp[i]) == 0){
-          this.tem = true;
-        }
-
-      }
-      if (this.tem == false){
-        this.hrNoiteExibir.push(this.hrNoite[m]);
-      }
-    }
+    
     this.exibir = true;
   }
   
   salvarAgServico(){
 
     //adicionar o agendamento atual no array de agendamentos 
+    this.ag = new AgServico(); 
     this.ag.idLoja = this.idLoja;
     this.ag.idServico = this.idServico;
     this.ag.dtHr =  this.data + " " + this.horario + ":00"; 
 
-    //this.responseServicos.servicos.forEach(element => {
-    //  if (this.idServico == element.id){
-    //    this.servicos.push(element);
-    //  }
-    //});
+   // this.responseServicos.servicos.forEach(element => {
+   //   if (this.idServico == element.id){
+   //     this.servicos.push(element);
+   //   }
+   // });
     
 
     console.log(this.ag.dtHr);
@@ -193,9 +203,11 @@ export class AgservicoComponent implements OnInit {
     this.router.navigate(['/pagamento-servico']);
   }
 
-  novoAgServico(){
+  novoAgServico(callback: any){
     
     this.salvarAgServico();
+    //FECHAR A MODAL AQUI
+    callback('Cross click');
   }
   
 }

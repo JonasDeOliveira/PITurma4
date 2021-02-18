@@ -13,6 +13,7 @@ export class AgServicoService {
   constructor(private http: HttpClient) { }
 
   private readonly API = 'http://localhost:8080/agservico';
+  private readonly API2 = 'http://localhost:8080/agservico/cancelar';
 
   getAgendamentosPorUsuario(id: number){
     const URL = `${this.API}/${id}`
@@ -20,4 +21,9 @@ export class AgServicoService {
     return this.http.get<AgServico[]>(URL);
   }
 
+  cancelarAgendamento(id: number){
+    const URL = `${this.API2}/${id}`
+    return this.http.put(URL, null);
+  }
+  
 }

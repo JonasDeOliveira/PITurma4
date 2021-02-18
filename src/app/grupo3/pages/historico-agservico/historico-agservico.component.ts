@@ -24,7 +24,7 @@ export class HistoricoAgservicoComponent implements OnInit {
     this.agRealizados = new Array; 
     this.agCancelados = new Array; 
 
-    this.idUsuario = 46;
+    this.idUsuario = 1;
     this.agendamentos = true;
   }
 
@@ -55,6 +55,16 @@ export class HistoricoAgservicoComponent implements OnInit {
         }
       }
     )
+  }
+
+  cancelarAgendamento(id: number){
+
+    this.agendamentoService.cancelarAgendamento(id).subscribe(
+      (response) => {
+        console.log(response);
+      }, (error) =>{
+        alert('Não foi possível cancelar o agendamento, tente novamente mais tarde');
+      })
   }
 
 }

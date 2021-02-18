@@ -1,7 +1,7 @@
 export interface Servicos {
     id: number;
     nome: string;
-    preco: DoubleRange;
+    preco: number;
 }
 
 // GET Servicos

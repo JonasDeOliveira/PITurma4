@@ -37,7 +37,7 @@
                 <div class="form-row">
                     <div class="form-group col-12">
                       <label for="nomeTitular">Nome do titular do cartão*</label>
-                      <input [(ngModel)]= "nmTitular" type="text" class="form-control" id="nmTitular" placeholder="Digite o nome como gravado no cartão" required>
+                      <input [(ngModel)]= "nmTitular" name="nmTitular" type="text" class="form-control" id="nmTitular" placeholder="Digite o nome como gravado no cartão" required>
                     </div>
                 </div>
                 <!-- linha 3 - Data de vencimento e código de segurança -->
@@ -125,7 +125,7 @@
                         <th class="produto text-center">SERVIÇO</th>
                         <th class="preco text-center">VALOR</th>
                     </tr>
-                    <tr class="dadosPedido" *ngFor="let ag of agendamentos">
+                    <tr class="dadosPedido" *ngFor="let servico of servicos">
                         <td class="text-left">{{servico.nome}}</td>
                         <td class="text-right">{{servico.preco}}</td>
                     </tr>
@@ -138,7 +138,7 @@
                 <table class="table">
                     <tr>
                         <th colspan="2" class="total">Total</th>
-                        <td class="total text-right">R$ 20,00</td>
+                        <td class="total text-right">{{total}}</td>
                     </tr>
                 </table>
                 <div class="btnConcluir">

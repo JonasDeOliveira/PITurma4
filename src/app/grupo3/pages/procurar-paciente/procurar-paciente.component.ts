@@ -10,38 +10,34 @@ import { PacienteService } from '../../shared/service/paciente.service';
 export class ProcurarPacienteComponent implements OnInit {
 
   cpf: string;
-  idPaciente: number;  
-  existe: boolean;
+  idPaciente: number;
+  existeAlert: boolean;
 
   constructor(private pacienteService : PacienteService,  private router: Router) { 
-    this.existe = true;
+    this.existeAlert = false;
   }
 
   ngOnInit(): void {
   }
 
   buscarCpf(){
-
+    this.existeAlert = false;
+    
     this.pacienteService.getPaciente(this.cpf).subscribe(
-      response => {
+      (response) => {
         this.idPaciente = response;
 
         if (this.idPaciente != null){
-        
+          
           localStorage.setItem("idPaciente", JSON.stringify(this.idPaciente));
           this.router.navigate(['/programa-nutricional']);
         }
 
+      }, (error) =>{
+        this.existeAlert = true;   //exibe a div de erro
       }
     )
-
-    if (this.idPaciente != null){
-      this.existe = false;
-    }
     
-    console.log(this.cpf);
-    console.log(this.idPaciente);
-
   }
 
 }

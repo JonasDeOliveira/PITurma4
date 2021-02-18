@@ -20,8 +20,6 @@
             </div>
         </div>
 
-
-        <!-- <div *ngIf = "exibir3 == true"> -->
         <div *ngIf = "agAgendados.length > 0">
             <div class="row pl-3 pt-4">
                 <h4 class="titulo-p">Próximos agendamentos</h4>
@@ -34,13 +32,14 @@
                         <h5 class="card-title">{{ag.servico.nome}}</h5>
                         <p class="card-text">Horário: {{ag.dtDataHora}}</p>
                         <p class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </p>
+                        <p class="sub justify-content-end"><a class="sub" (click)="cancelarAgendamento(ag.idAgendamento)"> Cancelar agendamento </a> </p>
+            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- <div *ngIf = "exibir1 == true"> -->
         <div *ngIf = "agRealizados.length > 0">
             <div class="row pl-3 pt-5">
                 <h4 class="titulo-p">Histórico de agendamentos</h4>
@@ -59,7 +58,6 @@
             </div>
         </div>
             
-        <!-- <div *ngIf = "exibir2 == true"> -->
         <div *ngIf = "agCancelados.length > 0"> 
             <div class="row pl-3 pt-5">
                 <h4 class="titulo-p">Agendamentos Cancelados</h4>
