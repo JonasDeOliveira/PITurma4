@@ -25,6 +25,9 @@ export class DadosClienteComponent implements OnInit {
   responseCidadesByUf: any;
   responsePlanos: any;
 
+  minDate: Date = new Date(1910,1,1);
+  maxDate: Date = new Date();
+
   planos = {
     plano1: 1,
     plano2: 2,

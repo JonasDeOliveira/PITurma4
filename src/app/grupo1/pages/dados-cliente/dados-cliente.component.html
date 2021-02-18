@@ -41,7 +41,8 @@
                     <div class="form-group col-md-4">
                         <label for="cadastro-cpf">CPF:</label>
                         <input disabled type="text" class="form-control" id="cadastro-cpf"
-                            [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" required>
+                            [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" minlength="11" maxlength="14" required 
+                            mask="000.000.000-00"> 
                     </div>
                     <div class="form-group col-md-1">
                         <label for="cadastro-ddd">DDD:</label>
@@ -59,8 +60,8 @@
                     <div class="form-group col-md-3">
                         <label for="cadastro-celular">Celular:</label>
                         <input type="text" class="form-control" id="cadastro-celular"
-                            [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" required minlength="9"
-                            maxlength="9">
+                            [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" required 
+                            minlength="10" maxlength="10" required mask="00000-0000">
                         <div *ngIf="celular.errors && (celular.touched)" class="alert alert-light">
                             <div [hidden]="!celular.errors.required">
                                 O campo celular é obrigatório.
@@ -72,7 +73,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="cadastro-nascimento">Data de Nascimento:</label>
-                        <input type="date" class="form-control" id="cadastro-nascimento"
+                        <input type="date" class="form-control" id="cadastro-nascimento" min="{{minDate | date: 'yyyy-MM-dd'}}" max="{{maxDate | date: 'yyyy-MM-dd'}}"
                             [(ngModel)]="outputCliente.usuario.dtNascimento" #dtNascimento="ngModel" name="dtNascimento"
                             required>
                         <div *ngIf="dtNascimento.errors && (dtNascimento.touched)" class="alert alert-light">
@@ -87,7 +88,7 @@
                         <label for="cadastro-cep">CEP:</label>
                         <input type="text" class="form-control" id="cadastro-cep"
                             [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep"
-                            required minlength="8" maxlength="8">
+                            required minlength="8" maxlength="9" mask="00000-000">
                         <div *ngIf="nrCep.errors && (nrCep.touched)" class="alert alert-light">
                             <div [hidden]="!nrCep.errors.required">
                                 O campo CEP é obrigatório.

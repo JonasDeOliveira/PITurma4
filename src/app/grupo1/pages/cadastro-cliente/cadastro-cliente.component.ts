@@ -21,6 +21,9 @@ export class CadastroClienteComponent implements OnInit {
   responseCidadesByUf: any;
   responsePlanos: any;
 
+  minDate: Date = new Date(1910,1,1);
+  maxDate: Date = new Date();
+
   loginCliente: LoginUsuario = {
     idUsuario: null,
     dsSenha: "",
@@ -151,7 +154,7 @@ export class CadastroClienteComponent implements OnInit {
       },
       error => {
         console.log(error)
-        //alert('algo inesperado aconteceu');
+        alert(error.error.mensagem);
       }
     )
   }
