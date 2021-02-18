@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CadastroPrescricao, Medicacao} from './prescricao.model';
 import {NgbModalConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
+import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-prescrever-medicacao',
@@ -18,7 +20,8 @@ export class PrescreverMedicacaoComponent implements OnInit {
     private modalService: NgbModal, 
     private prescMedService : PrescrevermedicacaoService,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private _location: Location) {
 
       config.backdrop = 'static';
       config.keyboard = false;
@@ -84,10 +87,13 @@ export class PrescreverMedicacaoComponent implements OnInit {
 
     this.request.dtEmissao = this.responsePrescricao.dtEmissao;
 
-    //TODO: PEGAR DO LOCAL STORAGE
-    this.request.medico.idUsuario = 135;
-    this.request.paciente.idUsuario = 6;
-    this.request.prontuario.idProntuario = 2;
+    var objMedico = JSON.parse(localStorage.getItem("medico"));
+    var objPaciente = JSON.parse(localStorage.getItem("paciente"));
+
+    this.request.medico.idUsuario = objMedico.idUsuario;
+    this.request.paciente.idUsuario = objPaciente.idPaciente;
+    
+    this.request.prontuario.idProntuario = this.responsePrescricao.idProntuario;
     this.request.dsEndImgAssMed = "teste";
     this.request.prescricoes = this.listaPrescricao;
     this.request.tipoReceita.idTipoReceita = 1;
@@ -115,7 +121,6 @@ export class PrescreverMedicacaoComponent implements OnInit {
       "idFormaFarmac": this.idFormaFarmac,
       "dsFormaFarmac": this.responsePrescricao.listaFormaFarmac.find(x=>x.idFormaFarmac == this.idFormaFarmac).dsFormaFarmac,
       
-      
       "idViaAdm": this.idViaAdm,
       "dsViaAdm": this.responsePrescricao.listaViaAdm.find(x=>x.idViaAdm == this.idViaAdm).dsViaAdm,
 
@@ -130,4 +135,8 @@ export class PrescreverMedicacaoComponent implements OnInit {
      this.listaPrescricao.splice(this.listaPrescricao.indexOf(item),1)
   }
   
+  voltar() {
+    this._location.back();
+  }
+
 }

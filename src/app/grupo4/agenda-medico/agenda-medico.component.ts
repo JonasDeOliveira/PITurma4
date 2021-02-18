@@ -57,7 +57,7 @@ export class AgendaMedicoComponent implements OnInit {
       this.agendaService.cancelarAgendamento(idAgPaciente).subscribe(
         response => {
           this.router.navigate(['/agenda/medico']);
-          //this.getAgendamentos(); 
+          //this.agendaService.getAgendamentos(); 
           console.log(idAgPaciente)
         }
       )
@@ -83,8 +83,8 @@ export class AgendaMedicoComponent implements OnInit {
     }
   }
 
-  /* registrar(data: Date): void {
-    this.agendaService.abrirAgenda(data).subscribe(
+  cadastrarAgenda(): void {
+    this.agendaService.cadastrarAgenda(this.agendamentosResposta).subscribe(
       response => {
         alert('Agenda cadastrada com sucesso!');
         this.router.navigate(['/agenda/medico']);
@@ -93,6 +93,6 @@ export class AgendaMedicoComponent implements OnInit {
         alert('Algo inesperado aconteceu!');
       }
     )
-  } */
+  } 
 
 }

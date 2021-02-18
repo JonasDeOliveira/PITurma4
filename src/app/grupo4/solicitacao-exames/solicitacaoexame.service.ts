@@ -13,12 +13,13 @@ export class SolicitacaoexameService {
   private readonly API = 'http://localhost:8080/solic_exame';
 
   objMedico = JSON.parse(localStorage.getItem("medico"));
+  objPaciente = JSON.parse(localStorage.getItem("paciente"));
 
   getTelaSolicitacao() {
     //TODO: pegar IDs do storage
     //const URL = `${this.API}/${idUsuario}/${idPaciente}`;
     
-    const URL = `${this.API}/${this.objMedico.idUsuario}/6`;
+    const URL = `${this.API}/${this.objMedico.idUsuario}/${this.objPaciente.idPaciente}/${this.objPaciente.idAgPaciente}`;
     return this.http.get<any>(URL); 
   }
 

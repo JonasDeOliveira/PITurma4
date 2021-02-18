@@ -59,6 +59,8 @@ export class AtendimentoEspecialistaComponent implements OnInit {
     this.atendEspService.getAtendimentos(this.request.agPaciente.idAgPaciente).subscribe(
       resposta => {
         this.atendimentoResposta = resposta;
+
+        localStorage.setItem("paciente", JSON.stringify(resposta));
         console.log(resposta);
       }
     );
@@ -76,6 +78,10 @@ export class AtendimentoEspecialistaComponent implements OnInit {
         alert('Algo inesperado aconteceu!');
       }
     )
+  }
+
+  limparStorage(){
+    localStorage.removeItem("paciente");
   }
 
 }

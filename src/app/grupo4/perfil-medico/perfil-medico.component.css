@@ -94,6 +94,11 @@ input {
     justify-content: center;
 }
 
+#bt-senha {
+
+    margin-top: 100px;
+}
+
 .bt-padrao {
     background-color: #2a764a;
     color: white;

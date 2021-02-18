@@ -11,7 +11,7 @@ export class AgendamedicoService {
   constructor(private http : HttpClient) { }
 
   private readonly API = 'http://localhost:8080/agendamentos';
-  private readonly API2 = 'http://localhost:8080/agPaciente/mudar-status';
+  private readonly API2 = 'http://localhost:8080/agPaciente/status';
   private readonly API3 = 'http://localhost:8080/horarios';
   private readonly API4 = 'http://localhost:8080/agendas';
 
@@ -39,7 +39,10 @@ export class AgendamedicoService {
     return this.http.get<ResponsePeriodos[]>(URL);
   }
 
-  /* abrirAgenda(data: Date): Observable<any> {
-    return this.http.post<any>(this.API4, data);
-  } */
+
+  cadastrarAgenda(request: any): Observable<any> {
+    const URL = `${this.API4}/2021-06-06`
+    return this.http.post<any>(URL, request);
+  } 
+
 }

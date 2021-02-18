@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardmedicoService } from './dashboardmedico.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-medico',
@@ -8,7 +9,7 @@ import { DashboardmedicoService } from './dashboardmedico.service';
 })
 export class DashboardMedicoComponent implements OnInit {
 
-  constructor(private dashboardService :DashboardmedicoService) { }
+  constructor(private dashboardService :DashboardmedicoService,private router: Router) { }
 
   agendamentosResposta: any;
   data: any;
@@ -29,6 +30,11 @@ export class DashboardMedicoComponent implements OnInit {
         this.data = new Date(Date.now()).toISOString().slice(0,10);
       }
     );
+  }
+
+  limparStorage(){
+    localStorage.removeItem("medico");
+    this.router.navigate(['/login/medico']);
   }
 
 }

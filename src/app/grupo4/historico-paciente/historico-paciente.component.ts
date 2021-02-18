@@ -36,6 +36,7 @@ export class HistoricoPacienteComponent implements OnInit {
     this._location.back();
     this.veioDoAtendimento = false;
   }
+  
   getDadosHistoricoCpf(cpf: string){
     this.historicoService.getDadosHistoricoCpf(cpf).subscribe( 
       resposta => {
