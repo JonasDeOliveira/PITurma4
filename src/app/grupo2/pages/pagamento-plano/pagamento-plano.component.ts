@@ -37,6 +37,8 @@ export class PagamentoPlanoComponent implements OnInit {
   data = this.agenda.data;
 
   nmPlano: string;
+  idPlano: number;
+  imgPlano: string;
   dsContrato:string;
 
 
@@ -49,6 +51,14 @@ export class PagamentoPlanoComponent implements OnInit {
       response => {
       this.nmPlano=response.plano.nmPlano;
       this.dsContrato=response.plano.dsPlano;
+      this.idPlano=response.plano.idPlano;
+      if(this.idPlano==1){
+        this.imgPlano="/assets/assets-grupo2/BASIC.png"
+      } else if(this.idPlano==2){
+        this.imgPlano="/assets/assets-grupo2/PLUS.png"
+      } else if(this.idPlano==3){
+        this.imgPlano="/assets/assets-grupo2/PREMIUM.png"
+      }
       }
     )
   }
