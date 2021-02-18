@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClienteService } from '../../pages/cliente/shared/cliente.service';
 import { Usuario } from '../../usuario/shared/usuario.model';
 import {AreaClienteComponent} from '../../pages/area-cliente/area-cliente.component'
 import { ClienteService } from '../../pages/cliente/shared/cliente.service';
@@ -16,11 +17,15 @@ export class HeaderLogadoComponent implements OnInit {
   idUsuario: string;
   usuario:any;
   cliente = JSON.parse(localStorage.getItem("cliente"));
+  areaDoCliente : any;
 
   navbarOpen : boolean;
   constructor(private clienteService: ClienteService) { }
+<<<<<<< HEAD
   
 
+=======
+>>>>>>> 3d641ae8e54186bb19e635fbc54c3b619be38679
 
   ngOnInit(): void {
     if(this.cliente != null) {
@@ -29,6 +34,7 @@ export class HeaderLogadoComponent implements OnInit {
       //TODO: this.usuario; passar usuario para usuario
      
     }
+    this.getAreaDoCliente();
   }
 
 
@@ -40,6 +46,7 @@ export class HeaderLogadoComponent implements OnInit {
       localStorage.removeItem("cliente");
       localStorage.setItem("isLogado","false");
     }
+<<<<<<< HEAD
 
     getUsuario(){
       this.clienteService.getAreaClienteById().subscribe(
@@ -48,5 +55,14 @@ export class HeaderLogadoComponent implements OnInit {
          console.log(response);
         }
      )
+=======
+    getAreaDoCliente(){
+      this.clienteService.getAreaClienteById().subscribe(
+        response => {
+          this.areaDoCliente = response;
+          console.log(response);
+        }
+      )
+>>>>>>> 3d641ae8e54186bb19e635fbc54c3b619be38679
     }
 }
