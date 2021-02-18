@@ -44,7 +44,6 @@ export class CalendarioAgendamentoComponent implements OnInit {
   }
 
   dataSelect(){
-    console.log(this.model);
     this.data = new Date(this.model.year, this.model.month, this.model.day, 0, 0, 0, 0);
 
     localStorage.setItem("data", JSON.stringify(this.data));

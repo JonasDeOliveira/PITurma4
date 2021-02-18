@@ -35,13 +35,13 @@ export class EscolhaEspecialistaComponent implements OnInit {
 
   arrayAgendas: Agenda[];
   arrayAgendasData: Agenda[];
-
-  data: Date = JSON.parse(localStorage.getItem("data"));;
+  data: string;
+  dateApi: Date;
   
   ngOnInit(): void {
     this.buscarAgenda(this.idTipoConsulta , this.idEsp);
-    this.buscarAgendaporData(this.arrayAgendas, this.data);
-    ;
+    // this.buscarAgendaporData(this.arrayAgendas, this.dateApi);
+    this.conversorData();
   }
    buscarAgenda(idTipoConsulta: number,idEspecialidade: number){
      this.agendaService.listarPorEsp(idTipoConsulta,idEspecialidade).subscribe(
@@ -67,6 +67,15 @@ export class EscolhaEspecialistaComponent implements OnInit {
       if(response){console.log("disponibilidade da agenda alterada")};
     }
     )
+  }
+
+  conversorData(){
+    let data = JSON.parse(localStorage.getItem("data")).slice(0,10);
+    let dataFormato = data.split("-");
+    let dataFinal = `${dataFormato[2]}/${dataFormato[1]-1}/${dataFormato[0]}`;
+    this.dateApi = new Date(dataFormato[0],dataFormato[1]-1,dataFormato[2]);
+    this.data = dataFinal;
+    console.log(this.dateApi);
   }
 
   
