@@ -85,7 +85,7 @@
 
 <!-- <p>Calendario</p> -->
 
-<ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" style="background-color: greenyellow colorTheme = theme-green " ></ngb-datepicker>
+<ngb-datepicker #dp [(ngModel)]="model" (dateSelect)="dataSelect()" (navigate)="date = $event.next" style="background-color: greenyellow colorTheme = theme-green " ></ngb-datepicker>
 
 <hr/>
 

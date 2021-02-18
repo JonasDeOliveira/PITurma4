@@ -39,6 +39,7 @@ export class DadosClienteComponent implements OnInit {
     senhaConfirmacao: '',
     senhaAtual: '',
     mensagem: '',
+    valida: true
   };
 
   dadosAtuais = {
@@ -227,12 +228,17 @@ export class DadosClienteComponent implements OnInit {
           console.log(response.mensagem);
           //this.confirmacao.mensagem = response.mensagem;
           this.confirmacao.mensagem = "";
+          this.confirmacao.valida = true;
         },
         error => {
           console.log(error.error.mensagem);
           this.confirmacao.mensagem = error.error.mensagem;
+          this.confirmacao.valida = false;
         }
       )
+    } else {
+      this.confirmacao.mensagem = "";
+      this.confirmacao.valida = true;
     }
   }
 

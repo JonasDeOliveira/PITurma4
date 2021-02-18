@@ -1,0 +1,80 @@
+.banner {
+  background-image: url('/assets/img/banner.jpg');
+  background-size: contain;
+  width: 100%;
+  height: 170px;
+  background-repeat: no-repeat;
+}
+
+.titulo-cor{
+  color: #005034; 
+}
+
+.p-15{
+  padding-left:15px;
+}
+
+.btn-verde{
+  background-color: #428870;
+  border: none;
+}
+
+.btn-verde:hover{
+  background-color: #5db193;
+  border: none;
+    
+}
+
+.horarios{
+  background-color: hsla(147, 19%, 55%, 0.5); margin-top: 15px;
+}
+
+
+#abrir-lojas {
+  display: none;
+}
+
+#mostrar_lojas:checked ~ #abrir-lojas {
+  display: flex;
+}
+
+#mostrar_lojas {
+  visibility: hidden;
+}
+
+.sem-margin{
+  margin-bottom: 0px;
+}
+
+/*CALENDÁRIO*/
+
+.calendario {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+  font-size: 30.5%;
+}
+
+.containerx {
+  width: 100%;
+  height: 100%;
+  /*height: 100vh;*/
+  background-color: gainsboro;
+  /*color: #eee; */
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.calendar {
+  background-size: fixed;
+  background-image: url('/assets/img/calendar.png');
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+

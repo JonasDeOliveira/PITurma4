@@ -94,7 +94,7 @@
             <div class="form-group col-md-1">
                 <label for="cadastro-ddd">DDD:</label>
                 <input type="text" class="form-control" id="cadastro-ddd" required
-                [(ngModel)]="outputCliente.ddd" placeholder="(000)" name="ddd" #ddd="ngModel" minlegth="3" maxlength="3">
+                [(ngModel)]="outputCliente.ddd" placeholder="(000)" name="ddd" #ddd="ngModel" minlegth="3" maxlength="3" mask="000">
                 <div *ngIf="ddd.errors && (ddd.dirty || ddd.touched)"class="alert alert- light">
                     <div [hidden]="!celular.errors.required">
                         Informe o DDD
