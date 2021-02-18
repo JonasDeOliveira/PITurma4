@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseCidades, ResponseFormularioCadastro, ResponseFormularioMeusDados, ResponseAreadoCliente,OutputCliente} from './cliente.model';
+import { ResponseCidades, ResponseFormularioCadastro, ResponseFormularioMeusDados, ResponseAreadoCliente,OutputCliente, ResultData} from './cliente.model';
 import { Observable } from 'rxjs';
 import { ResponsePlanos } from '../../planos/shared/planos.model';
 import { Usuario } from 'src/app/grupo1/usuario/shared/usuario.model';
@@ -49,14 +49,14 @@ import { Usuario } from 'src/app/grupo1/usuario/shared/usuario.model';
     return this.http.post<OutputCliente>('http://localhost:8080/usuario', outputCliente);
   }
 
-  createCliente(outputCliente: OutputCliente): Observable<OutputCliente> {
+  createCliente(outputCliente: OutputCliente): Observable<ResultData> {
     const URL = `${this.API}/cliente/cadastrar`;
-    return this.http.post<OutputCliente>(URL, outputCliente);
+    return this.http.post<ResultData>(URL, outputCliente);
   }
 
-  alteraDadosCliente(idUsuario: number, request: OutputCliente): Observable<OutputCliente> {
+  alteraDadosCliente(idUsuario: number, request: OutputCliente): Observable<ResultData> {
     const URL = `${this.API}/cliente/alterar/${idUsuario}`
-    return this.http.put<OutputCliente>(URL, request);
+    return this.http.put<ResultData>(URL, request);
   }
 
   getPlanos() {

@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 import { AppRoutingModule } from './app-routing.module';
 import { Grupo1Module } from './grupo1/grupo1.module';
@@ -16,13 +16,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -35,8 +35,10 @@ import { FormsModule } from '@angular/forms';
     RouterModule,
     HttpClientModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    NgxMaskModule.forRoot(),
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

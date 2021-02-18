@@ -8,6 +8,11 @@ import { Grupo4RoutingModule } from './grupo4/grupo4-routing.module';
 
 
 const routes: Routes = [
+ // {
+   // path: '',
+    //redirectTo: 'grupo3/resultado-buscar-receitas',
+    //pathMatch: 'full'
+  //},
   ...Grupo1RoutingModule,
   ...Grupo2RoutingModule,
   ...Grupo3RoutingModule,
