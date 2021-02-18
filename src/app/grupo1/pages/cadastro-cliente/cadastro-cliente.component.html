@@ -93,9 +93,9 @@
                 [(ngModel)]="outputCliente.ddd" placeholder="(000)" name="ddd" #ddd="ngModel">
                 <div *ngIf="ddd.errors && (ddd.dirty || ddd.touched)"class="alert alert- light">
                     <div [hidden]="!celular.errors.required">
-                        Informar DDD
+                        Informe o DDD
                     </div>
-                    </div>
+                </div>
             </div>
             <div class="form-group col-md-3">
                 <label for="cadastro-celular">Celular:</label>
