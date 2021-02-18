@@ -1,3 +1,5 @@
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
 <div *ngIf="ehLogado == false">
     <app-mensagem-login></app-mensagem-login>
 </div>
@@ -11,10 +13,10 @@
                     <div class="card-image">
                         <img class="img-fluid rounded mx-auto d-block p-3" src="/assets/grupo1/img/consulta.png"
                             alt="Icon Consulta" />
-                        <p class="text-card text-center">Agendar consulta<br> com especialista</p>
+                        <p class="text-card text-center">Veja ou agende <br> suas consultas</p>
                     </div>
                     <div class="card-image-overlay m-auto p-3">
-                        <a class="ad-btn " routerLink="#">Agendar Consulta</a>
+                        <a class="ad-btn " [routerLink]="['/agendamento-consultas']">Consultas</a>
                     </div>
                 </div>
             </div>
@@ -23,7 +25,7 @@
                     <div class="card-image">
                         <img class="img-fluid rounded mx-auto d-block p-3" src="/assets/grupo1/img/exames.png"
                             alt="Icon exame" />
-                        <p class="text-card">Agendar serviços<br> farmacêuticos</p>
+                        <p class="text-card" [routerLink]="['/']">Agendar serviços<br> farmacêuticos</p>
                     </div>
                     <div class="card-image-overlay m-auto p-3">
                         <a class="ad-btn" routerLink="#">Agendar Serviços</a>
@@ -47,7 +49,7 @@
                     <div class="card-image">
                         <img class="img-fluid rounded mx-auto d-block p-3" src="/assets/grupo1/img/nutrition.png"
                             alt="Icon Nutrition" />
-                        <p class="text-card">Acompanhe o seu <br>plano nutricional</p>
+                        <p class="text-card" [routerLink]="['/']">Acompanhe o seu <br>plano nutricional</p>
                     </div>
                     <div class="card-image-overlay m-auto p-3">
 
@@ -130,3 +132,4 @@
     </div>
 
 </section>
+<app-footer></app-footer>

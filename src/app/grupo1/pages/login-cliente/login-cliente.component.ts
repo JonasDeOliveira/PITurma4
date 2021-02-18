@@ -20,6 +20,7 @@ export class LoginClienteComponent implements OnInit {
   }
   respostaLogin: ResultData;
   isLogado = false;
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
 
   constructor(private loginService: LoginClienteService,
     private router: Router,
@@ -38,6 +39,7 @@ export class LoginClienteComponent implements OnInit {
       response => {
         this.respostaLogin = response;
 
+        console.log(response.tipoUsuario)
         if(response.tipoUsuario == 1) {
         localStorage.setItem("cliente", JSON.stringify(response.retorno));
         this.isLogado = true;

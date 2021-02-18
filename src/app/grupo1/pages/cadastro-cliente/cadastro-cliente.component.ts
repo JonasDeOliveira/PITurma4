@@ -15,6 +15,8 @@ import { LoginClienteComponent } from '../login-cliente/login-cliente.component'
 })
 export class CadastroClienteComponent implements OnInit {
 
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
+
   responseFormularioCadastro: any;
   responseCidadesByUf: any;
   responsePlanos: any;

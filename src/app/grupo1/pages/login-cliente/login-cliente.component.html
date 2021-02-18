@@ -1,5 +1,6 @@
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
 <body class="container-fluid">
-
     <!-- <div class="container">
             <div class="row d-flex justify-content-between">
                 <div>
@@ -81,3 +82,4 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 </body>
+<app-footer></app-footer>

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortalComponent implements OnInit {
 
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
+
   constructor() { }
 
   ngOnInit(): void {

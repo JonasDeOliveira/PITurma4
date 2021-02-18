@@ -59,7 +59,7 @@
                             <label>Repete a cada:</label>
                             <input type="number" class="form-control" placeholder="1" min="0" id="nrRepeticao"
                                 name="nrRepeticao" [(ngModel)]="request.nrRepeticao" #nrRepeticao="ngModel" required min=1 max=10>
-                                <div *ngIf="hrHora.invalid && hrHora.touched" class="alert alert-light mt-1" role="alert">
+                                <div *ngIf="nrRepeticao.invalid && nrRepeticao.touched" class="alert alert-light mt-1" role="alert">
                                     Escolha um número de repetições entre 1 e 10
                                 </div>
                         </div>
@@ -76,7 +76,7 @@
 
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn_salvar" (click)="registrar()">Criar Lembrete</button>
+                    <button type="button" class="btn btn_salvar" [disabled]="formLembretes.invalid || formLembretes.pristine" (click)="registrar()">Criar Lembrete</button>
                 </div>
             </form>
         </div>
