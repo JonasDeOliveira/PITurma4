@@ -32,6 +32,7 @@ export class EscolhaEspecialistaComponent implements OnInit {
   dsConsulta : string = this.consulta.dsTipoConsulta;
   idTipoConsulta: number = this.consulta.idTipoConsulta;
 
+
   arrayAgendas: Agenda[];
   
   ngOnInit(): void {
