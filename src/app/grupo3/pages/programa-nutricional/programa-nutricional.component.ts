@@ -5,8 +5,6 @@ import { TipoRefeicaoService } from '../../shared/ProgramaNutri/service/tipoRefe
 import { ResponseTipoRefeicao } from '../../shared/ProgramaNutri/model/tipoRefeicao.model';
 import { NullTemplateVisitor } from '@angular/compiler';
 
-
-
 @Component({
   selector: 'app-programa-nutricional',
   templateUrl: './programa-nutricional.component.html',
@@ -16,20 +14,18 @@ import { NullTemplateVisitor } from '@angular/compiler';
 
 export class ProgramaNutricionalComponent implements OnInit {
 
-  constructor( private programaNutriService: ProgramaNutriService, private tipoRefeicaoService: TipoRefeicaoService) { }
+  constructor( 
+    private programaNutriService: ProgramaNutriService, 
+    private tipoRefeicaoService: TipoRefeicaoService
+  ) { }
 
-    responseTipoRefeicao: ResponseTipoRefeicao;
- 
+   responseTipoRefeicao: ResponseTipoRefeicao;
    dadosPacienteResposta : DadosPaciente;
-
-  responseCardapio: ResponseCardapio[];
-
+   responseCardapio: ResponseCardapio[];
    listCardapios: ProgramaNutriService[];
 
-
    idPaciente = localStorage.getItem("idPaciente");
-  idUsuario = parseInt(this.idPaciente);
-
+   idUsuario = parseInt(this.idPaciente);
 
   ngOnInit(): void {
     this.listarTipoRefeicao();
@@ -42,7 +38,6 @@ export class ProgramaNutricionalComponent implements OnInit {
   this.listCardapios= new Array; 
   
   }
-
 
 //***************************DADOS PACIENTE***********************************************
 //inicioDadosPaciente
@@ -65,7 +60,6 @@ export class ProgramaNutricionalComponent implements OnInit {
  //}
 
  
-
  //FimDadosPaciente
 
 //*********************************TIPO REFEICAO**************************************

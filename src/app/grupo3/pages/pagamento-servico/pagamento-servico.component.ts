@@ -3,6 +3,10 @@ import { Cartao, ResponseCartao } from '../../shared/model/cartao.model';
 import { CartaoService } from '../../shared/service/cartao.service';
 import { PedidoService } from '../../shared/service/pedido.service';
 import { Pedido, ResponsePedido } from '../../shared/model/pedido.model';
+import { ResponseServicos } from '../../shared/model/servico.model';
+import { ServicoService } from '../../shared/service/servico.service';
+import { AgServico } from '../../shared/model/agservico.model';
+import { AgServicoService } from '../../shared/service/agservico.service';
 
 @Component({
   selector: 'app-pagamento-servico',
@@ -12,28 +16,47 @@ import { Pedido, ResponsePedido } from '../../shared/model/pedido.model';
 
 export class PagamentoServicoComponent implements OnInit {
 
+  agendamento: AgServico[];
+
   constructor(
-    private cartaoService: CartaoService,
-    private pedidoService: PedidoService
-  ) { }
+    public cartaoService: CartaoService,
+    public pedidoService: PedidoService,
+    public agendamentoService: AgServico
+  ) {
+    this.agendamento = new Array;
+   }
 
   responsePedido: ResponsePedido;
   responseCartao: ResponseCartao;
   idPedido: string;
+  responseServicos: ResponseServicos;
+  responseAgendamentos: AgServicoService;
+
+  //dados cartao
+  nmTitular:string;
+  nrCartao: string;
+  qtdParcelas: number;
+
+  // idLoja : number = this.agendamento.idLoja;
+  // dataHora : string = this.agendamento.dtHr;
+  // idServico: number = this.agendamento.idServico;
+
 
   ngOnInit(): void {
-    let agendamentoStorage = JSON.parse(localStorage.getItem("agendamentos"));
-    this.idPedido = agendamentoStorage[0].idServico;
-    this.pedidoService.getServico(this.idPedido).subscribe(
-      response => {
-        this.responsePedido = response;
-        console.log(this.responsePedido);
-      }
-    )
+    this.getAgendamento();
+    // let agendamentoStorage = JSON.parse(localStorage.getItem("agendamentos"));
+    // this.idPedido = agendamentoStorage[0].idServico;
+    // this.pedidoService.getServico(this.idPedido).subscribe(
+    //   response => {
+    //     this.responsePedido = response;
+    //     console.log(this.responsePedido);
+    //    }
+    // )
   }
 
-  //   localStorage.getItem("agendamentos");
-  //   agendamentosServ = JSON.parse(localStorage.getItem("agendamentos"));
+  getAgendamento(){
+    this.agendamento = JSON.parse(localStorage.getItem("agendamentos"));
+  }
 
   // request: Pedido = {
   //   idPedido: null,

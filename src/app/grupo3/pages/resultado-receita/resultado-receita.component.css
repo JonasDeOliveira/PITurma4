@@ -44,6 +44,10 @@ section{
     margin: 30px 30px;
 }
 
+.ingredientes{
+    padding: 35px;
+}
+
 .navbar-light .navbar-nav .nav-link {
     color: #444444;
 }
