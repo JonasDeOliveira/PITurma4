@@ -3,15 +3,19 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Agenda} from '../../shared/model/agenda';
 import { AgPaciente,  } from '../../shared/model/agPaciente';
-import { CadastroAgPaciente } from '../../shared/model/cadastroAgPaciente';
+import {  CadastroAgPactPgto } from '../../shared/model/cadastroAgPactPgto';
+import { Cartao, Cliente } from '../../shared/model/cartao';
 import { Contrato } from '../../shared/model/contrato';
 import { EspMed } from '../../shared/model/espMed';
-import { Pagamento } from '../../shared/model/pagamento';
+import { OutputConfirmacao } from '../../shared/model/outputConfirmacao';
+import { Pagamento, TipoPagamento } from '../../shared/model/pagamento';
 import { PagamentoPlano } from '../../shared/model/pagamentoPlano';
 import { TipoConsulta } from '../../shared/model/tipoConsulta';
 import { AgPacienteService } from '../../shared/services/agPaciente.service';
+import { ConfirmacaoConsultaService } from '../../shared/services/confirmacao-consulta.service';
 import { PagamentoService } from '../../shared/services/pagamento.service';
 import { TipoConsultaService } from '../../shared/services/tipo-consulta.service';
+
 
 @Component({
   selector: 'app-confirmacao-consulta',
@@ -25,7 +29,8 @@ export class ConfirmacaoConsultaComponent implements OnInit {
     config: NgbModalConfig, private modalService: NgbModal,
     public pagamentoService: PagamentoService,
     public agPacienteService: AgPacienteService,    
-    public tipoConsultaService: TipoConsultaService
+    public tipoConsultaService: TipoConsultaService,
+    public confirmacaoService: ConfirmacaoConsultaService
     
     ) {
     
@@ -34,8 +39,9 @@ export class ConfirmacaoConsultaComponent implements OnInit {
 
   }
 
-  tipoPagamento: string = JSON.parse(localStorage.getItem("tipoPagamento"));
-  dsTpPagamento: string; 
+  tipoPagamento: TipoPagamento = JSON.parse(localStorage.getItem("tipoPagamento"));
+  idTipoPagamento: number = this.tipoPagamento.idFormaPagamento;
+  dsTipoPagamento: string = this.tipoPagamento.dsFormaPagamento;
   
   especialidade: EspMed = JSON.parse(localStorage.getItem("espMed"));
   dsEspecialidade: string = this.especialidade.dsEspMed;
@@ -48,14 +54,41 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   agenda: Agenda = JSON.parse(localStorage.getItem("agenda"));
   nmMedico : string = this.agenda.medico.nome;
   horario : Time = this.agenda.periodo.horaInicial;
+  idAgenda: number = this.agenda.idAgenda;
+
+  parcelas: number = JSON.parse(localStorage.getItem("qtadeParcelas"));
+  cartao: Cartao = JSON.parse(localStorage.getItem("cartao"))
+
+  //VOLTAR APOS MERGE
+  //usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
+  // idUsuario:number = usuario.idUsuario;
+  
+  //TIRAR APOS MERGE
+  idUsuario = 142;
 
   data = this.agenda.data;
 
+  agPaciente: AgPaciente;
+  pagamento: Pagamento;
+
+  cadastroAgPaciente: CadastroAgPactPgto = {
+    idAgenda: this.idAgenda,
+    idUsuario: this.idUsuario,
+    nrParcelas: this.parcelas,
+    tipoPgto: {
+      idFormaPagamento: this.idTipoPagamento,
+      dsFormaPagamento: this.dsTipoPagamento
+    },
+    cartao: this.cartao
+  };
+
+  
+
   ngOnInit():void {
-    if (this.tipoPagamento == "1"){
-      this.dsTpPagamento="Plano"
-    } else if (this.tipoPagamento == "2"){
-      this.dsTpPagamento="Cartão"
+    if (this.tipoPagamento.idFormaPagamento == 1){
+      this.tipoPagamento.dsFormaPagamento="Plano"
+    } else if (this.tipoPagamento.idFormaPagamento == 2){
+      this.tipoPagamento.dsFormaPagamento="Cartão"
     }
     ;
   }
@@ -64,6 +97,15 @@ export class ConfirmacaoConsultaComponent implements OnInit {
     this.modalService.open(content);
   }
 
+  criarAgPctePgto (request: CadastroAgPactPgto){
+    this.confirmacaoService.cadastrarPgtoAgP(request).subscribe(
+      response => {
+        localStorage.setItem("agPaciente", JSON.stringify(response.agPaciente));
+        localStorage.setItem("pagamento", JSON.stringify(response.pagamento));
+      }
+
+    )
+  }
+
 }
-  
   
