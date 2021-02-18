@@ -165,7 +165,6 @@ export class AgservicoComponent implements OnInit {
     )
     console.log(this.hrIndisp);
     
-    
     this.exibir = true;
   }
   
@@ -177,13 +176,6 @@ export class AgservicoComponent implements OnInit {
     this.ag.idServico = this.idServico;
     this.ag.dtHr =  this.data + " " + this.horario + ":00"; 
 
-   // this.responseServicos.servicos.forEach(element => {
-   //   if (this.idServico == element.id){
-   //     this.servicos.push(element);
-   //   }
-   // });
-    
-
     console.log(this.ag.dtHr);
     console.log("Serviço salvo com sucesso!");
 
@@ -192,22 +184,21 @@ export class AgservicoComponent implements OnInit {
 
   concluirAgServico(callback: any){
 
+    this.agendamentos = JSON.parse(localStorage.getItem("agendamentos"));
     this.salvarAgServico();
 
     //depois enviar o array agendamentos para a pag de pagamentos. 
     localStorage.setItem("agendamentos", JSON.stringify(this.agendamentos));
-    localStorage.setItem("servicos", JSON.stringify(this.servicos));
 
-    //FECHAR A MODAL AQUI
-    callback('Cross click');
+    callback('Cross click');//fechar a modal
     this.router.navigate(['/pagamento-servico']);
   }
 
   novoAgServico(callback: any){
     
     this.salvarAgServico();
-    //FECHAR A MODAL AQUI
-    callback('Cross click');
+    callback('Cross click');//fechar a modal
+    window.location.reload();
   }
   
 }

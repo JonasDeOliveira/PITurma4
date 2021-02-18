@@ -3,6 +3,9 @@ import { Cartao, ResponseCartao } from '../../shared/model/cartao.model';
 import { CartaoService } from '../../shared/service/cartao.service';
 import { PedidoService } from '../../shared/service/pedido.service';
 import { Pedido, ResponsePedido } from '../../shared/model/pedido.model';
+import { AgServico } from '../../shared/model/agservico.model';
+import { Servicos } from '../../shared/model/servico.model';
+import { ServicoService } from '../../shared/service/servico.service';
 
 @Component({
   selector: 'app-pagamento-servico',
@@ -12,10 +15,19 @@ import { Pedido, ResponsePedido } from '../../shared/model/pedido.model';
 
 export class PagamentoServicoComponent implements OnInit {
 
+  agendamento: AgServico[];
+  servicos: Servicos[];
+  
   constructor(
     private cartaoService: CartaoService,
-    private pedidoService: PedidoService
-  ) { }
+    private pedidoService: PedidoService,
+    public agendamentoService: AgServico,
+    public servicoService: ServicoService
+  ) { 
+    this.agendamento = new Array;
+    this.servicos = new Array;
+
+  }
 
   responsePedido: ResponsePedido;
   responseCartao: ResponseCartao;
