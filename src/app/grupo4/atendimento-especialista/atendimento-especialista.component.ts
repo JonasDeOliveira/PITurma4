@@ -53,22 +53,22 @@ export class AtendimentoEspecialistaComponent implements OnInit {
     
   ngOnInit(): void {
     this.request.agPaciente.idAgPaciente=this.route.snapshot.paramMap.get("id");
-    this.request.paciente.idUsuario=this.route.snapshot.paramMap.get("id");
-    //this.request.dtAtendimento = new Date(Date.now()).toISOString().slice(0,10);
-
+    this.request.paciente.idUsuario=this.route.snapshot.paramMap.get("idPaciente");
+    
+    console.log(this.request.dtAtendimento)
     this.atendEspService.getAtendimentos(this.request.agPaciente.idAgPaciente).subscribe(
       resposta => {
         this.atendimentoResposta = resposta;
 
         localStorage.setItem("paciente", JSON.stringify(resposta));
         console.log(resposta);
-
-
       }
     );
   }
 
   registrar() {
+    this.request.dtAtendimento = this.atendimentoResposta.data;
+    console.log(this.request.dtAtendimento);
     this.atendEspService.cadastrarAtendimento(this.request).subscribe(
       response => {
         alert('Prontuário inserido com sucesso!');
@@ -78,6 +78,10 @@ export class AtendimentoEspecialistaComponent implements OnInit {
         alert('Algo inesperado aconteceu!');
       }
     )
+  }
+
+  limparStorage(){
+    localStorage.removeItem("paciente");
   }
 
 }

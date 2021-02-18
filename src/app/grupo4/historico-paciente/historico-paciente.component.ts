@@ -36,16 +36,19 @@ export class HistoricoPacienteComponent implements OnInit {
     this._location.back();
     this.veioDoAtendimento = false;
   }
+  
   getDadosHistoricoCpf(cpf: string){
     this.historicoService.getDadosHistoricoCpf(cpf).subscribe( 
       resposta => {
          this.historicoCpfResposta = resposta;
         console.log(resposta);
         this.veioDoAtendimento = true;
-      }
+      },
+        error => {
+          alert('não há prontuarios para este cpf');
+        }
     );
   }
-
   getDadoProntuario(idProntuario : number){
     this.historicoService.getDadoProntuario(idProntuario).subscribe( 
       resposta => {
@@ -60,6 +63,9 @@ export class HistoricoPacienteComponent implements OnInit {
       respostaMed => {
          this.historicoMedicoResposta = respostaMed;
         console.log(respostaMed);
+      },
+      error => {
+        alert('não há prontuários cadastrados');
       }
     );
   }

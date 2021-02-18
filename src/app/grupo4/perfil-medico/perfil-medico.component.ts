@@ -85,6 +85,12 @@ export class PerfilMedicoComponent implements OnInit {
 
 }
 
+loginMedico : any = {
+      
+          dsSenha: null
+    
+}
+
   open(content) {
     this.modalService.open(content);
   }
@@ -104,19 +110,32 @@ export class PerfilMedicoComponent implements OnInit {
   }
 
   atualizar(){
-    console.log("dados p atualizar", this.request)
-    this.perfilService.updatePerfil(this.id, this.request.medico).subscribe(
+       this.perfilService.updatePerfil(this.id, this.request.medico).subscribe(
       (response) => {
-
-
         alert('Perfil atualizado com sucesso');
-        this.router.navigate(['perfil/medico']);
-        
+        this.router.navigate(['perfil/medico']); 
       },
       (error) => {
         console.log(this.request);
-        alert('algo inesperado aconteceu');
+        alert('Algo inesperado aconteceu');
       }
     )
   }
+
+ alterarSenha() {
+   this.perfilService.updateSenhaPerfil(this.id, this.loginMedico).subscribe (
+     reposta => {
+       alert('Senha alterada com sucesso');
+       this.router.navigate(['perfil/medico']);
+     },
+     error => {
+       console.log(this.loginMedico);
+       alert('Erro ao cadastrar senha');
+       console.log(error);
+     }
+
+   )
+ }
+
+
 }

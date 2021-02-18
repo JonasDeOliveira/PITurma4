@@ -3,6 +3,7 @@ import { SolicitacaoexameService } from './solicitacaoexame.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CadastroSolicitacao, Exames} from './solicitacao.model';
 import {NgbModalConfig, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-solicitacao-exames',
@@ -16,7 +17,8 @@ export class SolicitacaoExamesComponent implements OnInit {
   constructor(config: NgbModalConfig, private modalService: NgbModal, 
     private solicitacaoService : SolicitacaoexameService,
     private route: ActivatedRoute,
-    private router: Router) { 
+    private router: Router,
+    private _location: Location) { 
 
       config.backdrop = 'static';
       config.keyboard = false;
@@ -68,9 +70,14 @@ export class SolicitacaoExamesComponent implements OnInit {
     this.request.dtSolicitacao = this.responseTelaSolicitacao.dtSolicitacao;
 
     //TODO: PEGAR DO LOCAL STORAGE
-    this.request.medico.idUsuario = 128;
-    this.request.paciente.idUsuario = 6;
-    this.request.prontuario.idProntuario = 7;
+
+    var objMedico = JSON.parse(localStorage.getItem("medico"));
+    var objPaciente = JSON.parse(localStorage.getItem("paciente"));
+
+    this.request.medico.idUsuario = objMedico.idUsuario;
+    this.request.paciente.idUsuario = objPaciente.idPaciente;
+
+    this.request.prontuario.idProntuario = this.responseTelaSolicitacao.idProntuario;
     
     this.request.exames = this.listaExame;
 
@@ -94,5 +101,9 @@ export class SolicitacaoExamesComponent implements OnInit {
 
   removerItem(item){
     this.listaExame.splice(this.listaExame.indexOf(item),1)
+  }
+
+  voltar() {
+    this._location.back();
   }
 }

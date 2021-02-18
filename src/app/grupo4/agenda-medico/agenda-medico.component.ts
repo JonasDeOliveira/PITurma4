@@ -31,12 +31,10 @@ export class AgendaMedicoComponent implements OnInit {
 
   agendamentosResposta: any;
   data: any;
-  //horarioResposta: any;
   responsePeriodos: any;
 
   ngOnInit(): void {
     this.getAgendamentos();
-    //this.getHorarios();
   }
 
   selectToday() {    
@@ -58,7 +56,8 @@ export class AgendaMedicoComponent implements OnInit {
     if(confirm('Deseja cancelar a consulta?')) {
       this.agendaService.cancelarAgendamento(idAgPaciente).subscribe(
         response => {
-          this.router.navigate(['/agenda/medico']); 
+          this.router.navigate(['/agenda/medico']);
+          //this.getAgendamentos(); 
           console.log(idAgPaciente)
         }
       )

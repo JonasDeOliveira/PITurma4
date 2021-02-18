@@ -14,6 +14,7 @@ export class PerfilmedicoService {
 
   private readonly API = 'http://localhost:8080/perfilMedico';
   private readonly API2= 'http://localhost:8080/medico';
+  private readonly API3= 'http://localhost:8080/login';
 
   objMedico = JSON.parse(localStorage.getItem("medico"));
 
@@ -25,7 +26,11 @@ export class PerfilmedicoService {
   
   updatePerfil(id: String , request: any): Observable<any> {
     const URL = `${this.API2}/${this.objMedico.idUsuario}`
-    
     return this.http.put<any>(URL, request);
   }
-}
+
+  updateSenhaPerfil(id: String , loginMedico : any): Observable<any> {
+    const URL =  `${this.API3}/${this.objMedico.idUsuario}`
+    return this.http.put<any>(URL, loginMedico);
+  }
+} 

@@ -51,6 +51,9 @@ export class CadastroMedicoComponent implements OnInit {
     }
   }
   dadosResposta: any
+  confirmacao = {
+    senhaConfirmacao: ''
+  };
 
   ngOnInit(): void {
     this.getDadosCadastro();
