@@ -45,4 +45,6 @@ export class HeaderLogadoComponent implements OnInit {
         }
       )
     }
+
+    
 }
