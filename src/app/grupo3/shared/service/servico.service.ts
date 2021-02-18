@@ -20,9 +20,11 @@ export class ServicoService {
   }
 
   getServicoById(id: number){
-    const URL = `${this.API2}/${id}`;
+    const URL = `${this.API2}/${id}`
     console.log(URL);
     return this.http.get<Servicos>(URL);
   }
+
+
 
 }

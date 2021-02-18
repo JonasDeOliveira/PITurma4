@@ -29,7 +29,7 @@
                 <div class="form-row">
                   <div class="form-group col-12">
                     <label for="numeroCC">Número do cartão*</label>
-                    <input type="text" class="form-control" id="numeroCC" placeholder="5555 5555 5555 5555" required>
+                    <input [(ngModel)]="nrCartao" name="nrCartao" type="text" class="form-control" id="nrCartao" placeholder="5555 5555 5555 5555" required>
                   </div>
                 </div>
 
@@ -37,7 +37,7 @@
                 <div class="form-row">
                     <div class="form-group col-12">
                       <label for="nomeTitular">Nome do titular do cartão*</label>
-                      <input type="text" class="form-control" id="nomeTitular" placeholder="Digite o nome como gravado no cartão" required>
+                      <input [(ngModel)]= "nmTitular" name="nmTitular" type="text" class="form-control" id="nmTitular" placeholder="Digite o nome como gravado no cartão" required>
                     </div>
                 </div>
                 <!-- linha 3 - Data de vencimento e código de segurança -->
@@ -134,7 +134,7 @@
                 <table class="table">
                     <tr>
                         <th colspan="2" class="total">Total</th>
-                        <td class="total text-right">R$ 20,00</td>
+                        <td class="total text-right">{{total}}</td>
                     </tr>
                 </table>
                 <div class="btnConcluir">

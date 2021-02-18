@@ -21,6 +21,7 @@ import { TipoRefeicaoService } from './shared/ProgramaNutri/service/tipoRefeicao
 import { PipeComponent } from './pipe/pipe.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { AgServico } from './shared/model/agservico.model';
 
 
 
@@ -43,7 +44,8 @@ import { HeaderComponent } from './header/header.component';
     ReceitaService,
     ProgramaNutriService,
     LojaService,
-    TipoRefeicaoService,  
+    TipoRefeicaoService,
+    AgServico  
   ]
 })
 export class Grupo3Module { }

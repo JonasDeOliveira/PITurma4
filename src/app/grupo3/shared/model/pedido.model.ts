@@ -2,7 +2,7 @@ import { AgServico } from "./agservico.model";
 import { Cartao } from "./cartao.model";
 
 export interface Pedido {
-    idPedido;
+    idPedido: number;
     paciente: Usuario;
     agendamentos: AgServico;
     cartao: Cartao;

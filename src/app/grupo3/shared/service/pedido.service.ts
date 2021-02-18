@@ -27,4 +27,10 @@ export class PedidoService {
     const URL = `${this.API}/${id}`;
     return this.http.get<any>(URL);
   }
+
+  // getAgendamento(agendamentos: []) {
+  //   const URL = `${this.API}`;
+  //   return this.http.get<any>(URL);
+  // }
+
 }
