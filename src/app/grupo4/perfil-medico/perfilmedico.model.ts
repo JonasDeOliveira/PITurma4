@@ -1,6 +1,6 @@
 export interface PerfilMedico{
     espMed : EspMed;
-    uf : Uf ;
+    ufCrm : Uf ;
     nome: string;
     nrCpf:string;
     dtNascimento : any;
@@ -10,11 +10,13 @@ export interface PerfilMedico{
     contatos: Array<Contato>;
 }
 export interface Uf{
-    idUf: number;
+    idUf: number,
+    dsUf: string
 }
 
 export interface EspMed {
     idEspMed : number;
+    dsEspMed : string
 }
 
 export interface Preco {
