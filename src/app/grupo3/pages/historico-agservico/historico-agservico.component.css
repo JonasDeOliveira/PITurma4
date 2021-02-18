@@ -66,6 +66,7 @@ footer h4{
 
 .sub{
     color: #005034;
+    text-decoration: underline;
 }
 
 .sub:hover{
@@ -77,6 +78,6 @@ footer h4{
 }
 
 a {
-    cursor:pointer;
+    cursor: pointer;
     text-decoration: underline;
 }

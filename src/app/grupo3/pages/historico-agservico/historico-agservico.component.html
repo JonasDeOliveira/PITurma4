@@ -34,6 +34,8 @@
                         <h5 class="card-title">{{ag.servico.nome}}</h5>
                         <p class="card-text">Horário: {{ag.dtDataHora}}</p>
                         <p class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </p>
+                        <p class="sub justify-content-end"><a class="sub" (click)="cancelarAgendamento(ag.idAgendamento)"> Cancelar agendamento </a> </p>
+            
                         </div>
                     </div>
                 </div>
