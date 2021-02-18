@@ -5,6 +5,7 @@ import { TipoConsulta} from '../../shared/model/tipoConsulta';
 import { EspMed } from '../../shared/model/espMed';
 import { AgendaService } from '../../shared/services/agenda.service';
 import { AgPacienteService } from '../../shared/services/agPaciente.service';
+import { R3ResolvedDependencyType } from '@angular/compiler';
 
 
 @Component({
@@ -31,12 +32,12 @@ export class EscolhaEspecialistaComponent implements OnInit {
   consulta : TipoConsulta = JSON.parse(localStorage.getItem("tipoConsulta")); 
   dsConsulta : string = this.consulta.dsTipoConsulta;
   idTipoConsulta: number = this.consulta.idTipoConsulta;
-
+  agendaVazia : boolean = false;
 
   arrayAgendas: Agenda[];
-  arrayAgendasData: Agenda[];
+  // arrayAgendasData: Agenda[];
   data: string;
-  dateApi: Date;
+ 
   
   ngOnInit(): void {
     this.buscarAgenda(this.idTipoConsulta , this.idEsp);
@@ -45,15 +46,20 @@ export class EscolhaEspecialistaComponent implements OnInit {
   }
    buscarAgenda(idTipoConsulta: number,idEspecialidade: number){
      this.agendaService.listarPorEsp(idTipoConsulta,idEspecialidade).subscribe(
-      response => this.arrayAgendas = response
+      response => { 
+        this.arrayAgendas = response;
+        this.verificarAgenda(this.arrayAgendas);
+      }
      )
    }
 
-   buscarAgendaporData(agendas: Agenda[], data: Date){
-     this.agendaService.filtrarAgendasPorData(agendas, data).subscribe(
-       response => this.arrayAgendasData = response
-     )
-   }
+
+
+  //  buscarAgendaporData(agendas: Agenda[], data: Date){
+  //    this.agendaService.filtrarAgendasPorData(agendas, data).subscribe(
+  //      response => this.arrayAgendasData = response
+  //    )
+  //  }
 
   salvarAgendaLS(agenda: Agenda){
     localStorage.setItem("agenda", JSON.stringify(agenda));
@@ -72,12 +78,25 @@ export class EscolhaEspecialistaComponent implements OnInit {
   conversorData(){
     let data = JSON.parse(localStorage.getItem("data")).slice(0,10);
     let dataFormato = data.split("-");
-    let dataFinal = `${dataFormato[2]}/${dataFormato[1]-1}/${dataFormato[0]}`;
-    this.dateApi = new Date(dataFormato[0],dataFormato[1]-1,dataFormato[2]);
+    let dataFinal = `${dataFormato[2]}/0${dataFormato[1]-1}/${dataFormato[0]}`;
     this.data = dataFinal;
-    console.log(this.dateApi);
+    console.log(this.data)
+
   }
 
+  verificarAgenda(response){
+    let contador = 0;
+    response.forEach(element => {
+     if (element.data == this.data) {
+      contador ++;
+     }
+    });
+    if (contador == 0) {
+      this.agendaVazia = true;
+    } else {
+      this.agendaVazia = false;
+    }
+  }
   
 }
   

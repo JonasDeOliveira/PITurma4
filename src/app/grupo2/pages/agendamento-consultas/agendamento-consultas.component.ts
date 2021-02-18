@@ -24,7 +24,8 @@ export class AgendamentoConsultasComponent implements OnInit {
   idEspSelect : number;
   tipoConsultaEscolhida : TipoConsulta;
   idTipoConsulta : number;
- 
+  onLineClicado  : boolean = false;
+  presencialClicado  : boolean = false;
  
   ngOnInit(): void {
   
@@ -51,6 +52,8 @@ export class AgendamentoConsultasComponent implements OnInit {
 }
 
   salvarTipoConsultaPresencialLS(){
+    this.onLineClicado = false;
+    this.presencialClicado = true;
     this.tipoConsultaService.buscarTipoConsulta(2).subscribe(
       response => {
       this.tipoConsultaEscolhida = response;
@@ -63,6 +66,8 @@ export class AgendamentoConsultasComponent implements OnInit {
   }
 
   salvarTipoConsultaOnlineLS(){
+    this.onLineClicado = true;
+    this.presencialClicado = false;
     this.tipoConsultaService.buscarTipoConsulta(1).subscribe(
       response => {
       this.tipoConsultaEscolhida = response;

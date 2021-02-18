@@ -42,14 +42,16 @@ export class PagamentoParticularComponent implements OnInit {
 
   nmTitular:string = "";
   nrCartao: string  = "";
-  mesVenc: string;
-  anoVenc: string;
+  mesVenc: string = "";
+  anoVenc: string = "";
   cvv: string = "";
+  
 
   cartao: Cartao = {
     nrCartao: this.nrCartao,
     codSeguranca : this.cvv,
-    usuario : {nmNome: this.nmTitular}
+    usuario : {nmNome: this.nmTitular},
+    dtValidade : `${this.anoVenc}-${this.mesVenc}-01`
   };
   
   qtdadeParcString : string;
@@ -72,6 +74,7 @@ export class PagamentoParticularComponent implements OnInit {
   }
   salvarTipoPagamento(){
     localStorage.setItem("tipoPagamento", "2")
+    console.log(this.cartao)
 }
 
 salvarQtdadeParcelasLS(){

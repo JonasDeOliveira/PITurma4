@@ -16,8 +16,8 @@
     </div>
     <div class="divbotoes col-12 ">
       <div class="container col-12 text-center">
-          <button class="btn-active clicavel" (click)="salvarTipoConsultaOnlineLS()">Online</button>
-          <button class="btn-active clicavel" (click)="salvarTipoConsultaPresencialLS()">Presencial</button>
+          <button class="btn-active clicavel" [class.clicado]="onLineClicado" (click)="salvarTipoConsultaOnlineLS()">Online</button>
+          <button class="btn-active clicavel" [class.clicado]="presencialClicado"  (click)="salvarTipoConsultaPresencialLS()">Presencial</button>
       </div>
     </div>
 
