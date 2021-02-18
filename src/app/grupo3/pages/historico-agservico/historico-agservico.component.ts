@@ -63,8 +63,10 @@ export class HistoricoAgservicoComponent implements OnInit {
       (response) => {
         console.log(response);
       }, (error) =>{
-        alert('Não foi possível cancelar o agendamento, tente novamente mais tarde');
+        //alert('Não foi possível cancelar o agendamento, tente novamente mais tarde');
       })
+
+      window.location.reload();
   }
 
 }
