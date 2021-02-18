@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ResponseCidades, ResponseFormularioCadastro, ResponseFormularioMeusDados, ResponseAreadoCliente,OutputCliente} from './cliente.model';
 import { Observable } from 'rxjs';
 import { ResponsePlanos } from '../../planos/shared/planos.model';
+import { Usuario } from 'src/app/grupo1/usuario/shared/usuario.model';
 
 
 @Injectable({
@@ -36,6 +37,12 @@ import { ResponsePlanos } from '../../planos/shared/planos.model';
     return this.http.get<ResponseAreadoCliente>(URL);
 
   }
+
+ /* getUsuario(): Observable<Usuario> {
+    const URL = `${this.API}/cliente/area-cliente/${this.cliente.idUsuario}`
+    console.log(URL)
+    return this.http.get<Usuario>(URL);
+  }*/
 
   //TODO: Deletar?
   createUsuario(outputCliente: OutputCliente): Observable<OutputCliente> {
