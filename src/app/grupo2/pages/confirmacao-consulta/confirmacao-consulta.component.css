@@ -76,7 +76,8 @@ section{
   .titulo-confirmacao{
       color:#00A6FF;
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1.9rem;
+      margin-bottom: 10px;
   }
   .texto-detalhes{
       font-size: 1.1rem;
@@ -124,6 +125,15 @@ section{
     font-size: 20px;
     padding: 0px;
     border: 0px;
+    margin-bottom:5%;
+  }
+
+  .btn-outline-primary {
+    width: 90px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #00A6FF;
+    color: #FFFFFF;
   }
   
   @media(max-width:1010px){

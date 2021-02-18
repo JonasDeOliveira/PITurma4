@@ -36,6 +36,8 @@ export class PagamentoParticularComponent implements OnInit {
 
   nmTitular:string;
   nrCartao: string;
+  qtdadeParcString : string;
+  qtadeParcelas : number;
 
   ngOnInit(): void {
     this.listarCartao(142);
@@ -52,6 +54,13 @@ export class PagamentoParticularComponent implements OnInit {
   }
   salvarTipoPagamento(){
     localStorage.setItem("tipoPagamento", "2")
+}
+
+salvarQtdadeParcelasLS(){
+  this.qtdadeParcString = this.qtadeParcelas.toString();
+  localStorage.setItem("qtadeParcelas", this.qtdadeParcString)
+  console.log(localStorage.getItem("qtadeParcelas"))
+
 }
 }
 

@@ -88,26 +88,32 @@
         <section class="container d-flex flex-column alig-items-center">
             <div class="confirmacao-cima d-flex justify-content-center">
                 <div class="texto-confirmacao-esquerda">
-                    <p class="titulo-confirmacao">CONFIRMAÇÃO CONSULTA</p>
-                    <p class="texto-detalhes">Confira se as informações estão corretas e confirme o agendamento</p>
+                    <p class="titulo-confirmacao text-center">CONFIRMAÇÃO CONSULTA</p>
                 </div>
                 <div class="d-flex justify-content-end">
                     <img id="img-lembrete" src="/assets/assets-grupo2/calendar.png"/>
                 </div>
             </div>
-            <div class="confirmacao-meio">
+            <div class="confirmacao-meio text-center">
                 <p>Tipo de consulta: {{consulta}}</p>
                 <p>Especialista: {{nmMedico}}</p>
-                <p>Especialidade: {{dsEspecialidade}}</p>
-                <p>Data: 23/10/2017 14:00</p>
-                <p>Pagamento: Plano Premium</p>
-                <button type="button" class="btn-confirm clicavel">Agendar</button>
-                <p class="texto-lembrete">Quero receber o lembrete da minha consulta via:</p>
+                <p >Especialidade: {{dsEspecialidade}}</p>
+                <p > Data: 23/10/2017 14:00</p>
+                <p >Pagamento: Plano Premium</p>
+                <!-- <button type="button" class="btn-confirm clicavel">Confirmar</button> -->
+                <p class="texto-detalhes">Confira se as informações acima estão corretas e clique para confirmar a consulta.</p>
+                <!-- modal confirmação consulta -->
+                <button type="button" class="btn-confirm clicavel" (click)="open(contentConfirmacaoConsulta)" data-toggle="modal" data-target="#confirmacaoModal">Confirmar consulta</button>
+
+            
+                <p class="texto-lembrete d-flex justify-content-center ">Gostaria de receber o lembrete da consulta?</p>
             </div>
+          
             <div class="confirmacao-baixo d-flex justify-content-center">
-                <button type="button" (click)="open(contentEmail)" class="btn-confirm" data-toggle="modal" data-target="#emailModal">E-mail</button>
-                <button type="button" (click)="open(contentWhatsapp)" class="btn-confirm" data-toggle="modal" data-target="#whatsModal">WhatsApp</button>
+                <button type="button"class="btn-outline-primary" (click)="open(contentEmail)" data-toggle="modal" data-target="#emailModal">E-mail</button>
+                <button type="button" class="btn-outline-primary" (click)="open(contentWhatsapp)" data-toggle="modal" data-target="#whatsModal">WhatsApp</button>
             </div>
+            <!-- <a routerLink='/minhas-consultas'><button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Ir para minhas consultas</button></a> -->
 
             <!-- Modal e-mail -->
             <ng-template #contentEmail let-c="close" let-d="dismiss">
@@ -118,10 +124,10 @@
                 </button>
               </div>
               <div class="modal-body">
-                <p>Você receberá o lembrete da consulta no email cadastrado maria@gmail.com</p>
+                <p>Você receberá o lembrete da consulta no email cadastrado</p>
               </div>
               <div class="modal-footer">
-                <a routerLink='/minhas-consultas'><button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Ver Minhas Consultas</button></a>
+                <!-- <a routerLink='/minhas-consultas'><button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Ver Minhas Consultas</button></a> -->
               </div>
             </ng-template>
 
@@ -135,13 +141,28 @@
                 </button>
               </div>
               <div class="modal-body">
-                <p>Você receberá o lembrete da consulta no WhatsApp cadastrado no número (11) 99999-9999</p>
+                <p>Você receberá o lembrete da consulta no WhatsApp cadastrado</p>
+              </div>
+              <div class="modal-footer">
+                <!-- <a routerLink='/minhas-consultas'><button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Ver Minhas Consultas</button></a> -->
+              </div>
+            </ng-template>
+
+            <!-- Modal confirmacao consulta -->
+            <ng-template #contentConfirmacaoConsulta let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Consulta agendada com sucesso</h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Consulta agendada com sucesso.</p>
               </div>
               <div class="modal-footer">
                 <a routerLink='/minhas-consultas'><button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Ver Minhas Consultas</button></a>
               </div>
             </ng-template>
-
         </section>
 
         
