@@ -41,7 +41,7 @@ export class AtendimentoEspecialistaComponent implements OnInit {
       dsAlergiasRestricoes : "",
       dsMedicacaoUsoContinuo : "",
       dsProblemasSaude : "",
-      dtAtendimento : "17/02/2021",
+      dtAtendimento : "",
       //capturar a data do dia nesse formato e o id do medico do login
   }
 
@@ -53,9 +53,9 @@ export class AtendimentoEspecialistaComponent implements OnInit {
     
   ngOnInit(): void {
     this.request.agPaciente.idAgPaciente=this.route.snapshot.paramMap.get("id");
-    this.request.paciente.idUsuario=this.route.snapshot.paramMap.get("id");
-    //this.request.dtAtendimento = new Date(Date.now()).toISOString().slice(0,10);
-
+    this.request.paciente.idUsuario=this.route.snapshot.paramMap.get("idPaciente");
+    
+    console.log(this.request.dtAtendimento)
     this.atendEspService.getAtendimentos(this.request.agPaciente.idAgPaciente).subscribe(
       resposta => {
         this.atendimentoResposta = resposta;
@@ -65,6 +65,8 @@ export class AtendimentoEspecialistaComponent implements OnInit {
   }
 
   registrar() {
+    this.request.dtAtendimento = this.atendimentoResposta.data;
+    console.log(this.request.dtAtendimento);
     this.atendEspService.cadastrarAtendimento(this.request).subscribe(
       response => {
         alert('Prontuário inserido com sucesso!');
