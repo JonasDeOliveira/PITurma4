@@ -1,0 +1,72 @@
+/* Modal Lembrete */
+
+.modal-content{
+    max-width: 1000px;
+    padding: 20px;
+    min-height: 400px;
+} 
+
+.btn_salvar:hover{
+    text-decoration: none;
+    border: none;
+}
+
+#txt-login{
+    font-size: 1rem;
+    color: #444444;
+    text-align: right;
+    margin-block-end: auto;
+}
+
+.botao-sair{
+    text-align-last: end;
+}
+
+#img-login{
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+div.btn{
+    display: inline;
+    justify-content: flex-end;
+    background-color: #319A75;
+    color: #fff;
+    text-align-last: right;
+    clear: both;
+}
+
+.btn-sm:hover{
+    text-decoration: none;
+    background-color: #1f5e48;
+}
+
+section{
+    width: 100%;
+    padding: 1%;
+}
+
+.btn{
+    background-color: #319A75;
+    color: #fff;
+} 
+
+button#todoSubmit{
+    border-radius:0%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+    padding:2%;
+}
+
+section .btn:hover {
+    background-color: rgb(000, 080, 052);
+}
+
+.alert{
+    color: red;
+    background: none;
+    border: none;
+   }

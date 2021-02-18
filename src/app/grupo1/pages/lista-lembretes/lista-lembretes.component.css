@@ -1,0 +1,54 @@
+/* Inicio Foto perfil */
+.perfil{
+    color: #444444;
+    margin-right: 70px;
+    font-size: 0.8rem;
+}
+
+
+.perfil::after{
+    content:url("src/assets/grupo1/img/profile.png");
+    max-width:100%;
+}
+
+.btn{
+    background-color: #319A75;
+    color: #fff;
+} 
+
+button#todoSubmit{
+    border-radius:0%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+    padding:2%;
+}
+
+section .btn:hover {
+    background-color: rgb(000, 080, 052);
+}
+
+/* FIM Foto perfil */
+
+
+
+.lembretes-plano {
+    display: flex;
+    justify-content: center;
+}
+
+/* Titulo */
+.titulo{
+    color: #319A75;
+}
+
+.voltar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-voltar{
+    background-color: #3ec596;
+    color: #fff;
+}

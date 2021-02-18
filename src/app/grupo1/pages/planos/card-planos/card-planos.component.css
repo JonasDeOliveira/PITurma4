@@ -1,0 +1,111 @@
+h5 {
+    text-align: center;
+    color: #319A75;
+}
+
+li {
+    text-align: left;
+}
+
+.btn-planos:hover {
+    background-color: #1f5e48;
+}
+
+.card {
+    text-align: center;
+    display: flex;
+    
+}
+
+.card-img-top {
+    width: 100%;
+    margin: auto;
+    margin-bottom: 0;
+}
+
+.card-body {
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card button a {
+    color: inherit;
+}
+
+.card button {
+    justify-self: end;
+    margin-bottom: 0;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.btn-menu{
+    background-color: #319A75;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 2px;
+    line-height: 18px;
+}
+
+.text-center{
+    color: #444444;
+}
+
+.collapse{
+    text-align: center;
+}
+
+.nav-item:hover{
+    text-decoration: underline;
+}
+
+.item-menu{
+    padding: 25px 12px;
+    font-size: 1.5rem;
+}
+
+section{
+    background-color: rgba(223, 239, 219, 0.24);
+    /* background-color: transparent; */
+    width: 100%;
+    padding: 5%;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #444444;
+}
+
+h1 {
+    text-align: center;
+    color: #319A75;
+}
+
+h5 {
+    text-align: center;
+    color: #319A75;
+}
+
+li {
+    text-align: left;
+}
+
+.btn-planos:hover {
+    background-color: #1f5e48;
+   
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.card-text{
+    font-size: 0.75rem;
+    text-align: left;
+    line-height: 1.5rem;
+    
+}

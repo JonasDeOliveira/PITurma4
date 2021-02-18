@@ -1,0 +1,16 @@
+.planos {
+    text-align: center;
+}
+.container-fluid {
+    padding: 0;
+}
+section{
+    background-color: rgba(223, 239, 219, 0.24);
+    /* background-color: transparent; */
+    width: 100%;
+    padding: 5%;
+}
+h1 {
+    text-align: center;
+    color: #319A75;
+}
