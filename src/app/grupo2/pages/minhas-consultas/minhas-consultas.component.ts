@@ -30,9 +30,12 @@ export class MinhasConsultasComponent implements OnInit {
  
 
 
-  //implementar id usuario no parametro
+  //USAR QUANDO FIZER O MERGE!!!!!!!!!!!!
+
+  // idUsuario: number = JSON.parse(localStorage.getItem("cliente")).idUsuario;
 
     ngOnInit() : void{
+      //mudar quando fizer o merge
     this.listarAgPacientePorUsuario(142);
     
   }

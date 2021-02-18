@@ -1,0 +1,47 @@
+
+/*
+.banner {
+    background-image: url(../img/banner.jpg);
+    background-size: contain;
+    width: 100%;
+    height: 170px;
+    background-repeat: no-repeat;
+  }
+  */
+
+.containerConfirmacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.btn-whats, .btn-email {
+    margin: 1.5rem;
+    background-color: #23a455;
+    border: #23a455;
+    width: 10rem;
+}
+
+.btn-email:hover {
+    background-color: hsla(159, 35%, 40%, 0.8);
+}
+
+.btn-whats:hover {
+    background-color: hsla(159, 35%, 40%, 0.8);
+}
+
+.card {
+    background-color:hsla(147, 19%, 55%, 0.5);
+    border: none;
+    padding: 1rem;
+    width: 500px;
+}
+
+h2 {
+    color:#005034;
+}
+
+p {
+    font-size: 1.3rem;
+}

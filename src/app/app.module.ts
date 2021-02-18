@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule, IConfig } from 'ngx-mask'
@@ -18,6 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
+
+
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     FormsModule,
     NgxMaskModule.forRoot(),
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
