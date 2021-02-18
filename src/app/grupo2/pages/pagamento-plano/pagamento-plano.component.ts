@@ -42,7 +42,12 @@ export class PagamentoPlanoComponent implements OnInit {
   dsContrato:string;
 
 
+   //USAR QUANDO FIZER O MERGE!!!!!!!!!!!!
+
+  // idUsuario: number = JSON.parse(localStorage.getItem("cliente")).idUsuario;
+
   ngOnInit(): void {
+    //MUDAR QUANDO FIZER O MERGE
     this.listarContratoPorUsuario(142);
   }
 
