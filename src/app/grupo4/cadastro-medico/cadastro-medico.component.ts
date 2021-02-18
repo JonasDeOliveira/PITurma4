@@ -72,7 +72,7 @@ export class CadastroMedicoComponent implements OnInit {
     this.cadastroService.createCadastro(this.request).subscribe(
       response => {
         alert('Cadastro realizado com sucesso');
-        this.router.navigate(['/dashboard/medico']);
+        this.router.navigate(['/login/medico']);
       },
       error => {
         console.log(error);

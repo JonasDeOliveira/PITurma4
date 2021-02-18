@@ -125,7 +125,7 @@
                     <option *ngFor="let cidade of dadosResposta.cidades"[value]="cidade.idCidade">{{cidade.dsCidade}}</option>
                 </select>
                 <div *ngIf="idCidade.invalid && idCidade.touched" class="alert alert-danger" role="alert">
-                    selecione um estado.
+                    selecione uma cidade.
                 </div>
             </div> 
         </div>
@@ -156,19 +156,17 @@
                     </div>
                     <div class="form-group col-12 col-md-6">
                         <label class="label-form" for="cadastro-senha2">Confirmar Senha</label>
-                        <input type="password" class="form-control" id="cadastro-senha2" placeholder="Digite a senha"
-                    name="senhaConfirmacao" #senhaConfirmacao="ngModel" [(ngModel)]="confirmacao.senhaConfirmacao"
-                    required>
-                <div *ngIf="senhaConfirmacao.value != dsSenha.value && (senhaConfirmacao.dirty || senhaConfirmacao.touched)"
-                    class="alert alert-light mt-1" role="alert">
-                    A senha informada não confere!
-                </div>
+                        <input type="password" class="form-control" id="cadastro-senha2" placeholder="Digite a senha" name="senhaConfirmacao" #senhaConfirmacao="ngModel" [(ngModel)]="confirmacao.senhaConfirmacao" minlength="8" required>
+                        <div *ngIf="senhaConfirmacao.value != dsSenha.value && (senhaConfirmacao.dirty || senhaConfirmacao.touched)"
+                            class="alert alert-light mt-1" role="alert">
+                            senha informada não confere!
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="text-center form-group col-12 col-md-6">
                 <p>Você pode alterar suas escolhas a qualquer momento nas suas configurações de conta.</p>
-                    <button type="button" class="btn btn-verde mr-5" routerLink='/dashboard/medico' value="Cadastro" (click)="registrar()"  [disabled]="formCadastro.invalid">Cadastrar</button>
+                    <button type="button" class="btn btn-verde mr-5" value="Cadastro" (click)="registrar()" [disabled]="formCadastro.invalid">Cadastrar</button>
             </div>
         </div>
     </form>
