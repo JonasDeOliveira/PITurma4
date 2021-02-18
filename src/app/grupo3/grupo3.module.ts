@@ -19,15 +19,13 @@ import { LojaService } from './shared/service/lojas.service';
 import { ProgramaNutriService } from './shared/ProgramaNutri/service/programaNutri.service';
 import { TipoRefeicaoService } from './shared/ProgramaNutri/service/tipoRefeicao.service';
 import { PipeComponent } from './pipe/pipe.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
 import { AgServico } from './shared/model/agservico.model';
 
 
 
 @NgModule({
   
-  declarations: [HeaderComponent, FooterComponent, PagamentoServicoComponent, SustentabilidadeComponent, ConfirmacaoAgendamentoComponent,PesquisarReceitasComponent, ResultadoBuscarReceitasComponent, HistoricoAgservicoComponent, AgservicoComponent, HistoricoAgservicoComponent, AgservicoComponent, ProcurarPacienteComponent, ProgramaNutricionalComponent, AgendaAlimentarComponent, ResultadoReceitaComponent, PipeComponent],
+  declarations: [PagamentoServicoComponent, SustentabilidadeComponent, ConfirmacaoAgendamentoComponent,PesquisarReceitasComponent, ResultadoBuscarReceitasComponent, HistoricoAgservicoComponent, AgservicoComponent, HistoricoAgservicoComponent, AgservicoComponent, ProcurarPacienteComponent, ProgramaNutricionalComponent, AgendaAlimentarComponent, ResultadoReceitaComponent, PipeComponent],
   
   imports: [
     CommonModule,
