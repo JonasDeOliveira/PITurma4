@@ -10,18 +10,20 @@ import { PlanosService } from '../shared/planos.service';
 })
 export class CardPlanosComponent implements OnInit {
   responsePlanos: any;
- 
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
+
   constructor(
     private planosService: PlanosService,
     clienteService: ClienteService
   ) {
-    
-   }
+
+  }
 
   ngOnInit(): void {
     this.getPlanos();
-    
+
   }
+
   getPlanos() {
     this.planosService.getPlanos().subscribe(
       response => {
@@ -29,6 +31,6 @@ export class CardPlanosComponent implements OnInit {
         this.responsePlanos = response;
       }
     )
-    }
+  }
 
 }
