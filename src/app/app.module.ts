@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -15,6 +14,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+
+
 
 
 
@@ -37,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     FormsModule
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
