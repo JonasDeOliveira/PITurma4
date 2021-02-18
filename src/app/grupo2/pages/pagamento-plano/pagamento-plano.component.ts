@@ -37,10 +37,17 @@ export class PagamentoPlanoComponent implements OnInit {
   data = this.agenda.data;
 
   nmPlano: string;
+  idPlano: number;
+  imgPlano: string;
   dsContrato:string;
 
 
+   //USAR QUANDO FIZER O MERGE!!!!!!!!!!!!
+
+  // idUsuario: number = JSON.parse(localStorage.getItem("cliente")).idUsuario;
+
   ngOnInit(): void {
+    //MUDAR QUANDO FIZER O MERGE
     this.listarContratoPorUsuario(142);
   }
 
@@ -49,6 +56,14 @@ export class PagamentoPlanoComponent implements OnInit {
       response => {
       this.nmPlano=response.plano.nmPlano;
       this.dsContrato=response.plano.dsPlano;
+      this.idPlano=response.plano.idPlano;
+      if(this.idPlano==1){
+        this.imgPlano="/assets/assets-grupo2/BASIC.png"
+      } else if(this.idPlano==2){
+        this.imgPlano="/assets/assets-grupo2/PLUS.png"
+      } else if(this.idPlano==3){
+        this.imgPlano="/assets/assets-grupo2/PREMIUM.png"
+      }
       }
     )
   }
