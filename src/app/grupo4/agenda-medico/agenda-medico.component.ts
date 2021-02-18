@@ -57,7 +57,7 @@ export class AgendaMedicoComponent implements OnInit {
       this.agendaService.cancelarAgendamento(idAgPaciente).subscribe(
         response => {
           this.router.navigate(['/agenda/medico']);
-          //this.getAgendamentos(); 
+          //this.agendaService.getAgendamentos(); 
           console.log(idAgPaciente)
         }
       )

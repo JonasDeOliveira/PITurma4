@@ -11,7 +11,7 @@ export class AgendamedicoService {
   constructor(private http : HttpClient) { }
 
   private readonly API = 'http://localhost:8080/agendamentos';
-  private readonly API2 = 'http://localhost:8080/agPaciente/mudar-status';
+  private readonly API2 = 'http://localhost:8080/agPaciente/status';
   private readonly API3 = 'http://localhost:8080/horarios';
   private readonly API4 = 'http://localhost:8080/agendas';
 
