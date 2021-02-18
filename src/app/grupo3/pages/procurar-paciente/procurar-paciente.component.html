@@ -14,19 +14,17 @@
             </div>
             <button type="submit" class="btn btn-primary btn-verde mb-2" (click)="buscarCpf()">OK</button>
         </form>
-        
-        <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-        
-        <div class="row justify-content-center">
+               
+        <div *ngIf="existeAlert == true">
+        <div class="row justify-content-center" >
             <div class="col-lg-5"> 
-                <div style="display: none;" class="alert alert-danger alert-cpf-invalido" role="alert">
+                <div style="display: block;" class="alert alert-danger alert-cpf-invalido" role="alert">
                     Usuário não encontrado
                 </div>
             </div>
         </div>
-    
+        </div>
+          
     </section>
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
