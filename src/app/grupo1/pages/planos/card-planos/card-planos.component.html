@@ -18,7 +18,7 @@
             <ul class="card-text" type="none">
                 <li *ngFor="let servicos of responsePlanos[1].servicos">{{servicos.dsServico}}</li>
             </ul>
-            <h5>R${{responsePlanos[1].vlPlano}},00</h5>
+            <h5>{{responsePlanos[1].vlPlano  | currency : 'R$' }}</h5>
             <div *ngIf="!ehLogado">
                 <button class="btn btn-menu btn-planos">
                     <a  routerLink="/login-cliente">
@@ -41,7 +41,7 @@
             <ul class="card-text" type="none">
                 <li *ngFor="let servicos of responsePlanos[2].servicos">{{servicos.dsServico}}</li>
             </ul>
-            <h5>R${{responsePlanos[2].vlPlano}},00</h5>
+            <h5>{{responsePlanos[2].vlPlano  | currency : 'R$' }}</h5>
             <div *ngIf="!ehLogado">
                 <button class="btn btn-menu btn-planos">
                     <a  routerLink="/login-cliente">

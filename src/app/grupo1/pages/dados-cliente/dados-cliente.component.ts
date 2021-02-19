@@ -21,12 +21,15 @@ export class DadosClienteComponent implements OnInit {
   ehLogado = JSON.parse(localStorage.getItem("isLogado"));
   idUsuario: string;
 
+  mostraSpin = false; //<--- adicione isto --->
+  mostraSpinInicio = false;
+
   responseFormularioMeusDados: any;
   responseCidadesByUf: any;
   responsePlanos: any;
 
-  minDate: Date = new Date(1910,1,1);
-  maxDate: Date = new Date();
+  minDate: Date = new Date(1910, 1, 1);
+  maxDate: Date = new Date(2003, 1, 1);
 
   planos = {
     plano1: 1,
@@ -130,6 +133,7 @@ export class DadosClienteComponent implements OnInit {
 
   //GETS DO BANCO
   getFormularioMeusDados() {
+    this.mostraSpinInicio = true;
     this.clienteService.getFormularioMeusDados().subscribe(
       response => {
         console.log(response);
@@ -137,14 +141,24 @@ export class DadosClienteComponent implements OnInit {
 
         this.outputCliente = this.responseFormularioMeusDados.inputCliente;
 
-        this.outputCliente.loginUsuario.dsSenha = "";
-        this.dadosAtuais.planoAtual = this.outputCliente.contrato.plano.idPlano;
-        this.dadosAtuais.cartaoAtual = this.outputCliente.cartao;
-        this.ocultarCartao(this.outputCliente.cartao.nrCartao);
+        this.preparacaoDados();
 
         this.getCidadesByUf();
+        setTimeout(() => { this.mostraSpinInicio = false }, 2000)
       }
     )
+
+  }
+
+  preparacaoDados() {
+    this.outputCliente.loginUsuario.dsSenha = "";
+    this.outputCliente.cartao.codSeguranca = null;
+    if (this.outputCliente.cartao.dtValidade != "" && this.outputCliente.cartao.dtValidade != null) {
+      this.outputCliente.cartao.dtValidade = this.outputCliente.cartao.dtValidade.substring(0, this.outputCliente.cartao.dtValidade.length - 3);
+      this.ocultarCartao(this.outputCliente.cartao.nrCartao);
+    }
+    this.dadosAtuais.planoAtual = this.outputCliente.contrato.plano.idPlano;
+    this.dadosAtuais.cartaoAtual = this.outputCliente.cartao;
   }
 
   getCidadesByUf() {
@@ -166,19 +180,27 @@ export class DadosClienteComponent implements OnInit {
 
   //MÉTODO ALTERAR
   alterarDadosCliente() {
+    this.mostraSpin = true; //<--- adicione isto --->
+
     console.log(this.outputCliente);
     //nova senha
     if (this.confirmacao.senhaNova != "" && this.confirmacao.senhaNova != null) {
       this.outputCliente.loginUsuario.dsSenha = this.confirmacao.senhaNova;
     }
-    
+
     //novo cartão
-    if(!this.dadosAtuais.cartaoSeguro.includes("*") && this.dadosAtuais.cartaoSeguro != this.outputCliente.cartao.nrCartao) {
+    if (!this.dadosAtuais.cartaoSeguro.includes("*") && this.dadosAtuais.cartaoSeguro != this.outputCliente.cartao.nrCartao) {
       this.outputCliente.cartao.nrCartao = this.dadosAtuais.cartaoSeguro;
+    }
+
+    //concatenar data de validade
+    if (this.outputCliente.cartao.dtValidade != "") {
+      this.outputCliente.cartao.dtValidade = this.outputCliente.cartao.dtValidade + "-01"
     }
 
     this.clienteService.alteraDadosCliente(Number(this.idUsuario), this.outputCliente).subscribe(
       response => {
+        this.mostraSpin = false; //<--- adicione isto --->
         alert(response.mensagem);
         this.router.navigate([`/area-cliente`]);
       },
@@ -260,7 +282,8 @@ export class DadosClienteComponent implements OnInit {
   }
 
   ocultarCartao(numeroCartao: string) {
-    this.dadosAtuais.cartaoSeguro = "************"+numeroCartao.substring(11, 15)
+    this.dadosAtuais.cartaoSeguro = "************" + numeroCartao.substring(11, 15);
+
   }
 
 

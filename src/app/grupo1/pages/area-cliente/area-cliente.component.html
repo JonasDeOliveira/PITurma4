@@ -3,9 +3,11 @@
 <div *ngIf="ehLogado == false">
     <app-mensagem-login></app-mensagem-login>
 </div>
+<div *ngIf="mostraSpin" class="fa fa-spinner fa-spin success btn-lg spinner"></div>
 <section *ngIf="ehLogado">
     <div class="container">
         <h4 class="text-center titulo">Acompanhe aqui as informações do seu perfil e serviços.</h4>
+    
         <div class="row images" id="ads">
             <!-- Category Card -->
             <div class="col-md-3 col-sm-6 col-12  p-2">
@@ -25,7 +27,7 @@
                     <div class="card-image">
                         <img class="img-fluid rounded mx-auto d-block p-3" src="/assets/grupo1/img/exames.png"
                             alt="Icon exame" />
-                        <p class="text-card" >Agendar serviços<br> farmacêuticos</p>
+                        <p class="text-card">Agendar serviços<br> farmacêuticos</p>
                     </div>
                     <div class="card-image-overlay m-auto p-3">
                         <a class="ad-btn" [routerLink]="['/agservico']">Agendar Serviços</a>
@@ -49,11 +51,11 @@
                     <div class="card-image">
                         <img class="img-fluid rounded mx-auto d-block p-3" src="/assets/grupo1/img/nutrition.png"
                             alt="Icon Nutrition" />
-                        <p class="text-card" >Acompanhe o seu <br>plano nutricional</p>
+                        <p class="text-card">Acompanhe o seu <br>plano nutricional</p>
                     </div>
                     <div class="card-image-overlay m-auto p-3">
 
-                        <a class="ad-btn" [routerLink]="['/programa-nutricional']">Plano Nutricional</a>
+                        <a class="ad-btn" [routerLink]="['/agenda-alimentar']">Plano Nutricional</a>
                     </div>
                 </div>
             </div>
@@ -82,11 +84,11 @@
                                     <ul class="todo__tarefas-lista" id="todoLista">
                                         <li class="item-lista"
                                             *ngFor="let lembrete of areaDoCliente.lembretes.slice(0,5)"
-                                            (click)="removeTarefa(lembrete.idLembrete)">
-                                            <p class="titulo_lembrete">{{lembrete.nmTitulo}}</p>
-                                            <p class="excluir ">Descriçao: {{lembrete.dsLembrete}}<span
-                                                    class=" todo__btn-excluir">X</span></p>
-                                            <p class="excluir font-weight-bold">Data: {{lembrete.dtLembrete | date: 'dd/MM/yyyy'}} - Hora:
+                                            >
+                                            <p class="titulo_lembrete ">{{lembrete.nmTitulo}}</p>
+                                            <p class="excluir ds_lembrete ">Descriçao: {{lembrete.dsLembrete}}<span
+                                                    class=" todo__btn-excluir " (click)="removeTarefa(lembrete.idLembrete)">X</span></p>
+                                            <p class="excluir font-weight-bold ">Data: {{lembrete.dtLembrete | date: 'dd/MM/yyyy'}} - Hora:
                                                 {{lembrete.hrHora}}
                                             </p>
                                             <p>Intervalo: A cada {{lembrete.nrRepeticao}}

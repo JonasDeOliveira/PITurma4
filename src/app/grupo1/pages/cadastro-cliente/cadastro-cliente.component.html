@@ -107,7 +107,6 @@
                 <input type="text" class="form-control" id="cadastro-celular" placeholder="Digite o seu Celular"
                     [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="9" maxlength="10"
                     required mask="00000-0000">
-                <!--  pattern="(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"  -->
                 <div *ngIf="celular.errors && (celular.dirty || celular.touched)" class="alert alert- light">
                     <div [hidden]="!celular.errors.required">
                         Informar telefone para contato.
@@ -182,7 +181,7 @@
                     <p *ngFor="let servicos of responsePlanos[0].servicos" class="card-text">{{servicos.dsServico}}</p>
                 </div>
                 <div>
-                    <h5 class="alinhamento">R${{responsePlanos[0].vlPlano}},00</h5>
+                    <h5 class="alinhamento">{{responsePlanos[0].vlPlano | currency : 'R$' }}</h5>
                 </div>
                 <div><button class="btn  btn-card" [id]="planos.plano1"
                         [disabled]="planos.plano1 == this.outputCliente.contrato.plano.idPlano"
@@ -195,7 +194,7 @@
                     <p *ngFor="let servicos of responsePlanos[1].servicos" class="card-text">{{servicos.dsServico}}</p>
                 </div>
                 <div>
-                    <h5 class="alinhamento">R${{responsePlanos[1].vlPlano}},00</h5>
+                    <h5 class="alinhamento">{{responsePlanos[1].vlPlano | currency : 'R$' }}</h5>
                 </div>
                 <div><button type="button" class="btn btn-card" [id]="planos.plano2"
                         [disabled]="planos.plano2 == this.outputCliente.contrato.plano.idPlano"
@@ -208,7 +207,7 @@
                     <p *ngFor="let servicos of responsePlanos[2].servicos" class="card-text">{{servicos.dsServico}}</p>
                 </div>
                 <div>
-                    <h5 class="alinhamento">R${{responsePlanos[2].vlPlano}},00</h5>
+                    <h5 class="alinhamento">{{responsePlanos[2].vlPlano | currency : 'R$' }}</h5>
                 </div>
                 <div><button type="button" class="btn btn-card" [id]="planos.plano3"
                         [disabled]="planos.plano3 == this.outputCliente.contrato.plano.idPlano"
@@ -260,17 +259,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row ">
-                            <div class="form-group col-md-5">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
                                 <label for="cartao-vencimento">Data de vencimento:</label>
                                 <div class="vencimento-cartao">
-                                    <input type="date" class="form-control" id="dtValidade" placeholder="00/0000"
+                                    <input type="month" class="form-control" id="dtValidade" placeholder="00/0000"
                                         [(ngModel)]="outputCliente.cartao.dtValidade" name="dtValidade"
                                         #dtValidade="ngModel" required>
                                 </div>
                             </div>
-                            <div class="form-group col-md-7">
-                                <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
+                            <div class="form-group col-md-6">
+                                <label for="cartao-codigo-seguranca">Código de Segurança:</label>
                                 <input type="password" class="form-control" id="cartao-codigo-seguranca"
                                     placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca"
                                     name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>
@@ -288,7 +287,9 @@
     </ng-template>
     <div class="form-group botoes-cadastro">
         <button type="button" (click)="cadastrar()" class="btn btns-cadastro btn-espaco"
-            [disabled]="formCadastro.invalid && formCadastro.untouched">Cadastrar</button>
+            [disabled]="formCadastro.invalid && formCadastro.untouched">
+            <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin"></i>
+            Cadastrar</button>
         <button [routerLink]="['/']" class="btn btn-cancelar btn-espaco">Cancelar</button>
     </div>
 </section>

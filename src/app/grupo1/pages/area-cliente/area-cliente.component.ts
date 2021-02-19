@@ -20,6 +20,9 @@ export class AreaClienteComponent implements OnInit {
   cliente = JSON.parse(localStorage.getItem("cliente"));
   ehLogado = JSON.parse(localStorage.getItem("isLogado"));
 
+  mostraSpin = false;
+
+
   constructor(private clienteService: ClienteService,
     private lembreteService: LembreteService,
     private planosService: PlanosService,
@@ -38,10 +41,13 @@ export class AreaClienteComponent implements OnInit {
 
 
   getAreaDoCliente() {
+    this.mostraSpin = true;
+
     this.clienteService.getAreaClienteById().subscribe(
       response => {
         this.areaDoCliente = response;
         console.log(response);
+        setTimeout(() => {this.mostraSpin = false}, 4000)
       }
     )
   }
