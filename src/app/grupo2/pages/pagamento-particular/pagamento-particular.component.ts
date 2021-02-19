@@ -3,11 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Agenda } from '../../shared/model/agenda';
 import { Paciente } from '../../shared/model/agPaciente';
-<<<<<<< HEAD
-import { Cartao, CartaoAgPaciente } from '../../shared/model/cartaoAgPaciente';
-=======
-import { Cartao, Cliente } from '../../shared/model/cartao';
->>>>>>> 526975930347e99aa424b955b1bdbb0e3c041f3e
+import { CartaoAgPaciente } from '../../shared/model/cartaoAgPaciente';
 import { EspMed } from '../../shared/model/espMed';
 import { TipoPagamento } from '../../shared/model/pagamento';
 import { TipoConsulta } from '../../shared/model/tipoConsulta';
@@ -60,7 +56,7 @@ export class PagamentoParticularComponent implements OnInit {
   
   qtdadeParcString : string;
   qtadeParcelas : number = 1;
-  valorParcela : number = this.vlConsulta/this.qtadeParcelas;
+  // valorParcela : number = this.vlConsulta/this.qtadeParcelas;
 
   usuario: Paciente = JSON.parse(localStorage.getItem("cliente"));
   idUsuario:number = this.usuario.idPaciente;
