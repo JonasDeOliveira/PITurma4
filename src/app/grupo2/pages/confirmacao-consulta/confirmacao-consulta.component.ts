@@ -96,8 +96,8 @@ export class ConfirmacaoConsultaComponent implements OnInit {
 
   ngOnInit():void {
 
-    
-   
+    console.log(this.idUsuario);
+
     console.log(this.cartao)
     this.consultaConfirmada = false;
     this.consultaNaoConfirmada = true;
@@ -131,5 +131,10 @@ export class ConfirmacaoConsultaComponent implements OnInit {
 
     )
   }
- 
+
+  mudarFlagConfirmacao(){
+    this.consultaConfirmada = true;
+    this.consultaNaoConfirmada = false;
+  }
+
 }

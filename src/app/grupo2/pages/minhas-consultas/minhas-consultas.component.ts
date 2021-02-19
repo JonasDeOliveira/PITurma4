@@ -29,21 +29,25 @@ export class MinhasConsultasComponent implements OnInit {
   responseAgPacientes : AgPaciente [];
   respostaString: Resposta;
  
+  mostraSpin = false; 
 
   usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
   idUsuario:number = this.usuario.idUsuario;
 
     ngOnInit() : void{
+
     this.listarAgPacientePorUsuario(this.idUsuario);
-  
+
   }
   open(content) {
     this.modalService.open(content);
   }
 
   listarAgPacientePorUsuario(idUsuario : number) {
+    this.mostraSpin = true;
     this.agPacienteService.buscarAgPacientes(idUsuario).subscribe(
       response => {
+        this.mostraSpin = false; //<--- adicione isto --->
         this.responseAgPacientes = response;
         console.log(this.responseAgPacientes)
       }

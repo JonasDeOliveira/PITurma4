@@ -46,7 +46,20 @@
 <<<<<<< HEAD
 </div> -->
 
+<!-- <button type="submit" class="btn btn-default">
+  
+</button> -->
 
+
+<div class="spinner-border text-primary">
+  <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin"></i>
+  
+</div>
+<div class="spinner-grow text-muted">
+  <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin"></i>
+  
+
+</div>
 
 <section class="container d-flex flex-column align-items-center">
     <h1>Minhas Consultas</h1>
@@ -97,7 +110,7 @@
 
       <h4 id="titulo-realizadas" class="font-weight-bold">Consultas Realizadas</h4>
       <div *ngFor="let agPaciente of responseAgPacientes">
-        <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 2">
+        <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 1">
           <div class="col-12 row consulta realizada d-flex align-items-center justify-content-between">
             <p class="texto-consulta col-7">
               <a class="font-weight-bold">Data: {{agPaciente.agenda.data}} -
@@ -114,7 +127,7 @@
 
       <h4 id="titulo-canceladas" class="font-weight-bold">Consultas Canceladas</h4>
       <div *ngFor="let agPaciente of responseAgPacientes">
-        <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 3">
+        <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 1">
           <div class="col-12 row consulta cancelada d-flex align-items-center justify-content-between">
             <p class="texto-consulta col-7">
               <a class="font-weight-bold">Data: {{agPaciente.agenda.data}} -
