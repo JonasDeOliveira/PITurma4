@@ -21,6 +21,9 @@ export class DadosClienteComponent implements OnInit {
   ehLogado = JSON.parse(localStorage.getItem("isLogado"));
   idUsuario: string;
 
+  mostraSpin = false; //<--- adicione isto --->
+  mostraSpinInicio = false;
+
   responseFormularioMeusDados: any;
   responseCidadesByUf: any;
   responsePlanos: any;
@@ -130,6 +133,7 @@ export class DadosClienteComponent implements OnInit {
 
   //GETS DO BANCO
   getFormularioMeusDados() {
+    this.mostraSpinInicio = true;
     this.clienteService.getFormularioMeusDados().subscribe(
       response => {
         console.log(response);
@@ -137,14 +141,22 @@ export class DadosClienteComponent implements OnInit {
 
         this.outputCliente = this.responseFormularioMeusDados.inputCliente;
 
-        this.outputCliente.loginUsuario.dsSenha = "";
-        this.dadosAtuais.planoAtual = this.outputCliente.contrato.plano.idPlano;
-        this.dadosAtuais.cartaoAtual = this.outputCliente.cartao;
-        this.ocultarCartao(this.outputCliente.cartao.nrCartao);
+        this.preparacaoDados();
 
         this.getCidadesByUf();
+        setTimeout(() => {this.mostraSpinInicio = false}, 4000)
       }
     )
+    
+  }
+
+  preparacaoDados() {
+    this.outputCliente.loginUsuario.dsSenha = "";
+    this.outputCliente.cartao.codSeguranca = null;
+    this.outputCliente.cartao.dtValidade = this.outputCliente.cartao.dtValidade.substring(0, this.outputCliente.cartao.dtValidade.length -3)
+    this.dadosAtuais.planoAtual = this.outputCliente.contrato.plano.idPlano;
+    this.dadosAtuais.cartaoAtual = this.outputCliente.cartao;
+    this.ocultarCartao(this.outputCliente.cartao.nrCartao);
   }
 
   getCidadesByUf() {
@@ -166,6 +178,8 @@ export class DadosClienteComponent implements OnInit {
 
   //MÉTODO ALTERAR
   alterarDadosCliente() {
+    this.mostraSpin = true; //<--- adicione isto --->
+
     console.log(this.outputCliente);
     //nova senha
     if (this.confirmacao.senhaNova != "" && this.confirmacao.senhaNova != null) {
@@ -177,8 +191,14 @@ export class DadosClienteComponent implements OnInit {
       this.outputCliente.cartao.nrCartao = this.dadosAtuais.cartaoSeguro;
     }
 
+    //concatenar data de validade
+    if(this.outputCliente.cartao.dtValidade!= ""){
+      this.outputCliente.cartao.dtValidade = this.outputCliente.cartao.dtValidade + "-01"
+    }
+
     this.clienteService.alteraDadosCliente(Number(this.idUsuario), this.outputCliente).subscribe(
       response => {
+        this.mostraSpin = false; //<--- adicione isto --->
         alert(response.mensagem);
         this.router.navigate([`/area-cliente`]);
       },

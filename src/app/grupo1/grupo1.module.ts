@@ -31,6 +31,7 @@ registerLocaleData(localePt, 'pt');
   exports: [
     ComponentsModule,
     RouterModule,
+    ComponentsModule
   ],
   providers: [
     {

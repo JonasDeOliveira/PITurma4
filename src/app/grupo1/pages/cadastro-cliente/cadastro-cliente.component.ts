@@ -24,6 +24,8 @@ export class CadastroClienteComponent implements OnInit {
   minDate: Date = new Date(1910,1,1);
   maxDate: Date = new Date(2003,1,1);
 
+  mostraSpin = false; //<--- adicione isto --->
+
   loginCliente: LoginUsuario = {
     idUsuario: null,
     dsSenha: "",
@@ -146,8 +148,16 @@ export class CadastroClienteComponent implements OnInit {
   }
 
   cadastrar() {
+    this.mostraSpin = true; //<--- adicione isto --->
+
+    //concatenar data de validade
+    if(this.outputCliente.cartao.dtValidade!= ""){
+      this.outputCliente.cartao.dtValidade = this.outputCliente.cartao.dtValidade + "-01"
+    }
+
     this.clienteService.createCliente(this.outputCliente).subscribe(
       response => {
+        this.mostraSpin = false; //<--- adicione isto --->
         alert(response.mensagem);
         this.loginCliente = this.outputCliente.loginUsuario;
         this.logarCliente()

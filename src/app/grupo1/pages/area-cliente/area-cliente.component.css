@@ -380,3 +380,8 @@ section{
     width: 100%;
     padding: 1%;
 }
+
+.spinner{
+    color: #319A75;
+    font-size:xx-large;
+}

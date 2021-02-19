@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PlanosComponent implements OnInit {
 
   ehLogado = JSON.parse(localStorage.getItem("isLogado"));
+  mostrandoSpin: boolean = true;
 
   constructor() { }
 
