@@ -84,15 +84,36 @@ export class AgendaMedicoComponent implements OnInit {
   }
 
   cadastrarAgenda(): void {
-    this.agendaService.cadastrarAgenda(this.agendamentosResposta).subscribe(
+
+    console.log("antes")
+    this.responsePeriodos.forEach(agenda => {
+      var objMedico = JSON.parse(localStorage.getItem("medico"));
+      agenda.medico.idUsuario = objMedico.idUsuario;
+  
+      var dt =  new Date(Date.now()).toISOString().slice(0,10).split('-');
+      agenda.data = dt[2] + '/' + dt[1] + '/' + dt[0];
+
+      console.log("Passou")
+    });
+
+    this.agendaService.cadastrarAgenda(this.responsePeriodos).subscribe(
       response => {
         alert('Agenda cadastrada com sucesso!');
         this.router.navigate(['/agenda/medico']);
       },
       error => {
         alert('Algo inesperado aconteceu!');
+        console.log(error);
       }
     )
   } 
+
+  setTipoConsulta(id:number){
+ this.responsePeriodos.forEach(agenda => {
+        agenda.idTipoConsulta = id;
+ });
+
+
+  }
 
 }
