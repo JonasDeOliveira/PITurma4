@@ -2,7 +2,8 @@ import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Agenda } from '../../shared/model/agenda';
-import { Cartao, Cliente } from '../../shared/model/cartao';
+import { Paciente } from '../../shared/model/agPaciente';
+import { CartaoAgPaciente } from '../../shared/model/cartaoAgPaciente';
 import { EspMed } from '../../shared/model/espMed';
 import { TipoPagamento } from '../../shared/model/pagamento';
 import { TipoConsulta } from '../../shared/model/tipoConsulta';
@@ -45,19 +46,20 @@ export class PagamentoParticularComponent implements OnInit {
   cvv: string = "";
   
 
-  cartao: Cartao = {
+  cartao: CartaoAgPaciente = {
     nrCartao: this.nrCartao,
     codSeguranca : this.cvv,
-    usuario : {nmNome: this.nmTitular},
+    usuario : {nome: this.nmTitular},
     dtValidade : `${this.anoVenc}-${this.mesVenc}-01`
+
   };
   
   qtdadeParcString : string;
   qtadeParcelas : number = 1;
-  valorParcela : number = this.vlConsulta/this.qtadeParcelas;
+  // valorParcela : number = this.vlConsulta/this.qtadeParcelas;
 
-  usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
-  idUsuario:number = this.usuario.idUsuario;
+  usuario: Paciente = JSON.parse(localStorage.getItem("cliente"));
+  idUsuario:number = this.usuario.idPaciente;
   
   tipoPagamento: TipoPagamento = {
     idFormaPagamento: 2,
@@ -71,7 +73,7 @@ export class PagamentoParticularComponent implements OnInit {
   listarCartao(idUsuario: number){
     this.cartaoService.listarCartaoPorUsuario(idUsuario).subscribe(
       response => {
-      this.nmTitular = response[0].usuario.nmNome;
+      this.nmTitular = response[0].usuario.nome;
       this.nrCartao = response[0].nrCartao;
 
       }

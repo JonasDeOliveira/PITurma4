@@ -4,7 +4,8 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Agenda} from '../../shared/model/agenda';
 import { AgPaciente,  } from '../../shared/model/agPaciente';
 import {  CadastroAgPactPgto } from '../../shared/model/cadastroAgPactPgto';
-import { Cartao, Cliente } from '../../shared/model/cartao';
+import { Cliente } from '../../shared/model/cartao';
+import { CartaoAgPaciente } from '../../shared/model/cartaoAgPaciente';
 import { Contrato } from '../../shared/model/contrato';
 import { EspMed } from '../../shared/model/espMed';
 import { OutputConfirmacao } from '../../shared/model/outputConfirmacao';
@@ -57,7 +58,7 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   idAgenda: number = this.agenda.idAgenda;
 
   parcelas: number = JSON.parse(localStorage.getItem("qtadeParcelas"));
-  cartao: Cartao = JSON.parse(localStorage.getItem("cartao"))
+  cartao: CartaoAgPaciente = JSON.parse(localStorage.getItem("cartao"))
 
   
   usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
@@ -66,6 +67,11 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   //
   consultaConfirmada : boolean = true;
   consultaNaoConfirmada : boolean = true;
+
+  //VOLTAR APOS MERGE
+  //usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
+  // idUsuario:number = usuario.idUsuario;
+
 
   //TIRAR APOS MERGE
   // idUsuario = 142;
@@ -91,10 +97,11 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   
 
   ngOnInit():void {
+
     this.consultaConfirmada = false;
     this.consultaNaoConfirmada = true;
     console.log(this.dsTipoPagamento)
-    if (this.tipoPagamento.idFormaPagamento == 1){
+        if (this.tipoPagamento.idFormaPagamento == 1){
       this.tipoPagamento.dsFormaPagamento="Plano"
     } else if (this.tipoPagamento.idFormaPagamento == 2){
       this.tipoPagamento.dsFormaPagamento="Cartão"
