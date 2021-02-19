@@ -218,7 +218,7 @@
                                 {{servicos.dsServico}}</p>
                         </div>
                         <div>
-                            <h5 class="alinhamento">R${{responsePlanos[0].vlPlano}},00</h5>
+                            <h5 class="alinhamento">{{responsePlanos[0].vlPlano  | currency : 'R$' }}</h5>
                         </div>
                         <div><button class="btn  btn-card" [id]="planos.plano1"
                                 [disabled]="planos.plano1 == this.outputCliente.contrato.plano.idPlano"
@@ -232,7 +232,7 @@
                                 {{servicos.dsServico}}</p>
                         </div>
                         <div>
-                            <h5 class="alinhamento">R${{responsePlanos[1].vlPlano}},00</h5>
+                            <h5 class="alinhamento">{{responsePlanos[1].vlPlano  | currency : 'R$' }}</h5>
                         </div>
                         <div><button type="button" class="btn btn-card" [id]="planos.plano2"
                                 [disabled]="planos.plano2 == this.outputCliente.contrato.plano.idPlano"
@@ -246,7 +246,7 @@
                                 {{servicos.dsServico}}</p>
                         </div>
                         <div>
-                            <h5 class="alinhamento">R${{responsePlanos[2].vlPlano}},00</h5>
+                            <h5 class="alinhamento">{{responsePlanos[2].vlPlano  | currency : 'R$' }}</h5>
                         </div>
                         <div><button type="button" class="btn btn-card" [id]="planos.plano3"
                                 [disabled]="planos.plano3 == this.outputCliente.contrato.plano.idPlano"
@@ -360,7 +360,7 @@
         </form>
     </section>
 
-    {{outputCliente | json}}
+    <!-- {{outputCliente | json}} -->
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

@@ -176,7 +176,7 @@
                     <p *ngFor="let servicos of responsePlanos[0].servicos"  class="card-text" >{{servicos.dsServico}}</p>
                 </div>
                 <div>
-                    <h5 class="alinhamento">R${{responsePlanos[0].vlPlano}},00</h5>
+                    <h5 class="alinhamento">{{responsePlanos[0].vlPlano  | currency : 'R$' }}</h5>
                 </div>
                 <div><button class="btn  btn-card" [id]="planos.plano1"
                         [disabled]="planos.plano1 == this.outputCliente.contrato.plano.idPlano"
@@ -189,7 +189,7 @@
                     <p *ngFor="let servicos of responsePlanos[1].servicos" class="card-text">{{servicos.dsServico}}</p>
                     </div>
                 <div>
-                    <h5 class="alinhamento">R${{responsePlanos[1].vlPlano}},00</h5>
+                    <h5 class="alinhamento">{{responsePlanos[1].vlPlano  | currency : 'R$' }}</h5>
                 </div>
                 <div><button type="button" class="btn btn-card" [id]="planos.plano2"
                         [disabled]="planos.plano2 == this.outputCliente.contrato.plano.idPlano"
@@ -202,7 +202,7 @@
                     <p *ngFor="let servicos of responsePlanos[2].servicos" class="card-text">{{servicos.dsServico}}</p>
                 </div>
                 <div>
-                    <h5 class="alinhamento">R${{responsePlanos[2].vlPlano}},00</h5>
+                    <h5 class="alinhamento">{{responsePlanos[2].vlPlano  | currency : 'R$' }}</h5>
                 </div>
                 <div><button type="button" class="btn btn-card" [id]="planos.plano3"
                         [disabled]="planos.plano3 == this.outputCliente.contrato.plano.idPlano"
