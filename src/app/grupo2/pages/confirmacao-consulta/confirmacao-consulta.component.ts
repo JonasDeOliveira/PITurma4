@@ -96,7 +96,8 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   
 
   ngOnInit():void {
-
+    console.log(this.idUsuario);
+    console.log(this.cartao)
     this.consultaConfirmada = false;
     this.consultaNaoConfirmada = true;
     console.log(this.dsTipoPagamento)
@@ -127,12 +128,16 @@ export class ConfirmacaoConsultaComponent implements OnInit {
         localStorage.setItem("pagamento", JSON.stringify(response.pagamento));
         console.log(localStorage.getItem("agPaciente"));
         console.log(localStorage.getItem("pagamento"))
-        this.consultaConfirmada = true;
-        this.consultaNaoConfirmada = false;
+      
 
       }
 
     )
+  }
+
+  mudarFlagConfirmacao(){
+    this.consultaConfirmada = true;
+    this.consultaNaoConfirmada = false;
   }
 
 }
