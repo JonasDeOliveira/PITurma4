@@ -44,7 +44,9 @@ export class DadosClienteComponent implements OnInit {
 
   dadosAtuais = {
     cartaoAtual: null,
-    planoAtual: null
+    cartaoSeguro: "",
+    planoAtual: null,
+
   }
 
   outputCliente: OutputCliente = {
@@ -116,8 +118,6 @@ export class DadosClienteComponent implements OnInit {
     config.keyboard = false;
   }
 
-  // password = document.getElementById("cadastro-senha-nova")
-  // confirm_password = document.getElementById("cadastro-senha-nova2");
 
   ngOnInit(): void {
     if (this.cliente != null) {
@@ -127,6 +127,8 @@ export class DadosClienteComponent implements OnInit {
     }
   }
 
+
+  //GETS DO BANCO
   getFormularioMeusDados() {
     this.clienteService.getFormularioMeusDados().subscribe(
       response => {
@@ -138,6 +140,7 @@ export class DadosClienteComponent implements OnInit {
         this.outputCliente.loginUsuario.dsSenha = "";
         this.dadosAtuais.planoAtual = this.outputCliente.contrato.plano.idPlano;
         this.dadosAtuais.cartaoAtual = this.outputCliente.cartao;
+        this.ocultarCartao(this.outputCliente.cartao.nrCartao);
 
         this.getCidadesByUf();
       }
@@ -152,19 +155,27 @@ export class DadosClienteComponent implements OnInit {
     )
   }
 
-  open(content) {
-    this.modalService.open(content);
+  getPlanos() {
+    this.planosService.getPlanos().subscribe(
+      response => {
+        console.log(response);
+        this.responsePlanos = response;
+      }
+    )
   }
 
-
-  //TODO: Rever isso aqui!!!!----------------------------
+  //MÉTODO ALTERAR
   alterarDadosCliente() {
     console.log(this.outputCliente);
+    //nova senha
     if (this.confirmacao.senhaNova != "" && this.confirmacao.senhaNova != null) {
       this.outputCliente.loginUsuario.dsSenha = this.confirmacao.senhaNova;
     }
-
-    console.log(this.outputCliente.loginUsuario.dsSenha);
+    
+    //novo cartão
+    if(!this.dadosAtuais.cartaoSeguro.includes("*") && this.dadosAtuais.cartaoSeguro != this.outputCliente.cartao.nrCartao) {
+      this.outputCliente.cartao.nrCartao = this.dadosAtuais.cartaoSeguro;
+    }
 
     this.clienteService.alteraDadosCliente(Number(this.idUsuario), this.outputCliente).subscribe(
       response => {
@@ -178,6 +189,12 @@ export class DadosClienteComponent implements OnInit {
     )
   }
 
+  //MODAL
+  open(content) {
+    this.modalService.open(content);
+  }
+
+  //FUNÇÕES DA PÁGINAS  
   selecaoPlano(event, content): void {
     const id = event.target.id;
     this.dadosAtuais.planoAtual = this.outputCliente.contrato.plano.idPlano
@@ -242,15 +259,11 @@ export class DadosClienteComponent implements OnInit {
     }
   }
 
-
-  getPlanos() {
-    this.planosService.getPlanos().subscribe(
-      response => {
-        console.log(response);
-        this.responsePlanos = response;
-      }
-    )
+  ocultarCartao(numeroCartao: string) {
+    this.dadosAtuais.cartaoSeguro = "************"+numeroCartao.substring(11, 15)
   }
+
+
 
 
   //VER ESSE MÉTODO PARA FUNCIONAR A IMAGEM NO FRONT...
