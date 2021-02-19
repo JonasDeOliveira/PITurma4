@@ -260,6 +260,11 @@ ul#todoLista.todo__tarefas-lista{
     color: inherit;
 }
 
+.ds_lembrete{
+    line-height: 130%;
+    margin:11px auto;
+}
+
 /* Fim da lista de lembretes  */
 
 /* Meu Plano */

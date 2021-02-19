@@ -13,12 +13,12 @@
                         <li class="nav-item"><a class="nav-link" href='/planos/#card-planos'>Planos</a></li>
                         <li class="nav-item"><a class="nav-link" [routerLink]="['/sustentabilidade']">Sustentabilidade</a></li>
                         <li class="nav-item"><a class="nav-link" href='/#servicos'>Serviços</a></li>
-                        <li class="nav-item"><a class="nav-link" [routerLink]="['/area-cliente']"><b>Minha Área</b></a></li>
+                        <li class="nav-item"><a class="nav-link" [routerLink]="['/area-cliente']">Minha Área</a></li>
                     </ul>
                 </div>
                 <div class="col-4 avatar">
                         <div class="nome-cliente">
-                            <span id="txt-login" > Olá, {{areaDoCliente.nmNome}}</span>
+                            <span id="txt-login text-right" > Olá, {{areaDoCliente.nmNome}}</span>
                             <!-- TODO: substituir pelos dados de usuario -->
                             <a href="/"><button class="btn btn-sm botao-sair" (click)="logout()">Sair</button></a>
                         </div>
