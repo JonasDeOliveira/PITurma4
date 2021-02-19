@@ -18,6 +18,12 @@ export class LojaService {
   getLojas() {
     return this.http.get<ResponseLojas[]>(this.API);
   }
+
+  getLojaById(id: number) {
+    const URL = `${this.API}/id/${id}`
+    console.log(URL);
+    return this.http.get<Lojas>(URL);
+  }
   
   getLojasPorLocalidade(local: string): Observable<any> {
     return this.http.get<ResponseLojas[]>(this.API2 + local);

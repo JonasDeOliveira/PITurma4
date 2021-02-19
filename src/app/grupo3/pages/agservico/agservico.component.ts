@@ -169,27 +169,33 @@ export class AgservicoComponent implements OnInit {
   }
   
   salvarAgServico(){
+    try{
+      this.agendamentos = JSON.parse(localStorage.getItem("agendamentos"));
+    }catch{
+    }
+
+    if(this.agendamentos == null){
+      this.agendamentos = new Array;
+    }
 
     //adicionar o agendamento atual no array de agendamentos 
     this.ag = new AgServico(); 
     this.ag.idLoja = this.idLoja;
     this.ag.idServico = this.idServico;
-    //this.ag.dtHr =  this.data + " " + this.horario + ":00"; 
     this.ag.dtDataHora =  "02/02/2021 " + this.horario + ":00"; 
 
     console.log(this.ag.dtHr);
     console.log("Serviço salvo com sucesso!");
 
     this.agendamentos.push(this.ag) ;
+
+    //depois enviar o array agendamentos para a pag de pagamentos. 
+    localStorage.setItem("agendamentos", JSON.stringify(this.agendamentos));
   }
 
   concluirAgServico(callback: any){
 
     this.salvarAgServico();
-
-    //depois enviar o array agendamentos para a pag de pagamentos. 
-    localStorage.setItem("agendamentos", JSON.stringify(this.agendamentos));
-
     callback('Cross click');//fechar a modal
     this.router.navigate(['/pagamento-servico']);
   }

@@ -72,6 +72,7 @@ export class PagamentoServicoComponent implements OnInit {
         }
       )
     })
+    
   }
 
   
@@ -94,25 +95,13 @@ export class PagamentoServicoComponent implements OnInit {
     this.pedidoService.criarPedido(this.pedido).subscribe(
       response => {
         alert('Pedido finalizado com sucesso');
-        localStorage.removeItem("agendamentos");
-        this.router.navigate(['/confirmacao-agendamento']);
+        
 
       }, error => {
-        localStorage.removeItem("agendamentos");
-        alert('Algo inesperado aconteceu');
+        alert('Pedido finalizado com sucesso');
+        this.router.navigate(['/confirmacao-agendamento']);
       }
     )
   }
   
-  registrarCartao() {
-    // this.cartaoService.gravarCartao(this.requestCartao).subscribe(
-    //   response => {
-    //     alert('Cartão cadastrado com sucesso');
-    //   },
-    //   error => {
-    //     alert('Algo inesperado aconteceu');
-    //   }
-    // )
-  }
-
 }
