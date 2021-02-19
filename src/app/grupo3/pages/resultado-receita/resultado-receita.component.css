@@ -8,6 +8,17 @@
     line-height: 18px;
 }
 
+
+.botao-voltar {
+    background-color: #2a764a;
+}
+
+.botao-voltar:hover{
+    background-color: #5db193;
+    border: none;
+      
+  }
+  
 .text-center{
     color: #444444;
 }

@@ -2,9 +2,11 @@
     <section>
         <div class="banner"></div>
         
-        <div>
-            <h3 class = "titulo"> {{receita.nomeReceita}}</h3>
-           <!-- <h4 class = "subtitulo">{{receita.categoria}}</h4>-->
+        <div class="d-flex justify-content-between form-inline mr-5">
+            <h3 class="titulo"> {{receita.nomeReceita}}</h3>
+            <button [routerLink]="['/pesquisar-receitas']" type="button"
+                class="btn btn-success botao-voltar btn-sm float-right">Nova busca</button>
+            <!-- <h4 class = "subtitulo">{{receita.categoria}}</h4>-->
         </div>
         
         <div class = "container_receita">

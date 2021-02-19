@@ -111,19 +111,19 @@
                     </tr>
                     <tr class="dadosPedido" *ngFor="let servico of servicos">
                         <td class="text-left">{{servico.nome}}</td>
-                        <td class="text-right">{{servico.preco}}</td>
+                        <td class="text-right">{{servico.preco | currency: 'BRL': true}}</td>
                     </tr>
                 </table>
                 
                 <table class="table">
                     <tr>
                         <th colspan="2" class="total">Total</th>
-                        <td class="total text-right">{{total}}</td>
+                        <td class="total text-right">{{total | currency: 'BRL': true}}</td>
                     </tr>
                 </table>
                 <div class="btnConcluir">
                     <div class="col text-center">
-                    <button type="submit" class="btn-lg btn btn-success" (click)="registrarPedido()">Finalizar pagamento</button>
+                    <button type="submit" class="btn btn-outline-success btn-lg" (click)="registrarPedido()">Finalizar pagamento</button>
                     </div>
                 </div>
             </div>
