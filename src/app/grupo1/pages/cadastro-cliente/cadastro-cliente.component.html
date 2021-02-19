@@ -10,18 +10,18 @@
                 <label for="cadastro-email">Email:</label>
                 <input type="email" class="form-control" id="cadastro-email" placeholder="Digite o seu e-mail"
                     [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required>
-                    <!-- pattern="[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+"> -->
-                    <div *ngIf= "dsEmail.errors && (dsEmail.dirty || dsEmail.touched)"
-                    class="alert alert-light mt-1" role="alert">
+                <!-- pattern="[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+"> -->
+                <div *ngIf="dsEmail.errors && (dsEmail.dirty || dsEmail.touched)" class="alert alert-light mt-1"
+                    role="alert">
                     O campo e-mail é obrigatório.
-                </div>                 
+                </div>
             </div>
             <div class="form-group col-md-4">
                 <label for="cadastro-senha">Senha:</label>
                 <input type="password" class="form-control" id="cadastro-senha" placeholder="Digite a senha"
-                    [(ngModel)]="outputCliente.loginUsuario.dsSenha" #dsSenha="ngModel" name="dsSenha" required >
-                <div *ngIf= "dsSenha.errors &&(dsSenha.dirty || dsSenha.touched)"
-                    class="alert alert-light mt-1" role="alert">
+                    [(ngModel)]="outputCliente.loginUsuario.dsSenha" #dsSenha="ngModel" name="dsSenha" required>
+                <div *ngIf="dsSenha.errors &&(dsSenha.dirty || dsSenha.touched)" class="alert alert-light mt-1"
+                    role="alert">
                     Insira uma senha.
                 </div>
             </div>
@@ -30,8 +30,9 @@
             <div class="form-group col-md-8">
                 <label for="cadastro-email2">Repita o Email:</label>
                 <input type="email" class="form-control" id="cadastro-email2" placeholder="Digite o seu e-mail"
-                    [(ngModel)]="confirmacao.emailConfirmacao" #emailConfirmacao="ngModel" name="emailConfirmacao" required> 
-                    <!-- pattern="[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+"  -->
+                    [(ngModel)]="confirmacao.emailConfirmacao" #emailConfirmacao="ngModel" name="emailConfirmacao"
+                    required>
+                <!-- pattern="[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+"  -->
                 <div *ngIf="emailConfirmacao.value != dsEmail.value && (emailConfirmacao.dirty || emailConfirmacao.touched)"
                     class="alert alert-light mt-1" role="alert">
                     O email informado não confere!
@@ -79,9 +80,9 @@
             <div class="form-group col-md-4">
                 <label for="cadastro-cpf">CPF:</label>
                 <input type="text" class="form-control" id="cadastro-cpf" placeholder="Digite o seu CPF"
-                    [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" minlength="11" maxlength="14" required 
-                    mask="000.000.000-00"> 
-               
+                    [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" minlength="11"
+                    maxlength="14" required mask="000.000.000-00">
+
                 <div *ngIf="nrCpf.errors && (nrCpf.dirty || nrCpf.touched)" class="alert alert-light">
                     <div [hidden]="!nrCpf.errors.required">
                         O campo CPF é obrigatório.
@@ -93,9 +94,9 @@
             </div>
             <div class="form-group col-md-1">
                 <label for="cadastro-ddd">DDD:</label>
-                <input type="text" class="form-control" id="cadastro-ddd" required
-                [(ngModel)]="outputCliente.ddd" placeholder="(000)" name="ddd" #ddd="ngModel" minlegth="3" maxlength="3" mask="000">
-                <div *ngIf="ddd.errors && (ddd.dirty || ddd.touched)"class="alert alert- light">
+                <input type="text" class="form-control" id="cadastro-ddd" required [(ngModel)]="outputCliente.ddd"
+                    placeholder="(000)" name="ddd" #ddd="ngModel" minlegth="3" maxlength="3" mask="000">
+                <div *ngIf="ddd.errors && (ddd.dirty || ddd.touched)" class="alert alert- light">
                     <div [hidden]="!celular.errors.required">
                         Informe o DDD
                     </div>
@@ -104,8 +105,9 @@
             <div class="form-group col-md-3">
                 <label for="cadastro-celular">Celular:</label>
                 <input type="text" class="form-control" id="cadastro-celular" placeholder="Digite o seu Celular"
-                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="9" maxlength="10" required mask="00000-0000">
-                    <!--  pattern="(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"  -->
+                    [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" minlength="9" maxlength="10"
+                    required mask="00000-0000">
+                <!--  pattern="(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"  -->
                 <div *ngIf="celular.errors && (celular.dirty || celular.touched)" class="alert alert- light">
                     <div [hidden]="!celular.errors.required">
                         Informar telefone para contato.
@@ -114,34 +116,38 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="cadastro-nascimento">Data de Nascimento:</label>
-                <input type="date" class="form-control" id="cadastro-nascimento" min="{{minDate | date: 'yyyy-MM-dd'}}" max="{{maxDate | date: 'yyyy-MM-dd'}}"
-                    [(ngModel)]="outputCliente.usuario.dtNascimento" #dtNascimento="ngModel" name="dtNascimento" required>
+                <input type="date" class="form-control" id="cadastro-nascimento" min="{{minDate | date: 'yyyy-MM-dd'}}"
+                    max="{{maxDate | date: 'yyyy-MM-dd'}}" [(ngModel)]="outputCliente.usuario.dtNascimento"
+                    #dtNascimento="ngModel" name="dtNascimento" required>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-4" method="get" action=".">
                 <label for="cadastro-cep">CEP:</label>
-                <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP" minlength="8" maxlength="9" mask="00000-000"
-                    [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep" #nrCep="ngModel" name="nrCep"required 
-                    onblur="pesquisacep(this.value);">
+                <input type="text" class="form-control" id="cadastro-cep" placeholder="Digite o seu CEP" minlength="8"
+                    maxlength="9" mask="00000-000" [(ngModel)]="outputCliente.usuario.enderecos[0].nrCep"
+                    #nrCep="ngModel" name="nrCep" required (blur)="buscarEnderecoCep()">
 
             </div>
             <div class="form-group col-md-7">
                 <label for="cadastro-endereco">Endereço:</label>
                 <input type="text" class="form-control" id="cadastro-endereco" placeholder="Digite o seu endereço"
-                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsEndereco" #dsEndereco="ngModel" name="dsEndereco" required>
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsEndereco" #dsEndereco="ngModel" name="dsEndereco"
+                    required>
             </div>
             <div class="form-group col-md-1">
                 <label for="cadastro-cep">Número:</label>
                 <input type="text" class="form-control" id="cadastro-numero" placeholder="Número"
-                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsComplemento" #dsComplemento="ngModel" name="dsComplemento">
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsComplemento" #dsComplemento="ngModel"
+                    name="dsComplemento">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-5">
                 <label for="cadastro-bairro">Bairro:</label>
                 <input type="text" class="form-control" id="cadastro-bairro" placeholder="Digite o seu Bairro"
-                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsBairro" #dsBairro="ngModel" name="dsBairro" required>
+                    [(ngModel)]="outputCliente.usuario.enderecos[0].dsBairro" #dsBairro="ngModel" name="dsBairro"
+                    required>
             </div>
             <div class="form-group col-md-2">
                 <label for="cadastro-estado">Estado:</label>
@@ -172,8 +178,8 @@
             <div class="card">
                 <img class="img-card" src="assets/grupo1/img/BASIC.png" alt="Card image cap">
                 <h5 class="card-title">{{responsePlanos[0].nmPlano}} </h5>
-                <div class="card-body" >
-                    <p *ngFor="let servicos of responsePlanos[0].servicos"  class="card-text" >{{servicos.dsServico}}</p>
+                <div class="card-body">
+                    <p *ngFor="let servicos of responsePlanos[0].servicos" class="card-text">{{servicos.dsServico}}</p>
                 </div>
                 <div>
                     <h5 class="alinhamento">R${{responsePlanos[0].vlPlano}},00</h5>
@@ -187,7 +193,7 @@
                 <h5 class="card-title">{{responsePlanos[1].nmPlano}}</h5>
                 <div class="card-body">
                     <p *ngFor="let servicos of responsePlanos[1].servicos" class="card-text">{{servicos.dsServico}}</p>
-                    </div>
+                </div>
                 <div>
                     <h5 class="alinhamento">R${{responsePlanos[1].vlPlano}},00</h5>
                 </div>
@@ -198,7 +204,7 @@
             <div class="card">
                 <img class="img-card" src="assets/grupo1/img/PREMIUM.png" alt="Card image cap">
                 <h5 class="card-title">{{responsePlanos[2].nmPlano}}</h5>
-                <div class="card-body">                    
+                <div class="card-body">
                     <p *ngFor="let servicos of responsePlanos[2].servicos" class="card-text">{{servicos.dsServico}}</p>
                 </div>
                 <div>
@@ -227,8 +233,8 @@
                             <div class="form-group col-md-12 cadastro-cartao">
                                 <label for="cartao-numero">Número do Cartão:</label>
                                 <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
-                                    [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16" maxlength="16"
-                                    required placeholder="0000 0000 0000 0000">
+                                    [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel" minlength="16"
+                                    maxlength="16" required placeholder="0000 0000 0000 0000">
                                 <div *ngIf="nrCartao.errors && (nrCartao.dirty || nrCartao.touched)"
                                     class="alert alert-light">
                                     <div [hidden]="!nrCartao.errors.required">
@@ -258,20 +264,21 @@
                             <div class="form-group col-md-5">
                                 <label for="cartao-vencimento">Data de vencimento:</label>
                                 <div class="vencimento-cartao">
-                                        <input type="date" class="form-control" id="dtValidade" placeholder="00/0000"
-                                            [(ngModel)]="outputCliente.cartao.dtValidade" name="dtValidade" #dtValidade="ngModel" required>
+                                    <input type="date" class="form-control" id="dtValidade" placeholder="00/0000"
+                                        [(ngModel)]="outputCliente.cartao.dtValidade" name="dtValidade"
+                                        #dtValidade="ngModel" required>
                                 </div>
                             </div>
                             <div class="form-group col-md-7">
                                 <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
-                                    <input type="password" class="form-control" id="cartao-codigo-seguranca"
-                                        placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca"
-                                        name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>
+                                <input type="password" class="form-control" id="cartao-codigo-seguranca"
+                                    placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca"
+                                    name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>
                             </div>
                         </div>
-                        
-                        <button type="button" class="btn btns-cadastro btn-espaco" (click)="d('Cross click')" 
-                        [disabled]="formCartao.invalid">Confirmar</button>
+
+                        <button type="button" class="btn btns-cadastro btn-espaco" (click)="d('Cross click')"
+                            [disabled]="formCartao.invalid">Confirmar</button>
                         <button type="button" class="btn btns-cadastro btn-espaco"
                             (click)="limparCartao()">Cancelar</button>
                     </form>

@@ -8,6 +8,7 @@ import { PlanosService } from '../planos/shared/planos.service';
 import { LoginClienteService } from '../cliente/shared/loginCliente.service';
 import { LoginClienteComponent } from '../login-cliente/login-cliente.component';
 
+
 @Component({
   selector: 'app-cadastro-cliente',
   templateUrl: './cadastro-cliente.component.html',
@@ -21,7 +22,7 @@ export class CadastroClienteComponent implements OnInit {
   responseCidadesByUf: any;
   responsePlanos: any;
 
-  minDate: Date = new Date(1910,1,1);
+  minDate: Date = new Date(1910, 1, 1);
   maxDate: Date = new Date();
 
   loginCliente: LoginUsuario = {
@@ -40,6 +41,8 @@ export class CadastroClienteComponent implements OnInit {
     emailConfirmacao: '',
     senhaConfirmacao: ''
   };
+
+
 
   outputCliente: OutputCliente = {
     loginUsuario: {
@@ -118,9 +121,9 @@ export class CadastroClienteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
     this.getFormularioCadastro();
-    this.getPlanos()
+    this.getPlanos();
+    
   }
 
   getFormularioCadastro() {
@@ -222,4 +225,16 @@ export class CadastroClienteComponent implements OnInit {
       }
     )
   }
+
+  buscarEnderecoCep(){
+    this.clienteService.getEnderecoByViaCep(this.outputCliente.usuario.enderecos[0].nrCep).subscribe(
+      response => {
+        console.log(response);
+        this.outputCliente.usuario.enderecos[0].dsEndereco = response.logradouro;
+        this.outputCliente.usuario.enderecos[0].dsBairro = response.bairro;
+      }
+    )
+  }
+
+
 }
