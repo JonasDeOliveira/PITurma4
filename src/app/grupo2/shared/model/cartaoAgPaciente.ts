@@ -1,4 +1,4 @@
-import { Paciente } from './agPaciente';
+
 
 export interface CartaoAgPaciente{
 
@@ -8,4 +8,8 @@ export interface CartaoAgPaciente{
     codSeguranca: string;
     dtValidade: string;
 
+}
+
+export interface Paciente{
+    nome: string;
 }

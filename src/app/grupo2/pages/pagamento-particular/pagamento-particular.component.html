@@ -66,7 +66,7 @@
             <div class="linha linha-futura"></div>
         </div>
         <div class="texto-trilha d-flex flex-column">
-            <div class="trilha">Pagamento</div>
+            <div class="trilha">Valor a pagar</div>
             <div class="opcao-vazia">vazio</div>
         </div>
     </div>
@@ -91,20 +91,19 @@
             <div class="col-md-12 ">
                 <div class="containerForma">
                     <div class="forma text-center text-secundary">
-                        <h3>Forma de Pagamento</h3>
+                        <h3>Pagamento</h3>
                     </div>
                 </div>
             </div>
         </div>
 
-
         <!--- botoes Particular e Planos -->
-        <div class="row">
+        <!-- <div class="row">
             <div class="container text-center col-12 md-3 mt-3 mb-5">
                 <a routerLink='/pagamento-plano'><button class="btn-active clicavel">Plano</button></a>
                 <button class="btn-active clicado">Particular</button>
             </div>
-        </div>
+        </div> -->
     </div>
     <!--- final botoes -->
     <div class="d-flex">
@@ -116,7 +115,7 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="numeroCC">Número do cartão*</label>
-                            <input [(ngModel)]="nrCartao" name="nrCartao" type="text" class="form-control" id="nrCartao"
+                            <input [(ngModel)]="cartao.nrCartao" name="nrCartao" type="text" class="form-control" id="nrCartao"
                                 placeholder="Digite o número do Cartao" required>
                         </div>
 
@@ -126,7 +125,7 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="nomeTitular">Nome do titular do cartão*</label>
-                            <input [(ngModel)]="nmTitular" name="nmTitular" type="text" class="form-control"
+                            <input [(ngModel)]="cartao.usuario.nome" #nmTitular="ngModel" name="nmTitular" type="text" class="form-control"
                                 id="nmTitular" placeholder="Digite o nome como gravado no cartão" required>
                         </div>
                     </div>
@@ -135,17 +134,17 @@
                     <div class="form-row">
                         <div class="form-group col-12 col-lg-4">
                             <label for="dtVencMes">Mês de vencimento*</label>
-                            <select [(ngModel)]="mesVenc" name="mesVenc" id="dtVencMes" class="form-control" required>
+                            <select [(ngModel)]="dataCartao.mesVenc" name="mesVenc" id="dtVencMes" class="form-control" required>
                                 <option value="undefined" selected>Mês</option>
-                                <option value="1">01 - janeiro</option>
-                                <option value="2">02 - fevereiro</option>
-                                <option value="3">03 - março</option>
-                                <option value="4">04 - abril</option>
-                                <option value="5">05 - maio</option>
-                                <option value="6">06 - junho</option>
-                                <option value="7">07 - julho</option>
-                                <option value="8">08 - agosto</option>
-                                <option value="9">09 - setembro</option>
+                                <option value="01">01 - janeiro</option>
+                                <option value="02">02 - fevereiro</option>
+                                <option value="03">03 - março</option>
+                                <option value="04">04 - abril</option>
+                                <option value="05">05 - maio</option>
+                                <option value="06">06 - junho</option>
+                                <option value="07">07 - julho</option>
+                                <option value="08">08 - agosto</option>
+                                <option value="09">09 - setembro</option>
                                 <option value="10">10 - outubro</option>
                                 <option value="11">11 - novembro</option>
                                 <option value="12">12 - dezembro</option>
@@ -153,7 +152,7 @@
                         </div>
                         <div class="form-group col-12 col-lg-4">
                             <label for="dtVencAno">Ano de vencimento*</label>
-                            <select  [(ngModel)]="anoVenc" name="anoVenc" id="dtVencAno" class="form-control" required>
+                            <select  [(ngModel)]="dataCartao.anoVenc" name="anoVenc" id="dtVencAno" class="form-control" required>
                                 <option value="undefined" selected>Ano</option>
                                 <option value="2020">2020</option>
                                 <option value="2021">2021</option>
@@ -170,13 +169,13 @@
                         </div>
                         <div class="form-group col-12 col-lg-4">
                             <label for="codSegCC">CVV*</label>
-                            <input [(ngModel)]="cvv" name="cvv" type="text" class="form-control" id="codSegCC" placeholder="000" required>
+                            <input [(ngModel)]="cartao.codSeguranca" name="cvv" type="text" class="form-control" id="codSegCC" placeholder="000" required>
                         </div>
                     </div>
 
 
                     <!-- linha 4 - Números de parcelas -->
-                    <div class="form-row">
+                    <!-- <div class="form-row">
                         <div class="form-group col-12">
                             <label for="numParcelas">Opções de parcelamento*</label>
                             <select class="custom-select mb-2" [(ngModel)]="qtadeParcelas" id="name" name="parc"
@@ -188,7 +187,9 @@
                             </select>
                         </div>
                     </div>
-
+                    {{cartao|json}}
+                    {{dataCartao|json}}
+                    {{dataConcatenada|json}} -->
                     <!-- linha 5 - Salvar dados do cartão -->
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="salvarCC" id="salvarCC" value="option1">
@@ -209,24 +210,28 @@
                     <tr class="cabecalho ">
                         <th class="produto text-center">SERVIÇO</th>
                         <th class="quantidade text-center">ESPECIALISTA</th>
-                        <!-- <th class="preco text-center">PARCELAS</th> -->
+                        <th class="preco text-center">PLANO</th>
+                        <th class="preco text-center">VALOR DO DESCONTO</th>
+                        <th class="preco text-center">VALOR CONSULTA</th>
                     </tr>
                     <tr class="dadosPedido">
                         <td class="text-left">Consulta {{dsEspecialidade}}</td>
                         <td class="text-center">Dr(a) {{nmMedico}}</td>
-                        <!-- <td class="text-right">{{qtadeParcelas}}</td> -->
+                        <td class="text-right">{{dsPlano}}</td>
+                        <th class="preco text-center">{{desconto}}}</th>
+                        <th class="preco text-center">R$ {{vlConsulta}}</th>
                     </tr>
                 </table>
                 <table class="table">
                     <tr>
-                        <th colspan="2" class="total">Total</th>
+                        <th colspan="2" class="total">Total com desconto</th>
                         <td class="total text-right">R$ {{vlConsulta}}</td>
                     </tr>
                 </table>
                 <div class="btnConcluir">
                     <div class="col text-center">
                         <a routerLink='/confirmacao-consulta'><button class="btn-active clicavel"
-                                value="CadastrarParticular" (click)="salvarTipoPagamento()">Confirmar</button></a>
+                                value="CadastrarParticular" (click)= "salvarCartaoLS()" (click)="salvarTipoPlano()">Confirmar</button></a>
                     </div>
                 </div>
             </div>

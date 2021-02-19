@@ -61,15 +61,14 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   parcelas: number = JSON.parse(localStorage.getItem("qtadeParcelas"));
   cartao: CartaoAgPaciente = JSON.parse(localStorage.getItem("cartao"))
 
-  usuario: Paciente = JSON.parse(localStorage.getItem("cliente"));
-  idUsuario:number = this.usuario.idPaciente;
+  usuario = JSON.parse(localStorage.getItem("cliente"));
+  idUsuario = this.usuario.idUsuario;
+  
 
   consultaConfirmada : boolean = true;
   consultaNaoConfirmada : boolean = true;
 
-  //VOLTAR APOS MERGE
-  //usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
-  // idUsuario:number = usuario.idUsuario;
+ 
 
 
   //TIRAR APOS MERGE
@@ -97,10 +96,12 @@ export class ConfirmacaoConsultaComponent implements OnInit {
 
   ngOnInit():void {
 
+    
+   
+    console.log(this.cartao)
     this.consultaConfirmada = false;
     this.consultaNaoConfirmada = true;
-    console.log(this.dsTipoPagamento)
-        if (this.tipoPagamento.idFormaPagamento == 1){
+    if (this.tipoPagamento.idFormaPagamento == 1){
       this.tipoPagamento.dsFormaPagamento="Plano"
     } else if (this.tipoPagamento.idFormaPagamento == 2){
       this.tipoPagamento.dsFormaPagamento="Cartão"
@@ -123,16 +124,12 @@ export class ConfirmacaoConsultaComponent implements OnInit {
     
     this.confirmacaoService.cadastrarPgtoAgP(request).subscribe(
       response => {
-        localStorage.setItem("agPaciente", JSON.stringify(response.agPaciente));
-        localStorage.setItem("pagamento", JSON.stringify(response.pagamento));
-        console.log(localStorage.getItem("agPaciente"));
-        console.log(localStorage.getItem("pagamento"))
+        console.log(response);
         this.consultaConfirmada = true;
         this.consultaNaoConfirmada = false;
-
       }
 
     )
   }
-
+ 
 }

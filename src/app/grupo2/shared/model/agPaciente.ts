@@ -44,6 +44,8 @@ export interface StatusConsulta {
 export interface Paciente{
     idPaciente?: number;
     nome?: string;
+    dsEmail?: string;
+    dsSenha?:string;
 
 }
 

@@ -70,7 +70,8 @@ export class PagamentoPlanoComponent implements OnInit {
       }
     )
   }
-    
+  
+  //MUDAR PARA SALVAR O ID DO PLANO
   salvarTipoPagamento(){
     localStorage.setItem("tipoPagamento", JSON.stringify(this.tipoPagamento));
   }

@@ -25,7 +25,7 @@ export class MinhasConsultasComponent implements OnInit {
        config.keyboard = false;
    }
 
-
+  data: Date;
   responseAgPacientes : AgPaciente [];
   respostaString: Resposta;
  
@@ -35,7 +35,7 @@ export class MinhasConsultasComponent implements OnInit {
 
     ngOnInit() : void{
     this.listarAgPacientePorUsuario(this.idUsuario);
-    
+  
   }
   open(content) {
     this.modalService.open(content);
@@ -45,6 +45,7 @@ export class MinhasConsultasComponent implements OnInit {
     this.agPacienteService.buscarAgPacientes(idUsuario).subscribe(
       response => {
         this.responseAgPacientes = response;
+        console.log(this.responseAgPacientes)
       }
     )  
   }
