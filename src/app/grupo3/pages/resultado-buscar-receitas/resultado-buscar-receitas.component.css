@@ -10,6 +10,16 @@
     background-color: hsla(147, 19%, 55%, 0.5);
 }
 
+.botao-voltar {
+    background-color: #2a764a;
+}
+
+.botao-voltar:hover{
+    background-color: #5db193;
+    border: none;
+      
+  }
+
 a {
     text-decoration: none;
     color:black;
