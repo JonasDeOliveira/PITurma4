@@ -37,7 +37,7 @@ export interface Periodo {
 
 export interface StatusConsulta {
     idStatusConsulta: number;
-    dsStatusConsulta: string;
+    dsStatusConsulta?: string;
 }
 
 

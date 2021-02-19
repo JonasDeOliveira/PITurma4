@@ -1,8 +1,9 @@
 import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UsuarioModule } from 'src/app/grupo1/usuario/usuario.module';
 import { Agenda} from '../../shared/model/agenda';
-import { AgPaciente,  } from '../../shared/model/agPaciente';
+import { AgPaciente, Paciente,  } from '../../shared/model/agPaciente';
 import {  CadastroAgPactPgto } from '../../shared/model/cadastroAgPactPgto';
 import { CartaoAgPaciente } from '../../shared/model/cartaoAgPaciente';
 import { Contrato } from '../../shared/model/contrato';
@@ -59,12 +60,12 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   parcelas: number = JSON.parse(localStorage.getItem("qtadeParcelas"));
   cartao: CartaoAgPaciente = JSON.parse(localStorage.getItem("cartao"))
 
-  //VOLTAR APOS MERGE
-  //usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
-  // idUsuario:number = usuario.idUsuario;
+  // VOLTAR APOS MERGE
+  usuario: Paciente = JSON.parse(localStorage.getItem("cliente"));
+  idUsuario:number = this.usuario.idPaciente;
   
-  //TIRAR APOS MERGE
-  idUsuario = 142;
+  // //TIRAR APOS MERGE
+  // idUsuario = 142;
 
   data: string;
 
@@ -109,6 +110,8 @@ export class ConfirmacaoConsultaComponent implements OnInit {
       response => {
         localStorage.setItem("agPaciente", JSON.stringify(response.agPaciente));
         localStorage.setItem("pagamento", JSON.stringify(response.pagamento));
+        console.log(localStorage.getItem("agPaciente"));
+        console.log(localStorage.getItem("pagamento"))
       }
 
     )

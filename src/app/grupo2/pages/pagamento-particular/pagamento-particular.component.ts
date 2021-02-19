@@ -67,7 +67,8 @@ export class PagamentoParticularComponent implements OnInit {
   }; 
   
   ngOnInit(): void {
-    this.listarCartao(this.idUsuario);
+    //QUEBRADO - ARRUMAR PARA SEGUNDA
+    // this.listarCartao(this.idUsuario);
   }
 
   listarCartao(idUsuario: number){
