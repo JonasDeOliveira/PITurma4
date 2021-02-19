@@ -18,13 +18,15 @@ export class HistoricoAgservicoComponent implements OnInit {
   agCancelados: AgServico[];
 
   agendamentos: boolean;
-  usuario: Usuario;
+  spinCarregando: boolean = true;
+
+  cliente = JSON.parse(localStorage.getItem("cliente"));
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
   
   constructor(private agendamentoService : AgServicoService, private router: Router) { 
     this.agAgendados = new Array; 
     this.agRealizados = new Array; 
     this.agCancelados = new Array; 
-    this.usuario = JSON.parse(localStorage.getItem("cliente"));
     this.agendamentos = true;
   }
 
@@ -34,7 +36,7 @@ export class HistoricoAgservicoComponent implements OnInit {
 
   listarAgendamentos(){
 
-    this.agendamentoService.getAgendamentosPorUsuario(this.usuario.idUsuario).subscribe(
+    this.agendamentoService.getAgendamentosPorUsuario(this.cliente.idUsuario).subscribe(
       response => {
         this.responseAgendamentos = response; 
 
@@ -53,6 +55,8 @@ export class HistoricoAgservicoComponent implements OnInit {
         if (this.responseAgendamentos.length == 0){
           this.agendamentos = false;
         }
+
+        this.spinCarregando = false;
       }
     )
   }

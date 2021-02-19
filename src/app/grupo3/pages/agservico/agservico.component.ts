@@ -26,8 +26,10 @@ export class AgservicoComponent implements OnInit {
   data: string; 
   agendamentos: AgServico[];
   servicos: Servicos[];
-  servicos2: Servicos[];
   ag: AgServico;
+
+  cliente = JSON.parse(localStorage.getItem("cliente"));
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
   
 
   hrManha: string[]; //todos os horários da manhã
@@ -40,9 +42,10 @@ export class AgservicoComponent implements OnInit {
 
   hrIndisp: string[]; //recebe os horários que já estão agendados
 
-  exibir: boolean; //variavel que exibe os horários
-  exibir2: boolean; //variavel que exibe a parte de data/hora
+  exibir: boolean = false; //variavel que exibe os horários
+  exibir2: boolean = false; //variavel que exibe a parte de data/hora
   tem: boolean;
+  spinResponseLojas: boolean = false;
 
   responseServicos : ResponseServicos; //recebe os serviços
   responseLojas : ResponseLojas[]; //recebe as lojas
@@ -52,8 +55,6 @@ export class AgservicoComponent implements OnInit {
     config.backdrop = 'static';
     config.keyboard = false;
 
-    this.exibir = false; //não exibe os horários
-    this.exibir2 = false; //não exibe a parte3
     this.hrManha = ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30"];
     this.hrTarde = ["15:00", "15:30", "16:00", "16:30", "17:00", "17:30"];
     this.hrNoite = ["19:00", "19:30", "20:00", "20:30", "21:00", "21:30"];
@@ -62,7 +63,6 @@ export class AgservicoComponent implements OnInit {
     this.hrNoiteExibir = new Array; 
     this.agendamentos = new Array; 
     this.servicos = new Array;
-    this.servicos2 = new Array;
 
   }
 
@@ -74,14 +74,12 @@ export class AgservicoComponent implements OnInit {
     this.modalService.open(content);
   }
 
-
   getLoja(id: number){
     this.idLoja = id; 
     console.log("Id seviço: "+ this.idServico);
     console.log("Id loja: "+id); 
 
     this.exibir2 = true;
-    
   }
 
   getServico(id: number){
@@ -103,11 +101,19 @@ export class AgservicoComponent implements OnInit {
   }
 
   buscarLojaPorLocal(){
+    this.spinResponseLojas = true;
     this.lojaService.getLojasPorLocalidade(this.local).subscribe (
       response => {
         this.responseLojas = response;
+        this.spinResponseLojas = false;
+        /*if (this.responseLojas == null){
+          alert("Sua busca não retornou resultados");
+        } */
+        
       }
     )
+    
+    
   }
 
   getHorasIndisponiveis(data: string){
@@ -116,6 +122,7 @@ export class AgservicoComponent implements OnInit {
     this.horarioService.getHorasIndisponiveis(this.idLoja, data).subscribe(
       response => {
         this.hrIndisp = response;
+        console.log(response);
 
         //comparando os horários 
 

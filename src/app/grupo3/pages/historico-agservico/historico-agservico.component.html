@@ -1,3 +1,5 @@
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
 <div class="container">
 
     <section>
@@ -11,6 +13,10 @@
             <div class="col-12 col-lg-4">
                 <h5><a [routerLink] = "['/agservico']" class="sub" > Realizar novo agendamento > </a> </h5>
             </div>
+        </div>
+
+        <div class="row justify-content-center pt-5 spinner-grow text-muted">
+            <i *ngIf="spinCarregando" class="fa fa-spinner fa-spin"></i>
         </div>
 
 
@@ -29,7 +35,7 @@
                 <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agAgendados">
                     <div class="card" style="width: 90%;">
                         <div class="card-body">
-                        <h5 class="card-title">{{ag.servico.nome}}</h5>
+                        <h5 class="card-title">{{ag.servico.nome}} {{ag.idAgendamento}}</h5>
                         <p class="card-text">Horário: {{ag.dtDataHora}}</p>
                         <p class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </p>
                         <p class="sub justify-content-end"><a class="sub" (click)="cancelarAgendamento(ag.idAgendamento)"> Cancelar agendamento </a> </p>
@@ -49,7 +55,7 @@
                 <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agRealizados">
                     <div class="card" style="width: 90%;">
                         <div class="card-body">
-                        <h5 class="card-title">{{ag.servico.nome}}</h5>
+                        <h5 class="card-title">{{ag.servico.nome}} {{ag.idAgendamento}}</h5>
                         <p class="card-text">Horário: {{ag.dtDataHora}}</p>
                         <p class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </p>
                         </div>
@@ -67,7 +73,7 @@
                 <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agCancelados">
                     <div class="card" style="width: 90%;">
                         <div class="card-body">
-                        <h5 class="card-title">{{ag.servico.nome}}</h5>
+                        <h5 class="card-title">{{ag.servico.nome}} {{ag.idAgendamento}}</h5>
                         <p class="card-text">Horário: {{ag.dtDataHora}}</p>
                         <p class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </p>
                         </div>
@@ -75,10 +81,11 @@
                 </div>
             </div>
         </div>
-
+        <div style="height: 100px;"></div>
     </section>
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </div>
+<app-footer></app-footer>

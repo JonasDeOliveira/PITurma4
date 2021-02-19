@@ -15,18 +15,23 @@
 }
 
 .btn-verde{
-  background-color: #428870;
+  background-color: #2a764a;
   border: none;
 }
 
 .btn-verde:hover{
-  background-color: #5db193;
-  border: none;
-    
+  /*background-color: #5db193;
+  border: none; */
+  background-color: rgb(000, 080, 052);
+  border: 1px solid rgb(000, 080, 052);
 }
 
+
 .horarios{
-  background-color: hsla(147, 19%, 55%, 0.5); margin-top: 15px;
+  border-color: hsla(147, 19%, 55%, 0.5); 
+  border-radius: 5%;
+  border: 1px solid;
+  margin-top: 15px;
 }
 
 
