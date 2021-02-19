@@ -14,6 +14,7 @@ import { Usuario } from 'src/app/grupo1/usuario/shared/usuario.model';
     constructor(private http: HttpClient) { }
   
     private readonly API = 'http://localhost:8080';
+    private readonly APIViaCEP = 'http://viacep.com.br/ws/';
     cliente = JSON.parse(localStorage.getItem("cliente"));
      
     getFormularioCadastro(){
@@ -61,6 +62,11 @@ import { Usuario } from 'src/app/grupo1/usuario/shared/usuario.model';
 
   getPlanos() {
     return this.http.get<ResponsePlanos[]>('http://localhost:8080/planos');
+  }
+
+  getEnderecoByViaCep(cep){
+    const URL = `${this.APIViaCEP}${cep}/json`
+    return this.http.get(URL);
   }
 }
 
