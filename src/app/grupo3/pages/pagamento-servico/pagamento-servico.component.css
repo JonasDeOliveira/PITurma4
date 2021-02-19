@@ -6,15 +6,15 @@
     flex-wrap: wrap;
 }
 
-/*
+
 .banner {
-    background-image: url(../img/banner.jpg);
+    background-image: url(/assets/img/banner.jpg);
     background-size: contain;
     width: 100%;
     height: 170px;
     background-repeat: no-repeat;
   }
-*/
+
 
 /* container esquerdo */
 .containerEsq {
@@ -51,9 +51,11 @@
     font-weight: bold;
 }
 
-.btn-lg a{
+.btn-outline-success{
     color: white;  
     text-decoration: none;
+    background-color: #2a764a;
+    border: #2a764a;
 }
 
 .form-check-input {
