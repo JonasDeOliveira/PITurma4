@@ -6,6 +6,7 @@
 <section *ngIf="ehLogado">
     <div class="container">
         <h4 class="text-center titulo">Acompanhe aqui as informações do seu perfil e serviços.</h4>
+    
         <div class="row images" id="ads">
             <!-- Category Card -->
             <div class="col-md-3 col-sm-6 col-12  p-2">
@@ -83,10 +84,10 @@
                                         <li class="item-lista"
                                             *ngFor="let lembrete of areaDoCliente.lembretes.slice(0,5)"
                                             (click)="removeTarefa(lembrete.idLembrete)">
-                                            <p class="titulo_lembrete">{{lembrete.nmTitulo}}</p>
-                                            <p class="excluir ds_lembrete">Descriçao: {{lembrete.dsLembrete}}<span
-                                                    class=" todo__btn-excluir">X</span></p>
-                                            <p class="excluir font-weight-bold">Data: {{lembrete.dtLembrete | date: 'dd/MM/yyyy'}} - Hora:
+                                            <p class="titulo_lembrete ">{{lembrete.nmTitulo}}</p>
+                                            <p class="excluir ds_lembrete ">Descriçao: {{lembrete.dsLembrete}}<span
+                                                    class=" todo__btn-excluir ">X</span></p>
+                                            <p class="excluir font-weight-bold ">Data: {{lembrete.dtLembrete | date: 'dd/MM/yyyy'}} - Hora:
                                                 {{lembrete.hrHora}}
                                             </p>
                                             <p>Intervalo: A cada {{lembrete.nrRepeticao}}
