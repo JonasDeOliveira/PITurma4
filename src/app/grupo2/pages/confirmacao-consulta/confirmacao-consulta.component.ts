@@ -62,7 +62,11 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   
   usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
   idUsuario:number = this.usuario.idUsuario;
-  
+   
+  //
+  consultaConfirmada : boolean = true;
+  consultaNaoConfirmada : boolean = true;
+
   //TIRAR APOS MERGE
   // idUsuario = 142;
 
@@ -82,9 +86,13 @@ export class ConfirmacaoConsultaComponent implements OnInit {
     cartao: this.cartao
   };
 
+
+
   
 
   ngOnInit():void {
+    this.consultaConfirmada = false;
+    this.consultaNaoConfirmada = true;
     console.log(this.dsTipoPagamento)
     if (this.tipoPagamento.idFormaPagamento == 1){
       this.tipoPagamento.dsFormaPagamento="Plano"
@@ -106,10 +114,13 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   }
 
   criarAgPctePgto (request: CadastroAgPactPgto){
+    
     this.confirmacaoService.cadastrarPgtoAgP(request).subscribe(
       response => {
         localStorage.setItem("agPaciente", JSON.stringify(response.agPaciente));
         localStorage.setItem("pagamento", JSON.stringify(response.pagamento));
+        this.consultaConfirmada = true;
+        this.consultaNaoConfirmada = false;
       }
 
     )
