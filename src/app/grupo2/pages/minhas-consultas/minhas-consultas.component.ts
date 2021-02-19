@@ -4,6 +4,7 @@ import { AgPacienteService } from '../../shared/services/agPaciente.service';
 import {  Router } from '@angular/router';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Resposta } from '../../shared/model/resposta';
+import { Cliente } from '../../shared/model/cartao';
 
 
 @Component({
@@ -29,14 +30,11 @@ export class MinhasConsultasComponent implements OnInit {
   respostaString: Resposta;
  
 
-
-  //USAR QUANDO FIZER O MERGE!!!!!!!!!!!!
-
-  // idUsuario: number = JSON.parse(localStorage.getItem("cliente")).idUsuario;
+  usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
+  idUsuario:number = this.usuario.idUsuario;
 
     ngOnInit() : void{
-      //mudar quando fizer o merge
-    this.listarAgPacientePorUsuario(142);
+    this.listarAgPacientePorUsuario(this.idUsuario);
     
   }
   open(content) {
@@ -57,7 +55,7 @@ export class MinhasConsultasComponent implements OnInit {
         this.respostaString=response;
         alert(response.resposta);
         // this.router.navigate(['/minhas-consultas']);
-        this.listarAgPacientePorUsuario(142);
+        this.listarAgPacientePorUsuario(this.idUsuario);
       },
       err => {
         console.log(err.message);

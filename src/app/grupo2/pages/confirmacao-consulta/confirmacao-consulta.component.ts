@@ -4,7 +4,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Agenda} from '../../shared/model/agenda';
 import { AgPaciente,  } from '../../shared/model/agPaciente';
 import {  CadastroAgPactPgto } from '../../shared/model/cadastroAgPactPgto';
-import { Cartao, Cliente } from '../../shared/model/cartao';
+import { CartaoAgPaciente } from '../../shared/model/cartaoAgPaciente';
 import { Contrato } from '../../shared/model/contrato';
 import { EspMed } from '../../shared/model/espMed';
 import { OutputConfirmacao } from '../../shared/model/outputConfirmacao';
@@ -57,7 +57,7 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   idAgenda: number = this.agenda.idAgenda;
 
   parcelas: number = JSON.parse(localStorage.getItem("qtadeParcelas"));
-  cartao: Cartao = JSON.parse(localStorage.getItem("cartao"))
+  cartao: CartaoAgPaciente = JSON.parse(localStorage.getItem("cartao"))
 
   //VOLTAR APOS MERGE
   //usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));

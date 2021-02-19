@@ -2,8 +2,14 @@ import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Agenda } from '../../shared/model/agenda';
+import { Paciente } from '../../shared/model/agPaciente';
+<<<<<<< HEAD
 import { Cartao, CartaoAgPaciente } from '../../shared/model/cartaoAgPaciente';
+=======
+import { Cartao, Cliente } from '../../shared/model/cartao';
+>>>>>>> 526975930347e99aa424b955b1bdbb0e3c041f3e
 import { EspMed } from '../../shared/model/espMed';
+import { TipoPagamento } from '../../shared/model/pagamento';
 import { TipoConsulta } from '../../shared/model/tipoConsulta';
 import { CartaoService } from '../../shared/services/cartao.service';
 import { PagamentoCartaoServiceService } from '../../shared/services/pagamento-cartao-service.service';
@@ -35,45 +41,51 @@ export class PagamentoParticularComponent implements OnInit {
   vlConsulta: number = this.agenda.medico.preco.vlConsulta;
   data = this.agenda.data;
 
-  //USAR QUANDO FIZER O MERGE!!!!!!!!!!!!
-
-  // idUsuario: number = JSON.parse(localStorage.getItem("cliente")).idUsuario;
-
+ 
 
   nmTitular:string = "";
   nrCartao: string  = "";
-  mesVenc: string;
-  anoVenc: string;
+  mesVenc: string = "";
+  anoVenc: string = "";
   cvv: string = "";
+  
 
   cartao: CartaoAgPaciente = {
     nrCartao: this.nrCartao,
     codSeguranca : this.cvv,
-    usuario : {
-      nome: this.nmTitular
-    }
+    usuario : {nome: this.nmTitular},
+    dtValidade : `${this.anoVenc}-${this.mesVenc}-01`
+
   };
   
   qtdadeParcString : string;
-  qtadeParcelas : number;
+  qtadeParcelas : number = 1;
+  valorParcela : number = this.vlConsulta/this.qtadeParcelas;
 
-
+  usuario: Paciente = JSON.parse(localStorage.getItem("cliente"));
+  idUsuario:number = this.usuario.idPaciente;
+  
+  tipoPagamento: TipoPagamento = {
+    idFormaPagamento: 2,
+    dsFormaPagamento: "Cartão"
+  }; 
+  
   ngOnInit(): void {
-    //MUDAR QUANDO FIZER O MERGE
-    this.listarCartao(142);
+    this.listarCartao(this.idUsuario);
   }
 
   listarCartao(idUsuario: number){
     this.cartaoService.listarCartaoPorUsuario(idUsuario).subscribe(
       response => {
-      this.nmTitular = response[0].usuario.nmNome;
+      this.nmTitular = response[0].usuario.nome;
       this.nrCartao = response[0].nrCartao;
 
       }
     )
   }
   salvarTipoPagamento(){
-    localStorage.setItem("tipoPagamento", "2")
+    localStorage.setItem("tipoPagamento", JSON.stringify(this.tipoPagamento))
+    console.log(this.cartao)
 }
 
 salvarQtdadeParcelasLS(){

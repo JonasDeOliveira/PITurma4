@@ -43,7 +43,7 @@ export interface StatusConsulta {
 
 export interface Paciente{
     idPaciente?: number;
-    nome?: String;
+    nome?: string;
 
 }
 

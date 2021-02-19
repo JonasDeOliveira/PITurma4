@@ -2,10 +2,10 @@ import { Paciente } from './agPaciente';
 
 export interface CartaoAgPaciente{
 
-    idCartao: number;
+    idCartao?: number;
     usuario: Paciente;
     nrCartao: string;
     codSeguranca: string;
-    dtValidade: Date;
+    dtValidade: string;
 
 }
