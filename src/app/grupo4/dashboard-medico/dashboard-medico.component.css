@@ -14,6 +14,22 @@
     margin-left: 40px;
 }
 
+.color-text{
+    color: #444444;
+}
+
+.collapse{
+    text-align: center;
+}
+
+.nav-item:hover{
+    text-decoration: underline;
+}
+
+.item-menu{
+    font-size: 1.5rem;
+}
+
 .usuario {
     position: absolute;
     width: 70px;
