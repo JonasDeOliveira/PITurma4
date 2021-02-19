@@ -2,7 +2,7 @@ import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Agenda } from '../../shared/model/agenda';
-import { Cartao } from '../../shared/model/cartao';
+import { Cartao, CartaoAgPaciente } from '../../shared/model/cartaoAgPaciente';
 import { EspMed } from '../../shared/model/espMed';
 import { TipoConsulta } from '../../shared/model/tipoConsulta';
 import { CartaoService } from '../../shared/services/cartao.service';
@@ -46,10 +46,12 @@ export class PagamentoParticularComponent implements OnInit {
   anoVenc: string;
   cvv: string = "";
 
-  cartao: Cartao = {
+  cartao: CartaoAgPaciente = {
     nrCartao: this.nrCartao,
     codSeguranca : this.cvv,
-    usuario : {nmNome: this.nmTitular}
+    usuario : {
+      nome: this.nmTitular
+    }
   };
   
   qtdadeParcString : string;

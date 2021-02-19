@@ -1,4 +1,5 @@
-import { Cartao } from './cartao';
+import { CartaoAgPaciente } from './cartaoAgPaciente';
+
 
 
 
@@ -7,7 +8,7 @@ export interface CadastroAgPactPgto {
     idUsuario: number;
     nrParcelas: number;
     tipoPgto: TipoPagamento;
-    cartao: Cartao;
+    cartao: CartaoAgPaciente;
  }
 
  export interface TipoPagamento{
