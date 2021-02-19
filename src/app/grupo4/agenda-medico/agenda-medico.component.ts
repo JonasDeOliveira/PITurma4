@@ -32,6 +32,8 @@ export class AgendaMedicoComponent implements OnInit {
   agendamentosResposta: any;
   data: any;
   responsePeriodos: any;
+  dataHj: any;
+  dataFormatada: any;
 
   ngOnInit(): void {
     this.getAgendamentos();
@@ -41,24 +43,32 @@ export class AgendaMedicoComponent implements OnInit {
     this.model = this.calendar.getToday();    
   }
 
+  dataSelect(){
+    this.dataHj = new Date(this.model.year, this.model.month, this.model.day, 0, 0, 0, 0);
+    var dia = this.model.day;
+    var mes = this.model.month;
+    var ano = this.model.year;
+    this.dataFormatada = ano + '-' + mes + '-' + dia;
+    console.log(this.dataFormatada);
+  }
+
   getAgendamentos(){
     this.agendaService.getAgendamentos().subscribe(
       resposta => {
         this.agendamentosResposta = resposta;
         console.log(resposta);
 
-        this.data = new Date(Date.now()).toISOString().slice(0,10);
+      this.data = new Date(Date.now()).toISOString().slice(0,10);
       }
     )
   }
 
   consultarAgendamentos(){
-    this.agendaService.consultarAgendamentos().subscribe(
+    this.agendaService.consultarAgendamentos(this.dataFormatada).subscribe(
       resposta => {
         this.agendamentosResposta = resposta;
         console.log(resposta);
-
-        this.data = "2021-06-06";
+        this.data = this.dataFormatada;
       }
     )
   }
@@ -67,8 +77,7 @@ export class AgendaMedicoComponent implements OnInit {
     if(confirm('Deseja cancelar a consulta?')) {
       this.agendaService.cancelarAgendamento(idAgPaciente).subscribe(
         response => {
-          this.router.navigate(['/agenda/medico']);
-          //this.agendaService.getAgendamentos(); 
+          location.reload();
           console.log(idAgPaciente)
         }
       )
@@ -76,12 +85,10 @@ export class AgendaMedicoComponent implements OnInit {
   }
 
   getHorarios() {
-    this.agendaService.getHorarios().subscribe(
+    this.agendaService.getHorarios(this.dataFormatada).subscribe(
       resposta => {
         this.responsePeriodos = resposta;
         console.log(resposta);
-
-        this.data = new Date(Date.now()).toISOString().slice(0,10);
       }
     )
   }
@@ -95,19 +102,17 @@ export class AgendaMedicoComponent implements OnInit {
   }
 
   cadastrarAgenda(): void {
-
-    console.log("antes")
     this.responsePeriodos.forEach(agenda => {
       var objMedico = JSON.parse(localStorage.getItem("medico"));
       agenda.medico.idUsuario = objMedico.idUsuario;
   
-      var dt =  new Date(Date.now()).toISOString().slice(0,10).split('-');
+      var dt =  this.dataFormatada.slice(0,10).split('-');
       agenda.data = dt[2] + '/' + dt[1] + '/' + dt[0];
+      console.log(agenda.data);
 
-      console.log("Passou")
     });
 
-    this.agendaService.cadastrarAgenda(this.responsePeriodos).subscribe(
+    this.agendaService.cadastrarAgenda(this.responsePeriodos, this.dataFormatada).subscribe(
       response => {
         alert('Agenda cadastrada com sucesso!');
         this.router.navigate(['/agenda/medico']);

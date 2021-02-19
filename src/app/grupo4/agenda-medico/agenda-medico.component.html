@@ -22,7 +22,7 @@
             <h1 class="text-center title-calendario">Calendário</h1>
             <div class="calendario col-12 d-flex justify-content-center">
                 <div>
-                    <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+                    <ngb-datepicker #dp [(ngModel)]="model" (dateSelect)="dataSelect()" (navigate)="date = $event.next"></ngb-datepicker>
                 </div>
             </div>
             <!-- Modal Abrir Agenda -->
@@ -87,7 +87,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn button-limpar" (click)="c('Save click')">Limpar
                             seleção</button>
-                        <button type="button" class="btn button-salvar" (click)="cadastrarAgenda()">Salvar</button>
+                        <button type="button" class="btn button-salvar" (click)="cadastrarAgenda()" (click)="c('Save click')">Salvar</button>
                     </div>
                 </div>
             </ng-template>

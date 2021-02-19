@@ -84,11 +84,11 @@ export class PerfilMedicoComponent implements OnInit {
 
   }
 
-  loginMedico: any = {
-
+  loginMedico : any = {
+    senhaAtual: '',
+    senhaConfirmacao: '',
     dsSenha: null
-
-  }
+}
 
   open(content) {
     this.modalService.open(content);
@@ -113,7 +113,7 @@ export class PerfilMedicoComponent implements OnInit {
     this.perfilService.updatePerfil(this.id, this.request.medico).subscribe(
       (response) => {
         alert('Perfil atualizado com sucesso');
-        this.router.navigate(['perfil/medico']);
+        location.reload();
       },
       (error) => {
         console.log(error);

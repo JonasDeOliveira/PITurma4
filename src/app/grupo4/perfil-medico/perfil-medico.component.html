@@ -154,6 +154,7 @@
 
   </div>
 </footer>
+<!--Modal-->
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h5 class="modal-title">Definir Nova Senha</h5>
@@ -162,11 +163,26 @@
     </button>
   </div>
   <div class="modal-body">
-    <input type="password" class="form-control" name="dsSenha1" #dsSenha1="ngModel" minlength="8" placeholder="Nova Senha"
-      [(ngModel)]="loginMedico.dsSenha" />
+    <label for="label-form">Nova senha</label>
+    <input type="password" class="form-control style-input" id="senha" name="dsSenha" [(ngModel)]="loginMedico.dsSenha"
+      #dsSenha="ngModel" placeholder="Digite uma senha" minlength="8" required>
+    <div *ngIf="dsSenha.invalid && dsSenha.touched" class="alert alert-danger" role="alert">
+      <div [hidden]="!dsSenha.errors.minlength">
+        senha deve conter pelo menos 8 caracteres.
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+   <label class="label-form" for="cadastro-senha2">Confirmar Senha</label>
+    <input type="password" class="form-control" id="cadastro-senha2" placeholder="Digite a senha"
+      name="senhaConfirmacao" #senhaConfirmacao="ngModel" [(ngModel)]="loginMedico.senhaConfirmacao" minlength="8"
+      required>
+    <div *ngIf="senhaConfirmacao.value != dsSenha.value && (senhaConfirmacao.dirty || senhaConfirmacao.touched)"
+      class="alert alert-light mt-1" role="alert">
+      senha informada não confere!
+    </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-verde" value="AlterarSenha" (click)="alterarSenha()">Salvar</button>
-
+    <button type="button" class="btn btn-verde" value="AlterarSenha" (click)="alterarSenha()" (click)="c('Save click')">Salvar</button>
   </div>
 </ng-template>

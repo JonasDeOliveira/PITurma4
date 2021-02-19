@@ -54,13 +54,22 @@ export class AtendimentoEspecialistaComponent implements OnInit {
   ngOnInit(): void {
     this.request.agPaciente.idAgPaciente=this.route.snapshot.paramMap.get("id");
     this.request.paciente.idUsuario=this.route.snapshot.paramMap.get("idPaciente");
-    
+    // var objAtendimento = JSON.parse(localStorage.getItem("atendimento"));
+    // this.request.dsHabitosVicios = objAtendimento.dsHabitosVicios;
+    // this.request.dsAlergiasRestricoes = objAtendimento.dsAlergiasRestricoes;
+    // this.request.dsMedicacaoUsoContinuo = objAtendimento.dsMedicacaoUsoContinuo;
+    // this.request.dsProblemasSaude =objAtendimento.atendimento.dsProblemasSaude;
+    // this.request.vlAltura =objAtendimento.atendimento.vlAltura;
+    // this.request.vlPeso =objAtendimento.atendimento.vlPeso;
+    // this.request.prontuario.dsAvaliacao =objAtendimento.prontuario.dsAvaliacao;
+    // this.request.dtAtendimento = "";
+
     console.log(this.request.dtAtendimento)
     this.atendEspService.getAtendimentos(this.request.agPaciente.idAgPaciente).subscribe(
       resposta => {
         this.atendimentoResposta = resposta;
 
-        localStorage.setItem("paciente", JSON.stringify(resposta));
+        localStorage.setItem("paciente", JSON.stringify(this.request));
         console.log(resposta);
       }
     );
@@ -69,6 +78,7 @@ export class AtendimentoEspecialistaComponent implements OnInit {
   registrar() {
     this.request.dtAtendimento = this.atendimentoResposta.data;
     console.log(this.request.dtAtendimento);
+    localStorage.setItem("atendimento", JSON.stringify(this.request));
     this.atendEspService.cadastrarAtendimento(this.request).subscribe(
       response => {
         alert('Prontuário inserido com sucesso!');
@@ -82,6 +92,7 @@ export class AtendimentoEspecialistaComponent implements OnInit {
 
   limparStorage(){
     localStorage.removeItem("paciente");
+    localStorage.removeItem("atendimento");
   }
 
 }
