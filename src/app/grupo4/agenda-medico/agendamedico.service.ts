@@ -35,14 +35,23 @@ export class AgendamedicoService {
   getHorarios() {
     var data = new Date(Date.now()).toISOString().slice(0,10);
 
-    const URL = `${this.API3}/2021-06-06`;
+    const URL = `${this.API3}/2021-06-07`;
     return this.http.get<ResponsePeriodos[]>(URL);
   }
 
 
   cadastrarAgenda(request: any): Observable<any> {
-    const URL = `${this.API4}/2021-06-06`
+    const URL = `${this.API4}/2021-06-07`
     return this.http.post<any>(URL, request);
   } 
+
+  // consultarAgendamentos() {
+  //   var data = new Date(Date.now()).toISOString().slice(0,10);
+
+  //   const URL = `${this.API}/2021-06-07/${this.objMedico.idUsuario}`;
+  //   console.log(this.objMedico.idUsuario);
+    
+  //   return this.http.get(URL);
+  // }
 
 }

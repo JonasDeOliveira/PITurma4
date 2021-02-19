@@ -41,7 +41,6 @@ export class LoginMedicoComponent implements OnInit {
 
         localStorage.setItem("medico", JSON.stringify(response.retorno));
 
-        alert(response.mensagem);
         this.router.navigate(['/dashboard/medico']);
       },
       error => {
