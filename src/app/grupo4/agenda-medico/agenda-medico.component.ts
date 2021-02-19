@@ -32,7 +32,6 @@ export class AgendaMedicoComponent implements OnInit {
   agendamentosResposta: any;
   data: any;
   responsePeriodos: any;
-  // consultAgendamentosResposta: any;
 
   ngOnInit(): void {
     this.getAgendamentos();
@@ -53,16 +52,16 @@ export class AgendaMedicoComponent implements OnInit {
     )
   }
 
-  // consultarAgendamentos(){
-  //   this.agendaService.consultarAgendamentos().subscribe(
-  //     resposta => {
-  //       this.consultAgendamentosResposta = resposta;
-  //       console.log(resposta);
+  consultarAgendamentos(){
+    this.agendaService.consultarAgendamentos().subscribe(
+      resposta => {
+        this.agendamentosResposta = resposta;
+        console.log(resposta);
 
-  //       this.data = new Date(Date.now()).toISOString().slice(0,10);
-  //     }
-  //   )
-  // }
+        this.data = "2021-06-06";
+      }
+    )
+  }
 
   remover(idAgPaciente: number): void {
     if(confirm('Deseja cancelar a consulta?')) {
