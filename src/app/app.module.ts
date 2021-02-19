@@ -10,8 +10,11 @@ import { Grupo4Module } from './grupo4/grupo4.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { from } from 'rxjs';
     Grupo4Module,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

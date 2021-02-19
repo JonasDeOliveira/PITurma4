@@ -38,7 +38,7 @@
           <tr class="topo" *ngFor="let atendimento of historicoCpfResposta">
             <th scope="row">{{atendimento.prontuario.idProntuario}}</th>
             <td>{{atendimento.dtAtendimento}}</td>
-            <td>{{atendimento.paciente.nrCpf}}</td>
+            <td>{{atendimento.paciente.nrCpf | mask:"000.000.000-00"}}</td>
             <td>{{atendimento.paciente.nmNome}}</td>
             <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content , atendimento.prontuario.idProntuario )">+ Ver Prontuário</button>
           </tr>
@@ -47,7 +47,7 @@
           <tr class="topo" *ngFor="let atendimento of historicoMedicoResposta">
             <th scope="row">{{atendimento.prontuario.idProntuario}}</th>
             <td>{{atendimento.dtAtendimento}}</td>
-            <td>{{atendimento.paciente.nrCpf}}</td>
+            <td>{{atendimento.paciente.nrCpf | mask:"000.000.000-00"}}</td>
             <td>{{atendimento.paciente.nmNome}}</td>
             <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content , atendimento.prontuario.idProntuario )">+ Ver Prontuário</button>
           </tr>

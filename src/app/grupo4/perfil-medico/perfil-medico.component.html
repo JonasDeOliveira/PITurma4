@@ -39,7 +39,7 @@
             </div>
             <div class="form-group col-12 col-md-3">
               <label>CRM</label>
-              <input type="text" class="form-control" name="nrCrm" [(ngModel)]="request.medico.nrCrm" #nrCrm="ngModel"/>
+              <input type="text" class="form-control" name="nrCrm" [(ngModel)]="request.medico.nrCrm" #nrCrm="ngModel" maxlength="5"/>
             </div>
             <div class="form-group col-12 col-md-2">
               <label class="label-form" for="crm-uf">UF CRM</label>
@@ -65,14 +65,14 @@
 
             <div class="form-group col-12 col-md-4">
               <label>CPF</label>
-              <input type="text" class="form-control" name="nrCpf" [(ngModel)]="request.medico.nrCpf" #nrCpf="ngModel" disabled/>
+              <input type="text" class="form-control" name="nrCpf" [(ngModel)]="request.medico.nrCpf" #nrCpf="ngModel" minlength="11" maxlength="14" mask="000.000.000-00" disabled/>
             </div>
           </div>
 
           <div class="row">
             <div class="form-group col-12 col-md-3">
               <label>CEP</label>
-              <input type="text" class="form-control" name="nrCep" [(ngModel)]="request.medico.enderecos[0].nrCep"  #nrCep="ngModel"/>
+              <input type="text" class="form-control" name="nrCep" [(ngModel)]="request.medico.enderecos[0].nrCep"  #nrCep="ngModel" minlength="8" maxlength="9" mask="00000-000"/>
             </div>
             <div class="form-group col-12 col-md-5">
               <label>Endereço Comercial</label>
@@ -106,11 +106,11 @@
             <div class="form-group col-12 col-md-3">
               <label>Telefone</label>
               <input type="text" class="form-control" name="dsContato"
-                [(ngModel)]="request.medico.contatos[0].dsContato" #dsContato="ngModel"/>
+                [(ngModel)]="request.medico.contatos[0].dsContato" #dsContato="ngModel" minlength="9" maxlength="14" mask="(00)0000-0000 || (00)00000-0000"/>
             </div>
             <div class="form-group col-12 col-md-3">
               <label>E-mail</label>
-              <input type="email" class="form-control" name="dsEmail" [(ngModel)]="request.dsEmail" #dsEmail="ngModel" />
+              <input type="email" class="form-control" name="dsEmail" [(ngModel)]="request.dsEmail" #dsEmail="ngModel" email />
             </div>
             <div class="form-group col-12 col-md-2">
               <label>Valor da Consulta</label>
@@ -162,7 +162,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <input type="password" class="form-control" name="dsSenha1" #dsSenha1="ngModel" placeholder="Nova Senha"
+    <input type="password" class="form-control" name="dsSenha1" #dsSenha1="ngModel" minlength="8" placeholder="Nova Senha"
       [(ngModel)]="loginMedico.dsSenha" />
   </div>
   <div class="modal-footer">

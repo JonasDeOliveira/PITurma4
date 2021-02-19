@@ -20,6 +20,9 @@ import { FormsModule } from '@angular/forms';
 import { AtendimentoespecialistaService } from './atendimento-especialista/atendimentoespecialista.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RouterModule,
     FormsModule,
     BrowserModule,
-    NgbModule
+    NgbModule,
+    NgxMaskModule.forRoot()
+
   ],
   exports: [
     AgendaMedicoComponent

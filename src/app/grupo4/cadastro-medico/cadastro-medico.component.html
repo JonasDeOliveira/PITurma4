@@ -49,7 +49,7 @@
             </div>
             <div class="form-group col-12 col-md-3">
                 <label for="telefone-medico" class="label-form">Telefone</label>
-                <input type="text" class="form-control style-input" id="telefone-medico" name="dsContato" [(ngModel)]="request.contatos[0].dsContato" #dsContato="ngModel" placeholder="DDD + telefone" required>
+                <input type="text" class="form-control style-input" id="telefone-medico" name="dsContato" [(ngModel)]="request.contatos[0].dsContato" #dsContato="ngModel" placeholder="DDD + telefone" minlength="9" maxlength="14" mask="(00)0000-0000 || (00)00000-0000" required>
                 <div *ngIf="dsContato.invalid && dsContato.touched" class="alert alert-danger" role="alert">
                     Campo obrigatório.
                 </div>
@@ -65,7 +65,7 @@
             </div>
             <div class="form-group col-12 col-md-3">
                 <label class="label-form" for="cpf">CPF</label>
-                <input type="text" class="form-control style-input" id="cpf"  name="nrCpf" [(ngModel)]="request.nrCpf" #nrCpf="ngModel" placeholder="000.000.000-00" minlength="11" maxlength="11" required >
+                <input type="text" class="form-control style-input" id="cpf"  name="nrCpf" [(ngModel)]="request.nrCpf" #nrCpf="ngModel" placeholder="000.000.000-00" minlength="11" maxlength="14" mask="000.000.000-00" required >
                 <div *ngIf="nrCpf.invalid && nrCpf.touched" class="alert alert-danger" role="alert">
                     <div [hidden]="!nrCpf.errors.required">
                         Campo origatório.
@@ -86,7 +86,7 @@
         <div class="row">
             <div class="form-group col-12 col-md-2">
                 <label class="label-form" for="cep">CEP</label>
-                <input type="text" class="form-control style-input" id="cep" name="nrCep" [(ngModel)]="request.enderecos[0].nrCep" #nrCep="ngModel" placeholder="00000-000" minlength="8" maxlength="8" required >
+                <input type="text" class="form-control style-input" id="cep" name="nrCep" [(ngModel)]="request.enderecos[0].nrCep" #nrCep="ngModel" placeholder="00000-000" minlength="8" maxlength="9" mask="00000-000" required >
                 <div *ngIf="nrCep.invalid && nrCep.touched" class="alert alert-danger" role="alert">
                     <div [hidden]="!nrCep.errors.required">
                         Campo obrigatório.
