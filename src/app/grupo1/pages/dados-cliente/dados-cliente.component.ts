@@ -153,7 +153,10 @@ export class DadosClienteComponent implements OnInit {
   preparacaoDados() {
     this.outputCliente.loginUsuario.dsSenha = "";
     this.outputCliente.cartao.codSeguranca = null;
-    this.outputCliente.cartao.dtValidade = this.outputCliente.cartao.dtValidade.substring(0, this.outputCliente.cartao.dtValidade.length -3)
+    if(this.outputCliente.cartao.dtValidade != "" && this.outputCliente.cartao.dtValidade != null) {
+      this.outputCliente.cartao.dtValidade = this.outputCliente.cartao.dtValidade.substring(0, this.outputCliente.cartao.dtValidade.length -3)
+    }
+    
     this.dadosAtuais.planoAtual = this.outputCliente.contrato.plano.idPlano;
     this.dadosAtuais.cartaoAtual = this.outputCliente.cartao;
     this.ocultarCartao(this.outputCliente.cartao.nrCartao);
