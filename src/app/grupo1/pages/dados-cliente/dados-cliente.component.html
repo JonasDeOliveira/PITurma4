@@ -271,7 +271,7 @@
                                     <div class="form-group col-md-12 cadastro-cartao">
                                         <label for="cartao-numero">Número do Cartão:</label>
                                         <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
-                                            [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel"
+                                            [(ngModel)]="dadosAtuais.cartaoSeguro" #nrCartao="ngModel"
                                             minlength="16" maxlength="16" required placeholder="0000 0000 0000 0000">
                                         <div *ngIf="nrCartao.errors && (nrCartao.dirty || nrCartao.touched)"
                                             class="alert alert-light">
@@ -292,9 +292,7 @@
                                             maxlength="30" required placeholder="Nome impresso no Cartão">
                                         <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)"
                                             class="alert alert-light">
-                                            <div [hidden]="!nmNome.errors.required">
                                                 Campo nome é obrigatório.
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -309,7 +307,7 @@
                                     </div>
                                     <div class="form-group col-md-7">
                                         <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
-                                        <input type="text" class="form-control" id="cartao-codigo-seguranca"
+                                        <input type="password" class="form-control" id="cartao-codigo-seguranca"
                                             placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca" 
                                             name="codSeguranca" #codSeguranca="ngModel" minlength="3" maxlength="3"
                                             required>
@@ -362,7 +360,7 @@
         </form>
     </section>
 
-    <!-- {{outputCliente | json}} -->
+    {{outputCliente | json}}
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
