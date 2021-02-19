@@ -5,6 +5,7 @@ import { UsuarioModule } from 'src/app/grupo1/usuario/usuario.module';
 import { Agenda} from '../../shared/model/agenda';
 import { AgPaciente, Paciente,  } from '../../shared/model/agPaciente';
 import {  CadastroAgPactPgto } from '../../shared/model/cadastroAgPactPgto';
+import { Cliente } from '../../shared/model/cartao';
 import { CartaoAgPaciente } from '../../shared/model/cartaoAgPaciente';
 import { Contrato } from '../../shared/model/contrato';
 import { EspMed } from '../../shared/model/espMed';
@@ -60,11 +61,18 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   parcelas: number = JSON.parse(localStorage.getItem("qtadeParcelas"));
   cartao: CartaoAgPaciente = JSON.parse(localStorage.getItem("cartao"))
 
-  // VOLTAR APOS MERGE
   usuario: Paciente = JSON.parse(localStorage.getItem("cliente"));
   idUsuario:number = this.usuario.idPaciente;
-  
-  // //TIRAR APOS MERGE
+
+  consultaConfirmada : boolean = true;
+  consultaNaoConfirmada : boolean = true;
+
+  //VOLTAR APOS MERGE
+  //usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
+  // idUsuario:number = usuario.idUsuario;
+
+
+  //TIRAR APOS MERGE
   // idUsuario = 142;
 
   data: string;
@@ -83,10 +91,16 @@ export class ConfirmacaoConsultaComponent implements OnInit {
     cartao: this.cartao
   };
 
+
+
   
 
   ngOnInit():void {
-    if (this.tipoPagamento.idFormaPagamento == 1){
+
+    this.consultaConfirmada = false;
+    this.consultaNaoConfirmada = true;
+    console.log(this.dsTipoPagamento)
+        if (this.tipoPagamento.idFormaPagamento == 1){
       this.tipoPagamento.dsFormaPagamento="Plano"
     } else if (this.tipoPagamento.idFormaPagamento == 2){
       this.tipoPagamento.dsFormaPagamento="Cartão"
@@ -97,7 +111,7 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   conversorData(){
     let data = JSON.parse(localStorage.getItem("data")).slice(0,10);
     let dataFormato = data.split("-");
-    let dataFinal = `${dataFormato[2]}/${dataFormato[1]}/${dataFormato[0]}`;
+    let dataFinal = `${dataFormato[2]}/0${dataFormato[1]-1}/${dataFormato[0]}`;
     this.data = dataFinal;
   }
 
@@ -106,12 +120,16 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   }
 
   criarAgPctePgto (request: CadastroAgPactPgto){
+    
     this.confirmacaoService.cadastrarPgtoAgP(request).subscribe(
       response => {
         localStorage.setItem("agPaciente", JSON.stringify(response.agPaciente));
         localStorage.setItem("pagamento", JSON.stringify(response.pagamento));
         console.log(localStorage.getItem("agPaciente"));
         console.log(localStorage.getItem("pagamento"))
+        this.consultaConfirmada = true;
+        this.consultaNaoConfirmada = false;
+
       }
 
     )

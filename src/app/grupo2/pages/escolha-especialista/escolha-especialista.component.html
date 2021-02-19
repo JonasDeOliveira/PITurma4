@@ -88,7 +88,8 @@
 <section class="container d-flex flex-column alig-items-center">
 
     <!-- filtro -->
-    <div class="filtro">
+    <div *ngIf="agendaVazia == false" class="filtro">
+        <h3>Filtro</h3>
         <div class="periodo form-group">
             <label for="manha"><input type="checkbox" name="periodo" value="manha" id="manha"> Manhã</label>
             <label for="tarde"><input type="checkbox" name="periodo" value="tarde" id="tarde"> Tarde</label>
@@ -97,11 +98,18 @@
     </div>
 
     <!-- fim filtro -->
-
-    <div *ngIf="agendaVazia" class="div">
-        <h1>Não existem consultas disponiveis para a data escolhida</h1>
+    <section class="container d-flex flex-column alig-items-center">
+    <div *ngIf="agendaVazia" class="div d-flex justify-content-center">
+    <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+        <div class="card-header">AVISO</div>
+        <div class="card-body">
+          <h5 class="card-title">Não existe consulta disponivel para a data escolhida</h5>
+        </div>
+      </div>
     </div>
+    </section>
 
+    
 
     <!-- <div *ngFor = "let agenda of arrayAgendasData" class="card-medico row"> -->
     <div *ngFor="let agenda of arrayAgendas">
