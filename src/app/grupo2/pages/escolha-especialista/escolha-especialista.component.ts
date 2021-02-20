@@ -33,18 +33,22 @@ export class EscolhaEspecialistaComponent implements OnInit {
 
   arrayAgendas: Agenda[];
   data: string;
- 
+  mostraSpin = false; 
+
   ngOnInit(): void {
+    
     this.buscarAgenda(this.idTipoConsulta , this.idEsp);
     this.conversorData();
   }
 
    buscarAgenda(idTipoConsulta: number,idEspecialidade: number){
+    this.mostraSpin = true;
      this.agendaService.listarPorEsp(idTipoConsulta,idEspecialidade).subscribe(
       response => { 
+        this.mostraSpin = false;
         this.arrayAgendas = response;
         console.log(this.arrayAgendas[0].periodo.horaInicial)
-        // this.verificarAgenda(this.arrayAgendas);
+        this.verificarAgenda(this.arrayAgendas);
       }
      )
    }
@@ -72,19 +76,19 @@ export class EscolhaEspecialistaComponent implements OnInit {
 
   }
 
-  // verificarAgenda(response){
-  //   let contador = 0;
-  //   response.forEach(element => {
-  //    if (element.data == this.data) {
-  //     contador ++;
-  //    }
-  //   });
-  //   if (contador == 0) {
-  //     this.agendaVazia = true;
-  //   } else {
-  //     this.agendaVazia = false;
-  //   }
-  // }
+  verificarAgenda(response){
+    let contador = 0;
+    response.forEach(element => {
+     if (element.data == this.data) {
+      contador ++;
+     }
+    });
+    if (contador == 0) {
+      this.agendaVazia = true;
+    } else {
+      this.agendaVazia = false;
+    }
+  }
   
 }
   

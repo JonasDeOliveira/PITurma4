@@ -87,28 +87,43 @@
 
 <section class="container d-flex flex-column alig-items-center">
 
-    <!-- filtro -->
-    <div *ngIf="agendaVazia == false" class="filtro">
-        <h3>Filtro</h3>
-        <div class="periodo form-group">
+    
+
+  
+
+    <div class="spinner-grow spinner-grow-sm text-success">
+        <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin container col-12 text-center"></i>
+      </div>
+
+        <!-- filtro -->
+
+    <div *ngIf="agendaVazia == false && mostraSpin == false" class="filtro">
+        <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand">Filtro</a>
+        <form class="form-inline">
             <label for="manha"><input type="checkbox" name="periodo" value="manha" id="manha"> Manhã</label>
             <label for="tarde"><input type="checkbox" name="periodo" value="tarde" id="tarde"> Tarde</label>
             <label for="noite"><input type="checkbox" name="periodo" value="noite" id="noite"> Noite</label>
-        </div>
+        </form>
+      </nav>
     </div>
 
     <!-- fim filtro -->
-    <section class="container d-flex flex-column alig-items-center">
-    <div *ngIf="agendaVazia" class="div d-flex justify-content-center">
-    <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-        <div class="card-header">AVISO</div>
-        <div class="card-body">
-          <h5 class="card-title">Não existe consulta disponivel para a data escolhida</h5>
+ 
+
+<!-- inicio card agenda vazia -->
+    <div *ngIf="agendaVazia" class="card d-flex justify-content-center">
+        <div class="card-header text-center">
+          AVISO
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Não existe consulta disponivel para a data escolhida</h5>    
+          <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+          <a routerLink='/calendario-agendamento' class="btn btn-success">Voltar</a>
         </div>
       </div>
-    </div>
-    </section>
-
+<!-- fim card agenda vazia -->
+      
     
 
     <!-- <div *ngFor = "let agenda of arrayAgendasData" class="card-medico row"> -->

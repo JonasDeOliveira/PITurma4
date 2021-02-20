@@ -51,18 +51,19 @@
 </button> -->
 
 
-<div class="spinner-border text-primary">
-  <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin"></i>
-</div>
-<div class="spinner-grow text-muted">
-  <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin"></i>
-</div>
 
 
 
 
 <section class="container d-flex flex-column align-items-center">
+
+  
     <h1>Minhas Consultas</h1>
+
+    
+    <div class="spinner-grow spinner-grow-sm text-success">
+      <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin container col-12 text-center"></i>
+    </div>
       <div class="lista-consultas col-12">
         <h4 id="titulo-agendadas" class="font-weight-bold">Consultas Agendadas</h4>
         <div *ngFor="let agPaciente of responseAgPacientes">
@@ -86,6 +87,8 @@
           </div>
         
        
+
+
     
 
       <!-- AQUI cancelar  -->
