@@ -1,6 +1,8 @@
 import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CartaoComponent } from 'src/app/grupo1/cartoes/cartao/cartao.component';
+import { threadId } from 'worker_threads';
 import { Agenda} from '../../shared/model/agenda';
 import { AgPaciente, Paciente,  } from '../../shared/model/agPaciente';
 import {  CadastroAgPactPgto } from '../../shared/model/cadastroAgPactPgto';
@@ -53,7 +55,8 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   horario : Time = this.agenda.periodo.horaInicial;
   idAgenda: number = this.agenda.idAgenda;
 
-  cartao = JSON.parse(localStorage.getItem("cartao"))
+  cartao = JSON.parse(localStorage.getItem("cartao"));
+  cartaoCortado = "**** **** **** " + this.cartao.nrCartao.substring(12,16);
 
   usuario = JSON.parse(localStorage.getItem("cliente"));
   idUsuario = this.usuario.idUsuario;
@@ -78,6 +81,9 @@ export class ConfirmacaoConsultaComponent implements OnInit {
     this.consultaConfirmada = false;
     this.consultaNaoConfirmada = true;
     this.conversorData();
+    console.log("idagenda " + this.idAgenda);
+    console.log("idUsuario " + this.idUsuario);
+    console.log("cadastr " + this.cadastroAgPaciente)
   }
 
   conversorData(){
