@@ -59,6 +59,7 @@
   <div class="spinner-grow spinner-grow-sm text-success">
     <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin container col-12 text-center"></i>
   </div>
+  
   <div class="lista-consultas col-12">
     <h4 id="titulo-agendadas" class="font-weight-bold">Consultas Agendadas</h4>
     <div *ngFor="let agPaciente of responseAgPacientes">
@@ -81,53 +82,9 @@
             Cancelar
           </button>
         </div>
-      </div>
-      <!-- Modal Confirmar cancelar -->
-      <div class="modal fade" id="cancelarModal" tabindex="-1" role="dialog" aria-labelledby="cancelarModal"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
-                Cancelar Consulta
-              </h5>
-            </div>
-            <div class="modal-body">
-              Você tem certeza que deseja cancelar a consulta?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#canceladaModal">
-                Sim
-              </button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                Não
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Modal Cancelada -->
-      <div class="modal fade" id="canceladaModal" tabindex="-1" role="dialog" aria-labelledby="canceladaModal"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
-                Consulta Cancelada
-              </h5>
-            </div>
-            <div class="modal-body">Consulta cancelada com sucesso!</div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                Fechar
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal Confirmar reagendar -->
-      <ng-template #contentReagendar let-c="close" let-d="dismiss">
+       
+        <!-- Modal Confirmar reagendar -->
+        <ng-template #contentReagendar let-c="close" let-d="dismiss">
         <div class="modal-header">
           <h4 class="modal-title" id="modal-basic-title">Reagendar</h4>
           <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
@@ -151,10 +108,10 @@
             Não
           </button>
         </div>
-      </ng-template>
+        </ng-template>
 
-      <!-- AQUI cancelar  -->
-      <ng-template #contentCancelar let-c="close" let-d="dismiss">
+        <!-- Modal Confirmar Cancelar  -->
+        <ng-template #contentCancelar let-c="close" let-d="dismiss">
         <div class="modal-header">
           <h4 class="modal-title" id="modal-basic-title">Cancelar</h4>
         </div>
@@ -172,8 +129,9 @@
             Não
           </button>
         </div>
-      </ng-template>
-      <!-- AQUI  -->
+        </ng-template>
+        <!-- AQUI  -->
+      </div>
     </div>
 
     <h4 id="titulo-realizadas" class="font-weight-bold">
@@ -212,6 +170,7 @@
       </div>
     </div>
   </div>
+
 </section>
 
 <app-footer></app-footer>

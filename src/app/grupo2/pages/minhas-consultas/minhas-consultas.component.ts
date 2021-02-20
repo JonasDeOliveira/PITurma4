@@ -28,7 +28,6 @@ export class MinhasConsultasComponent implements OnInit {
   usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
   idUsuario:number = this.usuario.idUsuario;
     ngOnInit() : void{
-      //voltar para this.idUsuario
     this.listarAgPacientePorUsuario(this.idUsuario);
   }
   open(content) {
@@ -40,6 +39,7 @@ export class MinhasConsultasComponent implements OnInit {
       response => {
         this.mostraSpin = false; //<--- adicione isto --->
         this.responseAgPacientes = response;
+        console.log(this.responseAgPacientes)
       }
     )  
   }
@@ -47,13 +47,8 @@ export class MinhasConsultasComponent implements OnInit {
     this.agPacienteService.alterarAgPacientes(idAgPaciente).subscribe(
       response => {
         this.respostaString=response;
-        alert(response.resposta);
-        // this.router.navigate(['/minhas-consultas']);
         this.listarAgPacientePorUsuario(this.idUsuario);
-      },
-      err => {
-        console.log(err.message);
-        alert('erro ao cancelar consultar')}
+      }
     )
-    }
+  }
 }
