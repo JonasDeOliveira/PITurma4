@@ -22,9 +22,6 @@ import { PipeComponent } from './pipe/pipe.component';
 import { AgServico } from './shared/model/agservico.model';
 import { Grupo1Module } from '../grupo1/grupo1.module';
 
-
-
-
 @NgModule({
   
   declarations: [PagamentoServicoComponent, SustentabilidadeComponent, ConfirmacaoAgendamentoComponent,PesquisarReceitasComponent, ResultadoBuscarReceitasComponent, HistoricoAgservicoComponent, AgservicoComponent, HistoricoAgservicoComponent, AgservicoComponent, ProcurarPacienteComponent, ProgramaNutricionalComponent, AgendaAlimentarComponent, ResultadoReceitaComponent, PipeComponent],

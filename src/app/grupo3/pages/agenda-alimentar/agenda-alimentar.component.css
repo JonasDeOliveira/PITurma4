@@ -1,3 +1,19 @@
+.titulo-refeicao {
+    font-weight: bold;
+    text-align: center;
+}
+
+.sem-refeicoes {
+margin-left: 95px;
+}
+.descricao-receita {
+    color: black;
+    
+}
+.card-body {
+    background-color: hsla(147, 19%, 55%, 0.5);
+}
+
 section{
     background-color: rgba(223, 239, 219, 0.24);
     width: 100%;
@@ -69,56 +85,11 @@ footer h4{
 /*Fim Footer*/
 
 
-/* inicio da ação para abrir refeições*/
-#abrir-refeicoes-cafe,
-#abrir-refeicoes-lanche-manha, 
-#abrir-refeicoes-almoco,
-#abrir-refeicoes-lanche-tarde,
-#abrir-refeicoes-jantar,
-#abrir-refeicoes-ceia{
-    /*visibility: hidden;*/
-    display: none;
-}
 
-#abrir-refeicoes-cafe:checked ~ .refeicoes {
-    display: block;
-}
-
-#abrir-refeicoes-lanche-manha:checked ~ .refeicoes {
-    display: block;
-}
-
-#abrir-refeicoes-almoco:checked ~ .refeicoes {
-    display: block;
-}
-
-#abrir-refeicoes-lanche-tarde:checked ~ .refeicoes {
-    display: block;
-}
-
-#abrir-refeicoes-jantar:checked ~ .refeicoes {
-    display: block;
-}
-
-#abrir-refeicoes-ceia:checked ~ .refeicoes {
-    display: block;
-}
-
-.l-abrir-refeicao,
-.abrir-refeicoes-lanche-manha,
-.abrir-refeicoes-almoco,
-.abrir-refeicoes-lanche-tarde,
-.abrir-refeicoes-jantar,
-.abrir-refeicoes-ceia
-{
-    cursor: pointer;
-}
-
-/* fim da ação para abrir refeições*/
 
 h2 {
     text-align: center;
-    padding-top: 10px;
+    padding-top: 30px;
     color:#005034;
 }
 .refeicoes {
@@ -136,6 +107,7 @@ h2 {
 
 .container{
     padding:30px;
+    width: 100%;
 }
 
 

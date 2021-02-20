@@ -11,6 +11,9 @@ import { ServicoService } from '../../shared/service/servico.service';
 })
 export class ConfirmacaoAgendamentoComponent implements OnInit {
 
+  cliente = JSON.parse(localStorage.getItem("cliente"));
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
+  
   agendamentos: AgServico[];
   servicos: Servicos[];
 

@@ -17,7 +17,9 @@ import { Router } from '@angular/router';
 })
 
 export class PagamentoServicoComponent implements OnInit {
-
+  cliente = JSON.parse(localStorage.getItem("cliente"));
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
+  
   agendamentos: AgServico[];
   servicos: Servicos[];
   total: number;
