@@ -46,6 +46,7 @@ export class AgservicoComponent implements OnInit {
   exibir2: boolean = false; //variavel que exibe a parte de data/hora
   tem: boolean;
   spinResponseLojas: boolean = false;
+  spinResponseHoras: boolean = false;
 
   responseServicos : ResponseServicos; //recebe os serviços
   responseLojas : ResponseLojas[]; //recebe as lojas
@@ -106,18 +107,17 @@ export class AgservicoComponent implements OnInit {
       response => {
         this.responseLojas = response;
         this.spinResponseLojas = false;
-        /*if (this.responseLojas == null){
+        if (response.length == 0){
           alert("Sua busca não retornou resultados");
-        } */
+        }
         
       }
     )
-    
-    
   }
 
   getHorasIndisponiveis(data: string){
     this.data = data;
+    this.spinResponseHoras = true;
 
     this.horarioService.getHorasIndisponiveis(this.idLoja, data).subscribe(
       response => {
@@ -166,13 +166,13 @@ export class AgservicoComponent implements OnInit {
             this.hrNoiteExibir.push(this.hrNoite[m]);
           }
         }
-
+        this.spinResponseHoras = false;
         this.exibir = true;
       }
     )
     console.log(this.hrIndisp);
     
-    this.exibir = true;
+    
   }
   
   salvarAgServico(){
@@ -188,30 +188,45 @@ export class AgservicoComponent implements OnInit {
     //adicionar o agendamento atual no array de agendamentos 
     this.ag = new AgServico(); 
     this.ag.idLoja = this.idLoja;
+   
     this.ag.idServico = this.idServico;
     this.ag.dtDataHora =  "02/02/2021 " + this.horario + ":00"; 
-
     console.log(this.ag.dtHr);
     console.log("Serviço salvo com sucesso!");
-
     this.agendamentos.push(this.ag) ;
-
     //depois enviar o array agendamentos para a pag de pagamentos. 
     localStorage.setItem("agendamentos", JSON.stringify(this.agendamentos));
+    
+    
   }
 
   concluirAgServico(callback: any){
 
-    this.salvarAgServico();
     callback('Cross click');//fechar a modal
-    this.router.navigate(['/pagamento-servico']);
+
+    if (this.idServico == null){
+      alert('Não é possível salvar agendamento sem escolher um serviço')
+    }else if (this.horario == null){
+      alert('Não é possível salvar agendamento sem escolher um horário')
+    }else{
+      this.salvarAgServico();
+      this.router.navigate(['/pagamento-servico']);
+    }
+    
   }
 
   novoAgServico(callback: any){
-    
-    this.salvarAgServico();
     callback('Cross click');//fechar a modal
-    window.location.reload();
+
+    if (this.idServico == null){
+      alert('Não é possível salvar agendamento sem escolher um serviço')
+    }else if (this.horario == null){
+      alert('Não é possível salvar agendamento sem escolher um horário')
+    }else{
+      this.salvarAgServico();
+      window.location.reload();
+    }
+    
   }
   
 }

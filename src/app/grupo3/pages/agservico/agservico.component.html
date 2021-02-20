@@ -62,10 +62,10 @@
             </div>
             
             <div class="row p-15">
-                <div class="form-group col-12 col-lg-5 pt-3 calendario" style="height: 400px;">
+                <div class="form-group col-12 col-lg-5 pt-3 calendario" style="height: 370px;">
                     <div class="containerx">
                         
-                        <a (click)="getHorasIndisponiveis('2021-02-02')"> <img class="img-fluid "
+                        <a (click)="getHorasIndisponiveis('2021-03-05')"> <img class="img-fluid "
                             src="/assets/img/calendar.png">
                         </a>
                         <!--<div class="calendar">
@@ -77,14 +77,19 @@
                 
 
                <!-- <button type="button" class="btn btn-success btn-verde btn-seleciona"  (click)="getHorasIndisponiveis('2021-02-02')">CLIQUE AQUI</button>
-               -->     
+               -->
+                
+                <div class="form-group col-12 col-lg-5 offset-md-1 pt-3">
 
-                <div class="form-group col-12 col-lg-5 offset-md-1 pt-3" *ngIf = "exibir == true">
-                    <div class="row p-15" style="background-color: white;">
-                        <h5>Terça-feira, 2 de feveiro de 2021</h5>
+                    <div class="row justify-content-center spinner-grow text-muted">
+                        <i *ngIf="spinResponseHoras" class="fa fa-spinner fa-spin"></i>
+                    </div>
+
+                    <div class="row p-15" style="background-color: white;" *ngIf = "exibir == true">
+                        <h5>Sexta-feira, 5 de março de 2021</h5>
                     </div>
                     
-                    <div class="form-group col-12 col-lg-12 pt-3 border rounded">
+                    <div class="form-group col-12 col-lg-12 pt-3 border rounded" *ngIf = "exibir == true">
                         <div class="row justify-content-start pt-2 pl-2 pr-2"><p>Manhã</p></div>
                         <div class="row justify-content-around pt-1 pl-2 pr-2">                            
                             <button *ngFor = "let hora of hrManhaExibir" type="button" class="btn btn-success btn-verde" (click)="getHora(hora)">{{hora}}</button>
