@@ -1,47 +1,26 @@
-.btn-menu{
-    background-color: #319A75;
-    color: #FFFFFF;
-    padding: 10px 20px;
-    font-size: 1.5rem;
-    border-radius: 2px;
-    line-height: 18px;
+html {
+    font-size: 65.5%;
 }
 
-.text-center{
-    color: #444444;
+body {
+    background-color: rgba(223, 239, 219, 0.24);
 }
 
-.collapse{
-    text-align: center;
-}
-
-.nav-item:hover{
-    text-decoration: underline;
-}
-
-.item-menu{
-    padding: 25px 12px;
-    font-size: 1.5rem;
-}
-
-.navbar-light .navbar-nav .nav-link {
-    color: #444444;
-}
-
-footer{
-    padding: 30px;
-    background-color: #929288;
+/* INÍCIO HEADER */
+.banner {
     width: 100%;
-    color: #ffffff;
+    height: 180px;
 }
 
-footer h4{
-    font-size: 1.0rem;
+.logo {
+    position: absolute;
+    margin-top: 55px;
+    margin-left: 40px;
 }
+/* FIM HEADER */
 
-.rodape .nav-item .nav-link {
-    color: #ffffff;
-    display: inline;
+.progNutri{
+    padding-top: 20px;
 }
 
 .h1 {
@@ -50,7 +29,7 @@ footer h4{
 
 .titulo{
     padding-left: 40px;
-     color: #005034;
+    color: #319A75;
  }
 
 .pt-10{
@@ -64,9 +43,12 @@ section{
     height: 100%;
 }
 
+h2 {
+    color: #319A75;
+}
+
 .tt{
     width: 100%;
-    
 }
 
 .cT{
@@ -95,6 +77,7 @@ section{
 
 .tt-cardapio{
     text-align: center;
+    color: black;
     padding-bottom: 30px;
 }
 
@@ -114,8 +97,8 @@ section{
 
 /*botão */
 .btn-verde {
-    background-color: #23a455;
-    border: #23a455;
+    background-color: #319A75;
+    border: #319A75;
 }
 
 .btn-verde:hover{
@@ -138,3 +121,25 @@ section{
     cursor: pointer;
 }
 
+ /* INÍCIO FOOTER */
+ footer{
+    padding: 30px;
+    background-color: #929288;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+footer h4{
+    font-size: 1.0rem;
+}
+
+.rodape .nav-item .nav-link {
+    color: #ffffff;
+    display: inline;
+}
+
+.nav-item:hover{
+    text-decoration: underline;
+}
+/* FIM FOOTER */

@@ -61,15 +61,17 @@ h1 {
 .card-text {
     color: #428870;
 }
+
 .card-subtitle {
     color: #428870;
 }
 
+/* Exibir mapa após busca
 .verMapa {
     display: flex;
     justify-content: center;
     padding: 1rem;
-}
+} */
 
 .btn:hover{
     background-color: hsla(159, 35%, 40%, 0.8);
@@ -91,7 +93,7 @@ h1 {
     left: 200px;
 } */
 
-.card-text-funcionamento {
+/* .card-text-funcionamento {
     font-size: 0.8rem;
     color: #428870;
-}
+} */
