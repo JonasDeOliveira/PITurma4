@@ -37,7 +37,7 @@ export class MinhasConsultasComponent implements OnInit {
     this.mostraSpin = true;
     this.agPacienteService.buscarAgPacientes(idUsuario).subscribe(
       response => {
-        this.mostraSpin = false; //<--- adicione isto --->
+        this.mostraSpin = false; 
         this.responseAgPacientes = response;
         console.log(this.responseAgPacientes)
       }
@@ -50,5 +50,8 @@ export class MinhasConsultasComponent implements OnInit {
         this.listarAgPacientePorUsuario(this.idUsuario);
       }
     )
+  }
+  voltarPaginaInicial(){
+    this.router.navigate(['/agendamento-consultas'])
   }
 }

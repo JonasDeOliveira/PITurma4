@@ -100,10 +100,10 @@
         </div>
 
         <div class="modal-footer">
-          <a routerLink="/agendamento-consultas"><button type="button" class="btn btn-outline-dark"
-              (click)="c('Save click')">
+          <button type="button" class="btn btn-outline-dark" (click)="atualizarAgPaciente(agPaciente.idAgPaciente)" (click)="voltarPaginaInicial()" (click)="c('Close click')" >
+
               Sim
-            </button></a>
+            </button>
           <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">
             Não
           </button>
@@ -140,7 +140,7 @@
     <div *ngFor="let agPaciente of responseAgPacientes">
       <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 2">
         <div class="col-12 row consulta realizada d-flex align-items-center justify-content-between">
-          <p class="texto-consulta col-7">
+          <p class="texto-consulta col-8">
             <b>Data: {{ agPaciente.agenda.data }} -
               {{ agPaciente.agenda.periodo.horaInicial }}hs -
             </b>
@@ -158,7 +158,7 @@
     <div *ngFor="let agPaciente of responseAgPacientes">
       <div *ngIf="agPaciente.statusConsulta.idStatusConsulta == 3">
         <div class="col-12 row consulta cancelada d-flex align-items-center justify-content-between">
-          <p class="texto-consulta col-7">
+          <p class="texto-consulta col-8">
             <b>Data: {{ agPaciente.agenda.data }} -
               {{ agPaciente.agenda.periodo.horaInicial }}hs -
             </b>
