@@ -23,8 +23,13 @@ export class ProgramaNutriService {
     return this.http.get<DadosPaciente>(URL); 
  }
 
-criarCardapio(request: Cardapio): Observable<Cardapio> {
-  return this.http.post<Cardapio>(this.API2, request);
+criarCardapio(request: Cardapio): Observable<String> {
+  return this.http.post<String>(this.API2, request);
+}
+
+excluirCardapio(idCardapio: number): Observable<String> {
+  const URL = `${this.API2}/${idCardapio}`
+  return this.http.delete<String>(URL);
 }
 
 getListarCardapios(idUsuario: number) {
