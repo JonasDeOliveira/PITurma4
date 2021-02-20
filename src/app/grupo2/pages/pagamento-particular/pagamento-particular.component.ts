@@ -5,7 +5,6 @@ import { Cliente } from '../../shared/model/cartao';
 import { Agenda } from '../../shared/model/agenda';
 import { CartaoAgPaciente} from '../../shared/model/cartaoAgPaciente';
 import { EspMed } from '../../shared/model/espMed';
-import { TipoPagamento } from '../../shared/model/pagamento';
 import { TipoConsulta } from '../../shared/model/tipoConsulta';
 import { CartaoService } from '../../shared/services/cartao.service';
 import { ContratoService } from '../../shared/services/contrato-service';
@@ -42,14 +41,14 @@ export class PagamentoParticularComponent implements OnInit {
 
   desconto = 0;
   vlComDesconto = 0; 
-  //TODO VALIDACAO PARA SE VLCOMDESCONTO<0, SETAR VLDESCONTO EM 0
+  limiteDesconto =0;
+  descontoString = "";
 
   dataCartao= {
     anoVenc: "",
     mesVenc: ""
 }
-
- 
+  dsPlano = "";
 
   cartao: CartaoAgPaciente = {
     nrCartao: "",
@@ -60,13 +59,10 @@ export class PagamentoParticularComponent implements OnInit {
     dtValidade: ""
   };
 
-  dsPlano = "";
-
   usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
   idUsuario: number = this.usuario.idUsuario;
 
   ngOnInit(): void {
-    
     console.log(this.usuario.idUsuario)
     this.listarContratoPorUsuario(this.idUsuario);
     //QUEBRADO 
@@ -89,14 +85,21 @@ listarContratoPorUsuario(idUsuario: number){
     localStorage.setItem("plano", JSON.stringify(response.plano));
     this.dsPlano=response.plano.dsPlano;
     if(response.plano.idPlano==1){
-      this.desconto=50;
+      this.desconto=0.9;
+      this.limiteDesconto=30;
+      this.descontoString = "10%";
     } else if(response.plano.idPlano==2){
-      this.desconto=100;
+      this.desconto=0.8;
+      this.limiteDesconto=50;
+      this.descontoString = "10%";
     } else if(response.plano.idPlano==3){
-      this.desconto=150;
+      this.desconto=0.7;
+      this.limiteDesconto=100;
+      this.descontoString = "10%";
     }
-    this.vlComDesconto=this.vlConsulta - this.desconto;
+    this.vlComDesconto=this.vlConsulta * this.desconto;
     localStorage.setItem("vlComDesconto", this.vlComDesconto.toString())
+    console.log(response)
     }
   )
 }
@@ -104,6 +107,7 @@ listarContratoPorUsuario(idUsuario: number){
 salvarCartaoLS(){
   this.cartao.dtValidade = `${this.dataCartao.anoVenc}-${this.dataCartao.mesVenc}-01`
   localStorage.setItem("cartao", JSON.stringify(this.cartao));
+  console.log(this.cartao)
 }
 }
 

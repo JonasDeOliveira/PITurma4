@@ -1,7 +1,6 @@
 import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UsuarioModule } from 'src/app/grupo1/usuario/usuario.module';
 import { Agenda} from '../../shared/model/agenda';
 import { AgPaciente, Paciente,  } from '../../shared/model/agPaciente';
 import {  CadastroAgPactPgto } from '../../shared/model/cadastroAgPactPgto';
@@ -76,9 +75,6 @@ export class ConfirmacaoConsultaComponent implements OnInit {
 
   ngOnInit():void {
 
-    console.log(this.idUsuario);
-
-    console.log(this.cartao)
     this.consultaConfirmada = false;
     this.consultaNaoConfirmada = true;
     this.conversorData();
