@@ -22,7 +22,9 @@ export class MinhasConsultasComponent implements OnInit {
    }
   responseAgPacientes : AgPaciente [];
   respostaString: Resposta;
+  
   mostraSpin = false; 
+
   usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
   idUsuario:number = this.usuario.idUsuario;
     ngOnInit() : void{

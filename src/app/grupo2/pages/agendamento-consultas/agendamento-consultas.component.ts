@@ -26,14 +26,23 @@ export class AgendamentoConsultasComponent implements OnInit {
   idTipoConsulta : number;
   onLineClicado  : boolean = false;
   presencialClicado  : boolean = false;
- 
+  mostraSpinOn = false; 
+  mostraSpinP = false;
+  mostraSpin = false;
+
   ngOnInit(): void {
   
   }
 
   listarEspecialidades(idTipoConsulta: number){
+    this.mostraSpinOn = false;
+    this.mostraSpinP = false;
+    this.mostraSpin = true;
     this.espMedService.listarEspDisponiveis(idTipoConsulta).subscribe(
       response => {
+        this.mostraSpinOn = true;
+        this.mostraSpinP = true;
+        this.mostraSpin = false;
         this.responseEspMed = response;
         console.log(response);
         if (response.length == 0){
