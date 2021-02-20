@@ -86,11 +86,16 @@ section{
 }
 
 .c1C{
-    width: 100%;
+    /*width: 100%;
     padding-right: 30px;
     padding-bottom: 30px;
     margin-bottom: 80px;
-    background-color: hsla(147, 19%, 55%, 0.5)
+    background-color: hsla(147, 19%, 55%, 0.5) */
+
+    border-color: #d2e4db; 
+    border-radius: 1%;
+    border: 1px solid;
+    margin-top: 15px;
 }
 
 .tt-cardapio{
@@ -138,3 +143,8 @@ section{
     cursor: pointer;
 }
 
+.red{
+    color: #831821;
+    cursor: pointer;
+    font-weight: bold;
+}

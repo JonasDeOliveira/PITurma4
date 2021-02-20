@@ -86,7 +86,7 @@
                                 <div class="form-group col-md-12">
                                     <select class="form-control" name="idTipoRefeicao"  [(ngModel)]="idTipoRefeicao" required> 
                                         <option value ="undefined">Selecione a refeição</option>
-                                        <option *ngFor = "let tipoRefeicao of responseTipoRefeicao" [value]="tipoRefeicao">{{tipoRefeicao.dsTipoRefeicao}}</option>
+                                        <option *ngFor = "let tipoRefeicao of responseTipoRefeicao" [value]="tipoRefeicao.idTipoRefeicao">{{tipoRefeicao.dsTipoRefeicao}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -113,44 +113,41 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-5 c1C" >
-                    <h2 class="tt-cardapio">CARDÁPIO</h2>
+                <div class="col-12 col-lg-5 card">
 
-                    <div class="row" *ngFor = "let cardapio of responseCardapio">
-                        <div class="card"  style="width: 18rem; height: 13rem;" >
+                    <h2 class="tt-cardapio pt-2">CARDÁPIO</h2>
+
+                    <div class="row justify-content-center pt-3 pl-1" *ngFor = "let cardapio of responseCardapio">
+                        <div class="card" style="width: 900%;">
                             <div class="card-body">
-                                <h5 class="card-title">{{cardapio.nomeReceita}} </h5>
-                                <h6 class="card-text">{{cardapio.nomeReceita}}</h6> 
-                                <h6 class="card-text">{{cardapio.qtCalorias}}</h6>
-                                <h6 class="card-text">{{cardapio.qtRendimento}}</h6>
-                                <h6 class="card-text">{{cardapio.dsDescricao}}</h6>
-                                <button type="button" class="btn btn-success btn-verde btn-seleciona" (click)="excluirCarpadio(cardapio.idCardapio)">Excluir</button>
+                                <div class="row">
+                                    <div class="col-11 col-lg-11"> <h6 class="card-title">{{cardapio.nomeReceita}} </h6> </div>
+                                    <div class="col-1 col-lg-1 red" alt="Excluir cardápio" (click)="open(content, cardapio.idCardapio)" id="btn-confirma" data-toggle="modal" data-target="#exampleModal"> X </div>
+                                </div>
+                                <p class="card-text">Refeição: {{cardapio.idTipoRefeicao.dsTipoRefeicao}}</p>
+                                <p class="card-text">Calorias: {{cardapio.qtCalorias}} kcal</p>
+                                <p class="card-text">Quantidade: {{cardapio.qtRendimento}} </p>
                             </div>
                         </div>
                     </div> 
-                 
-                    
+                </div>
 
-                        <div class="modal fade" id="finalizarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Programa Nutricional</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                    Cardápio criado com sucessso!
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn-verde btn-primary">Ok</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
+                <!-- Modal -->
+                <ng-template #content let-c="close" let-d="dismiss">
+                    <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Excluir Refeição</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                     </div>
+                    <div class="modal-body">
+                    <p>Deseja excluir essa refeição do cardápio do paciente?</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancelar</button>
+                    <button type="button" class="btn btn-outline-dark" (click)="excluirCardapio(d)">Excluir</button>
+                    </div>
+                </ng-template>
                 
 
 

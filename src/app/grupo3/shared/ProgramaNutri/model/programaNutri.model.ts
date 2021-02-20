@@ -16,6 +16,7 @@ export interface ResponseDadosPaciente {
 
 //  Cardapio
 export interface Cardapio{
+    idCardapio: number;
     idTipoRefeicao: IdTipoRefeicao;
     idPaciente: number;
     idMedico: number;
@@ -27,6 +28,7 @@ export interface Cardapio{
 //Property 'cardapio' is missing in type 'ListarCardapios[]' but required in type 'ResponseCardapio'
 
 export class Cardapio{
+    idCardapio: number;
     idTipoRefeicao: IdTipoRefeicao;
     idPaciente: number;
     idMedico: number;
