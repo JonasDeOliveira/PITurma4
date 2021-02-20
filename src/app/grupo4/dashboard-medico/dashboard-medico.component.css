@@ -70,7 +70,7 @@ p .usuario {
     border-width: 2px;
     border-color: #2a764a;
     border-style: solid;
-    border-radius: 2%;
+    border-radius: 10px;
     color: #8d8178;    
     text-align: center;
 }
