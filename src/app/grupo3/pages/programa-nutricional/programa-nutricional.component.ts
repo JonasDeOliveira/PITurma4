@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProgramaNutriService} from '../../shared/ProgramaNutri/service/programaNutri.service';
 import { Cardapio, DadosPaciente, ResponseCardapio, ResponseDadosPaciente} from '../../shared/ProgramaNutri/model/programaNutri.model';
 import { TipoRefeicaoService } from '../../shared/ProgramaNutri/service/tipoRefeicao.service';
-import { ResponseTipoRefeicao } from '../../shared/ProgramaNutri/model/tipoRefeicao.model';
+import { IdTipoRefeicao, ResponseTipoRefeicao } from '../../shared/ProgramaNutri/model/tipoRefeicao.model';
 import { NullTemplateVisitor } from '@angular/compiler';
 
 @Component({
@@ -14,29 +14,43 @@ import { NullTemplateVisitor } from '@angular/compiler';
 
 export class ProgramaNutricionalComponent implements OnInit {
 
+  responseTipoRefeicao: ResponseTipoRefeicao;
+  dadosPacienteResposta : DadosPaciente;
+  responseCardapio: Cardapio[];
+  listCardapios: ProgramaNutriService[];
+
+  idPaciente = localStorage.getItem("idPaciente");
+  idUsuario = parseInt(this.idPaciente);
+
+  idTipoRefeicao: IdTipoRefeicao;
+  nomeReceita: string;
+  qtCalorias: number;
+  dsDescricao: string;
+  qtRendimento: number;
+
+  cardapio: Cardapio;
+  
+
   constructor( 
     private programaNutriService: ProgramaNutriService, 
     private tipoRefeicaoService: TipoRefeicaoService
-  ) { }
+  ) { 
 
-   responseTipoRefeicao: ResponseTipoRefeicao;
-   dadosPacienteResposta : DadosPaciente;
-   responseCardapio: ResponseCardapio[];
-   listCardapios: ProgramaNutriService[];
-
-   idPaciente = localStorage.getItem("idPaciente");
-   idUsuario = parseInt(this.idPaciente);
+    this.listCardapios= new Array; 
+  }
 
   ngOnInit(): void {
-    this.listarTipoRefeicao();
+    this.exibirDadosPaciente();
+    this.listarTipoRefeicao();  
+  }
 
-   this.programaNutriService.getExibirDadosPaciente(this.idUsuario).subscribe(
-    response => {
-      this.dadosPacienteResposta=response;
-    }
-  );
-  this.listCardapios= new Array; 
-  
+
+  exibirDadosPaciente(){
+    this.programaNutriService.getExibirDadosPaciente(this.idUsuario).subscribe(
+      response => {
+        this.dadosPacienteResposta=response;
+      }
+    );
   }
 
 //***************************DADOS PACIENTE***********************************************
@@ -72,33 +86,27 @@ export class ProgramaNutricionalComponent implements OnInit {
     );
 }
 
-//**************************************CARDAPIO*******************************
-//inicioCardapio
-request: Cardapio = {
-  idPaciente: this.idUsuario,
-  idMedico: 63,
- idTipoRefeicao : {
-  idTipoRefeicao : null,
-   dsTipoRefeicao: ''
-  } ,
- nomeReceita: '',
- qtCalorias: null,
- qtRendimento: null,
- dsDescricao: ''
-}
 
 cadastrar() {
-  this.programaNutriService.criarCardapio(this.request).subscribe(
+
+  this.cardapio = new Cardapio;
+  this.cardapio.idTipoRefeicao = this.idTipoRefeicao;
+  this.cardapio.nomeReceita = this.nomeReceita;
+  this.cardapio.qtRendimento = this.qtRendimento;
+  this.cardapio.qtCalorias = this.qtCalorias;
+  this.cardapio.dsDescricao = this.dsDescricao;
+  this.cardapio.idPaciente = this.idUsuario;
+  this.cardapio.idMedico = 43;
+  
+  this.programaNutriService.criarCardapio(this.cardapio).subscribe(
     response => {
-     //   this.responseCardapio= response;
       alert('Cardapio realizado com sucesso!');
     },
     error => {
-      alert('algo inesperado aconteceu');
+      alert('Algo inesperado aconteceu');
     }
   )
 }
-
 
 //Listar Cardapio do usuário
 listarCardapios(){
@@ -109,7 +117,11 @@ listarCardapios(){
   )
 }
 
-    
+//Excluir Cardápio do Usuário
+excluirCardapio(id: number){
+  
+}
+  
 //FimCardapio
 
 }

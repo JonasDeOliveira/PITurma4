@@ -84,28 +84,28 @@
                         <form action="#inicio">
                             <div class="form-row  ">
                                 <div class="form-group col-md-12">
-                                    <select class="form-control" id="EscolherRefeicao" name="idTipoRefeicao" [(ngModel)]="request.idTipoRefeicao.idTipoRefeicao" #idTipoRefeicao="ngModel" placeholder="Escolha a refeição" required> 
+                                    <select class="form-control" name="idTipoRefeicao"  [(ngModel)]="idTipoRefeicao" required> 
                                         <option value ="undefined">Selecione a refeição</option>
-                                        <option *ngFor = "let tipoRefeicao of responseTipoRefeicao" [value]="tipoRefeicao.idTipoRefeicao">{{tipoRefeicao.dsTipoRefeicao}}</option>
+                                        <option *ngFor = "let tipoRefeicao of responseTipoRefeicao" [value]="tipoRefeicao">{{tipoRefeicao.dsTipoRefeicao}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" id="nomeReceita" name = " nomeReceita" [(ngModel)]="request.nomeReceita" #nomeReceita= "ngModel" required
+                                    <input type="text" class="form-control" name="nomeReceita" [(ngModel)]="nomeReceita" required
                                         placeholder="Nome do Prato">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input class="form-control" id="qtRendimento" name = "qtRendimento" [(ngModel)]="request.qtRendimento" #qtRendimento= "ngModel" placeholder="Calorias" required>
+                                    <input class="form-control" name = "qtRendimento" [(ngModel)]="qtCalorias" placeholder="Calorias" required>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <textarea type="text" class="form-control" id="dsDescricao" name = "dsDescricao" [(ngModel)]="request.dsDescricao" #qtDescricao= "ngModel" placeholder="Descrição" required rows = "3"></textarea>
+                                    <textarea type="text" class="form-control" name ="dsDescricao" [(ngModel)]="dsDescricao" placeholder="Descrição" required rows = "3"></textarea>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input class="form-control" id="qtCalorias" name = "qtCalorias" [(ngModel)]="request.qtCalorias" #qtCalorias= "ngModel" placeholder="Quantidade" required>
+                                    <input class="form-control" name="qtCalorias" [(ngModel)]="qtRendimento" placeholder="Quantidade" required>
                                 </div>
                             </div>
             
                             <div class="row d-flex justify-content-center">
-                                <button type="button" class="btn btn-success btn-verde" id="btn-confirma"  value="Cadastrar" (click)="cadastrar()">Confirmar</button>
+                                <button type="button" class="btn btn-success btn-verde" id="btn-confirma"  value="Cadastrar" (click)="cadastrar()" data-toggle="modal" data-target="#finalizarModal">Confirmar</button>
                             </div>
 
                         </form>
@@ -116,47 +116,20 @@
                 <div class="col-12 col-lg-5 c1C" >
                     <h2 class="tt-cardapio">CARDÁPIO</h2>
 
+                    <div class="row" *ngFor = "let cardapio of responseCardapio">
+                        <div class="card"  style="width: 18rem; height: 13rem;" >
+                            <div class="card-body">
+                                <h5 class="card-title">{{cardapio.nomeReceita}} </h5>
+                                <h6 class="card-text">{{cardapio.nomeReceita}}</h6> 
+                                <h6 class="card-text">{{cardapio.qtCalorias}}</h6>
+                                <h6 class="card-text">{{cardapio.qtRendimento}}</h6>
+                                <h6 class="card-text">{{cardapio.dsDescricao}}</h6>
+                                <button type="button" class="btn btn-success btn-verde btn-seleciona" (click)="excluirCarpadio(cardapio.idCardapio)">Excluir</button>
+                            </div>
+                        </div>
+                    </div> 
                  
-                    <div  class="div row"  *ngFor = "let cardapio of responseCardapio">
-                        <h6>{{cardapio.nomeReceita}}</h6> 
-                        <h6>{{cardapio.qtCalorias}}</h6>
-                        <h6>{{cardapio.qtRendimento}}</h6>
-                        <h6>{{cardapio.dsDescricao}}</h6>
-    
-                    </div>
-            
-
-                    <div  class="receitas">
-                        <h5><button class="btn-padrao"><mat-icon>add</mat-icon></button>Refeição<button class="btn-padrao"><mat-icon>delete</mat-icon></button></h5>
-                        <h6>Nome do Prato</h6>
-                        <h6>Quantidade</h6>
-                        <h6>Calorias</h6>
-                    </div>
-
-                        <div  class="receitas">
-                            <h5><button class="btn-padrao"><i class="fa fa-plus" aria-hidden="true"></i></button>Refeição<button class="btn-padrao"><i class="fa fa-trash"></i></button></h5>
-                            <h6>Nome do Prato</h6>
-                            <h6>Quantidade</h6>
-                            <h6>Calorias</h6>
-                        </div>
-
-                        <div  class="receitas">
-                            <h5><button class="btn-padrao"><i class="fa fa-plus" aria-hidden="true"></i></button>Refeição<button class="btn-padrao"><i class="fa fa-trash"></i></button></h5>
-                            <h6>Nome do Prato</h6>
-                            <h6>Quantidade</h6>
-                            <h6>Calorias</h6>
-                        </div>
-                        
-                        <div  class="receitas">
-                            <h5><button class="btn-padrao"><i class="fa fa-plus" aria-hidden="true"></i></button>Refeição<button class="btn-padrao"><i class="fa fa-trash"></i></button></h5>
-                            <h6>Nome do Prato</h6>
-                            <h6>Quantidade</h6>
-                            <h6>Calorias</h6>
-                        </div>
                     
-                        <div class="row d-flex justify-content-center">
-                            <button type="button" class="btn-verde btn-success btn-verde" id="bt-finalizar" data-toggle="modal" data-target="#finalizarModal">Finalizar</button>
-                        </div>
 
                         <div class="modal fade" id="finalizarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">

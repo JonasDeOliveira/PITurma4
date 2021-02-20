@@ -25,6 +25,16 @@ export interface Cardapio{
     dsDescricao: string;
 }
 
+export class Cardapio{
+    idTipoRefeicao: IdTipoRefeicao;
+    idPaciente: number;
+    idMedico: number;
+    nomeReceita: string;
+    qtCalorias: number;
+    qtRendimento: number;
+    dsDescricao: string;
+}
+
 export interface ResponseCardapio{
     cardapio: Cardapio[]
 }

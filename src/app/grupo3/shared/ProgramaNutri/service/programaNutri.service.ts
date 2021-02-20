@@ -29,7 +29,7 @@ criarCardapio(request: Cardapio): Observable<Cardapio> {
 
 getListarCardapios(idUsuario: number) {
   const URL = `${this.API3}/${idUsuario}`;
-  return this.http.get<ResponseListarCardapios[]>(URL); 
+  return this.http.get<Cardapio[]>(URL); 
 }
 
 }

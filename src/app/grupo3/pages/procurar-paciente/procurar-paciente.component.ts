@@ -11,17 +11,14 @@ export class ProcurarPacienteComponent implements OnInit {
 
   cpf: string;
   idPaciente: number;
-  existeAlert: boolean;
 
   constructor(private pacienteService : PacienteService,  private router: Router) { 
-    this.existeAlert = false;
   }
 
   ngOnInit(): void {
   }
 
   buscarCpf(){
-    this.existeAlert = false;
     
     this.pacienteService.getPaciente(this.cpf).subscribe(
       (response) => {
@@ -34,7 +31,7 @@ export class ProcurarPacienteComponent implements OnInit {
         }
 
       }, (error) =>{
-        this.existeAlert = true;   //exibe a div de erro
+        alert('Paciente não foi encontrado!');
       }
     )
     
