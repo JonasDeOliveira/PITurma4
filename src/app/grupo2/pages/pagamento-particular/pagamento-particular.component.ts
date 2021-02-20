@@ -1,12 +1,14 @@
 import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cliente } from '../../shared/model/cartao';
 import { Agenda } from '../../shared/model/agenda';
-import { CartaoAgPaciente, Paciente } from '../../shared/model/cartaoAgPaciente';
+import { CartaoAgPaciente} from '../../shared/model/cartaoAgPaciente';
 import { EspMed } from '../../shared/model/espMed';
 import { TipoPagamento } from '../../shared/model/pagamento';
 import { TipoConsulta } from '../../shared/model/tipoConsulta';
 import { CartaoService } from '../../shared/services/cartao.service';
+import { ContratoService } from '../../shared/services/contrato-service';
 import { PagamentoCartaoServiceService } from '../../shared/services/pagamento-cartao-service.service';
 
 @Component({
@@ -15,8 +17,10 @@ import { PagamentoCartaoServiceService } from '../../shared/services/pagamento-c
   styleUrls: ['./pagamento-particular.component.css']
 })
 export class PagamentoParticularComponent implements OnInit {
+ 
 
   constructor(
+    public contratoService: ContratoService,
     public cartaoService: CartaoService,
     public pagamentoCartaoService: PagamentoCartaoServiceService,
     private router: Router 
@@ -37,48 +41,35 @@ export class PagamentoParticularComponent implements OnInit {
   data = this.agenda.data;
 
   desconto = 0;
-  vlComDesconto = this.vlConsulta - this.desconto; 
+  vlComDesconto = 0; 
   //TODO VALIDACAO PARA SE VLCOMDESCONTO<0, SETAR VLDESCONTO EM 0
 
- 
-
-  // nmTitular:string = "";
-  // nrCartao: string  = "";
-  // mesVenc: string = "";
-  // anoVenc: string = "";
-  // cvv: string = "";
-dataCartao= {
-  anoVenc: "",
-  mesVenc: ""
+  dataCartao= {
+    anoVenc: "",
+    mesVenc: ""
 }
+
+ 
 
   cartao: CartaoAgPaciente = {
     nrCartao: "",
     codSeguranca: "",
-    usuario : {
+    paciente : {
       nome: "",
     },
     dtValidade: ""
   };
-  
-  qtdadeParcString : string;
-  qtadeParcelas : number = 1;
-  // valorParcela : number = this.vlConsulta/this.qtadeParcelas;
 
-  usuario = JSON.parse(localStorage.getItem("cliente"));
-  idUsuario= this.usuario.idUsuario;
-  idPlano: number = 1;
-  dsPlano: string = "Basico"
+  dsPlano = "";
 
-  // idPlano= JSON.parse(localStorage.getItem("plano"));
-  
-  tipoPagamento: TipoPagamento = {
-    idFormaPagamento: 2,
-    dsFormaPagamento: "Cartão"
-  }; 
-  
+  usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
+  idUsuario: number = this.usuario.idUsuario;
+
   ngOnInit(): void {
-    //QUEBRADO - ARRUMAR PARA SEGUNDA
+    
+    console.log(this.usuario.idUsuario)
+    this.listarContratoPorUsuario(this.idUsuario);
+    //QUEBRADO 
     // this.listarCartao(this.idUsuario);
   }
 
@@ -91,18 +82,24 @@ dataCartao= {
   //     }
   //   )
   // }
-// TODO
-  //MUDAR PARA SALVAR ID PLANO NO LS
- salvarTipoPlano(){
-//     localStorage.setItem("tipoPagamento", JSON.stringify(this.tipoPagamento))
-//     console.log(this.cartao)
+
+listarContratoPorUsuario(idUsuario: number){
+  this.contratoService.buscarPlanosPaciente(idUsuario).subscribe(
+    response => {
+    localStorage.setItem("plano", JSON.stringify(response.plano));
+    this.dsPlano=response.plano.dsPlano;
+    if(response.plano.idPlano==1){
+      this.desconto=50;
+    } else if(response.plano.idPlano==2){
+      this.desconto=100;
+    } else if(response.plano.idPlano==3){
+      this.desconto=150;
+    }
+    this.vlComDesconto=this.vlConsulta - this.desconto;
+    localStorage.setItem("vlComDesconto", this.vlComDesconto.toString())
+    }
+  )
 }
-
-// salvarQtdadeParcelasLS(){
-//   this.qtdadeParcString = this.qtadeParcelas.toString();
-//   localStorage.setItem("qtadeParcelas", this.qtdadeParcString)
-
-// }
 
 salvarCartaoLS(){
   this.cartao.dtValidade = `${this.dataCartao.anoVenc}-${this.dataCartao.mesVenc}-01`

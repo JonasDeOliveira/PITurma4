@@ -40,10 +40,6 @@ export class ConfirmacaoConsultaComponent implements OnInit {
     config.keyboard = false;
 
   }
-
-  tipoPagamento: TipoPagamento = JSON.parse(localStorage.getItem("tipoPagamento"));
-  idTipoPagamento: number = this.tipoPagamento.idFormaPagamento;
-  dsTipoPagamento: string = this.tipoPagamento.dsFormaPagamento;
   
   especialidade: EspMed = JSON.parse(localStorage.getItem("espMed"));
   dsEspecialidade: string = this.especialidade.dsEspMed;
@@ -58,21 +54,13 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   horario : Time = this.agenda.periodo.horaInicial;
   idAgenda: number = this.agenda.idAgenda;
 
-  parcelas: number = JSON.parse(localStorage.getItem("qtadeParcelas"));
-  cartao: CartaoAgPaciente = JSON.parse(localStorage.getItem("cartao"))
+  cartao = JSON.parse(localStorage.getItem("cartao"))
 
   usuario = JSON.parse(localStorage.getItem("cliente"));
   idUsuario = this.usuario.idUsuario;
-  
 
   consultaConfirmada : boolean = true;
   consultaNaoConfirmada : boolean = true;
-
- 
-
-
-  //TIRAR APOS MERGE
-  // idUsuario = 142;
 
   data: string;
 
@@ -82,17 +70,9 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   cadastroAgPaciente: CadastroAgPactPgto = {
     idAgenda: this.idAgenda,
     idUsuario: this.idUsuario,
-    nrParcelas: this.parcelas,
-    tipoPgto: {
-      idFormaPagamento: this.idTipoPagamento,
-      dsFormaPagamento: this.dsTipoPagamento
-    },
-    cartao: this.cartao
   };
 
-
-
-  
+  vlComDesconto = localStorage.getItem("vlComDesconto");
 
   ngOnInit():void {
 
@@ -101,11 +81,6 @@ export class ConfirmacaoConsultaComponent implements OnInit {
     console.log(this.cartao)
     this.consultaConfirmada = false;
     this.consultaNaoConfirmada = true;
-    if (this.tipoPagamento.idFormaPagamento == 1){
-      this.tipoPagamento.dsFormaPagamento="Plano"
-    } else if (this.tipoPagamento.idFormaPagamento == 2){
-      this.tipoPagamento.dsFormaPagamento="Cartão"
-    }
     this.conversorData();
   }
 
@@ -121,14 +96,12 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   }
 
   criarAgPctePgto (request: CadastroAgPactPgto){
-    
     this.confirmacaoService.cadastrarPgtoAgP(request).subscribe(
       response => {
         console.log(response);
         this.consultaConfirmada = true;
         this.consultaNaoConfirmada = false;
       }
-
     )
   }
 

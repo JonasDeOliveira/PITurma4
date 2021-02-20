@@ -13,7 +13,7 @@ export class ContratoService {
   private readonly APIGETPLANOPORPACIENTE = 'http://localhost:8080/contrato-usuario/';
 
   buscarPlanosPaciente(idUsuario: Number){
-    return this.http.get<Contrato>(this.APIGETPLANOPORPACIENTE+idUsuario);
+    return this.http.get<any>(this.APIGETPLANOPORPACIENTE+idUsuario);
   }
 
 }
