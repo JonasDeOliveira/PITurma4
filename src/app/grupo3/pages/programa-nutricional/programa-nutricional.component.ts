@@ -104,7 +104,7 @@ cadastrar() {
 listarCardapios(){
   this.programaNutriService.getListarCardapios(this.idUsuario).subscribe (
    response => {
-      this.responseCardapio = response;
+     // this.responseCardapio = response;
     }
   )
 }

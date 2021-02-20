@@ -24,16 +24,17 @@ export interface Cardapio{
     qtRendimento: number;
     dsDescricao: string;
 }
+//Property 'cardapio' is missing in type 'ListarCardapios[]' but required in type 'ResponseCardapio'
 
 export interface ResponseCardapio{
-    cardapio: Cardapio[]
+    cardapio: ResponseListarCardapios[]
 }
 
 
 //LISTAR CARDAPIOS DO USUÁRIO
-//export interface ListarCardapios{
-  //  cardapio: Cardapio
-//}
+export interface ListarCardapios{
+  cardapio: Cardapio
+}
 
 export interface ResponseListarCardapios{
    cardapio: Cardapio[]
