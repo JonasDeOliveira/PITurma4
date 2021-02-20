@@ -21,12 +21,6 @@ import { TipoRefeicaoService } from './shared/ProgramaNutri/service/tipoRefeicao
 import { PipeComponent } from './pipe/pipe.component';
 import { AgServico } from './shared/model/agservico.model';
 import { Grupo1Module } from '../grupo1/grupo1.module';
-<<<<<<< HEAD
-=======
-
->>>>>>> 6b529283098848849b4a5b4bd093333605a5a20f
-
-
 
 @NgModule({
   
