@@ -66,7 +66,7 @@
             <div class="linha linha-futura"></div>
         </div>
         <div class="texto-trilha d-flex flex-column">
-            <div class="trilha">Valor a pagar</div>
+            <div class="trilha">Valor da Consulta</div>
             <div class="opcao-vazia">vazio</div>
         </div>
     </div>
@@ -125,7 +125,7 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="nomeTitular">Nome do titular do cartão*</label>
-                            <input [(ngModel)]="cartao.usuario.nome" #nmTitular="ngModel" name="nmTitular" type="text" class="form-control"
+                            <input [(ngModel)]="cartao.paciente.nome" #nmTitular="ngModel" name="nmTitular" type="text" class="form-control"
                                 id="nmTitular" placeholder="Digite o nome como gravado no cartão" required>
                         </div>
                     </div>
@@ -218,20 +218,20 @@
                         <td class="text-left">Consulta {{dsEspecialidade}}</td>
                         <td class="text-center">Dr(a) {{nmMedico}}</td>
                         <td class="text-right">{{dsPlano}}</td>
-                        <th class="preco text-center">{{desconto}}}</th>
+                        <th class="preco text-center">R$ {{descontoString}}</th>
                         <th class="preco text-center">R$ {{vlConsulta}}</th>
                     </tr>
                 </table>
                 <table class="table">
                     <tr>
                         <th colspan="2" class="total">Total com desconto</th>
-                        <td class="total text-right">R$ {{vlConsulta}}</td>
+                        <td class="total text-right">R$ {{vlComDesconto}}</td>
                     </tr>
                 </table>
                 <div class="btnConcluir">
                     <div class="col text-center">
                         <a routerLink='/confirmacao-consulta'><button class="btn-active clicavel"
-                                value="CadastrarParticular" (click)= "salvarCartaoLS()" (click)="salvarTipoPlano()">Confirmar</button></a>
+                                value="CadastrarParticular" (click)= "salvarCartaoLS()">Confirmar</button></a>
                     </div>
                 </div>
             </div>

@@ -67,7 +67,7 @@
             <div class="linha linha-futura"></div>
         </div>
         <div class="texto-trilha d-flex flex-column">
-            <div class="trilha">Pagamento</div>
+            <div class="trilha">Valor da Consulta</div>
             <div class="opcao-vazia">vazio</div>
         </div>
     </div>
@@ -121,7 +121,7 @@
                     <p><b>Consulta R$ {{agenda.medico.preco.vlConsulta}}</b></p>
                 </div>
                 <div class="horarios">
-                    <a routerLink='/pagamento-plano'>
+                    <a routerLink='/pagamento-particular'>
                         <a href="#"><button class="hora"
                                 (click)="salvarAgendaLS(agenda)">{{agenda.periodo.horaInicial}}</button></a>
                         <!-- <button class="hora">15:00</button>

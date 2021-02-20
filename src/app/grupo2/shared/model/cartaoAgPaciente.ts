@@ -2,8 +2,7 @@
 
 export interface CartaoAgPaciente{
 
-    idCartao?: number;
-    usuario: Paciente;
+    paciente: Paciente;
     nrCartao: string;
     codSeguranca: string;
     dtValidade: string;

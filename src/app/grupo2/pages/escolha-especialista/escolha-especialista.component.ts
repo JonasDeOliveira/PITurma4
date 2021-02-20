@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { Agenda} from '../../shared/model/agenda';
 import { TipoConsulta} from '../../shared/model/tipoConsulta';
 import { EspMed } from '../../shared/model/espMed';
 import { AgendaService } from '../../shared/services/agenda.service';
 import { AgPacienteService } from '../../shared/services/agPaciente.service';
-import { R3ResolvedDependencyType } from '@angular/compiler';
+
 
 
 @Component({
@@ -18,8 +17,6 @@ export class EscolhaEspecialistaComponent implements OnInit {
   constructor(
     public agendaService: AgendaService,
     public agPacienteService : AgPacienteService,
-
-
     ){  
    
   }
@@ -35,31 +32,22 @@ export class EscolhaEspecialistaComponent implements OnInit {
   agendaVazia : boolean = false;
 
   arrayAgendas: Agenda[];
-  // arrayAgendasData: Agenda[];
   data: string;
  
-  
   ngOnInit(): void {
     this.buscarAgenda(this.idTipoConsulta , this.idEsp);
-    // this.buscarAgendaporData(this.arrayAgendas, this.dateApi);
     this.conversorData();
   }
+
    buscarAgenda(idTipoConsulta: number,idEspecialidade: number){
      this.agendaService.listarPorEsp(idTipoConsulta,idEspecialidade).subscribe(
       response => { 
         this.arrayAgendas = response;
-        this.verificarAgenda(this.arrayAgendas);
+        console.log(this.arrayAgendas[0].periodo.horaInicial)
+        // this.verificarAgenda(this.arrayAgendas);
       }
      )
    }
-
-
-
-  //  buscarAgendaporData(agendas: Agenda[], data: Date){
-  //    this.agendaService.filtrarAgendasPorData(agendas, data).subscribe(
-  //      response => this.arrayAgendasData = response
-  //    )
-  //  }
 
   salvarAgendaLS(agenda: Agenda){
     localStorage.setItem("agenda", JSON.stringify(agenda));
@@ -84,19 +72,19 @@ export class EscolhaEspecialistaComponent implements OnInit {
 
   }
 
-  verificarAgenda(response){
-    let contador = 0;
-    response.forEach(element => {
-     if (element.data == this.data) {
-      contador ++;
-     }
-    });
-    if (contador == 0) {
-      this.agendaVazia = true;
-    } else {
-      this.agendaVazia = false;
-    }
-  }
+  // verificarAgenda(response){
+  //   let contador = 0;
+  //   response.forEach(element => {
+  //    if (element.data == this.data) {
+  //     contador ++;
+  //    }
+  //   });
+  //   if (contador == 0) {
+  //     this.agendaVazia = true;
+  //   } else {
+  //     this.agendaVazia = false;
+  //   }
+  // }
   
 }
   

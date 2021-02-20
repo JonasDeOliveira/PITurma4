@@ -67,8 +67,8 @@
     </div>
     <div class="texto-trilha d-flex flex-column">
       <a routerLink='/pagamento-plano'>
-        <div class="trilha">Pagamento</div>
-        <div class="opcao">{{dsTipoPagamento}}</div>
+        <div class="trilha">Valor da Consulta</div>
+        <div class="opcao">R$ {{vlComDesconto}}</div>
       </a>
     </div>
   </div>
@@ -100,7 +100,7 @@
       <p class="card-text">Especialidade: {{dsEspecialidade}}</p>
       <p class="card-text">Especialista: {{nmMedico}}</p>
       <p class="card-text">Tipo de consulta: {{dsConsulta}}</p>
-      <p class="card-text">Pagamento: {{dsTipoPagamento}}</p>
+      <p class="card-text">Valor com desconto: R$ {{vlComDesconto}}</p>
       <div class="card-footer text-muted bg-transparent border-success">
         <button type="button" class="btn-confirm clicavel" (click)="mudarFlagConfirmacao()">Confirmar
           consulta</button>

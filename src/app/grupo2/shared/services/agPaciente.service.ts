@@ -31,7 +31,7 @@ export class AgPacienteService {
     return this.http.get<Resposta>(URL);
   }
 
-  cadastrarAgPaciente (request: CadastroAgPactPgto): Observable<AgPaciente>{
-    return this.http.post<AgPaciente>(this.APICADASTRARAGPCTE, request);
-  }
+  // cadastrarAgPaciente (request: CadastroAgPactPgto): Observable<AgPaciente>{
+  //   return this.http.post<AgPaciente>(this.APICADASTRARAGPCTE, request);
+  // }
 }
