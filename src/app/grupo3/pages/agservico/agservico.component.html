@@ -1,6 +1,9 @@
 <app-header *ngIf="!ehLogado"></app-header>
 <app-header-logado *ngIf="ehLogado"></app-header-logado>
-<div class="container" id="inicio">
+<div *ngIf="ehLogado == false">
+    
+</div>
+<div class="container" *ngIf="ehLogado">
 
     <div class="banner"></div>
 
@@ -49,7 +52,7 @@
                         <h5 class="card-title">{{loja.nmLoja}} </h5>
                         <p class="card-text" *ngFor= "let endereco of loja.enderecos"> {{endereco.dsEndereco}}, Bairro: {{endereco.dsBairro}} - CEP: {{endereco.nrCep}} - {{endereco.cidade.dsCidade}}  - {{endereco.cidade.uf.dsUf}} </p>
                         <h6 class="card-subtitle mb-2 text-muted" *ngFor= "let contato of loja.contatos">{{contato.nrDdd}} {{contato.dsContato}}</h6>
-                        <button type="button" class="btn btn-success btn-verde btn-seleciona"  (click)="getLoja(loja.idLoja)">Selecione</button>
+                        <button type="button" class="btn btn-success btn-verde btn-seleciona" (click)="getLoja(loja.idLoja)">Selecione</button>
                         </div>
                     </div>
                 </div>
@@ -89,7 +92,7 @@
                         <h5>Sexta-feira, 5 de março de 2021</h5>
                     </div>
                     
-                    <div class="form-group col-12 col-lg-12 pt-3 border rounded" *ngIf = "exibir == true">
+                    <div class="form-group col-12 col-lg-12 pt-3 border rounded" *ngIf = "exibir == true"  style="background-color: rgb(247, 245, 245);">
                         <div class="row justify-content-start pt-2 pl-2 pr-2"><p>Manhã</p></div>
                         <div class="row justify-content-around pt-1 pl-2 pr-2">                            
                             <button *ngFor = "let hora of hrManhaExibir" type="button" class="btn btn-success btn-verde" (click)="getHora(hora)">{{hora}}</button>

@@ -28,6 +28,7 @@ export class HistoricoAgservicoComponent implements OnInit {
     this.agRealizados = new Array; 
     this.agCancelados = new Array; 
     this.agendamentos = true;
+
   }
 
   ngOnInit(): void {
@@ -35,7 +36,7 @@ export class HistoricoAgservicoComponent implements OnInit {
   }
 
   listarAgendamentos(){
-
+    this.spinCarregando = true;
     this.agendamentoService.getAgendamentosPorUsuario(this.cliente.idUsuario).subscribe(
       response => {
         this.responseAgendamentos = response; 

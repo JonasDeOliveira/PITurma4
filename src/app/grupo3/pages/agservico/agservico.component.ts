@@ -79,7 +79,6 @@ export class AgservicoComponent implements OnInit {
     this.idLoja = id; 
     console.log("Id seviço: "+ this.idServico);
     console.log("Id loja: "+id); 
-
     this.exibir2 = true;
   }
 

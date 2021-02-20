@@ -1,5 +1,5 @@
 .titulo{
-    color: #005034;
+    color: #319A75;
 }
 
 .banner {
@@ -11,19 +11,23 @@
 }
 
 .sub{
-    color: #005034;
+    color: #444444;
     text-decoration: underline;
 }
 
 .sub:hover{
-    color: #23A455;
+    color: #319A75;
 }
 
 .titulo-p{
-    color: #23A455;
+    color:#444444;
 }
 
 a {
     cursor: pointer;
     text-decoration: underline;
+}
+
+.card{
+    background-color: rgb(247, 245, 245);
 }

@@ -1,7 +1,10 @@
 <app-header *ngIf="!ehLogado"></app-header>
 <app-header-logado *ngIf="ehLogado"></app-header-logado>
-<div class="container">
-
+<div *ngIf="ehLogado == false">
+    
+</div>
+<div class="container" *ngIf="ehLogado">
+    
     <section>
 
         <div class="banner"></div>
@@ -27,15 +30,15 @@
         </div>
 
         <div *ngIf = "agAgendados.length > 0">
-            <div class="row pl-3 pt-4">
+            <div class="row pl-3 pt-1">
                 <h4 class="titulo-p">Próximos agendamentos</h4>
             </div>
 
             <div class="row">
-                <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agAgendados">
-                    <div class="card" style="width: 90%;">
+                <div class="col-12 col-lg-4 pt-3"  *ngFor = "let ag of agAgendados">
+                    <div class="card" style="width: 90%; height: 12rem;">
                         <div class="card-body">
-                        <h5 class="card-title">{{ag.servico.nome}} {{ag.idAgendamento}}</h5>
+                        <h5 class="card-title">{{ag.servico.nome}}</h5>
                         <p class="card-text">Horário: {{ag.dtDataHora}}</p>
                         <p class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </p>
                         <p class="sub justify-content-end"><a class="sub" (click)="cancelarAgendamento(ag.idAgendamento)"> Cancelar agendamento </a> </p>
@@ -52,10 +55,10 @@
             </div>
 
             <div class="row">
-                <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agRealizados">
-                    <div class="card" style="width: 90%;">
+                <div class="col-12 col-lg-4 pt-3"  *ngFor = "let ag of agRealizados">
+                    <div class="card" style="width: 90%; height: 11rem;">
                         <div class="card-body">
-                        <h5 class="card-title">{{ag.servico.nome}} {{ag.idAgendamento}}</h5>
+                        <h5 class="card-title">{{ag.servico.nome}}</h5>
                         <p class="card-text">Horário: {{ag.dtDataHora}}</p>
                         <p class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </p>
                         </div>
@@ -70,10 +73,10 @@
             </div>
 
             <div class="row">
-                <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agCancelados">
-                    <div class="card" style="width: 90%;">
+                <div class="col-12 col-lg-4 pt-3"  *ngFor = "let ag of agCancelados">
+                    <div class="card" style="width: 90%; height: 11rem;">
                         <div class="card-body">
-                        <h5 class="card-title">{{ag.servico.nome}} {{ag.idAgendamento}}</h5>
+                        <h5 class="card-title">{{ag.servico.nome}}</h5>
                         <p class="card-text">Horário: {{ag.dtDataHora}}</p>
                         <p class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </p>
                         </div>

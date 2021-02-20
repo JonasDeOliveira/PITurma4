@@ -7,17 +7,21 @@
 }
 
 .titulo-cor{
-  color: #005034; 
+  color: #319A75; 
 }
 
+.card{
+  background-color: rgb(247, 245, 245);
+}
 .p-15{
   padding-left:15px;
 }
 
 .btn-verde{
-  background-color: #2a764a;
+  background-color: #319A75;
   border: none;
 }
+
 
 .btn-verde:hover{
   /*background-color: #5db193;
