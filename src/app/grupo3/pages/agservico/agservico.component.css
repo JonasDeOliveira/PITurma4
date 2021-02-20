@@ -7,26 +7,35 @@
 }
 
 .titulo-cor{
-  color: #005034; 
+  color: #319A75; 
 }
 
+.card{
+  background-color: rgb(247, 245, 245);
+}
 .p-15{
   padding-left:15px;
 }
 
 .btn-verde{
-  background-color: #428870;
+  background-color: #319A75;
   border: none;
 }
+
 
 .btn-verde:hover{
-  background-color: #5db193;
-  border: none;
-    
+  /*background-color: #5db193;
+  border: none; */
+  background-color: rgb(000, 080, 052);
+  border: 1px solid rgb(000, 080, 052);
 }
 
+
 .horarios{
-  background-color: hsla(147, 19%, 55%, 0.5); margin-top: 15px;
+  border-color: hsla(147, 19%, 55%, 0.5); 
+  border-radius: 5%;
+  border: 1px solid;
+  margin-top: 15px;
 }
 
 

@@ -1,4 +1,9 @@
-<div class="container" id="inicio">
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
+<div *ngIf="ehLogado == false">
+    
+</div>
+<div class="container" *ngIf="ehLogado">
 
     <div class="banner"></div>
 
@@ -22,11 +27,11 @@
             </div> 
 
             <div class="row align-items-end">
-                <div class="form-group col-12 col-lg-8 pt-3">
+                <div class="form-group col-10 col-lg-8 pt-3">
                     <label for="local"><h5>2. Selecione a localidade</h5></label>
                     <input class="form-control" type="text" id="local" [(ngModel)]="local" name ="local" placeholder="Busque por rua, bairro ou cidade" required> 
                 </div>
-                <div class="form-group col-12 col-lg-4 pt-3">
+                <div class="form-group col-2 col-lg-4 pt-3">
                     
                     <button type="button" class="btn btn-success btn-verde" id="btn-ok" (click)="buscarLojaPorLocal()">
                         <label for="mostrar_lojas" class="sem-margin">OK</label>
@@ -34,21 +39,20 @@
                 </div>
             </div>
 
-             <!-- <div class="row" >
-                <div style="display: block;" class="alert alert-danger alert-local" role="alert" style="width: 80%;">
-                    Sua busca não retornou resultados
-                </div>
-            </div> -->
             <!-- cards com endereços encontrados -->
+
+            <div class="row justify-content-center spinner-grow text-muted">
+                <i *ngIf="spinResponseLojas" class="fa fa-spinner fa-spin"></i>
+            </div>
           
             <div class="row">
                 <div class="form-group col-12 col-lg-4 pt-3 ml-1" *ngFor = "let loja of responseLojas">
                     <div class="card"  style="width: 18rem; height: 13rem;">
                         <div class="card-body">
                         <h5 class="card-title">{{loja.nmLoja}} </h5>
-                        <p class="card-text" *ngFor= "let endereco of loja.enderecos"> {{endereco.dsEndereco}}, Bairro: {{endereco.dsBairro}} - CEP: {{endereco.nrCep}} - {{endereco.idCidade}}  - SP </p>
+                        <p class="card-text" *ngFor= "let endereco of loja.enderecos"> {{endereco.dsEndereco}}, Bairro: {{endereco.dsBairro}} - CEP: {{endereco.nrCep}} - {{endereco.cidade.dsCidade}}  - {{endereco.cidade.uf.dsUf}} </p>
                         <h6 class="card-subtitle mb-2 text-muted" *ngFor= "let contato of loja.contatos">{{contato.nrDdd}} {{contato.dsContato}}</h6>
-                        <button type="button" class="btn btn-success btn-verde btn-seleciona"  (click)="getLoja(loja.idLoja)">Selecione</button>
+                        <button type="button" class="btn btn-success btn-verde btn-seleciona" (click)="getLoja(loja.idLoja)">Selecione</button>
                         </div>
                     </div>
                 </div>
@@ -61,10 +65,10 @@
             </div>
             
             <div class="row p-15">
-                <div class="form-group col-12 col-lg-5 pt-3 calendario" style="height: 400px;">
+                <div class="form-group col-12 col-lg-5 pt-3 calendario" style="height: 370px;">
                     <div class="containerx">
                         
-                        <a (click)="getHorasIndisponiveis('2021-02-02')"> <img class="img-fluid "
+                        <a (click)="getHorasIndisponiveis('2021-03-05')"> <img class="img-fluid "
                             src="/assets/img/calendar.png">
                         </a>
                         <!--<div class="calendar">
@@ -76,14 +80,19 @@
                 
 
                <!-- <button type="button" class="btn btn-success btn-verde btn-seleciona"  (click)="getHorasIndisponiveis('2021-02-02')">CLIQUE AQUI</button>
-               -->     
+               -->
+                
+                <div class="form-group col-12 col-lg-5 offset-md-1 pt-3">
 
-                <div class="form-group col-12 col-lg-5 offset-md-1 pt-3" *ngIf = "exibir == true">
-                    <div class="row p-15" style="background-color: white;">
-                        <h5>Terça-feira, 2 de feveiro de 2021</h5>
+                    <div class="row justify-content-center spinner-grow text-muted">
+                        <i *ngIf="spinResponseHoras" class="fa fa-spinner fa-spin"></i>
+                    </div>
+
+                    <div class="row p-15" style="background-color: white;" *ngIf = "exibir == true">
+                        <h5>Sexta-feira, 5 de março de 2021</h5>
                     </div>
                     
-                    <div class="form-group col-12 col-lg-12 pt-3 horarios">
+                    <div class="form-group col-12 col-lg-12 pt-3 border rounded" *ngIf = "exibir == true"  style="background-color: rgb(247, 245, 245);">
                         <div class="row justify-content-start pt-2 pl-2 pr-2"><p>Manhã</p></div>
                         <div class="row justify-content-around pt-1 pl-2 pr-2">                            
                             <button *ngFor = "let hora of hrManhaExibir" type="button" class="btn btn-success btn-verde" (click)="getHora(hora)">{{hora}}</button>
@@ -131,6 +140,8 @@
         </div> <!--FIM DA DIV DO EXIBIR PARTE 3-->
               
         </form>    
+
+        <div style="height: 100px;"></div>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -139,3 +150,4 @@
     <script src="./js/jquery.mask.js"></script>
     <script src="./js/app.js"></script>
   </div>
+  <app-footer></app-footer>

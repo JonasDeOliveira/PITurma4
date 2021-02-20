@@ -67,7 +67,7 @@ export class ProgramaNutricionalComponent implements OnInit {
  listarTipoRefeicao(){
     this.tipoRefeicaoService.getTipoRefeicoes().subscribe(
       response => {
-        this.responseTipoRefeicao= response;
+        this.responseTipoRefeicao= response; 
   }
     );
 }

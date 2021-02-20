@@ -1,5 +1,10 @@
-<div class="container">
-
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
+<div *ngIf="ehLogado == false">
+    
+</div>
+<div class="container" *ngIf="ehLogado">
+    
     <section>
 
         <div class="banner"></div>
@@ -13,6 +18,10 @@
             </div>
         </div>
 
+        <div class="row justify-content-center pt-5 spinner-grow text-muted">
+            <i *ngIf="spinCarregando" class="fa fa-spinner fa-spin"></i>
+        </div>
+
 
         <div *ngIf = "agendamentos == false">
             <div class="row pl-3 pt-5">
@@ -21,13 +30,13 @@
         </div>
 
         <div *ngIf = "agAgendados.length > 0">
-            <div class="row pl-3 pt-4">
+            <div class="row pl-3 pt-1">
                 <h4 class="titulo-p">Próximos agendamentos</h4>
             </div>
 
             <div class="row">
-                <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agAgendados">
-                    <div class="card" style="width: 90%;">
+                <div class="col-12 col-lg-4 pt-3"  *ngFor = "let ag of agAgendados">
+                    <div class="card" style="width: 90%; height: 12rem;">
                         <div class="card-body">
                         <h5 class="card-title">{{ag.servico.nome}}</h5>
                         <p class="card-text">Horário: {{ag.dtDataHora}}</p>
@@ -46,8 +55,8 @@
             </div>
 
             <div class="row">
-                <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agRealizados">
-                    <div class="card" style="width: 90%;">
+                <div class="col-12 col-lg-4 pt-3"  *ngFor = "let ag of agRealizados">
+                    <div class="card" style="width: 90%; height: 11rem;">
                         <div class="card-body">
                         <h5 class="card-title">{{ag.servico.nome}}</h5>
                         <p class="card-text">Horário: {{ag.dtDataHora}}</p>
@@ -64,8 +73,8 @@
             </div>
 
             <div class="row">
-                <div class="col-12 col-lg-6 pt-3"  *ngFor = "let ag of agCancelados">
-                    <div class="card" style="width: 90%;">
+                <div class="col-12 col-lg-4 pt-3"  *ngFor = "let ag of agCancelados">
+                    <div class="card" style="width: 90%; height: 11rem;">
                         <div class="card-body">
                         <h5 class="card-title">{{ag.servico.nome}}</h5>
                         <p class="card-text">Horário: {{ag.dtDataHora}}</p>
@@ -75,10 +84,11 @@
                 </div>
             </div>
         </div>
-
+        <div style="height: 100px;"></div>
     </section>
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </div>
+<app-footer></app-footer>
