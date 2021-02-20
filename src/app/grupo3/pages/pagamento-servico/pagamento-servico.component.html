@@ -1,26 +1,15 @@
 
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
+
 <div class="container">
     
     <!-- Escolha de forma de pagamento -->
     <section class="pagPag">
         <div class="banner"></div>
         <div class="containerEsq">
-            <!-- <div class="formaPag">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="formaPagamento" id="pagar-Local" value="option1">
-                    <label class="form-check-label" for="pagar-Local">
-                      Pagar no local
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="formaPagamento" id="pagar-CC" value="option2">
-                    <label class="form-check-label" for="pagar-CC">
-                      Pagar com cartão de crédito
-                    </label>
-                </div>
-            </div> -->
 
-            <h5>Inserir os dados do cartão: </h5>
+            <h4>Informe os dados do cartão: </h4>
             <br>
             <!-- Dados do cartão de crédito -->
             <div class="dadosCC">
@@ -80,11 +69,9 @@
                             <label for="codSegCC">CVV*</label>
                             <input  [(ngModel)]="cvv" name="cvv" type="text" class="form-control" id="codSegCC" placeholder="000" required>
                     </div>
-                </div>
-                            
-            
+                </div>            
                     <!-- linha 4 - Números de parcelas -->
-                    <div class="form-row">
+                    <!-- <div class="form-row">
                         <div class="form-group col-12">
                           <label for="numParcelas">Opções de parcelamento*</label>
                             <select [(ngModel)]="qtdParcelas" name="qtdParcelas" id="numParcelas" class="form-control">
@@ -94,7 +81,7 @@
                                 <option [ngValue]="3">3</option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
                 </form>
             </div>            
         </div>
@@ -131,3 +118,4 @@
     </section>   
 
 </div>
+<app-footer></app-footer>

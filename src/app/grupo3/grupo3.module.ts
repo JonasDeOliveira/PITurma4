@@ -20,6 +20,7 @@ import { ProgramaNutriService } from './shared/ProgramaNutri/service/programaNut
 import { TipoRefeicaoService } from './shared/ProgramaNutri/service/tipoRefeicao.service';
 import { PipeComponent } from './pipe/pipe.component';
 import { AgServico } from './shared/model/agservico.model';
+import { Grupo1Module } from '../grupo1/grupo1.module';
 
 
 
@@ -31,7 +32,8 @@ import { AgServico } from './shared/model/agservico.model';
     CommonModule,
     RouterModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    Grupo1Module
     ],
   exports: [
     PesquisarReceitasComponent,

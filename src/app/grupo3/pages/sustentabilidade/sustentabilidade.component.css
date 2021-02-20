@@ -12,9 +12,8 @@
     margin-bottom: 1rem;
 }
 
-
 h1 {
-    color:#005034;
+    color:#319A75;
     text-align: center;
 }
 /* fim banner */
@@ -27,7 +26,7 @@ h1 {
 .tituloSelecao {
     margin-top: 15px;
     text-align: center;
-    color:#005034;
+    color:#319A75;
 }
 
 .form-row {
@@ -50,8 +49,8 @@ h1 {
 }
 
 .btn-verLocal {
-    background-color: #2a764a;
-    border: #2a764a;
+    background-color:#319A75;
+    border: #319A75;
 }
 
 .card-title-drogasil, .card-title-drogaraia {
@@ -74,6 +73,10 @@ h1 {
 
 .btn:hover{
     background-color: hsla(159, 35%, 40%, 0.8);
+}
+
+.card-body {
+    background-color: #E8E5E0;
 }
 
 /* .card-title-drogasil::after {

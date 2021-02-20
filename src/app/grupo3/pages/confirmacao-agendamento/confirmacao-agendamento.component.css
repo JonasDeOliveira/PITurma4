@@ -13,10 +13,18 @@
     box-sizing: border-box;
 }
 
+h2 {
+    color: #319A75;
+}
+
+p {
+    font-size: 1.3rem;
+}
+
 .btn-whats, .btn-email {
     margin: 1.5rem;
-    background-color:#2a764a;
-    border: #2a764a;
+    background-color: #319A75;
+    border: #319A75;
     width: 10rem;
 }
 
@@ -49,12 +57,4 @@
     border: none;
     padding: 1rem;
     width: 500px;
-}
-
-h2 {
-    color:#005034;
-}
-
-p {
-    font-size: 1.3rem;
 }

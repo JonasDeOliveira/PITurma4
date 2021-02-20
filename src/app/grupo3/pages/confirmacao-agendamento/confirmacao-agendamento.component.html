@@ -1,4 +1,7 @@
 
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
+
 <div class="container">
 
     <div class="banner"></div>
@@ -33,3 +36,4 @@
     </section>
         
 </div>
+<app-footer></app-footer>
