@@ -69,7 +69,7 @@ export class CadastroMedicoComponent implements OnInit {
   }
 
   registrar() {
-    this.request.preco.vlConsulta.slice(-3,this.request.preco.vlConsulta.length+0) + "." +   this.request.preco.vlConsulta.slice(this.request.preco.vlConsulta.length-2, this.request.preco.vlConsulta.length+0);
+    this.request.preco.vlConsulta  = this.request.preco.vlConsulta .slice(0, this.request.preco.vlConsulta .length-2)+"."+this.request.preco.vlConsulta .slice(this.request.preco.vlConsulta .length-2, this.request.preco.vlConsulta .length);
     this.request.preco.vlConsulta = Number.parseFloat(this.request.preco.vlConsulta);
     this.cadastroService.createCadastro(this.request).subscribe(
       response => {
