@@ -43,7 +43,7 @@ export class PagamentoParticularComponent implements OnInit {
   desconto = 0;
   vlComDesconto = 0; 
   limiteDesconto =0;
-  descontoString = "";
+  numDesconto = 0;
 
   dataCartao= {
     anoVenc: "",
@@ -64,6 +64,8 @@ export class PagamentoParticularComponent implements OnInit {
   idUsuario: number = this.usuario.idUsuario;
 
   mostraSpin = false; 
+
+
 
   ngOnInit(): void {
     this.mostraSpin = true; 
@@ -100,22 +102,22 @@ listarContratoPorUsuario(idUsuario: number){
     if(response.plano.idPlano==1){
       this.desconto=0.1;
       this.limiteDesconto=30;
-      this.descontoString = "10%";
+      
     } else if(response.plano.idPlano==2){
       this.desconto=0.2;
       this.limiteDesconto=50;
-      this.descontoString = "20%";
+     
     } else if(response.plano.idPlano==3){
       this.desconto=0.3;
       this.limiteDesconto=100;
-      this.descontoString = "30%";
+    
     }
     if(this.vlConsulta * this.desconto<=this.limiteDesconto){
-      this.vlComDesconto=this.vlConsulta * (1-this.desconto);
+      this.numDesconto=this.vlConsulta * (this.desconto);
     } else {
-      this.vlComDesconto=this.vlConsulta-this.limiteDesconto;
+      this.numDesconto=this.limiteDesconto;
     }
-    
+    this.vlComDesconto=this.vlConsulta-this.numDesconto;
     localStorage.setItem("vlComDesconto", this.vlComDesconto.toString())
     console.log(response)
     }

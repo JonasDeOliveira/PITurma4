@@ -68,7 +68,7 @@
     <div class="texto-trilha d-flex flex-column">
       <a routerLink='/pagamento-particular'>
         <div class="trilha">Valor da Consulta</div>
-        <div class="opcao">R$ {{vlComDesconto}}</div>
+        <div class="opcao">{{vlComDesconto | currency : 'BRL'}}</div>
       </a>
     </div>
   </div>
@@ -100,7 +100,7 @@
       <p class="card-text">Especialidade: {{dsEspecialidade}}</p>
       <p class="card-text">Especialista: {{nmMedico}}</p>
       <p class="card-text">Tipo de consulta: {{dsConsulta}}</p>
-      <p class="card-text">Valor com desconto: R$ {{vlComDesconto}}</p>
+      <p class="card-text">Valor com desconto: {{vlComDesconto | currency : 'BRL'}}</p>
       <p class="card-text">Cartao: {{cartaoCortado}}</p>
       <div class="card-footer text-muted bg-transparent border-success">
         <button type="button" class="btn-confirm clicavel"  (click)="criarAgPctePgto(cadastroAgPaciente)" (click)="mudarFlagConfirmacao()">Confirmar

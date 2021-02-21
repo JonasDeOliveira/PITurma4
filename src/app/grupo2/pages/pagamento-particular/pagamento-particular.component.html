@@ -241,16 +241,16 @@
                     <tr class="dadosPedido">
                         <td class="text-left">Consulta {{dsEspecialidade}}</td>
                         <td class="text-center">Dr(a) {{nmMedico}}</td>
-                        <th class="preco text-center">R$ {{vlConsulta}}</th>
+                        <th class="preco text-center">{{vlConsulta | currency : 'BRL'}}</th>
                         <td class="text-right">{{dsPlano}}</td>
-                        <th class="preco text-center">{{descontoString}}</th>
+                        <th class="preco text-center">{{numDesconto | currency : 'BRL'}}</th>
                         
                     </tr>
                 </table>
                 <table class="table">
                     <tr>
                         <th colspan="2" class="total">Total com desconto</th>
-                        <td class="total text-right">R$ {{vlComDesconto}}</td>
+                        <td class="total text-right">{{vlComDesconto | currency : 'BRL'}}</td>
                     </tr>
                 </table>
                 <div class="btnConcluir">
