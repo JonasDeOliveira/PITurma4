@@ -1,0 +1,63 @@
+
+/* Inicio Foto perfil */
+.perfil{
+    color: #444444;
+    margin-right: 70px;
+    font-size: 0.8rem;
+}
+
+
+.perfil::after{
+   content:url("src/assets/grupo1/img/icon_login.png");
+   max-width:100%;
+}
+
+ .btn{
+     
+    background-color: #319A75;
+    color: #fff;
+   
+} 
+
+section .btn:hover {
+    background-color: rgb(000, 080, 052);
+}
+
+/* FIM Foto perfil */
+
+
+.lembretes-plano {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+/* Titulo */
+.titulo{
+    color: #319A75;
+}
+
+.item-menu{
+    padding: 25px 12px;
+    font-size: 1rem;
+}
+
+.avatar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nome-cliente {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+    align-items: flex-end;
+}
+
+.img-login-foto {
+    cursor: pointer;
+}
+
+.nav-link{
+    cursor: pointer;
+}

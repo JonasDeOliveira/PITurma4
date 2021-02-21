@@ -1,0 +1,48 @@
+
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
+<div *ngIf="ehLogado == false">
+    <app-mensagem-login></app-mensagem-login>
+</div>
+
+<body>
+    <section *ngIf="ehLogado">
+        <div class="container-fluid">
+
+            <section class="container">
+
+                <!-- Navegação Lembretes -->
+                <div class="row nav-lembretes">
+                    <div class="col-12 col-md-4 btn-lembrete">
+                        <!-- BOTAO NOVO LEMBRETE -->
+                        <button type="button" value="" class="btn" id="todoSubmit" data-toggle="modal"
+                            (click)="open()">Novo lembrete <i class="fas fa-plus pr-2"></i></button>
+                    </div>
+                    <div class="col-12 col-md-8 voltar">
+                        <button type="button" class="btn btn-voltar" data-toggle="modal"
+                            [routerLink]="['/area-cliente']">Voltar</button>
+                    </div>
+                </div>
+                <!-- Categoria Lembretes -->
+                <div>
+                    <app-lembrete-lista [idUsuario]="idUsuario"></app-lembrete-lista>
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <script type="text/javascript" src="./js/area-cliente.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </section>
+</body>
+<app-footer></app-footer>

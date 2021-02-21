@@ -1,0 +1,125 @@
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
+<body>
+    <div class="container-fluid">
+        <!-- BANNER -->
+        <div class="row">
+            <div class="col-12 banner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 banner">
+                            <h2 class="banner-title">Faça seu cadastro</h2>
+                            <div class="banner-buttons">
+                                <a routerLink="/cadastro-cliente"><button class="btn btn-menu btn-banner">Sou
+                                        paciente</button></a>
+                                <a routerLink="/cadastro/medico"><button class="btn btn-menu btn-banner">Sou médico</button>
+                            </a>
+                        </div>
+
+                            <span class="material-icons down">
+                                <a href="/#servicos">expand_more</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN -->
+        <div class="container">
+            <main>
+                <!-- CARDS -->
+                <div class="row" id="servicos">
+                    <div class="col-12">
+                        <div class="cards">
+                            <!-- CARD -->
+                            <div class=" col-12 col-md-6 col-lg-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <span class="material-icons card-icon card-consultas my-2"></span>
+                                        <h5 class="card-title">Consultas</h5>
+                                        <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                                        <div class="card-line my-2"></div>
+                                        <p class="card-text">Consultas com profissionais de diversas especialidades
+                                        </p>
+                                        <button class="btn btn-menu btn-card"><a
+                                            routerLink="/agendamento-consultas">Ver</a></button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class=" col-12 col-md-6 col-lg-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <span class="material-icons card-icon card-nutri my-2"></span>
+                                        <h5 class="card-title">Nutrição</h5>
+                                        <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                                        <div class="card-line my-2"></div>
+                                        <p class="card-text">Buscamos entender as necessidades dos pacientes</p>
+                                        <button class="btn btn-menu btn-card"><a
+                                            routerLink="/pesquisar-receitas">Ver</a></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <span class="material-icons card-icon card-lab my-2"></span>
+                                        <h5 class="card-title">Serviços farmacêuticos</h5>
+                                        <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                                        <div class="card-line my-2"></div>
+                                        <p class="card-text">Encontre a farmácia mais próxima de você e agende</p>
+                                        <button class="btn btn-menu btn-card"><a
+                                            routerLink="/agservico">Ver</a></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class=" col-12 col-md-6 col-lg-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <span class="material-icons card-icon card-exames my-2"></span>
+                                        <h5 class="card-title">Sustentabilidade</h5>
+                                        <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                                        <div class="card-line my-2"></div>
+                                        <p class="card-text">Encontre o ponto de descarte mais próximo</p>
+                                        <button class="btn btn-menu btn-card"><a
+                                            routerLink="/sustentabilidade">Ver</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-5">
+                    <div class="about col-12">
+                        <h3 class="about-title text-center" id="about">Sobre</h3>
+                        <p class="about-text text-center">A RD serviços é um plataforma que oferece agendamento de
+                            consultas com médicos especialistas, solicitações de exames aos pacientes, programas de
+                            nutrição e agendamento de serviços farmacêuticos. Com ela, procurar, agendar e realizar
+                            seus procedimentos se torna muito mais simples, rápido e eficaz: todas as datas,
+                            farmácias e profissionais estão ao alcance de um clique. Cadastre-se já e usufrua de
+                            todas as nossas comodidades.</p>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+<app-footer></app-footer>
+

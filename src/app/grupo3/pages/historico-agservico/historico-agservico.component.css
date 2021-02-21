@@ -1,0 +1,29 @@
+.titulo{
+    color: #005034;
+}
+
+.banner {
+    background-image: url('/assets/img/banner.jpg');
+    background-size: contain;
+    width: 100%;
+    height: 170px;
+    background-repeat: no-repeat;
+}
+
+.sub{
+    color: #005034;
+    text-decoration: underline;
+}
+
+.sub:hover{
+    color: #23A455;
+}
+
+.titulo-p{
+    color: #23A455;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: underline;
+}

@@ -1,0 +1,126 @@
+.container-fluid {
+    padding: 0;
+}
+
+.btn{
+    display: inline;
+    justify-content: flex-end;
+    background-color: #319A75;
+    color: #fff;
+    text-align-last: right;
+    clear: both;
+}
+
+.btn-cancelar{
+    background-color: #c6d4c8;
+}
+
+.btn-card{
+    width: 100%;
+    text-align-last: center;
+}
+
+.botoes-cadastro{
+    float: right;   
+}
+
+.btn-espaco{
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+#img-perfil{
+    padding: 30px 20px;
+    width: 30%;
+}
+
+.altera-senha{
+    border-left: 1px solid lightgray;
+    padding: 0px 20px;
+}
+
+.modal-content{
+    padding: 20px;
+    background-color: rgba(223, 239, 219);
+}
+
+.btn-card:hover{
+    background-color: #1f5e48;
+}
+
+.btns-cadastro:hover{
+    background-color: #1f5e48;
+}
+
+.img-card{
+    width: 70%;
+    align-self: center;
+}
+
+.botao-sair{
+    text-align-last: end;
+}
+
+.btn-sm:hover{
+    text-decoration: none;
+    background-color: #1f5e48;
+}
+
+.text-center{
+    color: #444444;
+}
+
+.collapse{
+    text-align: center;
+}
+
+.nav-item:hover{
+    text-decoration: underline;
+}
+
+.item-menu{
+    padding: 25px 12px;
+    font-size: 1.5rem;
+}
+
+section{
+    background-color: rgba(223, 239, 219, 0.24);
+    /* background-color: transparent; */
+    width: 100%;
+    padding: 5%;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #444444;
+}
+
+h1 {
+    text-align: center;
+    color: #319A75;
+}
+
+.planos {
+    text-align: center;     
+}
+
+h5 {
+    text-align: center;
+    color: #319A75;
+}
+
+li {
+    text-align: left;
+}
+
+.btn-planos:hover {
+    background-color: #1f5e48;
+}
+
+.alert{
+    color: red;
+    background: none;
+    border: none;
+   }
+
+
+

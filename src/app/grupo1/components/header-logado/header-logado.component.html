@@ -1,0 +1,33 @@
+<header>
+    <!-- NAVBAR COM CONTAINER -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a routerLink="/"><img src="assets/grupo1/img/logo-menu.png" alt="logo da RD"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse item-menu" id="navbarSupportedContent">
+                <div class="col-8">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" [routerLink]="['/planos']">Planos</a></li>
+                        <li class="nav-item"><a class="nav-link" [routerLink]="['/sustentabilidade']">Sustentabilidade</a></li>
+                        <li class="nav-item"><a class="nav-link" href='/#servicos'>Serviços</a></li>
+                        <li class="nav-item"><a class="nav-link" [routerLink]="['/area-cliente']"><b>Minha Área</b></a></li>
+                    </ul>
+                </div>
+                <div class="col-4 avatar">
+                        <div class="nome-cliente">
+                            <span id="txt-login" > Olá, {{areaDoCliente.nmNome}}</span>
+                            <!-- TODO: substituir pelos dados de usuario -->
+                            <a href="/"><button class="btn btn-sm botao-sair" (click)="logout()">Sair</button></a>
+                        </div>
+                        <div class="img-login">
+                            <img src="assets/grupo1/img/icon_login.png" class="img-login-foto" alt="imagem de login" [routerLink]="['/dados-cliente']">
+                            <!-- TODO: substituir pela imagem do usuario {{usuario.dsEndImg}} -->
+                        </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

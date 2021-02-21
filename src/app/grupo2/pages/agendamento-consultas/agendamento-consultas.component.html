@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+
+  <div class="container1">
+    <div class="container-fluid" id=imagem
+      style="background-image: url(https://cdn.rdsaudeemdia.com.br/wp-content/uploads/2020/07/shutterstock_1684337584N-1.jpg);">
+      <div class="banner-wrap col-12">
+        <h1>AGENDE SUA CONSULTA AGORA MESMO!</h1>
+      </div>
+    </div>
+  </div>
+
+  <section class="container">
+    <div class="col-12 text-center">
+      <h1>Qual é o tipo de consulta que você quer agendar?</h1>
+    </div>
+    <div class="divbotoes col-12 ">
+      <div class="container col-12 text-center">
+          <button class="btn-active clicavel" (click)="salvarTipoConsultaOnlineLS()">Online</button>
+          <button class="btn-active clicavel" (click)="salvarTipoConsultaPresencialLS()">Presencial</button>
+      </div>
+    </div>
+
+    <form>
+      <div class="divbotoes col-12">
+        <div class="wrapper">
+          <div class="menu col-12 text-center">
+              <select class="custom-select custom-select-lg mb-3" [(ngModel)]="idEspSelect" id="name" name="esp"
+              (change)="salvarEspLS()">
+              <option selected value="undefined">Selecione a especialidade</option>
+              <option *ngFor="let espMed of responseEspMed" [ngValue]="espMed.idEspMed">{{espMed.dsEspMed}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+    <div class="divbotoes col-12">
+      <div class="container col-12 text-center">
+        <a><button routerLink="/calendario-agendamento" class="btn-active clicado">AGENDAR</button></a>
+      </div>
+    </div>
+
+  </section>
+
+  
+<app-footer></app-footer>

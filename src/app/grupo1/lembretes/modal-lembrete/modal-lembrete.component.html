@@ -1,0 +1,84 @@
+<!-- Modal Lembretes -->
+
+<div class="bd-lembrete-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form #formLembretes="ngForm"  (change)="ver()">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Criar Lembrete</h5>
+                    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="form-group col-12">
+                    <div class="row mt-1">
+                        <div class="col-12">
+                            <label for="nmTitulo">Título</label>
+                            <input type="text" class="form-control" id="nmTitulo" name="nmTitulo"
+                                [(ngModel)]="request.nmTitulo" #nmTitulo="ngModel" minlength="5" required
+                                placeholder="Título do Lembrete">
+                                <div *ngIf="nmTitulo.invalid && nmTitulo.touched" class="alert alert-light mt-1" role="alert">
+                                    Título é necessário
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-1">
+                        <div class="col-12">
+                            <label for="dsLembrete">Descrição</label>
+                            <input type="text" class="form-control" id="dsLembrete" name="dsLembrete"
+                                [(ngModel)]="request.dsLembrete" #dsLembrete="ngModel" minlength="5" required
+                                placeholder="Descrição do Lembrete">
+                                <div *ngIf="dsLembrete.invalid && dsLembrete.touched" class="alert alert-light mt-1" role="alert">
+                                    Descrição é necessária
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-1">
+                        <div class="col-12 col-lg-6">
+                            <label>Data:</label>
+                            <!-- min="{{this.date | date: 'yyyy-MM-dd'}}" max="2050-01-01" -->
+                            <input type="date"  class="form-control" id="dtLembrete" name="dtLembrete"
+                                [(ngModel)]="request.dtLembrete" #dtLembrete="ngModel" required min="{{minDate | date: 'yyyy-MM-dd'}}" max="{{maxDate | date: 'yyyy-MM-dd'}}" >
+                                <div *ngIf="dtLembrete.touched && dtLembrete.errors" class="alert alert-light mt-1" role="alert">
+                                    Escolha uma data maior do que hoje
+                                </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <label>Hora:</label>
+                            <input type="time" class="form-control" id="hrHora" name="hrHora"
+                                [(ngModel)]="request.hrHora" #hrHora="ngModel" required>
+                                <div *ngIf="hrHora.invalid && hrHora.touched" class="alert alert-light mt-1" role="alert">
+                                    Escolha um horário
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <div class="col-12 col-lg-6">
+                            <label>Repete a cada:</label>
+                            <input type="number" class="form-control" placeholder="1" min="0" id="nrRepeticao"
+                                name="nrRepeticao" [(ngModel)]="request.nrRepeticao" #nrRepeticao="ngModel" required min=1 max=10>
+                                <div *ngIf="nrRepeticao.invalid && nrRepeticao.touched" class="alert alert-light mt-1" role="alert">
+                                    Escolha um número de repetições entre 1 e 10
+                                </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <label>Intervalo:</label>
+                            <select class="form-control" [(ngModel)]="request.lembreteIntervalo.idLembreteIntervalo" #idLembreteIntervalo="ngModel" name="idLembreteIntervalo" (change)="ver()" >
+                                <option  *ngFor="let lembreteIntervalo of responseLembreteIntervalos" [value]="lembreteIntervalo.idLembreteIntervalo" required [selected]="lembreteIntervalo.idLembreteIntervalo == 1">
+                                    {{lembreteIntervalo.dsLembreteIntervalo}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn_salvar" [disabled]="formLembretes.invalid || formLembretes.pristine" (click)="registrar()">Criar Lembrete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

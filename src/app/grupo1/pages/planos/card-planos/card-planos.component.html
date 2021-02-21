@@ -1,0 +1,45 @@
+
+ <!-- <div class="card-deck" class="planos" class="row">
+    <div class="card" class="col-12 col-sm-6 col-md-6 col-lg-4"> -->
+    <div class="card-deck">
+        <div class="card">
+        <img class="card-img-top" src="assets/grupo1/img/BASIC.png" alt="Plano Basic">
+        <div class="card-body">
+            <ul class="card-text" type="none">
+                <li *ngFor="let servicos of responsePlanos[0].servicos">{{servicos.dsServico}}</li>
+                </ul>
+            <h5>GRATUITO</h5>
+
+            
+        </div>
+    </div>
+       <div class="card">
+        <img class="card-img-top" src="assets/grupo1/img/PLUS.png" alt="Plano Plus">
+        <div class="card-body">
+            <ul class="card-text" type="none">
+                <li *ngFor="let servicos of responsePlanos[1].servicos">{{servicos.dsServico}}</li>
+                </ul>
+            <h5>R${{responsePlanos[1].vlPlano}},00</h5>
+
+            <button class="btn btn-menu btn-planos">
+                <a routerLink="/dados-cliente">
+                    Assinar
+                </a>
+            </button>
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="assets/grupo1/img/PREMIUM.png" alt="Plano Premium">
+        <div class="card-body">
+            <ul class="card-text" type="none">
+                <li *ngFor="let servicos of responsePlanos[2].servicos">{{servicos.dsServico}}</li>
+            </ul>
+            <h5>R${{responsePlanos[2].vlPlano}},00</h5>
+            <button class="btn btn-menu btn-planos">
+                <a routerLink="/dados-cliente">
+                    Assinar
+                </a>
+            </button>
+        </div>
+    </div>
+</div>
