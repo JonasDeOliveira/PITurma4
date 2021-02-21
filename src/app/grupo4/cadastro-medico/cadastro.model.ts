@@ -20,7 +20,7 @@ export interface EspMed {
 }
 
 export interface Preco {
-    vlConsulta : number;
+    vlConsulta : any;
 }
 
 export interface Endereco {

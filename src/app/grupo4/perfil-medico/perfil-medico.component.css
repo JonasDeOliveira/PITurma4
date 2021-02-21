@@ -3,6 +3,13 @@
     height: 170px;
 }
 
+p {
+    text-align: center;
+    color: #2a764a;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
 .logo {
     position: absolute;
     margin-top: 50px;
