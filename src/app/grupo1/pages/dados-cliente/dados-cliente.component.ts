@@ -189,12 +189,14 @@ export class DadosClienteComponent implements OnInit {
     }
 
     //novo cartão
-    if (!this.dadosAtuais.cartaoSeguro.includes("*") && this.dadosAtuais.cartaoSeguro != this.outputCliente.cartao.nrCartao) {
+    if (!this.dadosAtuais.cartaoSeguro.includes("*")
+      && this.dadosAtuais.cartaoSeguro != this.outputCliente.cartao.nrCartao
+      && this.dadosAtuais.cartaoSeguro != "") {
       this.outputCliente.cartao.nrCartao = this.dadosAtuais.cartaoSeguro;
     }
 
     //concatenar data de validade
-    if (this.outputCliente.cartao.dtValidade != "") {
+    if (this.outputCliente.cartao.dtValidade != "" && this.outputCliente.cartao.dtValidade != null) {
       this.outputCliente.cartao.dtValidade = this.outputCliente.cartao.dtValidade + "-01"
     }
 

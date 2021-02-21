@@ -9,11 +9,15 @@
             <div class="form-group col-md-8">
                 <label for="cadastro-email">Email:</label>
                 <input type="email" class="form-control" id="cadastro-email" placeholder="Digite o seu e-mail"
-                    [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required>
-                <!-- pattern="[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+"> -->
+                    [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required
+                    pattern=^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$>
                 <div *ngIf="dsEmail.errors && (dsEmail.dirty || dsEmail.touched)" class="alert alert-light mt-1"
-                    role="alert">
+                    role="alert">   
                     O campo e-mail é obrigatório.
+                </div>
+                <div *ngIf="dsEmail.invalid && (dsEmail.dirty || dsEmail.touched)" class="alert alert-light mt-1"
+                    role="alert">
+                    Digite um e-mail válido
                 </div>
             </div>
             <div class="form-group col-md-4">
@@ -31,8 +35,8 @@
                 <label for="cadastro-email2">Repita o Email:</label>
                 <input type="email" class="form-control" id="cadastro-email2" placeholder="Digite o seu e-mail"
                     [(ngModel)]="confirmacao.emailConfirmacao" #emailConfirmacao="ngModel" name="emailConfirmacao"
-                    required>
-                <!-- pattern="[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+"  -->
+                    required pattern=^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$>
+
                 <div *ngIf="emailConfirmacao.value != dsEmail.value && (emailConfirmacao.dirty || emailConfirmacao.touched)"
                     class="alert alert-light mt-1" role="alert">
                     O email informado não confere!
@@ -294,7 +298,7 @@
     </div>
 </section>
 
-<!-- {{outputCliente | json}} -->
+{{outputCliente | json}}
 
 <script src="../cliente/shared/cep.endereco.js"></script>
 <app-footer></app-footer>
