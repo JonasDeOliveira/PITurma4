@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDate, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AgendamedicoService } from './agendamedico.service';
 import { ResponsePeriodos } from './agenda.model';
 import { Router } from '@angular/router';
@@ -13,12 +13,14 @@ import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 })
 export class AgendaMedicoComponent implements OnInit {
 
+  fromDate: NgbDate;
   constructor(config: NgbModalConfig, private modalService: NgbModal, 
     private agendaService : AgendamedicoService, private router: Router,
     private calendar: NgbCalendar) {
       
-    config.backdrop = 'static';
-    config.keyboard = false;
+      this.fromDate = calendar.getToday();
+      config.backdrop = 'static';
+      config.keyboard = false;
   }
 
   open(content) {
