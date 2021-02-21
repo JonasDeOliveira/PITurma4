@@ -40,7 +40,7 @@
                         <h5 class="card-title">{{ag.servico.nome}}</h5>
                         <p class="card-text">Horário: {{ag.dtDataHora}}</p>
                         <p class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </p>
-                        <p class="sub justify-content-end"><a class="sub" (click)="cancelarAgendamento(ag.idAgendamento)"> Cancelar agendamento </a> </p>
+                        <p class="sub justify-content-end"><a class="sub" (click)="open(content, ag.idAgendamento)" data-toggle="modal" data-target="#exampleModal"> Cancelar agendamento </a> </p>
             
                         </div>
                     </div>
@@ -83,6 +83,25 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Cancelar Agendamentos</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <p>Deseja realmente cancelar esse agendamento?</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Não</button>
+            <button type="button" class="btn btn-outline-dark" (click)="cancelarAgendamento(d)">Sim</button>
+            </div>
+        </ng-template>
+
+
         <div style="height: 100px;"></div>
     </section>
     

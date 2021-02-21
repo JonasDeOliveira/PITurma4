@@ -3,6 +3,7 @@ import { AgServico, ResponseAgendamentos } from '../../shared/model/agservico.mo
 import { Router } from '@angular/router';
 import { AgServicoService } from '../../shared/service/agservico.service';
 import { Usuario } from 'src/app/grupo1/usuario/shared/usuario.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-historico-agservico',
@@ -20,10 +21,12 @@ export class HistoricoAgservicoComponent implements OnInit {
   agendamentos: boolean;
   spinCarregando: boolean = true;
 
+  idCancelar: number;
+
   cliente = JSON.parse(localStorage.getItem("cliente"));
   ehLogado = JSON.parse(localStorage.getItem("isLogado"));
   
-  constructor(private agendamentoService : AgServicoService, private router: Router) { 
+  constructor(private agendamentoService : AgServicoService, private router: Router, private modalService: NgbModal) { 
     this.agAgendados = new Array; 
     this.agRealizados = new Array; 
     this.agCancelados = new Array; 
@@ -33,6 +36,11 @@ export class HistoricoAgservicoComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarAgendamentos();
+  }
+
+  open(content, id: number) {
+    this.modalService.open(content);
+    this.idCancelar = id;
   }
 
   listarAgendamentos(){
@@ -62,9 +70,9 @@ export class HistoricoAgservicoComponent implements OnInit {
     )
   }
 
-  cancelarAgendamento(id: number){
-
-    this.agendamentoService.cancelarAgendamento(id).subscribe(
+  cancelarAgendamento(callback: any){
+    callback('Cross click');//fechar a modal
+    this.agendamentoService.cancelarAgendamento(this.idCancelar).subscribe(
       (response) => {
         console.log(response);
       }, (error) =>{
