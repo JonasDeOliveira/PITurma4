@@ -117,7 +117,7 @@
           AVISO
         </div>
         <div class="card-body text-center">
-          <h5 class="card-title">Não existe consultas disponíveis para a data escolhida</h5>    
+          <h5 class="card-title">Não existem consultas disponíveis para a data escolhida</h5>    
           <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
           <a routerLink='/calendario-agendamento' class="btn btn-success">Voltar</a>
         </div>
@@ -129,7 +129,7 @@
     <!-- <div *ngFor = "let agenda of arrayAgendasData" class="card-medico row"> -->
     <div *ngFor="let agenda of arrayAgendas">
         <div *ngIf="agenda.data == data" class="card-medico row">
-            <div class="foto" id="medico1"></div>
+            <div class="foto" id="medico1" src="agenda.medico.dsEndImg"></div>
             <div class="nome-horario">
                 <div class="texto-consulta">
                     <h5>Dra {{agenda.medico.nome}} - {{agenda.medico.espMed.dsEspMed}}</h5>
