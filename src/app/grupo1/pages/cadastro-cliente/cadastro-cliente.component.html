@@ -10,9 +10,9 @@
                 <label for="cadastro-email">Email:</label>
                 <input type="email" class="form-control" id="cadastro-email" placeholder="Digite o seu e-mail"
                     [(ngModel)]="outputCliente.loginUsuario.dsEmail" #dsEmail="ngModel" name="dsEmail" required
-                    pattern=^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$>
+                    pattern=^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$>
                 <div *ngIf="dsEmail.errors && (dsEmail.dirty || dsEmail.touched)" class="alert alert-light mt-1"
-                    role="alert">   
+                    role="alert">
                     O campo e-mail é obrigatório.
                 </div>
                 <div *ngIf="dsEmail.invalid && (dsEmail.dirty || dsEmail.touched)" class="alert alert-light mt-1"
@@ -35,7 +35,7 @@
                 <label for="cadastro-email2">Repita o Email:</label>
                 <input type="email" class="form-control" id="cadastro-email2" placeholder="Digite o seu e-mail"
                     [(ngModel)]="confirmacao.emailConfirmacao" #emailConfirmacao="ngModel" name="emailConfirmacao"
-                    required pattern=^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$>
+                    required pattern=^[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$>
 
                 <div *ngIf="emailConfirmacao.value != dsEmail.value && (emailConfirmacao.dirty || emailConfirmacao.touched)"
                     class="alert alert-light mt-1" role="alert">
@@ -122,7 +122,13 @@
                 <input type="date" class="form-control" id="cadastro-nascimento" min="{{minDate | date: 'yyyy-MM-dd'}}"
                     max="{{maxDate | date: 'yyyy-MM-dd'}}" [(ngModel)]="outputCliente.usuario.dtNascimento"
                     #dtNascimento="ngModel" name="dtNascimento" required>
+                <div *ngIf="dtNascimento.errors && (dtNascimento.touched)" class="alert alert-light">
+                    <div [hidden]="!dtNascimento.errors.required">
+                        O campo data de nascimento é obrigatório.
+                    </div>
+                </div>
             </div>
+
         </div>
         <div class="form-row">
             <div class="form-group col-md-4" method="get" action=".">
@@ -253,7 +259,7 @@
                             <div class="form-group col-md-12">
                                 <label for="cartao-nome">Nome impresso no Cartão:</label>
                                 <input type="text" class="form-control" id="cartao-nome" name="nmNome"
-                                    [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="10" required
+                                    [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="5" maxlength="40" required
                                     placeholder="Nome impresso no Cartão">
                                 <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)"
                                     class="alert alert-light">
@@ -291,14 +297,14 @@
     </ng-template>
     <div class="form-group botoes-cadastro">
         <button type="button" (click)="cadastrar()" class="btn btns-cadastro btn-espaco"
-            [disabled]="formCadastro.invalid && formCadastro.untouched">
+            [disabled]="formCadastro.invalid || formCadastro.untouched">
             <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin"></i>
             Cadastrar</button>
         <button [routerLink]="['/']" class="btn btn-cancelar btn-espaco">Cancelar</button>
     </div>
 </section>
 
-{{outputCliente | json}}
+<!-- {{outputCliente | json}} -->
 
 <script src="../cliente/shared/cep.endereco.js"></script>
 <app-footer></app-footer>
