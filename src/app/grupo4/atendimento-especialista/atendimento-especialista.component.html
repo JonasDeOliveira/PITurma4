@@ -58,12 +58,10 @@
                 </div>
                 <div class="form-group col-12 col-md-2">
                     <label for="altura" class="label-form">Altura</label>
-                    <input type="text" class="form-control style-input" id="altura" name="vlAltura" [(ngModel)]="request.vlAltura" #vlAltura="ngModel"  required>
-                    <!-- mask="0,00" -->
+                    <input type="text" class="form-control style-input" id="altura" name="vlAltura" [(ngModel)]="request.vlAltura" #vlAltura="ngModel" mask="0,00" required>
                     <div *ngIf="vlAltura.invalid && vlAltura.touched" class="alert alert-danger" role="alert">
                         Informe a altura.
                     </div>
-                    <!-- {{request.vlAltura | json}} -->
                 </div>
             </div>
 

@@ -45,7 +45,7 @@ export class AtendimentoEspecialistaComponent implements OnInit {
     }
 
     botaoEnviar = false;
-
+    
     open(content) {
       this.modalService.open(content);
     }
@@ -85,8 +85,8 @@ export class AtendimentoEspecialistaComponent implements OnInit {
     this.request.dtAtendimento = this.atendimentoResposta.data;
     var objMedico = JSON.parse(localStorage.getItem("medico"));
     this.request.medico.idUsuario = objMedico.idUsuario;
-    // this.request.vlAltura=this.mudarString();
-    // console.log(this.request.vlAltura);
+    this.request.vlAltura = this.request.vlAltura.slice(0, this.request.vlAltura.length-2) + "." + this.request.vlAltura.slice(this.request.vlAltura.length-2, this.request.vlAltura.length+0);
+    this.request.vlAltura = Number( this.request.vlAltura);
   
     localStorage.setItem("atendimento", JSON.stringify(this.request));
     
@@ -105,14 +105,6 @@ export class AtendimentoEspecialistaComponent implements OnInit {
   limparStorage(){
     localStorage.removeItem("paciente");
     localStorage.removeItem("atendimento");
-  }
-
-  // mudarString(){
-  //   let altura = this.request.vlAltura;
-  //   altura = altura.slice(0, altura.length-2) + "." + altura.slice(altura.length-2, altura.length-1);
-  //   console.log(altura)
-  //   let altura_valor = Number(altura);
-  //   console.log(altura_valor);
-  // }  
+  } 
   
 }

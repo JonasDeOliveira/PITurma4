@@ -5,7 +5,7 @@ export interface Atendimento {
     prontuario: Prontuario;
     agPaciente: AgPaciente;
     vlPeso: number;
-    vlAltura: number;
+    vlAltura: any;
     dsHabitosVicios: string;
     dsAlergiasRestricoes: string;
     dsMedicacaoUsoContinuo: string;
