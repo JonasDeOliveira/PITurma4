@@ -22,7 +22,11 @@
             <h1 class="text-center title-calendario">Calendário</h1>
             <div class="calendario col-12 d-flex justify-content-center">
                 <div>
-                    <ngb-datepicker #dp [(ngModel)]="model" (dateSelect)="dataSelect()" (navigate)="date = $event.next" [minDate]="{year: dataCalendario.anoValid, month: dataCalendario.mesValid, day: dataCalendario.diaValid}"></ngb-datepicker>
+                    <ngb-datepicker #dp [(ngModel)]="model" (dateSelect)="dataSelect()" (navigate)="date = $event.next" [minDate]="{year: dataCalendario.anoValid, month: dataCalendario.mesValid, day: dataCalendario.diaValid }"></ngb-datepicker>
+                    {{dataCalendario.anoValid | json}}
+                    {{dataCalendario.mesValid | json}}
+                    {{dataCalendario.diaValid | json}}
+
                 </div>
             </div>
             <!-- Modal Abrir Agenda -->
