@@ -1,0 +1,161 @@
+<body>
+        
+    <div class="container-fluid">
+        <div class="row">
+            <img src="assets/img-grupo4/banner-2.jpg" class="banner" alt="">
+            <img src="assets/img-grupo4/logo-branco.png" class="logo" alt="">
+        </div>
+    </div>
+  
+    <section>
+    <div class="container pt-5">
+        <h1 class="titulo-verde text-center">Solicitação de Exames</h1>
+
+        <form id="id-form" name="formulario" action="#" #formSolicitacao="ngForm">
+            <div class="row mt-2">
+                <div class="form-group col-12 col-md-9">
+                    <label for="name-paciente" class="label-form">Nome do(a) paciente</label>
+                    <input type="text" class="form-control style-input" id="name-paciente" value="{{responseTelaSolicitacao.nomePaciente}}" disabled>
+                </div>
+                <div class="form-group col-12 col-md-3">
+                    <label for="data-consulta" class="label-form">Data da consulta</label>
+                    <input type="text" class="form-control style-input" id="dtSolicitacao" name="dtSolicitacao" [(ngModel)]="responseTelaSolicitacao.dtSolicitacao" #dtSolicitacao="ngModel" disabled>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="form-group col-12 col-md-9">
+                    <label for="name-medico" class="label-form">Nome do(a) médico(a)</label>
+                    <input type="text" class="form-control style-input" id="nmMedico" name="nmMedio" [(ngModel)]="responseTelaSolicitacao.medico.nome" #nmMedico="ngModel" disabled>
+                </div>
+                <div class="form-group col-12 col-md-2">
+                    <label for="numero-crm" class="label-form">CRM</label>
+                            <input type="text" class="form-control style-input" id="numero-crm" value="{{responseTelaSolicitacao.medico.nrCrm}}" disabled>
+                </div>
+                <div class="form-group col-12 col-md-1">
+                    <label for="crm-uf" class="label-form">UF</label>
+                    <input type="text" class="form-control style-input" id="crm-uf" value="{{responseTelaSolicitacao.medico.ufCrm.dsUf}}" disabled>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-12 col-md-4">
+                    <label for="cep-medico" class="label-form">CEP</label>
+                    <input type="text" class="form-control style-input" id="cep-medico" value="{{responseTelaSolicitacao.medico.enderecos[0].nrCep}}" disabled>
+                </div>
+                <div class="form-group col-12 col-md-8">
+                    <label for="endereco-medico" class="label-form">Endereço</label>
+                    <input type="text" class="form-control style-input" id="endereco-medico" value="{{responseTelaSolicitacao.medico.enderecos[0].dsEndereco}}" disabled>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-12 col-md-4">
+                    <label for="bairro-medico" class="label-form">Bairro</label>
+                    <input type="text" class="form-control style-input" id="bairro-medico" value="{{responseTelaSolicitacao.medico.enderecos[0].dsBairro}}" disabled>
+                </div>
+                <div class="form-group col-12 col-md-4">
+                    <label for="cidade-medico" class="label-form">Cidade</label>
+                    <input type="text" class="form-control style-input" id="cidade-medico" value="{{responseTelaSolicitacao.medico.enderecos[0].cidade.dsCidade}}" disabled>
+                </div>
+                <div class="form-group col-12 col-md-1">
+                    <label for="uf-endereco-medico" class="label-form">UF</label>
+                    <input type="text" class="form-control style-input" id="uf-endereco-medico" value="{{responseTelaSolicitacao.medico.enderecos[0].cidade.uf.dsUf}}" disabled>
+                </div>
+                <div class="form-group col-12 col-md-3">
+                    <label for="telefone-medico" class="label-form">Telefone</label>
+                    <input type="text" class="form-control style-input" id="telefone-medico" value="{{responseTelaSolicitacao.medico.contatos[0].dsContato}}" disabled>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-12">
+                    
+                    <label for="dsIndicacaoClin" class="label-form">Indicacao Clinica</label>
+                    <input type="text" class="form-control style-input" id="dsIndicacaoClin" name="dsIndicacaoClin" [(ngModel)]="request.dsIndicacaoClin" #dsIndicacaoClin="ngModel" required>
+                    <!-- <input type="text" class="form-control style-input" id="dsIndicacaoClin" name="dsIndicacaoClin" [(ngModel)]="request.dsIndicacaoClin" #dsIndicacaoClin="ngModel" placeholder="" required> -->
+                </div> 
+            </div>
+
+            <div class="presc-border">
+                <div>
+                    <div class="row mt-2">
+                        <div class="form-group col-11">
+                            <label for="exame" class="label-form">Exame</label>
+                            <select type="text" class="form-control style-input select-form" id="exame" name="listaExame" required [(ngModel)]="select">
+                                <option>Selecione um tipo de exame</option>
+                                <option *ngFor="let exam of responseTelaSolicitacao.listaTipoExame" value="{{exam.idTipoExame}}">{{exam.dsTipoExame}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-1">
+                            <button type="button" class="btn-add" (click)=addItem()></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th class="texto-tabela" scope="col">Exame</th>
+                            <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor = "let item of listaExame">
+                            <tr>
+                            <td class="texto-tabela">{{item.dsTipoExame}}</td>
+                            <td class="text-left"><button type="button" class="btn-delete" (click)=removerItem(item)></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="text-center pb-4">
+                <button type="button" class="btn btn-verde btn-outline-primary" (click)="registrar()">Enviar Solicitação</button>
+                <button type="reset" class="btn btn-cinza" (click)="voltar()">Sair</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+   <footer>
+        <div class="row">
+            <div class="col-md-6"><img src="assets/img-grupo4/logo-footer.png"></div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <h4>SOCIAL MIDIA</h4>   
+                <ul class="nav flex-column rodape">
+                    <li class="nav-item"><img src="assets/img-grupo4/logo-facebook.png"><a class="nav-link" href="#">Facebook</a></li>
+                    <li class="nav-item"><img src="assets/img-grupo4/logo-linkedin.png"><a class="nav-link" href="#">Linkedin</a></li>
+                </ul>
+            </div>
+        
+        </div>    
+    </footer>
+<!-- Modal... -->
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h5 class="modal-title"> Enviar Solicitação de Exames</h5>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <label for="recipient-name" class="col-form-label label-form">Enviar para:</label>
+          <input type="senha" class="form-control">
+          <p></p>
+          <label for="message-text" class="col-form-label label-form">Mensagem:</label>
+          <input type="senha" class="form-control">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-cinza" data-dismiss="modal" (click)="c('Save click')" >Fechar</button>
+            <button type="button" class="btn btn-verde"  (click)="c('Save click')">Enviar</button>
+        </div>
+      </ng-template>
+
+
+</body>

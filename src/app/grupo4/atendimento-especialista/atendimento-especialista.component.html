@@ -1,0 +1,195 @@
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <img src="assets/img-grupo4/banner-2.jpg" class="banner" alt="">
+            <img src="assets/img-grupo4/logo-branco.png" class="logo" alt="">
+        </div>
+    </div>
+ </section>
+ <header class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">    
+            <div class="col-lg-12 col-md-9 col-sm-9 col-xs-4 item-menu" >
+                <ul class="navbar-nav mr-auto justify-content-around">
+                    <li class="nav-item"><a class="nav-link" routerLink="/historico/paciente">Histórico do Paciente</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/solicitacao/exames">Solicitar Exames</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/prescrever/medicacao">Prescrever Medicação</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/dashboard/medico" (click)="limparStorage()">Encerrar Atendimento</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>      
+</header>
+
+<section class="pb-4">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-12 col-md-10">
+                <h1 class="titulo-verde color-text">Atendimento</h1>
+            </div>
+            <div class="form-group col-12 col-md-2">
+                <input type="text" class="form-control style-input" id="date-atendimento" value="{{atendimentoResposta.data}}" disabled>
+            </div>
+        </div>
+        
+        <form id="id-form" name="formulario" #formAtendimento="ngForm" action="#">
+            <div class="row mt-2">
+                <div class="form-group col-12 col-md-5">
+                    <label for="name-paciente" class="label-form">Nome do(a) Paciente</label>
+                    <input type="text" class="form-control style-input" id="name-paciente" value="{{atendimentoResposta.nomePaciente}}" disabled>
+                </div>
+                <div class="form-group col-12 col-md-1">
+                    <label for="idade" class="label-form">Idade</label>
+                    <input type="text" class="form-control style-input" id="idade" value="{{atendimentoResposta.idade}}" disabled>
+                </div>
+                <div class="form-group col-12 col-md-2">
+                    <label for="genero" class="label-form">Gênero</label>
+                    <input type="text" class="form-control style-input" id="genero" value="{{atendimentoResposta.genero}}" disabled>
+                </div>
+                <div class="form-group col-12 col-md-2">
+                    <label for="peso" class="label-form">Peso</label>
+                    <input type="text" class="form-control style-input" id="peso" name="vlPeso" [(ngModel)]="request.vlPeso" #vlPeso="ngModel" required>
+                    <div *ngIf="vlPeso.invalid && vlPeso.touched" class="alert alert-danger" role="alert">
+                        Informe o peso.
+                    </div>
+                </div>
+                <div class="form-group col-12 col-md-2">
+                    <label for="altura" class="label-form">Altura</label>
+                    <input type="text" class="form-control style-input" id="altura" name="vlAltura" [(ngModel)]="request.vlAltura" #vlAltura="ngModel" mask="0,00" required>
+                    <div *ngIf="vlAltura.invalid && vlAltura.touched" class="alert alert-danger" role="alert">
+                        Informe a altura.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="form-group col-12 col-md-7">
+                    <label for="habitos" class="label-form">Hábitos/Vícios</label>
+                    <input type="text" class="form-control style-input" id="habitos" name="dsHabitosVicios" [(ngModel)]="request.dsHabitosVicios" #dsHabitosVicios="ngModel" required>
+                    <div *ngIf="dsHabitosVicios.invalid && dsHabitosVicios.touched" class="alert alert-danger" role="alert">
+                        Campo obrigatório.
+                    </div>
+                </div>
+                <div class="form-group col-12 col-md-5">
+                    <label for="alergias" class="label-form">Alergias/Restrições</label>
+                    <input type="text" class="form-control style-input" id="alergias" name="dsAlergiasRestricoes" [(ngModel)]="request.dsAlergiasRestricoes" #dsAlergiasRestricoes="ngModel" required>
+                    <div *ngIf="dsAlergiasRestricoes.invalid && dsAlergiasRestricoes.touched" class="alert alert-danger" role="alert">
+                        Campo obrigatório.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="form-group col-12 col-md-6">
+                    <label for="medicacao-continua" class="label-form">Medicação de Uso Contínuo</label>
+                    <input type="text" class="form-control style-input" id="medicacao-continua" name="dsMedicacaoUsoContinuo" [(ngModel)]="request.dsMedicacaoUsoContinuo" #dsMedicacaoUsoContinuo="ngModel" required>
+                    <div *ngIf="dsMedicacaoUsoContinuo.invalid && dsMedicacaoUsoContinuo.touched" class="alert alert-danger" role="alert">
+                        Campo obrigatório.
+                    </div>
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label for="problema-saude" class="label-form">Problemas de Saúde</label>
+                    <input type="text" class="form-control style-input" id="problema-saude" name="dsProblemasSaude" [(ngModel)]="request.dsProblemasSaude" #dsProblemasSaude="ngModel" required>
+                    <div *ngIf="dsProblemasSaude.invalid && dsProblemasSaude.touched" class="alert alert-danger" role="alert">
+                        Campo obrigatório.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-12 col-md-12">
+                    <h3 class="titulo-cinza color-text">Prontuário</h3>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="form-group col-12 col-md-6">
+                    <label for="subjetivo" class="label-form">Subjetivo</label>
+                    <textarea  class="form-control style-input-text-area" rows="4" id="subjetivo" name="dsSubjetivo" [(ngModel)]="request.prontuario.dsSubjetivo" #dsSubjetivo="ngModel" required></textarea>
+                    <div *ngIf="dsSubjetivo.invalid && dsSubjetivo.touched" class="alert alert-danger" role="alert">
+                        Campo obrigatório.
+                    </div>
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label for="objetivo" class="label-form">Objetivo</label>
+                    <textarea  class="form-control style-input-text-area" rows="4" id="objetivo" name="dsObjetivo" [(ngModel)]="request.prontuario.dsObjetivo" #dsObjetivo="ngModel" required></textarea>
+                    <div *ngIf="dsObjetivo.invalid && dsObjetivo.touched" class="alert alert-danger" role="alert">
+                        Campo obrigatório.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="form-group col-12 col-md-6">
+                    <label for="avaliacao" class="label-form">Avaliação</label>
+                    <textarea  class="form-control style-input-text-area" rows="4" id="avaliacao" name="dsAvaliacao" [(ngModel)]="request.prontuario.dsAvaliacao" #dsAvaliacao="ngModel" required></textarea>
+                    <div *ngIf="dsAvaliacao.invalid && dsAvaliacao.touched" class="alert alert-danger" role="alert">
+                        Campo obrigatório.
+                    </div>
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label for="plano" class="label-form">Plano</label>
+                    <textarea  class="form-control style-input-text-area" rows="4" id="plano" name="dsPlano" [(ngModel)]="request.prontuario.dsPlano" #dsPlano="ngModel" required></textarea>
+                    <div *ngIf="dsPlano.invalid && dsPlano.touched" class="alert alert-danger" role="alert">
+                        Campo obrigatório.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row  mt-2">
+                <div class="form-group col-12">
+                    <label for="observacoes" class="label-form">Observações</label>
+                    <textarea  class="form-control style-input-text-area" id="observacoes" name="dsObservacoes" [(ngModel)]="request.prontuario.dsObservacoes" #dsObservacoes="ngModel" rows="4"></textarea>
+                </div>
+            </div>
+
+            <div class="text-center mt-2">
+                <!-- <button type="submit" class="btn  btn-verde mr-5" (click)="open(abrir)">Salvar</button> -->
+                <button type="button" class="btn  btn-verde mr-5" value="Cadastro" (click)="registrar()" [disabled]="formAtendimento.invalid" [disabled]="botaoEnviar">Salvar</button>
+                <button type="button" class="btn btn-cinza" routerLink="/dashboard/medico" (click)="limparStorage()">Sair</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Modal Salvar-->
+<!-- <ng-template #abrir let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h5 class="modal-title" id="modal-salvarTitle">Atenção</h5>
+        <button type="button" class="close" aria-label="Close" (click)="c('Save click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Prontuário de atendimento salvo com sucesso!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-verde" (click)="c('Save click')">Ok</button>
+      </div>  
+</ng-template> -->
+
+<footer>
+    <div class="row">
+        <div class="col-md-6"><img src="assets/img-grupo4/logo-footer.png"></div>
+        <div class="col-md-2">
+            <h4 class="mapa-site">MAPA DO SITE</h4>
+            <ul class="nav flex-column rodape">
+                <li class="nav-item"><a class="nav-link" routerLink="/historico/paciente">Histórico do Paciente</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/solicitacao/exames">Solicitar Exames</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/prescrever/medicacao">Prescrever Medicação</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/dashboard/medico">Encerrar Atendimento</a></li>
+                </ul>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <h4>SOCIAL MIDIA</h4>   
+            <ul class="nav flex-column rodape">
+                <li class="nav-item"><img src="assets/img-grupo4/logo-facebook.png"><a class="nav-link" href="#">Facebook</a></li>
+                <li class="nav-item"><img src="assets/img-grupo4/logo-linkedin.png"><a class="nav-link" href="#">Linkedin</a></li>
+            </ul>
+        </div>
+    </div>    
+</footer>

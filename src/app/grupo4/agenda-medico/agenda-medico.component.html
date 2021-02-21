@@ -1,0 +1,190 @@
+<!-- Início Header -->
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <img src="assets/img-grupo4/banner-2.jpg" class="banner" alt="">
+            <img src="assets/img-grupo4/logo-branco.png" class="logo" alt="">
+        </div>
+    </div>
+</header>
+<!-- Fim Header -->
+
+<!-- Início Conteúdo Principal -->
+<div class="container">
+    <a routerLink='/dashboard/medico' class="img-sair">
+        <img src="assets/img-grupo4/baseline_exit_to_app_black_18dp.png" class="btn-sair" alt="">
+    </a>
+
+    <div class="row justify-content-center">
+
+        <!-- Início Calendário -->
+        <div class="col-12 col-md-6">
+            <h1 class="text-center title-calendario">Calendário</h1>
+            <div class="calendario col-12 d-flex justify-content-center">
+                <div>
+                    <ngb-datepicker #dp [(ngModel)]="model" (dateSelect)="dataSelect()" (navigate)="date = $event.next" [minDate]="{year: dataCalendario.anoValid, month: dataCalendario.mesValid, day: dataCalendario.diaValid}"></ngb-datepicker>
+                </div>
+            </div>
+            <!-- Modal Abrir Agenda -->
+            <ng-template #content let-c="close" let-d="dismiss">
+                <div class="modal-content modal-abrir-agenda">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="modal-basic-title">Selecione o(s) horário(s) e o tipo de consulta
+                        </h2>
+                        <button type="button" class="close" aria-label="Close" (click)="c('Save click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body modal-horarios">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <div>Manhã: </div>
+                                    <td>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[0].disponibilidade == '0', 'bloqueado': responsePeriodos[0].disponibilidade == '2' , 'bloqueado2': responsePeriodos[0].disponibilidade == '3' }" (click)="onClickHorarios(0)" [disabled]="responsePeriodos[0].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[0].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[1].disponibilidade == '0', 'bloqueado': responsePeriodos[1].disponibilidade == '2' , 'bloqueado2': responsePeriodos[1].disponibilidade == '3' }" (click)="onClickHorarios(1)" [disabled]="responsePeriodos[1].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[1].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[2].disponibilidade == '0', 'bloqueado': responsePeriodos[2].disponibilidade == '2' , 'bloqueado2': responsePeriodos[2].disponibilidade == '3' }" (click)="onClickHorarios(2)" [disabled]="responsePeriodos[2].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[2].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[3].disponibilidade == '0', 'bloqueado': responsePeriodos[3].disponibilidade == '2' , 'bloqueado2': responsePeriodos[3].disponibilidade == '3' }" (click)="onClickHorarios(3)" [disabled]="responsePeriodos[3].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[3].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[4].disponibilidade == '0', 'bloqueado': responsePeriodos[4].disponibilidade == '2' , 'bloqueado2': responsePeriodos[4].disponibilidade == '3' }" (click)="onClickHorarios(4)" [disabled]="responsePeriodos[4].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[4].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <div>Tarde: </div>
+                                    <td>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[5].disponibilidade == '0', 'bloqueado': responsePeriodos[5].disponibilidade == '2', 'bloqueado2': responsePeriodos[5].disponibilidade == '3'}" (click)="onClickHorarios(5)" [disabled]="responsePeriodos[5].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[5].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[6].disponibilidade == '0', 'bloqueado': responsePeriodos[6].disponibilidade == '2', 'bloqueado2': responsePeriodos[6].disponibilidade == '3'}" (click)="onClickHorarios(6)" [disabled]="responsePeriodos[6].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[6].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[7].disponibilidade == '0', 'bloqueado': responsePeriodos[7].disponibilidade == '2', 'bloqueado2': responsePeriodos[7].disponibilidade == '3'}" (click)="onClickHorarios(7)" [disabled]="responsePeriodos[7].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[7].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[8].disponibilidade == '0', 'bloqueado': responsePeriodos[8].disponibilidade == '2', 'bloqueado2': responsePeriodos[8].disponibilidade == '3'}" (click)="onClickHorarios(8)" [disabled]="responsePeriodos[8].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[8].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[9].disponibilidade == '0', 'bloqueado': responsePeriodos[9].disponibilidade == '2', 'bloqueado2': responsePeriodos[9].disponibilidade == '3'}" (click)="onClickHorarios(9)" [disabled]="responsePeriodos[9].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[9].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <div>Noite: </div>
+                                    <td>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[10].disponibilidade == '0', 'bloqueado': responsePeriodos[10].disponibilidade == '2', 'bloqueado2': responsePeriodos[10].disponibilidade == '3'}" (click)="onClickHorarios(10)" [disabled]="responsePeriodos[10].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[10].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[11].disponibilidade == '0', 'bloqueado': responsePeriodos[11].disponibilidade == '2', 'bloqueado2': responsePeriodos[11].disponibilidade == '3'}" (click)="onClickHorarios(11)" [disabled]="responsePeriodos[11].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[11].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[12].disponibilidade == '0', 'bloqueado': responsePeriodos[12].disponibilidade == '2', 'bloqueado2': responsePeriodos[12].disponibilidade == '3'}" (click)="onClickHorarios(12)" [disabled]="responsePeriodos[12].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[12].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[13].disponibilidade == '0', 'bloqueado': responsePeriodos[13].disponibilidade == '2', 'bloqueado2': responsePeriodos[13].disponibilidade == '3'}" (click)="onClickHorarios(13)" [disabled]="responsePeriodos[13].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[13].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                        <button class="btn btn-verde ml-4 mb-2" [ngClass]="{'negativo': responsePeriodos[14].disponibilidade == '0', 'bloqueado': responsePeriodos[14].disponibilidade == '2', 'bloqueado2': responsePeriodos[14].disponibilidade == '3'}" (click)="onClickHorarios(14)" [disabled]="responsePeriodos[14].disponibilidade==2 || responsePeriodos[0].disponibilidade==3">{{responsePeriodos[14].periodo.horaInicial | mask:"Hh:Mm"}}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="radio-tipo-consulta">
+                            <h3 class="title-tipo-consulta">Tipo de consulta: </h3>
+                            <div class="form-check form-check-inline-online">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" [checked]="responsePeriodos[0].idTipoConsulta==1"
+                                    value="1">
+                                <label class="form-check-label" for="inlineRadio1" (click)="setTipoConsulta(1)">Online</label>
+                            </div>
+                            <div class="form-check form-check-inline-presencial">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                    value="2" [checked]="responsePeriodos[0].idTipoConsulta==2">
+                                <label class="form-check-label" for="inlineRadio2" (click)="setTipoConsulta(2)">Presencial</label>
+                            </div>
+                        </div>
+                        <div class="row mt-4 ml-4">
+                            <div class="col-2">
+                                <div class="legenda">Legenda:</div>
+                            </div>
+                            <div class="col-3">
+                                <div class="disponivel mb-2">Disponível</div>
+                            </div>
+                            <div class="col-3">
+                                <div class="indisponivel mb-2">Indisponível</div>
+                            </div>                            
+                            <div class="col-3">
+                                <div class="agendadaCancelada mb-2">Agendada</div>
+                            </div> 
+                            <div class="col-1">
+                            </div>                           
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn button-limpar" (click)="limparSelecao()">Limpar
+                            seleção</button>
+                        <button type="button" class="btn button-salvar" (click)="cadastrarAgenda()" (click)="c('Save click')">Salvar</button>
+                    </div>
+                </div>
+            </ng-template>
+            <!-- Fim Modal Abrir Agenda -->
+
+            <div class="buttons-calendario">
+                <button class="btn btn-abrir-agenda" (click)="open(content)">Abrir Agenda</button>
+                <button type="button" class="btn btn-consultar-agenda" data-toggle="modal"
+                    data-target="#modalConsultarAgenda" (click)="consultarAgendamentos()">
+                    Consultar Agenda
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Fim Calendário -->
+
+        <!-- Início Agenda do Dia -->
+        <div class="col-12 col-md-6">
+            <h1 class="text-center title-agenda">{{data|date:"dd/MM/yyyy"}}</h1>
+            <table class="table">
+                <tbody>
+                    <tr *ngFor="let agendamento of agendamentosResposta">
+                        <td>{{agendamento.agenda.periodo.horaInicial}}</td>
+                        <td>{{agendamento.paciente.nmNome}}</td>
+                        <td>
+                            {{agendamento.agenda.tipoConsulta.dsTipoConsulta}}
+                        </td>
+                        <td class="confirmado">
+                            {{agendamento.statusConsulta.dsStatusConsulta}}
+                        </td>
+                        <td>
+                            <button type="button" class="btn-cancelar"
+                                (click)="remover(agendamento.idAgPaciente)"></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Início Modal Cancelar Consulta-->
+        <!-- <ng-template #cancelar let-c="close" let-d="dismiss">
+            <div class="modal-content" id="modal-cancelar">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Atenção!</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body modal-cancelar-msg">
+                    <p>Deseja realmente cancelar a consulta?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-verde" (click)="remover(agendamento.idAgPaciente)">Sim</button>
+                  </div>
+            </div>
+        </ng-template> -->
+        <!-- Fim Modal Cancelar Consulta-->
+
+        <!-- Fim Agenda do Dia -->
+
+        <!-- {{responsePeriodos | json}} -->
+    </div>
+</div>
+<!-- Fim Conteúdo Principal -->
+
+<!-- Início Footer -->
+<footer class="mt-4">
+    <div class="row">
+        <div class="col-md-6"><img src="assets/img-grupo4/logo-footer.png"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <h4>SOCIAL MIDIA</h4>
+            <ul class="nav flex-column rodape">
+                <li class="nav-item"><img src="assets/img-grupo4/logo-facebook.png"><a class="nav-link"
+                        href="#">Facebook</a></li>
+                <li class="nav-item"><img src="assets/img-grupo4/logo-linkedin.png"><a class="nav-link"
+                        href="#">Linkedin</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<!-- Fim Footer -->

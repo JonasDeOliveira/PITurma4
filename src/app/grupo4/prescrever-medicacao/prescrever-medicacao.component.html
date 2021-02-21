@@ -1,0 +1,248 @@
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <img src="assets/img-grupo4/banner-2.jpg" class="banner" alt="">
+        <img src="assets/img-grupo4/logo-branco.png" class="logo" alt="">
+    </div>
+</div>
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="form-group col-12 col-md-2">
+            <select type="text" class="form-control style-input" id="tipo-receita" name="tipoReceita" [(ngModel)]="request.tipoReceita.idTipoReceita" #tipoReceita="ngModel" required>
+                <option>Tipo Receita</option>
+                <option *ngFor="let tipoReceita of responsePrescricao.listaTipoReceita">{{tipoReceita.dsTipoReceita}}</option>
+            </select>
+        </div>
+        <div class="col-12 col-md-8">
+            <h1 class="titulo-verde text-center">Receituário Simples</h1>
+        </div>
+        <div class="form-group col-12 col-md-2">
+            <a><img src="/assets/img-grupo4/validar.png" class="img-validar"></a>
+        </div>
+    </div>
+    
+    <form id="id-form" name="formulario" action="#" #formPrescricao="ngForm">
+        <div class="row mt-2">
+            <div class="form-group col-12 col-md-12">
+                <label for="name-paciente" class="label-form">Nome do(a) Paciente</label>
+                <input type="text" class="form-control style-input" id="name-paciente" value="{{responsePrescricao.nomePaciente}}" disabled>
+            </div>
+        </div>
+
+        <div class="presc-border">
+            <div class="row mt-2 mb-0">
+                <div class="form-group col-12 col-md-12 mb-0">
+                    <label for="idade" class="label-form">Prescrição</label>
+                </div>
+            </div>
+
+            <div>
+                <div class="row">
+                    <div class="form-group col-12 col-md-2">
+                        <label for="idade" class="label-form">Medicação</label>
+                        <select type="text" class="form-control style-input select-form" id="medicacao" required name="idMedicacao" [(ngModel)]="idMedicacao">
+                            <option>Selecione a Medicação</option>
+                            <option *ngFor="let medicacao of responsePrescricao.listaMedicacao" value="{{medicacao.idMedicacao}}">{{medicacao.dsMedicacao}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-12 col-md-2">
+                        <label for="quantidade" class="label-form">Quantidade</label>
+                        <input type="number" class="form-control style-input" id="quantidade" name="vlQuantidade" [(ngModel)]="vlQuantidade" required>
+                    </div>
+                    <div class="form-group col-12 col-md-2">
+                        <label for="concentracao" class="label-form">Concentração</label>
+                        <input type="text" class="form-control style-input" id="concentracao" name="vlConcentracao" [(ngModel)]="vlConcentracao" required>
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label for="idade" class="label-form">Via de Administração</label>
+                        <select type="text" class="form-control style-input select-form" id="via-adm" name="idViaAdm" [(ngModel)]="idViaAdm" required>
+                            <option>Selecione a Via de Administração</option>
+                            <option *ngFor="let viaAdm of responsePrescricao.listaViaAdm" value="{{viaAdm.idViaAdm}}">{{viaAdm.dsViaAdm}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label for="idade" class="label-form">Forma Farmacêutica</label>
+                        <select type="text" class="form-control style-input select-form" id="forma-farmaceutica" name="idFormaFarmac" [(ngModel)]="idFormaFarmac" required>
+                            <option>Selecione a Forma Farmacêutica</option>
+                            <option *ngFor="let formaFarmac of responsePrescricao.listaFormaFarmac" value="{{formaFarmac.idFormaFarmac}}">{{formaFarmac.dsFormaFarmac}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="form-group col-12 col-md-11">
+                        <label for="orientacoes" class="label-form">Orientações de Uso (Dose, Posologia)</label>
+                        <input type="text" class="form-control style-input" id="orientacoes" name="dsOrientacoes" [(ngModel)]="dsOrientacoes" required>
+                    </div>
+                    <div class="form-group col-12 col-md-1">
+                        <button type="button" class="btn-add" (click)=addItem()></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th class="texto-tabela" scope="col">Medicação</th>
+                        <th class="texto-tabela" scope="col">Quantidade</th>
+                        <th class="texto-tabela" scope="col">Concentração</th>
+                        <th class="texto-tabela" scope="col">Via de Administração</th>
+                        <th class="texto-tabela" scope="col">Forma Farmacêutica</th>
+                        <th class="texto-tabela" scope="col">Orientações de Uso (Dose, Posologia)</th>
+                        <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor = "let item of listaPrescricao">
+                        <tr>
+                        <td class="texto-tabela">{{item.dsMedicacao}}</td>
+                        <td class="texto-tabela">{{item.vlQuantidade}}</td>
+                        <td class="texto-tabela">{{item.vlConcentracao}}</td>
+                        <td class="texto-tabela">{{item.dsViaAdm}}</td>
+                        <td class="texto-tabela">{{item.dsFormaFarmac}}</td>
+                        <td class="texto-tabela">{{item.dsOrientacoes}}</td>
+                        <td><button type="button" class="btn-delete" (click)=removerItem(item)></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="form-group col-12 col-md-9">
+                <label for="name-medico" class="label-form">Nome do(a) Médico(a)</label>
+                <input type="text" class="form-control style-input" id="name-medico" value="{{responsePrescricao.medico.nome}}" disabled>
+            </div>
+            <div class="form-group col-12 col-md-2">
+                <label for="crm" class="label-form">CRM</label>
+                <input type="text" class="form-control style-input" id="crm" value="{{responsePrescricao.medico.nrCrm}}" disabled>
+            </div>
+            <div class="form-group col-12 col-md-1">
+                <label for="uf-crm" class="label-form">UF</label>
+                <input type="text" class="form-control style-input" id="uf-crm" value="{{responsePrescricao.medico.ufCrm.dsUf}}" disabled>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="form-group col-12 col-md-9">
+                <label for="endereco" class="label-form">Endereço</label>
+                <input type="text" class="form-control style-input" id="endereco" value="{{responsePrescricao.medico.enderecos[0].dsEndereco}}" disabled>
+            </div>
+            <div class="form-group col-12 col-md-3">
+                <label for="bairro" class="label-form">Bairro</label>
+                <input type="text" class="form-control style-input" id="bairro" value="{{responsePrescricao.medico.enderecos[0].dsBairro}}" disabled>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="form-group col-12 col-md-5">
+                <label for="cidade" class="label-form">Cidade</label>
+                <input type="text" class="form-control style-input" id="cidade" value="{{responsePrescricao.medico.enderecos[0].cidade.dsCidade}}" disabled>
+            </div>
+            <div class="form-group col-12 col-md-1">
+                <label for="uf" class="label-form">UF</label>
+                <input type="text" class="form-control style-input" id="uf" value="{{responsePrescricao.medico.enderecos[0].cidade.uf.dsUf}}" disabled>
+            </div>
+            <div class="form-group col-12 col-md-3">
+                <label for="tel" class="label-form">Telefone</label>
+                <input type="text" class="form-control style-input" id="tel" value= "{{responsePrescricao.medico.contatos[0].dsContato}}" disabled>
+            </div>
+            <div class="form-group col-12 col-md-3">
+                <label for="data-emissao" class="label-form">Data de Emissão</label>
+                <input type="text" class="form-control style-input" id="dtEmissao" name="dtEmissao" [(ngModel)]="responsePrescricao.dtEmissao" #dtEmissao="ngModel" disabled>
+            </div>
+        </div>
+
+        <div class="row mt-4 mb-4">
+            <div class="form-group col-12 col-md-3">
+            </div>
+            <div class="form-group col-12 col-md-6 ">
+                <textarea  class="form-control style-input-text-area" id="assinatura-medico" rows="4" required></textarea>
+                <label for="assinatura-medico" class="label-form d-flex justify-content-center mt-1">Assinatura Médico(a)</label>
+            </div>
+            <div class="form-group col-12 col-md-3">
+            </div>
+        </div>
+
+        <div class="text-center">
+            
+            <!-- <button type="submit" class="btn btn-verde mr-5" (click)="open(abrir)" (click)="registrar()">Salvar</button> -->
+            <!--<button type="button" class="btn btn-verde btn-outline-primary" (click)="open(content)">Enviar</button> -->
+            <button type="submit" class="btn btn-verde mr-5" (click)="registrar()">Enviar</button>
+            <button type="button" class="btn btn-cinza" (click)="voltar()">Sair</button>
+        </div> 
+    </form>
+</div>
+
+<!-- Modal Adicionar-->
+<!-- <ng-template #add let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h5 class="modal-title" id="modal-salvarTitle">Atenção</h5>
+        <button type="button" class="close" aria-label="Close" (click)="c('Save click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Medicamento adicionado com sucesso!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-verde" (click)="c('Save click')">Ok</button>
+      </div>  
+</ng-template> -->
+
+<!-- Modal Salvar-->
+<!-- <ng-template #abrir let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h5 class="modal-title" id="modal-salvarTitle">Atenção</h5>
+        <button type="button" class="close" aria-label="Close" (click)="c('Save click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Receituário salvo com sucesso!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-verde" (click)="c('Save click')">Ok</button>
+      </div>  
+</ng-template> -->
+
+<!--Modal Enviar-->
+<!-- <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h5 class="modal-title"> Enviar Receituário</h5>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <label for="recipient-name" class="col-form-label label-form">Enviar para:</label>
+      <input type="senha" class="form-control">
+      <p></p>
+      <label for="message-text" class="col-form-label label-form">Mensagem:</label>
+      <input type="senha" class="form-control">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-cinza" data-dismiss="modal" (click)="c('Save click')" >Fechar</button>
+        <button type="button" class="btn btn-verde"  (click)="c('Save click')">Enviar</button>
+    </div>
+</ng-template> -->
+
+<footer class="mt-4">
+    <div class="row">
+        <div class="col-md-6"><img src="assets/img-grupo4/logo-footer.png"></div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <h4>SOCIAL MIDIA</h4>   
+            <ul class="nav flex-column rodape">
+                <li class="nav-item"><img src="assets/img-grupo4/logo-facebook.png"><a class="nav-link" href="#">Facebook</a></li>
+                <li class="nav-item"><img src="assets/img-grupo4/logo-linkedin.png"><a class="nav-link" href="#">Linkedin</a></li>
+            </ul>
+        </div>
+    </div>    
+</footer>
+</body>
