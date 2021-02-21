@@ -274,7 +274,7 @@
                                 <label for="cartao-vencimento">Data de vencimento:</label>
                                 <div class="vencimento-cartao">
                                     <input type="month" class="form-control" id="dtValidade" placeholder="00/0000"
-                                        [(ngModel)]="outputCliente.cartao.dtValidade" name="dtValidade"
+                                        [(ngModel)]="outputCliente.cartao.dtValidade" name="dtValidade" min="{{minDateCartao | date: 'yyyy-MM'}}"
                                         #dtValidade="ngModel" required>
                                 </div>
                             </div>

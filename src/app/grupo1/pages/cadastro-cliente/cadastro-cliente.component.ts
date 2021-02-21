@@ -25,6 +25,7 @@ export class CadastroClienteComponent implements OnInit {
 
   minDate: Date = new Date(1910, 1, 1);
   maxDate: Date = new Date(2003, 1, 1);
+  minDateCartao: Date = new Date();
 
   mostraSpin = false; //<--- adicione isto --->
 

@@ -21,7 +21,8 @@
 }
 
 .botoes-cadastro{
-    float: right;   
+    float: right;
+    margin-bottom: 10px;
 }
 
 .btn-espaco{
