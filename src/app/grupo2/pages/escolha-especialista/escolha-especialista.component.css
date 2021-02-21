@@ -1,5 +1,3 @@
-
-
 section{
   background-color: rgba(224, 239, 220, 0.24);
   width: 100%;
@@ -130,9 +128,12 @@ section{
   }
   .horarios{
       width: 100%;
+      display: flex;
+      flex-direction: row;
   }
   .hora{
-      margin-top: 0.3%
+      margin-top: 0.3%;
+      margin-left: 5px;
   }
   .foto{
       width: 10%;

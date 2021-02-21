@@ -33,11 +33,11 @@ export class PagamentoParticularComponent implements OnInit {
   dsConsulta : string = this.consulta.dsTipoConsulta;
   idTipoConsulta: number = this.consulta.idTipoConsulta;
 
-  agenda: Agenda = JSON.parse(localStorage.getItem("agenda"));
+  agenda = JSON.parse(localStorage.getItem("agenda"));
   nmMedico : string = this.agenda.medico.nome;
   horario = this.agenda.periodo.horaInicial;
   horarioFormatado = "";
-  vlConsulta: number = this.agenda.medico.preco.vlConsulta;
+  vlConsulta: number = this.agenda.medico.preco.valorConsulta;
   data = this.agenda.data;
 
   desconto = 0;
