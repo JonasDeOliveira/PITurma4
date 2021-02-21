@@ -196,6 +196,50 @@ h3 {
 }
 /* FIM RADIO TIPO CONSULTA */
 
+/* INICIO LEGENDA */
+.legenda {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.disponivel {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: #2a764a;
+    border: 1px solid #2a764a;
+    color : white;
+    border-radius: 4px;
+}
+
+.indisponivel {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: white !important;
+    border: 1px solid #2a764a;
+    color:black;
+    border-radius: 4px;
+}
+
+.agendadaCancelada {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: rgb(161, 161, 161) !important;
+    border: 1px solid #2a764a;
+    color:black;  
+    border-radius: 4px; 
+}
+/* FIM LEGENDA */
+
 /* INÍCIO AGENDA DO DIA */
 .title-agenda {
     color: #016F33;

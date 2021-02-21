@@ -23,7 +23,7 @@ export class AtendimentoEspecialistaComponent implements OnInit {
           idUsuario : null,
       },
       medico: {
-          idUsuario : 135,
+          idUsuario : null,
       },
       prontuario: {
           dsSubjetivo : "",
@@ -42,10 +42,11 @@ export class AtendimentoEspecialistaComponent implements OnInit {
       dsMedicacaoUsoContinuo : "",
       dsProblemasSaude : "",
       dtAtendimento : "",
-      //capturar a data do dia nesse formato e o id do medico do login
-  }
+    }
 
-     open(content) {
+    botaoEnviar = false;
+
+    open(content) {
       this.modalService.open(content);
     }
   
@@ -54,22 +55,29 @@ export class AtendimentoEspecialistaComponent implements OnInit {
   ngOnInit(): void {
     this.request.agPaciente.idAgPaciente=this.route.snapshot.paramMap.get("id");
     this.request.paciente.idUsuario=this.route.snapshot.paramMap.get("idPaciente");
-    // var objAtendimento = JSON.parse(localStorage.getItem("atendimento"));
-    // this.request.dsHabitosVicios = objAtendimento.dsHabitosVicios;
-    // this.request.dsAlergiasRestricoes = objAtendimento.dsAlergiasRestricoes;
-    // this.request.dsMedicacaoUsoContinuo = objAtendimento.dsMedicacaoUsoContinuo;
-    // this.request.dsProblemasSaude =objAtendimento.atendimento.dsProblemasSaude;
-    // this.request.vlAltura =objAtendimento.atendimento.vlAltura;
-    // this.request.vlPeso =objAtendimento.atendimento.vlPeso;
-    // this.request.prontuario.dsAvaliacao =objAtendimento.prontuario.dsAvaliacao;
-    // this.request.dtAtendimento = "";
+    
+    var objAtendimento = JSON.parse(localStorage.getItem("atendimento"));
+    if (objAtendimento!= null) {
+      this.request.vlPeso= objAtendimento.vlPeso;
+      this.request.vlAltura= objAtendimento.vlAltura;
+      this.request.dsHabitosVicios= objAtendimento.dsHabitosVicios;
+      this.request.dsAlergiasRestricoes= objAtendimento.dsAlergiasRestricoes;
+      this.request.dsMedicacaoUsoContinuo= objAtendimento.dsMedicacaoUsoContinuo;
+      this.request.dsProblemasSaude= objAtendimento.dsProblemasSaude;
+      this.request.prontuario.dsSubjetivo= objAtendimento.prontuario.dsSubjetivo;
+      this.request.prontuario.dsObjetivo= objAtendimento.prontuario.dsObjetivo;
+      this.request.prontuario.dsAvaliacao= objAtendimento.prontuario.dsAvaliacao;
+      this.request.prontuario.dsPlano= objAtendimento.prontuario.dsPlano;
+      this.request.prontuario.dsObservacoes= objAtendimento.prontuario.dsObservacoes;
+      this.botaoEnviar = true;
+    }
 
     console.log(this.request.dtAtendimento)
     this.atendEspService.getAtendimentos(this.request.agPaciente.idAgPaciente).subscribe(
       resposta => {
         this.atendimentoResposta = resposta;
 
-        localStorage.setItem("paciente", JSON.stringify(this.request));
+        localStorage.setItem("paciente", JSON.stringify(resposta));
         console.log(resposta);
       }
     );
@@ -78,10 +86,15 @@ export class AtendimentoEspecialistaComponent implements OnInit {
   registrar() {
     this.request.dtAtendimento = this.atendimentoResposta.data;
     console.log(this.request.dtAtendimento);
+    var objMedico = JSON.parse(localStorage.getItem("medico"));
+    this.request.medico.idUsuario = objMedico.idUsuario;
+  
     localStorage.setItem("atendimento", JSON.stringify(this.request));
+
     this.atendEspService.cadastrarAtendimento(this.request).subscribe(
       response => {
         alert('Prontuário inserido com sucesso!');
+        this.botaoEnviar = true;
       },
       error => {
         console.log(error);

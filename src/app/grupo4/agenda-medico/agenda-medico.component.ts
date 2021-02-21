@@ -34,6 +34,12 @@ export class AgendaMedicoComponent implements OnInit {
   responsePeriodos: any;
   dataHj: any;
   dataFormatada: any;
+  dataCalendario= {
+    diaValid: "",
+    mesValid: "",
+    anoValid: ""
+  }
+  
 
   ngOnInit(): void {
     this.getAgendamentos();
@@ -49,15 +55,18 @@ export class AgendaMedicoComponent implements OnInit {
     var mes = this.model.month;
     var ano = this.model.year;
     this.dataFormatada = ano + '-' + mes + '-' + dia;
-    console.log(this.dataFormatada);
+
+    var dataCalendario = new Date(Date.now()).toISOString().slice(0,10);
+    this.dataCalendario.diaValid = dataCalendario[8]+dataCalendario[9];
+    this.dataCalendario.mesValid = dataCalendario[5]+dataCalendario[6];
+    this.dataCalendario.anoValid = dataCalendario[0]+dataCalendario[1]+dataCalendario[2]+dataCalendario[3]
   }
 
   getAgendamentos(){
     this.agendaService.getAgendamentos().subscribe(
       resposta => {
         this.agendamentosResposta = resposta;
-        console.log(resposta);
-
+        
       this.data = new Date(Date.now()).toISOString().slice(0,10);
       }
     )
@@ -67,7 +76,7 @@ export class AgendaMedicoComponent implements OnInit {
     this.agendaService.consultarAgendamentos(this.dataFormatada).subscribe(
       resposta => {
         this.agendamentosResposta = resposta;
-        console.log(resposta);
+  
         this.data = this.dataFormatada;
       }
     )
@@ -78,7 +87,6 @@ export class AgendaMedicoComponent implements OnInit {
       this.agendaService.cancelarAgendamento(idAgPaciente).subscribe(
         response => {
           location.reload();
-          console.log(idAgPaciente)
         }
       )
     }
@@ -88,7 +96,6 @@ export class AgendaMedicoComponent implements OnInit {
     this.agendaService.getHorarios(this.dataFormatada).subscribe(
       resposta => {
         this.responsePeriodos = resposta;
-        console.log(resposta);
       }
     )
   }
@@ -128,8 +135,15 @@ export class AgendaMedicoComponent implements OnInit {
  this.responsePeriodos.forEach(agenda => {
         agenda.idTipoConsulta = id;
  });
+  }
 
-
+  limparSelecao(){
+    this.responsePeriodos.forEach(agenda => {
+      if(agenda.disponibilidade == 1){
+        agenda.disponibilidade = 0;
+      }
+           
+    });
   }
 
 }
