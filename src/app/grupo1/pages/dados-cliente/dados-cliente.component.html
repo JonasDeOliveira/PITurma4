@@ -293,8 +293,8 @@
                                     <div class="form-group col-md-12">
                                         <label for="cartao-nome">Nome impresso no Cartão:</label>
                                         <input type="text" class="form-control" id="cartao-nome" name="nmNome"
-                                            [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="10"
-                                            maxlength="30" required placeholder="Nome impresso no Cartão">
+                                            [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="5"
+                                            maxlength="40" required placeholder="Nome impresso no Cartão">
                                         <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)"
                                             class="alert alert-light">
                                             Campo nome é obrigatório.
@@ -367,7 +367,7 @@
         </form>
     </section>
 
-    {{outputCliente | json}}
+    <!-- {{outputCliente | json}} -->
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

@@ -182,7 +182,12 @@ export class CadastroClienteComponent implements OnInit {
         },
         error => {
           console.log(error)
-          alert(error.error.mensagem);
+          if(error.error.mensagem != undefined) {
+            alert(error.error.mensagem);
+          } else {
+            alert("Algo inesperado ocorreu")
+          }
+
         }
       )
     }
