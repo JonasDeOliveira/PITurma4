@@ -10,6 +10,10 @@ import { ProgramaNutriService } from '../../shared/ProgramaNutri/service/program
 })
 
 export class AgendaAlimentarComponent implements OnInit {
+  
+  cliente = JSON.parse(localStorage.getItem("cliente"));
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
+  
   id: number;
   response: any;
   responseCardapios:  Cardapio[];
@@ -31,8 +35,4 @@ export class AgendaAlimentarComponent implements OnInit {
     }
     )
   }
-
-
-
-
 }

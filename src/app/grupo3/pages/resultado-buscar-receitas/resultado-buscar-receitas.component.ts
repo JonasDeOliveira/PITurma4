@@ -9,10 +9,11 @@ import { ReceitaService } from '../../shared/service/receitas.service';
   styleUrls: ['./resultado-buscar-receitas.component.css']
 })
 export class ResultadoBuscarReceitasComponent implements OnInit {
+  cliente = JSON.parse(localStorage.getItem("cliente"));
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
 
   ReceitaService: any;
   request: any;
-
 
   constructor(private router: Router, private receitaService: ReceitaService) { }
 

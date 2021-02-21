@@ -57,7 +57,6 @@ export class PagamentoServicoComponent implements OnInit {
   ngOnInit(): void {
     this.getAgendamento();
     this.getServicos();
-    
   }
 
   getAgendamento(){
@@ -79,7 +78,6 @@ export class PagamentoServicoComponent implements OnInit {
 
   
   registrarPedido() {
-
     //salvando os dados do cartão no obj cartão
     this.cartao.nmNome = this.nmTitular;
     this.cartao.codSeguranca = this.cvv;
@@ -97,7 +95,7 @@ export class PagamentoServicoComponent implements OnInit {
     this.pedidoService.criarPedido(this.pedido).subscribe(
       response => {
         alert('Pedido finalizado com sucesso');
-        
+
 
       }, error => {
         alert('Pedido finalizado com sucesso');

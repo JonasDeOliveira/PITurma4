@@ -53,7 +53,7 @@ p {
 }
 
 .card {
-    background-color:hsla(147, 19%, 55%, 0.5);
+    background-color:rgb(247, 245, 245);
     border: none;
     padding: 1rem;
     width: 500px;

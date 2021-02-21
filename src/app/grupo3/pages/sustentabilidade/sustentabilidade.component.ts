@@ -17,6 +17,7 @@ export class SustentabilidadeComponent implements OnInit {
   ehLogado = JSON.parse(localStorage.getItem("isLogado"));
 
   local: string;
+  spinSustentabilidade: boolean = false;
 
   constructor(private lojaService : LojaService) { 
   }
@@ -36,9 +37,11 @@ export class SustentabilidadeComponent implements OnInit {
   }
 
   buscarLojaPorLocal(){
+    this.spinSustentabilidade = true;
     this.lojaService.getLojasPorLocalidade(this.local).subscribe (
       response => {
         this.responseLojas = response;
+        this.spinSustentabilidade = false;
       }
     )
   }

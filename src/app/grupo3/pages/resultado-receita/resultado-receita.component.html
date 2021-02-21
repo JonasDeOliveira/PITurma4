@@ -1,55 +1,51 @@
+<app-header *ngIf="!ehLogado"></app-header>
+<app-header-logado *ngIf="ehLogado"></app-header-logado>
+
 <div class="container">
     <section>
+
         <div class="banner"></div>
         
-        <div class="d-flex justify-content-between form-inline mr-5">
-            <h3 class="titulo"> {{receita.nomeReceita}}</h3>
-            <button [routerLink]="['/pesquisar-receitas']" type="button"
-                class="btn btn-success botao-voltar btn-sm float-right">Nova busca</button>
-            <!-- <h4 class = "subtitulo">{{receita.categoria}}</h4>-->
-        </div>
-        
-        <div class = "container_receita">
-                <div class="row">
-    
-                    <div class="col-12 col-md-6 col-lg-6">
-                    <div class="card bg-light mb-3">
-                     <img src={{receita.endImagem}}>
-                    </div>
-                    </div>
-                  
-    
-                <div class="col-12 col-md-6 col-lg-6">
-                    <div class="card bg-light mb-3">
-                    <div class = "ingredientes p-4">
-                    <h5 id = "ingredientes">Ingredientes e Modo de preparo:</h5> 
-                    <h6 class = "texto">
-                     <p>{{receita.dsReceita}}</p>
-                    
-                    </h6>
-                    </div>
-
-                   <!-- <div class = "preparo">
-                    <h6 id = "preparo">Modo de Preparo</h6> 
-                    <h6 class = "texto"><ol>
-                        <li>Em uma panela, coloque o azeite, e refoque o alho e a cebola.</li>
-                        <li>Após feito isso coloque os tomates por uns 5 minutos ou até virar um "molho".</li>
-                        <li>Coloque o tablete de carne, a água e os temperos.</li>
-                        <li>Sirva quente com parmesão ralado e orégano por cima.</li>  
-                    </ol>
-                    </h6>
-                </div>-->
-             </div>
+            <div class="d-flex justify-content-between form-inline mr-5">
+                <h3 class="titulo"> {{receita.nomeReceita}}</h3>
+                <button [routerLink]="['/pesquisar-receitas']" type="button"
+                    class="btn btn-success botao-voltar btn-sm float-right">Nova busca</button>
+                <!-- <h4 class = "subtitulo">{{receita.categoria}}</h4>-->
             </div>
-
-
-        </div>
-    </div>
-    
-    </section>
-    
-    
+            
+            <div class = "container_receita">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <div class="card bg-light mb-3">
+                            <img src={{receita.endImagem}}>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <div class="card bg-light mb-3">
+                            <div class = "ingredientes p-4">
+                                <h5 id = "ingredientes">Ingredientes e Modo de preparo:</h5> 
+                                <h6 class = "texto">
+                                <p>{{receita.dsReceita}}</p>
+                                </h6>
+                            </div>
+                                <!-- <div class = "preparo">
+                                    <h6 id = "preparo">Modo de Preparo</h6> 
+                                    <h6 class = "texto"><ol>
+                                        <li>Em uma panela, coloque o azeite, e refoque o alho e a cebola.</li>
+                                        <li>Após feito isso coloque os tomates por uns 5 minutos ou até virar um "molho".</li>
+                                        <li>Coloque o tablete de carne, a água e os temperos.</li>
+                                        <li>Sirva quente com parmesão ralado e orégano por cima.</li>  
+                                    </ol>
+                                    </h6>
+                                </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </div>
+<app-footer></app-footer>
