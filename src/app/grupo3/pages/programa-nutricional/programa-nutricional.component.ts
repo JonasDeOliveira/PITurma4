@@ -36,6 +36,8 @@ export class ProgramaNutricionalComponent implements OnInit {
 
   id: IdTipoRefeicao;
 
+  spinResponseCardapio: boolean = false;
+
   
   
 
@@ -108,35 +110,45 @@ cadastrar() {
 
   this.cardapio = new Cardapio;
   this.id = new IdTipoRefeicao;
-  this.id.idTipoRefeicao = this.idTipoRefeicao; 
-  
-  this.cardapio.idTipoRefeicao = this.id;
-  this.cardapio.nomeReceita = this.nomeReceita;
-  this.cardapio.qtRendimento = this.qtRendimento;
-  this.cardapio.qtCalorias = this.qtCalorias;
-  this.cardapio.dsDescricao = this.dsDescricao;
-  this.cardapio.idPaciente = this.idUsuario;
-  this.cardapio.idMedico = 33;
 
-  this.programaNutriService.criarCardapio(this.cardapio).subscribe(
-    response => {
-      this.responseString = response;
-    },
-    error => {
-      alert('Algo inesperado aconteceu')
-    }
-  )
+  if (this.idTipoRefeicao == null){
+    alert('Selecione a refeição antes de salvar');
+  }else if (this.nomeReceita == null){
+    alert('Insira o nome do prato');
+  }else if (this.qtRendimento == null){
+    alert('Insira o rendimento');
+  }else if (this.qtCalorias == null){
+    alert('Insira as colorias');
+  }else if (this.dsDescricao == null){
+    alert('Insira algo na descrição')
+  }else{
+    this.id.idTipoRefeicao = this.idTipoRefeicao; 
+    this.cardapio.idTipoRefeicao = this.id;
+    this.cardapio.nomeReceita = this.nomeReceita;
+    this.cardapio.qtRendimento = this.qtRendimento;
+    this.cardapio.qtCalorias = this.qtCalorias;
+    this.cardapio.dsDescricao = this.dsDescricao;
+    this.cardapio.idPaciente = this.idUsuario;
+    this.cardapio.idMedico = 33;
 
-  alert(this.responseString);
-  window.location.reload();
+    this.programaNutriService.criarCardapio(this.cardapio).subscribe(
+      response => {
+        this.responseString = response;
+      }
+    )
+    alert("Cardápio salvo com sucesso!");
+    window.location.reload();
+  }
+
 }
 
 //Listar Cardapio do usuário
 listarCardapios(){
+  this.spinResponseCardapio = true;
   this.programaNutriService.getListarCardapios(this.idUsuario).subscribe (
    response => {
       this.responseCardapio = response;
-      console.log("LISTA DE CARDAPIOS: "+response);
+      this.spinResponseCardapio = false;
     }
   )
 }
