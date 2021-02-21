@@ -282,7 +282,7 @@
                                 <label for="cartao-codigo-seguranca">Código de Segurança:</label>
                                 <input type="password" class="form-control" id="cartao-codigo-seguranca"
                                     placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca"
-                                    name="codSeguranca" #codSeguranca="ngModel" minlength="3" required>
+                                    name="codSeguranca" #codSeguranca="ngModel" minlength="3" maxlength="3" required>
                             </div>
                         </div>
 
