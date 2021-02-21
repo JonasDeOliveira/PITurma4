@@ -18,7 +18,17 @@
                 <div class="form-row">
                   <div class="form-group col-12">
                     <label for="numeroCC">Número do cartão*</label>
-                    <input [(ngModel)]="nrCartao" name="nrCartao" type="text" class="form-control" id="nrCartao" placeholder="5555 5555 5555 5555" required>
+                    <input [(ngModel)]="nrCartao" name="nrCartao" type="text" class="form-control" #nroCartao= "ngModel" id="nrCartao" placeholder="5555 5555 5555 5555" minlength="16" maxlength="16" required>
+                  
+                    <div *ngIf="nroCartao.invalid && nroCartao.touched" class="alert alert-danger" role="alert">
+                        <div [hidden]="!nroCartao.errors.required">
+                            Insira o número do cartão.
+                        </div>
+                        <div [hidden]="!nroCartao.errors.minlength">
+                            Número de cartão inválido.
+                        </div>
+                    </div>
+
                   </div>
                 </div>
 
@@ -26,7 +36,13 @@
                 <div class="form-row">
                     <div class="form-group col-12">
                       <label for="nomeTitular">Nome do titular do cartão*</label>
-                      <input [(ngModel)]= "nmTitular" name="nmTitular" type="text" class="form-control" id="nmTitular" placeholder="Digite o nome como gravado no cartão" required>
+                      <input [(ngModel)]= "nmTitular" name="nmTitular" type="text" class="form-control" #nmTitularCC="ngModel" id="nmTitular" placeholder="Digite o nome como gravado no cartão" required>
+                        
+                        <div *ngIf="nmTitularCC.invalid && nmTitularCC.touched" class="alert alert-danger" role="alert">
+                            <div [hidden]="!nmTitularCC.errors.required">
+                                Campo nome é obrigatório. 
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- linha 3 - Data de vencimento e código de segurança -->
@@ -67,7 +83,12 @@
                     </div>
                     <div class="form-group col-12 col-lg-4">
                             <label for="codSegCC">CVV*</label>
-                            <input  [(ngModel)]="cvv" name="cvv" type="text" class="form-control" id="codSegCC" placeholder="000" required>
+                            <input  [(ngModel)]="cvv" name="cvv" type="text" class="form-control" #cdgSegCC="ngModel" id="codSegCC" placeholder="000" minlength="3" maxlength="3" required>
+                            <div *ngIf="cdgSegCC.invalid && cdgSegCC.touched" class="alert alert-danger" role="alert">
+                                <div [hidden]="!cdgSegCC.errors.required">
+                                    CVV é obrigatório.
+                                </div>
+                            </div>
                     </div>
                 </div>            
                     <!-- linha 4 - Números de parcelas -->
