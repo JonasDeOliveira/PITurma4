@@ -12,27 +12,30 @@
                         <h3 class="mt-4 mb-3 ml-1">
                             Busca por: {{palavraPesquisada}}
                         </h3>
-                        <button [routerLink]="['/pesquisar-receitas']" type="button"
-                            class=" btn btn-success botao-voltar btn-sm">Nova busca</button>
+                        <h6><a [routerLink]="['/pesquisar-receitas']" class="botao-voltar">  Nova busca > </a></h6>
+
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mb-5">
-            <div class="col-12 col-sm-6 col-md-6 col-xs-12 mb-3" *ngFor="let receita of resultadoBuscaReceitas">
-                <div class="row background ml-2 mr-2">
-                    <div class="col-12 col-sm-6 col-md-6 col-xs-12 col-lg-6 col-xl-6">
-                        <a [routerLink]="['/resultado-receita', receita.idReceita]"
+        <div class="row mb-5 ml-3">
+
+            <div class="col-12 col-lg-6 p-3" *ngFor="let receita of resultadoBuscaReceitas">
+                <div class="card p-3" style="width: 90%;" >
+                    <div class="row">
+                        <div class="col-6">
+                            <a [routerLink]="['/resultado-receita', receita.idReceita]"
                             (click)="abrirReceita(receita.idReceita)">
                             <img class="img-fluid mb-3 mt-3" src={{receita.endImagem}}>
                         </a>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-6 col-xs-12  col-lg-6 col-xl-6">
-                        <h4 class="opcao mt-4"><a
+                        </div>
+                        <div class="col-6">
+                            <h4 class="opcao mt-4"><a
                                 [routerLink]="['/resultado-receita', receita.idReceita]">{{receita.nomeReceita}}</a>
-                        </h4>
-                        <h6>Calorias: {{receita.qtCalorias}}</h6>
-                        <h6>Rendimento: {{receita.qtRendimento}} porções</h6>
+                            </h4>
+                            <h6>Calorias: {{receita.qtCalorias}}</h6>
+                            <h6>Rendimento: {{receita.qtRendimento}} porções</h6>
+                        </div>
                     </div>
                 </div>
             </div>

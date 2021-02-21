@@ -8,19 +8,14 @@
             <div class="d-flex justify-content-center">
                 <div class="col-12">
                     <h2>Agenda Alimentação</h2>
-                    <div class="row justify-content-center pt-5 spinner-grow text-muted">
-                        <i *ngIf="spinCarregando" class="fa fa-spinner fa-spin"></i>
-                    </div>
-                    <div *ngIf="!spinCarregando"  class="row pl-3 pt-5">
-                        <h5 *ngIf="responseCardapios.length == 0" class="sem-refeicoes">Não há refeições para esse usuário</h5>
-                    </div>          
-                    <div class="container3">
+                             
+                    <div class="container3 pt-3">
                         <div class="row justify-content-around">
                            <div *ngIf="!spinCarregando"  class="cardcardapio d-flex align-content-center flex-wrap">
                                 <div *ngFor="let cardapio of responseCardapios" class="card" style="width: 18rem;">
                                     <div class="card-body">
                                         <h5 class="card-title titulo-refeicao">{{cardapio.idTipoRefeicao.dsTipoRefeicao}}</h5>
-                                        <p class="card-text nome-receita">{{cardapio.nomeReceita}}</p>
+                                        <p class="card-text nome-receita">Nome: {{cardapio.nomeReceita}}</p>
                                         <p class="card-text descricao-receita">Calorias: {{cardapio.qtCalorias}}</p>
                                         <p class="card-text descricao-receita">Descrição: {{cardapio.dsDescricao}}</p>
                                     </div>
@@ -28,12 +23,20 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row justify-content-center pt-5 spinner-grow text-muted">
+                        <i *ngIf="spinCarregando" class="fa fa-spinner fa-spin"></i>
+                    </div>
+                    <div *ngIf="!spinCarregando"  class="row pl-3 pt-5">
+                        <h5 *ngIf="responseCardapios.length == 0" class="sem-refeicoes">Não há refeições para esse usuário</h5>
+                    </div> 
                     <!-- <div class="row justify-content-center">
                         <button type="submit" class="btn btn-primary">Imprimir</button>
                     </div> -->
                 </div>
             </div>
         </div>
+        <div style="height: 100px;"></div>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

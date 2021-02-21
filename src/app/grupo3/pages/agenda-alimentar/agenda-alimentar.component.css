@@ -12,7 +12,7 @@ margin-left: 95px;
     
 }
 .card-body {
-    background-color: hsla(147, 19%, 55%, 0.5);
+    background-color: rgb(247, 245, 245);
 }
 
 section{
@@ -48,6 +48,7 @@ h2 {
 .refeicoes {
     display: none;
 }
+
 
 .btn {
     background-color: #23a455;

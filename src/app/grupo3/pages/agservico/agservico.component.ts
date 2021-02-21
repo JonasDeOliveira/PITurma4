@@ -34,6 +34,8 @@ export class AgservicoComponent implements OnInit {
   servicos: Servicos[];
   ag: AgServico;
 
+  servicosConcluir: Servicos[];
+
   cliente = JSON.parse(localStorage.getItem("cliente"));
   ehLogado = JSON.parse(localStorage.getItem("isLogado"));
   
@@ -193,11 +195,13 @@ export class AgservicoComponent implements OnInit {
   salvarAgServico(){
     try{
       this.agendamentos = JSON.parse(localStorage.getItem("agendamentos"));
+      this.servicosConcluir = JSON.parse(localStorage.getItem("servicos"));
     }catch{
     }
 
     if(this.agendamentos == null){
       this.agendamentos = new Array;
+      this.servicosConcluir = new Array;
     }
 
     //adicionar o agendamento atual no array de agendamentos 
@@ -208,11 +212,11 @@ export class AgservicoComponent implements OnInit {
     this.ag.dtDataHora =  "02/02/2021 " + this.horario + ":00"; 
     console.log(this.ag.dtHr);
     console.log("Serviço salvo com sucesso!");
-    this.agendamentos.push(this.ag) ;
+    this.agendamentos.push(this.ag);
+    this.servicosConcluir.push(this.services);
     //depois enviar o array agendamentos para a pag de pagamentos. 
     localStorage.setItem("agendamentos", JSON.stringify(this.agendamentos));
-    
-    
+    localStorage.setItem("servicos",JSON.stringify(this.servicosConcluir) );
   }
 
   concluirAgServico(callback: any){

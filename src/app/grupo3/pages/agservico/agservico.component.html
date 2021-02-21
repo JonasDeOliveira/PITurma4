@@ -46,8 +46,8 @@
             </div>
           
             <div class="row">
-                <div class="form-group col-6 col-lg-4 pt-3 pl-3 ml-1" *ngFor = "let loja of responseLojas">
-                    <div class="card"  style="width: 18rem; height: 13rem;">
+                <div class="form-group col-6 col-lg-4" *ngFor = "let loja of responseLojas">
+                    <div class="card"  style=" height: 13rem;">
                         <div class="card-body">
                         <h5 class="card-title">{{loja.nmLoja}} </h5>
                         <p class="card-text" *ngFor= "let endereco of loja.enderecos"> {{endereco.dsEndereco}}, Bairro: {{endereco.dsBairro}} - CEP: {{endereco.nrCep}} - {{endereco.cidade.dsCidade}}  - {{endereco.cidade.uf.dsUf}} </p>

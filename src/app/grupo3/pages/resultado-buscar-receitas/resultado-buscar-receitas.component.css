@@ -7,16 +7,17 @@
 }
 
 .background {
-    background-color: hsla(147, 19%, 55%, 0.5);
+    background-color: rgb(247, 245, 245); 
 }
 
 .botao-voltar {
-    background-color: #319A75;
+    text-decoration: underline;
 }
 
 .botao-voltar:hover{
-    background-color: #5db193;
+    color: #5db193;
     border: none;
+    text-decoration: underline;
 }
 
 a {

@@ -8,9 +8,7 @@
         
             <div class="d-flex justify-content-between form-inline mr-5">
                 <h3 class="titulo"> {{receita.nomeReceita}}</h3>
-                <button [routerLink]="['/pesquisar-receitas']" type="button"
-                    class="btn btn-success botao-voltar btn-sm float-right">Nova busca</button>
-                <!-- <h4 class = "subtitulo">{{receita.categoria}}</h4>-->
+                <h6><a [routerLink]="['/pesquisar-receitas']" class="botao-voltar">  Nova busca > </a></h6>
             </div>
             
             <div class = "container_receita">

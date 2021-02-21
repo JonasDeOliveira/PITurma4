@@ -21,6 +21,7 @@ export class PagamentoServicoComponent implements OnInit {
   ehLogado = JSON.parse(localStorage.getItem("isLogado"));
   
   agendamentos: AgServico[];
+  servicosConcluir: Servicos[];
   servicos: Servicos[];
   total: number;
   cartao: Cartao;
@@ -64,16 +65,11 @@ export class PagamentoServicoComponent implements OnInit {
   }
 
   getServicos(){
-    this.agendamentos.forEach(element => {
-      this.servicoService.getServicoById(element.idServico).subscribe(
-        response => {
-          this.servicos.push(response);
-          console.log(this.servicos);
-          this.total += response.preco;
-        }
-      )
-    })
-    
+    this.servicosConcluir = JSON.parse(localStorage.getItem("servicos"));
+    this.servicosConcluir.forEach(element =>{
+      console.log(this.servicos);
+      this.total +=element.preco;
+    })    
   }
 
   
@@ -94,9 +90,7 @@ export class PagamentoServicoComponent implements OnInit {
 
     this.pedidoService.criarPedido(this.pedido).subscribe(
       response => {
-        alert('Pedido finalizado com sucesso');
-
-
+        
       }, error => {
         alert('Pedido finalizado com sucesso');
         this.router.navigate(['/confirmacao-agendamento']);

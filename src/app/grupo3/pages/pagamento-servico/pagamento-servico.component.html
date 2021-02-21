@@ -117,7 +117,7 @@
                         <th class="produto text-center">SERVIÇO</th>
                         <th class="preco text-center">VALOR</th>
                     </tr>
-                    <tr class="dadosPedido" *ngFor="let servico of servicos">
+                    <tr class="dadosPedido" *ngFor="let servico of servicosConcluir">
                         <td class="text-left">{{servico.nome}}</td>
                         <td class="text-right">{{servico.preco | currency: 'BRL': true}}</td>
                     </tr>
