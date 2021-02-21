@@ -57,11 +57,6 @@ export class AgendaMedicoComponent implements OnInit {
     var mes = this.model.month;
     var ano = this.model.year;
     this.dataFormatada = ano + '-' + mes + '-' + dia;
-
-    var dataCalendario = new Date(Date.now()).toISOString().slice(0,10);
-    this.dataCalendario.diaValid = dataCalendario[8]+dataCalendario[9];
-    this.dataCalendario.mesValid = dataCalendario[5]+dataCalendario[6];
-    this.dataCalendario.anoValid = dataCalendario[0]+dataCalendario[1]+dataCalendario[2]+dataCalendario[3]
   }
 
   getAgendamentos(){
@@ -117,7 +112,7 @@ export class AgendaMedicoComponent implements OnInit {
   
       var dt =  this.dataFormatada.slice(0,10).split('-');
       agenda.data = dt[2] + '/' + dt[1] + '/' + dt[0];
-      console.log(agenda.data);
+      // console.log(agenda.data);
 
     });
 
@@ -134,7 +129,7 @@ export class AgendaMedicoComponent implements OnInit {
   } 
 
   setTipoConsulta(id:number){
- this.responsePeriodos.forEach(agenda => {
+    this.responsePeriodos.forEach(agenda => {
         agenda.idTipoConsulta = id;
  });
   }
@@ -143,8 +138,7 @@ export class AgendaMedicoComponent implements OnInit {
     this.responsePeriodos.forEach(agenda => {
       if(agenda.disponibilidade == 1){
         agenda.disponibilidade = 0;
-      }
-           
+      }      
     });
   }
 
