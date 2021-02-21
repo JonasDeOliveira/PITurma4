@@ -50,7 +50,7 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   dsConsulta : string = this.consulta.dsTipoConsulta;
   idTipoConsulta: number = this.consulta.idTipoConsulta;
 
-  agenda: Agenda = JSON.parse(localStorage.getItem("agenda"));
+  agenda = JSON.parse(localStorage.getItem("agenda"));
   nmMedico : string = this.agenda.medico.nome;
   horario = this.agenda.periodo.horaInicial;
   horarioFormatado = "";

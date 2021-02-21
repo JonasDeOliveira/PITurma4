@@ -40,7 +40,7 @@ export class EscolhaEspecialistaComponent implements OnInit {
 
   //TESTE AGRUPAR HORARIOS
   arrayAgendas: Agenda[];
-  arrayPronto=[];
+  arrayPronto= [];
   arrayNomes=[];
   horariosFinal=[];
   horarioFormatado="";
@@ -86,7 +86,7 @@ export class EscolhaEspecialistaComponent implements OnInit {
     let arrayFinal = [];
     this.arrayAgendas.forEach(element => {
       let novaAgenda={
-        idAgenda:0,
+        idAgenda:[],
         medico:{
           nome: "",
           dsEspMed:"",
@@ -98,7 +98,7 @@ export class EscolhaEspecialistaComponent implements OnInit {
         horarios:[]
       };
       if(!(this.arrayNomes.includes(element.medico.nome))){
-        novaAgenda.idAgenda=element.idAgenda;
+        // novaAgenda.idAgenda=element.idAgenda;
         novaAgenda.medico.nome=element.medico.nome;
         novaAgenda.medico.dsEspMed=element.medico.espMed.dsEspMed;
         novaAgenda.medico.vlConsulta=element.medico.preco.vlConsulta;
@@ -114,6 +114,7 @@ export class EscolhaEspecialistaComponent implements OnInit {
       this.arrayAgendas.forEach(agenda =>{
         if(agenda.medico.nome==elem.medico.nome){
          let horaF = agenda.periodo.horaInicial.toString().slice(0,5);
+         elem.idAgenda.push(agenda.idAgenda)
         elem.horarios.push(horaF);
         }
       })
@@ -122,12 +123,13 @@ export class EscolhaEspecialistaComponent implements OnInit {
   }
 
   salvarAgendaLS(agenda, horario){
-    this.agendaParaLS.idAgenda=agenda.idAgenda;
     this.agendaParaLS.medico.nome=agenda.medico.nome;
     this.agendaParaLS.medico.espMed.dsEspMed=agenda.medico.dsEspMed;
     this.agendaParaLS.medico.preco.valorConsulta=agenda.medico.vlConsulta;
     this.agendaParaLS.data=agenda.data;
-    this.agendaParaLS.periodo.horaInicial=horario;
+    this.agendaParaLS.periodo.horaInicial=horario.toString().slice(0,5);
+    let index = agenda.horarios.indexOf(horario)
+    this.agendaParaLS.idAgenda = agenda.idAgenda[index];
     this.alterarStatus(agenda.idAgenda);
     localStorage.setItem("agenda", JSON.stringify(this.agendaParaLS));
     this.router.navigate(['/pagamento-particular']);
