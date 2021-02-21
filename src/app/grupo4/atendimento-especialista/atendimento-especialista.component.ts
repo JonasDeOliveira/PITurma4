@@ -49,7 +49,7 @@ export class AtendimentoEspecialistaComponent implements OnInit {
     open(content) {
       this.modalService.open(content);
     }
-  
+    
     atendimentoResposta: any;
     
   ngOnInit(): void {
@@ -72,25 +72,24 @@ export class AtendimentoEspecialistaComponent implements OnInit {
       this.botaoEnviar = true;
     }
 
-    console.log(this.request.dtAtendimento)
     this.atendEspService.getAtendimentos(this.request.agPaciente.idAgPaciente).subscribe(
       resposta => {
         this.atendimentoResposta = resposta;
 
         localStorage.setItem("paciente", JSON.stringify(resposta));
-        console.log(resposta);
       }
     );
   }
 
   registrar() {
     this.request.dtAtendimento = this.atendimentoResposta.data;
-    console.log(this.request.dtAtendimento);
     var objMedico = JSON.parse(localStorage.getItem("medico"));
     this.request.medico.idUsuario = objMedico.idUsuario;
+    // this.request.vlAltura=this.mudarString();
+    // console.log(this.request.vlAltura);
   
     localStorage.setItem("atendimento", JSON.stringify(this.request));
-
+    
     this.atendEspService.cadastrarAtendimento(this.request).subscribe(
       response => {
         alert('Prontuário inserido com sucesso!');
@@ -108,4 +107,12 @@ export class AtendimentoEspecialistaComponent implements OnInit {
     localStorage.removeItem("atendimento");
   }
 
+  // mudarString(){
+  //   let altura = this.request.vlAltura;
+  //   altura = altura.slice(0, altura.length-2) + "." + altura.slice(altura.length-2, altura.length-1);
+  //   console.log(altura)
+  //   let altura_valor = Number(altura);
+  //   console.log(altura_valor);
+  // }  
+  
 }
