@@ -11,14 +11,13 @@
 }
 
 .botao-voltar {
-    background-color: #2a764a;
+    background-color: #319A75;
 }
 
 .botao-voltar:hover{
     background-color: #5db193;
     border: none;
-      
-  }
+}
 
 a {
     text-decoration: none;
@@ -34,8 +33,6 @@ a:hover {
     width: 174px;
     height: 106px;
 }
-
-
 
 .btn-menu{
     background-color: #319A75;
@@ -96,7 +93,7 @@ footer h4{
     height: 200px;
     background-repeat: no-repeat;
 } */
-
+/* 
 .background {
     background-color: hsla(147, 19%, 55%, 0.5);
 }
@@ -115,8 +112,6 @@ a:hover {
     width: 174px;
     height: 106px;
 }
-
-
 
 .btn-menu{
     background-color: #319A75;
@@ -168,4 +163,4 @@ footer h4{
 .rodape .nav-item .nav-link {
     color: #ffffff;
     display: inline;
-}
+} */

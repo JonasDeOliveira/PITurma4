@@ -24,15 +24,19 @@
                   </div>
                   <div class="btnBusca">
                     <button type="button" class="btn btn-primary btn-verLocal" (click)="buscarLojaPorLocal()">Buscar</button>
-                    
                   </div>
                 </div>
             </form>            
         </div>  
         
+        <!-- spinner -->
+        <div class="row justify-content-center pt-5 spinner-grow text-muted">
+          <i *ngIf="spinSustentabilidade" class="fa fa-spinner fa-spin"></i>
+        </div>
+
         <!-- cards com endereços encontrados -->
           
-        <div class="cardsEndereco col-12">
+        <div *ngIf=!spinSustentabilidade class="cardsEndereco col-12">
             <div *ngFor = "let loja of responseLojas" class="card">
                 <div class="card-body">
                   <h5 class="card-title-drogasil"> {{loja.nmLoja}} </h5>

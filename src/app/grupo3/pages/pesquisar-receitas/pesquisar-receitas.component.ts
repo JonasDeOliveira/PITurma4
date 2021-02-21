@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./pesquisar-receitas.component.css']
 })
 export class PesquisarReceitasComponent implements OnInit {
-
+  cliente = JSON.parse(localStorage.getItem("cliente"));
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
+  
   constructor(private receitaService : ReceitaService, private router: Router) { }
  
   responseReceitas : ResponseReceitas[];
@@ -34,5 +36,4 @@ export class PesquisarReceitasComponent implements OnInit {
       }
     )
   }
-
 }

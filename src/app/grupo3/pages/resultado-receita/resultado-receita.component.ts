@@ -10,6 +10,9 @@ import { ReceitaService } from '../../shared/service/receitas.service';
   styleUrls: ['./resultado-receita.component.css']
 })
 export class ResultadoReceitaComponent implements OnInit {
+  cliente = JSON.parse(localStorage.getItem("cliente"));
+  ehLogado = JSON.parse(localStorage.getItem("isLogado"));
+  
   idReceita: any;
   receita: Receita;
   responseReceita: any;

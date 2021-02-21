@@ -16,6 +16,7 @@ export class ConfirmacaoAgendamentoComponent implements OnInit {
   
   agendamentos: AgServico[];
   servicos: Servicos[];
+  spinConfirmacao: boolean = true;
 
   constructor(public servicoService: ServicoService, public lojaService: LojaService) {
     this.servicos = new Array;
@@ -25,28 +26,22 @@ export class ConfirmacaoAgendamentoComponent implements OnInit {
     this.listarConfirmacao();
   }
 
-
   listarConfirmacao(){
-
     this.agendamentos =  JSON.parse(localStorage.getItem("agendamentos"));
-
     this.agendamentos.forEach(element => {
-
       this.servicoService.getServicoById(element.idServico).subscribe(
         response => {
           element.servico = response;
         }
       )
-
       this.lojaService.getLojaById(element.idLoja).subscribe(
         response =>{
           element.loja = response;
+          this.spinConfirmacao = false;
         }
       )
-
     });
 
     localStorage.removeItem("agendamentos");
   }
-
 }

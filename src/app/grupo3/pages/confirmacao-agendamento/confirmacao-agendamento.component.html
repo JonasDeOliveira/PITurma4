@@ -15,15 +15,20 @@
             <h2>Confirmação de agendamento</h2>
             <br>
             <p>Agendamento concluído com sucesso. Confira os detalhes abaixo:</p>
+            
+              <div class="row justify-content-center pt-5 spinner-grow text-muted">
+                <i *ngIf="spinConfirmacao" class="fa fa-spinner fa-spin"></i>
+              </div>
 
-            <div class="card col-12" *ngFor="let ag of agendamentos">
-              <div class="card-body">
-                <h5 class="card-title">{{ag.servico.nome}}</h5>
-                <h6 class="card-text">Horário: {{ag.dtDataHora}}</h6>
-                <h6 class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </h6>
+            <div *ngIf="!spinConfirmacao">
+              <div class="card col-12" *ngFor="let ag of agendamentos">
+                <div class="card-body">
+                  <h5 class="card-title">{{ag.servico.nome}}</h5>
+                  <h6 class="card-text">Horário: {{ag.dtDataHora}}</h6>
+                  <h6 class="card-text">Local: {{ag.loja.enderecos[0].dsEndereco}}, {{ag.loja.enderecos[0].dsBairro}} </h6>
+                </div>
               </div>
             </div>
-
             
             <div class="row">
                 <button type="button" class="btn btn-outline-primary">Whatsapp</button>
