@@ -155,3 +155,7 @@ p{
 .fechar-filtro:hover{
     cursor: pointer;
 }
+
+#spinner {
+    font-size: xx-large;
+}

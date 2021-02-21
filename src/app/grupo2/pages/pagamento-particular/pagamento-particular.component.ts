@@ -63,7 +63,10 @@ export class PagamentoParticularComponent implements OnInit {
   usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
   idUsuario: number = this.usuario.idUsuario;
 
+  mostraSpin = false; 
+
   ngOnInit(): void {
+    this.mostraSpin = true; 
     console.log(this.usuario.idUsuario);
     this.listarContratoPorUsuario(this.idUsuario);
     this.converterHorario(this.horario);
@@ -91,6 +94,7 @@ export class PagamentoParticularComponent implements OnInit {
 listarContratoPorUsuario(idUsuario: number){
   this.contratoService.buscarPlanosPaciente(idUsuario).subscribe(
     response => {
+    this.mostraSpin = false; 
     localStorage.setItem("plano", JSON.stringify(response.plano));
     this.dsPlano=response.plano.dsPlano;
     if(response.plano.idPlano==1){

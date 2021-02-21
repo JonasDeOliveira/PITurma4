@@ -22,9 +22,7 @@ export class MinhasConsultasComponent implements OnInit {
    }
   responseAgPacientes : AgPaciente [];
   respostaString: Resposta;
-  
   mostraSpin = false; 
-
   usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
   idUsuario:number = this.usuario.idUsuario;
     ngOnInit() : void{
@@ -51,7 +49,6 @@ export class MinhasConsultasComponent implements OnInit {
       }
     )
   }
-
   voltarAgendamento(agPaciente: AgPaciente){
     localStorage.setItem("espMed", JSON.stringify(agPaciente.agenda.medico.espMed));
     this.router.navigate(['/calendario-agendamento']);

@@ -86,13 +86,8 @@
 
 
 <section class="container d-flex flex-column alig-items-center">
-
-    
-
-  
-
     <div class="spinner-grow spinner-grow-sm text-success">
-        <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin container col-12 text-center"></i>
+        <i *ngIf="mostraSpin" id=spinner class="fa fa-spinner fa-spin container col-12 text-center"></i>
       </div>
 
         <!-- filtro -->
@@ -129,7 +124,9 @@
     <!-- <div *ngFor = "let agenda of arrayAgendasData" class="card-medico row"> -->
     <div *ngFor="let agenda of arrayPronto">
         <div *ngIf="agenda.data == data" class="card-medico row">
-            <div class="foto" id="medico1" src="agenda.medico.dsEndImg"></div>
+            <img class="foto" id="medico1" src={{agenda.medico.dsEndImg}}>
+                <!-- <img src={{agenda.medico.dsEndImg}}> -->
+
             <div class="nome-horario">
                 <div class="texto-consulta">
                     <h5>Dra {{agenda.medico.nome}} - {{agenda.medico.dsEspMed}}</h5>

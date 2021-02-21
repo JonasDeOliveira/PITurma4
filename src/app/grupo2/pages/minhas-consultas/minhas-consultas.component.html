@@ -24,7 +24,6 @@
     </div>
   </nav>
 </header>
-
 <!-- <div class="todos-filtros container col-12 d-flex ">
   <div class="filtro-text">
     <h4>Filtrar > </h4>
@@ -48,18 +47,13 @@
   <div class="fechar-filtro"><b>x </b>Fechar Filtros</div>
 <<<<<<< HEAD
 </div> -->
-
 <!-- <button type="submit" class="btn btn-default">
-  
 </button> -->
-
 <section class="container d-flex flex-column align-items-center">
   <h1>Minhas Consultas</h1>
-
   <div class="spinner-grow spinner-grow-sm text-success">
     <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin container col-12 text-center"></i>
   </div>
-  
   <div class="lista-consultas col-12">
     <h4 id="titulo-agendadas" class="font-weight-bold">Consultas Agendadas</h4>
     <div *ngFor="let agPaciente of responseAgPacientes">
@@ -82,7 +76,6 @@
             Cancelar
           </button>
         </div>
-       
         <!-- Modal Confirmar reagendar -->
         <ng-template #contentReagendar let-c="close" let-d="dismiss">
         <div class="modal-header">
@@ -91,17 +84,14 @@
           <span aria-hidden="true">&times;</span>
         </button> -->
         </div>
-
         <div class="modal-body">
           <p>
             Você tem certeza que deseja reagendar a consulta? Isso irá cancelar
             sua consulta atual.
           </p>
         </div>
-
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-dark" (click)="atualizarAgPaciente(agPaciente.idAgPaciente)" (click)="voltarAgendamento(agPaciente)" (click)="c('Close click')" >
-
               Sim
             </button>
           <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">
@@ -109,17 +99,14 @@
           </button>
         </div>
         </ng-template>
-
         <!-- Modal Confirmar Cancelar  -->
         <ng-template #contentCancelar let-c="close" let-d="dismiss">
         <div class="modal-header">
           <h4 class="modal-title" id="modal-basic-title">Cancelar</h4>
         </div>
-
         <div class="modal-body">
           <p>Você tem certeza que deseja cancelar a consulta?</p>
         </div>
-
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-dark" value="AtualizarAgPaciente"
             (click)="atualizarAgPaciente(agPaciente.idAgPaciente)" (click)="c('Close click')">
@@ -133,7 +120,6 @@
         <!-- AQUI  -->
       </div>
     </div>
-
     <h4 id="titulo-realizadas" class="font-weight-bold">
       Consultas Realizadas
     </h4>
@@ -151,7 +137,6 @@
         </div>
       </div>
     </div>
-
     <h4 id="titulo-canceladas" class="font-weight-bold">
       Consultas Canceladas
     </h4>
@@ -170,7 +155,5 @@
       </div>
     </div>
   </div>
-
 </section>
-
 <app-footer></app-footer>

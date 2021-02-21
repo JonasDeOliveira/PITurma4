@@ -21,7 +21,7 @@
           <button class="btn-active clicavel" [class.clicado]="presencialClicado"  (click)="salvarTipoConsultaPresencialLS()">Presencial</button>
       </div>
       <div class="spinner-grow text-success">
-        <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin container col-12 text-center"></i>
+        <i *ngIf="mostraSpin" id="spinner" class="fa fa-spinner fa-spin container col-12 text-center"></i>
         
       </div>
       
@@ -77,11 +77,14 @@
                     <h2 class="modal-title col-12 text-center" id="exampleModalLabel">Trilha de agendamento</h2>
                   </div>
                   <div class="modal-body">
-                    <h5>Você entrará em uma trilha localizada no topo da sua pagina, as etapas são simples e rápidas</h5>
-                    <h6>Se quiser voltar para alguma etapa anterior é só clicar no número na trilha</h6>
+                    <h5>Você entrará em uma trilha, localizada no topo da sua pagina.</h5>
+                    <h6>Se você quiser voltar para alguma etapa anterior é só clicar no número na trilha</h6>
+                    <h5>As etapas são simples e rápidas</h5>
                   </div>
                   <div class="modal-footer">
-                    <button routerLink="/calendario-agendamento" type="button" class="btn btn-primary btn-lg active" data-dismiss="modal">Vamos lá??</button>
+                    <div class="container col-12 text-center">
+                    <button routerLink="/calendario-agendamento" type="button" class="btn-active clicado" data-dismiss="modal">Vamos lá??</button>
+                    </div>
                   </div>
                 </div>
               </div>

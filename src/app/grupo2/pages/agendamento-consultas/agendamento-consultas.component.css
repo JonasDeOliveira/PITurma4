@@ -36,23 +36,27 @@ select{
 
 
 h2{
-    color: blue;
-    margin: 20px 20px;
-    font-size: 40px;
+    color: #428870;
+    margin: 10px;
+    font-size: 30px;
    
 }
 h6{
     color: red;
-    margin: 30px 30px;
+    margin: 15px;
     font-size: 15px;
 
 }
 h5{
-    color: blue;
-    margin: 30px 30px;
-    font-size: 30px;
+    color: #428870;
+    margin: 20px;
+    font-size: 25px;
 }
 
+#spinner {
+    font-size: xx-large;
+   
+}
 
 .container1 {
     padding: 0%;

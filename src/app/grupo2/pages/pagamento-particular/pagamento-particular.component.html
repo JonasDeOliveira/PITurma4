@@ -85,6 +85,7 @@
 
 <!-- formulario -->
 
+
 <section class="pagPag container d-flex flex-column">
     <div>
         <div class="row">
@@ -97,6 +98,10 @@
             </div>
         </div>
 
+        <div class="spinner-grow spinner-grow-sm text-success">
+            <i *ngIf="mostraSpin" id="spinner" class="fa fa-spinner fa-spin container col-12 text-center"></i>
+          </div>
+
         <!--- botoes Particular e Planos -->
         <!-- <div class="row">
             <div class="container text-center col-12 md-3 mt-3 mb-5">
@@ -106,7 +111,7 @@
         </div> -->
     </div>
     <!--- final botoes -->
-    <div class="d-flex">
+    <div *ngIf="mostraSpin == false" class="d-flex">
         <div class="containerEsq">
             <!-- Dados do cartão de crédito -->
             <div class="dadosCC">

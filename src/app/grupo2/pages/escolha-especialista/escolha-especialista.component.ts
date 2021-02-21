@@ -37,12 +37,14 @@ export class EscolhaEspecialistaComponent implements OnInit {
   mostraSpin = false; 
 
 
+
   //TESTE AGRUPAR HORARIOS
   arrayAgendas: Agenda[];
   arrayPronto=[];
   arrayNomes=[];
   horariosFinal=[];
   horarioFormatado="";
+ 
   
   agendaParaLS={
     idAgenda:0,
@@ -62,6 +64,7 @@ export class EscolhaEspecialistaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.mostraSpin = true;
     this.buscarAgenda(this.idTipoConsulta , this.idEsp);
     this.conversorData();
   }
@@ -87,7 +90,9 @@ export class EscolhaEspecialistaComponent implements OnInit {
         medico:{
           nome: "",
           dsEspMed:"",
-          vlConsulta:0
+          vlConsulta:0,
+          dsEndImg: "",
+
         },
         data:"",
         horarios:[]
@@ -97,6 +102,7 @@ export class EscolhaEspecialistaComponent implements OnInit {
         novaAgenda.medico.nome=element.medico.nome;
         novaAgenda.medico.dsEspMed=element.medico.espMed.dsEspMed;
         novaAgenda.medico.vlConsulta=element.medico.preco.vlConsulta;
+        novaAgenda.medico.dsEndImg=element.medico.dsEndImg;
         novaAgenda.data=element.data;
         arrayFinal.push(novaAgenda);
         this.arrayNomes.push(element.medico.nome)
@@ -145,15 +151,29 @@ export class EscolhaEspecialistaComponent implements OnInit {
 
   }
 
+  // verificarAgenda(response){
+  //   let contador = 0;
+  //   response.forEach(element => {
+  //   if (element.length == 0) {
+  //     this.agendaVazia = true;
+  //   } else {
+  //     this.agendaVazia = false;
+  //   }
+  //   })
+  // }
+
   verificarAgenda(response){
     let contador = 0;
     response.forEach(element => {
-    if (element.length == 0) {
+     if (element.data == this.data) {
+      contador ++;
+     }
+    });
+    if (contador == 0) {
       this.agendaVazia = true;
     } else {
       this.agendaVazia = false;
     }
-    })
   }
 
   converterHorario(horario){

@@ -321,3 +321,7 @@ section{
       text-decoration: none;
       color: white;
     }
+
+    #spinner {
+      font-size: xx-large;
+  }
