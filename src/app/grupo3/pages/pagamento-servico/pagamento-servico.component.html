@@ -13,7 +13,7 @@
             <br>
             <!-- Dados do cartão de crédito -->
             <div class="dadosCC">
-                <form class="formDadosCC">
+                <form class="formDadosCC" #formPagamento="ngForm">
                 <!-- linha 1 - Número do cartão -->
                 <div class="form-row">
                   <div class="form-group col-12">
@@ -88,6 +88,9 @@
                                 <div [hidden]="!cdgSegCC.errors.required">
                                     CVV é obrigatório.
                                 </div>
+                                <div [hidden]="!cdgSegCC.errors.minlength">
+                                    CVV deve conter 3 caracteres.
+                                </div>
                             </div>
                     </div>
                 </div>            
@@ -131,7 +134,7 @@
                 </table>
                 <div class="btnConcluir">
                     <div class="col text-center">
-                    <button type="submit" class="btn btn-outline-success btn-lg" (click)="registrarPedido()">Finalizar pagamento</button>
+                    <button type="submit" class="btn btn-outline-success btn-lg" [disabled]="formPagamento.invalid" (click)="registrarPedido()">Finalizar pagamento</button>
                     </div>
                 </div>
             </div>
