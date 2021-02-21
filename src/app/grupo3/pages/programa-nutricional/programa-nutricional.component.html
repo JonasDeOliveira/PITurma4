@@ -28,8 +28,7 @@
                                 <div class="form-group col-md-12">
                                     <label for="name-paciente" class="label-form">Nome</label>
                                     <input type="text" class="form-control" id="nome" value="{{dadosPacienteResposta.nome}}" disabled>
-                                </div>
-                    
+                                </div>                    
             
                                 <div class="form-group col-md-4">
                                     <label for="idade" class="label-form">Nascimento</label>
@@ -37,18 +36,17 @@
                                         disabled="">
                                 </div>
 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-6 col-md-4">
                                     <label for="peso" class="label-form">Peso</label>
                                     <input type="text" class="form-control" id="vlPeso" value="{{dadosPacienteResposta.vlPeso}}" name="vlPeso"
                                         disabled="">
                                 </div>
 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-6 col-md-4">
                                     <label for="altura" class="label-form">Altura</label>
                                     <input type="text" class="form-control" id="vlAltura"  value="{{dadosPacienteResposta.vlAltura}}" name="vlAltura"
                                         disabled="">
                                 </div>
-
                 
                                 <div class="form-group col-md-12">
                                     <label for="objetivo" class="label-form">Objetivo</label>
@@ -100,14 +98,15 @@
                                         placeholder="Nome do Prato">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input class="form-control" name = "qtRendimento" [(ngModel)]="qtCalorias" placeholder="Calorias" required>
+                                    <input class="form-control" name="qtCalorias" [(ngModel)]="qtCalorias" placeholder="Calorias (em kcal)" required>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <textarea type="text" class="form-control" name ="dsDescricao" [(ngModel)]="dsDescricao" placeholder="Descrição" required rows = "3"></textarea>
+                                    <textarea type="text" class="form-control" name ="dsDescricao" [(ngModel)]="dsDescricao" placeholder="Descrição"></textarea>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input class="form-control" name="qtCalorias" [(ngModel)]="qtRendimento" placeholder="Quantidade" required>
+                                    <input class="form-control" name="qtRendimento" [(ngModel)]="qtRendimento" placeholder="Rendimento (em porções). Ex. 1, 1.5, 3..." required>
                                 </div>
+                                <p>*Todos os campos são obrigatórios</p>
                             </div>
             
                             <div class="row d-flex justify-content-center">
@@ -123,6 +122,10 @@
 
                     <h2 class="tt-cardapio pt-2">CARDÁPIO</h2>
 
+                    <div class="row justify-content-center pt-3 spinner-grow text-muted">
+                        <i *ngIf="spinResponseCardapio" class="fa fa-spinner fa-spin"></i>
+                    </div>
+
                     <div class="row justify-content-center pt-3 pl-1" *ngFor = "let cardapio of responseCardapio">
                         <div class="card" style="width: 900%;">
                             <div class="card-body">
@@ -132,7 +135,6 @@
                                 </div>
                                 <p class="card-text">Refeição: {{cardapio.idTipoRefeicao.dsTipoRefeicao}}</p>
                                 <p class="card-text">Calorias: {{cardapio.qtCalorias}} kcal</p>
-                                <p class="card-text">Quantidade: {{cardapio.qtRendimento}} </p>
                             </div>
                         </div>
                     </div> 
