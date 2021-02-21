@@ -98,13 +98,13 @@
                                         placeholder="Nome do Prato">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input class="form-control" name="qtCalorias" [(ngModel)]="qtCalorias" placeholder="Calorias (em kcal)" required>
+                                    <input class="form-control" type="number" name="qtCalorias" [(ngModel)]="qtCalorias" placeholder="Calorias (em kcal)" required>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <textarea type="text" class="form-control" name ="dsDescricao" [(ngModel)]="dsDescricao" placeholder="Descrição"></textarea>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input class="form-control" name="qtRendimento" [(ngModel)]="qtRendimento" placeholder="Rendimento (em porções). Ex. 1, 1.5, 3..." required>
+                                    <input class="form-control" type="number" name="qtRendimento" [(ngModel)]="qtRendimento" placeholder="Rendimento (em porções). Ex. 1, 1.5, 3..." required>
                                 </div>
                                 <p>*Todos os campos são obrigatórios</p>
                             </div>
