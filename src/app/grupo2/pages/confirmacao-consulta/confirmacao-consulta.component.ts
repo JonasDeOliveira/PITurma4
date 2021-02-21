@@ -52,7 +52,8 @@ export class ConfirmacaoConsultaComponent implements OnInit {
 
   agenda: Agenda = JSON.parse(localStorage.getItem("agenda"));
   nmMedico : string = this.agenda.medico.nome;
-  horario : Time = this.agenda.periodo.horaInicial;
+  horario = this.agenda.periodo.horaInicial;
+  horarioFormatado = "";
   idAgenda: number = this.agenda.idAgenda;
 
   cartao = JSON.parse(localStorage.getItem("cartao"));
@@ -84,6 +85,7 @@ export class ConfirmacaoConsultaComponent implements OnInit {
     console.log("idagenda " + this.idAgenda);
     console.log("idUsuario " + this.idUsuario);
     console.log("cadastr " + this.cadastroAgPaciente)
+    this.converterHorario(this.horario);
   }
 
   conversorData(){
@@ -106,6 +108,11 @@ export class ConfirmacaoConsultaComponent implements OnInit {
       }
     )
   }
+  converterHorario(horario){
+    let hor = horario.toString();
+    this.horarioFormatado = hor.slice(0,5)
+    console.log(this.horarioFormatado)
+  };
 
   mudarFlagConfirmacao(){
     this.consultaConfirmada = true;

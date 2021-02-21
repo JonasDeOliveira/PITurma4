@@ -35,7 +35,8 @@ export class PagamentoParticularComponent implements OnInit {
 
   agenda: Agenda = JSON.parse(localStorage.getItem("agenda"));
   nmMedico : string = this.agenda.medico.nome;
-  horario : Time = this.agenda.periodo.horaInicial;
+  horario = this.agenda.periodo.horaInicial;
+  horarioFormatado = "";
   vlConsulta: number = this.agenda.medico.preco.vlConsulta;
   data = this.agenda.data;
 
@@ -63,8 +64,9 @@ export class PagamentoParticularComponent implements OnInit {
   idUsuario: number = this.usuario.idUsuario;
 
   ngOnInit(): void {
-    console.log(this.usuario.idUsuario)
+    console.log(this.usuario.idUsuario);
     this.listarContratoPorUsuario(this.idUsuario);
+    this.converterHorario(this.horario);
     //QUEBRADO 
     // this.listarCartao(this.idUsuario);
   }
@@ -78,6 +80,13 @@ export class PagamentoParticularComponent implements OnInit {
   //     }
   //   )
   // }
+
+  converterHorario(horario){
+      let hor = horario.toString();
+      this.horarioFormatado = hor.slice(0,5)
+      console.log(this.horarioFormatado)
+    };
+
 
 listarContratoPorUsuario(idUsuario: number){
   this.contratoService.buscarPlanosPaciente(idUsuario).subscribe(

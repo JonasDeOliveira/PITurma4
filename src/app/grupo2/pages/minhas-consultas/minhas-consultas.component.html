@@ -71,7 +71,7 @@
               {{ agPaciente.agenda.periodo.horaInicial }}hs -
             </b>
             Dr(a).{{ agPaciente.agenda.medico.nome }} -
-            <i>{{ agPaciente.agenda.medico.espMed.dsEspMed }}.</i>
+            <i>{{ agPaciente.agenda.medico.espMed.dsEspMed }}</i>
           </p>
           <button type="button" (click)="open(contentReagendar)" class="texto-consulta col-2 remarcar"
             data-toggle="modal" data-target="#remarcarModal">
@@ -100,7 +100,7 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="atualizarAgPaciente(agPaciente.idAgPaciente)" (click)="voltarPaginaInicial()" (click)="c('Close click')" >
+          <button type="button" class="btn btn-outline-dark" (click)="atualizarAgPaciente(agPaciente.idAgPaciente)" (click)="voltarAgendamento(agPaciente)" (click)="c('Close click')" >
 
               Sim
             </button>
@@ -146,7 +146,7 @@
             </b>
             Dr(a).
             {{ agPaciente.agenda.medico.nome }} -
-            <i>{{ agPaciente.agenda.medico.espMed.dsEspMed }}.</i>
+            <i>{{ agPaciente.agenda.medico.espMed.dsEspMed }}</i>
           </p>
         </div>
       </div>
@@ -164,7 +164,7 @@
             </b>
             Dr(a).
             {{ agPaciente.agenda.medico.nome }} -
-            <i>{{ agPaciente.agenda.medico.espMed.dsEspMed }}.</i>
+            <i>{{ agPaciente.agenda.medico.espMed.dsEspMed }}</i>
           </p>
         </div>
       </div>

@@ -32,6 +32,7 @@ export class EscolhaEspecialistaComponent implements OnInit {
   agendaVazia : boolean = false;
 
   arrayAgendas: Agenda[];
+  arrayComHora: Agenda[];
   data: string;
   mostraSpin = false; 
 
@@ -47,7 +48,7 @@ export class EscolhaEspecialistaComponent implements OnInit {
       response => { 
         this.mostraSpin = false;
         this.arrayAgendas = response;
-        console.log(this.arrayAgendas[0].periodo.horaInicial)
+        console.log(this.arrayAgendas[0].periodo.horaInicial);
         this.verificarAgenda(this.arrayAgendas);
       }
      )
@@ -71,6 +72,7 @@ export class EscolhaEspecialistaComponent implements OnInit {
     let data = JSON.parse(localStorage.getItem("data")).slice(0,10);
     let dataFormato = data.split("-");
     let dataFinal = `${dataFormato[2]}/0${dataFormato[1]-1}/${dataFormato[0]}`;
+    
     this.data = dataFinal;
     console.log(this.data)
 

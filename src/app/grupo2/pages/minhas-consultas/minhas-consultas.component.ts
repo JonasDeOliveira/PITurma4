@@ -51,7 +51,12 @@ export class MinhasConsultasComponent implements OnInit {
       }
     )
   }
-  voltarPaginaInicial(){
-    this.router.navigate(['/agendamento-consultas'])
+  salvarParaRetorno( ){
+    
+  }
+
+  voltarAgendamento(agPaciente: AgPaciente){
+    localStorage.setItem("espMed", JSON.stringify(agPaciente.agenda.medico.espMed));
+    this.router.navigate(['/calendario-agendamento']);
   }
 }
