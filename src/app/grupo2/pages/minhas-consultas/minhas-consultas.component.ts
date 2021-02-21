@@ -51,9 +51,6 @@ export class MinhasConsultasComponent implements OnInit {
       }
     )
   }
-  salvarParaRetorno( ){
-    
-  }
 
   voltarAgendamento(agPaciente: AgPaciente){
     localStorage.setItem("espMed", JSON.stringify(agPaciente.agenda.medico.espMed));

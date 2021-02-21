@@ -115,8 +115,16 @@
                     <div class="form-row">
                         <div class="form-group col-12">
                             <label for="numeroCC">Número do cartão*</label>
-                            <input [(ngModel)]="cartao.nrCartao" name="nrCartao" type="text" class="form-control" id="nrCartao"
-                                placeholder="Digite o número do Cartao" required>
+                            <input [(ngModel)]="cartao.nrCartao" name="nrCartao" type="text" class="form-control" #nrCartaoF = "ngModel"
+                                placeholder="Digite o número de 16 dígitos do cartão" required minlength="16">
+                                <div *ngIf="nrCartaoF.invalid && (nrCartaoF.dirty || nrCartaoF.touched)"class="validacao">
+                                <div *ngIf="nrCartaoF.errors.required">
+                                  O número do cartão é obrigatório
+                                </div>
+                                <div *ngIf="nrCartaoF.errors.minlength">
+                                  O número do cartão precisa ter 16 números.
+                                </div>
+                                </div>
                         </div>
 
                     </div>
@@ -126,7 +134,12 @@
                         <div class="form-group col-12">
                             <label for="nomeTitular">Nome do titular do cartão*</label>
                             <input [(ngModel)]="cartao.paciente.nome" #nmTitular="ngModel" name="nmTitular" type="text" class="form-control"
-                                id="nmTitular" placeholder="Digite o nome como gravado no cartão" required>
+                            #nmTit = "ngModel" placeholder="Digite o nome como gravado no cartão" required>
+                            <div *ngIf="nmTit.invalid && (nmTit.dirty || nmTit.touched)"class="validacao">
+                            <div *ngIf="nmTit.errors.required">
+                                O número do titular é obrigatório
+                            </div>
+                            </div>
                         </div>
                     </div>
 
@@ -169,7 +182,12 @@
                         </div>
                         <div class="form-group col-12 col-lg-4">
                             <label for="codSegCC">CVV*</label>
-                            <input [(ngModel)]="cartao.codSeguranca" name="cvv" type="text" class="form-control" id="codSegCC" placeholder="000" required>
+                            <input [(ngModel)]="cartao.codSeguranca" name="cvv" type="text" class="form-control" #codSegCC="ngModel" placeholder="---" required>
+                            <div *ngIf="codSegCC.invalid && (codSegCC.dirty || codSegCC.touched)"class="validacao">
+                                <div *ngIf="codSegCC.errors.required">
+                                    O CVV é obrigatório
+                                </div>
+                            </div>
                         </div>
                     </div>
 
