@@ -1,6 +1,9 @@
 <!-- <div class="card-deck" class="planos" class="row">
     <div class="card" class="col-12 col-sm-6 col-md-6 col-lg-4"> -->
-<div class="card-deck">
+<div class="spinner-container" *ngIf="mostraSpinInicio">
+    <div class="fa fa-spinner fa-spin btn-lg spinner"></div>
+</div>
+  <div class="card-deck">
     <div class="card">
         <img class="card-img-top" src="assets/grupo1/img/BASIC.png" alt="Plano Basic">
         <div class="card-body">

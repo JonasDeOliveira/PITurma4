@@ -12,6 +12,10 @@ export class CardPlanosComponent implements OnInit {
   responsePlanos: any;
   ehLogado = JSON.parse(localStorage.getItem("isLogado"));
 
+  mostraSpin = false; //<--- adicione isto --->
+  mostraSpinInicio = false;
+
+
   constructor(
     private planosService: PlanosService,
     clienteService: ClienteService
@@ -25,10 +29,12 @@ export class CardPlanosComponent implements OnInit {
   }
 
   getPlanos() {
+    this.mostraSpinInicio = true;
     this.planosService.getPlanos().subscribe(
       response => {
         console.log(response);
         this.responsePlanos = response;
+    setTimeout(() => { this.mostraSpinInicio = false })
       }
     )
   }
