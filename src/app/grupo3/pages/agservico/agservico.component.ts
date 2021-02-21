@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseLojas } from '../../shared/model/lojas.model';
+import { Endereco, Lojas, ResponseLojas } from '../../shared/model/lojas.model';
 import { Servicos, ResponseServicos } from '../../shared/model/servico.model';
 import { ServicoService } from '../../shared/service/servico.service';
 import { LojaService } from '../../shared/service/lojas.service';
@@ -22,6 +22,12 @@ export class AgservicoComponent implements OnInit {
   local: string; 
   idLoja: number; 
   idServico: number;
+
+  /* objetos selecionados pelo usuário */
+  services: Servicos;
+  stores: Lojas;
+
+
   horario: string;
   data: string; 
   agendamentos: AgServico[];
@@ -43,16 +49,30 @@ export class AgservicoComponent implements OnInit {
   hrIndisp: string[]; //recebe os horários que já estão agendados
 
   exibir: boolean = false; //variavel que exibe os horários
-  exibir2: boolean = false; //variavel que exibe a parte de data/hora
+  exibirCalendario: boolean = false; //variavel que exibe a parte de data/hora
   tem: boolean;
   spinResponseLojas: boolean = false;
   spinResponseHoras: boolean = false;
 
+  /* detalhes do agendamento */
+  lojaSelecionada: boolean = false;
+  endLojaSelecionada: string = "";
+  servicoSelecionado: boolean = false;
+  nmServicoSelecionado: string = "";
+  dtHoraSelecionada: boolean = false;
+  dtHrSelecionada: string = "";
+  
   responseServicos : ResponseServicos; //recebe os serviços
   responseLojas : ResponseLojas[]; //recebe as lojas
   responseDatas : ResponseDatas[];
 
-  constructor(private servicoService : ServicoService, private lojaService : LojaService, config: NgbModalConfig, private modalService: NgbModal, private horarioService : HorarioService, private router: Router) { 
+  constructor(private servicoService : ServicoService, 
+    private lojaService : LojaService, 
+    config: NgbModalConfig, 
+    private modalService: NgbModal, 
+    private horarioService : HorarioService, 
+    private router: Router) 
+    { 
     config.backdrop = 'static';
     config.keyboard = false;
 
@@ -64,7 +84,6 @@ export class AgservicoComponent implements OnInit {
     this.hrNoiteExibir = new Array; 
     this.agendamentos = new Array; 
     this.servicos = new Array;
-
   }
 
   ngOnInit(): void {
@@ -75,21 +94,20 @@ export class AgservicoComponent implements OnInit {
     this.modalService.open(content);
   }
 
-  getLoja(id: number){
-    this.idLoja = id; 
-    console.log("Id seviço: "+ this.idServico);
-    console.log("Id loja: "+id); 
-    this.exibir2 = true;
-  }
+  getLoja(loja: Lojas){
 
-  getServico(id: number){
-    this.idServico = id;
-    console.log("Id serviço: "+id);
+    this.idLoja = loja.idLoja; 
+    this.exibirCalendario = true;
+    this.lojaSelecionada = true; //detalhe agendamento
+    this.endLojaSelecionada = loja.enderecos[0].dsEndereco + ", " + loja.enderecos[0].dsBairro;
   }
 
   getHora(hora: string){
+
     this.horario = hora;
     console.log("Horario: "+hora);
+    this.dtHoraSelecionada = true; //detalhe agendamento
+    this.dtHrSelecionada = "05/03/2021 "+hora; 
   }
 
   listarServicos(){
@@ -170,8 +188,6 @@ export class AgservicoComponent implements OnInit {
       }
     )
     console.log(this.hrIndisp);
-    
-    
   }
   
   salvarAgServico(){
@@ -188,7 +204,7 @@ export class AgservicoComponent implements OnInit {
     this.ag = new AgServico(); 
     this.ag.idLoja = this.idLoja;
    
-    this.ag.idServico = this.idServico;
+    this.ag.idServico = this.services.id;
     this.ag.dtDataHora =  "02/02/2021 " + this.horario + ":00"; 
     console.log(this.ag.dtHr);
     console.log("Serviço salvo com sucesso!");
@@ -203,11 +219,12 @@ export class AgservicoComponent implements OnInit {
 
     callback('Cross click');//fechar a modal
 
-    if (this.idServico == null){
+    if (this.services == null){
       alert('Não é possível salvar agendamento sem escolher um serviço')
     }else if (this.horario == null){
       alert('Não é possível salvar agendamento sem escolher um horário')
     }else{
+      //localStorage.removeItem("agendamentos");
       this.salvarAgServico();
       this.router.navigate(['/pagamento-servico']);
     }
@@ -217,7 +234,7 @@ export class AgservicoComponent implements OnInit {
   novoAgServico(callback: any){
     callback('Cross click');//fechar a modal
 
-    if (this.idServico == null){
+    if (this.services == null){
       alert('Não é possível salvar agendamento sem escolher um serviço')
     }else if (this.horario == null){
       alert('Não é possível salvar agendamento sem escolher um horário')

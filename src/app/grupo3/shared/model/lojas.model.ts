@@ -13,6 +13,15 @@ export interface Endereco {
     idCidade: string;
 }
 
+export class Endereco {
+    dsEndereco: string;
+    dsComplemento: string;
+    dsBairro: string;
+    nrCep: string;
+    idCidade: string;
+}
+
+
 export interface Contato {
     nrDdd: string;
     dsContato: string;
