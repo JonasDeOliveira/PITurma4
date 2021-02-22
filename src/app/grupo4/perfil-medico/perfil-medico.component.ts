@@ -81,7 +81,6 @@ export class PerfilMedicoComponent implements OnInit {
     email: {
 
     }
-
   }
 
   loginMedico : any = {
