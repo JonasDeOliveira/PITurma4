@@ -37,6 +37,9 @@
       <h1 class="text-center">{{data|date:"dd/MM/yyyy"}}</h1>
       <table class="table">
         <tbody>
+          <div class="spinner-grow spinner-grow-sm text-success">
+            <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin container col-12 text-center"></i>
+          </div>
           <tr *ngFor="let agendamento of agendamentosResposta">
             <td class="tdAgenda">{{agendamento.agenda.periodo.horaInicial}}</td>
             <td class="tdAgenda">{{agendamento.paciente.nmNome}}</td>

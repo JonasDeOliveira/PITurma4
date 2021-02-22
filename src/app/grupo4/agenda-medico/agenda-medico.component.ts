@@ -41,8 +41,9 @@ export class AgendaMedicoComponent implements OnInit {
     mesValid: "",
     anoValid: ""
   }
-  
 
+  mostraSpin = false; 
+  
   ngOnInit(): void {
     this.getAgendamentos();
   }
@@ -60,8 +61,10 @@ export class AgendaMedicoComponent implements OnInit {
   }
 
   getAgendamentos(){
+    this.mostraSpin = true;
     this.agendaService.getAgendamentos().subscribe(
       resposta => {
+        this.mostraSpin = false;
         this.agendamentosResposta = resposta;
         
       this.data = new Date(Date.now()).toISOString().slice(0,10);
@@ -70,8 +73,10 @@ export class AgendaMedicoComponent implements OnInit {
   }
 
   consultarAgendamentos(){
+    this.mostraSpin = true;
     this.agendaService.consultarAgendamentos(this.dataFormatada).subscribe(
       resposta => {
+        this.mostraSpin = false;
         this.agendamentosResposta = resposta;
   
         this.data = this.dataFormatada;

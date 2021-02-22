@@ -14,16 +14,17 @@ export class DashboardMedicoComponent implements OnInit {
   agendamentosResposta: any;
   data: any;
 
-  
+  mostraSpin = false;
 
   ngOnInit(): void {
     this.getAgendamentos();
   }
 
   getAgendamentos(){
-  
+    this.mostraSpin = true;
     this.dashboardService.getAgendamentos().subscribe(
       resposta => {
+        this.mostraSpin = false;
         this.agendamentosResposta = resposta;
         console.log(resposta);
 

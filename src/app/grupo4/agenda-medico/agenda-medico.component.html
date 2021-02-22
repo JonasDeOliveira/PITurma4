@@ -126,6 +126,9 @@
             <h1 class="text-center title-agenda">{{data|date:"dd/MM/yyyy"}}</h1>
             <table class="table">
                 <tbody>
+                    <div class="spinner-grow spinner-grow-sm text-success">
+                        <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin container col-12 text-center"></i>
+                    </div>
                     <tr *ngFor="let agendamento of agendamentosResposta">
                         <td>{{agendamento.agenda.periodo.horaInicial}}</td>
                         <td>{{agendamento.paciente.nmNome}}</td>
@@ -143,25 +146,6 @@
                 </tbody>
             </table>
         </div>
-
-        <!-- Início Modal Cancelar Consulta-->
-        <!-- <ng-template #cancelar let-c="close" let-d="dismiss">
-            <div class="modal-content" id="modal-cancelar">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="modal-basic-title">Atenção!</h4>
-                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body modal-cancelar-msg">
-                    <p>Deseja realmente cancelar a consulta?</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-verde" (click)="remover(agendamento.idAgPaciente)">Sim</button>
-                  </div>
-            </div>
-        </ng-template> -->
-        <!-- Fim Modal Cancelar Consulta-->
 
         <!-- Fim Agenda do Dia -->
 

@@ -43,7 +43,7 @@ body {
 
 .buttons-calendario {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-top: 20px;
 }
 

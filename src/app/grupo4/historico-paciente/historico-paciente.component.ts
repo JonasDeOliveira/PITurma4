@@ -24,6 +24,8 @@ export class HistoricoPacienteComponent implements OnInit {
   prontuarioResposta: any
   veioDoAtendimento;
 
+  mostraSpin = false;
+
   open(content, id) {
     this.getDadoProntuario(id);
     this.modalService.open(content ,{ size: 'lg'});
@@ -40,7 +42,7 @@ export class HistoricoPacienteComponent implements OnInit {
   getDadosHistoricoCpf(cpf: string){
     this.historicoService.getDadosHistoricoCpf(cpf).subscribe( 
       resposta => {
-         this.historicoCpfResposta = resposta;
+        this.historicoCpfResposta = resposta;
         console.log(resposta);
         this.veioDoAtendimento = true;
       },
@@ -51,18 +53,22 @@ export class HistoricoPacienteComponent implements OnInit {
     );
   }
   getDadoProntuario(idProntuario : number){
+    this.mostraSpin = true;
     this.historicoService.getDadoProntuario(idProntuario).subscribe( 
       resposta => {
-         this.prontuarioResposta = resposta;
-         console.log(resposta);
+        this.mostraSpin = false;
+        this.prontuarioResposta = resposta;
+        console.log(resposta);
       }
     );
   }
 
   getDadosHistoricoMedico(){
+    this.mostraSpin = true;
     this.historicoService.getDadosHistoricoMedico().subscribe( 
       respostaMed => {
-         this.historicoMedicoResposta = respostaMed;
+        this.mostraSpin = false;
+        this.historicoMedicoResposta = respostaMed;
         console.log(respostaMed);
       },
     );
