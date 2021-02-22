@@ -1,31 +1,49 @@
-
- <!-- <div class="card-deck" class="planos" class="row">
+<!-- <div class="card-deck" class="planos" class="row">
     <div class="card" class="col-12 col-sm-6 col-md-6 col-lg-4"> -->
-    <div class="card-deck">
-        <div class="card">
+<div class="spinner-container" *ngIf="mostraSpinInicio">
+    <div class="fa fa-spinner fa-spin btn-lg spinner"></div>
+</div>
+  <div class="card-deck">
+    <div class="card">
         <img class="card-img-top" src="assets/grupo1/img/BASIC.png" alt="Plano Basic">
         <div class="card-body">
             <ul class="card-text" type="none">
                 <li *ngFor="let servicos of responsePlanos[0].servicos">{{servicos.dsServico}}</li>
-                </ul>
+                <br>
+                <br>
+                <br>
+            </ul>
             <h5>GRATUITO</h5>
+            <button class="btn btn-menu btn-planos" disabled>
+                INCLUSO
+            </button>
 
-            
+
         </div>
     </div>
-       <div class="card">
+    <div class="card">
         <img class="card-img-top" src="assets/grupo1/img/PLUS.png" alt="Plano Plus">
         <div class="card-body">
             <ul class="card-text" type="none">
                 <li *ngFor="let servicos of responsePlanos[1].servicos">{{servicos.dsServico}}</li>
-                </ul>
-            <h5>R${{responsePlanos[1].vlPlano}},00</h5>
-
-            <button class="btn btn-menu btn-planos">
-                <a routerLink="/dados-cliente">
-                    Assinar
-                </a>
-            </button>
+                <br>
+                <br>
+            </ul>
+            <h5>{{responsePlanos[1].vlPlano  | currency : 'R$' }}</h5>
+            <div *ngIf="!ehLogado">
+                <button class="btn btn-menu btn-planos">
+                    <a  routerLink="/login-cliente">
+                        Assinar
+                    </a>
+                </button>
+            </div>
+            <div *ngIf="ehLogado">
+                <button class="btn btn-menu btn-planos">
+                    <a  routerLink="/dados-cliente">
+                        Assinar
+                    </a>
+                </button>
+            </div>
         </div>
     </div>
     <div class="card">
@@ -34,12 +52,21 @@
             <ul class="card-text" type="none">
                 <li *ngFor="let servicos of responsePlanos[2].servicos">{{servicos.dsServico}}</li>
             </ul>
-            <h5>R${{responsePlanos[2].vlPlano}},00</h5>
-            <button class="btn btn-menu btn-planos">
-                <a routerLink="/dados-cliente">
-                    Assinar
-                </a>
-            </button>
+            <h5>{{responsePlanos[2].vlPlano  | currency : 'R$' }}</h5>
+            <div *ngIf="!ehLogado">
+                <button class="btn btn-menu btn-planos">
+                    <a  routerLink="/login-cliente">
+                        Assinar
+                    </a>
+                </button>
+            </div>
+            <div *ngIf="ehLogado">
+                <button class="btn btn-menu btn-planos">
+                    <a  routerLink="/dados-cliente">
+                        Assinar
+                    </a>
+                </button>
+            </div>
         </div>
     </div>
 </div>

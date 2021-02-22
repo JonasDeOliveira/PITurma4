@@ -66,9 +66,12 @@
                         <div class="col-12 col-lg-6">
                             <label>Intervalo:</label>
                             <select class="form-control" [(ngModel)]="request.lembreteIntervalo.idLembreteIntervalo" #idLembreteIntervalo="ngModel" name="idLembreteIntervalo" (change)="ver()" >
-                                <option  *ngFor="let lembreteIntervalo of responseLembreteIntervalos" [value]="lembreteIntervalo.idLembreteIntervalo" required [selected]="lembreteIntervalo.idLembreteIntervalo == 1">
+                                <option *ngFor="let lembreteIntervalo of responseLembreteIntervalos" [value]="lembreteIntervalo.idLembreteIntervalo" required >
                                     {{lembreteIntervalo.dsLembreteIntervalo}}</option>
                             </select>
+                            <div *ngIf="idLembreteIntervalo.invalid && (idLembreteIntervalo.touched &&  idLembreteIntervalo.pristine)" class="alert alert-light mt-1" role="alert">
+                                Escolha um intervalo
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -76,7 +79,7 @@
 
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn_salvar" [disabled]="formLembretes.invalid || formLembretes.pristine" (click)="registrar()">Criar Lembrete</button>
+                    <button type="button" class="btn btn_salvar" [disabled]="formLembretes.invalid || formLembretes.errors || formLembretes.pristine" (click)="registrar()">Criar Lembrete</button>
                 </div>
             </form>
         </div>

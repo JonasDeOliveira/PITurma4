@@ -83,3 +83,10 @@ a:hover {
 .esqueci-senha div input {
     margin-right: 10px;
 }
+.alert{
+    color: red;
+    background: none;
+    border: none;
+    line-height: 3px;
+   }
+   
