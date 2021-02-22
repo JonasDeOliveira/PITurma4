@@ -25,6 +25,9 @@ export class ProgramaNutricionalComponent implements OnInit {
   idPaciente = localStorage.getItem("idPaciente");
   idUsuario = parseInt(this.idPaciente);
 
+  medico = JSON.parse(localStorage.getItem("medico"));
+  idMedico = this.medico.idUsuario;
+
   idTipoRefeicao: number;
   nomeReceita: string;
   qtCalorias: number;
@@ -38,7 +41,6 @@ export class ProgramaNutricionalComponent implements OnInit {
   id: IdTipoRefeicao;
 
   spinResponseCardapio: boolean = false;
-
 
   constructor( 
     private programaNutriService: ProgramaNutriService, 
@@ -62,7 +64,6 @@ export class ProgramaNutricionalComponent implements OnInit {
     this.modalService.open(content);
     this.idCardapio = id;
   }
-
 
   exibirDadosPaciente(){
     this.programaNutriService.getExibirDadosPaciente(this.idUsuario).subscribe(
@@ -109,7 +110,7 @@ cadastrar() {
     this.cardapio.qtCalorias = this.qtCalorias;
     this.cardapio.dsDescricao = this.dsDescricao;
     this.cardapio.idPaciente = this.idUsuario;
-    this.cardapio.idMedico = 33;
+    this.cardapio.idMedico = this.idMedico;
 
     this.programaNutriService.criarCardapio(this.cardapio).subscribe(
       response => {
