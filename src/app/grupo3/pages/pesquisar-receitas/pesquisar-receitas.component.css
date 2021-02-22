@@ -6,7 +6,9 @@
     background-repeat: no-repeat;
 }
 
-
+.icone-pesquisar {
+    cursor:pointer;
+}
 .container {
     width: 100%;
 }
