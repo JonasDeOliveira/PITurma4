@@ -4,8 +4,12 @@
 <div *ngIf="ehLogado == false">
     <app-mensagem-login></app-mensagem-login>
 </div>
+<div class="spinner-container" *ngIf="mostraSpinInicio">
+    <div class="fa fa-spinner fa-spin btn-lg spinner"></div>
+</div>
 
 <body *ngIf="ehLogado">
+
     <section class="container">
         <h2 class="text-center">Meus Dados</h2>
 
@@ -41,13 +45,13 @@
                     <div class="form-group col-md-4">
                         <label for="cadastro-cpf">CPF:</label>
                         <input disabled type="text" class="form-control" id="cadastro-cpf"
-                            [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" minlength="11" maxlength="14" required 
-                            mask="000.000.000-00"> 
+                            [(ngModel)]="outputCliente.usuario.nrCpf" #nrCpf="ngModel" name="nrCpf" minlength="11"
+                            maxlength="14" required mask="000.000.000-00">
                     </div>
                     <div class="form-group col-md-1">
                         <label for="cadastro-ddd">DDD:</label>
                         <input type="text" class="form-control" id="cadastro-ddd" [(ngModel)]="outputCliente.ddd"
-                            #nrDdd="ngModel" name="nrDdd" required minlength="3" maxlength="3">
+                            #nrDdd="ngModel" name="nrDdd" required minlength="3" maxlength="3" mask="000">
                         <div *ngIf="nrDdd.errors && (nrDdd.touched)" class="alert alert-light">
                             <div [hidden]="!nrDdd.errors.required">
                                 O campo ddd é obrigatório.
@@ -60,8 +64,8 @@
                     <div class="form-group col-md-3">
                         <label for="cadastro-celular">Celular:</label>
                         <input type="text" class="form-control" id="cadastro-celular"
-                            [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" required 
-                            minlength="10" maxlength="10" required mask="00000-0000">
+                            [(ngModel)]="outputCliente.celular" #celular="ngModel" name="celular" required minlength="9"
+                            maxlength="10" required mask="00000-0000">
                         <div *ngIf="celular.errors && (celular.touched)" class="alert alert-light">
                             <div [hidden]="!celular.errors.required">
                                 O campo celular é obrigatório.
@@ -73,7 +77,8 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="cadastro-nascimento">Data de Nascimento:</label>
-                        <input type="date" class="form-control" id="cadastro-nascimento" min="{{minDate | date: 'yyyy-MM-dd'}}" max="{{maxDate | date: 'yyyy-MM-dd'}}"
+                        <input type="date" class="form-control" id="cadastro-nascimento"
+                            min="{{minDate | date: 'yyyy-MM-dd'}}" max="{{maxDate | date: 'yyyy-MM-dd'}}"
                             [(ngModel)]="outputCliente.usuario.dtNascimento" #dtNascimento="ngModel" name="dtNascimento"
                             required>
                         <div *ngIf="dtNascimento.errors && (dtNascimento.touched)" class="alert alert-light">
@@ -218,7 +223,7 @@
                                 {{servicos.dsServico}}</p>
                         </div>
                         <div>
-                            <h5 class="alinhamento">R${{responsePlanos[0].vlPlano}},00</h5>
+                            <h5 class="alinhamento">{{responsePlanos[0].vlPlano | currency : 'R$' }}</h5>
                         </div>
                         <div><button class="btn  btn-card" [id]="planos.plano1"
                                 [disabled]="planos.plano1 == this.outputCliente.contrato.plano.idPlano"
@@ -232,7 +237,7 @@
                                 {{servicos.dsServico}}</p>
                         </div>
                         <div>
-                            <h5 class="alinhamento">R${{responsePlanos[1].vlPlano}},00</h5>
+                            <h5 class="alinhamento">{{responsePlanos[1].vlPlano | currency : 'R$' }}</h5>
                         </div>
                         <div><button type="button" class="btn btn-card" [id]="planos.plano2"
                                 [disabled]="planos.plano2 == this.outputCliente.contrato.plano.idPlano"
@@ -246,7 +251,7 @@
                                 {{servicos.dsServico}}</p>
                         </div>
                         <div>
-                            <h5 class="alinhamento">R${{responsePlanos[2].vlPlano}},00</h5>
+                            <h5 class="alinhamento">{{responsePlanos[2].vlPlano | currency : 'R$' }}</h5>
                         </div>
                         <div><button type="button" class="btn btn-card" [id]="planos.plano3"
                                 [disabled]="planos.plano3 == this.outputCliente.contrato.plano.idPlano"
@@ -271,8 +276,8 @@
                                     <div class="form-group col-md-12 cadastro-cartao">
                                         <label for="cartao-numero">Número do Cartão:</label>
                                         <input type="text" class="form-control" id="cartao-numero" name="nrCartao"
-                                            [(ngModel)]="outputCliente.cartao.nrCartao" #nrCartao="ngModel"
-                                            minlength="16" maxlength="16" required placeholder="0000 0000 0000 0000">
+                                            [(ngModel)]="dadosAtuais.cartaoSeguro" #nrCartao="ngModel" minlength="16"
+                                            maxlength="16" required placeholder="0000 0000 0000 0000">
                                         <div *ngIf="nrCartao.errors && (nrCartao.dirty || nrCartao.touched)"
                                             class="alert alert-light">
                                             <div [hidden]="!nrCartao.errors.required">
@@ -288,13 +293,11 @@
                                     <div class="form-group col-md-12">
                                         <label for="cartao-nome">Nome impresso no Cartão:</label>
                                         <input type="text" class="form-control" id="cartao-nome" name="nmNome"
-                                            [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="10"
-                                            maxlength="30" required placeholder="Nome impresso no Cartão">
+                                            [(ngModel)]="outputCliente.cartao.nmNome" #nmNome="ngModel" minlength="5"
+                                            maxlength="40" required placeholder="Nome impresso no Cartão">
                                         <div *ngIf="nmNome.errors && (nmNome.dirty || nmNome.touched)"
                                             class="alert alert-light">
-                                            <div [hidden]="!nmNome.errors.required">
-                                                Campo nome é obrigatório.
-                                            </div>
+                                            Campo nome é obrigatório.
                                         </div>
                                     </div>
                                 </div>
@@ -302,14 +305,15 @@
                                     <div class="form-group col-md-5">
                                         <label for="cartao-vencimento">Data de vencimento:</label>
                                         <div class="vencimento-cartao">
-                                            <input type="date" class="form-control" id="dtValidade"
+                                            <input type="month" class="form-control" id="dtValidade"
                                                 placeholder="00/0000" [(ngModel)]="outputCliente.cartao.dtValidade"
+                                                min="{{minDateCartao | date: 'yyyy-MM'}}"
                                                 name="dtValidade" #dtValidade="ngModel" required>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-7">
-                                        <label for="cartao-codigo-seguranca">Código de segurança do cartão:</label>
-                                        <input type="text" class="form-control" id="cartao-codigo-seguranca"
+                                        <label for="cartao-codigo-seguranca">Código de Segurança:</label>
+                                        <input type="password" class="form-control" id="cartao-codigo-seguranca"
                                             placeholder="CVV" [(ngModel)]="outputCliente.cartao.codSeguranca"
                                             name="codSeguranca" #codSeguranca="ngModel" minlength="3" maxlength="3"
                                             required>
@@ -356,7 +360,9 @@
 
             <div class="form-group botoes-cadastro">
                 <button type="button" class="btn btns-cadastro btn-espaco" (click)="alterarDadosCliente()"
-                    [disabled]="formDadosCliente.invalid">Alterar</button>
+                    [disabled]="formDadosCliente.invalid || confirmacao.valida == false">
+                    <i *ngIf="mostraSpin" class="fa fa-spinner fa-spin"></i>
+                    Alterar</button>
                 <button routerLink="/area-cliente" class="btn btn-cancelar btn-espaco">Cancelar</button>
             </div>
         </form>

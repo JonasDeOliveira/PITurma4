@@ -21,18 +21,26 @@
                             <div class="form-group mt-4">
                                 <label for="login-email-med">E-mail</label>
                                 <input type="text" class="form-control" id="login-email" name="dsEmail"
-                                    [(ngModel)]="loginCliente.dsEmail" #dsEmail="ngModel"
+                                    [(ngModel)]="loginCliente.dsEmail" #dsEmail="ngModel" 
                                     placeholder="Digite seu e-mail" required>
+                                    <div *ngIf= "dsEmail.errors && (dsEmail.dirty || dsEmail.touched)"
+                                    class="alert alert-light mt-1" role="alert">
+                                    Insira o e-mail.
+                                </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="login-email-med">Senha</label>
                                 <input type="password" class="form-control" id="login-senha" name="dsSenha"
-                                    [(ngModel)]="loginCliente.dsSenha" #dsSenha="ngModel" placeholder="Digite sua senha"
-                                    required>
+                                    [(ngModel)]="loginCliente.dsSenha" #dsSenha="ngModel" 
+                                    placeholder="Digite sua senha" required>
+                                    <div *ngIf= "dsSenha.errors &&(dsSenha.dirty || dsSenha.touched)"
+                                    class="alert alert-light mt-1" role="alert">
+                                    Insira uma senha.
+                                </div>
                             </div>
                             <button type="button" class="btn col-md-12 btn-verde mt-4"
-                                (click)="logarCliente()">Entrar</button>
+                                (click)="logarCliente()" [disabled]=formLogin.pristine>Entrar</button>
                         </form>
                         <p class="text-center mb-3 mt-2 nav-item" (click)="open(modalSenha)"><a class="nav-link"
                                 data-target=".bd-example-modal-lg">Esqueceu sua senha?</a></p>
@@ -71,6 +79,8 @@
             </form>
         </div>
     </ng-template>
+
+    <!-- {{loginCliente | json}} -->
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

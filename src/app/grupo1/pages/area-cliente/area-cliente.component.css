@@ -260,6 +260,11 @@ ul#todoLista.todo__tarefas-lista{
     color: inherit;
 }
 
+.ds_lembrete{
+    line-height: 130%;
+    margin:11px auto;
+}
+
 /* Fim da lista de lembretes  */
 
 /* Meu Plano */
@@ -379,4 +384,9 @@ div.btn{
 section{
     width: 100%;
     padding: 1%;
+}
+
+.spinner{
+    color: #319A75;
+    font-size:xx-large;
 }

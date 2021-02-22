@@ -29,7 +29,7 @@ export class ModalLembreteComponent implements OnInit {//
       nrRepeticao: null,
       lembreteIntervalo:
       {
-        idLembreteIntervalo: null,
+        idLembreteIntervalo: 1,
         dsLembreteIntervalo: ""
       },
       vencido: false
