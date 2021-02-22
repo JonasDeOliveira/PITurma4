@@ -209,7 +209,7 @@ export class AgservicoComponent implements OnInit {
     this.ag.idLoja = this.idLoja;
    
     this.ag.idServico = this.services.id;
-    this.ag.dtDataHora =  "02/02/2021 " + this.horario + ":00"; 
+    this.ag.dtDataHora =  "05/03/2021 " + this.horario + ":00"; 
     console.log(this.ag.dtHr);
     console.log("Serviço salvo com sucesso!");
     this.agendamentos.push(this.ag);
