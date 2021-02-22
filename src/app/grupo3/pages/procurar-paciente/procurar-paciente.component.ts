@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PacienteService } from '../../shared/service/paciente.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-procurar-paciente',
@@ -12,7 +13,10 @@ export class ProcurarPacienteComponent implements OnInit {
   cpf: string;
   idPaciente: number;
 
-  constructor(private pacienteService : PacienteService,  private router: Router) { 
+  constructor(
+    private pacienteService : PacienteService,
+    private _location: Location,
+    private router: Router) { 
   }
 
   ngOnInit(): void {
@@ -37,4 +41,8 @@ export class ProcurarPacienteComponent implements OnInit {
     
   }
 
+  voltar() {
+    this._location.back();
+    // this.veioDoAtendimento = false;
+  }
 }

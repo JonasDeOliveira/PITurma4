@@ -5,6 +5,7 @@ import { TipoRefeicaoService } from '../../shared/ProgramaNutri/service/tipoRefe
 import { IdTipoRefeicao, ResponseTipoRefeicao } from '../../shared/ProgramaNutri/model/tipoRefeicao.model';
 import { NullTemplateVisitor } from '@angular/compiler';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-programa-nutricional',
@@ -38,14 +39,13 @@ export class ProgramaNutricionalComponent implements OnInit {
 
   spinResponseCardapio: boolean = false;
 
-  
-  
 
   constructor( 
     private programaNutriService: ProgramaNutriService, 
     private tipoRefeicaoService: TipoRefeicaoService,
     config: NgbModalConfig, 
     private modalService: NgbModal, 
+    private _location: Location
   ) { 
     this.cardapio = new Cardapio;
     this.id = new IdTipoRefeicao;
@@ -72,31 +72,11 @@ export class ProgramaNutricionalComponent implements OnInit {
     );
   }
 
-//***************************DADOS PACIENTE***********************************************
-//inicioDadosPaciente
-
-//dadosPaciente: any = {
- // nome: '',
- // vlPeso: null,
- // vlAltura: null,
- // dsHabitosVicios: '',
- // dsAlergiasRestricoes: '',
- // dsObjetivo: ''
-//}
-
-//getExibirDadosPaciente(idUsuario: number){
-//    this.programaNutriService.getExibirDadosPaciente(33).subscribe( 
- //     response => {
- //        this.responseDadosPaciente= response;
-  //    }
-  //  );
- //}
-
- 
- //FimDadosPaciente
-
-//*********************************TIPO REFEICAO**************************************
-//inicioTipoRefeicao
+  voltar() {
+    this._location.back();
+    // this.veioDoAtendimento = false;
+  }
+  
  listarTipoRefeicao(){
     this.tipoRefeicaoService.getTipoRefeicoes().subscribe(
       response => {
