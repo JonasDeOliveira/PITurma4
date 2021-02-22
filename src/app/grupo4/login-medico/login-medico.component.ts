@@ -38,9 +38,7 @@ export class LoginMedicoComponent implements OnInit {
     this.loginService.getAcessoCliente(this.loginCliente).subscribe(
       response => {
         this.respostaLogin = response;
-
         localStorage.setItem("medico", JSON.stringify(response.retorno));
-
         this.router.navigate(['/dashboard/medico']);
       },
       error => {

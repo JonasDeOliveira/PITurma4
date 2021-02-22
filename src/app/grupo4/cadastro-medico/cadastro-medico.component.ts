@@ -55,6 +55,19 @@ export class CadastroMedicoComponent implements OnInit {
     senhaConfirmacao: ''
   };
 
+  responseCep: any = {
+    cep: '',
+    logradouro: '',
+    complemento: '',
+    bairro: '',
+    localidade: '',
+    uf: '',
+    ibge: '',
+    gia: '',
+    ddd: '',
+    siafi: ''
+  }
+
   ngOnInit(): void {
     this.getDadosCadastro();
   }
@@ -68,6 +81,17 @@ export class CadastroMedicoComponent implements OnInit {
     );
   }
 
+  buscarEnderecoCep() {
+    this.cadastroService.getEnderecoByViaCep(this.request.enderecos[0].nrCep).subscribe(
+      response => {
+        console.log(response);
+        this.responseCep = response;
+        this.request.enderecos[0].dsEndereco = this.responseCep.logradouro;
+        this.request.enderecos[0].dsBairro = this.responseCep.bairro;
+      }
+    )
+  }
+
   registrar() {
     this.request.preco.vlConsulta  = this.request.preco.vlConsulta .slice(0, this.request.preco.vlConsulta .length-2)+"."+this.request.preco.vlConsulta .slice(this.request.preco.vlConsulta .length-2, this.request.preco.vlConsulta .length);
     this.request.preco.vlConsulta = Number.parseFloat(this.request.preco.vlConsulta);
@@ -79,6 +103,7 @@ export class CadastroMedicoComponent implements OnInit {
       error => {
         console.log(error);
         alert('Usuário já cadastrado!');
+        window.location.reload();
       }
     )
   }

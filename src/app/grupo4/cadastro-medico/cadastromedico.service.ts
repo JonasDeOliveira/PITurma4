@@ -12,6 +12,7 @@ export class CadastromedicoService {
 
   private readonly API = 'http://localhost:8080/cadastroMedico';
   private readonly APII = 'http://localhost:8080/medico';
+  private readonly APIViaCEP = 'http://viacep.com.br/ws/';
 
   getDadosCadastro() {
     return this.http.get(this.API);
@@ -19,5 +20,10 @@ export class CadastromedicoService {
   
   createCadastro(request: Cadastro): Observable<Cadastro> {
     return this.http.post<Cadastro>(this.APII, request);
+  }
+
+  getEnderecoByViaCep(cep){
+    const URL = `${this.APIViaCEP}${cep}/json`
+    return this.http.get(URL);
   }
 }
