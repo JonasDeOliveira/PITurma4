@@ -1,0 +1,191 @@
+<head>
+  <title>Perfil do Médico</title>
+  <meta charset="utf-8">
+</head>
+
+<div class="container-fluid">
+  <div class="row">
+    <img src="assets/img-grupo4/banner-2.jpg" class="superior" alt="">
+    <img src="assets/img-grupo4/logo-branco.png" class="logo" alt="">
+  </div>
+</div>
+
+<div class="container-fluid" id="container">
+  <div class="row">
+    <h1 class="top"> Meu Perfil </h1>
+  </div>
+</div>
+
+<div class="container-principal">
+  <div class="container-menu">
+    <nav class="menu-vertical">
+      <img class="usuario" src="assets/img-grupo4/usuario.png" width="150px">
+      <div class="container-fluid">
+         <p> Olá Dr(a). {{request.medico.nome}}</p>
+      </div>
+      <button type="button" id="bt-senha" class="btn btn-lg" (click)="open(content)">Alterar
+        Senha</button>
+    </nav>
+  </div>
+
+
+  <div class="container-form container">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="sub">Dados Pessoais</h3>
+        <form #formAtualizar="ngForm">
+          <div class="row">
+            <div class="form-group col-12 col-md-7">
+              <label>Nome</label>
+              <input type="text" class="form-control" id="name-medico" name="nome" [(ngModel)]="request.medico.nome"
+                #nome="ngModel" />
+            </div>
+            <div class="form-group col-12 col-md-3">
+              <label>CRM</label>
+              <input type="text" class="form-control" name="nrCrm" [(ngModel)]="request.medico.nrCrm" #nrCrm="ngModel" maxlength="5"/>
+            </div>
+            <div class="form-group col-12 col-md-2">
+              <label class="label-form" for="crm-uf">UF CRM</label>
+              <select class="form-control style-input" id="uf-crm" name="idUfCrm" [(ngModel)]="request.medico.ufCrm.idUf" #idUf="ngModel">
+                <option *ngFor="let uf of request.ufs" [value]="uf.idUf">{{uf.dsUf}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <label class="label-form" for="Especialidade">Especialidade</label>
+              <select class="form-control style-input" id="Especialidade" name="idEspMed"
+                [(ngModel)]="request.medico.espMed.idEspMed" #idEspMed="ngModel">
+                <option *ngFor="let espMed of request.especialidades" [value]="espMed.idEspMed">{{espMed.dsEspMed}}</option>
+              </select>
+            </div>
+            <div class="form-group col-12 col-md-4">
+              <label>Data de Nascimento</label>
+              <input type="date" class="form-control" name="dtNascimento" [(ngModel)]="request.medico.dtNascimento" 
+              #dtNascimento="ngModel" max="1995-01-01"/>
+            </div>
+
+            <div class="form-group col-12 col-md-4">
+              <label>CPF</label>
+              <input type="text" class="form-control" name="nrCpf" [(ngModel)]="request.medico.nrCpf" #nrCpf="ngModel" minlength="11" maxlength="14" mask="000.000.000-00" disabled/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-12 col-md-3">
+              <label>CEP</label>
+              <input type="text" class="form-control" name="nrCep" [(ngModel)]="request.medico.enderecos[0].nrCep"  #nrCep="ngModel" minlength="8" maxlength="9" mask="00000-000"/>
+            </div>
+            <div class="form-group col-12 col-md-5">
+              <label>Endereço Comercial</label>
+              <input type="text" class="form-control" name="dsEndereco"
+                [(ngModel)]="request.medico.enderecos[0].dsEndereco" #dsEndereco="ngModel"/>
+            </div>
+            <div class="form-group col-12 col-md-4">
+              <label>Bairro</label>
+              <input type="text" class="form-control" name="dsBairro"
+                [(ngModel)]="request.medico.enderecos[0].dsBairro" #dsBairro="ngModel"/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-12 col-md-2">
+              <label class="label-form" for="uf">UF</label>
+              <select class="form-control style-input" id="uf" name="idUf"
+                [(ngModel)]="request.medico.enderecos[0].cidade.uf.idUf" #idUf="ngModel">
+                <option *ngFor="let uf of request.ufs" [value]="uf.idUf">{{uf.dsUf}}</option>
+              </select>
+            </div>
+
+            <div class="form-group col-12 col-md-2">
+              <label>Cidade</label>
+              <select class="form-control style-input" name="idCidade"
+                [(ngModel)]="request.medico.enderecos[0].cidade.idCidade" #idCidade="ngModel">
+                  <option *ngFor="let cidade of request.cidades" [value]="cidade.idCidade">{{cidade.dsCidade}}</option>
+              </select>
+            </div>
+
+            <div class="form-group col-12 col-md-3">
+              <label>Telefone</label>
+              <input type="text" class="form-control" name="dsContato"
+                [(ngModel)]="request.medico.contatos[0].dsContato" #dsContato="ngModel" minlength="9" maxlength="14" mask="(00)0000-0000 || (00)00000-0000"/>
+            </div>
+            <div class="form-group col-12 col-md-3">
+              <label>E-mail</label>
+              <input type="email" class="form-control" name="dsEmail" [(ngModel)]="request.dsEmail" #dsEmail="ngModel" email />
+            </div>
+            <div class="form-group col-12 col-md-2">
+              <label>Valor da Consulta</label>
+              <input type="number" class="form-control" name="vlConsulta" #vlConsulta="ngModel"
+                [(ngModel)]="request.medico.preco.vlConsulta" />
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-12 col-md-6" id="btn-dados">
+              <button class="bt-padrao" type="button" value="Atualizar" (click)="atualizar()">Alterar Dados</button>
+            </div>
+            <div class="col-12 col-md-6" id="btn-voltar">
+              <button class="bt-voltar" routerLink="/dashboard/medico">Voltar</button>
+            </div>
+          </div>
+        </form>
+        <!-- {{request.medico | json}} -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="row">
+    <div class="col-md-6"><img src="assets/img-grupo4/logo-footer.png"></div>
+    <div class="col-md-2">
+
+
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
+      <h4>SOCIAL MIDIA</h4>
+      <ul class="nav flex-column rodape">
+        <li class="nav-item"><img src="assets/img-grupo4/logo-facebook.png"><a class="nav-link" href="#">Facebook</a>
+        </li>
+        <li class="nav-item"><img src="assets/img-grupo4/logo-linkedin.png"><a class="nav-link" href="#">Linkedin</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+<!--Modal-->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h5 class="modal-title">Definir Nova Senha</h5>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <label for="label-form">Nova senha</label>
+    <input type="password" class="form-control style-input" id="senha" name="dsSenha" [(ngModel)]="loginMedico.dsSenha"
+      #dsSenha="ngModel" placeholder="Digite uma senha" minlength="8" required>
+    <div *ngIf="dsSenha.invalid && dsSenha.touched" class="alert alert-danger" role="alert">
+      <div [hidden]="!dsSenha.errors.minlength">
+        senha deve conter pelo menos 8 caracteres.
+      </div>
+    </div>
+  </div>
+  <div class="modal-body">
+   <label class="label-form" for="cadastro-senha2">Confirmar Senha</label>
+    <input type="password" class="form-control" id="cadastro-senha2" placeholder="Digite a senha"
+      name="senhaConfirmacao" #senhaConfirmacao="ngModel" [(ngModel)]="loginMedico.senhaConfirmacao" minlength="8"
+      required>
+    <div *ngIf="senhaConfirmacao.value != dsSenha.value && (senhaConfirmacao.dirty || senhaConfirmacao.touched)"
+      class="alert alert-light mt-1" role="alert">
+      senha informada não confere!
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-verde" value="AlterarSenha" (click)="alterarSenha()" (click)="c('Save click')">Salvar</button>
+  </div>
+</ng-template>

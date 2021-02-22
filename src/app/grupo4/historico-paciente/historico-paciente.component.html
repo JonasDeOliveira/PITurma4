@@ -1,0 +1,117 @@
+<header class="container-fluid">
+    <div class="row">
+        <img src="assets/img-grupo4/banner-2.jpg" class="banner" alt="">
+        <img src="assets/img-grupo4/logo-branco.png" class="logo" alt="">
+    </div>
+</header>
+
+<section class="container">
+
+    <div class="row">
+      <div class="page-title col-6">
+        <h1>Histórico do Paciente</h1>
+      </div>
+      <div class="col-6 d-flex flex-row-reverse align-items-center">
+        <a (click)="voltar()"><img src="assets/img-grupo4/baseline_exit_to_app_black_18dp.png"></a>
+      </div>
+    </div>
+ 
+    <nav class="navbar navbar-light bg-light">
+      <form class="form-inline"  id="id-form" name="formulario" #formLogin="ngForm">
+        <input class="form-control style-input mr-sm-2" type="search" id="cpf" name="cpf" ngModel placeholder="Insira CPF do paciente" minlength="11" maxlength="14" mask="000.000.000-00" aria-label="Pesquisar">
+        <button class="btn btn-verde mr-5" type="button" (click)="getDadosHistoricoCpf(formLogin.value.cpf)" >Buscar</button>
+      </form>
+    </nav>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr class="topo">
+            <th scope="col">Nº PRONTUÁRIO</th>
+            <th scope="col">DATA DE ATENDIMENTO</th>
+            <th scope="col">CPF</th>
+            <th scope="col">NOME DO PACIENTE</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="topo" *ngFor="let atendimento of historicoCpfResposta">
+            <th scope="row">{{atendimento.prontuario.idProntuario}}</th>
+            <td>{{atendimento.dtAtendimento}}</td>
+            <td>{{atendimento.paciente.nrCpf | mask:"000.000.000-00"}}</td>
+            <td>{{atendimento.paciente.nmNome}}</td>
+            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content , atendimento.prontuario.idProntuario )">+ Ver Prontuário</button>
+          </tr>
+        </tbody>
+        <tbody *ngIf="!veioDoAtendimento">
+          <tr class="topo" *ngFor="let atendimento of historicoMedicoResposta">
+            <th scope="row">{{atendimento.prontuario.idProntuario}}</th>
+            <td>{{atendimento.dtAtendimento}}</td>
+            <td>{{atendimento.paciente.nrCpf | mask:"000.000.000-00"}}</td>
+            <td>{{atendimento.paciente.nmNome}}</td>
+            <td><button type="button" class="btn btn-lg btn-outline-primary" (click)="open(content , atendimento.prontuario.idProntuario )">+ Ver Prontuário</button>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</section>
+
+<footer class="mt-4">
+  <div class="row">
+      <div class="col-md-6"><img src="assets/img-grupo4/logo-footer.png"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <h4>SOCIAL MIDIA</h4>   
+            <ul class="nav flex-column rodape">
+                <li class="nav-item"><img src="assets/img-grupo4/logo-facebook.png"><a class="nav-link" href="#">Facebook</a></li>
+                <li class="nav-item"><img src="assets/img-grupo4/logo-linkedin.png"><a class="nav-link" href="#">Linkedin</a></li>
+            </ul>
+        </div>
+    </div>    
+</footer>
+
+<ng-template #content let-c="close" let-d="dismiss">
+
+  <div class="modal-header" id="modal-salvar">
+    <h5 class="modal-title">Prontuário Médico</h5>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12 ml-auto">
+        <label for="recipient-name" class="col-form-label"><h6>Subjetivo:</h6></label>
+        <input type="text" class="form-control" id="recipient-name"  value="{{prontuarioResposta.dsSubjetivo}}" disabled>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 ml-auto">
+        <label for="recipient-name" class="col-form-label"><h6>Objetivo:</h6></label>
+        <input type="text" class="form-control" id="recipient-name"  value="{{prontuarioResposta.dsObjetivo}}" disabled>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 ml-auto">
+        <label for="recipient-name" class="col-form-label"><h6>Avaliação:</h6></label>
+        <input type="text" class="form-control" id="recipient-name"  value="{{prontuarioResposta.dsAvaliacao}}" disabled>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 ml-auto">
+        <label for="recipient-name" class="col-form-label"><h6>Plano</h6></label>
+        <input type="text" class="form-control" id="recipient-name"  value="{{prontuarioResposta.dsPlano}}" disabled>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 ml-auto">
+        <label for="recipient-name" class="col-form-label"><h6>Observações:</h6></label>
+        <input type="text" class="form-control" id="recipient-name"  value="{{prontuarioResposta.dsObservacoes}}" disabled>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+  </div>
+</ng-template>
