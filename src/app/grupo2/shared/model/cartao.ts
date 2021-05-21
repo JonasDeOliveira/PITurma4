@@ -4,7 +4,7 @@ export interface Cartao{
     usuario?: Cliente;
     nrCartao?: string;
     codSeguranca?: string;
-    dtValidade?: Date;
+    dtValidade?: string;
     dtEmissao?: Date;
 
 }

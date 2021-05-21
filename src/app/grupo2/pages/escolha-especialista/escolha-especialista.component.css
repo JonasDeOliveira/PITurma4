@@ -1,5 +1,3 @@
-
-
 section{
   background-color: rgba(224, 239, 220, 0.24);
   width: 100%;
@@ -130,16 +128,21 @@ section{
   }
   .horarios{
       width: 100%;
+      display: flex;
+      flex-direction: row;
   }
   .hora{
-      margin-top: 0.3%
+      margin-top: 0.3%;
+      margin-left: 5px;
   }
   .foto{
       width: 10%;
       border-radius: 29px;
   }
   #medico1{
-      background-image: url("/assets/assets-grupo2/Dra\ Brinquedos.jpg");
+      background-image: url("/assets/assets-grupo2/doctor.png");
+      background-repeat: no-repeat;
+      background-position: center;
   }
   #medico2{
       background-image: url("/assets/assets-grupo2/drauzio.jpg");
@@ -161,3 +164,9 @@ section{
           width:25%
       }
   }
+
+
+  #spinner {
+    font-size: xx-large;
+   
+}

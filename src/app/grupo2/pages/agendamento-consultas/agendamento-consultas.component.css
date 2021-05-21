@@ -35,7 +35,28 @@ select{
 }
 
 
+h2{
+    color: #428870;
+    margin: 10px;
+    font-size: 30px;
+   
+}
+h6{
+    color: red;
+    margin: 15px;
+    font-size: 15px;
 
+}
+h5{
+    color: #428870;
+    margin: 20px;
+    font-size: 25px;
+}
+
+#spinner {
+    font-size: xx-large;
+   
+}
 
 .container1 {
     padding: 0%;
@@ -89,7 +110,7 @@ h1 {
 }
 
 .clicavel:hover {
-    background-color: #319A75;
+    background-color: #969998;
     color: #FFFFFF;
     padding: 0px;
     cursor: pointer;

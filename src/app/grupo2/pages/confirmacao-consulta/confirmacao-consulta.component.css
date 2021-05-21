@@ -103,6 +103,7 @@ section{
   }
   button:hover{
       background-color:#787878;
+      border-radius: 10px;
   }
   .confirmacao-baixo, .confirmacao-cima{
       width: 100%;
@@ -125,7 +126,7 @@ section{
     font-size: 20px;
     padding: 0px;
     border: 0px;
-    margin-bottom:5%;
+    margin-bottom:2%;
   }
 
   .btn-outline-primary {

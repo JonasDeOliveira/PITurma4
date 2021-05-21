@@ -13,8 +13,8 @@ export class ConfirmacaoConsultaService {
 
   private readonly APICADASTRARPAGTOCARTAO = 'http://localhost:8080/agPaciente/cadastrar';
 
-  cadastrarPgtoAgP (request: CadastroAgPactPgto): Observable<OutputConfirmacao> {
-    return this.http.post<OutputConfirmacao>(this.APICADASTRARPAGTOCARTAO, request);
+  cadastrarPgtoAgP (request: CadastroAgPactPgto): Observable<boolean> {
+    return this.http.post<boolean>(this.APICADASTRARPAGTOCARTAO, request);
   }
 }
 

@@ -48,6 +48,7 @@ export class CalendarioAgendamentoComponent implements OnInit {
 
     localStorage.setItem("data", JSON.stringify(this.data));
     this.router.navigate(['escolha-especialista']);
+    localStorage.getItem("data");
   }
 
 }

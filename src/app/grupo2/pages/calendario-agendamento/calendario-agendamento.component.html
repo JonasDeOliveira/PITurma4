@@ -60,7 +60,7 @@
             <div class="linha linha-futura"></div>
         </div>
         <div class="texto-trilha d-flex flex-column">
-            <div class="trilha">Pagamento</div>
+            <div class="trilha">Valor da Consulta</div>
             <div class="opcao-vazia">vazio</div>
         </div>
     </div>
@@ -80,12 +80,12 @@
 <!-- CALENDARIO DATEPICKER -->
 
 <section class="d-flex justify-content-center">
-<a>
-<div routerLink='/escolha-especialista'>
+
+<div>
 
 <!-- <p>Calendario</p> -->
 
-<ngb-datepicker #dp [(ngModel)]="model" (dateSelect)="dataSelect()" (navigate)="date = $event.next" style="background-color: greenyellow colorTheme = theme-green " ></ngb-datepicker>
+<ngb-datepicker id="calendario" #dp [(ngModel)]="model" (dateSelect)="dataSelect()" (navigate)="date = $event.next" style="background-color: greenyellow colorTheme = theme-green" ></ngb-datepicker>
 
 <hr/>
 
@@ -99,7 +99,7 @@
 <pre>Model: {{ model | json }}</pre> -->
 
 </div>
-</a>
+
 </section>
 <!-- FIM CALENDARIO DATEPICKER -->
     

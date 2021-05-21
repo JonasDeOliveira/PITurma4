@@ -15,11 +15,22 @@
       <h1>Qual é o tipo de consulta que você quer agendar?</h1>
     </div>
     <div class="divbotoes col-12 ">
+      
       <div class="container col-12 text-center">
-          <button class="btn-active clicavel" (click)="salvarTipoConsultaOnlineLS()">Online</button>
-          <button class="btn-active clicavel" (click)="salvarTipoConsultaPresencialLS()">Presencial</button>
+          <button type="submit" class="btn-active clicavel" [class.clicado]="onLineClicado" (click)="salvarTipoConsultaOnlineLS()">Online</button>
+          <button class="btn-active clicavel" [class.clicado]="presencialClicado"  (click)="salvarTipoConsultaPresencialLS()">Presencial</button>
       </div>
+      <div class="spinner-grow text-success">
+        <i *ngIf="mostraSpin" id="spinner" class="fa fa-spinner fa-spin container col-12 text-center"></i>
+        
+      </div>
+      
     </div>
+
+ 
+    
+  
+     
 
     <form>
       <div class="divbotoes col-12">
@@ -38,9 +49,47 @@
 
     <div class="divbotoes col-12">
       <div class="container col-12 text-center">
-        <a><button routerLink="/calendario-agendamento" class="btn-active clicado">AGENDAR</button></a>
+        <!-- <a><button routerLink="/calendario-agendamento" class="btn-active clicado">AGENDAR</button></a> -->
+        <!-- <button class="checkin col-2" data-toggle="modal" data-target="#checkinModal">Check-in</button> -->
+        <a><button class="checkin btn-active clicado" data-toggle="modal" data-target="#checkinModal">AGENDAR</button></a>
       </div>
     </div>
+
+ 
+
+         <!-- Modal agendamento -->
+
+
+         <!-- <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              ...
+            </div>
+          </div>
+        </div> -->
+
+        <div class="container col-12 text-center">
+            <div class="modal fade bd-example-modal-lg" id="checkinModal" tabindex="-1" role="dialog" aria-labelledby="checkinModal"
+              aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h2 class="modal-title col-12 text-center" id="exampleModalLabel">Trilha de agendamento</h2>
+                  </div>
+                  <div class="modal-body">
+                    <h5>Você entrará em uma trilha, localizada no topo da sua pagina.</h5>
+                    <h6>Se você quiser voltar para alguma etapa anterior é só clicar no número na trilha</h6>
+                    <h5>As etapas são simples e rápidas</h5>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="container col-12 text-center">
+                    <button routerLink="/calendario-agendamento" type="button" class="btn-active clicado" data-dismiss="modal">Vamos lá??</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
 
   </section>
 

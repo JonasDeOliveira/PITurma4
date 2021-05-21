@@ -24,15 +24,25 @@ export class AgendamentoConsultasComponent implements OnInit {
   idEspSelect : number;
   tipoConsultaEscolhida : TipoConsulta;
   idTipoConsulta : number;
- 
- 
+  onLineClicado  : boolean = false;
+  presencialClicado  : boolean = false;
+  mostraSpinOn = false; 
+  mostraSpinP = false;
+  mostraSpin = false;
+
   ngOnInit(): void {
   
   }
 
   listarEspecialidades(idTipoConsulta: number){
+    this.mostraSpinOn = false;
+    this.mostraSpinP = false;
+    this.mostraSpin = true;
     this.espMedService.listarEspDisponiveis(idTipoConsulta).subscribe(
       response => {
+        this.mostraSpinOn = true;
+        this.mostraSpinP = true;
+        this.mostraSpin = false;
         this.responseEspMed = response;
         console.log(response);
         if (response.length == 0){
@@ -51,6 +61,8 @@ export class AgendamentoConsultasComponent implements OnInit {
 }
 
   salvarTipoConsultaPresencialLS(){
+    this.onLineClicado = false;
+    this.presencialClicado = true;
     this.tipoConsultaService.buscarTipoConsulta(2).subscribe(
       response => {
       this.tipoConsultaEscolhida = response;
@@ -63,6 +75,8 @@ export class AgendamentoConsultasComponent implements OnInit {
   }
 
   salvarTipoConsultaOnlineLS(){
+    this.onLineClicado = true;
+    this.presencialClicado = false;
     this.tipoConsultaService.buscarTipoConsulta(1).subscribe(
       response => {
       this.tipoConsultaEscolhida = response;

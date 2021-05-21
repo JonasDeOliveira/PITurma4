@@ -11,7 +11,7 @@ export interface Medico {
     nome: string;
     espMed: EspMed;
     preco: Preco; 
-    dsEndImg: string;
+    dsEndImg;
 
 }
 
@@ -25,7 +25,7 @@ export interface EspMed {
 
 
 export interface Periodo {
-    horaInicial: Time;
+    horaInicial;
     dsPeriodo: string;
 
 }

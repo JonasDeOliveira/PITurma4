@@ -2,9 +2,10 @@ import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Agenda } from '../../shared/model/agenda';
+import { Cliente } from '../../shared/model/cartao';
 import { Contrato } from '../../shared/model/contrato';
 import { EspMed } from '../../shared/model/espMed';
-import { Pagamento } from '../../shared/model/pagamento';
+import { Pagamento, TipoPagamento } from '../../shared/model/pagamento';
 import { PagamentoPlano } from '../../shared/model/pagamentoPlano';
 import { TipoConsulta } from '../../shared/model/tipoConsulta';
 import { ContratoService } from '../../shared/services/contrato-service';
@@ -40,15 +41,17 @@ export class PagamentoPlanoComponent implements OnInit {
   idPlano: number;
   imgPlano: string;
   dsContrato:string;
+  tipoPagamento: TipoPagamento = {
+    idFormaPagamento: 1,
+    dsFormaPagamento: "Plano"
+  }; 
 
-
-   //USAR QUANDO FIZER O MERGE!!!!!!!!!!!!
-
-  // idUsuario: number = JSON.parse(localStorage.getItem("cliente")).idUsuario;
+  usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
+  idUsuario:number = this.usuario.idUsuario;
 
   ngOnInit(): void {
-    //MUDAR QUANDO FIZER O MERGE
-    this.listarContratoPorUsuario(142);
+    
+    this.listarContratoPorUsuario(this.idUsuario);
   }
 
   listarContratoPorUsuario(idUsuario: number){
@@ -67,9 +70,10 @@ export class PagamentoPlanoComponent implements OnInit {
       }
     )
   }
-    
+  
+  //MUDAR PARA SALVAR O ID DO PLANO
   salvarTipoPagamento(){
-    localStorage.setItem("tipoPagamento", "1")
+    localStorage.setItem("tipoPagamento", JSON.stringify(this.tipoPagamento));
   }
 
   }

@@ -67,7 +67,7 @@
             <div class="linha linha-futura"></div>
         </div>
         <div class="texto-trilha d-flex flex-column">
-            <div class="trilha">Pagamento</div>
+            <div class="trilha">Valor da Consulta</div>
             <div class="opcao-vazia">vazio</div>
         </div>
     </div>
@@ -86,39 +86,61 @@
 
 
 <section class="container d-flex flex-column alig-items-center">
+    <div class="spinner-grow spinner-grow-sm text-success">
+        <i *ngIf="mostraSpin" id=spinner class="fa fa-spinner fa-spin container col-12 text-center"></i>
+      </div>
 
-    <!-- filtro -->
-    <div class="filtro">
-        <div class="periodo form-group">
-            <label for="manha"><input type="checkbox" name="periodo" value="manha" id="manha"> Manhã</label>
-            <label for="tarde"><input type="checkbox" name="periodo" value="tarde" id="tarde"> Tarde</label>
-            <label for="noite"><input type="checkbox" name="periodo" value="noite" id="noite"> Noite</label>
-        </div>
+        <!-- filtro -->
+
+    <div *ngIf="agendaVazia == false && mostraSpin == false" class="filtro">
+        <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand">Filtro</a>
+        <form class="form-inline">
+            <label for="manha"><input type="checkbox" name="periodo" value="manha" id="manha">&nbsp;Manhã&nbsp;&nbsp;</label>
+            <label for="tarde"><input type="checkbox" name="periodo" value="tarde" id="tarde">&nbsp;Tarde&nbsp;&nbsp;</label>
+            <label for="noite"><input type="checkbox" name="periodo" value="noite" id="noite">&nbsp;Noite</label>
+        </form>
+      </nav>
     </div>
 
     <!-- fim filtro -->
+ 
 
+<!-- inicio card agenda vazia -->
+    <div *ngIf="agendaVazia" class="card d-flex justify-content-center">
+        <div class="card-header text-center">
+          AVISO
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">Não existem consultas disponíveis para a data escolhida</h5>    
+          <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+          <a routerLink='/calendario-agendamento' class="btn btn-success">Voltar</a>
+        </div>
+      </div>
+<!-- fim card agenda vazia -->
+      
+    
 
-  <!-- LEMBRAR DE VOLTAR ESSA AQUI -->
     <!-- <div *ngFor = "let agenda of arrayAgendasData" class="card-medico row"> -->
-        <div *ngFor = "let agenda of arrayAgendas" class="card-medico row">
-        <div class="foto" id="medico1"></div>
-        <div class="nome-horario">
-            <div class="texto-consulta">
-                <h5>Dra {{agenda.medico.nome}} - {{agenda.medico.espMed.dsEspMed}}</h5>
-                <p><b>Consulta R$ {{agenda.medico.preco.vlConsulta}}</b></p>
-            </div>
-            <div class="horarios">
-                <a routerLink='/pagamento-plano'>
-                <a href="#"><button class="hora" (click)="salvarAgendaLS(agenda)">{{agenda.periodo.horaInicial}}</button></a>
-                <!-- <button class="hora">15:00</button>
-                <button class="hora">16:00</button>
-                <button class="hora">17:00</button>
-                <button class="hora">18:00</button> -->
-                </a>
+    <div *ngFor="let agenda of arrayPronto">
+        <div *ngIf="agenda.data == data" class="card-medico row">
+            <img class="foto" id="medico1" src={{agenda.medico.dsEndImg}}>
+                <!-- <img src={{agenda.medico.dsEndImg}}> -->
+
+            <div class="nome-horario">
+                <div class="texto-consulta">
+                    <h5>Dr(a) {{agenda.medico.nome}} - {{agenda.medico.dsEspMed}}</h5>
+                    <p><b>Consulta R$ {{agenda.medico.vlConsulta}}</b></p>
+                </div>
+                <div class="horarios">
+                <div *ngFor="let horario of agenda.horarios">
+                    <button class="hora" (click)="salvarAgendaLS(agenda,horario)">{{horario}}</button>
+                </div>
+                </div>
             </div>
         </div>
     </div>
+   
 
 </section>
 

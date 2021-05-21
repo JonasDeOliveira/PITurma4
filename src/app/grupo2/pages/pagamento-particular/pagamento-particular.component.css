@@ -237,6 +237,10 @@ section{
       padding-bottom: 2%;
     }
     
+    .validacao{
+      background-color: #b9b0b0;
+      color: white;
+    }
     
     /*final body*/
     
@@ -317,3 +321,7 @@ section{
       text-decoration: none;
       color: white;
     }
+
+    #spinner {
+      font-size: xx-large;
+  }

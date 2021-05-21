@@ -1,10 +1,13 @@
 import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CartaoComponent } from 'src/app/grupo1/cartoes/cartao/cartao.component';
+import { threadId } from 'worker_threads';
 import { Agenda} from '../../shared/model/agenda';
-import { AgPaciente,  } from '../../shared/model/agPaciente';
+import { AgPaciente, Paciente,  } from '../../shared/model/agPaciente';
 import {  CadastroAgPactPgto } from '../../shared/model/cadastroAgPactPgto';
-import { Cartao, Cliente } from '../../shared/model/cartao';
+import { Cliente } from '../../shared/model/cartao';
+import { CartaoAgPaciente } from '../../shared/model/cartaoAgPaciente';
 import { Contrato } from '../../shared/model/contrato';
 import { EspMed } from '../../shared/model/espMed';
 import { OutputConfirmacao } from '../../shared/model/outputConfirmacao';
@@ -38,10 +41,6 @@ export class ConfirmacaoConsultaComponent implements OnInit {
     config.keyboard = false;
 
   }
-
-  tipoPagamento: TipoPagamento = JSON.parse(localStorage.getItem("tipoPagamento"));
-  idTipoPagamento: number = this.tipoPagamento.idFormaPagamento;
-  dsTipoPagamento: string = this.tipoPagamento.dsFormaPagamento;
   
   especialidade: EspMed = JSON.parse(localStorage.getItem("espMed"));
   dsEspecialidade: string = this.especialidade.dsEspMed;
@@ -51,20 +50,20 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   dsConsulta : string = this.consulta.dsTipoConsulta;
   idTipoConsulta: number = this.consulta.idTipoConsulta;
 
-  agenda: Agenda = JSON.parse(localStorage.getItem("agenda"));
+  agenda = JSON.parse(localStorage.getItem("agenda"));
   nmMedico : string = this.agenda.medico.nome;
-  horario : Time = this.agenda.periodo.horaInicial;
+  horario = this.agenda.periodo.horaInicial;
+  horarioFormatado = "";
   idAgenda: number = this.agenda.idAgenda;
 
-  parcelas: number = JSON.parse(localStorage.getItem("qtadeParcelas"));
-  cartao: Cartao = JSON.parse(localStorage.getItem("cartao"))
+  cartao = JSON.parse(localStorage.getItem("cartao"));
+  cartaoCortado = "**** **** **** " + this.cartao.nrCartao.substring(12,16);
 
-  //VOLTAR APOS MERGE
-  //usuario: Cliente = JSON.parse(localStorage.getItem("cliente"));
-  // idUsuario:number = usuario.idUsuario;
-  
-  //TIRAR APOS MERGE
-  idUsuario = 142;
+  usuario = JSON.parse(localStorage.getItem("cliente"));
+  idUsuario = this.usuario.idUsuario;
+
+  consultaConfirmada : boolean = true;
+  consultaNaoConfirmada : boolean = true;
 
   data: string;
 
@@ -74,29 +73,25 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   cadastroAgPaciente: CadastroAgPactPgto = {
     idAgenda: this.idAgenda,
     idUsuario: this.idUsuario,
-    nrParcelas: this.parcelas,
-    tipoPgto: {
-      idFormaPagamento: this.idTipoPagamento,
-      dsFormaPagamento: this.dsTipoPagamento
-    },
-    cartao: this.cartao
   };
 
-  
+  vlComDesconto = localStorage.getItem("vlComDesconto");
 
   ngOnInit():void {
-    if (this.tipoPagamento.idFormaPagamento == 1){
-      this.tipoPagamento.dsFormaPagamento="Plano"
-    } else if (this.tipoPagamento.idFormaPagamento == 2){
-      this.tipoPagamento.dsFormaPagamento="Cartão"
-    }
+
+    this.consultaConfirmada = false;
+    this.consultaNaoConfirmada = true;
     this.conversorData();
+    console.log("idagenda " + this.idAgenda);
+    console.log("idUsuario " + this.idUsuario);
+    console.log("cadastr " + this.cadastroAgPaciente)
+    this.converterHorario(this.horario);
   }
 
   conversorData(){
     let data = JSON.parse(localStorage.getItem("data")).slice(0,10);
     let dataFormato = data.split("-");
-    let dataFinal = `${dataFormato[2]}/${dataFormato[1]}/${dataFormato[0]}`;
+    let dataFinal = `${dataFormato[2]}/0${dataFormato[1]-1}/${dataFormato[0]}`;
     this.data = dataFinal;
   }
 
@@ -107,11 +102,21 @@ export class ConfirmacaoConsultaComponent implements OnInit {
   criarAgPctePgto (request: CadastroAgPactPgto){
     this.confirmacaoService.cadastrarPgtoAgP(request).subscribe(
       response => {
-        localStorage.setItem("agPaciente", JSON.stringify(response.agPaciente));
-        localStorage.setItem("pagamento", JSON.stringify(response.pagamento));
+        console.log(response);
+        this.consultaConfirmada = true;
+        this.consultaNaoConfirmada = false;
       }
-
     )
+  }
+  converterHorario(horario){
+    let hor = horario.toString();
+    this.horarioFormatado = hor.slice(0,5)
+    console.log(this.horarioFormatado)
+  };
+
+  mudarFlagConfirmacao(){
+    this.consultaConfirmada = true;
+    this.consultaNaoConfirmada = false;
   }
 
 }
